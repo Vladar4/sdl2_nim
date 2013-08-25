@@ -34,141 +34,148 @@ const
 
 
   # The types of events that can be delivered.
-  
-  FIRSTEVENT* = 0 ## Unused (do not remove)
+ 
+type
+  TEventKind* = int32
+
+const
+
+  FIRSTEVENT*: TeventKind = 0 ## Unused (do not remove)
   
   # Application events
   
-  QUITEVENT* = 0x100 ## User-requested quit
+  QUITEVENT*: TeventKind = 0x100 ## User-requested quit
   
   # These application events have special meaning on iOS, see README.iOS for details
   
-  APP_TERMINATING* = 0x101
+  APP_TERMINATING*: TeventKind = 0x101
     ## The application is being terminated by the OS
     ## Called on iOS in applicationWillTerminate()
     ## Called on Android in onDestroy()
 
-  APP_LOWMEMORY* = 0x102
+  APP_LOWMEMORY*: TeventKind = 0x102
     ## The application is low on memory, free memory if possible.
     ## Called on iOS in applicationDidReceiveMemoryWarning()
     ## Called on Android in onLowMemory()
 
-  APP_WILLENTERBACKGROUND* = 0x103
+  APP_WILLENTERBACKGROUND*: TeventKind = 0x103
     ## The application is about to enter the background
     ## Called on iOS in applicationWillResignActive()
     ## Called on Android in onPause()
 
-  APP_DIDENTERBACKGROUND* = 0x104
+  APP_DIDENTERBACKGROUND*: TeventKind = 0x104
     ## The application did enter the background and may not get CPU for some time
     ## Called on iOS in applicationDidEnterBackground()
     ## Called on Android in onPause()
 
-  APP_WILLENTERFOREGROUND* = 0x105
+  APP_WILLENTERFOREGROUND*: TeventKind = 0x105
     ## The application is about to enter the foreground
     ## Called on iOS in applicationWillEnterForeground()
     ## Called on Android in onResume()
 
-  APP_DIDENTERFOREGROUND* = 0x106
+  APP_DIDENTERFOREGROUND*: TeventKind = 0x106
     ## The application is now interactive
     ## Called on iOS in applicationDidBecomeActive()
     ## Called on Android in onResume()
     
   # Window events
   
-  WINDOWEVENT* = 0x200 ## Window state change
+  WINDOWEVENT*: TeventKind = 0x200 ## Window state change
 
-  SYSWMEVENT* = 0x201 ## System specific event
+  SYSWMEVENT*: TeventKind = 0x201 ## System specific event
     
   # Keyboard events
   
-  KEYDOWN* = 0x300 ## Key pressed
+  KEYDOWN*: TeventKind = 0x300 ## Key pressed
 
-  KEYUP* = 0x301 ## Key released
+  KEYUP*: TeventKind = 0x301 ## Key released
 
-  TEXTEDITING* = 0x302 ## Keyboard text editing (composition)
+  TEXTEDITING*: TeventKind = 0x302 ## Keyboard text editing (composition)
 
-  TEXTINPUT* = 0x303 ## Keyboard text input
+  TEXTINPUT*: TeventKind = 0x303 ## Keyboard text input
   
   # Mouse events
   
-  MOUSEMOTION* = 0x400 ## Mouse moved
+  MOUSEMOTION*: TeventKind = 0x400 ## Mouse moved
 
-  MOUSEBUTTONDOWN* = 0x401 ## Mouse button pressed
+  MOUSEBUTTONDOWN*: TeventKind = 0x401 ## Mouse button pressed
 
-  MOUSEBUTTONUP* = 0x402 ## Mouse button released
+  MOUSEBUTTONUP*: TeventKind = 0x402 ## Mouse button released
 
-  MOUSEWHEEL* = 0x403 ## Mouse wheel motion
+  MOUSEWHEEL*: TeventKind = 0x403 ## Mouse wheel motion
   
   # Joystick events
 
-  JOYAXISMOTION* = 0x600 ## Joystick axis motion
+  JOYAXISMOTION*: TeventKind = 0x600 ## Joystick axis motion
 
-  JOYBALLMOTION* = 0x601 ## Joystick trackball motion
+  JOYBALLMOTION*: TeventKind = 0x601 ## Joystick trackball motion
 
-  JOYHATMOTION* = 0x602 ## Joystick hat position change
+  JOYHATMOTION*: TeventKind = 0x602 ## Joystick hat position change
 
-  JOYBUTTONDOWN* = 0x603 ## Joystick button pressed
+  JOYBUTTONDOWN*: TeventKind = 0x603 ## Joystick button pressed
 
-  JOYBUTTONUP* = 0x604 ## Joystick button released
+  JOYBUTTONUP*: TeventKind = 0x604 ## Joystick button released
 
-  JOYDEVICEADDED* = 0x605 ## A new joystick has been inserted into the system
+  JOYDEVICEADDED*: TeventKind = 0x605 ## A new joystick has been inserted into the system
 
-  JOYDEVICEREMOVED* = 0x606 ## An opened joystick has been removed
+  JOYDEVICEREMOVED*: TeventKind = 0x606 ## An opened joystick has been removed
   
   # Game controller events
   
-  CONTROLLERAXISMOTION* = 0x650 ## Game controller axis motion
+  CONTROLLERAXISMOTION*: TeventKind = 0x650 ## Game controller axis motion
 
-  CONTROLLERBUTTONDOWN* = 0x651 ## Game controller button pressed
+  CONTROLLERBUTTONDOWN*: TeventKind = 0x651 ## Game controller button pressed
 
-  CONTROLLERBUTTONUP* = 0x652 ## Game controller button released
+  CONTROLLERBUTTONUP*: TeventKind = 0x652 ## Game controller button released
 
-  CONTROLLERDEVICEADDED* = 0x653 ## A new Game controller has been inserted into the system
+  CONTROLLERDEVICEADDED*: TeventKind = 0x653 ## A new Game controller has been inserted into the system
 
-  CONTROLLERDEVICEREMOVED* = 0x654 ## An opened Game controller has been removed
+  CONTROLLERDEVICEREMOVED*: TeventKind = 0x654 ## An opened Game controller has been removed
 
-  CONTROLLERDEVICEREMAPPED* = 0x655 ## The controller mapping was updated
+  CONTROLLERDEVICEREMAPPED*: TeventKind = 0x655 ## The controller mapping was updated
   
   # Touch events
   
-  FINGERDOWN* = 0x700
+  FINGERDOWN*: TeventKind = 0x700
 
-  FINGERUP* = 0x701
+  FINGERUP*: TeventKind = 0x701
 
-  FINGERMOTION* = 0x702
+  FINGERMOTION*: TeventKind = 0x702
   
   # Gesture events
 
-  DOLLARGESTURE* = 0x800
+  DOLLARGESTURE*: TeventKind = 0x800
 
-  DOLLARRECORD* = 0x801
+  DOLLARRECORD*: TeventKind = 0x801
 
-  MULTIGESTURE* = 0x802
+  MULTIGESTURE*: TeventKind = 0x802
   
   # Clipboard events
 
-  CLIPBOARDUPDATE* = 0x900 ## The clipboard changed
+  CLIPBOARDUPDATE*: TeventKind = 0x900 ## The clipboard changed
   
   # Drag and drop events
 
-  DROPFILE* = 0x1000 ## The system requests a file open
+  DROPFILE*: TeventKind = 0x1000 ## The system requests a file open
   
-  USEREVENT* = 0x8000 ## Events USEREVENT through LASTEVENT are for your use, and should be allocated with registerEvents()
+  USEREVENT*: TeventKind = 0x8000 ## Events USEREVENT through LASTEVENT are for your use, and should be allocated with registerEvents()
 
-  LASTEVENT* = 0xFFFF ## This last event is only for bounding internal arrays
+  LASTEVENT*: TeventKind = 0xFFFF ## This last event is only for bounding internal arrays
 
 
 type
 
-  TCommonEvent*{.bycopy.} = object
+  PCommonEvent* = ptr TCommonEvent
+  TCommonEvent* = object
     ## Fields shared by every event
-    kind*: Uint32
+    kind*: TEventKind
     timestamp*: Uint32
 
 
-  TWindowEvent*{.bycopy.} = object
+  PWindowEvent* = ptr TWindowEvent
+  TWindowEvent* = object
     ## Window state change event data (event.window.*)
-    kind*: Uint32 ## WINDOWEVENT
+    kind*: TEventKind ## WINDOWEVENT
     timestamp*: Uint32
     windowID*: Uint32 ## The associated window
     event*: Uint8 ## TWindowEventID
@@ -179,9 +186,10 @@ type
     data2*: int32 ## event dependent data
 
 
-  TKeyboardEvent*{.bycopy.} = object
+  PKeyboardEvent* = ptr TKeyboardEvent
+  TKeyboardEvent* = object
     ## Keyboard button event structure (event.key.*)
-    kind*: Uint32 ## KEYDOWN or KEYUP
+    kind*: TEventKind ## KEYDOWN or KEYUP
     timestamp*: Uint32
     windowID*: Uint32 ## The window with keyboard focus, if any
     state*: Uint8 ## PRESSED or RELEASED
@@ -191,9 +199,10 @@ type
     keysym*: TKeysym ## The key that was pressed or released
 
 
-  TTextEditingEvent*{.bycopy.} = object
+  PTextEditingEvent* = ptr TTextEditingEvent
+  TTextEditingEvent* = object
     ## Keyboard text editing event structure (event.edit.*)
-    kind*: Uint32 ## TEXTEDITING
+    kind*: TEventKind ## TEXTEDITING
     timestamp*: Uint32
     windowID*: Uint32 ## The window with keyboard focus, if any
     text*: array[0..TEXTEDITINGEVENT_TEXT_SIZE-1, char] ## The editing text
@@ -201,17 +210,19 @@ type
     length*: int32 ## The length of selected editing text
 
 
-  TTextInputEvent*{.bycopy.} = object
+  PTextInputEvent* = ptr TTextInputEvent
+  TTextInputEvent* = object
     ## Keyboard text input event structure (event.text.*)
-    kind*: Uint32 ## TEXTINPUT
+    kind*: TEventKind ## TEXTINPUT
     timestamp*: Uint32
     windowID*: Uint32 ## The window with keyboard focus, if any
     text*: array[0..TEXTINPUTEVENT_TEXT_SIZE-1, char] ## The input text
 
 
-  TMouseMotionEvent*{.bycopy.} = object
+  PMouseMotionEvent* = ptr TMouseMotionEvent
+  TMouseMotionEvent* = object
     ## Mouse motion event structure (event.motion.*)
-    kind*: Uint32 ## MOUSEMOTION
+    kind*: TEventKind ## MOUSEMOTION
     timestamp*: Uint32
     windowID*: Uint32 ## The window with mouse focus, if any
     which*: Uint32 ## The mouse instance id, or TOUCH_MOUSEID
@@ -222,9 +233,10 @@ type
     yrel*: int32 ## The relative motion in the Y direction
 
 
-  TMouseButtonEvent*{.bycopy.} = object
+  PMouseButtonEvent* = ptr TMouseButtonEvent
+  TMouseButtonEvent* = object
     ## Mouse button event structure (event.button.*)
-    kind*: Uint32 ## MOUSEBUTTONDOWN or MOUSEBUTTONUP
+    kind*: TEventKind ## MOUSEBUTTONDOWN or MOUSEBUTTONUP
     timestamp*: Uint32
     windowID*: Uint32 ## The window with mouse focus, if any
     which*: Uint32 ## The mouse instance id, or TOUCH_MOUSEID
@@ -236,9 +248,10 @@ type
     y*: int32 ## Y coordinate, relative to window
 
 
-  TMouseWheelEvent*{.bycopy.} = object
+  PMouseWheelEvent* = ptr TMouseWheelEvent
+  TMouseWheelEvent* = object
     ## Mouse wheel event structure (event.wheel.*)
-    kind*: Uint32 ## MOUSEWHEEL
+    kind*: TEventKind ## MOUSEWHEEL
     timestamp*: Uint32
     windowID*: Uint32 ## The window with mouse focus, if any
     which*: Uint32 ## The mouse instance id, or TOUCH_MOUSEID
@@ -246,9 +259,10 @@ type
     y*: int32 ## The amount scrolled vertically
 
 
-  TJoyAxisEvent*{.bycopy.} = object
+  PJoyAxisEvent* = ptr TJoyAxisEvent
+  TJoyAxisEvent* = object
     ## Joystick axis motion event structure (event.jaxis.*)
-    kind*: Uint32 ## JOYAXISMOTION
+    kind*: TEventKind ## JOYAXISMOTION
     timestamp*: Uint32
     which*: TJoystickID ## The joystick instance id
     axis*: Uint8 ## The joystick axis index
@@ -259,9 +273,10 @@ type
     padding4*: int16
 
 
-  TJoyBallEvent*{.bycopy.} = object
+  PJoyBallEvent* = ptr TJoyBallEvent
+  TJoyBallEvent* = object
     ## Joystick trackball motion event structure (event.jball.*)
-    kind*: Uint32 ## JOYBALLMOTION
+    kind*: TEventKind ## JOYBALLMOTION
     timestamp*: Uint32
     which*: TJoystickID ## The joystick instance id
     ball*: Uint8 ## The joystick trackball index
@@ -272,9 +287,10 @@ type
     yrel*: int16 ## The relative motion in the Y direction
 
 
-  TJoyHatEvent*{.bycopy.} = object
+  PJoyHatEvent* = ptr TJoyHatEvent
+  TJoyHatEvent* = object
     ## Joystick hat position change event structure (event.jhat.*)
-    kind*: Uint32 ## JOYHATMOTION
+    kind*: TEventKind ## JOYHATMOTION
     timestamp*: Uint32
     which*: TJoystickID ## The joystick instance id
     hat*: Uint8 ## The joystick hat index
@@ -283,9 +299,10 @@ type
     padding2*: Uint8
 
 
-  TJoyButtonEvent*{.bycopy.} = object
+  PJoyButtonEvent* = ptr TJoyButtonEvent
+  TJoyButtonEvent* = object
     ## Joystick button event structure (event.jbutton.*)
-    kind*: Uint32 ## JOYBUTTONDOWN or JOYBUTTONUP
+    kind*: TEventKind ## JOYBUTTONDOWN or JOYBUTTONUP
     timestamp*: Uint32
     which*: TJoystickID ## The joystick instance id
     button*: Uint8 ## The joystick button index
@@ -294,16 +311,18 @@ type
     padding2*: Uint8
 
 
-  TJoyDeviceEvent*{.bycopy.} = object
+  PJoyDeviceEvent* = ptr TJoyDeviceEvent
+  TJoyDeviceEvent* = object
     ## Joystick device event structure (event.jdevice.*)
-    kind*: Uint32 ## JOYDEVICEADDED or JOYDEVICEREMOVED
+    kind*: TEventKind ## JOYDEVICEADDED or JOYDEVICEREMOVED
     timestamp*: Uint32
     which*: int32 ## The joystick device index for the ADDED event, instance id for the REMOVED event
 
 
-  TControllerAxisEvent*{.bycopy.} = object
+  PControllerAxisEvent* = ptr TControllerAxisEvent
+  TControllerAxisEvent* = object
     ## Game controller axis motion event structure (event.caxis.*)
-    kind*: Uint32 ## CONTROLLERAXISMOTION
+    kind*: TEventKind ## CONTROLLERAXISMOTION
     timestamp*: Uint32
     which*: TJoystickID ## The joystick instance id
     axis*: Uint8 ## The controller axis (TGameControllerAxis)
@@ -314,9 +333,10 @@ type
     padding4*: int16
 
 
-  TControllerButtonEvent*{.bycopy.} = object
+  PControllerButtonEvent* = ptr TControllerButtonEvent
+  TControllerButtonEvent* = object
     ## Game controller button event structure (event.cbutton.*)
-    kind*: Uint32 ## CONTROLLERBUTTONDOWN or CONTROLLERBUTTONUP
+    kind*: TEventKind ## CONTROLLERBUTTONDOWN or CONTROLLERBUTTONUP
     timestamp*: Uint32
     which*: TJoystickID ## The joystick instance id
     button*: Uint8 ## The controller button (TGameControllerButton)
@@ -325,16 +345,18 @@ type
     padding2*: Uint8
 
 
-  TControllerDeviceEvent*{.bycopy.} = object
+  PControllerDeviceEvent* = ptr TcontrollerDeviceEvent
+  TControllerDeviceEvent* = object
     ## Controller device event structure (event.cdevice.*)
-    kind*: Uint32 ## CONTROLLERDEVICEADDED, CONTROLLERDEVICEREMOVED, or CONTROLLERDEVICEREMAPPED
+    kind*: TEventKind ## CONTROLLERDEVICEADDED, CONTROLLERDEVICEREMOVED, or CONTROLLERDEVICEREMAPPED
     timestamp*: Uint32
     which*: int32 ## The joystick device index for the ADDED event, instance id for the REMOVED or REMAPPED event
 
 
-  TTouchFingerEvent*{.bycopy.} = object
-    ## Touch finger event structure (event.tfinger.*)
-    kind*: Uint32 ## FINGERMOTION or FINGERDOWN or FINGERUP
+  PTouchFingerEvent* = ptr TTouchFingerEvent
+  TTouchFingerEvent* = object
+    ## Touch finger event structure (event.finger.*)
+    kind*: TEventKind ## FINGERMOTION or FINGERDOWN or FINGERUP
     timestamp*: Uint32
     touchId*: TTouchID ## The touch device id
     fingerID*: TFingerID
@@ -345,9 +367,10 @@ type
     pressure*: float ## Normalized in the range 0...1
 
 
-  TMultiGestureEvent*{.bycopy.} = object
+  PMultiGestureEvent* = ptr TMultiGestureEvent
+  TMultiGestureEvent* = object
     ## Multiple Finger Gesture Event (event.mgesture.*)
-    kind*: Uint32 ## MULTIGESTURE
+    kind*: TEventKind ## MULTIGESTURE
     timestamp*: Uint32
     touchId*: TTouchID ## The touch device index
     dTheta*: float
@@ -358,9 +381,10 @@ type
     padding*: Uint16
 
 
-  TDollarGestureEvent*{.bycopy.} = object
-    ## (event.dgesture.*)
-    kind*: Uint32 ## DOLLARGESTURE
+  PDollarGestureEvent* = ptr TDollarGestureEvent
+  TDollarGestureEvent* = object
+    ## EvDollarGesture(event.dgesture.*)
+    kind*: TEventKind ## DOLLARGESTURE
     timestamp*: Uint32
     touchId*: TTouchID ## The touch device id
     gestureId*: TGestureID
@@ -370,32 +394,36 @@ type
     y*: float ## Normalized center of gesture
 
 
-  TDropEvent*{.bycopy.} = object
+  PDropEvent* = ptr TDropEvent
+  TDropEvent* = object
     ## An event used to request a file open by the system (event.drop.*)
     ##
     ## This event is disabled by default, you can enable it with eventState()
     ##
     ##If you enable this event, you must free the filename in the event.
-    kind*: Uint32 ## DROPFILE
+    kind*: TEventKind ## DROPFILE
     timestamp*: Uint32
     file*: cstring ## The file name, which should be freed with free()
 
 
-  TQuitEvent*{.bycopy.} = object
+  PQuitEvent* = ptr TQuitEvent
+  TQuitEvent* = object
     ## The "quit requested" event
-    kind*: Uint32 ## QUIT
+    kind*: TEventKind ## QUIT
     timestamp*: Uint32
 
 
-  TOSEvent*{.bycopy.} = object
+  POSEvent* = ptr TOSEvent
+  TOSEvent* = object
     ## OS Specific event
-    kind*: Uint32 ## QUIT
+    kind*: TEventKind ## QUIT
     timestamp*: Uint32
 
 
-  TUserEvent*{.bycopy.} = object
+  PUserEvent* = ptr TUserEvent
+  TUserEvent* = object
     ## A user-defined event type (event.user.*)
-    kind*: Uint32 ## USEREVENT through NUMEVENTS-1
+    kind*: TEventKind ## USEREVENT through NUMEVENTS-1
     timestamp*: Uint32
     windowID*: Uint32 ## The associated window if any
     code*: int32 ## User defined event code
@@ -406,66 +434,79 @@ type
   PSysWMmsg* = pointer
 
 
-  TSysWMEvent*{.bycopy.} = object
+  PSysWMEvent* = ptr TSysWMEvent
+  TSysWMEvent* = object
     ## A video driver dependent system event (event.syswm.*)
     ##
     ## This event is disabled by default, you can enable it with eventState()
     ##
     ## If you want to use this event, you should include syswm.h.
-    kind*: Uint32 ## SYSWMEVENT
+    kind*: TEventKind ## SYSWMEVENT
     timestamp*: Uint32
     msg*: PSysWMmsg ## driver dependent data, defined in syswm.h
 
   
   PEvent* = ptr TEvent
-  TEvent*{.bycopy.} = object
-    kind*: Uint32
+  TEvent* = object
+    kind*: TEventKind
     timestamp*: Uint32
     data*: array[0..47, byte]
 
 
-#typedef union SDL_Event
-# *  \brief General event structure
-#{
-#    Uint32 type;                    /**< Event type, shared with all events */
-#    SDL_CommonEvent common;         /**< Common event data */
-#    SDL_WindowEvent window;         /**< Window event data */
-#    SDL_KeyboardEvent key;          /**< Keyboard event data */
-#    SDL_TextEditingEvent edit;      /**< Text editing event data */
-#    SDL_TextInputEvent text;        /**< Text input event data */
-#    SDL_MouseMotionEvent motion;    /**< Mouse motion event data */
-#    SDL_MouseButtonEvent button;    /**< Mouse button event data */
-#    SDL_MouseWheelEvent wheel;      /**< Mouse wheel event data */
-#    SDL_JoyAxisEvent jaxis;         /**< Joystick axis event data */
-#    SDL_JoyBallEvent jball;         /**< Joystick ball event data */
-#    SDL_JoyHatEvent jhat;           /**< Joystick hat event data */
-#    SDL_JoyButtonEvent jbutton;     /**< Joystick button event data */
-#    SDL_JoyDeviceEvent jdevice;     /**< Joystick device change event data */
-#    SDL_ControllerAxisEvent caxis;      /**< Game Controller axis event data */
-#    SDL_ControllerButtonEvent cbutton;  /**< Game Controller button event data */
-#    SDL_ControllerDeviceEvent cdevice;  /**< Game Controller device event data */
-#    SDL_QuitEvent quit;             /**< Quit request event data */
-#    SDL_UserEvent user;             /**< Custom event data */
-#    SDL_SysWMEvent syswm;           /**< System dependent window event data */
-#    SDL_TouchFingerEvent tfinger;   /**< Touch finger event data */
-#    SDL_MultiGestureEvent mgesture; /**< Gesture event data */
-#    SDL_DollarGestureEvent dgesture; /**< Gesture event data */
-#    SDL_DropEvent drop;             /**< Drag and drop event data */
-#
-#    /* This is necessary for ABI compatibility between Visual C++ and GCC
-#       Visual C++ will respect the push pack pragma and use 52 bytes for
-#       this structure, and GCC will use the alignment of the largest datatype
-#       within the union, which is 8 bytes.
-#
-#       So... we'll add padding to force the size to be 56 bytes for both.
-#    */
-#    Uint8 padding[56];
-#} SDL_Event;
+template evconv(procName: expr, ptrName: typeDesc, assertions: seq[TEventKind]): stmt {.immediate.} =
+  template `procName`*(event: PEvent): ptrName =
+    assert(contains(assertions, event.kind)); cast[ptrName](event)
+
+evconv(EvWindow, PWindowEvent, @[WINDOWEVENT])
+evconv(EvKeyboard, PKeyboardEvent, @[KEYDOWN, KEYUP])
+evconv(EvTextEditing, PTextEditingEvent, @[TEXTEDITING])
+evconv(EvTextInput, PTextInputEvent, @[TEXTINPUT])
+evconv(EvMouseMotion, PMouseMotionEvent, @[MOUSEMOTION])
+evconv(EvMouseButton, PMouseButtonEvent, @[MOUSEBUTTONDOWN, MOUSEBUTTONUP])
+evconv(EvMouseWheel, PMouseWheelEvent, @[MOUSEWHEEL])
+evconv(EvJoyAxis, PJoyAxisEvent, @[JOYAXISMOTION])
+evconv(EvJoyBall, PJoyBallEvent, @[JOYBALLMOTION])
+evconv(EvJoyHat, PJoyHatEvent, @[JOYHATMOTION])
+evconv(EvJoyButton, PJoyButtonEvent, @[JOYBUTTONDOWN, JOYBUTTONUP])
+evconv(EvJoyDevice, PJoyDeviceEvent, @[JOYDEVICEADDED, JOYDEVICEREMOVED])
+evconv(EvControllerAxis, PControllerAxisEvent, @[CONTROLLERAXISMOTION])
+evconv(EvControllerButton, PControllerButtonEvent, @[CONTROLLERBUTTONDOWN, CONTROLLERBUTTONUP])
+evconv(EvControllerDevice, PControllerDeviceEvent, @[CONTROLLERDEVICEADDED, CONTROLLERDEVICEREMOVED, CONTROLLERDEVICEREMAPPED])
+evconv(EvTouchFinger, PTouchFingerEvent, @[FINGERMOTION, FINGERDOWN, FINGERUP])
+evconv(EvMultiGesture, PMultiGestureEvent, @[MULTIGESTURE])
+evconv(EvDollarGestute, PDollarGestureEvent, @[DOLLARGESTURE])
+evconv(EvDrop, PDropEvent, @[DROPFILE])
+evconv(EvQuit, PQuitEvent, @[QUITEVENT])
+evconv(EvUser, PUserEvent, @[USEREVENT])
+evconv(EvSysWM, PSysWMEvent, @[SYSWMEVENT])
 
 
+template evconv_alt(procName: expr, ptrName: typeDesc, assertions: seq[TEventKind]): stmt {.immediate.} =
+  template `procName`*(event: TEvent): ptrName =
+    assert(contains(assertions, event.kind)); cast[ptrName](addr(event))
 
-
-
+evconv_alt(window, PWindowEvent, @[WINDOWEVENT])
+evconv_alt(key, PKeyboardEvent, @[KEYDOWN, KEYUP])
+evconv_alt(edit, PTextEditingEvent, @[TEXTEDITING])
+evconv_alt(text, PTextInputEvent, @[TEXTINPUT])
+evconv_alt(motion, PMouseMotionEvent, @[MOUSEMOTION])
+evconv_alt(button, PMouseButtonEvent, @[MOUSEBUTTONDOWN, MOUSEBUTTONUP])
+evconv_alt(wheel, PMouseWheelEvent, @[MOUSEWHEEL])
+evconv_alt(jaxis, PJoyAxisEvent, @[JOYAXISMOTION])
+evconv_alt(jball, PJoyBallEvent, @[JOYBALLMOTION])
+evconv_alt(jhat, PJoyHatEvent, @[JOYHATMOTION])
+evconv_alt(jbutton, PJoyButtonEvent, @[JOYBUTTONDOWN, JOYBUTTONUP])
+evconv_alt(jdevice, PJoyDeviceEvent, @[JOYDEVICEADDED, JOYDEVICEREMOVED])
+evconv_alt(caxis, PControllerAxisEvent, @[CONTROLLERAXISMOTION])
+evconv_alt(cbutton, PControllerButtonEvent, @[CONTROLLERBUTTONDOWN, CONTROLLERBUTTONUP])
+evconv_alt(cdevice, PControllerDeviceEvent, @[CONTROLLERDEVICEADDED, CONTROLLERDEVICEREMOVED, CONTROLLERDEVICEREMAPPED])
+evconv_alt(finger, PTouchFingerEvent, @[FINGERMOTION, FINGERDOWN, FINGERUP])
+evconv_alt(mgesture, PMultiGestureEvent, @[MULTIGESTURE])
+evconv_alt(dgestute, PDollarGestureEvent, @[DOLLARGESTURE])
+evconv_alt(drop, PDropEvent, @[DROPFILE])
+evconv_alt(quit, PQuitEvent, @[QUITEVENT])
+evconv_alt(user, PUserEvent, @[USEREVENT])
+evconv_alt(sysvm, PSysWMEvent, @[SYSWMEVENT])
 
 
 # Function prototypes
@@ -486,7 +527,7 @@ type
     GETEVENT
 
 proc peepEvents*(events: PEvent, numevents: int, action: TEventAction,
-    minType, maxType: Uint32): int {.cdecl, importc: "SDL_PeepEvents", dynlib: LibName.}
+    minKind, maxKind: TEventKind): int {.cdecl, importc: "SDL_PeepEvents", dynlib: LibName.}
   ## Checks the event queue for messages and optionally returns them.
   ##
   ## If ``action`` is ADDEVENT, up to ``numevents`` events will be added to
@@ -505,19 +546,19 @@ proc peepEvents*(events: PEvent, numevents: int, action: TEventAction,
   ## This function is thread-safe.
 
 
-proc hasEvent*(kind: Uint32): bool {.cdecl, importc: "SDL_HasEvent", dynlib: LibName.}
+proc hasEvent*(kind: TEventKind): bool {.cdecl, importc: "SDL_HasEvent", dynlib: LibName.}
   ## checks to see if certain event types are in the event queue.
 
 
-proc hasEvents*(minType, maxType: Uint32): bool {.cdecl, importc: "SDL_HasEvents", dynlib: LibName.}
+proc hasEvents*(minKind, maxType: TEventKind): bool {.cdecl, importc: "SDL_HasEvents", dynlib: LibName.}
   ## Checks to see if certain event types are in the event queue.
 
 
-proc flushEvent*(kind: Uint32) {.cdecl, importc: "SDL_FlushEvent", dynlib: LibName.}
+proc flushEvent*(kind: TEventKind) {.cdecl, importc: "SDL_FlushEvent", dynlib: LibName.}
   ## This function clears events from the event queue
 
 
-proc flushEvents*(minType, maxType: Uint32) {.cdecl, importc: "SDL_FlushEvents", dynlib: LibName.}
+proc flushEvents*(minKind, maxKind: TEventKind) {.cdecl, importc: "SDL_FlushEvents", dynlib: LibName.}
   ## This function clears events from the event queue
 
 
@@ -618,7 +659,7 @@ const
   ENABLE* = 1
 
 
-proc eventState*(kind: Uint32, state: int): Uint8 {.cdecl, importc: "SDL_EventState", dynlib: LibName.}
+proc eventState*(kind: TEventKind, state: int): Uint8 {.cdecl, importc: "SDL_EventState", dynlib: LibName.}
   ## This function allows you to set the state of processing certain events.
   ##
   ## - If ``state`` is set to IGNORE, that event will be automatically
@@ -630,11 +671,11 @@ proc eventState*(kind: Uint32, state: int): Uint8 {.cdecl, importc: "SDL_EventSt
   ## current processing state of the specified event.
 
 
-template getEventState*(kind: Uint32): Uint8 =
+template getEventState*(kind: TEventKind): Uint8 =
   eventState(kind, SDL_QUERY)
 
 
-proc registerEvents*(numevents: int): Uint32 {.cdecl, importc: "SDL_RegisterEvents", dynlib: LibName.}
+proc registerEvents*(numevents: int): TEventKind {.cdecl, importc: "SDL_RegisterEvents", dynlib: LibName.}
   ## This function allocates a set of user-defined events, and returns
   ## the beginning event number for that set of events.
   ##

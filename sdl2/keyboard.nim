@@ -26,7 +26,7 @@
 
 
 type
-  TKeysym*{.bycopy.} = object
+  TKeysym* = object
     ## The SDL keysym structure, used in key events.
     scancode*: TScancode ## SDL physical key code - see TScancode for details
     sym*: TKeycode ## SDL virtual key code - see TKeycode for details
@@ -41,7 +41,7 @@ proc getKeyboardFocus*(void): PWindow {.cdecl, importc: "SDL_GetKeyboardFocus", 
   ## Get the window which currently has keyboard focus.
 
 
-proc getKeyboardState*(numkeys: ptr int): ptr Uint8 {.cdecl, importc: "SDL_GetKeyboardState", dynlib: LibName.}
+proc getKeyboardState*(numkeys: ptr int): ptr byte {.cdecl, importc: "SDL_GetKeyboardState", dynlib: LibName.}
   ## Get a snapshot of the current state of the keyboard.
   ##
   ## ``numkeys`` if non-nil, receives the length of the returned array.
@@ -52,7 +52,7 @@ proc getKeyboardState*(numkeys: ptr int): ptr Uint8 {.cdecl, importc: "SDL_GetKe
   ## Example:
   ##
   ##
-  ## var state: ptr Uint8 = getKeyboardState(nil)
+  ## var state: ptr byte = getKeyboardState(nil)
   ## if state[SCANCODE_RETURN]:
   ##   echo("<RETURN> is pressed.")
 

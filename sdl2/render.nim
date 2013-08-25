@@ -50,7 +50,7 @@ type
 
 
   PRendererInfo* = ptr TRendererInfo
-  TRendererInfo*{.bycopy.} = object ## Information on the capabilities of a render driver or context.
+  TRendererInfo* = object ## Information on the capabilities of a render driver or context.
     name*: cstring ## The name of the renderer
     flags*: Uint32 ## Supported rendererFlags
     num_texture_formats*: Uint32 ## The number of available texture formats

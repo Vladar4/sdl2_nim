@@ -104,7 +104,7 @@ proc getRelativeMouseMode*(): bool {.cdecl, importc: "SDL_GetRelativeMouseMode",
   ## See also: setRelativeMouseMode()
 
 
-proc createCursor*(data, mask: ptr Uint8,
+proc createCursor*(data, mask: ptr byte,
   w, h, hot_x, hot_y: int): PCursor {.cdecl, importc: "SDL_CreateCursor", dynlib: LibName.}
   ## Create a cursor, using the specified bitmap data and mask (in MSB format).
   ##

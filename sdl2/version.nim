@@ -37,7 +37,8 @@
 #
 
 type
-  TVersion*{.bycopy.} = object
+  PVersion* = ptr TVersion
+  TVersion* = object
     major*: Uint8 ## major version
     minor*: Uint8 ## minor version
     patch*: Uint8 ## update version
@@ -88,7 +89,7 @@ template versionAtLeast*(x, y, z: Uint8): bool =
   (compiledVersion() >= versionNum(x, y, z))
 
 
-proc getVersion*(ver: ptr TVersion) {.cdecl, importc: "SDL_GetVersion", dynlib: LibName.}
+proc getVersion*(ver: PVersion) {.cdecl, importc: "SDL_GetVersion", dynlib: LibName.}
   ##  Get the version of SDL that is linked against your program.
   ##
   ## If you are linking to SDL dynamically, then it is possible that the

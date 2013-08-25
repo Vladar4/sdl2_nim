@@ -26,7 +26,7 @@
 
 type
   PPoint* = ptr TPoint
-  TPoint*{.bycopy.} = object
+  TPoint* = object
     ##  The structure that defines a point
     ##
     ## See also: enclosePoints
@@ -34,7 +34,7 @@ type
     y: int
 
   PRect* = ptr TRect
-  TRect*{.bycopy.} = object
+  TRect* = object
     ## A rectangle, with the origin at the upper left.
     ##
     ## See also: rectEmpty, 
@@ -74,7 +74,7 @@ proc unionRect*(a, b, result: PRect) {.cdecl, importc: "SDL_UnionRect", dynlib: 
   ## Calculate the union of two rectangles.
 
 
-proc enclosePoints*(points: ptr TPoint, count: int, clip, result: PRect): bool {.cdecl, importc: "SDL_EnclosePoints", dynlib: LibName.}
+proc enclosePoints*(points: PPoint, count: int, clip, result: PRect): bool {.cdecl, importc: "SDL_EnclosePoints", dynlib: LibName.}
   ## Calculate a minimal rectangle enclosing a set of points.
   ##
   ## Return TRUE if any points were within the clipping rect.

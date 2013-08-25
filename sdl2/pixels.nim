@@ -232,23 +232,23 @@ type
   PColour* = ptr TColor
   PColor* = ptr TColor
   TColour* = TColor
-  TColor*{.bycopy.} = object
+  TColor* = object
     r*, g*, b*, a*: Uint8
 
 
   PPalette* = ptr TPalette
-  TPalette*{.bycopy.} = object
+  TPalette* = object
     ncolors*: int
-    colors*: ptr TColor
+    colors*: PColor
     version*: Uint32
     refcount*: int
 
 
   PPixelFormat* = ptr TPixelFormat
-  TPixelFormat*{.bycopy.} = object
+  TPixelFormat* = object
     ## Everything in the pixel format structure is read-only.
     format*: Uint32
-    palette*: ptr TPalette
+    palette*: PPalette
     bitsPerPixel*, bytesPerPixel*: Uint8
     padding*: array [0..1, Uint8]
     rMask*, gMask*, bMask*, aMask*: Uint32

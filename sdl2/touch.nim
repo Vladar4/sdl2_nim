@@ -30,7 +30,7 @@ type
   TFingerID* = int64
 
   PFinger* = ptr TFinger
-  TFinger*{.bycopy.} = object
+  TFinger* = object
     id: TFingerID
     x, y, pressure: float
 

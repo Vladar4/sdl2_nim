@@ -38,7 +38,7 @@ const
 
 type
   PSurface* = ptr TSurface
-  TSurface*{.bycopy.} = object
+  TSurface* = object
     ## A collection of pixels used in software blitting.
     ##
     ## This structure should be treated as read-only, except for ``pixels``,

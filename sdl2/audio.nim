@@ -148,7 +148,7 @@ const
 
 
 type
-  PAudioCallback* = proc(userdata: pointer, stream: ptr Uint8, len: int) {.cdecl.}
+  PAudioCallback* = proc(userdata: pointer, stream: ptr byte, len: int) {.cdecl.}
     ## This function is called when the audio device needs more data.
     ##
     ## ``userdata`` An application-specific parameter saved in
@@ -163,7 +163,7 @@ type
 
   
   PAudioSpec* = ptr TAudioSpec
-  TAudioSpec*{.bycopy.} = object
+  TAudioSpec* = object
     ## The calculated values in this structure are calculated by openAudio().
     freq*: int ## DSP frequency -- samples per second
     format*: TAudioFormat ## Audio data format
@@ -176,19 +176,17 @@ type
     userdata*: pointer
 
 
-  PAudioCVT* = pointer
-
-
   PAudioFilter* = proc(cvt: PAudioCVT, format: TAudioFormat) {.cdecl.}
 
-
-  TAudioCVT*{.bycopy.} = object
+  
+  PAudioCVT* = ptr TAudioCVT
+  TAudioCVT* = object
     ## A structure to hold a set of audio conversion filters and buffers.
     needed*: int ## Set to 1 if conversion possible
     src_format*: TAudioFormat ## Source audio format
     dst_format*: TAudioFormat ## Target audio format
     rate_incr*: cdouble ## Rate conversion increment
-    buf*: ptr Uint8 ## Buffer to hold entire audio data
+    buf*: ptr byte ## Buffer to hold entire audio data
     len*: int ## Length of original audio buffer
     len_cvt*: int ## Length of converted audio buffer
     len_mult*: int ## buffer must be len*len_mult big
@@ -375,7 +373,7 @@ proc pauseAudioDevice*(dev: TAudioDeviceID, pause_on: int) {.cdecl, importc: "SD
 
 
 proc loadWAV_RW*(src: PRWops, freesrc: int, spec: PAudioSpec,
-    audio_buf: ptr ptr Uint8, audio_len: ptr Uint32): PAudioSpec {.cdecl, importc: "SDL_LoadWAV_RW", dynlib: LibName.}
+    audio_buf: ptr ptr byte, audio_len: ptr Uint32): PAudioSpec {.cdecl, importc: "SDL_LoadWAV_RW", dynlib: LibName.}
   ## This function loads a WAVE from the data source, automatically freeing
   ## that source if ``freesrc`` is non-zero.  For example, to load a WAVE file,
   ## you could do:
@@ -384,7 +382,7 @@ proc loadWAV_RW*(src: PRWops, freesrc: int, spec: PAudioSpec,
   ## loadWAV_RW(rwFromFile("sample.wav", "rb"), 1, ...)
   ##
   ##
-  ## If this function succeeds, it returns the given TAudioSpec,
+  ## If this function succeeds, it returns the given PAudioSpec,
   ## filled with the audio data format of the wave data, and sets
   ## ``audio_buf`` to a malloc()'d buffer containing the audio data,
   ## and sets ``audio_len`` to the length of that audio buffer, in bytes.
@@ -397,13 +395,13 @@ proc loadWAV_RW*(src: PRWops, freesrc: int, spec: PAudioSpec,
 
 
 template loadWAV*(file: cstring, spec: PAudioSpec,
-    audio_buf: ptr ptr Uint8, audio_len: ptr Uint32): PAudioSpec =
+    audio_buf: ptr ptr byte, audio_len: ptr Uint32): PAudioSpec =
   ## Loads a WAV from a file.
   ## Compatibility convenience function.
   loadWAV_RW(rwFromFile(file, "rb"), 1, spec, audio_buf, audio_len)
 
 
-proc freeWAV*(audio_buf: ptr Uint8) {.cdecl, importc: "SDL_FreeWAV", dynlib: LibName.}
+proc freeWAV*(audio_buf: ptr byte) {.cdecl, importc: "SDL_FreeWAV", dynlib: LibName.}
   ## This function frees data previously allocated with loadWAV_RW()
 
 
@@ -434,7 +432,7 @@ const
   MIX_MAXVOLUME* = 128
 
 
-proc mixAudio*(dst: ptr Uint8, src: ptr Uint8,
+proc mixAudio*(dst: ptr byte, src: ptr byte,
     len: Uint32, volume: int) {.cdecl, importc: "SDL_MixAudio", dynlib: LibName.}
   ## This takes two audio buffers of the playing audio format and mixes
   ## them, performing addition, volume adjustment, and overflow clipping.
@@ -443,7 +441,7 @@ proc mixAudio*(dst: ptr Uint8, src: ptr Uint8,
   ## This is provided for convenience -- you can mix your own audio data.
 
 
-proc mixAudioFormat*(dst: ptr Uint8, src: ptr Uint8, format: TAudioFormat,
+proc mixAudioFormat*(dst: ptr byte, src: ptr byte, format: TAudioFormat,
     len: Uint32, volume: int) {.cdecl, importc: "SDL_MixAudioFormat", dynlib: LibName.}
   ## This works like mixAudio(), but you specify the audio format instead of
   ## using the format of audio device 1. Thus it can be used when no audio

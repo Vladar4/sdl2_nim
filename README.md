@@ -1,5 +1,5 @@
-sdl2-nim 0.95
-=============
+sdl2-nim 0.7 alpha
+==================
 
 sdl2-nim is a wrapper of the SDL 2 library for the Nimrod language.
 
@@ -9,4 +9,14 @@ sdl2-nim is a wrapper of the SDL 2 library for the Nimrod language.
 You need to have SDL 2 dynamic libraries installed on your system.
 
 **NOTE**: project in alpha-phase, not all features are supported yet, work in progress.
+
+----------------------------------------
+
+CHANGELOG:
+==========
+
+**v0.7 alpha**
+* added net.nim
+* added event convertion templates
+* different fixes
 

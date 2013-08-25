@@ -65,6 +65,7 @@ include
   blendmode,
   clipboard,
   error,
+  loadso,
   hints,
   pixels,
   rect,
@@ -91,6 +92,7 @@ include
   log,
   cpuinfo,
   version,
+  net,
   revision
 
 
@@ -135,4 +137,13 @@ proc wasInit*(flags: Uint32): Uint32 {.cdecl, importc: "SDL_WasInit", dynlib: Li
 proc quit*() {.cdecl, importc: "SDL_Quit", dynlib: LibName.}
   ## This function cleans up all initialized subsystems. You should
   ## call it upon all exit conditions.
+
+
+proc quitRequested*(): bool {.inline.} =
+  pumpEvents()
+  peepEvents(nil, 0, PEEKEVENT, QUITEVENT, QUITEVENT) > 0
+
+
+proc  getPlatform*(): cstring {.cdecl, importc: "SDL_GetPlatform", dynlib: LibName.}
+  ## Gets the name of the platform.
 

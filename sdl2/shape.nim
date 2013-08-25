@@ -106,13 +106,14 @@ proc colorKey*(obj: TWindowShapeParams): TColor {.inline.} =
 
 
 type
-  TWindowShapeMode*{.bycopy.} = object
+  PWindowShapeMode* = ptr TWindowShapeMode
+  TWindowShapeMode* = object
     ## A struct that tags the TWindowShapeParams union with an enum describing the type of its contents.
     mode*: WindowShapeMode ## The mode of these window-shape parameters.
     parameters*: TWindowShapeParams ## Window-shape parameters.
 
 
-proc setWindowShape*(window: PWindow, shape: PSurface, shape_mode: ptr TWindowShapeMode): int {.cdecl, importc: "SDL_SetWindowShape", dynlib: LibName.}
+proc setWindowShape*(window: PWindow, shape: PSurface, shape_mode: PWindowShapeMode): int {.cdecl, importc: "SDL_SetWindowShape", dynlib: LibName.}
   ## Set the shape and parameters of a shaped window.
   ##
   ## ``window`` The shaped window whose parameters should be set.
@@ -129,7 +130,7 @@ proc setWindowShape*(window: PWindow, shape: PSurface, shape_mode: ptr TWindowSh
   ## getShapedWindowMode.
 
 
-proc getShapedWindowMode*(window: PWindow, shape_mode: ptr TWindowShapeMode): int {.cdecl, importc: "SDL_GetShapedWindowMode", dynlib: LibName.}
+proc getShapedWindowMode*(window: PWindow, shape_mode: PWindowShapeMode): int {.cdecl, importc: "SDL_GetShapedWindowMode", dynlib: LibName.}
   ## Get the shape parameters of a shaped window.
   ##
   ## ``window`` The shaped window whose parameters should be retrieved.

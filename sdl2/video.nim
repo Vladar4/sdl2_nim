@@ -25,7 +25,8 @@
 
 
 type
-  TDisplayMode*{.bycopy.} = object
+  PDisplayMode* = ptr TDisplayMode
+  TDisplayMode* = object
     ## The structure that defines a display mode
     ##
     ## See also: getNumDisplayModes(),
@@ -253,7 +254,7 @@ proc getNumDisplayModes*(displayIndex: int): int {.cdecl, importc: "SDL_GetNumDi
   ## See also: getDisplayMode()
 
 
-proc getDisplayMode*(displayIndex, modeIndex: int, mode: ptr TDisplayMode): int {.cdecl, importc: "SDL_GetDisplayMode", dynlib: LibName.}
+proc getDisplayMode*(displayIndex, modeIndex: int, mode: PDisplayMode): int {.cdecl, importc: "SDL_GetDisplayMode", dynlib: LibName.}
   ## Fill in information about a specific display mode.
   ##
   ## The display modes are sorted in this priority:
@@ -265,15 +266,15 @@ proc getDisplayMode*(displayIndex, modeIndex: int, mode: ptr TDisplayMode): int 
   ## See also: getNumDisplayModes()
 
 
-proc getDesktopDisplayMode*(displayIndex: int, mode: ptr TDisplayMode): int {.cdecl, importc: "SDL_GetDesktopDisplayMode", dynlib: LibName.}
+proc getDesktopDisplayMode*(displayIndex: int, mode: PDisplayMode): int {.cdecl, importc: "SDL_GetDesktopDisplayMode", dynlib: LibName.}
   ## Fill in information about the desktop display mode.
 
 
-proc getCurrentDisplayMode*(displayIndex: int, mode: ptr TDisplayMode): int {.cdecl, importc: "SDL_GetCurrentDisplayMode", dynlib: LibName.}
+proc getCurrentDisplayMode*(displayIndex: int, mode: PDisplayMode): int {.cdecl, importc: "SDL_GetCurrentDisplayMode", dynlib: LibName.}
   ## Fill in information about the current display mode.
 
 
-proc getClosestDisplayMode*(displayIndex: int, mode, closest: ptr TDisplayMode): ptr TDisplayMode {.cdecl, importc: "SDL_GetClosestDisplayMode", dynlib: LibName.}
+proc getClosestDisplayMode*(displayIndex: int, mode, closest: PDisplayMode): PDisplayMode {.cdecl, importc: "SDL_GetClosestDisplayMode", dynlib: LibName.}
   ## Get the closest match to the requested display mode.
   ##
   ## ``displayIndex`` The index of display from which mode should be queried.
@@ -304,7 +305,7 @@ proc getWindowDisplayIndex*(window: PWindow): int {.cdecl, importc: "SDL_GetWind
   ## window, or -1 on error.
 
 
-proc setWindowDisplayMode*(window: PWindow, mode: TDisplayMode): int {.cdecl, importc: "SDL_SetWindowDisplayMode", dynlib: LibName.}
+proc setWindowDisplayMode*(window: PWindow, mode: PDisplayMode): int {.cdecl, importc: "SDL_SetWindowDisplayMode", dynlib: LibName.}
   ## Set the display mode used when a fullscreen window is visible.
   ##
   ## By default the window's dimensions and the desktop format and refresh rate
@@ -320,7 +321,7 @@ proc setWindowDisplayMode*(window: PWindow, mode: TDisplayMode): int {.cdecl, im
   ## setWindowFullscreen()
 
 
-proc getWindowDisplayMode*(window: PWindow, mode: ptr TDisplayMode): int {.cdecl, importc: "SDL_GetWindowDisplayMode", dynlib: LibName.}
+proc getWindowDisplayMode*(window: PWindow, mode: PDisplayMode): int {.cdecl, importc: "SDL_GetWindowDisplayMode", dynlib: LibName.}
   ## Fill in information about the display mode used when a fullscreen
   ## window is visible.
   ##

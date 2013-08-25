@@ -33,15 +33,17 @@ const
 
 
 type
-
-  TMessageBoxButtonData*{.bycopy.} = object
+  
+  PMessageBoxButtonData* = ptr TMessageBoxButtonData
+  TMessageBoxButtonData* = object
     ## Individual button data.
     flags*: Uint32 ## MessageBoxButtonFlags
     buttonid*: int ## defined button id (value returned via showMessageBox)
     text*: cstring ## The UTF-8 button text
 
-
-  TMessageBoxColor*{.bycopy.} = object
+  
+  PMessageBoxColor* = ptr TMessageBoxColor
+  TMessageBoxColor* = object
     ## RGB value used in a message box color scheme
     r*, g*, b*: Uint8
 
@@ -54,27 +56,29 @@ type
     MESSAGEBOX_COLOR_BUTTON_SELECTED,
     MESSAGEBOX_COLOR_MAX
 
-
-  TMessageBoxColorScheme*{.bycopy.} = object
+  
+  PMessageBoxColorScheme* = ptr TMessageBoxColorScheme
+  TMessageBoxColorScheme* = object
     ## A set of colors to use for message box dialogs
     colors*: array[0..ord(MESSAGEBOX_COLOR_MAX)-1, TMessageBoxColor]
 
 
-  TMessageBoxData*{.bycopy.} = object
+  PMessageBoxData* = ptr TMessageBoxData
+  TMessageBoxData* = object
     ## MessageBox structure containing title, text, window, etc.
     flags*: Uint32 ## MessageBoxFlags
     window*: PWindow ## Parent window, can be nil
     title*: cstring ## UTF-8 title
     message*: cstring ## UTF-8 message text
     numbuttons*: int
-    buttons*: ptr TMessageBoxButtonData
-    colorScheme*: ptr TMessageBoxColorScheme ## TMessageBoxColorScheme, can be nil to use system settings
+    buttons*: PMessageBoxButtonData
+    colorScheme*: PMessageBoxColorScheme ## TMessageBoxColorScheme, can be nil to use system settings
 
 
-proc showMessageBox*(messageboxdata: ptr TMessageBoxData, buttonid: ptr int): int {.cdecl, importc: "SDL_ShowMessageBox", dynlib: LibName.}
+proc showMessageBox*(messageboxdata: PMessageBoxData, buttonid: ptr int): int {.cdecl, importc: "SDL_ShowMessageBox", dynlib: LibName.}
   ## Create a modal message box.
   ##
-  ## ``messageboxdata`` The TMessageBoxData structure with title, text, etc.
+  ## ``messageboxdata`` The PMessageBoxData structure with title, text, etc.
   ##
   ## ``buttonid`` The pointer to which user id of hit button should be copied.
   ##
