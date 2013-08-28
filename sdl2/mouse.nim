@@ -65,7 +65,7 @@ proc getRelativeMouseState*(x, y: ptr int): Uint32 {.cdecl, importc: "SDL_GetRel
   ## Retrieve the relative state of the mouse.
   ##
   ## The current button state is returned as a button bitmask, which can
-  ## be tested using the button(x) macros, and x and y are set to the
+  ## be tested using the button(x) templates, and x and y are set to the
   ## mouse deltas since the last call to getRelativeMouseState().
 
 

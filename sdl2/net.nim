@@ -29,19 +29,23 @@ type
     patch*: Uint8
 
 
-# Printable format: "%$1.%$2.%$3" % [MAJOR, MINOR, PATCHLEVEL]
+# Printable format: "$1.$2.$3" % [MAJOR, MINOR, PATCHLEVEL]
 const
   NET_MAJOR_VERSION* = 2
   NET_MINOR_VERSION* = 0
   NET_PATCHLEVEL* = 0
 
 
-template netVersion*(x: TNetVersion) =
+template netVersion*(x: PNetVersion) =
   ## This template can be used to fill a version structure with the compile-time
   ## version of the SDL_net library.
   x.major = NET_MAJOR_VERSION
   x.minor = NET_MINOR_VERSION
   x.patch = NET_PATCHLEVEL
+
+
+template netVersion*(x: TNetVersion) =
+  netVersion(addr(x))
 
 
 proc netLinkedVersion*(): PNetVersion {.cdecl, importc: "SDLNet_Linked_Version", dynlib: LibNetName.}

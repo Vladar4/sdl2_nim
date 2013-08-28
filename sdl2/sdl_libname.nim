@@ -1,5 +1,6 @@
 {.deadCodeElim: on.}
 
+
 when not defined(LibName):
   when defined(windows):
     const
@@ -10,6 +11,31 @@ when not defined(LibName):
   else:
     const
       LibName* = "libSDL2-2.0.0.dylib"
+
+
+when not defined(LibImgName):
+  when defined(windows):
+    const
+      LibImgName* = "SDL2_image.dll"
+  elif defined(linux):
+    const
+      LibImgName* = "libSDL2_image.so"
+  else:
+    const
+      LibImgName* = "libSDL2_image-2.0.0.dylib"
+
+
+when not defined(LibMixName):
+  when defined(windows):
+    const
+      LibMixName* = "SDL2_mixer.dll"
+  elif defined(linux):
+    const
+      LibMixName* = "libSDL2_mixer.so"
+  else:
+    const
+      LibMixName* = "libSDL2_mixer-2.0.0.dylib"
+
 
 when not defined(LibNetName):
   when defined(windows):

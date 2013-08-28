@@ -41,29 +41,29 @@ proc clearError*() {.cdecl, importc: "SDL_ClearError", dynlib: LibName.}
 # Internal error functions
 #
 # Private error reporting function - used internally.
-#
-#type
-#  TErrorCode = enum
-#    ENOMEM,
-#    EFREAD,
-#    EFWRITE,
-#    EFSEEK,
-#    UNSUPPORTED,
-#    LASTERROR
-#
-#
-#proc error(code: TErrorCode): int {.cdecl, importc: "SDL_Error", dynlib: LibName.}
-#  ## error() unconditionally returns -1.
-#
-#
-#template outOfMemory() =
-#  error(ENOMEM)
-#
-#
-#template unsupported() =
-#  error(UNSUPPORTED)
-#
-#
-#template invalidParamError(param: expr) =
-#  setError("Parameter '%s' is invalid", (param))
-#
+
+type
+  TErrorCode* = enum
+    ENOMEM,
+    EFREAD,
+    EFWRITE,
+    EFSEEK,
+    UNSUPPORTED,
+    LASTERROR
+
+
+proc error*(code: TErrorCode): int {.cdecl, importc: "SDL_Error", dynlib: LibName.}
+  ## error() unconditionally returns -1.
+
+
+template outOfMemory*() =
+  error(ENOMEM)
+
+
+template unsupported*() =
+  error(UNSUPPORTED)
+
+
+template invalidParamError*(param: expr) =
+  setError("Parameter '%s' is invalid", (param))
+

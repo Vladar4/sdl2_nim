@@ -51,7 +51,7 @@ const
   PATCHLEVEL* = 0
 
 
-template version*(x: var TVersion) =
+template version*(x: PVersion) =
   ## Template to determine SDL version program was compiled against.
   ##
   ## This template fills in a SDL_version structure with the version of the
@@ -69,13 +69,17 @@ template version*(x: var TVersion) =
   x.patch = PATCHLEVEL
 
 
+template version*(x: TVersion) =
+  version(addr(x))
+
+
 template versionNum*(x, y, z: Uint8): expr =
   ## This template turns the version numbers into a numeric value:
   ##
   ##  (1,2,3) -> (1203)
   ##
   ##  This assumes that there will never be more than 100 patchlevels.
-  ((x)*1000 + (y)*100 + (z))
+  ((x)*1000'u8 + (y)*100'u8 + (z))
 
 
 template compiledVersion*(): expr =
@@ -84,7 +88,7 @@ template compiledVersion*(): expr =
 
 
 template versionAtLeast*(x, y, z: Uint8): bool =
-  ## This macro will evaluate to true if compiled with SDL
+  ## This template will evaluate to true if compiled with SDL
   ## at least ``x``.``y``.``z``.
   (compiledVersion() >= versionNum(x, y, z))
 

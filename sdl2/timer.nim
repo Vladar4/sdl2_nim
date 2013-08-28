@@ -55,7 +55,7 @@ proc addTimer*(interval: Uint32,
     callback: PTimerCallback, param: pointer): TTimerID {.cdecl, importc: "SDL_AddTimer", dynlib: LibName.}
   ## Add a new timer to the pool of timers already running.
   ##
-  ## Return A timer ID, or NULL when an error occurs.
+  ## Return A timer ID, or nil when an error occurs.
 
 
 proc removeTimer*(id: TTimerID): bool {.cdecl, importc: "SDL_RemoveTimer", dynlib: LibName.}

@@ -450,7 +450,7 @@ type
   TEvent* = object
     kind*: TEventKind
     timestamp*: Uint32
-    data*: array[0..47, byte]
+    data: array[0..47, byte]
 
 
 template evconv(procName: expr, ptrName: typeDesc, assertions: seq[TEventKind]): stmt {.immediate.} =

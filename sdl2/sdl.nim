@@ -83,6 +83,7 @@ include
   mouse,
   joystick,
   gamecontroller,
+  haptic,
   touch,
   gesture,
   events,
@@ -93,6 +94,7 @@ include
   cpuinfo,
   version,
   net,
+  image,
   revision
 
 
