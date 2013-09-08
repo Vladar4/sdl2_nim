@@ -93,8 +93,6 @@ include
   log,
   cpuinfo,
   version,
-  net,
-  image,
   revision
 
 

@@ -344,6 +344,6 @@ proc getRGBA*(pixel: Uint32, format: PPixelFormat, r, g, b, a: ptr Uint8) {.cdec
   ##
   ## See also: getRGB
 
-proc calculateGammaRamp*(gamma: float, ramp: ptr Uint16) {.cdecl, importc: "SDL_CalculateGammaPamp", dynlib: LibName.}
+proc calculateGammaRamp*(gamma: cfloat, ramp: ptr Uint16) {.cdecl, importc: "SDL_CalculateGammaPamp", dynlib: LibName.}
   ## Calculate a 256 entry gamma ramp for a gamma value.
 

@@ -993,7 +993,7 @@ proc hapticRumbleInit*(haptic: PHaptic): int {.cdecl, importc: "SDL_HapticRumble
   ## hapticRumbleStop
 
 
-proc hapticRumblePlay*(haptic: PHaptic, strength: float, length: Uint32): int {.cdecl, importc: "SDL_HapticRumblePlay", dynlib: LibName.}
+proc hapticRumblePlay*(haptic: PHaptic, strength: cfloat, length: Uint32): int {.cdecl, importc: "SDL_HapticRumblePlay", dynlib: LibName.}
   ## Runs simple rumble on a haptic device
   ##
   ## ``haptic`` Haptic device to play rumble effect on.

@@ -41,14 +41,14 @@
 #
 
 
+const
+  # Flags used when creating a rendering context
+  RENDERER_SOFTWARE*: Uint32 = 0x00000001 ## The renderer is a software fallback
+  RENDERER_ACCELERATED*: Uint32 = 0x00000002 ## The renderer uses hardware acceleration
+  RENDERER_PRESENTVSYNC*: Uint32 = 0x00000004 ## Present is synchronized with the refresh rate
+  RENDERER_TARGETTEXTURE*: Uint32 = 0x00000008 ## The renderer supports rendering to texture
+
 type
-  TRenderFlags* = enum ## Flags used when creating a rendering context
-    RENDERER_SOFTWARE = 0x00000001, ## The renderer is a software fallback
-    RENDERER_ACCELERATED = 0x00000002, ## The renderer uses hardware acceleration
-    RENDERER_PRESENTVSYNC = 0x00000004, ## Present is synchronized with the refresh rate
-    RENDERER_TARGETTEXTURE = 0x00000008 ## The renderer supports rendering to texture
-
-
   PRendererInfo* = ptr TRendererInfo
   TRendererInfo* = object ## Information on the capabilities of a render driver or context.
     name*: cstring ## The name of the renderer
@@ -474,7 +474,7 @@ proc renderGetClipRect*(renderer: PRenderer, rect: PRect) {.cdecl, importc: "SDL
 
 
 proc renderSetScale*(renderer: PRenderer,
-    scaleX, scaleY: float): int {.cdecl, importc: "SDL_RenderSetScale", dynlib: LibName.}
+    scaleX, scaleY: cfloat): int {.cdecl, importc: "SDL_RenderSetScale", dynlib: LibName.}
   ## Set the drawing scale for rendering on the current target.
   ##
   ## ``renderer`` The renderer for which the drawing scale should be set.
@@ -496,7 +496,7 @@ proc renderSetScale*(renderer: PRenderer,
 
 
 proc renderGetScale*(renderer: PRenderer,
-    scaleX, scaleY: ptr float) {.cdecl, importc: "SDL_RenderGetScale", dynlib: LibName.}
+    scaleX, scaleY: ptr cfloat) {.cdecl, importc: "SDL_RenderGetScale", dynlib: LibName.}
   ## Get the drawing scale for the current target.
   ##
   ## ``renderer`` The renderer from which drawing scale should be queried.
@@ -699,7 +699,7 @@ proc renderCopy*(renderer: PRenderer, texture: PTexture,
 
 
 proc renderCopyEx*(renderer: PRenderer, texture: PTexture,
-    srcrect, dstrect: PRect, angle: float64,
+    srcrect, dstrect: PRect, angle: cdouble,
     center: PPoint, flip: TRendererFlip): int {.cdecl, importc: "SDL_RenderCopyEx", dynlib: LibName.}
   ## Copy a portion of the source texture to the current rendering target, rotating it by angle around the given center
   ##
@@ -765,7 +765,7 @@ proc destroyRenderer*(renderer: PRenderer) {.cdecl, importc: "SDL_DestroyRendere
 
 
 proc glBindTexture*(texture: PTexture,
-    texw, texh: ptr float): int {.cdecl, importc: "SDL_GL_BindTexture", dynlib: LibName.}
+    texw, texh: ptr cfloat): int {.cdecl, importc: "SDL_GL_BindTexture", dynlib: LibName.}
   ## Bind the texture to the current OpenGL/ES/ES2 context for use with
   ## OpenGL instructions.
   ##

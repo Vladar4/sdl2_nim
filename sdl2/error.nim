@@ -48,7 +48,7 @@ type
     EFREAD,
     EFWRITE,
     EFSEEK,
-    UNSUPPORTED,
+    EUNSUPPORTED,
     LASTERROR
 
 
@@ -61,7 +61,7 @@ template outOfMemory*() =
 
 
 template unsupported*() =
-  error(UNSUPPORTED)
+  error(EUNSUPPORTED)
 
 
 template invalidParamError*(param: expr) =

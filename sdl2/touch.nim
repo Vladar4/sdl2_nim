@@ -32,7 +32,7 @@ type
   PFinger* = ptr TFinger
   TFinger* = object
     id: TFingerID
-    x, y, pressure: float
+    x, y, pressure: cfloat
 
 
 const

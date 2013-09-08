@@ -360,11 +360,11 @@ type
     timestamp*: Uint32
     touchId*: TTouchID ## The touch device id
     fingerID*: TFingerID
-    x*: float ## Normalized in the range 0...1
-    y*: float ## Normalized in the range 0...1
-    dx*: float ## Normalized in the range 0...1
-    dy*: float ## Normalized in the range 0...1
-    pressure*: float ## Normalized in the range 0...1
+    x*: cfloat ## Normalized in the range 0...1
+    y*: cfloat ## Normalized in the range 0...1
+    dx*: cfloat ## Normalized in the range 0...1
+    dy*: cfloat ## Normalized in the range 0...1
+    pressure*: cfloat ## Normalized in the range 0...1
 
 
   PMultiGestureEvent* = ptr TMultiGestureEvent
@@ -373,10 +373,10 @@ type
     kind*: TEventKind ## MULTIGESTURE
     timestamp*: Uint32
     touchId*: TTouchID ## The touch device index
-    dTheta*: float
-    dDist*: float
-    x*: float
-    y*: float
+    dTheta*: cfloat
+    dDist*: cfloat
+    x*: cfloat
+    y*: cfloat
     numFingers*: Uint16
     padding*: Uint16
 
@@ -389,9 +389,9 @@ type
     touchId*: TTouchID ## The touch device id
     gestureId*: TGestureID
     numFingers*: Uint32
-    error*: float
-    x*: float ## Normalized center of gesture
-    y*: float ## Normalized center of gesture
+    error*: cfloat
+    x*: cfloat ## Normalized center of gesture
+    y*: cfloat ## Normalized center of gesture
 
 
   PDropEvent* = ptr TDropEvent

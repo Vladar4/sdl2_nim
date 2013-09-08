@@ -74,19 +74,19 @@ type
 
 const
   # The flags on a window
-  WINDOW_FULLSCREEN* = 0x00000001 ## fullscreen window
-  WINDOW_OPENGL* = 0x00000002 ## window usable with OpenGL context
-  WINDOW_SHOWN* = 0x00000004 ## window is visible
-  WINDOW_HIDDEN* = 0x00000008 ## window is not visible
-  WINDOW_BORDERLESS* = 0x00000010 ## no window decoration
-  WINDOW_RESIZABLE* = 0x00000020 ## window can be resized
-  WINDOW_MINIMIZED* = 0x00000040 ## window is minimized
-  WINDOW_MAXIMIZED* = 0x00000080 ## window is maximized
-  WINDOW_INPUT_GRABBED* = 0x00000100 ## window has grabbed input focus
-  WINDOW_INPUT_FOCUS* = 0x00000200 ## window has input focus
-  WINDOW_MOUSE_FOCUS* = 0x00000400 ## window has mouse focus
-  WINDOW_FOREIGN* = 0x00000800 ## window not created by SDL
-  WINDOW_FULLSCREEN_DESKTOP* = 0x00001001
+  WINDOW_FULLSCREEN*: Uint32 = 0x00000001 ## fullscreen window
+  WINDOW_OPENGL*: Uint32 = 0x00000002 ## window usable with OpenGL context
+  WINDOW_SHOWN*: Uint32 = 0x00000004 ## window is visible
+  WINDOW_HIDDEN*: Uint32 = 0x00000008 ## window is not visible
+  WINDOW_BORDERLESS*: Uint32 = 0x00000010 ## no window decoration
+  WINDOW_RESIZABLE*: Uint32 = 0x00000020 ## window can be resized
+  WINDOW_MINIMIZED*: Uint32 = 0x00000040 ## window is minimized
+  WINDOW_MAXIMIZED*: Uint32 = 0x00000080 ## window is maximized
+  WINDOW_INPUT_GRABBED*: Uint32 = 0x00000100 ## window has grabbed input focus
+  WINDOW_INPUT_FOCUS*: Uint32 = 0x00000200 ## window has input focus
+  WINDOW_MOUSE_FOCUS*: Uint32 = 0x00000400 ## window has mouse focus
+  WINDOW_FOREIGN*: Uint32 = 0x00000800 ## window not created by SDL
+  WINDOW_FULLSCREEN_DESKTOP*: Uint32 = 0x00001001
 
 
   WINDOWPOS_UNDEFINED_MASK* = 0x1FFF0000 ## Used to indicate that you don't care what the window position is.
@@ -660,7 +660,7 @@ proc getWindowGrab*(window: PWindow): bool {.cdecl, importc: "SDL_GetWindowGrab"
   ## See also: setWindowGrab()
 
 
-proc setWindowBrightness*(window: PWindow, brightness: float): int {.cdecl, importc: "SDL_SetWindowBrightness", dynlib: LibName.}
+proc setWindowBrightness*(window: PWindow, brightness: cfloat): int {.cdecl, importc: "SDL_SetWindowBrightness", dynlib: LibName.}
   ## Set the brightness (gamma correction) for a window.
   ##
   ## Return 0 on success, or -1 if setting the brightness isn't supported.
@@ -669,7 +669,7 @@ proc setWindowBrightness*(window: PWindow, brightness: float): int {.cdecl, impo
   ## setWindowGammaRamp()
 
 
-proc getWindowBrightness*(window: PWindow): float {.cdecl, importc: "SDL_GetWindowBrightness", dynlib: LibName.}
+proc getWindowBrightness*(window: PWindow): cfloat {.cdecl, importc: "SDL_GetWindowBrightness", dynlib: LibName.}
   ## Get the brightness (gamma correction) for a window.
   ##
   ## Return the last brightness value passed to SetWindowBrightness()

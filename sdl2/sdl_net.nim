@@ -21,49 +21,43 @@
 #
 
 
-type
-  PNetVersion* = ptr TNetVersion
-  TNetVersion* = object
-    major*: Uint8
-    minor*: Uint8
-    patch*: Uint8
+import
+  sdl, unsigned
 
 
 # Printable format: "$1.$2.$3" % [MAJOR, MINOR, PATCHLEVEL]
 const
-  NET_MAJOR_VERSION* = 2
-  NET_MINOR_VERSION* = 0
-  NET_PATCHLEVEL* = 0
+  MAJOR_VERSION* = 2
+  MINOR_VERSION* = 0
+  PATCHLEVEL* = 0
 
 
-template netVersion*(x: PNetVersion) =
+template version*(x: PVersion) =
   ## This template can be used to fill a version structure with the compile-time
   ## version of the SDL_net library.
-  x.major = NET_MAJOR_VERSION
-  x.minor = NET_MINOR_VERSION
-  x.patch = NET_PATCHLEVEL
+  x.major = MAJOR_VERSION
+  x.minor = MINOR_VERSION
+  x.patch = PATCHLEVEL
 
 
-template netVersion*(x: TNetVersion) =
-  netVersion(addr(x))
+template version*(x: TVersion) =
+  version(addr(x))
 
 
-proc netLinkedVersion*(): PNetVersion {.cdecl, importc: "SDLNet_Linked_Version", dynlib: LibNetName.}
+proc linkedVersion*(): PVersion {.cdecl, importc: "SDLNet_Linked_Version", dynlib: LibNetName.}
   ## This function gets the version of the dynamically linked SDL_net library.
   ## it should NOT be used to fill a version structure, instead you should
-  ## use the netVersion() template.
+  ## use the version() template.
 
 
-proc netInit*(): int {.cdecl, importc: "SDLNet_Init", dynlib: LibNetName.}
-  ## Initialize/Cleanup the network API
+proc init*(): int {.cdecl, importc: "SDLNet_Init", dynlib: LibNetName.}
+  ## Initialize the network API
   ## SDL must be initialized before calls to functions in this library,
   ## because this library uses utility functions from the SDL library.
 
 
-proc netQuit*() {.cdecl, importc: "SDLNet_Quit", dynlib: LibNetName.}
-  ## Initialize/Cleanup the network API
-  ## SDL must be initialized before calls to functions in this library,
-  ## because this library uses utility functions from the SDL library.
+proc quit*() {.cdecl, importc: "SDLNet_Quit", dynlib: LibNetName.}
+  ## Cleanup the network API
 
 
 #***********************************************************************
@@ -85,7 +79,7 @@ const
   INADDR_BROADCAST* = 0xFFFFFFFF
 
 
-proc netResolveHost*(address: PIPaddress, host: cstring, port: Uint16): int {.cdecl, importc: "SDLNet_ResolveHost", dynlib: LibNetName.}
+proc resolveHost*(address: PIPaddress, host: cstring, port: Uint16): int {.cdecl, importc: "SDLNet_ResolveHost", dynlib: LibNetName.}
   ## Resolve a host name and port to an IP address in network form.
   ## If the function succeeds, it will return 0.
   ## If the host couldn't be resolved, the host portion of the returned
@@ -93,14 +87,14 @@ proc netResolveHost*(address: PIPaddress, host: cstring, port: Uint16): int {.cd
   ## If 'host' is nil, the resolved host will be set to INADDR_ANY.
 
 
-proc netResolveIP*(ip: PIPaddress): cstring {.cdecl, importc: "SDLNet_ResolveIP", dynlib: LibNetName.}
+proc resolveIP*(ip: PIPaddress): cstring {.cdecl, importc: "SDLNet_ResolveIP", dynlib: LibNetName.}
   ## Resolve an ip address to a host name in canonical form.
   ## If the ip couldn't be resolved, this function returns nil,
   ## otherwise a pointer to a static buffer containing the hostname
   ## is returned.  Note that this function is not thread-safe.
 
 
-proc netGetLocalAddresses*(addresses: PIPaddress, maxcount: int): int {.cdecl, importc: "SDLNet_GetLocalAddresses", dynlib: LibNetName.}
+proc getLocalAddresses*(addresses: PIPaddress, maxcount: int): int {.cdecl, importc: "SDLNet_GetLocalAddresses", dynlib: LibNetName.}
   ## Get the addresses of network interfaces on this system.
   ## This returns the number of addresses saved in 'addresses'
 
@@ -120,34 +114,34 @@ type
     sflag*: int
 
 
-proc netTCPOpen*(ip: PIPaddress): PTCPsocket {.cdecl, importc: "SDLNet_TCP_Open", dynlib: LibNetName.}
+proc tcpOpen*(ip: PIPaddress): PTCPsocket {.cdecl, importc: "SDLNet_TCP_Open", dynlib: LibNetName.}
   ## Open a TCP network socket
   ## If ip.host is INADDR_NONE or INADDR_ANY, this creates a local server
   ## socket on the given port, otherwise a TCP connection to the remote
   ## host and port is attempted. The address passed in should already be
   ## swapped to network byte order (addresses returned from
-  ## netResolveHost() are already in the correct form).
+  ## resolveHost() are already in the correct form).
   ## The newly created socket is returned, or nil if there was an error.
 
 
-proc netTCPAccept*(server: PTCPsocket): PTCPsocket {.cdecl, importc: "SDLNet_TCP_Accept", dynlib: LibNetName.}
+proc tcpAccept*(server: PTCPsocket): PTCPsocket {.cdecl, importc: "SDLNet_TCP_Accept", dynlib: LibNetName.}
   ## Accept an incoming connection on the given server socket.
   ## The newly created socket is returned, or nil if there was an error.
 
 
-proc netTCPGetPeerAddress*(sock: PTCPsocket): PIPaddress {.cdecl, importc: "SDLNet_TCP_GetPeerAddress", dynlib: LibNetName.}
+proc tcpGetPeerAddress*(sock: PTCPsocket): PIPaddress {.cdecl, importc: "SDLNet_TCP_GetPeerAddress", dynlib: LibNetName.}
   ## Get the IP address of the remote system associated with the socket.
   ## If the socket is a server socket, this function returns nil.
 
 
-proc netTCPSend*(sock: PTCPsocket, data: pointer, len: int): int {.cdecl, importc: "SDLNet_TCP_Send", dynlib: LibNetName.}
+proc tcpSend*(sock: PTCPsocket, data: pointer, len: int): int {.cdecl, importc: "SDLNet_TCP_Send", dynlib: LibNetName.}
   ## Send ``len`` bytes of ``data`` over the non-server socket ``sock``
   ## This function returns the actual amount of data sent.  If the return value
   ## is less than the amount of data sent, then either the remote connection was
   ## closed, or an unknown socket error occurred.
 
 
-proc netTCPRecv*(sock: PTCPsocket, data: pointer, maxlen: int): int {.cdecl, importc: "SDLNet_TCP_Recv", dynlib: LibNetName.}
+proc tcpRecv*(sock: PTCPsocket, data: pointer, maxlen: int): int {.cdecl, importc: "SDLNet_TCP_Recv", dynlib: LibNetName.}
   ## Receive up to ``maxlen`` bytes of data over the non-server socket
   ## ``sock``, and store them in the buffer pointed to by ``data``.
   ## This function returns the actual amount of data received.  If the return
@@ -155,7 +149,7 @@ proc netTCPRecv*(sock: PTCPsocket, data: pointer, maxlen: int): int {.cdecl, imp
   ## closed, or an unknown socket error occurred.
 
 
-proc netTCPClose*(sock: PTCPsocket) {.cdecl, importc: "SDLNet_TCP_Close", dynlib: LibNetName.}
+proc tcpClose*(sock: PTCPsocket) {.cdecl, importc: "SDLNet_TCP_Close", dynlib: LibNetName.}
   ## Close a TCP network socket
 
 
@@ -165,14 +159,14 @@ proc netTCPClose*(sock: PTCPsocket) {.cdecl, importc: "SDLNet_TCP_Close", dynlib
 
 
 const
-  NET_MAX_UDPCHANNELS* = 32 ## The maximum channels on a a UDP socket
-  NET_MAX_UDPADDRESSES* = 4 ## The maximum addresses bound to a single UDP socket channel
+  MAX_UDPCHANNELS* = 32 ## The maximum channels on a a UDP socket
+  MAX_UDPADDRESSES* = 4 ## The maximum addresses bound to a single UDP socket channel
 
 type
   
   TUDPchannel* = object
     numbound*: int
-    address*: array[0..NET_MAX_UDPADDRESSES-1, TIPaddress]
+    address*: array[0..MAX_UDPADDRESSES-1, TIPaddress]
 
 
   PUDPsocket* = ptr TUDPsocket
@@ -180,7 +174,7 @@ type
     ready*: int
     channel*: int
     address*: TIPaddress
-    binding*: array[0..NET_MAX_UDPCHANNELS-1, TUDPchannel]
+    binding*: array[0..MAX_UDPCHANNELS-1, TUDPchannel]
 
 
   PUDPpacket* = ptr TUDPpacket
@@ -193,36 +187,36 @@ type
     address*: PIPaddress ## The source/dest address of an incoming/outgoing packet
 
 
-proc netAllocPacket*(size: int): PUDPpacket {.cdecl, importc: "SDLNet_AllocPacket", dynlib: LibNetName.}
+proc allocPacket*(size: int): PUDPpacket {.cdecl, importc: "SDLNet_AllocPacket", dynlib: LibNetName.}
   ## Allocate a single UDP packet ``size`` bytes long.
   ## The new packet is returned, or nil if the function ran out of memory.
 
 
-proc netResizePacket*(packet: PUDPpacket, newsize: int): int {.cdecl, importc: "SDLNet_ResizePacket", dynlib: LibNetName.}
+proc resizePacket*(packet: PUDPpacket, newsize: int): int {.cdecl, importc: "SDLNet_ResizePacket", dynlib: LibNetName.}
   ## Resize a single UDP packet ``size`` bytes long.
   ## The new packet is returned, or nil if the function ran out of memory.
 
 
-proc netFreePacket*(packet: PUDPpacket) {.cdecl, importc: "SDLNet_FreePacket", dynlib: LibNetName.}
+proc freePacket*(packet: PUDPpacket) {.cdecl, importc: "SDLNet_FreePacket", dynlib: LibNetName.}
   ## Free a single UDP packet ``size`` bytes long.
   ## The new packet is returned, or nil if the function ran out of memory.
 
 
-proc netAllocPacketV*(howmany, size: int): ptr PUDPpacket {.cdecl, importc: "SDLNet_AllocPacketV", dynlib: LibNetName.}
+proc allocPacketV*(howmany, size: int): ptr PUDPpacket {.cdecl, importc: "SDLNet_AllocPacketV", dynlib: LibNetName.}
   ## Allocate a UDP packet vector (array of packets) of ``howmany`` packets,
   ## each ``size`` bytes long.
   ## A pointer to the first packet in the array is returned, or nil if the
   ## function ran out of memory.
 
 
-proc netFreePacketV*(packetV: ptr PUDPpacket) {.cdecl, importc: "SDLNet_FreePacketV", dynlib: LibNetName.}
+proc freePacketV*(packetV: ptr PUDPpacket) {.cdecl, importc: "SDLNet_FreePacketV", dynlib: LibNetName.}
   ## Free a UDP packet vector (array of packets) of ``howmany`` packets,
   ## each ``size`` bytes long.
   ## A pointer to the first packet in the array is returned, or nil if the
   ## function ran out of memory.
 
 
-proc netUDPOpen*(port: Uint16): PUDPsocket {.cdecl, importc: "SDLNet_UDP_Open", dynlib: LibNetName.}
+proc udpOpen*(port: Uint16): PUDPsocket {.cdecl, importc: "SDLNet_UDP_Open", dynlib: LibNetName.}
   ## Open a UDP network socket
   ## If ``port`` is non-zero, the UDP socket is bound to a local port.
   ## The ``port`` should be given in native byte order, but is used
@@ -230,11 +224,11 @@ proc netUDPOpen*(port: Uint16): PUDPsocket {.cdecl, importc: "SDLNet_UDP_Open", 
   ## This allows other systems to send to this socket via a known port.
 
 
-proc netUDPSetPacketLoss*(sock: PUDPsocket, percent: int) {.cdecl, importc: "SDLNet_UDP_SetPacketLoss", dynlib: LibNetName.}
+proc udpSetPacketLoss*(sock: PUDPsocket, percent: int) {.cdecl, importc: "SDLNet_UDP_SetPacketLoss", dynlib: LibNetName.}
   ## Set the percentage of simulated packet loss for packets sent on the socket.
 
 
-proc netUDPBind*(sock: PUDPsocket, channel: int, address: PIPaddress): int {.cdecl, importc: "SDLNet_UPD_Bind", dynlib: LibNetName.}
+proc udpBind*(sock: PUDPsocket, channel: int, address: PIPaddress): int {.cdecl, importc: "SDLNet_UPD_Bind", dynlib: LibNetName.}
   ## Bind the address ``address`` to the requested channel on the UDP socket.
   ## If the channel is -1, then the first unbound channel that has not yet
   ## been bound to the maximum number of addresses will be bound with
@@ -247,11 +241,11 @@ proc netUDPBind*(sock: PUDPsocket, channel: int, address: PIPaddress): int {.cde
   ## This function returns the channel which was bound, or -1 on error.
 
 
-proc netUDPUnbind*(sock: PUDPsocket, channel: int) {.cdecl, importc: "SDLNet_UDP_Unbind", dynlib: LibNetName.}
+proc udpUnbind*(sock: PUDPsocket, channel: int) {.cdecl, importc: "SDLNet_UDP_Unbind", dynlib: LibNetName.}
   ## Unbind all addresses from the given channel
 
 
-proc netUDPGetPeerAddress*(sock: PUDPsocket, channel: int): PIPaddress {.cdecl, importc: "SDLNet_UDP_GetPeerAddress", dynlib: LibNetName.}
+proc udpGetPeerAddress*(sock: PUDPsocket, channel: int): PIPaddress {.cdecl, importc: "SDLNet_UDP_GetPeerAddress", dynlib: LibNetName.}
   ## Get the primary IP address of the remote system associated with the
   ## socket and channel.  If the channel is -1, then the primary IP port
   ## of the UDP socket is returned -- this is only meaningful for sockets
@@ -260,7 +254,7 @@ proc netUDPGetPeerAddress*(sock: PUDPsocket, channel: int): PIPaddress {.cdecl, 
   ## If the channel is not bound and not -1, this function returns nil.
 
 
-proc netUDPSendV*(sock: PUDPsocket, packets: ptr PUDPpacket, npackets: int): int {.cdecl, importc: "SDLNet_UPD_SendV", dynlib: LibNetName.}
+proc udpSendV*(sock: PUDPsocket, packets: ptr PUDPpacket, npackets: int): int {.cdecl, importc: "SDLNet_UPD_SendV", dynlib: LibNetName.}
   ## Send a vector of packets to the the channels specified within the packet.
   ## If the channel specified in the packet is -1, the packet will be sent to
   ## the address in the ``src`` member of the packet.
@@ -270,7 +264,7 @@ proc netUDPSendV*(sock: PUDPsocket, packets: ptr PUDPpacket, npackets: int): int
   ## This function returns the number of packets sent.
 
 
-proc netUDPSend*(sock: PUDPsocket, channel: int, packet: PUDPpacket): int {.cdecl, importc: "SDLNet_UDP_Send", dynlib: LibNetName.}
+proc udpSend*(sock: PUDPsocket, channel: int, packet: PUDPpacket): int {.cdecl, importc: "SDLNet_UDP_Send", dynlib: LibNetName.}
   ## Send a single packet to the specified channel.
   ## If the channel specified in the packet is -1, the packet will be sent to
   ## the address in the 'src' member of the packet.
@@ -284,7 +278,7 @@ proc netUDPSend*(sock: PUDPsocket, channel: int, packet: PUDPpacket): int {.cdec
   ##  and as high as 1500 bytes for ethernet.
 
 
-proc netUDPRecvV*(sock: PUDPsocket, packets: ptr PUDPpacket): int {.cdecl, importc: "SDLNet_UDP_RecvV", dynlib: LibNetName.}
+proc udpRecvV*(sock: PUDPsocket, packets: ptr PUDPpacket): int {.cdecl, importc: "SDLNet_UDP_RecvV", dynlib: LibNetName.}
   ## Receive a vector of pending packets from the UDP socket.
   ## The returned packets contain the source address and the channel they
   ## arrived on.  If they did not arrive on a bound channel, the the channel
@@ -297,7 +291,7 @@ proc netUDPRecvV*(sock: PUDPsocket, packets: ptr PUDPpacket): int {.cdecl, impor
   ## on error.  This function does not block, so can return 0 packets pending.
 
 
-proc netUDPRecv*(sock: PUDPsocket, packet: PUDPpacket): int {.cdecl, importc: "SDLNet_UDP_Recv", dynlib: LibNetName.}
+proc udpRecv*(sock: PUDPsocket, packet: PUDPpacket): int {.cdecl, importc: "SDLNet_UDP_Recv", dynlib: LibNetName.}
   ## Receive a single packet from the UDP socket.
   ## The returned packet contains the source address and the channel it arrived
   ## on.  If it did not arrive on a bound channel, the the channel will be set
@@ -310,7 +304,7 @@ proc netUDPRecv*(sock: PUDPsocket, packet: PUDPpacket): int {.cdecl, importc: "S
   ## on error.  This function does not block, so can return 0 packets pending.
 
 
-proc netUDPClose*(sock: PUDPsocket) {.cdecl, importc: "SDLNet_UDP_Close", dynlib: LibNetName.}
+proc udpClose*(sock: PUDPsocket) {.cdecl, importc: "SDLNet_UDP_Close", dynlib: LibNetName.}
   ## Close a UDP network socket
 
 
@@ -321,59 +315,59 @@ proc netUDPClose*(sock: PUDPsocket) {.cdecl, importc: "SDLNet_UDP_Close", dynlib
 
 type
 
-  PNetSocket* = ptr TNetSocket
-  TNetSocket* = object
+  PSocket* = ptr TSocket
+  TSocket* = object
     ready*: int
     channel*: int
   
-  PNetSocketSet* = ptr TNetSocketSet
-  TNetSocketSet* = object
+  PSocketSet* = ptr TSocketSet
+  TSocketSet* = object
     numsockets*: int
     maxsockets*: int
-    sockets*: ptr PNetSocket
+    sockets*: ptr PSocket
 
 
-  PNetGenericSocket* = ptr TNetGenericSocket
-  TNetGenericSocket* = object
+  PGenericSocket* = ptr TGenericSocket
+  TGenericSocket* = object
     ## Any network socket can be safely cast to this socket type
     ready*: int
 
 
-proc netAllocSocketSet*(maxsockets: int): PNetSocketSet {.cdecl, importc: "SDLNet_AllocSocketSet", dynlib: LibNetName.}
-  ## Allocate a socket set for use with netCheckSockets()
+proc allocSocketSet*(maxsockets: int): PSocketSet {.cdecl, importc: "SDLNet_AllocSocketSet", dynlib: LibNetName.}
+  ## Allocate a socket set for use with checkSockets()
   ## This returns a socket set for up to ``maxsockets`` sockets, or nil if
   ## the function ran out of memory.
 
 
-proc netAddSocket*(socketset: PNetSocketSet, sock: PNetGenericSocket): int {.cdecl, importc: "SDLNet_AddSocket", dynlib: LibNetName.}
+proc addSocket*(socketset: PSocketSet, sock: PGenericSocket): int {.cdecl, importc: "SDLNet_AddSocket", dynlib: LibNetName.}
   ## Add a socket to a set of sockets to be checked for available data
 
 
-template netTCPAddSocket*(socketset: PNetSocketSet, sock: PTCPsocket): int =
+template tcpAddSocket*(socketset: PSocketSet, sock: PTCPsocket): int =
   ## Add a socket to a set of sockets to be checked for available data
-  netAddSocket(socketset, PNetGenericSocket(sock))
+  addSocket(socketset, PGenericSocket(sock))
 
 
-template netUDPAddSocket*(socketset: PNetSocketSet, sock: PUDPsocket): int =
+template udpAddSocket*(socketset: PSocketSet, sock: PUDPsocket): int =
   ## Add a socket to a set of sockets to be checked for available data
-  netAddSocket(socketset, PNetGenericSocket(sock))
+  addSocket(socketset, PGenericSocket(sock))
 
 
-proc netDelSocket*(socketset: PNetSocketSet, sock: PNetGenericSocket): int {.cdecl, importc: "SDLNet_DelSocket", dynlib: LibNetName.}
+proc delSocket*(socketset: PSocketSet, sock: PGenericSocket): int {.cdecl, importc: "SDLNet_DelSocket", dynlib: LibNetName.}
   ## Remove a socket from a set of sockets to be checked for available data
 
 
-template netTCPDelSocket*(socketset: PNetSocketSet, sock: PTCPsocket): int =
+template tcpDelSocket*(socketset: PSocketSet, sock: PTCPsocket): int =
   ## Remove a socket from a set of sockets to be checked for available data
-  netDelSocket(socketset, PNetGenericSocket(sock))
+  delSocket(socketset, PGenericSocket(sock))
 
 
-template netUDPDelSocket*(socketset: PNetSocketSet, sock: PUDPsocket): int =
+template udpDelSocket*(socketset: PSocketSet, sock: PUDPsocket): int =
   ## Remove a socket from a set of sockets to be checked for available data
-  netDelSocket(socketset, PNetGenericSocket(sock))
+  delSocket(socketset, PGenericSocket(sock))
 
 
-proc netCheckSockets*(socketset: PNetSocketSet, timeout: Uint32): int {.cdecl, importc: "SDLNet_CheckSockets", dynlib: LibNetName.}
+proc checkSockets*(socketset: PSocketSet, timeout: Uint32): int {.cdecl, importc: "SDLNet_CheckSockets", dynlib: LibNetName.}
   ## This function checks to see if data is available for reading on the
   ## given set of sockets.  If ``timeout`` is 0, it performs a quick poll,
   ## otherwise the function returns when either data is available for
@@ -382,18 +376,17 @@ proc netCheckSockets*(socketset: PNetSocketSet, timeout: Uint32): int {.cdecl, i
   ## or -1 if there was an error with the select() system call.
 
 
-template fNetSocketReady*(sock: PNetGenericSocket): bool =
+template socketReady*(sock: PGenericSocket): bool =
     (sock != nil) and (sock.ready)
 
-template netSocketReady*(sock: pointer): int =
-  ## After calling netCheckSockets(), you can use this function on a
-  ## socket that was in the socket set, to find out if data is available
-  ## for reading.
-  fNetSocketReady(PNetGenericSocket(sock))
+template socketReady*(sock: pointer): bool =
+  ## After calling checkSockets(), you can use this function on a socket
+  ## that was in the socket set, to find out if data is available for reading.
+  socketReady(PGenericSocket(sock))
 
 
-proc SDLNet_FreeSocketSet*(socketset: PNetSocketSet) {.cdecl, importc: "SDLNet_FreeSocketSet", dynlib: LibNetName.}
-  ## Free a set of sockets allocated by netAllocSocketSet()
+proc freeSocketSet*(socketset: PSocketSet) {.cdecl, importc: "SDLNet_FreeSocketSet", dynlib: LibNetName.}
+  ## Free a set of sockets allocated by allocSocketSet()
 
 
 #***********************************************************************
@@ -401,10 +394,10 @@ proc SDLNet_FreeSocketSet*(socketset: PNetSocketSet) {.cdecl, importc: "SDLNet_F
 #***********************************************************************
 
 
-proc netSetError*(fmt: cstring) {.cdecl, importc: "SDLNet_SetError", varargs, dynlib: LibNetName.}
+proc setError*(fmt: cstring) {.cdecl, importc: "SDLNet_SetError", varargs, dynlib: LibNetName.}
 
 
-proc netGetError*(): cstring {.cdecl, importc: "SDLNet_GetError", dynlib: LibNetName.}
+proc getError*(): cstring {.cdecl, importc: "SDLNet_GetError", dynlib: LibNetName.}
 
 
 #***********************************************************************
@@ -412,16 +405,16 @@ proc netGetError*(): cstring {.cdecl, importc: "SDLNet_GetError", dynlib: LibNet
 #***********************************************************************
 
 
-proc netWrite16*(value: Uint16, area: pointer) {.cdecl, importc: "SDLNet_Write16", dynlib: LibNetName.}
+proc write16*(value: Uint16, area: pointer) {.cdecl, importc: "SDLNet_Write16", dynlib: LibNetName.}
 
 
-proc netWrite32*(value: Uint32, area: pointer) {.cdecl, importc: "SDLNet_Write32", dynlib: LibNetName.}
+proc write32*(value: Uint32, area: pointer) {.cdecl, importc: "SDLNet_Write32", dynlib: LibNetName.}
  
 
-proc netRead16*(area: pointer): Uint16 {.cdecl, importc: "SDLNet_Read16", dynlib: LibNetName.}
+proc read16*(area: pointer): Uint16 {.cdecl, importc: "SDLNet_Read16", dynlib: LibNetName.}
 
 
-proc netRead32*(area: pointer): Uint32 {.cdecl, importc: "SDLNet_Read32", dynlib: LibNetName.}
+proc read32*(area: pointer): Uint32 {.cdecl, importc: "SDLNet_Read32", dynlib: LibNetName.}
 
 
 #proc netWrite16*(value: Uint16, areap: pointer) {.inline.} =
