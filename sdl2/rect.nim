@@ -30,8 +30,8 @@ type
     ##  The structure that defines a point
     ##
     ## See also: enclosePoints
-    x: int
-    y: int
+    x*: int
+    y*: int
 
   PRect* = ptr TRect
   TRect* = object
@@ -43,8 +43,8 @@ type
     ## intersectRect, 
     ## unionRect, 
     ## enclosePoints
-    x, y: int
-    w, h: int
+    x*, y*: int
+    w*, h*: int
 
 
 proc rectEmpty*(r: PRect): bool {.inline.} =

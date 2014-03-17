@@ -159,7 +159,7 @@ proc loadMUS_RW*(src: PRWops, freesrc: int): PMusic {.cdecl, importc: "Mix_LoadM
   ## Matt Campbell (matt@campbellhome.dhs.org) April 2000
 
 
-proc loadMUSType_RW*(src: PRWops, kind: TMusicKind, freesrc: int): PMusic {.cdecl, importc: "Mix_LoadMUSType", dynlib: LibMixName.}
+proc loadMUSType_RW*(src: PRWops, kind: TMusicKind, freesrc: int): PMusic {.cdecl, importc: "Mix_LoadMUSType_RW", dynlib: LibMixName.}
   ## Load a music file from an PRWops object assuming a specific format
 
 
