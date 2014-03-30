@@ -46,9 +46,9 @@ type
 
 # Printable format: "$1.$2.$3" % [MAJOR, MINOR, PATCHLEVEL]
 const
-  MAJOR_VERSION* = 2
-  MINOR_VERSION* = 0
-  PATCHLEVEL* = 0
+  MAJOR_VERSION*: Uint8 = 2
+  MINOR_VERSION*: Uint8 = 0
+  PATCHLEVEL*: Uint8 = 0
 
 
 template version*(x: PVersion) =

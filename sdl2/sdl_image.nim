@@ -89,7 +89,7 @@ proc load*(file: cstring): PSurface {.cdecl, importc: "IMG_Load", dynlib: LibImg
 proc loadRW*(src: PRWops, freesrc: int): PSurface {.cdecl, importc: "IMG_Load_RW", dynlib: LibImgName.}
 
 
-when versionAtLeast(2, 0, 0):
+when versionAtLeast(2'u8, 0'u8, 0'u8):
   # Load an image directly into a render texture.
 
   proc loadTexture*(renderer: PRenderer,
