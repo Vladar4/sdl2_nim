@@ -26,7 +26,7 @@
 
 
 type
-  TKeysym* = object
+  TKeysym*{.pure.} = object
     ## The SDL keysym structure, used in key events.
     scancode*: TScancode ## SDL physical key code - see TScancode for details
     sym*: TKeycode ## SDL virtual key code - see TKeycode for details

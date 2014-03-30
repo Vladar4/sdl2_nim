@@ -26,7 +26,7 @@
 
 type
   PDisplayMode* = ptr TDisplayMode
-  TDisplayMode* = object
+  TDisplayMode*{.pure.} = object
     ## The structure that defines a display mode
     ##
     ## See also: getNumDisplayModes(),
@@ -37,9 +37,9 @@ type
     ## setWindowDisplayMode(), 
     ## getWindowDisplayMode()
     format*: Uint32 ## pixel format
-    w*: int ## width
-    h*: int ## height
-    refresh_rate*: int ## refresh rate (or zero for unspecified)
+    w*: int32 ## width
+    h*: int32 ## height
+    refresh_rate*: int32 ## refresh rate (or zero for unspecified)
     driverdata*: pointer ## driver-specific data, initialize to 0
 
 

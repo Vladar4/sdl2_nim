@@ -166,14 +166,14 @@ const
 type
 
   PCommonEvent* = ptr TCommonEvent
-  TCommonEvent* = object
+  TCommonEvent*{.pure.} = object
     ## Fields shared by every event
     kind*: TEventKind
     timestamp*: Uint32
 
 
   PWindowEvent* = ptr TWindowEvent
-  TWindowEvent* = object
+  TWindowEvent*{.pure.} = object
     ## Window state change event data (event.window.*)
     kind*: TEventKind ## WINDOWEVENT
     timestamp*: Uint32
@@ -187,7 +187,7 @@ type
 
 
   PKeyboardEvent* = ptr TKeyboardEvent
-  TKeyboardEvent* = object
+  TKeyboardEvent*{.pure.} = object
     ## Keyboard button event structure (event.key.*)
     kind*: TEventKind ## KEYDOWN or KEYUP
     timestamp*: Uint32
@@ -200,7 +200,7 @@ type
 
 
   PTextEditingEvent* = ptr TTextEditingEvent
-  TTextEditingEvent* = object
+  TTextEditingEvent*{.pure.} = object
     ## Keyboard text editing event structure (event.edit.*)
     kind*: TEventKind ## TEXTEDITING
     timestamp*: Uint32
@@ -211,7 +211,7 @@ type
 
 
   PTextInputEvent* = ptr TTextInputEvent
-  TTextInputEvent* = object
+  TTextInputEvent*{.pure.} = object
     ## Keyboard text input event structure (event.text.*)
     kind*: TEventKind ## TEXTINPUT
     timestamp*: Uint32
@@ -220,7 +220,7 @@ type
 
 
   PMouseMotionEvent* = ptr TMouseMotionEvent
-  TMouseMotionEvent* = object
+  TMouseMotionEvent*{.pure.} = object
     ## Mouse motion event structure (event.motion.*)
     kind*: TEventKind ## MOUSEMOTION
     timestamp*: Uint32
@@ -234,7 +234,7 @@ type
 
 
   PMouseButtonEvent* = ptr TMouseButtonEvent
-  TMouseButtonEvent* = object
+  TMouseButtonEvent*{.pure.} = object
     ## Mouse button event structure (event.button.*)
     kind*: TEventKind ## MOUSEBUTTONDOWN or MOUSEBUTTONUP
     timestamp*: Uint32
@@ -249,7 +249,7 @@ type
 
 
   PMouseWheelEvent* = ptr TMouseWheelEvent
-  TMouseWheelEvent* = object
+  TMouseWheelEvent*{.pure.} = object
     ## Mouse wheel event structure (event.wheel.*)
     kind*: TEventKind ## MOUSEWHEEL
     timestamp*: Uint32
@@ -260,7 +260,7 @@ type
 
 
   PJoyAxisEvent* = ptr TJoyAxisEvent
-  TJoyAxisEvent* = object
+  TJoyAxisEvent*{.pure.} = object
     ## Joystick axis motion event structure (event.jaxis.*)
     kind*: TEventKind ## JOYAXISMOTION
     timestamp*: Uint32
@@ -274,7 +274,7 @@ type
 
 
   PJoyBallEvent* = ptr TJoyBallEvent
-  TJoyBallEvent* = object
+  TJoyBallEvent*{.pure.} = object
     ## Joystick trackball motion event structure (event.jball.*)
     kind*: TEventKind ## JOYBALLMOTION
     timestamp*: Uint32
@@ -288,7 +288,7 @@ type
 
 
   PJoyHatEvent* = ptr TJoyHatEvent
-  TJoyHatEvent* = object
+  TJoyHatEvent*{.pure.} = object
     ## Joystick hat position change event structure (event.jhat.*)
     kind*: TEventKind ## JOYHATMOTION
     timestamp*: Uint32
@@ -300,7 +300,7 @@ type
 
 
   PJoyButtonEvent* = ptr TJoyButtonEvent
-  TJoyButtonEvent* = object
+  TJoyButtonEvent*{.pure.} = object
     ## Joystick button event structure (event.jbutton.*)
     kind*: TEventKind ## JOYBUTTONDOWN or JOYBUTTONUP
     timestamp*: Uint32
@@ -312,7 +312,7 @@ type
 
 
   PJoyDeviceEvent* = ptr TJoyDeviceEvent
-  TJoyDeviceEvent* = object
+  TJoyDeviceEvent*{.pure.} = object
     ## Joystick device event structure (event.jdevice.*)
     kind*: TEventKind ## JOYDEVICEADDED or JOYDEVICEREMOVED
     timestamp*: Uint32
@@ -320,7 +320,7 @@ type
 
 
   PControllerAxisEvent* = ptr TControllerAxisEvent
-  TControllerAxisEvent* = object
+  TControllerAxisEvent*{.pure.} = object
     ## Game controller axis motion event structure (event.caxis.*)
     kind*: TEventKind ## CONTROLLERAXISMOTION
     timestamp*: Uint32
@@ -334,7 +334,7 @@ type
 
 
   PControllerButtonEvent* = ptr TControllerButtonEvent
-  TControllerButtonEvent* = object
+  TControllerButtonEvent*{.pure.} = object
     ## Game controller button event structure (event.cbutton.*)
     kind*: TEventKind ## CONTROLLERBUTTONDOWN or CONTROLLERBUTTONUP
     timestamp*: Uint32
@@ -346,7 +346,7 @@ type
 
 
   PControllerDeviceEvent* = ptr TcontrollerDeviceEvent
-  TControllerDeviceEvent* = object
+  TControllerDeviceEvent*{.pure.} = object
     ## Controller device event structure (event.cdevice.*)
     kind*: TEventKind ## CONTROLLERDEVICEADDED, CONTROLLERDEVICEREMOVED, or CONTROLLERDEVICEREMAPPED
     timestamp*: Uint32
@@ -354,7 +354,7 @@ type
 
 
   PTouchFingerEvent* = ptr TTouchFingerEvent
-  TTouchFingerEvent* = object
+  TTouchFingerEvent*{.pure.} = object
     ## Touch finger event structure (event.finger.*)
     kind*: TEventKind ## FINGERMOTION or FINGERDOWN or FINGERUP
     timestamp*: Uint32
@@ -368,7 +368,7 @@ type
 
 
   PMultiGestureEvent* = ptr TMultiGestureEvent
-  TMultiGestureEvent* = object
+  TMultiGestureEvent*{.pure.} = object
     ## Multiple Finger Gesture Event (event.mgesture.*)
     kind*: TEventKind ## MULTIGESTURE
     timestamp*: Uint32
@@ -382,7 +382,7 @@ type
 
 
   PDollarGestureEvent* = ptr TDollarGestureEvent
-  TDollarGestureEvent* = object
+  TDollarGestureEvent*{.pure.} = object
     ## EvDollarGesture(event.dgesture.*)
     kind*: TEventKind ## DOLLARGESTURE
     timestamp*: Uint32
@@ -395,7 +395,7 @@ type
 
 
   PDropEvent* = ptr TDropEvent
-  TDropEvent* = object
+  TDropEvent*{.pure.} = object
     ## An event used to request a file open by the system (event.drop.*)
     ##
     ## This event is disabled by default, you can enable it with eventState()
@@ -407,21 +407,21 @@ type
 
 
   PQuitEvent* = ptr TQuitEvent
-  TQuitEvent* = object
+  TQuitEvent*{.pure.} = object
     ## The "quit requested" event
     kind*: TEventKind ## QUIT
     timestamp*: Uint32
 
 
   POSEvent* = ptr TOSEvent
-  TOSEvent* = object
+  TOSEvent*{.pure.} = object
     ## OS Specific event
     kind*: TEventKind ## QUIT
     timestamp*: Uint32
 
 
   PUserEvent* = ptr TUserEvent
-  TUserEvent* = object
+  TUserEvent*{.pure.} = object
     ## A user-defined event type (event.user.*)
     kind*: TEventKind ## USEREVENT through NUMEVENTS-1
     timestamp*: Uint32
@@ -435,7 +435,7 @@ type
 
 
   PSysWMEvent* = ptr TSysWMEvent
-  TSysWMEvent* = object
+  TSysWMEvent*{.pure.} = object
     ## A video driver dependent system event (event.syswm.*)
     ##
     ## This event is disabled by default, you can enable it with eventState()
@@ -447,7 +447,7 @@ type
 
   
   PEvent* = ptr TEvent
-  TEvent* = object
+  TEvent*{.pure.} = object
     kind*: TEventKind
     timestamp*: Uint32
     data: array[0..47, byte]

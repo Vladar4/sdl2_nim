@@ -163,9 +163,9 @@ type
 
   
   PAudioSpec* = ptr TAudioSpec
-  TAudioSpec* = object
+  TAudioSpec*{.pure.} = object
     ## The calculated values in this structure are calculated by openAudio().
-    freq*: int ## DSP frequency -- samples per second
+    freq*: int32 ## DSP frequency -- samples per second
     format*: TAudioFormat ## Audio data format
     channels*: Uint8 ## Number of channels: 1 mono, 2 stereo
     silence*: Uint8 ## Audio buffer silence value (calculated)
@@ -180,19 +180,19 @@ type
 
   
   PAudioCVT* = ptr TAudioCVT
-  TAudioCVT* = object
+  TAudioCVT*{.pure.} = object
     ## A structure to hold a set of audio conversion filters and buffers.
-    needed*: int ## Set to 1 if conversion possible
+    needed*: int32 ## Set to 1 if conversion possible
     src_format*: TAudioFormat ## Source audio format
     dst_format*: TAudioFormat ## Target audio format
     rate_incr*: cdouble ## Rate conversion increment
     buf*: ptr byte ## Buffer to hold entire audio data
-    len*: int ## Length of original audio buffer
-    len_cvt*: int ## Length of converted audio buffer
-    len_mult*: int ## buffer must be len*len_mult big
+    len*: int32 ## Length of original audio buffer
+    len_cvt*: int32 ## Length of converted audio buffer
+    len_mult*: int32 ## buffer must be len*len_mult big
     len_ratio*: cdouble ## Given len, final size is len*len_ratio
     filters*: array[0..9, PAudioFilter] ## Filter list
-    filter_index*: int ## Current audio conversion function
+    filter_index*: int32 ## Current audio conversion function
 
 
 # Function prototypes

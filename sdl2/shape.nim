@@ -107,7 +107,7 @@ proc colorKey*(obj: TWindowShapeParams): TColor {.inline.} =
 
 type
   PWindowShapeMode* = ptr TWindowShapeMode
-  TWindowShapeMode* = object
+  TWindowShapeMode*{.pure.} = object
     ## A struct that tags the TWindowShapeParams union with an enum describing the type of its contents.
     mode*: WindowShapeMode ## The mode of these window-shape parameters.
     parameters*: TWindowShapeParams ## Window-shape parameters.

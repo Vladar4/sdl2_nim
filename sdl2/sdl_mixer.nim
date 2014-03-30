@@ -95,9 +95,9 @@ const
 type
 
   PChunk* = ptr TChunk
-  TChunk* = object
+  TChunk*{.pure.} = object
     ## The internal format for an audio chunk
-    allocated*: int
+    allocated*: int32
     abuf*: ptr byte
     alen*: Uint32
     volume*: Uint8 ## Per-sample volume, 0-128

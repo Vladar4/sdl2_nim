@@ -50,13 +50,13 @@ const
 
 type
   PRendererInfo* = ptr TRendererInfo
-  TRendererInfo* = object ## Information on the capabilities of a render driver or context.
+  TRendererInfo*{.pure.} = object ## Information on the capabilities of a render driver or context.
     name*: cstring ## The name of the renderer
     flags*: Uint32 ## Supported rendererFlags
     num_texture_formats*: Uint32 ## The number of available texture formats
     texture_formats*: array[0..15, Uint32] ## The available texture formats
-    max_texture_width*: int ## The maximimum texture width
-    max_texture_height*: int ## The maximimum texture height
+    max_texture_width*: int32 ## The maximimum texture width
+    max_texture_height*: int32 ## The maximimum texture height
 
 
   TTextureAccess* = enum ## The access pattern allowed for a texture.

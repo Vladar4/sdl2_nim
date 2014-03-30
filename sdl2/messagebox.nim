@@ -35,15 +35,15 @@ const
 type
   
   PMessageBoxButtonData* = ptr TMessageBoxButtonData
-  TMessageBoxButtonData* = object
+  TMessageBoxButtonData*{.pure.} = object
     ## Individual button data.
     flags*: Uint32 ## MessageBoxButtonFlags
-    buttonid*: int ## defined button id (value returned via showMessageBox)
+    buttonid*: int32 ## defined button id (value returned via showMessageBox)
     text*: cstring ## The UTF-8 button text
 
   
   PMessageBoxColor* = ptr TMessageBoxColor
-  TMessageBoxColor* = object
+  TMessageBoxColor*{.pure.} = object
     ## RGB value used in a message box color scheme
     r*, g*, b*: Uint8
 
@@ -58,19 +58,19 @@ type
 
   
   PMessageBoxColorScheme* = ptr TMessageBoxColorScheme
-  TMessageBoxColorScheme* = object
+  TMessageBoxColorScheme*{.pure.} = object
     ## A set of colors to use for message box dialogs
     colors*: array[0..ord(MESSAGEBOX_COLOR_MAX)-1, TMessageBoxColor]
 
 
   PMessageBoxData* = ptr TMessageBoxData
-  TMessageBoxData* = object
+  TMessageBoxData*{.pure.} = object
     ## MessageBox structure containing title, text, window, etc.
     flags*: Uint32 ## MessageBoxFlags
     window*: PWindow ## Parent window, can be nil
     title*: cstring ## UTF-8 title
     message*: cstring ## UTF-8 message text
-    numbuttons*: int
+    numbuttons*: int32
     buttons*: PMessageBoxButtonData
     colorScheme*: PMessageBoxColorScheme ## TMessageBoxColorScheme, can be nil to use system settings
 

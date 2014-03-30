@@ -37,17 +37,17 @@ const
 
 type
   PRWops* = ptr TRWops
-  TRWops* = object
+  TRWops*{.pure.} = object
     ## This is the read/write operation structure -- very basic.
     size*: proc(context: PRWops): int64 ## Return the size of the file in this rwops, or -1 if unknown
-    seek*: proc(context: PRWops, offset: int64, whence: int): int64 ## Seek to ``offset`` relative to ``whence``, one of stdio's whence values: RW_SEEK_SET, RW_SEEK_CUR, RW_SEEK_END. Return the final offset in the data stream, or -1 on error.
+    seek*: proc(context: PRWops, offset: int64, whence: int32): int64 ## Seek to ``offset`` relative to ``whence``, one of stdio's whence values: RW_SEEK_SET, RW_SEEK_CUR, RW_SEEK_END. Return the final offset in the data stream, or -1 on error.
     read*: proc(context: PRWops, pntr: pointer, size, maxnum: csize): csize ## Read up to ``maxnum`` objects each of size ``size`` from the data stream to the area pointed at by ``pntr``. Return the number of objects read, or 0 at error or end of file.
     write*: proc(context: PRWops, pntr: pointer, size, num: csize): csize ## Write exactly ``num`` objects each of size ``size`` from the area pointed at by ``ptr`` to data stream. Return the number of objects written, or 0 at error or end of file.
-    close*: proc(context: PRWops): int ## Close and free an allocated PRWops structure. Return 0 if successful or -1 on write error when flushing data.
+    close*: proc(context: PRWops): int32 ## Close and free an allocated PRWops structure. Return 0 if successful or -1 on write error when flushing data.
     kind*: Uint32
     mem*: TMem
 
-  TMem* = object
+  TMem*{.pure.} = object
     base*: ptr byte
     here*: ptr byte
     stop*: ptr byte

@@ -26,15 +26,15 @@
 
 type
   PPoint* = ptr TPoint
-  TPoint* = object
+  TPoint*{.pure.} = object
     ##  The structure that defines a point
     ##
     ## See also: enclosePoints
-    x*: int
-    y*: int
+    x*: int32
+    y*: int32
 
   PRect* = ptr TRect
-  TRect* = object
+  TRect*{.pure.} = object
     ## A rectangle, with the origin at the upper left.
     ##
     ## See also: rectEmpty, 
@@ -43,8 +43,8 @@ type
     ## intersectRect, 
     ## unionRect, 
     ## enclosePoints
-    x*, y*: int
-    w*, h*: int
+    x*, y*: int32
+    w*, h*: int32
 
 
 proc rectEmpty*(r: PRect): bool {.inline.} =

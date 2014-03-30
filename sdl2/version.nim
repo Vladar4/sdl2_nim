@@ -38,7 +38,7 @@
 
 type
   PVersion* = ptr TVersion
-  TVersion* = object
+  TVersion*{.pure.} = object
     major*: Uint8 ## major version
     minor*: Uint8 ## minor version
     patch*: Uint8 ## update version

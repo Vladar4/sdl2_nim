@@ -38,22 +38,22 @@ const
 
 type
   PSurface* = ptr TSurface
-  TSurface* = object
+  TSurface*{.pure.} = object
     ## A collection of pixels used in software blitting.
     ##
     ## This structure should be treated as read-only, except for ``pixels``,
     ## which, if not nil, contains the raw pixel data for the surface.
     flags*: Uint32 ## Read-only
     format*: ptr TPixelFormat ## Read-only
-    w*, h*: int ## Read-only
-    pitch*: int ## Read-only
+    w*, h*: int32 ## Read-only
+    pitch*: int32 ## Read-only
     pixels*: pointer ## Read-write
     userdata*: pointer ## Read-write. Application data associated with the surface
-    locked*: int ## Read-only. Information needed for surfaces requiring locks
+    locked*: int32 ## Read-only. Information needed for surfaces requiring locks
     lock_data*: pointer ## Read-only. Information needed for surfaces requiring locks
     clip_rect*: TRect ## Read-only. Clipping information
     map: pointer ## Private. Info for fast blit mapping to other surfaces
-    refcount*: int ## Read-mostly. Reference count -- used when freeing surface
+    refcount*: int32 ## Read-mostly. Reference count -- used when freeing surface
 
 
 template mustLock*(s: PSurface): bool =

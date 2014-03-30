@@ -67,7 +67,7 @@ proc quit*() {.cdecl, importc: "SDLNet_Quit", dynlib: LibNetName.}
 
 type
   PIPaddress* = ptr TIPaddress
-  TIPaddress* = object
+  TIPaddress*{.pure.} = object
     host*: Uint32 ## 32-bit IPv4 host address
     port*: Uint16 ## 16-bit protocol port
 
@@ -106,12 +106,12 @@ proc getLocalAddresses*(addresses: PIPaddress, maxcount: int): int {.cdecl, impo
 
 type
   PTCPsocket* = ptr TTCPsocket
-  TTCPsocket* = object
-    ready*: int
-    channel*: int
+  TTCPsocket*{.pure.} = object
+    ready*: int32
+    channel*: int32
     rempteAddress*: TIPaddress
     localAddress*: TIPaddress
-    sflag*: int
+    sflag*: int32
 
 
 proc tcpOpen*(ip: PIPaddress): PTCPsocket {.cdecl, importc: "SDLNet_TCP_Open", dynlib: LibNetName.}
@@ -164,26 +164,26 @@ const
 
 type
   
-  TUDPchannel* = object
-    numbound*: int
+  TUDPchannel*{.pure.} = object
+    numbound*: int32
     address*: array[0..MAX_UDPADDRESSES-1, TIPaddress]
 
 
   PUDPsocket* = ptr TUDPsocket
-  TUDPsocket* = object
-    ready*: int
-    channel*: int
+  TUDPsocket*{.pure.} = object
+    ready*: int32
+    channel*: int32
     address*: TIPaddress
     binding*: array[0..MAX_UDPCHANNELS-1, TUDPchannel]
 
 
   PUDPpacket* = ptr TUDPpacket
-  TUDPpacket* = object
-    channel*: int ## The src/dst channel of the packet
+  TUDPpacket*{.pure.} = object
+    channel*: int32 ## The src/dst channel of the packet
     data*: ptr byte ## The packet data
-    len*: int ## The length of the packet data
-    maxlen*: int ## The size of the data buffer
-    status*: int ## packet status after sending
+    len*: int32 ## The length of the packet data
+    maxlen*: int32 ## The size of the data buffer
+    status*: int32 ## packet status after sending
     address*: PIPaddress ## The source/dest address of an incoming/outgoing packet
 
 
@@ -316,21 +316,21 @@ proc udpClose*(sock: PUDPsocket) {.cdecl, importc: "SDLNet_UDP_Close", dynlib: L
 type
 
   PSocket* = ptr TSocket
-  TSocket* = object
-    ready*: int
-    channel*: int
+  TSocket*{.pure.} = object
+    ready*: int32
+    channel*: int32
   
   PSocketSet* = ptr TSocketSet
-  TSocketSet* = object
-    numsockets*: int
-    maxsockets*: int
+  TSocketSet*{.pure.} = object
+    numsockets*: int32
+    maxsockets*: int32
     sockets*: ptr PSocket
 
 
   PGenericSocket* = ptr TGenericSocket
-  TGenericSocket* = object
+  TGenericSocket*{.pure.} = object
     ## Any network socket can be safely cast to this socket type
-    ready*: int
+    ready*: int32
 
 
 proc allocSocketSet*(maxsockets: int): PSocketSet {.cdecl, importc: "SDLNet_AllocSocketSet", dynlib: LibNetName.}

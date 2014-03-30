@@ -113,7 +113,7 @@
 type
 
   PHapticEffect* = ptr THapticEffect
-  THapticEffect* = object
+  THapticEffect*{.pure.} = object
     ## The generic template for any haptic effect.
     ##
     ## All values max at 32767 (0x7FFF).  Signed values also can be negative.
@@ -167,13 +167,14 @@ type
     # Common for all force feedback effects
     kind*: Uint16 ## Effect type.
     data: array[0..65, byte]
-  IHapticEffect* = object
+
+  IHapticEffect*{.pure.} = object
     effect*: THapticEffect ## The current event
     hweffect*: pointer ## The hardware behind the event
 
 
   PHaptic* = ptr THaptic
-  THaptic* = object
+  THaptic*{.pure.} = object
     ## The haptic structure used to identify an SDL haptic.
     ##
     ## See also: hapticOpen, 
@@ -181,13 +182,13 @@ type
     ## hapticClose
     index*: Uint8 ## Stores index it is attached to
     effects*: ptr IHapticEffect ## Allocated effects
-    neffects*: int ## Maximum amount of effects
-    nplaying*: int ## Maximum amount of effects to play at the same time
+    neffects*: int32 ## Maximum amount of effects
+    nplaying*: int32 ## Maximum amount of effects to play at the same time
     supported*: uint ## Supported effects
-    naxes*: int ## Number of axes on the device.
+    naxes*: int32 ## Number of axes on the device.
     hwdata*: pointer ## Driver dependent
-    ref_count*: int ## Count for multiple opens
-    rumble_id*: int ## ID of rumble effect for simple rumble API.
+    ref_count*: int32 ## Count for multiple opens
+    rumble_id*: int32 ## ID of rumble effect for simple rumble API.
     rumble_effect*: THapticEffect ## Rumble effect.
 
 
@@ -267,7 +268,7 @@ const
 
 
 type
-  THapticDirection* = object
+  THapticDirection*{.pure.} = object
     ## Structure that represents a haptic direction.
     ##
     ## Directions can be specified by:
@@ -385,7 +386,7 @@ type
 
 
   PHapticConstant* = ptr THapticConstant
-  THapticConstant* = object
+  THapticConstant*{.pure.} = object
     ## A structure containing a template for a Constant effect.
     ##
     ## The struct is exclusive to the HAPTIC_CONSTANT effect.
@@ -409,7 +410,7 @@ type
 
 
   PHapticPeriodic* = ptr THapticPeriodic
-  THapticPeriodic* = object
+  THapticPeriodic*{.pure.} = object
     ## A structure containing a template for a Periodic effect.
     ##
     ## The struct handles the following effects:
@@ -493,7 +494,7 @@ type
 
 
   PHapticCondition* = ptr THapticCondition
-  THapticCondition* = object
+  THapticCondition*{.pure.} = object
     ## A structure containing a template for a Condition effect.
     ##
     ## The struct handles the following effects:
@@ -535,7 +536,7 @@ type
 
   
   PHapticRamp* = ptr THapticRamp
-  THapticRamp* = object
+  THapticRamp*{.pure.} = object
     ## A structure containing a template for a Ramp effect.
     ##
     ## This struct is exclusively for the HAPTIC_RAMP effect.
@@ -562,7 +563,7 @@ type
 
 
   PHapticCustom* = ptr THapticCustom
-  THapticCustom* = object
+  THapticCustom*{.pure.} = object
     ## A structure containing a template for the HAPTIC_CUSTOM effect.
     ##
     ## A custom force feedback effect is much like a periodic effect, where the
