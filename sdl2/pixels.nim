@@ -231,9 +231,8 @@ proc bytesPerPixel*(x: Uint32): Uint8 {.inline.} =
 type
   PColour* = ptr TColor
   PColor* = ptr TColor
-  TColour* = TColor
-  TColor*{.pure.} = object
-    r*, g*, b*, a*: Uint8
+  TColour*{.pure.} = tuple[r, g, b, a: Uint8]
+  TColor*{.pure.} = tuple[r, g, b, a: Uint8]
 
 
   PPalette* = ptr TPalette

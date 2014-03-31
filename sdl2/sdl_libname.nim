@@ -48,3 +48,14 @@ when not defined(LibNetName):
     const
       LibNetName* = "libSDL2_net-2.0.0.dylib"
 
+
+when not defined(LibTtfName):
+  when defined(windows):
+    const
+      LibTtfName* = "SDL2_ttf.dll"
+  elif defined(linux):
+    const
+      LibTtfName* = "libSDL2_ttf.so"
+  else:
+    const
+      LibTtfName* = "libSDL2_ttf-2.0.0.dylib"
