@@ -15,20 +15,20 @@ CHANGELOG:
 **v0.95 beta**
 * Nim 0.10.2 adaptation.
 * Update to SDL2-2.0.3
-* added sdl_gfx.nim
+* added SDL2-gfx
 * *WIP*
 
 **v0.9 alpha**
-* added mixer.nim
+* added SDL2-mixer
 * different fixes
 
 **v0.8 alpha**
 * added haptic.nim
-* added sdl_image.nim
+* added SDL2-image
 * different fixes
 
 **v0.7 alpha**
-* added sdl_net.nim
+* added SDL2-net
 * added event convertion templates
 * different fixes
 
