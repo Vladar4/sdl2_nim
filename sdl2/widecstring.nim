@@ -58,7 +58,7 @@ when defined(linux):
           result[d] = TUTF32Char((ch and halfMask) +% int32(UNI_SUR_LOW_START))
         inc d
       result[d] = TUTF32Char(0'i32)
-  
+
 else: # windows
   template newWCS*(s: string): WideCString =
     newWideCString(s)

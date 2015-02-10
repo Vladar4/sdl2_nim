@@ -1,52 +1,56 @@
 #
-# Simple DirectMedia Layer
-# Copyright (C) 1997-2013 Sam Lantinga <slouken@libsdl.org>
+#  Simple DirectMedia Layer
+#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
 #
-# This software is provided 'as-is', without any express or implied
-# warranty.  In no event will the authors be held liable for any damages
-# arising from the use of this software.
+#  This software is provided 'as-is', without any express or implied
+#  warranty.  In no event will the authors be held liable for any damages
+#  arising from the use of this software.
 #
-# Permission is granted to anyone to use this software for any purpose,
-# including commercial applications, and to alter it and redistribute it
-# freely, subject to the following restrictions:
+#  Permission is granted to anyone to use this software for any purpose,
+#  including commercial applications, and to alter it and redistribute it
+#  freely, subject to the following restrictions:
 #
-# 1. The origin of this software must not be misrepresented; you must not
-#    claim that you wrote the original software. If you use this software
-#    in a product, an acknowledgment in the product documentation would be
-#    appreciated but is not required.
-# 2. Altered source versions must be plainly marked as such, and must not be
-#    misrepresented as being the original software.
-# 3. This notice may not be removed or altered from any source distribution.
-#
-
-
-#
-# Simple log messages with categories and priorities.
-#
-# By default logs are quiet, but if you're debugging SDL you might want:
-#
-#   logSetAllPriority(LOG_PRIORITY_WARN)
-#
-# Here's where the messages go on different platforms:
-#   Windows: debug output stream
-#   Android: log output
-#   Others: standard error output (stderr)
+#  1. The origin of this software must not be misrepresented; you must not
+#     claim that you wrote the original software. If you use this software
+#     in a product, an acknowledgment in the product documentation would be
+#     appreciated but is not required.
+#  2. Altered source versions must be plainly marked as such, and must not be
+#     misrepresented as being the original software.
+#  3. This notice may not be removed or altered from any source distribution.
 #
 
+##  log.nim
+##
+##  Simple log messages with categories and priorities.
+##
+##  By default logs are quiet, but if you're debugging SDL you might want:
+##
+##      ``logSetAllPriority(LOG_PRIORITY_WARN)``
+##
+##  Here's where the messages go on different platforms:
+##
+##      Windows: debug output stream
+##
+##      Android: log output
+##
+##      Others: standard error output (stderr)
+
+import
+  sdl_libname
 
 const
-  MAX_LOG_MESSAGE* = 4096
-    ## The maximum size of a log message
-    ##
-    ## Messages longer than the maximum size will be truncated
+  MAX_LOG_MESSAGE* = 4096 ##  \
+  ##  The maximum size of a log message
+  ##
+  ##  Messages longer than the maximum size will be truncated
 
-  # The predefined log categories
-  #
-  # By default the application category is enabled at the INFO level,
-  # the assert category is enabled at the WARN level, test is enabled
-  # at the VERBOSE level and all other categories are enabled at the
-  # CRITICAL level.
-
+#   The predefined log categories
+#
+#   By default the application category is enabled at the `INFO` level,
+#   the assert category is enabled at the `WARN` level, test is enabled
+#   at the `VERBOSE` level and all other categories are enabled at the
+#   `CRITICAL` level.
+const
   LOG_CATEGORY_APPLICATION* = 0
   LOG_CATEGORY_ERROR* = 1
   LOG_CATEGORY_ASSERT* = 2
@@ -55,9 +59,7 @@ const
   LOG_CATEGORY_VIDEO* = 5
   LOG_CATEGORY_RENDER* = 6
   LOG_CATEGORY_INPUT* = 7
-  LOG_CATEGORY_TEST* = 8
-
-  # Reserved for future SDL library use
+  LOG_CATEGORY_TEST* = 8 ## Reserved for future SDL library use
   LOG_CATEGORY_RESERVED1* = 9
   LOG_CATEGORY_RESERVED2* = 10
   LOG_CATEGORY_RESERVED3* = 11
@@ -67,14 +69,25 @@ const
   LOG_CATEGORY_RESERVED7* = 15
   LOG_CATEGORY_RESERVED8* = 16
   LOG_CATEGORY_RESERVED9* = 17
-  LOG_CATEGORY_RESERVED10* = 18
-
-  # Beyond this point is reserved for application use
+  LOG_CATEGORY_RESERVED10* = 18 ##  \
+    ##  Beyond this point is reserved for application use, e.g.
+    ##
+    ##      type
+    ##
+    ##        MYAPP_CATEGORY = enum
+    ##
+    ##          MYAPP_CATEGORY_AWESOME1 = LOG_CATEGORY_CUSTOM,
+    ##
+    ##          MYAPP_CATEGORY_AWESOME2,
+    ##
+    ##          MYAPP_CATEGORY_AWESOME3
+    ##
+    ##          ...`
   LOG_CATEGORY_CUSTOM* = 19
 
-
 type
-  TLogPriority* = enum ## The predefined log priorities
+  LogPriority* {.size: sizeof(cint).} = enum ##  \
+    ##  The predefined log priorities
     LOG_PRIORITY_VERBOSE = 1,
     LOG_PRIORITY_DEBUG,
     LOG_PRIORITY_INFO,
@@ -83,72 +96,73 @@ type
     LOG_PRIORITY_CRITICAL,
     NUM_LOG_PRIORITIES
 
+proc logSetAllPriority*(priority: LogPriority) {.
+    cdecl, importc: "SDL_LogSetAllPriority", dynlib: SDL2_LIB.}
+  ##  Set the priority of all log categories
 
-proc logSetAllPriority*(priority: TLogPriority) {.cdecl, importc: "SDL_LogSetAllPriority", dynlib: LibName.}
-  ## Set the priority of all log categories
+proc logSetPriority*(category: cint; priority: LogPriority) {.
+    cdecl, importc: "SDL_LogSetPriority", dynlib: SDL2_LIB.}
+  ##  Set the priority of a particular log category
 
+proc logGetPriority*(category: cint): LogPriority {.
+    cdecl, importc: "SDL_LogGetPriority", dynlib: SDL2_LIB.}
+  ##  Get the priority of a particular log category
 
-proc logSetPriority*(category: int, priority: TLogPriority) {.cdecl, importc: "SDL_LogSetPriority", dynlib: LibName.}
-  ## Set the priority of a particular log category
-
-
-proc logGetPriority*(category: int): TLogPriority {.cdecl, importc: "SDL_LogGetPriority", dynlib: LibName.}
-  ## Get the priority of a particular log category
-
-
-proc logResetPriorities*() {.cdecl, importc: "SDL_LogResetPriorities", dynlib: LibName.}
-  ## Reset all priorities to default.
+proc logResetPriorities*() {.
+    cdecl, importc: "SDL_LogResetPriorities", dynlib: SDL2_LIB.}
+  ##  Reset all priorities to default.
   ##
-  ## This is called in quit().
+  ##  This is called in ``quit()``.
 
+proc log*(fmt: cstring) {.
+    varargs, cdecl, importc: "SDL_Log", dynlib: SDL2_LIB.}
+  ##  Log a message with `LOG_CATEGORY_APPLICATION` and `LOG_PRIORITY_INFO`
 
-proc log*(fmt: cstring) {.cdecl, importc: "SDL_Log", varargs, dynlib: LibName.}
-  ## Log a message with LOG_CATEGORY_APPLICATION and LOG_PRIORITY_INFO
+proc logVerbose*(category: cint; fmt: cstring) {.
+    varargs, cdecl, importc: "SDL_LogVerbose", dynlib: SDL2_LIB.}
+  ##  Log a message with `LOG_PRIORITY_VERBOSE`
 
+proc logDebug*(category: cint; fmt: cstring) {.
+    varargs, cdecl, importc: "SDL_LogDebug", dynlib: SDL2_LIB.}
+  ##  Log a message with `LOG_PRIORITY_DEBUG`
 
-proc logVerbose*(category: int, fmt: cstring) {.cdecl, importc: "SDL_LogVerbose", varargs, dynlib: LibName.}
-  ## Log a message with LOG_PRIORITY_VERBOSE
+proc logInfo*(category: cint; fmt: cstring) {.
+    varargs, cdecl, importc: "SDL_LogInfo", dynlib: SDL2_LIB.}
+  ##  Log a message with `LOG_PRIORITY_INFO`
 
+proc logWarn*(category: cint; fmt: cstring) {.
+    varargs, cdecl, importc: "SDL_LogWarn", dynlib: SDL2_LIB.}
+  ##  Log a message with LOG_PRIORITY_WARN
 
-proc logDebug*(category: int, fmt: cstring) {.cdecl, importc: "SDL_LogDebug", varargs, dynlib: LibName.}
-  ## Log a message with LOG_PRIORITY_DEBUG
+proc logError*(category: cint; fmt: cstring) {.
+    varargs, cdecl, importc: "SDL_LogError", dynlib: SDL2_LIB.}
+  ##  Log a message with `LOG_PRIORITY_ERROR`
 
+proc logCritical*(category: cint; fmt: cstring) {.
+    varargs, cdecl, importc: "SDL_LogCritical", dynlib: SDL2_LIB.}
+  ##  Log a message with `LOG_PRIORITY_CRITICAL`
 
-proc logInfo*(category: int, fmt: cstring) {.cdecl, importc: "SDL_LogInfo", varargs, dynlib: LibName.}
-  ## Log a message with LOG_PRIORITY_INFO
+proc logMessage*(category: cint; priority: LogPriority; fmt: cstring) {.
+    varargs, cdecl, importc: "SDL_LogMessage", dynlib: SDL2_LIB.}
+  ##  Log a message with the specified category and priority.
 
-
-proc logWarn*(category: int, fmt: cstring) {.cdecl, importc: "SDL_LogWarn", varargs, dynlib: LibName.}
-  ## Log a message with LOG_PRIORITY_WARN
-
-
-proc logError*(category: int, fmt: cstring) {.cdecl, importc: "SDL_LogError", varargs, dynlib: LibName.}
-  ## Log a message with LOG_PRIORITY_ERROR
-
-
-proc logCritical*(category: int, fmt: cstring) {.cdecl, importc: "SDL_LogCritical", varargs, dynlib: LibName.}
-  ## Log a message with LOG_PRIORITY_CRITICAL
-
-
-proc logMessage*(category: int, priority: TLogPriority,
-    fmt: cstring) {.cdecl, importc: "SDL_LogMessage", varargs, dynlib: LibName.}
-  ## Log a message with the specified category and priority.
-
-
-proc logMessageV*(category: int, priority: TLogPriority,
-    fmt: cstring) {.cdecl, importc: "SDL_LogMessageV", varargs, dynlib: LibName.}
-  ## Log a message with the specified category and priority.
-
+#TODO deal with va_list
+#  proc logMessageV*(
+#      category: cint; priority: LogPriority; fmt: cstring; ap: va_list) {.
+#      cdecl, importc: "SDL_LogMessageV", dynlib: SDL2_LIB.}
+#    ##  Log a message with the specified category and priority.
 
 type
-  PLogOutputFunction* = proc(userdata: pointer, category: int, priority: TLogPriority, message: cstring) ## The prototype for the log output function
+  LogOutputFunction* = proc (userdata: pointer; category: cint;
+      priority: LogPriority; message: cstring) {.cdecl.}
+    ##  The prototype for the log output function
 
+proc logGetOutputFunction*(
+    callback: ptr LogOutputFunction; userdata: ptr pointer) {.
+    cdecl, importc: "SDL_LogGetOutputFunction", dynlib: SDL2_LIB.}
+  ##  Get the current log output function.
 
-proc logGetOutputFunction*(callback: PLogOutputFunction, userdata: ptr pointer) {.cdecl, importc: "SDL_LogGetOutputFunction", dynlib: LibName.}
-  ## Get the current log output function.
-
-
-proc logSetOutputFunction*(callback: PLogOutputFunction, userdata: pointer) {.cdecl, importc: "SDL_LogSetOutputFunction", dynlib: LibName.}
-  ## This function allows you to replace the default log output
-  ## function with one of your own.
-
+proc logSetOutputFunction*(callback: LogOutputFunction; userdata: pointer) {.
+    cdecl, importc: "SDL_LogSetOutputFunction", dynlib: SDL2_LIB.}
+  ##  This function allows you to replace the default log output
+  ##  function with one of your own.

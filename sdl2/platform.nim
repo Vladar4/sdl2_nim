@@ -19,33 +19,13 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 
-##  gesture.nim
+##  platform.nim
 ##
-##  Include file for SDL gesture event handling.
+##  Try to get a standard set of platform defines.
 
 import
-  sdl_libname,
-  rwops,
-  video,
-  touch
+  sdl_libname
 
-type
-  GestureID* = int64
-
-# Function prototypes
-
-proc recordGesture*(touchId: TouchID): cint {.
-    cdecl, importc: "SDL_RecordGesture", dynlib: SDL2_LIB.}
-  ##  Begin recording a gesture on the specified touch, or all touches (`-1`).
-
-proc saveAllDollarTemplates*(dst: ptr RWops): cint {.
-    cdecl, importc: "SDL_SaveAllDollarTemplates", dynlib: SDL2_LIB.}
-  ##  Save all currently loaded Dollar Gesture templates.
-
-proc saveDollarTemplate*(gestureId: GestureID; dst: ptr RWops): cint {.
-    cdecl, importc: "SDL_SaveDollarTemplate", dynlib: SDL2_LIB.}
-  ##  Save a currently loaded Dollar Gesture template.
-
-proc loadDollarTemplates*(touchId: TouchID; src: ptr RWops): cint {.
-    cdecl, importc: "SDL_LoadDollarTemplates", dynlib: SDL2_LIB.}
-  ##  Load Dollar Gesture templates from a file.
+proc getPlatform*(): cstring {.
+    cdecl, importc: "SDL_GetPlatform", dynlib: SDL2_LIB.}
+  ##  Gets the name of the platform.
