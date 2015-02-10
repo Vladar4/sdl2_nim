@@ -23,16 +23,6 @@
 ##
 ##  Include file for SDL event handling.
 
-import
-  sdl_libname,
-  video,
-  keyboard,
-  mouse,
-  joystick,
-  gamecontroller,
-  gesture,
-  touch
-
 # General keyboard/mouse state definitions
 const
   RELEASED* = 0

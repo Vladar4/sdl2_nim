@@ -23,10 +23,6 @@
 ##
 ##  Include file for platform specific SDL API functions
 
-import
-  sdl_libname,
-  video
-
 # Platform specific functions for Windows
 when defined windows:
 

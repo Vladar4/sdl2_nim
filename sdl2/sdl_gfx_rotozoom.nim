@@ -28,8 +28,7 @@
 #
 
 import
-  surface,
-  sdl_libname
+  sdl
 
 # Defines
 

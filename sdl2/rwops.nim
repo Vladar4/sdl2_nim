@@ -24,9 +24,6 @@
 ##  This file provides a general interface for SDL to read and write
 ##  data streams.  It can easily be extended to files, memory, etc.
 
-import
-  sdl_libname
-
 # RWops Kinds
 const
   RWOPS_UNKNOWN*    = 0 ## Unknown stream type

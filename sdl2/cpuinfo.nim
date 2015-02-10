@@ -23,9 +23,6 @@
 ##
 ##  CPU feature detection for SDL.
 
-import
-  sdl_libname
-
 const
   CACHELINE_SIZE* = 128 ##  \
     ##  This is a guess for the cacheline size used for padding.

@@ -20,10 +20,7 @@
 #
 
 import
-  audio,
-  rwops,
-  version,
-  sdl_libname
+  sdl
 
 # Printable format: "$1.$2.$3" % [MAJOR, MINOR, PATCHLEVEL]
 const

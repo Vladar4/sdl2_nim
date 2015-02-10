@@ -24,9 +24,7 @@
 ##  Header for the enumerated pixel format definitions.
 
 import
-  unsigned,
-  sdl_libname,
-  stdinc
+  unsigned
 
 # Transparency definitions
 #

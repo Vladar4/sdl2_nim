@@ -27,9 +27,6 @@
 #
 #
 
-import
-  sdl_libname
-
 # Definitions
 
 const

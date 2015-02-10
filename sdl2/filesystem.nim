@@ -23,9 +23,6 @@
 ##
 ##  Include file for filesystem SDL API functions
 
-import
-  sdl_libname
-
 proc getBasePath*(): cstring {.
     cdecl, importc: "SDL_GetBasePath", dynlib: SDL2_LIB.}
   ##  Get the path where the application resides.

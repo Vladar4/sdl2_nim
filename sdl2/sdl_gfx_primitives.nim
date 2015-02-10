@@ -28,9 +28,7 @@
 #
 
 import
-  render,
-  surface,
-  sdl_libname
+  sdl
 
 # Versioning
 const

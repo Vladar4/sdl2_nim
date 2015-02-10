@@ -23,15 +23,7 @@
 ##
 ##  Include file for SDL keyboard event handling
 
-
-import
-  sdl_libname,
-  scancode,
-  keycode,
-  rect,
-  video
-
-type 
+type
   Keysym* = object ##  \
     ##  The SDL keysym object, used in key events.
     ##

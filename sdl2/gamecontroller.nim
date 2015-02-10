@@ -31,11 +31,6 @@
 ##  is in the background, you should set the following hint before calling
 ##  ``init()``: `HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS`
 
-import
-  sdl_libname,
-  rwops,
-  joystick
-
 type
   GameController* = pointer
 

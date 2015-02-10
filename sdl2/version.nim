@@ -24,9 +24,6 @@
 ##  This header defines the current SDL version.
 ##
 
-import
-  sdl_libname
-
 type
   Version* = object ##  \
     ##  Information the version of SDL in use.

@@ -19,10 +19,6 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 
-import
-  mutex,
-  sdl_libname
-
 type
   Thread* = pointer ##  The SDL thread structure, defined in SDL_thread.c
 

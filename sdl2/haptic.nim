@@ -40,10 +40,6 @@
 ##
 ##  ``Author`` Edgar Simo Serra
 
-import
-  sdl_libname,
-  joystick
-
 type
   Haptic* = pointer ##  \
     ##  The haptic structure used to identify an SDL haptic.

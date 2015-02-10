@@ -34,9 +34,6 @@
 ##  a way for an application or user to give the library a hint as
 ##  to how they would like the library to work.
 
-import
-  sdl_libname
-
 const
   HINT_FRAMEBUFFER_ACCELERATION* = "SDL_FRAMEBUFFER_ACCELERATION" ##  \
     ##  A variable controlling how 3D acceleration is used  to accelerate the

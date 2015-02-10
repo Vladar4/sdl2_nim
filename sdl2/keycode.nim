@@ -23,9 +23,6 @@
 ##
 ##  Defines constants which identify keyboard keys and modifiers.
 
-import
-  scancode
-
 type
   Keycode* = int32 ##  \
     ##  The SDL virtual key representation.

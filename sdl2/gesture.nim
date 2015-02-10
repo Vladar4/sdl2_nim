@@ -23,12 +23,6 @@
 ##
 ##  Include file for SDL gesture event handling.
 
-import
-  sdl_libname,
-  rwops,
-  video,
-  touch
-
 type
   GestureID* = int64
 

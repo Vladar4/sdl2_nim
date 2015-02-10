@@ -43,13 +43,6 @@
 ##  These functions must be called from the main thread.
 ##  See this bug for details: http://bugzilla.libsdl.org/show_bug.cgi?id=1995
 
-import
-  sdl_libname,
-  blendmode,
-  rect,
-  surface,
-  video
-
 type
   RendererFlags* {.size: sizeof(cint).} = enum ##  \
     ##  Flags used when creating a rendering context

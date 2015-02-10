@@ -23,12 +23,6 @@
 ##
 ##  Header file for SDL video functions.
 
-import
-  sdl_libname,
-  pixels,
-  rect,
-  surface
-
 type
   DisplayMode* = object ##  \
     ##  The object that defines a display mode

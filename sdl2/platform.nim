@@ -23,9 +23,6 @@
 ##
 ##  Try to get a standard set of platform defines.
 
-import
-  sdl_libname
-
 proc getPlatform*(): cstring {.
     cdecl, importc: "SDL_GetPlatform", dynlib: SDL2_LIB.}
   ##  Gets the name of the platform.

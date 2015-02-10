@@ -57,9 +57,6 @@
 ##
 ##  All of the atomic operations that modify memory are full memory barriers.
 
-import
-  sdl_libname
-
 # AtomicLock
 #
 # The atomic locks are efficient spinlocks using CPU instructions,

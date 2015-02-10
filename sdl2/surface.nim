@@ -23,13 +23,6 @@
 ##
 ##  Header file for Surface definition and management functions.
 
-import
-  sdl_libname,
-  pixels,
-  rect,
-  blendmode,
-  rwops
-
 # Surface flags
 # These are the currently supported flags for the Surface.
 #

@@ -19,9 +19,6 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 
-import
-  sdl_libname
-
 proc getTicks*(): uint32 {.
     cdecl, importc: "SDL_GetTicks", dynlib: SDL2_LIB.}
   ## Get the number of milliseconds since the SDL library initialization.

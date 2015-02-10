@@ -1,10 +1,11 @@
 {.deadCodeElim: on.}
 
 template decl(libname: expr, debug_name, release_name: string) {.immediate.} =
-  when defined debug:
-    const `libname`* {.inject.} = debug_name
-  else:
-    const `libname`* {.inject.} = release_name
+  when not declared `libname`:
+    when defined debug:
+      const `libname`* {.inject.} = debug_name
+    else:
+      const `libname`* {.inject.} = release_name
 
 when defined windows:
 

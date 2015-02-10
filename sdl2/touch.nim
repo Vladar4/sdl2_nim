@@ -23,10 +23,6 @@
 ##
 ##  Include file for SDL touch event handling.
 
-import
-  sdl_libname,
-  video
-
 type
   TouchID* = int64
 

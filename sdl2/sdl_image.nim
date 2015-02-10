@@ -22,11 +22,7 @@
 ##  A simple library to load images of various formats as SDL surfaces
 
 import
-  render,
-  rwops,
-  surface,
-  version,
-  sdl_libname
+  sdl
 
 # Printable format: "$1.$2.$3" % [MAJOR, MINOR, PATCHLEVEL]
 const

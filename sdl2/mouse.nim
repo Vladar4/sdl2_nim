@@ -23,11 +23,6 @@
 ##
 ##  Include file for SDL mouse event handling.
 
-import
-  sdl_libname,
-  surface,
-  video
-
 type
   Cursor* = pointer ##  Implementation dependent
 

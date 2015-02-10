@@ -23,7 +23,6 @@
 ##
 ##  Defines keyboard scancodes.
 
-
 type
   Scancode* {.size: sizeof(cint).} = enum ##  \
     ##  The SDL keyboard scancode representation.

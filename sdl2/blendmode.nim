@@ -21,7 +21,7 @@
 
 ##  blendmode.nim
 ##
-##  Header file declaring the SDL_BlendMode enumeration
+##  Header file declaring the BlendMode enumeration
 
 type
   BlendMode* {.size: sizeof(cint).} = enum ##  \

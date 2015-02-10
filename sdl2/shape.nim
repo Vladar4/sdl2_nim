@@ -21,12 +21,6 @@
 
 ##  Header file for the shaped window API.
 
-import
-  pixels,
-  surface,
-  video,
-  sdl_libname
-
 const
   NONSHAPEABLE_WINDOW* = - 1
   INVALID_SHAPE_ARGUMENT* = - 2

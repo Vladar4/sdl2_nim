@@ -23,11 +23,6 @@
 ##
 ##  Header file for RectObj definition and management functions.
 
-import
-  sdl_libname,
-  pixels,
-  rwops
-
 type
   Point* = object ##  \
     ##  The object that defines a point

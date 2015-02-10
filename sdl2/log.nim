@@ -35,9 +35,6 @@
 ##
 ##      Others: standard error output (stderr)
 
-import
-  sdl_libname
-
 const
   MAX_LOG_MESSAGE* = 4096 ##  \
   ##  The maximum size of a log message

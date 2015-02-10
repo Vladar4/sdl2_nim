@@ -23,9 +23,6 @@
 ##
 ## Include file for SDL clipboard handling
 
-import
-  sdl_libname
-
 # Function prototypes
 
 proc setClipboardText*(text: cstring): cint {.

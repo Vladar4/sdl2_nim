@@ -23,9 +23,6 @@
 ##
 ##  Simple error message routines for SDL.
 
-import
-  sdl_libname
-
 proc setError*(fmt: cstring): cint {.
     varargs, cdecl, importc: "SDL_SetError", dynlib: SDL2_LIB.}
   ##  ``setError()`` unconditionally returns -1.

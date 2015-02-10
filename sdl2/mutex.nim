@@ -19,12 +19,6 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 
-
-
-import
-  unsigned,
-  sdl_libname
-
 const
   MUTEX_TIMEDOUT* = 1 ##  \
     ##  Synchronization functions which can time out return this value

@@ -23,10 +23,6 @@
 ##
 ##  Access to the raw audio mixing buffer for the SDL library.
 
-import
-  sdl_libname,
-  rwops
-
 type
   AudioFormat* = uint16 ##  \
     ##  Audio format flags.
