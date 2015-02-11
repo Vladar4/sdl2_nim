@@ -300,3 +300,6 @@ type
     KMOD_CAPS = 0x00002000,
     KMOD_MODE = 0x00004000,
     KMOD_RESERVED = 0x00008000
+
+template `or`*(a, b: Keymod): Keymod =
+  a.cint or b.cint

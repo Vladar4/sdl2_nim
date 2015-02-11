@@ -100,27 +100,44 @@ type
     ##
     ##  ``showWindow()``
 
-type
-  WindowFlags* {.size: sizeof(cint).} = enum ##  \
-    ##  The flags on a window
-    ##
-    ##  See also:
-    ##
-    ##  ``getWindowFlags()``
-    WINDOW_FULLSCREEN     = 0x00000001, ## fullscreen window 
-    WINDOW_OPENGL         = 0x00000002, ## window usable with OpenGL context 
-    WINDOW_SHOWN          = 0x00000004, ## window is visible 
-    WINDOW_HIDDEN         = 0x00000008, ## window is not visible 
-    WINDOW_BORDERLESS     = 0x00000010, ## no window decoration 
-    WINDOW_RESIZABLE      = 0x00000020, ## window can be resized 
-    WINDOW_MINIMIZED      = 0x00000040, ## window is minimized 
-    WINDOW_MAXIMIZED      = 0x00000080, ## window is maximized 
-    WINDOW_INPUT_GRABBED  = 0x00000100, ## window has grabbed input focus 
-    WINDOW_INPUT_FOCUS    = 0x00000200, ## window has input focus 
-    WINDOW_MOUSE_FOCUS    = 0x00000400, ## window has mouse focus 
-    WINDOW_FOREIGN        = 0x00000800, ## window not created by SDL 
-    WINDOW_FULLSCREEN_DESKTOP = (WINDOW_FULLSCREEN.int or 0x00001000),
-    WINDOW_ALLOW_HIGHDPI  = 0x00002000
+#type
+#  WindowFlags* {.size: sizeof(cint).} = enum ##  \
+#    ##  The flags on a window
+#    ##
+#    ##  See also:
+#    ##
+#    ##  ``getWindowFlags()``
+#    WINDOW_FULLSCREEN     = 0x00000001, ## fullscreen window
+#    WINDOW_OPENGL         = 0x00000002, ## window usable with OpenGL context
+#    WINDOW_SHOWN          = 0x00000004, ## window is visible
+#    WINDOW_HIDDEN         = 0x00000008, ## window is not visible
+#    WINDOW_BORDERLESS     = 0x00000010, ## no window decoration
+#    WINDOW_RESIZABLE      = 0x00000020, ## window can be resized
+#    WINDOW_MINIMIZED      = 0x00000040, ## window is minimized
+#    WINDOW_MAXIMIZED      = 0x00000080, ## window is maximized
+#    WINDOW_INPUT_GRABBED  = 0x00000100, ## window has grabbed input focus
+#    WINDOW_INPUT_FOCUS    = 0x00000200, ## window has input focus
+#    WINDOW_MOUSE_FOCUS    = 0x00000400, ## window has mouse focus
+#    WINDOW_FOREIGN        = 0x00000800, ## window not created by SDL
+#    WINDOW_FULLSCREEN_DESKTOP = (WINDOW_FULLSCREEN.int or 0x00001000),
+#    WINDOW_ALLOW_HIGHDPI  = 0x00002000
+
+# WindowFlags
+const
+  WINDOW_FULLSCREEN*    = 0x00000001  ## fullscreen window
+  WINDOW_OPENGL*        = 0x00000002  ## window usable with OpenGL context
+  WINDOW_SHOWN*         = 0x00000004  ## window is visible
+  WINDOW_HIDDEN*        = 0x00000008  ## window is not visible
+  WINDOW_BORDERLESS*    = 0x00000010  ## no window decoration
+  WINDOW_RESIZABLE*     = 0x00000020  ## window can be resized
+  WINDOW_MINIMIZED*     = 0x00000040  ## window is minimized
+  WINDOW_MAXIMIZED*     = 0x00000080  ## window is maximized
+  WINDOW_INPUT_GRABBED* = 0x00000100  ## window has grabbed input focus
+  WINDOW_INPUT_FOCUS*   = 0x00000200  ## window has input focus
+  WINDOW_MOUSE_FOCUS*   = 0x00000400  ## window has mouse focus
+  WINDOW_FOREIGN*       = 0x00000800  ## window not created by SDL
+  WINDOW_FULLSCREEN_DESKTOP* = (WINDOW_FULLSCREEN or 0x00001000)
+  WINDOW_ALLOW_HIGHDPI* = 0x00002000
 
 const
   WINDOWPOS_UNDEFINED_MASK* = 0x1FFF0000

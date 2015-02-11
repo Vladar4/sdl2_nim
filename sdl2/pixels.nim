@@ -88,7 +88,7 @@ const
   PACKEDLAYOUT_2101010* = 7
   PACKEDLAYOUT_1010102* = 8
 
-template definePixelFourCC*(a, b, c, d: expr): expr = 
+template definePixelFourCC*(a, b, c, d: expr): expr =
   fourCC(ord(a), ord(b), ord(c), ord(d))
 
 template definePixelFormat*(kind, order, layout, bits, bytes: expr): expr =

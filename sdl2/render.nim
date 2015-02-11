@@ -43,17 +43,29 @@
 ##  These functions must be called from the main thread.
 ##  See this bug for details: http://bugzilla.libsdl.org/show_bug.cgi?id=1995
 
-type
-  RendererFlags* {.size: sizeof(cint).} = enum ##  \
-    ##  Flags used when creating a rendering context
-    RENDERER_SOFTWARE = 0x00000001, ##  \
-      ##  The renderer is a software fallback
-    RENDERER_ACCELERATED = 0x00000002, ##  \
-      ##  The renderer uses hardware acceleration
-    RENDERER_PRESENTVSYNC = 0x00000004, ##  \
-      ##  Present is synchronized with the refresh rate
-    RENDERER_TARGETTEXTURE = 0x00000008 ##  \
-      ##  Ther render supports rendering to texture
+#type
+#  RendererFlags* {.size: sizeof(cint).} = enum ##  \
+#    ##  Flags used when creating a rendering context
+#    RENDERER_SOFTWARE = 0x00000001, ##  \
+#      ##  The renderer is a software fallback
+#    RENDERER_ACCELERATED = 0x00000002, ##  \
+#      ##  The renderer uses hardware acceleration
+#    RENDERER_PRESENTVSYNC = 0x00000004, ##  \
+#      ##  Present is synchronized with the refresh rate
+#    RENDERER_TARGETTEXTURE = 0x00000008 ##  \
+#      ##  Ther render supports rendering to texture
+
+# RendererFlags
+# Flags used when creating a rendering context
+const
+  RENDERER_SOFTWARE* = 0x00000001 ##  \
+    ##  The renderer is a software fallback
+  RENDERER_ACCELERATED* = 0x00000002  ##  \
+    ##  The renderer uses hardware acceleration
+  RENDERER_PRESENTVSYNC* = 0x00000004 ##  \
+    ##  Present is synchronized with the refresh rate
+  RENDERER_TARGETTEXTURE* = 0x00000008  ##  \
+    ##  Ther render supports rendering to texture
 
 type
   RendererInfo* = object ##  \
@@ -65,12 +77,19 @@ type
     max_texture_width*: cint      ## The maximimum texture width
     max_texture_height*: cint     ## The maximimum texture height
 
-type
-  TextureAccess* {.size: sizeof(cint).} = enum ##  \
-    ##  The access pattern allowed for a texture.
-    TEXTUREACCESS_STATIC,    ## Changes rarely, not lockable
-    TEXTUREACCESS_STREAMING, ## Changes frequently, lockable
-    TEXTUREACCESS_TARGET     ## Texture can be used as a render target
+#type
+#  TextureAccess* {.size: sizeof(cint).} = enum ##  \
+#    ##  The access pattern allowed for a texture.
+#    TEXTUREACCESS_STATIC,    ## Changes rarely, not lockable
+#    TEXTUREACCESS_STREAMING, ## Changes frequently, lockable
+#    TEXTUREACCESS_TARGET     ## Texture can be used as a render target
+
+# TextureAccess
+# The access pattern allowed for a texture
+const
+  TEXTUREACCESS_STATIC* = 0x00000000  ## Changes rarely, not lockable
+  TEXTUREACCESS_STREAMING* = 0x00000001 ## Changes frequently, lockable
+  TEXTUREACCESS_TARGET* = 0x00000002  ## Texture can be used as a render target
 
 type
   TextureModulate* {.size: sizeof(cint).} = enum ##  \

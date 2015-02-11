@@ -34,14 +34,23 @@ proc linkedVersion*(): ptr Version {.
   ##  library. It should NOT be used to fill a version structure, instead you
   ##  should use the ``version()`` template.
 
-type
-  InitFlags* {.size: sizeof(cint).} = enum
-    INIT_FLAC = 0x00000001,
-    INIT_MOD = 0x00000002,
-    INIT_MODPLUG = 0x00000004,
-    INIT_MP3 = 0x00000008,
-    INIT_OGG = 0x00000010,
-    INIT_FLUIDSYNTH = 0x00000020
+#type
+#  InitFlags* {.size: sizeof(cint).} = enum
+#    INIT_FLAC = 0x00000001,
+#    INIT_MOD = 0x00000002,
+#    INIT_MODPLUG = 0x00000004,
+#    INIT_MP3 = 0x00000008,
+#    INIT_OGG = 0x00000010,
+#    INIT_FLUIDSYNTH = 0x00000020
+
+# InitFlags
+const
+  INIT_FLAC* = 0x00000001
+  INIT_MOD* = 0x00000002
+  INIT_MODPLUG* = 0x00000004
+  INIT_MP3* = 0x00000008
+  INIT_OGG* = 0x00000010
+  INIT_FLUIDSYNTH* = 0x00000020
 
 proc init*(flags: cint): cint {.
     cdecl, importc: "Mix_Init", dynlib: SDL2_MIX_LIB.}

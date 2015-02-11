@@ -19,20 +19,35 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 
-type
-  MessageBoxFlags* {.size: sizeof(cint).} = enum ##  \
-    ##  If supported will display warning icon, etc.
-    MESSAGEBOX_ERROR = 0x00000010,      ##  error dialog
-    MESSAGEBOX_WARNING = 0x00000020,    ##  warning dialog
-    MESSAGEBOX_INFORMATION = 0x00000040 ##  informational dialog
+#type
+#  MessageBoxFlags* {.size: sizeof(cint).} = enum ##  \
+#    ##  If supported will display warning icon, etc.
+#    MESSAGEBOX_ERROR = 0x00000010,      ##  error dialog
+#    MESSAGEBOX_WARNING = 0x00000020,    ##  warning dialog
+#    MESSAGEBOX_INFORMATION = 0x00000040 ##  informational dialog
 
-type
-  MessageBoxButtonFlags* {.size: sizeof(cint).} = enum ##  \
-    ##  Flags for ``MessageBoxButtonData``.
-    MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT = 0x00000001, ##  \
-      ##  Marks the default button when return is hit
-    MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT = 0x00000002  ##  \
-      ##  Marks the default button when escape is hit
+# MessageBoxFlags
+# If supported will display warning icon, etc.
+const
+  MESSAGEBOX_ERROR* = 0x00000010       ##  error dialog
+  MESSAGEBOX_WARNING* = 0x00000020     ##  warning dialog
+  MESSAGEBOX_INFORMATION* = 0x00000040 ##  informational dialog
+
+#type
+#  MessageBoxButtonFlags* {.size: sizeof(cint).} = enum ##  \
+#    ##  Flags for ``MessageBoxButtonData``.
+#    MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT = 0x00000001, ##  \
+#      ##  Marks the default button when return is hit
+#    MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT = 0x00000002  ##  \
+#      ##  Marks the default button when escape is hit
+
+# MessageBoxButtonFlags
+# Flags for MessageBoxButtonData
+const
+  MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT* = 0x00000001  ##  \
+    ##  Marks the default button when return is hit
+  MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT* = 0x00000002  ##  \
+    ##  Marks the default button when escape is hit
 
 type
   MessageBoxButtonData* = object ##  \
