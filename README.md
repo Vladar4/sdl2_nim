@@ -8,15 +8,24 @@ sdl2-nim is a wrapper of the SDL 2 library for the Nim language.
 
 You need to have SDL 2 dynamic libraries installed on your system.
 
+What does not implemented here:
+-------------------------------
+
+* SDL_egl.h
+* SDL_opengl.h
+* SDL_opengles.h
+* SDL_opengles2.h
+* SDL_syswm.h
+
 ----------------------------------------
 
 CHANGELOG:
 ==========
-**v0.95 beta**
+**v0.95 beta {*WIP*}**
 * Nim 0.10.2 adaptation.
 * Update to SDL2-2.0.3
 * added SDL2-gfx
-* *WIP*
+* {***WIP***}
 
 **v0.9 alpha**
 * added SDL2-mixer

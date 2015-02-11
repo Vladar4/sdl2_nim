@@ -29,7 +29,7 @@ const
   PRESSED*  = 1
 
 type
-  EventType* {.size: sizeof(cint).} = enum ##  \
+  EventKind* {.size: sizeof(uint32).} = enum ##  \
     ##  The types of events that can be delivered.
 
     FIRSTEVENT = 0, ##  Unused (do not remove)
@@ -488,7 +488,7 @@ type
 
 proc peepEvents*(
     events: ptr Event; numevents: cint; action: EventAction;
-    minType: uint32; maxType: uint32): cint {.
+    minKind: uint32; maxKind: uint32): cint {.
       cdecl, importc: "SDL_PeepEvents", dynlib: SDL2_LIB.}
   ##  Checks the event queue for messages and optionally returns them.
   ##
@@ -512,14 +512,14 @@ proc hasEvent*(kind: uint32): bool {.
     cdecl, importc: "SDL_HasEvent", dynlib: SDL2_LIB.}
   ##  Checks to see if certain event types are in the event queue.
 
-proc hasEvents*(minType: uint32; maxType: uint32): bool {.
+proc hasEvents*(minKind: uint32; maxKind: uint32): bool {.
     cdecl, importc: "SDL_HasEvents", dynlib: SDL2_LIB.}
 
 proc flushEvent*(kind: uint32) {.
     cdecl, importc: "SDL_FlushEvent", dynlib: SDL2_LIB.}
   ##  This function clears events from the event queue
 
-proc flushEvents*(minType: uint32; maxType: uint32) {.
+proc flushEvents*(minKind: uint32; maxKind: uint32) {.
     cdecl, importc: "SDL_FlushEvents", dynlib: SDL2_LIB.}
 
 proc pollEvent*(event: ptr Event): cint {.
