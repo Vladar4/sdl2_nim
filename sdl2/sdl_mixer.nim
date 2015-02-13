@@ -748,3 +748,9 @@ proc getChunk*(channel: cint): ptr Chunk {.
 proc closeAudio*() {.
     cdecl, importc: "Mix_CloseAudio", dynlib: SDL2_MIX_LIB.}
   ##  Close the mixer, halting all playing audio.
+
+template setError*(fmt: expr): cint =
+  sdl.setError(fmt)
+
+template getError*(fmt: expr): cstring =
+  sdl.getError()

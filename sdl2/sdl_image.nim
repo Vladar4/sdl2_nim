@@ -200,3 +200,9 @@ proc savePNG*(surface: ptr Surface; file: cstring): cint {.
 
 proc savePNG_RW*(surface: ptr Surface; dst: ptr RWops; freedst: cint): cint {.
     cdecl, importc: "IMG_SavePNG_RW", dynlib: SDL2_IMG_LIB.}
+
+template setError*(fmt: expr): cint =
+  sdl.setError(fmt)
+
+template getError*(fmt: expr): cstring =
+  sdl.getError()
