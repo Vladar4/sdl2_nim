@@ -96,14 +96,11 @@ proc getVersion*(ver: ref Version) {.
   ##  This function returns the current version, while version() is a
   ##  template that tells you what version you compiled with.
   ##
+  ##  .. code-block:: nim
   ##    var compiled, linked: Version
-  ##
   ##    version(compiled)
-  ##
   ##    getVersion(addr(linked))
-  ##
   ##    echo("We compiled against SDL version $1.$2.$3 ...", [$compiled.major, $compiled.minor, $compiled.patch])
-  ##
   ##    echo("But we linked against SDL version $1.$2.$3.", [$linked.major, $linked.minor, $linked.patch])
   ##
   ##  This function may be called safely at any time, even before ``init()``.

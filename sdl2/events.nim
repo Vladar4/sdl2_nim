@@ -39,7 +39,7 @@ type
     QUIT = 0x00000100,  ##  User-requested quit
 
     # These application events have special meaning on iOS,
-    # see README-ios.txt for details 
+    # see README-ios.txt for details.
 
     APP_TERMINATING,  ##  \
       ##  The application is being terminated by the OS

@@ -29,13 +29,13 @@
 
 # Function Prototypes
 
-##  1.) MMX functions work best if all data blocks are aligned
+##  1. MMX functions work best if all data blocks are aligned
 ##  on a 32 bytes boundary.
 ##
-##  2.) Data that is not within an 8 byte boundary is processed
+##  2. Data that is not within an 8 byte boundary is processed
 ##  using the C routine.
 ##
-##  3.) Convolution routines do not have C routines at this time.
+##  3. Convolution routines do not have C routines at this time.
 
 proc imageFilterMMXdetect*(): cint {.
     cdecl, importc: "SDL_imageFilterMMXdetect", dynlib: SDL2_GFX_LIB.}

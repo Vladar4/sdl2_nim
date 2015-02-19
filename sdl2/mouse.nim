@@ -116,15 +116,14 @@ proc createCursor*(
   ##
   ##  The cursor is created in black and white according to the following:
   ##
+  ##    ====  ====  ========================================
   ##    data  mask  resulting pixel on screen
-  ##
+  ##    ====  ====  ========================================
   ##    0     1     White
-  ##
   ##    1     1     Black
-  ##
   ##    0     0     Transparent
-  ##
   ##    1     0     Inverted color if possible, black if not.
+  ##    ====  ====  =========================================
   ##
   ##  See also:
   ##

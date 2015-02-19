@@ -298,33 +298,48 @@ type
     ##  (force coming from the south means the user will have to pull
     ##  the stick to counteract):
     ##
+    ##  .. code-block:: nim
     ##    var direction: HapticDirection
-    ##
     ##    # Cartesian directions
-    ##
     ##    direction.type = HAPTIC_CARTESIAN
-    ##
     ##    direction.dir[0] = 0  # X position
-    ##
     ##    direction.dir[1] = 1  # Y position
-    ##
     ##    # Assuming the device has 2 axes,
-    ##
     ##    # we don't need to specify third parameter.
-    ##
     ##    # Polar directions
-    ##
     ##    direction.type = HAPTIC_POLAR
-    ##
     ##    direction.dir[0] = 18000  # Polar only uses first parameter
-    ##
     ##    # Spherical coordinates
-    ##
     ##    direction.type = HAPTIC_SPHERICAL # Spherical encoding
-    ##
     ##    direction.dir[0] = 9000
-    ##
     ##    # Since we only have two axes we don't need more parameters.
+    ##
+    ##  The following diagram represents the cardinal directions:
+    ##  ::
+    ##                 .--.
+    ##                 |__| .-------.
+    ##                 |=.| |.-----.|
+    ##                 |--| ||     ||
+    ##                 |  | |'-----'|
+    ##                 |__|~')_____('
+    ##                   [ COMPUTER ]
+    ##
+    ##
+    ##                     North (0,-1)
+    ##                         ^
+    ##                         |
+    ##                         |
+    ##    (1,0)  West <----[ HAPTIC ]----> East (-1,0)
+    ##                         |
+    ##                         |
+    ##                         v
+    ##                      South (0,1)
+    ##
+    ##
+    ##                      [ USER ]
+    ##                        \|||/
+    ##                        (o o)
+    ##                  ---ooO-(_)-Ooo---
     ##
     ##  See also:
     ##
@@ -339,31 +354,6 @@ type
     ##  ``SDL_HapticNumAxes()``
     kind*: uint8          ##  The type of encoding.
     dir*: array[3, int32] ##  The encoded direction.
-    #   The following diagram represents the cardinal directions:
-    #                 .--.
-    #                 |__| .-------.
-    #                 |=.| |.-----.|
-    #                 |--| ||     ||
-    #                 |  | |'-----'|
-    #                 |__|~')_____('
-    #                   [ COMPUTER ]
-    #
-    #
-    #                     North (0,-1)
-    #                         ^
-    #                         |
-    #                         |
-    #    (1,0)  West <----[ HAPTIC ]----> East (-1,0)
-    #                         |
-    #                         |
-    #                         v
-    #                      South (0,1)
-    #
-    #
-    #                      [ USER ]
-    #                        \|||/
-    #                        (o o)
-    #                  ---ooO-(_)-Ooo---
 
 type
   HapticConstantObj* = object
@@ -422,6 +412,33 @@ type
     ##  * `36000`: Displaced 100% of its period,
     ##    same as `0`, but `0` is preferred.
     ##
+    ##  Examples:
+    ##  ::
+    ##    SDL_HAPTIC_SINE
+    ##      __      __      __      __
+    ##     /  \    /  \    /  \    /
+    ##    /    \__/    \__/    \__/
+    ##
+    ##    SDL_HAPTIC_SQUARE
+    ##     __    __    __    __    __
+    ##    |  |  |  |  |  |  |  |  |  |
+    ##    |  |__|  |__|  |__|  |__|  |
+    ##
+    ##    SDL_HAPTIC_TRIANGLE
+    ##      /\    /\    /\    /\    /\
+    ##     /  \  /  \  /  \  /  \  /
+    ##    /    \/    \/    \/    \/
+    ##
+    ##    SDL_HAPTIC_SAWTOOTHUP
+    ##      /|  /|  /|  /|  /|  /|  /|
+    ##     / | / | / | / | / | / | / |
+    ##    /  |/  |/  |/  |/  |/  |/  |
+    ##
+    ##    SDL_HAPTIC_SAWTOOTHDOWN
+    ##    \  |\  |\  |\  |\  |\  |\  |
+    ##     \ | \ | \ | \ | \ | \ | \ |
+    ##      \|  \|  \|  \|  \|  \|  \|
+    ##
     ##  See also
     ##
     ##  `HAPTIC_SINE`
@@ -456,32 +473,6 @@ type
     attack_level*: uint16   ##  Level at the start of the attack.
     fade_length*: uint16    ##  Duration of the fade.
     fade_level*: uint16     ##  Level at the end of the fade.
-    #   Examples:
-    #
-    #    SDL_HAPTIC_SINE
-    #      __      __      __      __
-    #     /  \    /  \    /  \    /
-    #    /    \__/    \__/    \__/
-    #
-    #    SDL_HAPTIC_SQUARE
-    #     __    __    __    __    __
-    #    |  |  |  |  |  |  |  |  |  |
-    #    |  |__|  |__|  |__|  |__|  |
-    #
-    #    SDL_HAPTIC_TRIANGLE
-    #      /\    /\    /\    /\    /\
-    #     /  \  /  \  /  \  /  \  /
-    #    /    \/    \/    \/    \/
-    #
-    #    SDL_HAPTIC_SAWTOOTHUP
-    #      /|  /|  /|  /|  /|  /|  /|
-    #     / | / | / | / | / | / | / |
-    #    /  |/  |/  |/  |/  |/  |/  |
-    #
-    #    SDL_HAPTIC_SAWTOOTHDOWN
-    #    \  |\  |\  |\  |\  |\  |\  |
-    #     \ | \ | \ | \ | \ | \ | \ |
-    #      \|  \|  \|  \|  \|  \|  \|
 
 type
   HapticConditionObj* = object ##  \
@@ -658,27 +649,41 @@ type
     ##
     ##  Common parts:
     ##
+    ##  .. code-block:: nim
     ##    # Replay - All effects have this
-    ##
     ##    length: uint32      # Duration of effect (ms).
-    ##
     ##    delay: uint16       # Delay before starting effect.
-    ##
     ##    # Trigger - All effects have this
-    ##
     ##    button: uint16      # Button that triggers effect.
-    ##
     ##    interval: uint16    # How soon before effect can be triggered again.
-    ##
     ##    # Envelope - All effects except condition effects have this
-    ##
     ##    attack_length: uint16   # Duration of the attack (ms).
-    ##
     ##    attack_level: uint16    # Level at the start of the attack.
-    ##
     ##    fade_length: uint16     # Duration of the fade out (ms).
-    ##
     ##    fade_level: uint16      # Level at the end of the fade.
+    ##
+    ##  Here we have an example of a constant effect evolution in time:
+    ##  ::
+    ##    Strength
+    ##    ^
+    ##    |
+    ##    |    effect level -->  _________________
+    ##    |                     /                 \
+    ##    |                    /                   \
+    ##    |                   /                     \
+    ##    |                  /                       \
+    ##    | attack_level --> |                        \
+    ##    |                  |                        |  <---  fade_level
+    ##    |
+    ##    +--------------------------------------------------> Time
+    ##                       [--]                 [---]
+    ##                       attack_length        fade_length
+    ##
+    ##    [------------------][-----------------------]
+    ##    delay               length
+    ##
+    ##  Note either the attack_level or the fade_level may be above the actual
+    ##  effect level.
     ##
     ##  See also:
     ##
@@ -701,28 +706,6 @@ type
     ramp*: HapticRampObj            ##  Ramp effect.
     leftright*: HapticLeftRightObj  ##  Left/Right effect.
     custom*: HapticCustomObj        ##  Custom effect.
-    #   Here we have an example of a constant effect evolution in time:
-    #
-    #    Strength
-    #    ^
-    #    |
-    #    |    effect level -->  _________________
-    #    |                     /                 \
-    #    |                    /                   \
-    #    |                   /                     \
-    #    |                  /                       \
-    #    | attack_level --> |                        \
-    #    |                  |                        |  <---  fade_level
-    #    |
-    #    +--------------------------------------------------> Time
-    #                       [--]                 [---]
-    #                       attack_length        fade_length
-    #
-    #    [------------------][-----------------------]
-    #    delay               length
-    #
-    #   Note either the attack_level or the fade_level may be above the actual
-    #   effect level.
 
 # Function prototypes
 

@@ -175,8 +175,7 @@ type
     WINDOWEVENT_HIDDEN,       ## Window has been hidden
     WINDOWEVENT_EXPOSED,      ## Window has been exposed and should be redrawn
     WINDOWEVENT_MOVED,        ## Window has been moved to data1, data2
-                              #                                     
-    WINDOWEVENT_RESIZED,      ## Window has been resized to data1xdata2
+    WINDOWEVENT_RESIZED,      ## Window has been resized to data1*data2
     WINDOWEVENT_SIZE_CHANGED, ##  \
       ##  The window size has changed, either as a result of an API call or
       ##  through the system or user changing the window size.
@@ -189,7 +188,7 @@ type
     WINDOWEVENT_FOCUS_GAINED, ## Window has gained keyboard focus
     WINDOWEVENT_FOCUS_LOST,   ## Window has lost keyboard focus
     WINDOWEVENT_CLOSE         ##  \
-      ##  The window manager requests that the window be closed 
+      ##  The window manager requests that the window be closed
 
 type
   GLContext* = pointer ##  An opaque handle to an OpenGL context.

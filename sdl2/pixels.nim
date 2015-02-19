@@ -228,9 +228,9 @@ type
     version*: uint32
     refcount*: cint
 
-#   Note: Everything in the pixel format structure is read-only.
 type
-  PixelFormat* = object
+  PixelFormat* = object ##  \
+    ##  Note: Everything in the pixel format object is read-only.
     format*: uint32
     palette*: ptr Palette
     BitsPerPixel*: uint8

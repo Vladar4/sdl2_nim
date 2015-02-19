@@ -39,7 +39,12 @@ type
     BLENDMODE_ADD = 0x00000002, ##  \
       ##  additive blending
       ##
-      ##  dstRGB = (srcRGB * srcA) + dstRGB`
+      ##  dstRGB = (srcRGB * srcA) + dstRGB
       ##
       ##  dstA = dstA
-    BLENDMODE_MOD = 0x00000004
+    BLENDMODE_MOD = 0x00000004  ##  \
+      ##  color modulate
+      ##
+      ##  dstRGB = srcRGB * dstRGB
+      ##
+      ##  dstA = dstA

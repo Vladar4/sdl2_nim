@@ -41,12 +41,12 @@ const
   ##
   ##  Messages longer than the maximum size will be truncated
 
-#   The predefined log categories
-#
-#   By default the application category is enabled at the `INFO` level,
-#   the assert category is enabled at the `WARN` level, test is enabled
-#   at the `VERBOSE` level and all other categories are enabled at the
-#   `CRITICAL` level.
+##  **The predefined log categories**
+##
+##  By default the application category is enabled at the `INFO` level,
+##  the assert category is enabled at the `WARN` level, test is enabled
+##  at the `VERBOSE` level and all other categories are enabled at the
+##  `CRITICAL` level.
 const
   LOG_CATEGORY_APPLICATION* = 0
   LOG_CATEGORY_ERROR* = 1
@@ -69,17 +69,12 @@ const
   LOG_CATEGORY_RESERVED10* = 18 ##  \
     ##  Beyond this point is reserved for application use, e.g.
     ##
-    ##      type
-    ##
-    ##        MYAPP_CATEGORY = enum
-    ##
-    ##          MYAPP_CATEGORY_AWESOME1 = LOG_CATEGORY_CUSTOM,
-    ##
-    ##          MYAPP_CATEGORY_AWESOME2,
-    ##
-    ##          MYAPP_CATEGORY_AWESOME3
-    ##
-    ##          ...`
+    ##  .. code-block:: nim
+    ##    type
+    ##      MYAPP_CATEGORY = enum
+    ##        MYAPP_CATEGORY_AWESOME1 = LOG_CATEGORY_CUSTOM,
+    ##        MYAPP_CATEGORY_AWESOME2,
+    ##        MYAPP_CATEGORY_AWESOME3
   LOG_CATEGORY_CUSTOM* = 19
 
 type

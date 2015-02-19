@@ -30,11 +30,9 @@ template ticksPassed*(a, b: expr): bool = ##  \
   ##
   ##  e.g. if you want to wait 100 ms, you could do this:
   ##
-  ##
+  ##  .. code-block:: nim
   ##    var timeout: uint32 = getTicks() + 100
-  ##
   ##    while (not ticksPassed(getTicks(), timeout)):
-  ##
   ##      do work until timeout has elapsed
   ((int32)((b) - (a)) <= 0)
 

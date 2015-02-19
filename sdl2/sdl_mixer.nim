@@ -219,7 +219,7 @@ proc hookMusic*(
     arg: pointer) {.
       cdecl, importc: "Mix_HookMusic", dynlib: SDL2_MIX_LIB.}
   ##  Add your own music player or additional mixer function.
-  ##  If 'mix_func' is NULL, the default music player is re-enabled.
+  ##  If 'mix_func' is `nil`, the default music player is re-enabled.
 
 proc hookMusicFinished*(music_finished: proc () {.cdecl.}) {.
     cdecl, importc: "Mix_HookMusicFinished", dynlib: SDL2_MIX_LIB.}

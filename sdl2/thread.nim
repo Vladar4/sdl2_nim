@@ -141,28 +141,20 @@ proc tlsCreate*(): TLSID {.
   ##  ``Return`` The newly created thread local storage identifier,
   ##  or `0` on error.
   ##
+  ##  .. code-block:: nim
   ##    var
-  ##
   ##      tls_lock: SpinLock
-  ##
   ##      thread_local_storage: SDL_TLSID
   ##
   ##    proc setMyThreadData(value: pointer) =
-  ##
   ##      if not thread_local_storage:
-  ##
   ##        atomicLock(addr(tls_lock))
-  ##
   ##          if not thread_local_storage:
-  ##
   ##            thread_local_storage = tlsCreate()
-  ##
   ##          atomicUnLock(addr(tls_lock))
-  ##
   ##      tlsSet(thread_local_storage, value)
   ##
   ##    proc getMyThreadData(): pointer =
-  ##
   ##      return tlsGet(thread_local_storage)
   ##
   ##  See also:

@@ -128,29 +128,26 @@ proc createCond*(): Cond {.
   ##
   ##  Typical use of condition variables:
   ##
-  ##    Thread A:
+  ##  Thread A:
   ##
-  ##      lockMutex(lock)
+  ##  .. code-block::nim
+  ##    lockMutex(lock)
   ##
-  ##      while (not condition):
+  ##    while (not condition):
   ##
-  ##        condWait(cond, lock)
+  ##      condWait(cond, lock)
   ##
-  ##      unlockMutex(lock)
+  ##    unlockMutex(lock)
   ##
-  ##    Thread B:
+  ##  Thread B:
   ##
-  ##      lockMutex(lock)
-  ##
-  ##      ...
-  ##
-  ##      condition = true
-  ##
-  ##      ...
-  ##
-  ##      condSignal(cond)
-  ##
-  ##      unlockMutex(lock)
+  ##  .. code-block:: nim
+  ##    lockMutex(lock)
+  ##    ...
+  ##    condition = true
+  ##    ...
+  ##    condSignal(cond)
+  ##    unlockMutex(lock)
   ##
   ##  There is some discussion whether to signal the condition variable
   ##  with the mutex locked or not. There is some potential performance

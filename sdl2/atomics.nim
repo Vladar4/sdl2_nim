@@ -19,7 +19,7 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 
-##  atomic.nim
+##  atomics.nim
 ##
 ##  Atomic operations.
 ##
@@ -57,19 +57,19 @@
 ##
 ##  All of the atomic operations that modify memory are full memory barriers.
 
-# AtomicLock
-#
-# The atomic locks are efficient spinlocks using CPU instructions,
-# but are vulnerable to starvation and can spin forever if a thread
-# holding a lock has been terminated.  For this reason you should
-# minimize the code executed inside an atomic lock and never do
-# expensive things like API or system calls while holding them.
-#
-# The atomic locks are not safe to lock recursively.
-#
-# Porting Note:
-# The spin lock functions and type are required and can not be
-# emulated because they are used in the atomic emulation code.
+##  **AtomicLock**
+##
+##  The atomic locks are efficient spinlocks using CPU instructions,
+##  but are vulnerable to starvation and can spin forever if a thread
+##  holding a lock has been terminated.  For this reason you should
+##  minimize the code executed inside an atomic lock and never do
+##  expensive things like API or system calls while holding them.
+##
+##  The atomic locks are not safe to lock recursively.
+##
+##  Porting Note:
+##  The spin lock functions and type are required and can not be
+##  emulated because they are used in the atomic emulation code.
 
 type
   SpinLock* = cint
@@ -90,7 +90,7 @@ proc atomicLock*(lock: ptr SpinLock) {.
   ##  ``lock`` Points to the lock.
 
 proc atomicUnlock*(lock: ptr SpinLock) {.
-    cdecl, importc: "SDL_AtomicUnlock", dynlib: SDL2_LIB.}
+    cdecl, importc: "SDL_AtomicUnlock", dynlib: SDL2_LIB .}
   ##  Unlock a spin lock by setting it to `0`. Always returns immediately.
   ##
   ##  ``lock`` Points to the lock.

@@ -57,14 +57,11 @@ type
 
 ##  To count the number of game controllers in the system for the following:
 ##
+##  .. code-block:: nim
 ##    var nJoysticks: int = numJoysticks()
-##
 ##    var nGameControllers: int = 0
-##
 ##    for i in 0..nJoysticks-1:
-##
 ##      if isGameController(i):
-##
 ##        inc(nGameControllers)
 ##
 ##  Using the `HINT_GAMECONTROLLERCONFIG` hint or
