@@ -43,13 +43,13 @@ const
 # Rotozoom functions
 
 proc rotozoomSurface*(
-    src: ptr Surface; angle: cdouble;
-    zoom: cdouble; smooth: cint): ptr Surface {.
+    src: Surface; angle: cdouble;
+    zoom: cdouble; smooth: cint): Surface {.
       cdecl, importc: "rotozoomSurface", dynlib: SDL2_GFX_LIB.}
 
 proc rotozoomSurfaceXY*(
-    src: ptr Surface; angle: cdouble;
-    zoomx: cdouble; zoomy: cdouble; smooth: cint): ptr Surface {.
+    src: Surface; angle: cdouble;
+    zoomx: cdouble; zoomy: cdouble; smooth: cint): Surface {.
       cdecl, importc: "rotozoomSurfaceXY", dynlib: SDL2_GFX_LIB.}
 
 proc rotozoomSurfaceSize*(
@@ -65,8 +65,8 @@ proc rotozoomSurfaceSizeXY*(
 # Zooming functions
 
 proc zoomSurface*(
-    src: ptr Surface;
-    zoomx: cdouble; zoomy: cdouble; smooth: cint): ptr Surface {.
+    src: Surface;
+    zoomx: cdouble; zoomy: cdouble; smooth: cint): Surface {.
       cdecl, importc: "zoomSurface", dynlib: SDL2_GFX_LIB.}
 
 proc zoomSurfaceSize*(
@@ -77,11 +77,11 @@ proc zoomSurfaceSize*(
 # Shrinking functions
 
 proc shrinkSurface*(
-    src: ptr Surface; factorx: cint; factory: cint): ptr Surface {.
+    src: Surface; factorx: cint; factory: cint): Surface {.
       cdecl, importc: "shrinkSurface", dynlib: SDL2_GFX_LIB.}
 
 # Specialized rotation functions
 
 proc rotateSurface90Degrees*(
-    src: ptr Surface; numClockwiseTurns: cint): ptr Surface {.
+    src: Surface; numClockwiseTurns: cint): Surface {.
       cdecl, importc: "rotateSurface90Degrees", dynlib: SDL2_GFX_LIB.}

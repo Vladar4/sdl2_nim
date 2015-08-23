@@ -341,7 +341,7 @@ proc filledPolygonRGBA*(
 
 proc texturedPolygon*(
     renderer: Renderer; vx: ptr int16; vy: ptr int16;
-    n: cint; texture: ptr Surface; texture_dx: cint; texture_dy: cint): cint {.
+    n: cint; texture: Surface; texture_dx: cint; texture_dy: cint): cint {.
       cdecl, importc: "texturedPolygon", dynlib: SDL2_GFX_LIB.}
 
 # Bezier

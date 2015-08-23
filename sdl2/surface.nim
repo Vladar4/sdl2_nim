@@ -39,7 +39,8 @@ template mustLock*(s: expr): expr = ##  \
 
 # 
 type
-  Surface* = object ##  \
+  Surface* = ptr SurfaceObj
+  SurfaceObj* = object ##  \
     ##  A collection of pixels used in software blitting.
     ##
     ##  ``Note:`` This object should be treated as read-only, except for
@@ -65,13 +66,13 @@ type
 
 type
   blit* = proc (
-      src: ptr Surface; srcrect: ptr Rect;
-      dst: ptr Surface; dstrect: ptr Rect): cint {.cdecl.} ##  \
+      src: Surface; srcrect: ptr Rect;
+      dst: Surface; dstrect: ptr Rect): cint {.cdecl.} ##  \
     ##  The type of function used for surface blitting functions.
 
 proc createRGBSurface*(
     flags: uint32; width: cint; height: cint; depth: cint;
-    rMask: uint32; gMask: uint32; bMask: uint32; aMask: uint32): ptr Surface {.
+    rMask: uint32; gMask: uint32; bMask: uint32; aMask: uint32): Surface {.
       cdecl, importc: "SDL_CreateRGBSurface", dynlib: SDL2_LIB.}
   ##  Allocate and free an RGB surface.
   ##
@@ -99,13 +100,13 @@ proc createRGBSurface*(
 
 proc createRGBSurfaceFrom*(
     pixels: pointer; width: cint; height: cint; depth: cint; pitch: cint;
-    rMask: uint32; gMask: uint32; bMask: uint32; aMask: uint32): ptr Surface {.
+    rMask: uint32; gMask: uint32; bMask: uint32; aMask: uint32): Surface {.
       cdecl, importc: "SDL_CreateRGBSurfaceFrom", dynlib: SDL2_LIB.}
 
-proc freeSurface*(surface: ptr Surface) {.
+proc freeSurface*(surface: Surface) {.
     cdecl, importc: "SDL_FreeSurface", dynlib: SDL2_LIB.}
 
-proc setSurfacePalette*(surface: ptr Surface; palette: ptr Palette): cint {.
+proc setSurfacePalette*(surface: Surface; palette: ptr Palette): cint {.
     cdecl, importc: "SDL_SetSurfacePalette", dynlib: SDL2_LIB.}
   ##  Set the palette used by a surface.
   ##
@@ -113,7 +114,7 @@ proc setSurfacePalette*(surface: ptr Surface; palette: ptr Palette): cint {.
   ##
   ##  ``Note:`` A single palette can be shared with many surfaces.
 
-proc lockSurface*(surface: ptr Surface): cint {.
+proc lockSurface*(surface: Surface): cint {.
     cdecl, importc: "SDL_LockSurface", dynlib: SDL2_LIB.}
   ##  Sets up a surface for directly accessing the pixels.
   ##
@@ -135,13 +136,13 @@ proc lockSurface*(surface: ptr Surface): cint {.
   ##
   ##  ``unlockSurface()``
 
-proc unlockSurface*(surface: ptr Surface) {.
+proc unlockSurface*(surface: Surface) {.
     cdecl, importc: "SDL_UnlockSurface", dynlib: SDL2_LIB.}
   ## See also:
   ##
   ## ``lockSurface()``
 
-proc loadBMP_RW*(src: ptr RWops; freesrc: cint): ptr Surface {.
+proc loadBMP_RW*(src: ptr RWops; freesrc: cint): Surface {.
     cdecl, importc: "SDL_LoadBMP_RW", dynlib: SDL2_LIB.}
   ##  Load a surface from a seekable SDL data stream (memory or file).
   ##
@@ -157,7 +158,7 @@ template loadBMP*(file: expr): expr = ##  \
   ##  Convenience macro.
   loadBMP_RW(rwFromFile(file, "rb"), 1)
 
-proc saveBMP_RW*(surface: ptr Surface; dst: ptr RWops; freedst: cint): cint {.
+proc saveBMP_RW*(surface: Surface; dst: ptr RWops; freedst: cint): cint {.
     cdecl, importc: "SDL_SaveBMP_RW", dynlib: SDL2_LIB.}
   ##  Save a surface to a seekable SDL data stream (memory or file).
   ##
@@ -171,7 +172,7 @@ template saveBMP*(surface, file: expr): expr = ##  \
   ##  Convenience macro.
   saveBMP_RW(surface, rwFromFile(file, "wb"), 1)
 
-proc setSurfaceRLE*(surface: ptr Surface; flag: cint): cint {.
+proc setSurfaceRLE*(surface: Surface; flag: cint): cint {.
     cdecl, importc: "SDL_SetSurfaceRLE", dynlib: SDL2_LIB.}
   ##  Sets the RLE acceleration hint for a surface.
   ##
@@ -181,7 +182,7 @@ proc setSurfaceRLE*(surface: ptr Surface; flag: cint): cint {.
   ##  much faster, but the surface must be locked before directly
   ##  accessing the pixels.
 
-proc setColorKey*(surface: ptr Surface; flag: cint; key: uint32): cint {.
+proc setColorKey*(surface: Surface; flag: cint; key: uint32): cint {.
     cdecl, importc: "SDL_SetColorKey", dynlib: SDL2_LIB.}
   ##  Sets the color key (transparent pixel) in a blittable surface.
   ##
@@ -195,7 +196,7 @@ proc setColorKey*(surface: ptr Surface; flag: cint; key: uint32): cint {.
   ##
   ##  You can pass `RLEACCEL` to enable RLE accelerated blits.
 
-proc getColorKey*(surface: ptr Surface; key: ptr uint32): cint {.
+proc getColorKey*(surface: Surface; key: ptr uint32): cint {.
     cdecl, importc: "SDL_GetColorKey", dynlib: SDL2_LIB.}
   ##  Gets the color key (transparent pixel) in a blittable surface.
   ##
@@ -208,7 +209,7 @@ proc getColorKey*(surface: ptr Surface; key: ptr uint32): cint {.
   ##  colorkey is not enabled.
 
 proc setSurfaceColorMod*(
-    surface: ptr Surface; r: uint8; g: uint8; b: uint8): cint {.
+    surface: Surface; r: uint8; g: uint8; b: uint8): cint {.
       cdecl, importc: "SDL_SetSurfaceColorMod", dynlib: SDL2_LIB.}
   ##  Set an additional color value used in blit operations.
   ##
@@ -227,7 +228,7 @@ proc setSurfaceColorMod*(
   ##  ``getSurfaceColorMod()``
 
 proc getSurfaceColorMod*(
-    surface: ptr Surface; r: ptr uint8; g: ptr uint8; b: ptr uint8): cint {.
+    surface: Surface; r: ptr uint8; g: ptr uint8; b: ptr uint8): cint {.
       cdecl, importc: "SDL_GetSurfaceColorMod", dynlib: SDL2_LIB.}
   ##  Get the additional color value used in blit operations.
   ##
@@ -245,7 +246,7 @@ proc getSurfaceColorMod*(
   ##
   ##  ``setSurfaceColorMod()``
 
-proc setSurfaceAlphaMod*(surface: ptr Surface; alpha: uint8): cint {.
+proc setSurfaceAlphaMod*(surface: Surface; alpha: uint8): cint {.
     cdecl, importc: "SDL_SetSurfaceAlphaMod", dynlib: SDL2_LIB.}
   ##  Set an additional alpha value used in blit operations.
   ##
@@ -259,7 +260,7 @@ proc setSurfaceAlphaMod*(surface: ptr Surface; alpha: uint8): cint {.
   ##
   ##  ``getSurfaceAlphaMod()``
 
-proc getSurfaceAlphaMod*(surface: ptr Surface; alpha: ptr uint8): cint {.
+proc getSurfaceAlphaMod*(surface: Surface; alpha: ptr uint8): cint {.
     cdecl, importc: "SDL_GetSurfaceAlphaMod", dynlib: SDL2_LIB.}
   ##  Get the additional alpha value used in blit operations.
   ##
@@ -274,7 +275,7 @@ proc getSurfaceAlphaMod*(surface: ptr Surface; alpha: ptr uint8): cint {.
   ##  ``setSurfaceAlphaMod()``
 
 proc setSurfaceBlendMode*(
-    surface: ptr Surface; blendMode: BlendMode): cint {.
+    surface: Surface; blendMode: BlendMode): cint {.
       cdecl, importc: "SDL_SetSurfaceBlendMode", dynlib: SDL2_LIB.}
   ##  Set the blend mode used for blit operations.
   ##
@@ -289,7 +290,7 @@ proc setSurfaceBlendMode*(
   ##  ``getSurfaceBlendMode()``
 
 proc getSurfaceBlendMode*(
-    surface: ptr Surface; blendMode: ptr BlendMode): cint {.
+    surface: Surface; blendMode: ptr BlendMode): cint {.
       cdecl, importc: "SDL_GetSurfaceBlendMode", dynlib: SDL2_LIB.}
   ##  Get the blend mode used for blit operations.
   ##
@@ -303,7 +304,7 @@ proc getSurfaceBlendMode*(
   ##
   ##  ``setSurfaceBlendMode()``
 
-proc setClipRect*(surface: ptr Surface; rect: ptr Rect): bool {.
+proc setClipRect*(surface: Surface; rect: ptr Rect): bool {.
     cdecl, importc: "SDL_SetClipRect", dynlib: SDL2_LIB.}
   ##  Sets the clipping rectangle for the destination surface in a blit.
   ##
@@ -317,7 +318,7 @@ proc setClipRect*(surface: ptr Surface; rect: ptr Rect): bool {.
   ##  Note that blits are automatically clipped to the edges of the source
   ##  and destination surfaces.
 
-proc getClipRect*(surface: ptr Surface; rect: ptr Rect) {.
+proc getClipRect*(surface: Surface; rect: ptr Rect) {.
     cdecl, importc: "SDL_GetClipRect", dynlib: SDL2_LIB.}
   ##  Gets the clipping rectangle for the destination surface in a blit.
   ##
@@ -325,7 +326,7 @@ proc getClipRect*(surface: ptr Surface; rect: ptr Rect) {.
   ##  with the correct values.
 
 proc convertSurface*(
-    src: ptr Surface; fmt: ptr PixelFormat; flags: uint32): ptr Surface {.
+    src: Surface; fmt: ptr PixelFormat; flags: uint32): Surface {.
       cdecl, importc: "SDL_ConvertSurface", dynlib: SDL2_LIB.}
   ##  Creates a new surface of the specified format, and then copies and maps
   ##  the given surface to it so the blit of the converted surface will be as
@@ -337,7 +338,7 @@ proc convertSurface*(
   ##  surface.
 
 proc convertSurfaceFormat*(
-    src: ptr Surface; pixel_format: uint32; flags: uint32): ptr Surface {.
+    src: Surface; pixel_format: uint32; flags: uint32): Surface {.
       cdecl, importc: "SDL_ConvertSurfaceFormat", dynlib: SDL2_LIB.}
 
 proc convertPixels*(
@@ -350,7 +351,7 @@ proc convertPixels*(
   ##  ``Return`` `0` on success, or `-1` if there was an error.
 
 proc fillRect*(
-    dst: ptr Surface; rect: ptr Rect; color: uint32): cint {.
+    dst: Surface; rect: ptr Rect; color: uint32): cint {.
       cdecl, importc: "SDL_FillRect", dynlib: SDL2_LIB.}
   ##  Performs a fast fill of the given rectangle with ``color``.
   ##
@@ -362,12 +363,12 @@ proc fillRect*(
   ##  ``Return`` `0` on success, or `-1` on error.
 
 proc fillRects*(
-    dst: ptr Surface; rects: ptr Rect; count: cint; color: uint32): cint {.
+    dst: Surface; rects: ptr Rect; count: cint; color: uint32): cint {.
       cdecl, importc: "SDL_FillRects", dynlib: SDL2_LIB.}
 
 template blitSurface*(
-    src: ptr Surface; srcrect: ptr Rect;
-    dst: ptr Surface; dstrect: ptr Rect): cint = ##  \
+    src: Surface; srcrect: ptr Rect;
+    dst: Surface; dstrect: ptr Rect): cint = ##  \
   ##  Performs a fast blit from the source surface to the destination surface.
   ##
   ##  This assumes that the source and destination rectangles are
@@ -447,22 +448,22 @@ template blitSurface*(
   upperBlit(src, srcrect, dst, dstrect)
 
 proc upperBlit*(
-    src: ptr Surface; srcrect: ptr Rect;
-    dst: ptr Surface; dstrect: ptr Rect): cint {.
+    src: Surface; srcrect: ptr Rect;
+    dst: Surface; dstrect: ptr Rect): cint {.
       cdecl, importc: "SDL_UpperBlit", dynlib: SDL2_LIB.}
   ##  This is the public blit function, ``blitSurface()``, and it performs
   ##  rectangle validation and clipping before passing it to ``lowerBlit()``
 
 proc lowerBlit*(
-    src: ptr Surface; srcrect: ptr Rect;
-    dst: ptr Surface; dstrect: ptr Rect): cint {.
+    src: Surface; srcrect: ptr Rect;
+    dst: Surface; dstrect: ptr Rect): cint {.
       cdecl, importc: "SDL_LowerBlit", dynlib: SDL2_LIB.}
   ##  This is a semi-private blit function and it performs low-level surface
   ##  blitting only.
 
 proc softStretch*(
-    src: ptr Surface; srcrect: ptr Rect;
-    dst: ptr Surface; dstrect: ptr Rect): cint {.
+    src: Surface; srcrect: ptr Rect;
+    dst: Surface; dstrect: ptr Rect): cint {.
       cdecl, importc: "SDL_SoftStretch", dynlib: SDL2_LIB.}
   ##  Perform a fast, low quality, stretch blit between two surfaces of the
   ##  same pixel format.
@@ -470,21 +471,21 @@ proc softStretch*(
   ##  ``Note:`` This function uses a static buffer, and is not thread-safe.
 
 template blitScaled*(
-    src: ptr Surface; srcrect: ptr Rect;
-    dst: ptr Surface; dstrect: ptr Rect) =
+    src: Surface; srcrect: ptr Rect;
+    dst: Surface; dstrect: ptr Rect) =
   upperBlitScaled(src, srcrect, dst, dstrect)
 
 proc upperBlitScaled*(
-    src: ptr Surface; srcrect: ptr Rect;
-    dst: ptr Surface; dstrect: ptr Rect): cint {.
+    src: Surface; srcrect: ptr Rect;
+    dst: Surface; dstrect: ptr Rect): cint {.
       cdecl, importc: "SDL_UpperBlitScaled", dynlib: SDL2_LIB.}
   ##  This is the public scaled blit function, ``blitScaled()``,
   ##  and it performs rectangle validation and clipping before
   ##  passing it to ``lowerBlitScaled()``
 
 proc lowerBlitScaled*(
-    src: ptr Surface; srcrect: ptr Rect;
-    dst: ptr Surface; dstrect: ptr Rect): cint {.
+    src: Surface; srcrect: ptr Rect;
+    dst: Surface; dstrect: ptr Rect): cint {.
       cdecl, importc: "SDL_LowerBlitScaled", dynlib: SDL2_LIB.}
   ##  This is a semi-private blit function and it performs low-level surface
   ##  scaled blitting only.

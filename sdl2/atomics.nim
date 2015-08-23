@@ -57,7 +57,7 @@
 ##
 ##  All of the atomic operations that modify memory are full memory barriers.
 
-##  **AtomicLock**
+##  ``AtomicLock``
 ##
 ##  The atomic locks are efficient spinlocks using CPU instructions,
 ##  but are vulnerable to starvation and can spin forever if a thread
@@ -90,7 +90,7 @@ proc atomicLock*(lock: ptr SpinLock) {.
   ##  ``lock`` Points to the lock.
 
 proc atomicUnlock*(lock: ptr SpinLock) {.
-    cdecl, importc: "SDL_AtomicUnlock", dynlib: SDL2_LIB .}
+    cdecl, importc: "SDL_AtomicUnlock", dynlib: SDL2_LIB.}
   ##  Unlock a spin lock by setting it to `0`. Always returns immediately.
   ##
   ##  ``lock`` Points to the lock.

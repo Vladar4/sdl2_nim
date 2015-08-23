@@ -63,7 +63,7 @@ proc quit*() {.
   ##  Unloads libraries loaded with ``init()``.
 
 proc loadTyped_RW*(
-    src: ptr RWops; freesrc: cint; kind: cstring): ptr Surface {.
+    src: ptr RWops; freesrc: cint; kind: cstring): Surface {.
       cdecl, importc: "IMG_LoadTyped_RW", dynlib: SDL2_IMG_LIB.}
   ##  Load an image from an SDL data source.
   ##
@@ -77,10 +77,10 @@ proc loadTyped_RW*(
 
 # Convenience functions
 
-proc load*(file: cstring): ptr Surface {.
+proc load*(file: cstring): Surface {.
     cdecl, importc: "IMG_Load", dynlib: SDL2_IMG_LIB.}
 
-proc load_RW*(src: ptr RWops; freesrc: cint): ptr Surface {.
+proc load_RW*(src: ptr RWops; freesrc: cint): Surface {.
     cdecl, importc: "IMG_Load_RW", dynlib: SDL2_IMG_LIB.}
 
 when versionAtLeast(2, 0, 0):
@@ -145,60 +145,60 @@ proc isWEBP*(src: ptr RWops): cint {.
 
 # Individual loading functions
 
-proc loadICO_RW*(src: ptr RWops): ptr Surface {.
+proc loadICO_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadICO_RW", dynlib: SDL2_IMG_LIB.}
 
-proc loadCUR_RW*(src: ptr RWops): ptr Surface {.
+proc loadCUR_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadCUR_RW", dynlib: SDL2_IMG_LIB.}
 
-proc loadBMP_RW*(src: ptr RWops): ptr Surface {.
+proc loadBMP_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadBMP_RW", dynlib: SDL2_IMG_LIB.}
 
-proc loadGIF_RW*(src: ptr RWops): ptr Surface {.
+proc loadGIF_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadGIF_RW", dynlib: SDL2_IMG_LIB.}
 
-proc loadJPG_RW*(src: ptr RWops): ptr Surface {.
+proc loadJPG_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadJPG_RW", dynlib: SDL2_IMG_LIB.}
 
-proc loadLBM_RW*(src: ptr RWops): ptr Surface {.
+proc loadLBM_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadLBM_RW", dynlib: SDL2_IMG_LIB.}
 
-proc loadPCX_RW*(src: ptr RWops): ptr Surface {.
+proc loadPCX_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadPCX_RW", dynlib: SDL2_IMG_LIB.}
 
-proc loadPNG_RW*(src: ptr RWops): ptr Surface {.
+proc loadPNG_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadPNG_RW", dynlib: SDL2_IMG_LIB.}
 
-proc loadPNM_RW*(src: ptr RWops): ptr Surface {.
+proc loadPNM_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadPNM_RW", dynlib: SDL2_IMG_LIB.}
 
-proc loadTGA_RW*(src: ptr RWops): ptr Surface {.
+proc loadTGA_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadTGA_RW", dynlib: SDL2_IMG_LIB.}
 
-proc loadTIF_RW*(src: ptr RWops): ptr Surface {.
+proc loadTIF_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadTIF_RW", dynlib: SDL2_IMG_LIB.}
 
-proc loadXCF_RW*(src: ptr RWops): ptr Surface {.
+proc loadXCF_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadXCF_RW", dynlib: SDL2_IMG_LIB.}
 
-proc loadXPM_RW*(src: ptr RWops): ptr Surface {.
+proc loadXPM_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadXPM_RW", dynlib: SDL2_IMG_LIB.}
 
-proc loadXV_RW*(src: ptr RWops): ptr Surface {.
+proc loadXV_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadXV_RW", dynlib: SDL2_IMG_LIB.}
 
-proc loadWEBP_RW*(src: ptr RWops): ptr Surface {.
+proc loadWEBP_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadWEBP_RW", dynlib: SDL2_IMG_LIB.}
 
-proc readXPMFromArray*(xpm: cstringArray): ptr Surface {.
+proc readXPMFromArray*(xpm: cstringArray): Surface {.
     cdecl, importc: "IMG_ReadXPMFromArray", dynlib: SDL2_IMG_LIB.}
 
 # Individual saving functions
 
-proc savePNG*(surface: ptr Surface; file: cstring): cint {.
+proc savePNG*(surface: Surface; file: cstring): cint {.
     cdecl, importc: "IMG_SavePNG", dynlib: SDL2_IMG_LIB.}
 
-proc savePNG_RW*(surface: ptr Surface; dst: ptr RWops; freedst: cint): cint {.
+proc savePNG_RW*(surface: Surface; dst: ptr RWops; freedst: cint): cint {.
     cdecl, importc: "IMG_SavePNG_RW", dynlib: SDL2_IMG_LIB.}
 
 template setError*(fmt: expr): cint =

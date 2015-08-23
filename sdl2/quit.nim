@@ -44,4 +44,4 @@
 
 proc quitRequested*(): bool =
   pumpEvents()
-  return (peepEvents(nil, 0, PEEKEVENT, QUIT.uint32, QUIT.uint32) > 0)
+  return (peepEvents(nil, 0, PEEKEVENT, QUIT, QUIT) > 0)

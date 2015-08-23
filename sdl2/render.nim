@@ -181,7 +181,7 @@ proc createRenderer*(window: Window; index: cint; flags: uint32): Renderer {.
   ##
   ##  ``destroyRenderer()``
 
-proc createSoftwareRenderer*(surface: ptr Surface): Renderer {.
+proc createSoftwareRenderer*(surface: Surface): Renderer {.
     cdecl, importc: "SDL_CreateSoftwareRenderer", dynlib: SDL2_LIB.}
   ##  Create a 2D software rendering context for a surface.
   ##
@@ -236,7 +236,7 @@ proc createTexture*(renderer: Renderer;
   ##  ``destroyTexture()``
 
 proc createTextureFromSurface*(
-    renderer: Renderer; surface: ptr Surface): Texture {.
+    renderer: Renderer; surface: Surface): Texture {.
       cdecl, importc: "SDL_CreateTextureFromSurface", dynlib: SDL2_LIB.}
   ##  Create a texture from an existing surface.
   ##

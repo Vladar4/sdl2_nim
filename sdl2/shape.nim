@@ -109,7 +109,7 @@ type
 
 proc setWindowShape*(
     window: Window;
-    shape: ptr Surface; shape_mode: ptr WindowShapeModeObj): cint {.
+    shape: Surface; shape_mode: ptr WindowShapeModeObj): cint {.
       cdecl, importc: "SDL_SetWindowShape", dynlib: SDL2_LIB.}
   ##  Set the shape and parameters of a shaped window.
   ##

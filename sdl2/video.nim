@@ -483,7 +483,7 @@ proc getWindowTitle*(window: Window): cstring {.
   ##
   ##  ``setWindowTitle()``
 
-proc setWindowIcon*(window: Window; icon: ptr Surface) {.
+proc setWindowIcon*(window: Window; icon: Surface) {.
     cdecl, importc: "SDL_SetWindowIcon", dynlib: SDL2_LIB.}
   ##  Set the icon for a window.
   ##
@@ -731,7 +731,7 @@ proc setWindowFullscreen*(window: Window; flags: uint32): cint {.
   ##
   ##  ``getWindowDisplayMode()``
 
-proc getWindowSurface*(window: Window): ptr Surface {.
+proc getWindowSurface*(window: Window): Surface {.
     cdecl, importc: "SDL_GetWindowSurface", dynlib: SDL2_LIB.}
   ##  Get the SDL surface associated with the window.
   ##

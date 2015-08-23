@@ -130,7 +130,7 @@ proc createCursor*(
   ##  ``freeCursor()``
 
 proc createColorCursor*(
-    surface: ptr Surface; hot_x: cint; hot_y: cint): Cursor {.
+    surface: Surface; hot_x: cint; hot_y: cint): Cursor {.
       cdecl, importc: "SDL_CreateColorCursor", dynlib: SDL2_LIB.}
   ##  Create a color cursor.
   ##

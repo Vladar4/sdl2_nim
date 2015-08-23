@@ -153,13 +153,13 @@ type
 type
   CommonEventObj* = object ##  \
     ##  Fields shared by every event
-    kind*: uint32
+    kind*: EventKind
     timestamp*: uint32
 
 type
   WindowEventObj* = object ##  \
     ##  Window state change event data (`event.window.*`)
-    kind*: uint32           ##  `WINDOWEVENT`
+    kind*: EventKind        ##  `WINDOWEVENT`
     timestamp*: uint32
     windowID*: uint32       ##  The associated window
     event*: uint8           ##  WindowEventID
@@ -172,7 +172,7 @@ type
 type
   KeyboardEventObj* = object ##  \
     ##  Keyboard button event structure (`event.key.*`)
-    kind*: uint32           ##  `KEYDOWN` or `KEYUP`
+    kind*: EventKind        ##  `KEYDOWN` or `KEYUP`
     timestamp*: uint32
     windowID*: uint32       ##  The window with keyboard focus, if any
     state*: uint8           ##  `PRESSED` or `RELEASED`
@@ -187,7 +187,7 @@ const
 type
   TextEditingEventObj* = object ##  \
     ##  Keyboard text editing event structure (`event.edit.*`)
-    kind*: uint32           ##  `TEXTEDITING`
+    kind*: EventKind        ##  `TEXTEDITING`
     timestamp*: uint32
     windowID*: uint32       ##  The window with keyboard focus, if any
     text*: array[TEXTEDITINGEVENT_TEXT_SIZE, char]  ##  The editing text
@@ -200,7 +200,7 @@ const
 type
   TextInputEventObj* = object ##  \
     ##  Keyboard text input event structure (`event.text.*`)
-    kind*: uint32           ##  `TEXTINPUT`
+    kind*: EventKind        ##  `TEXTINPUT`
     timestamp*: uint32
     windowID*: uint32       ##  The window with keyboard focus, if any
     text*: array[TEXTINPUTEVENT_TEXT_SIZE, char]  ##  The input text
@@ -208,7 +208,7 @@ type
 type
   MouseMotionEventObj* = object ##  \
     ##  Mouse motion event structure (`event.motion.*`)
-    kind*: uint32           ##  `MOUSEMOTION`
+    kind*: EventKind        ##  `MOUSEMOTION`
     timestamp*: uint32
     windowID*: uint32       ##  The window with mouse focus, if any
     which*: uint32          ##  The mouse instance id, or `TOUCH_MOUSEID`
@@ -221,7 +221,7 @@ type
 type
   MouseButtonEventObj* = object ##  \
     ##  Mouse button event structure (`event.button.*`)
-    kind*: uint32           ##  `MOUSEBUTTONDOWN` or `MOUSEBUTTONUP`
+    kind*: EventKind        ##  `MOUSEBUTTONDOWN` or `MOUSEBUTTONUP`
     timestamp*: uint32
     windowID*: uint32       ##  The window with mouse focus, if any
     which*: uint32          ##  The mouse instance id, or `TOUCH_MOUSEID`
@@ -235,7 +235,7 @@ type
 type
   MouseWheelEventObj* = object ##  \
     ##  Mouse wheel event structure (`event.wheel.*`)
-    kind*: uint32           ##  `MOUSEWHEEL`
+    kind*: EventKind        ##  `MOUSEWHEEL`
     timestamp*: uint32
     windowID*: uint32       ##  The window with mouse focus, if any
     which*: uint32          ##  The mouse instance id, or `TOUCH_MOUSEID`
@@ -249,7 +249,7 @@ type
 type
   JoyAxisEventObj* = object ##  \
     ##  Joystick axis motion event structure (`event.jaxis.*`)
-    kind*: uint32           ##  `JOYAXISMOTION`
+    kind*: EventKind        ##  `JOYAXISMOTION`
     timestamp*: uint32
     which*: JoystickID      ##  The joystick instance id
     axis*: uint8            ##  The joystick axis index
@@ -262,7 +262,7 @@ type
 type
   JoyBallEventObj* = object ##  \
     ##  Joystick trackball motion event structure (`event.jball.*`)
-    kind*: uint32           ##  `JOYBALLMOTION`
+    kind*: EventKind        ##  `JOYBALLMOTION`
     timestamp*: uint32
     which*: JoystickID      ##  The joystick instance id
     ball*: uint8            ##  The joystick trackball index
@@ -275,7 +275,7 @@ type
 type
   JoyHatEventObj* = object ##  \
     ##  Joystick hat position change event structure (`event.jhat.*`)
-    kind*: uint32           ##  `JOYHATMOTION`
+    kind*: EventKind        ##  `JOYHATMOTION`
     timestamp*: uint32
     which*: JoystickID      ##  The joystick instance id
     hat*: uint8             ##  The joystick hat index
@@ -294,7 +294,7 @@ type
 type
   JoyButtonEventObj* = object ##  \
     ##  Joystick button event structure (`event.jbutton.*`)
-    kind*: uint32           ##  `JOYBUTTONDOWN` or `JOYBUTTONUP`
+    kind*: EventKind        ##  `JOYBUTTONDOWN` or `JOYBUTTONUP`
     timestamp*: uint32
     which*: JoystickID      ##  The joystick instance id
     button*: uint8          ##  The joystick button index
@@ -305,7 +305,7 @@ type
 type
   JoyDeviceEventObj* = object ##  \
     ##  Joystick device event structure (`event.jdevice.*`)
-    kind*: uint32           ##  `JOYDEVICEADDED` or `JOYDEVICEREMOVED`
+    kind*: EventKind        ##  `JOYDEVICEADDED` or `JOYDEVICEREMOVED`
     timestamp*: uint32
     which*: int32           ##  \
       ##  The joystick device index for the `ADDED` event,
@@ -314,7 +314,7 @@ type
 type
   ControllerAxisEventObj* = object ##  \
     ##  Game controller axis motion event structure (`event.caxis.*`)
-    kind*: uint32           ##  `CONTROLLERAXISMOTION`
+    kind*: EventKind        ##  `CONTROLLERAXISMOTION`
     timestamp*: uint32
     which*: JoystickID      ##  The joystick instance id
     axis*: uint8            ##  The controller axis (``GameControllerAxis``)
@@ -327,7 +327,7 @@ type
 type
   ControllerButtonEventObj* = object ##  \
     ##  Game controller button event structure (`event.cbutton.*`)
-    kind*: uint32           ##  `CONTROLLERBUTTONDOWN` or `CONTROLLERBUTTONUP`
+    kind*: EventKind        ##  `CONTROLLERBUTTONDOWN` or `CONTROLLERBUTTONUP`
     timestamp*: uint32
     which*: JoystickID      ##  The joystick instance id
     button*: uint8          ##  The controller button (``GameControllerButton``)
@@ -338,7 +338,7 @@ type
 type
   ControllerDeviceEventObj* = object ##  \
     ##  Controller device event structure (`event.cdevice.*`)
-    kind*: uint32           ##  \
+    kind*: EventKind        ##  \
       ##  `CONTROLLERDEVICEADDED`,
       ##  `CONTROLLERDEVICEREMOVED, or
       ##  `CONTROLLERDEVICEREMAPPED`
@@ -350,7 +350,7 @@ type
 type
   TouchFingerEventObj* = object ##  \
     ##  Touch finger event structure (`event.tfinger.*`)
-    kind*: uint32           ##  `FINGERMOTION` or `FINGERDOWN` or `FINGERUP`
+    kind*: EventKind        ##  `FINGERMOTION` or `FINGERDOWN` or `FINGERUP`
     timestamp*: uint32
     touchId*: TouchID       ##  The touch device id
     fingerId*: FingerID
@@ -363,7 +363,7 @@ type
 type
   MultiGestureEventObj* = object
     ##  Multiple Finger Gesture Event (`event.mgesture.*`)
-    kind*: uint32           ##  `MULTIGESTURE`
+    kind*: EventKind        ##  `MULTIGESTURE`
     timestamp*: uint32
     touchId*: TouchID       ##  The touch device index
     dTheta*: cfloat
@@ -376,7 +376,7 @@ type
 type
   DollarGestureEventObj* = object
     ##  Dollar Gesture Event (`event.dgesture.*`)
-    kind*: uint32           ##  DOLLARGESTURE
+    kind*: EventKind        ##  DOLLARGESTURE
     timestamp*: uint32
     touchId*: TouchID       ##  The touch device id
     gestureId*: GestureID
@@ -394,26 +394,26 @@ type
     ##
     ##  ``Note:`` If you enable this event,
     ##  you must free the filename in the event.
-    kind*: uint32       ##  `DROPFILE`
+    kind*: EventKind    ##  `DROPFILE`
     timestamp*: uint32
     file*: cstring      ##  The file name, which should be freed with ``free()`
 
 type
   QuitEventObj* = object ##  \
     ##  The "quit requested" event
-    kind*: uint32           ## `QUIT`
+    kind*: EventKind        ## `QUIT`
     timestamp*: uint32
 
 type
   OSEventObj* = object ##  \
     ##  OS Specific event
-    kind*: uint32           ##  `QUIT`
+    kind*: EventKind        ##  `QUIT`
     timestamp*: uint32
 
 type
   UserEventObj* = object ##  \
     ##  A user-defined event type (`event.user.*`)
-    kind*: uint32           ##  `USEREVENT` through `LASTEVENT-1`
+    kind*: EventKind        ##  `USEREVENT` through `LASTEVENT-1`
     timestamp*: uint32
     windowID*: uint32       ##  The associated window if any
     code*: int32            ##  User defined event code
@@ -432,14 +432,14 @@ type
     ##
     ##  ``Note:`` If you want to use this event,
     ##  you should include ``syswm.nim``.
-    kind*: uint32           ##  `SYSWMEVENT`
+    kind*: EventKind        ##  `SYSWMEVENT`
     timestamp*: uint32
     msg*: SysWMmsg          ##  driver dependent data, defined in ``syswm.nim``
 
 type
-  Event* = object  {.union.} ##  \
+  Event* = object {.union.} ##  \
     ##  General event structure
-    kind*: uint32                       ## Event type, shared with all events
+    kind*: EventKind                    ## Event type, shared with all events
     common*: CommonEventObj             ##  Common event data
     window*: WindowEventObj             ##  Window event data
     key*: KeyboardEventObj              ##  Keyboard event data
@@ -488,7 +488,7 @@ type
 
 proc peepEvents*(
     events: ptr Event; numevents: cint; action: EventAction;
-    minKind: uint32; maxKind: uint32): cint {.
+    minKind: EventKind; maxKind: EventKind): cint {.
       cdecl, importc: "SDL_PeepEvents", dynlib: SDL2_LIB.}
   ##  Checks the event queue for messages and optionally returns them.
   ##
@@ -508,18 +508,18 @@ proc peepEvents*(
   ##
   ##  This function is thread-safe.
 
-proc hasEvent*(kind: uint32): bool {.
+proc hasEvent*(kind: EventKind): bool {.
     cdecl, importc: "SDL_HasEvent", dynlib: SDL2_LIB.}
   ##  Checks to see if certain event types are in the event queue.
 
-proc hasEvents*(minKind: uint32; maxKind: uint32): bool {.
+proc hasEvents*(minKind: EventKind; maxKind: EventKind): bool {.
     cdecl, importc: "SDL_HasEvents", dynlib: SDL2_LIB.}
 
-proc flushEvent*(kind: uint32) {.
+proc flushEvent*(kind: EventKind) {.
     cdecl, importc: "SDL_FlushEvent", dynlib: SDL2_LIB.}
   ##  This function clears events from the event queue
 
-proc flushEvents*(minKind: uint32; maxKind: uint32) {.
+proc flushEvents*(minKind: EventKind; maxKind: EventKind) {.
     cdecl, importc: "SDL_FlushEvents", dynlib: SDL2_LIB.}
 
 proc pollEvent*(event: ptr Event): cint {.
@@ -614,7 +614,7 @@ const
   DISABLE* =  0
   ENABLE*  =  1
 
-proc eventState*(kind: uint32; state: cint): uint8 {.
+proc eventState*(kind: EventKind; state: cint): uint8 {.
     cdecl, importc: "SDL_EventState", dynlib: SDL2_LIB.}
   ##  This function allows you to set the state of processing certain events.
   ##

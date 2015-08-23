@@ -197,7 +197,7 @@ proc sizeUNICODE*(
       cdecl, importc: "TTF_SizeUNICODE", dynlib: SDL2_TTF_LIB.}
 
 proc renderText_Solid*(
-    font: Font; text: cstring; fg: Color): ptr Surface {.
+    font: Font; text: cstring; fg: Color): Surface {.
       cdecl, importc: "TTF_RenderText_Solid", dynlib: SDL2_TTF_LIB.}
   ##  Create an 8-bit palettized surface and render the given text at
   ##  fast quality with the given font and color.  The 0 pixel is the
@@ -213,15 +213,15 @@ proc renderText_Solid*(
   ##  ``renderUNICODE_Solid()``
 
 proc renderUTF8_Solid*(
-    font: Font; text: cstring; fg: Color): ptr Surface {.
+    font: Font; text: cstring; fg: Color): Surface {.
       cdecl, importc: "TTF_RenderUTF8_Solid", dynlib: SDL2_TTF_LIB.}
 
 proc renderUNICODE_Solid*(
-    font: Font; text: ptr uint16; fg: Color): ptr Surface {.
+    font: Font; text: ptr uint16; fg: Color): Surface {.
       cdecl, importc: "TTF_RenderUNICODE_Solid", dynlib: SDL2_TTF_LIB.}
 
 proc renderGlyph_Solid*(
-    font: Font; ch: uint16; fg: Color): ptr Surface {.
+    font: Font; ch: uint16; fg: Color): Surface {.
       cdecl, importc: "TTF_RenderGlyph_Solid", dynlib: SDL2_TTF_LIB.}
   ##  Create an 8-bit palettized surface and render the given glyph at
   ##  fast quality with the given font and color.  The 0 pixel is the
@@ -234,7 +234,7 @@ proc renderGlyph_Solid*(
   ##  ``Return`` the new surface, or `nil` if there was an error.
 
 proc renderText_Shaded*(
-    font: Font; text: cstring; fg: Color; bg: Color): ptr Surface {.
+    font: Font; text: cstring; fg: Color; bg: Color): Surface {.
       cdecl, importc: "TTF_RenderText_Shaded", dynlib: SDL2_TTF_LIB.}
   ##  Create an 8-bit palettized surface and render the given text at
   ##  high quality with the given font and colors. The 0 pixel is background,
@@ -249,15 +249,15 @@ proc renderText_Shaded*(
   ##  ``renderUNICODE_Shaded()``
 
 proc renderUTF8_Shaded*(
-    font: Font; text: cstring; fg: Color; bg: Color): ptr Surface {.
+    font: Font; text: cstring; fg: Color; bg: Color): Surface {.
       cdecl, importc: "TTF_RenderUTF8_Shaded", dynlib: SDL2_TTF_LIB.}
 
 proc renderUNICODE_Shaded*(
-    font: Font; text: ptr uint16; fg: Color; bg: Color): ptr Surface {.
+    font: Font; text: ptr uint16; fg: Color; bg: Color): Surface {.
       cdecl, importc: "TTF_RenderUNICODE_Shaded", dynlib: SDL2_TTF_LIB.}
 
 proc renderGlyph_Shaded*(
-    font: Font; ch: uint16; fg: Color; bg: Color): ptr Surface {.
+    font: Font; ch: uint16; fg: Color; bg: Color): Surface {.
       cdecl, importc: "TTF_RenderGlyph_Shaded", dynlib: SDL2_TTF_LIB.}
   ##  Create an 8-bit palettized surface and render the given glyph at
   ##  high quality with the given font and colors.  The 0 pixel is background,
@@ -269,7 +269,7 @@ proc renderGlyph_Shaded*(
   ##  ``Return`` the new surface, or `nil` if there was an error.
 
 proc renderText_Blended*(
-    font: Font; text: cstring; fg: Color): ptr Surface {.
+    font: Font; text: cstring; fg: Color): Surface {.
       cdecl, importc: "TTF_RenderText_Blended", dynlib: SDL2_TTF_LIB.}
   ##  Create a 32-bit ARGB surface and render the given text at high quality,
   ##  using alpha blending to dither the font with the given color.
@@ -283,16 +283,16 @@ proc renderText_Blended*(
   ##  ``renderUNICODE_Blended()``
 
 proc renderUTF8_Blended*(
-    font: Font; text: cstring; fg: Color): ptr Surface {.
+    font: Font; text: cstring; fg: Color): Surface {.
       cdecl, importc: "TTF_RenderUTF8_Blended", dynlib: SDL2_TTF_LIB.}
 
 proc renderUNICODE_Blended*(
-    font: Font; text: ptr uint16; fg: Color): ptr Surface {.
+    font: Font; text: ptr uint16; fg: Color): Surface {.
       cdecl, importc: "TTF_RenderUNICODE_Blended", dynlib: SDL2_TTF_LIB.}
 
 proc renderText_Blended_Wrapped*(
     font: Font; text: cstring; fg: Color;
-    wrapLength: uint32): ptr Surface {.
+    wrapLength: uint32): Surface {.
       cdecl, importc: "TTF_RenderText_Blended_Wrapped", dynlib: SDL2_TTF_LIB.}
   ##  Create a 32-bit ARGB surface and render the given text at high quality,
   ##  using alpha blending to dither the font with the given color.
@@ -309,16 +309,16 @@ proc renderText_Blended_Wrapped*(
 
 proc renderUTF8_Blended_Wrapped*(
     font: Font; text: cstring; fg: Color;
-    wrapLength: uint32): ptr Surface {.
+    wrapLength: uint32): Surface {.
       cdecl, importc: "TTF_RenderUTF8_Blended_Wrapped", dynlib: SDL2_TTF_LIB.}
 
 proc renderUNICODE_Blended_Wrapped*(
     font: Font; text: ptr uint16; fg: Color;
-    wrapLength: uint32): ptr Surface {.
+    wrapLength: uint32): Surface {.
     cdecl, importc: "TTF_RenderUNICODE_Blended_Wrapped", dynlib: SDL2_TTF_LIB.}
 
 proc renderGlyph_Blended*(
-    font: Font; ch: uint16; fg: Color): ptr Surface {.
+    font: Font; ch: uint16; fg: Color): Surface {.
       cdecl, importc: "TTF_RenderGlyph_Blended", dynlib: SDL2_TTF_LIB.}
   ##  Create a 32-bit ARGB surface and render the given glyph at high quality,
   ##  using alpha blending to dither the font with the given color.

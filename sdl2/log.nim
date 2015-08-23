@@ -41,7 +41,7 @@ const
   ##
   ##  Messages longer than the maximum size will be truncated
 
-##  **The predefined log categories**
+##  ``The predefined log categories``
 ##
 ##  By default the application category is enabled at the `INFO` level,
 ##  the assert category is enabled at the `WARN` level, test is enabled
