@@ -472,7 +472,7 @@ proc softStretch*(
 
 template blitScaled*(
     src: Surface; srcrect: ptr Rect;
-    dst: Surface; dstrect: ptr Rect) =
+    dst: Surface; dstrect: ptr Rect): cint =
   upperBlitScaled(src, srcrect, dst, dstrect)
 
 proc upperBlitScaled*(

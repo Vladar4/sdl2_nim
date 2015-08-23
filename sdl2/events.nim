@@ -625,7 +625,7 @@ proc eventState*(kind: EventKind; state: cint): uint8 {.
   ##  current processing state of the specified event.
 
 template getEventState*(kind: expr): expr =
-  EventState(kind, QUERY)
+  eventState(kind, QUERY)
 
 proc registerEvents*(numevents: cint): uint32 {.
     cdecl, importc: "SDL_RegisterEvents", dynlib: SDL2_LIB.}
