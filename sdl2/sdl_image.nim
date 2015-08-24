@@ -204,5 +204,5 @@ proc savePNG_RW*(surface: Surface; dst: ptr RWops; freedst: cint): cint {.
 template setError*(fmt: expr): cint =
   sdl.setError(fmt)
 
-template getError*(fmt: expr): cstring =
+template getError*(): cstring =
   sdl.getError()
