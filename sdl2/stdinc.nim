@@ -25,3 +25,6 @@ template fourCC*(a, b, c, d: expr): uint32 = ##  \
    (uint32(uint8(b)) shl 8) or
    (uint32(uint8(c)) shl 16) or
    (uint32(uint8(d)) shl 24))
+
+converter toCint*(x: int): cint = cint(x)
+
