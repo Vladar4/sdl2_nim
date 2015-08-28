@@ -354,3 +354,9 @@ proc wasInit*(): cint {.
 proc getFontKerningSize*(font: Font; prev_index: cint; index: cint): cint {.
     cdecl, importc: "TTF_GetFontKerningSize", dynlib: SDL2_TTF_LIB.}
   ##  Get the kerning size of two glyphs.
+
+template setError*(fmt: expr): cint =
+  sdl.setError(fmt)
+
+template getError*(): cstring =
+  sdl.getError()
