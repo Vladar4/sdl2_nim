@@ -71,7 +71,7 @@ proc hasIntersection*(a: ptr Rect; b: ptr Rect): bool {.
   ##
   ##  ``Return`` `true` if there is an intersection, `false` otherwise.
 
-proc IntersectRect*(a: ptr Rect; b: ptr Rect; result: ptr Rect): bool {.
+proc intersectRect*(a: ptr Rect; b: ptr Rect; result: ptr Rect): bool {.
     cdecl, importc: "SDL_IntersectRect", dynlib: SDL2_LIB.}
   ##  Calculate the intersection of two rectangles.
   ##
