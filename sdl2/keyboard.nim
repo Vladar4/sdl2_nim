@@ -40,7 +40,7 @@ proc getKeyboardFocus*(): ptr Window {.
     cdecl, importc: "SDL_GetKeyboardFocus", dynlib: SDL2_LIB.}
   ##  Get the window which currently has keyboard focus.
 
-proc getKeyboardState*(numkeys: ptr cint): ptr uint8 {.
+proc getKeyboardState*(numkeys: ptr cint): ptr array[NUM_SCANCODES.int, uint8] {.
     cdecl, importc: "SDL_GetKeyboardState", dynlib: SDL2_LIB.}
   ##  Get a snapshot of the current state of the keyboard.
   ##
