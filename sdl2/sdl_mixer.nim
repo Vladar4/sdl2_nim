@@ -83,7 +83,8 @@ const
   MAX_VOLUME* = 128 ##  Volume of a chunk
 
 type
-  Chunk* = object ##  \
+  Chunk* = ptr ChunkObj
+  ChunkObj* = object ##  \
     ##  The internal format for an audio chunk
     allocated*: cint
     abuf*: ptr uint8
@@ -132,7 +133,7 @@ proc querySpec*(
   ##
   ##  ``Return`` `1` if the audio has been opened, `0` otherwise.
 
-proc loadWAV_RW*(src: ptr RWops; freesrc: cint): ptr Chunk {.
+proc loadWAV_RW*(src: ptr RWops; freesrc: cint): Chunk {.
     cdecl, importc: "Mix_LoadWAV_RW", dynlib: SDL2_MIX_LIB.}
   ##  Load a wave file or a music (.mod .s3m .it .xm) file.
 
@@ -152,15 +153,15 @@ proc loadMUSType_RW*(src: ptr RWops; kind: MusicType; freesrc: cint): Music {.
     cdecl, importc: "Mix_LoadMUSType_RW", dynlib: SDL2_MIX_LIB.}
   ##  Load a music file from an RWop object assuming a specific format.
 
-proc quickLoad_WAV*(mem: ptr uint8): ptr Chunk {.
+proc quickLoad_WAV*(mem: ptr uint8): Chunk {.
     cdecl, importc: "Mix_QuickLoad_WAV", dynlib: SDL2_MIX_LIB.}
   ##  Load a wave file of the mixer format from a memory buffer.
 
-proc quickLoad_RAW*(mem: ptr uint8; len: uint32): ptr Chunk {.
+proc quickLoad_RAW*(mem: ptr uint8; len: uint32): Chunk {.
     cdecl, importc: "Mix_QuickLoad_RAW", dynlib: SDL2_MIX_LIB.}
   ##  Load raw audio data of the mixer format from a memory buffer.
 
-proc freeChunk*(chunk: ptr Chunk) {.
+proc freeChunk*(chunk: Chunk) {.
     cdecl, importc: "Mix_FreeChunk", dynlib: SDL2_MIX_LIB.}
   ##  Free an audio chunk previously loaded.
 
@@ -592,7 +593,7 @@ template playChannel*(channel, chunk, loops: expr): expr =  ##  \
   playChannelTimed(channel, chunk, loops, - 1)
 
 proc playChannelTimed*(
-    channel: cint; chunk: ptr Chunk; loops: cint; ticks: cint): cint {.
+    channel: cint; chunk: Chunk; loops: cint; ticks: cint): cint {.
       cdecl, importc: "Mix_PlayChannelTimed", dynlib: SDL2_MIX_LIB.}
   ##  The same as above, but the sound is played at most ``ticks`` milliseconds.
 
@@ -612,7 +613,7 @@ template fadeInChannel*(channel, chunk, loops, ms: expr): expr =
   fadeInChannelTimed(channel, chunk, loops, ms, - 1)
 
 proc fadeInChannelTimed*(
-  channel: cint; chunk: ptr Chunk; loops: cint; ms: cint; ticks: cint): cint {.
+  channel: cint; chunk: Chunk; loops: cint; ms: cint; ticks: cint): cint {.
     cdecl, importc: "Mix_FadeInChannelTimed", dynlib: SDL2_MIX_LIB.}
 
 proc volume*(channel: cint; volume: cint): cint {.
@@ -626,7 +627,7 @@ proc volume*(channel: cint; volume: cint): cint {.
   ##
   ##  If the specified ``volume`` is `-1`, just return the current volume.
 
-proc volumeChunk*(chunk: ptr Chunk; volume: cint): cint {.
+proc volumeChunk*(chunk: Chunk; volume: cint): cint {.
     cdecl, importc: "Mix_VolumeChunk", dynlib: SDL2_MIX_LIB.}
 
 proc volumeMusic*(volume: cint): cint {.
@@ -738,7 +739,7 @@ proc eachSoundFont*(
       cdecl, importc: "Mix_EachSoundFont", dynlib: SDL2_MIX_LIB.}
   ##  Iterate SoundFonts paths to use by supported MIDI backends.
 
-proc getChunk*(channel: cint): ptr Chunk {.
+proc getChunk*(channel: cint): Chunk {.
     cdecl, importc: "Mix_GetChunk", dynlib: SDL2_MIX_LIB.}
   ##  Get the ``Chunk`` currently associated with a mixer ``channel``.
   ##
@@ -752,5 +753,5 @@ proc closeAudio*() {.
 template setError*(fmt: expr): cint =
   sdl.setError(fmt)
 
-template getError*(fmt: expr): cstring =
+template getError*(): cstring =
   sdl.getError()
