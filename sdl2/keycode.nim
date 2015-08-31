@@ -286,16 +286,16 @@ type
     KMOD_NONE = 0x00000000,
     KMOD_LSHIFT = 0x00000001,
     KMOD_RSHIFT = 0x00000002,
-    KMOD_SHIFT = (KMOD_LSHIFT.cint or KMOD_RSHIFT.cint)
+    KMOD_SHIFT = KMOD_LSHIFT.cint or KMOD_RSHIFT.cint,
     KMOD_LCTRL = 0x00000040,
     KMOD_RCTRL = 0x00000080,
-    KMOD_CTRL  = (KMOD_LCTRL.cint or KMOD_RCTRL.cint)
+    KMOD_CTRL  = KMOD_LCTRL.cint or KMOD_RCTRL.cint,
     KMOD_LALT = 0x00000100,
     KMOD_RALT = 0x00000200,
-    KMOD_ALT   = (KMOD_LALT.cint or KMOD_RALT.cint)
+    KMOD_ALT   = KMOD_LALT.cint or KMOD_RALT.cint,
     KMOD_LGUI = 0x00000400,
     KMOD_RGUI = 0x00000800,
-    KMOD_GUI   = (KMOD_LGUI.cint or KMOD_RGUI.cint)
+    KMOD_GUI   = KMOD_LGUI.cint or KMOD_RGUI.cint,
     KMOD_NUM = 0x00001000,
     KMOD_CAPS = 0x00002000,
     KMOD_MODE = 0x00004000,
@@ -303,3 +303,6 @@ type
 
 template `or`*(a, b: Keymod): Keymod =
   a.cint or b.cint
+
+template `and`*(a, b: Keymod): bool =
+  (a.cint and b.cint) > 0
