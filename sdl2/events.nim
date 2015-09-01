@@ -162,7 +162,7 @@ type
     kind*: EventKind        ##  `WINDOWEVENT`
     timestamp*: uint32
     windowID*: uint32       ##  The associated window
-    event*: uint8           ##  WindowEventID
+    event*: WindowEventID   ##  WindowEventID
     padding1*: uint8
     padding2*: uint8
     padding3*: uint8
