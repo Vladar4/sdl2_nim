@@ -86,10 +86,12 @@ type
 
 # TextureAccess
 # The access pattern allowed for a texture
-const
-  TEXTUREACCESS_STATIC* = 0x00000000  ## Changes rarely, not lockable
-  TEXTUREACCESS_STREAMING* = 0x00000001 ## Changes frequently, lockable
-  TEXTUREACCESS_TARGET* = 0x00000002  ## Texture can be used as a render target
+type
+  TextureAccess* {.size: sizeof(cint).} = enum ##  \
+    ##  The access pattern allowed for a texture
+    TEXTUREACCESS_STATIC = 0x00000000 ## Changes rarely, not lockable
+    TEXTUREACCESS_STREAMING = 0x00000001 ## Changes frequently, lockable
+    TEXTUREACCESS_TARGET = 0x00000002 ## Texture can be used as a render target
 
 type
   TextureModulate* {.size: sizeof(cint).} = enum ##  \
@@ -209,7 +211,7 @@ proc getRendererOutputSize*(
   ##  Get the output size of a rendering context.
 
 proc createTexture*(renderer: Renderer;
-    format: uint32; access: cint; w: cint; h: cint): Texture {.
+    format: uint32; access: TextureAccess; w: cint; h: cint): Texture {.
       cdecl, importc: "SDL_CreateTexture", dynlib: SDL2_LIB.}
   ##  Create a texture for a rendering context.
   ##
@@ -255,7 +257,8 @@ proc createTextureFromSurface*(
   ##  ``destroyTexture()``
 
 proc queryTexture*(texture: Texture;
-    format: ptr uint32; access: ptr cint; w: ptr cint; h: ptr cint): cint {.
+    format: ptr uint32; access: ptr TextureAccess;
+      w: ptr cint; h: ptr cint): cint {.
       cdecl, importc: "SDL_QueryTexture", dynlib: SDL2_LIB.}
   ##  Query the attributes of a texture
   ##
