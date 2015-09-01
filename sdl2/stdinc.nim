@@ -19,6 +19,13 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 
+type
+  PixelArray* = ref PixelArrayObj
+  PixelArrayObj* = array[4096 * 2160, uint32] ##  \
+    ##  Helper type to manipulate pixels pointer.
+    ##
+    ##  4096 * 2160 is 4K resolution.
+
 template fourCC*(a, b, c, d: expr): uint32 = ##  \
   ##  Define a four character code as a uint32
   ((uint32(uint8(a)) shl 0) or
