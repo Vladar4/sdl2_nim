@@ -19,13 +19,6 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 
-type
-  PixelArray* = ref PixelArrayObj
-  PixelArrayObj* = array[4096 * 2160, uint32] ##  \
-    ##  Helper type to manipulate pixels pointer.
-    ##
-    ##  4096 * 2160 is 4K resolution.
-
 template ptrMath*(body: untyped) =  ##  \
   ##  Pointer arithmetic. Could be used for pixels manipulation.
   ##
