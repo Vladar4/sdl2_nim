@@ -26,6 +26,44 @@ type
     ##
     ##  4096 * 2160 is 4K resolution.
 
+template ptrMath*(body: untyped) =  ##  \
+  ##  Pointer arithmetic. Could be used for pixels manipulation.
+  ##
+  ##  Example:
+  ##
+  ##  .. code-block:: nim
+  ##    var surface = sdl.convertSurfaceFormat(
+  ##      sourceSurface, sdl.PixelFormat_RGBA8888, 0)
+  ##    discard sdl.lockSurface(surface)
+  ##    var pixels = cast[ptr uint32](surface.pixels)
+  ##    let pitch = surface.pitch div 4
+  ##    for y in 0..surface.h-1:
+  ##      for x in 0..pitch-1:
+  ##        ptrMath:                                #################
+  ##          pixels[x + y * pitch] = uint32(x * y) # Using ptrMath #
+  ##                                                #################
+  ##    sdl.unlockSurface(surface)
+  ##
+  template `+`[T](p: ptr T, off: int): ptr T =
+    cast[ptr type(p[])](cast[ByteAddress](p) +% off * sizeof(p[]))
+
+  template `+=`[T](p: ptr T, off: int) =
+    p = p + off
+
+  template `-`[T](p: ptr T, off: int): ptr T =
+    cast[ptr type(p[])](cast[ByteAddress](p) -% off * sizeof(p[]))
+
+  template `-=`[T](p: ptr T, off: int) =
+    p = p - off
+
+  template `[]`[T](p: ptr T, off: int): T =
+    (p + off)[]
+
+  template `[]=`[T](p: ptr T, off: int, val: T) =
+    (p + off)[] = val
+
+  body
+
 template fourCC*(a, b, c, d: expr): uint32 = ##  \
   ##  Define a four character code as a uint32
   ((uint32(uint8(a)) shl 0) or
