@@ -19,15 +19,16 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 
-## clipboard.nim
+##  clipboard.nim
+##  =============
 ##
-## Include file for SDL clipboard handling
+##  Include file for SDL clipboard handling.
 
 # Function prototypes
 
 proc setClipboardText*(text: cstring): cint {.
     cdecl, importc: "SDL_SetClipboardText", dynlib: SDL2_LIB.}
-  ##  Put UTF-8 text into the clipboard
+  ##  Put UTF-8 text into the clipboard.
   ##
   ##  See also:
   ##
@@ -35,7 +36,7 @@ proc setClipboardText*(text: cstring): cint {.
 
 proc getClipboardText*(): cstring {.
     cdecl, importc: "SDL_GetClipboardText", dynlib: SDL2_LIB.}
-  ##  Get UTF-8 text from the clipboard, which must be freed with ``free()``
+  ##  Get UTF-8 text from the clipboard, which must be freed with ``free()``.
   ##
   ##  See also:
   ##
@@ -44,6 +45,6 @@ proc getClipboardText*(): cstring {.
 proc hasClipboardText*(): bool {.
     cdecl, importc: "SDL_HasClipboardText", dynlib: SDL2_LIB.}
   ##  Returns a flag indicating whether the clipboard exists and contains
-  ##  a text string that is non-empty
+  ##  a text string that is non-empty.
   ##
   ##  ``getClipboardText()``

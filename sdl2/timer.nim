@@ -21,12 +21,12 @@
 
 proc getTicks*(): uint32 {.
     cdecl, importc: "SDL_GetTicks", dynlib: SDL2_LIB.}
-  ## Get the number of milliseconds since the SDL library initialization.
+  ##  Get the number of milliseconds since the SDL library initialization.
   ##
-  ## This value wraps if the program runs for more than ~49 days.
+  ##  This value wraps if the program runs for more than ~49 days.
 
 template ticksPassed*(a, b: expr): bool = ##  \
-  ##  Compare SDL ticks values, and return true if ``a`` has passed ``b``
+  ##  Compare SDL ticks values, and return true if ``a`` has passed ``b``.
   ##
   ##  e.g. if you want to wait 100 ms, you could do this:
   ##
@@ -38,15 +38,15 @@ template ticksPassed*(a, b: expr): bool = ##  \
 
 proc getPerformanceCounter*(): uint64 {.
     cdecl, importc: "SDL_GetPerformanceCounter", dynlib: SDL2_LIB.}
-  ## Get the current value of the high resolution counter
+  ##  Get the current value of the high resolution counter.
 
 proc getPerformanceFrequency*(): uint64 {.
     cdecl, importc: "SDL_GetPerformanceFrequency", dynlib: SDL2_LIB.}
-  ## Get the count per second of the high resolution counter
+  ##  Get the count per second of the high resolution counter.
 
 proc delay*(ms: uint32) {.
     cdecl, importc: "SDL_Delay", dynlib: SDL2_LIB.}
-  ## Wait a specified number of milliseconds before returning.
+  ##  Wait a specified number of milliseconds before returning.
 
 type
   TimerCallback* = proc (interval: uint32; param: pointer): uint32 {.
@@ -64,14 +64,14 @@ type
 proc addTimer*(
     interval: uint32; callback: TimerCallback; param: pointer): TimerID {.
     cdecl, importc: "SDL_AddTimer", dynlib: SDL2_LIB.}
-  ## Add a new timer to the pool of timers already running.
+  ##  Add a new timer to the pool of timers already running.
   ##
-  ## ``Return`` a timer ID, or `nil` when an error occurs.
+  ##  ``Return`` a timer ID, or `nil` when an error occurs.
 
 proc removeTimer*(id: TimerID): bool {.cdecl, importc: "SDL_RemoveTimer", 
     dynlib: SDL2_LIB.}
-  ## Remove a timer knowing its ID.
+  ##  Remove a timer knowing its ID.
   ##
-  ## ``Return`` a boolean value indicating success or failure.
+  ##  ``Return`` a boolean value indicating success or failure.
   ##
-  ## Warning: It is not safe to remove a timer multiple times.
+  ##  ``Warning:`` It is not safe to remove a timer multiple times.

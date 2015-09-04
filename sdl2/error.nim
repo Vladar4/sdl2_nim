@@ -20,6 +20,7 @@
 #
 
 ##  error.nim
+##  =========
 ##
 ##  Simple error message routines for SDL.
 

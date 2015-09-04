@@ -20,8 +20,9 @@
 #
 
 ##  loadso.nim
+##  ==========
 ##
-##  System dependent library loading routines
+##  System dependent library loading routines.
 ##
 ##  Some things to keep in mind:
 ##

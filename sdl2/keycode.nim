@@ -20,6 +20,7 @@
 #
 
 ##  keycode.nim
+##  ===========
 ##
 ##  Defines constants which identify keyboard keys and modifiers.
 

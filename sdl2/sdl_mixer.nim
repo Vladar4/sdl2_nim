@@ -62,7 +62,7 @@ proc init*(flags: cint): cint {.
 
 proc quit*() {.
     cdecl, importc: "Mix_Quit", dynlib: SDL2_MIX_LIB.}
-  ##  Unloads libraries loaded with ``init()``
+  ##  Unloads libraries loaded with ``init()``.
 
 when not declared(CHANNELS):
   const
@@ -171,6 +171,7 @@ proc freeMusic*(music: Music) {.
 proc getNumChunkDecoders*(): cint {.
     cdecl, importc: "Mix_GetNumChunkDecoders", dynlib: SDL2_MIX_LIB.}
   ##  Get a list of chunk/music decoders that this build of SDL_mixer provides.
+  ##
   ##  This list can change between builds AND runs of the program, if external
   ##  libraries that add functionality become available.
   ##  You must successfully call ``openAudio()`` before calling these functions.
@@ -212,6 +213,7 @@ proc setPostMix*(
     arg: pointer) {.
       cdecl, importc: "Mix_SetPostMix", dynlib: SDL2_MIX_LIB.}
   ##  Set a function that is called after all mixing is performed.
+  ##
   ##  This can be used to provide real-time visual display of the audio stream
   ##  or add a custom mixer filter for the stream data.
 
@@ -220,11 +222,13 @@ proc hookMusic*(
     arg: pointer) {.
       cdecl, importc: "Mix_HookMusic", dynlib: SDL2_MIX_LIB.}
   ##  Add your own music player or additional mixer function.
+  ##
   ##  If 'mix_func' is `nil`, the default music player is re-enabled.
 
 proc hookMusicFinished*(music_finished: proc () {.cdecl.}) {.
     cdecl, importc: "Mix_HookMusicFinished", dynlib: SDL2_MIX_LIB.}
   ##  Add your own callback when the music has finished playing.
+  ##
   ##  This callback is only called if the music finishes naturally.
 
 proc getMusicHookData*(): pointer {.
@@ -233,10 +237,11 @@ proc getMusicHookData*(): pointer {.
 
 proc channelFinished*(channel_finished: proc (channel: cint) {.cdecl.}) {.
     cdecl, importc: "Mix_ChannelFinished", dynlib: SDL2_MIX_LIB.}
-  ##  Add your own callback when a channel has finished playing. `nil`
-  ##  to disable callback. The callback may be called from the mixer's audio
-  ##  callback or it could be called as a result of ``haltChannel()``, etc.
-  ##  do not call ``lockAudio()`` from this callback; you will either be
+  ##  Add your own callback when a channel has finished playing.
+  ##
+  ##  `nil` to disable callback. The callback may be called from the mixer's
+  ##  audio callback or it could be called as a result of ``haltChannel()``,
+  ##  etc. do not call ``lockAudio()`` from this callback; you will either be
   ##  inside the audio callback, or SDL_mixer will explicitly lock the audio
   ##  before calling your callback.
 
@@ -285,20 +290,21 @@ type
 proc registerEffect*(
     chan: cint; f: EffectFunc_t; d: EffectDone_t; arg: pointer): cint {.
       cdecl, importc: "Mix_RegisterEffect", dynlib: SDL2_MIX_LIB.}
-  ##  Register a special effect function. At mixing time, the channel data is
-  ##  copied into a buffer and passed through each registered effect function.
-  ##  After it passes through all the functions, it is mixed into the final
-  ##  output stream. The copy to buffer is performed once, then each effect
-  ##  function performs on the output of the previous effect. Understand that
-  ##  this extra copy to a buffer is not performed if there are no effects
-  ##  registered for a given chunk, which saves CPU cycles, and any given
-  ##  effect will be extra cycles, too, so it is crucial that your code run
-  ##  fast. Also note that the data that your function is given is in the
-  ##  format of the sound device, and not the format you gave to
-  ##  ``openAudio()``, although they may in reality be the same. This is an
-  ##  unfortunate but necessary speed concern. Use ``querySpec()`` to determine
-  ##  if you can handle the data before you register your effect, and take
-  ##  appropriate actions.
+  ##  Register a special effect function.
+  ##
+  ##  At mixing time, the channel data is copied into a buffer and passed
+  ##  through each registered effect function. After it passes through all the
+  ##  functions, it is mixed into the final output stream. The copy to buffer
+  ##  is performed once, then each effect function performs on the output
+  ##  of the previous effect. Understand that this extra copy to a buffer
+  ##  is not performed if there are no effects registered for a given chunk,
+  ##  which saves CPU cycles, and any given effect will be extra cycles, too,
+  ##  so it is crucial that your code run fast. Also note that the data that
+  ##  your function is given is in the format of the sound device, and not the
+  ##  format you gave to ``openAudio()``, although they may in reality be the
+  ##  same. This is an unfortunate but necessary speed concern. Use
+  ##  ``querySpec()`` to determine if you can handle the data before you
+  ##  register your effect, and take appropriate actions.
   ##
   ##  You may also specify a callback (``EffectDone_t``) that is called when
   ##  the channel finishes playing. This gives you a more fine-grained control

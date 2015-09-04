@@ -20,8 +20,9 @@
 #
 
 ##  hints.nim
+##  =========
 ##
-##  Official documentation for SDL configuration variables
+##  Official documentation for SDL configuration variables.
 ##
 ##  This file contains functions to set and get configuration hints,
 ##  as well as listing each of them alphabetically.
@@ -436,23 +437,23 @@ type
 proc setHintWithPriority*(
     name: cstring; value: cstring; priority: HintPriority): bool {.
       cdecl, importc: "SDL_SetHintWithPriority", dynlib: SDL2_LIB.}
-  ##  Set a hint with a specific priority
+  ##  Set a hint with a specific priority.
   ##
   ##  The priority controls the behavior when setting a hint that already
   ##  has a value.  Hints will replace existing hints of their priority and
   ##  lower.  Environment variables are considered to have override priority.
   ##
-  ##  ``Return`` `true` if the hint was set, `false` otherwise
+  ##  ``Return`` `true` if the hint was set, `false` otherwise.
 
 proc setHint*(name: cstring; value: cstring): bool {.
     cdecl, importc: "SDL_SetHint", dynlib: SDL2_LIB.}
-  ##  Set a hint with normal priority
+  ##  Set a hint with normal priority.
   ##
-  ##  ``Return`` `true` if the hint was set, `false` otherwise
+  ##  ``Return`` `true` if the hint was set, `false` otherwise.
 
 proc getHint*(name: cstring): cstring {.
     cdecl, importc: "SDL_GetHint", dynlib: SDL2_LIB.}
-  ##  Get a hint
+  ##  Get a hint.
   ##
   ##  ``Return`` the string value of a hint variable.
 
@@ -464,27 +465,27 @@ type
 proc addHintCallback*(
     name: cstring; callback: HintCallback; userdata: pointer) {.
       cdecl, importc: "SDL_AddHintCallback", dynlib: SDL2_LIB.}
-  ##  Add a function to watch a particular hint
+  ##  Add a function to watch a particular hint.
   ##
-  ##  ``name`` The hint to watch
+  ##  ``name`` The hint to watch.
   ##
-  ##  ``callback`` The function to call when the hint value changes
+  ##  ``callback`` The function to call when the hint value changes.
   ##
-  ##  ``userdata`` A pointer to pass to the callback function
+  ##  ``userdata`` A pointer to pass to the callback function.
 
 proc delHintCallback*(
     name: cstring; callback: HintCallback; userdata: pointer) {.
       cdecl, importc: "SDL_DelHintCallback", dynlib: SDL2_LIB.}
-  ##  Remove a function watching a particular hint
+  ##  Remove a function watching a particular hint.
   ##
-  ##  ``name`` The hint being watched
+  ##  ``name`` The hint being watched.
   ##
-  ##  ``callback`` The function being called when the hint value changes
+  ##  ``callback`` The function being called when the hint value changes.
   ##
-  ##  ``userdata`` A pointer being passed to the callback function
+  ##  ``userdata`` A pointer being passed to the callback function.
 
 proc clearHints*() {.
     cdecl, importc: "SDL_ClearHints", dynlib: SDL2_LIB.}
-  ##  Clear all hints
+  ##  Clear all hints.
   ##
   ##  This function is called during ``quit()`` to free stored hints.

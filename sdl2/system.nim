@@ -20,8 +20,9 @@
 #
 
 ##  system.nim
+##  ==========
 ##
-##  Include file for platform specific SDL API functions
+##  Include file for platform specific SDL API functions.
 
 # Platform specific functions for Windows
 when defined windows:

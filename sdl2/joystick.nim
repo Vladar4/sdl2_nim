@@ -20,8 +20,9 @@
 #
 
 ##  joystick.nim
+##  ============
 ##
-##  Include file for SDL joystick event handling
+##  Include file for SDL joystick event handling.
 
 ##  The term "device_index" identifies currently plugged in joystick devices
 ##  between `0` and ``NumJoysticks``, with the exact joystick behind a
@@ -59,17 +60,19 @@ type
 
 proc numJoysticks*(): cint {.
     cdecl, importc: "SDL_NumJoysticks", dynlib: SDL2_LIB.}
-  ##  Count the number of joysticks attached to the system right now
+  ##  Count the number of joysticks attached to the system right now.
 
 proc joystickNameForIndex*(device_index: cint): cstring {.
     cdecl, importc: "SDL_JoystickNameForIndex", dynlib: SDL2_LIB.}
   ##  Get the implementation dependent name of a joystick.
+  ##
   ##  This can be called before any joysticks are opened.
   ##  If no name can be found, this function returns `nil`.
 
 proc joystickOpen*(device_index: cint): Joystick {.
     cdecl, importc: "SDL_JoystickOpen", dynlib: SDL2_LIB.}
   ##  Open a joystick for use.
+  ##
   ##  The index passed as an argument refers tothe N'th joystick on the system.
   ##  This index is the value which will identify this joystick in future
   ##  joystick events.
@@ -78,33 +81,33 @@ proc joystickOpen*(device_index: cint): Joystick {.
 
 proc joystickName*(joystick: Joystick): cstring {.
     cdecl, importc: "SDL_JoystickName", dynlib: SDL2_LIB.}
-  ##  Return the name for this currently opened joystick.
+  ##  ``Return`` the name for this currently opened joystick.
   ##  If no name can be found, this function returns `nil`.
 
 proc joystickGetDeviceGUID*(device_index: cint): JoystickGUID {.
     cdecl, importc: "SDL_JoystickGetDeviceGUID", dynlib: SDL2_LIB.}
-  ##  Return the GUID for the joystick at this index
+  ##  ``Return`` the GUID for the joystick at this index.
 
 proc joystickGetGUID*(joystick: Joystick): JoystickGUID {.
     cdecl, importc: "SDL_JoystickGetGUID", dynlib: SDL2_LIB.}
-  ##  Return the GUID for this opened joystick
+  ##  ``Return`` the GUID for this opened joystick.
 
 proc joystickGetGUIDString*(
     guid: JoystickGUID; pszGUID: cstring; cbGUID: cint) {.
       cdecl, importc: "SDL_JoystickGetGUIDString", dynlib: SDL2_LIB.}
-  ##  Return a string representation for this guid.
+  ##  ``Return`` a string representation for this guid.
   ##
   ##  ``pszGUID`` must point to at least 33 bytes
   ##  (32 for the string plus a `nil` terminator).
 
 proc joystickGetGUIDFromString*(pchGUID: cstring): JoystickGUID {.
     cdecl, importc: "SDL_JoystickGetGUIDFromString", dynlib: SDL2_LIB.}
-  ##  convert a string into a joystick formatted guid
+  ##  Convert a string into a joystick formatted GUID.
 
 proc joystickGetAttached*(joystick: Joystick): bool {.
     cdecl, importc: "SDL_JoystickGetAttached", dynlib: SDL2_LIB.}
-  ##  Returns `true` if the joystick has been opened and currently connected,
-  ##  or `false` if it has not.
+  ##  ``Returns`` `true` if the joystick has been opened and currently
+  ##  connected, or `false` if it has not.
 
 proc joystickInstanceID*(joystick: Joystick): JoystickID {.
     cdecl, importc: "SDL_JoystickInstanceID", dynlib: SDL2_LIB.}
@@ -145,7 +148,7 @@ proc joystickEventState*(state: cint): cint {.
   ##  yourself and check the state of the joystick when you want joystick
   ##  information.
   ##
-  ##  The state can be one of `QUERY`, `ENABLE` or `IGNORE`.
+  ##  The ``state`` can be one of `QUERY`, `ENABLE` or `IGNORE`.
 
 proc joystickGetAxis*(joystick: Joystick; axis: cint): int16 {.
     cdecl, importc: "SDL_JoystickGetAxis", dynlib: SDL2_LIB.}

@@ -20,6 +20,7 @@
 #
 
 ##  rect.nim
+##  ========
 ##
 ##  Header file for RectObj definition and management functions.
 
@@ -84,9 +85,9 @@ proc unionRect*(a: ptr Rect; b: ptr Rect; result: ptr Rect) {.
 proc enclosePoints*(
     points: ptr Point; count: cint; clip: ptr Rect; result: ptr Rect): bool {.
     cdecl, importc: "SDL_EnclosePoints", dynlib: SDL2_LIB.}
-  ##  Calculate a minimal rectangle enclosing a set of points
+  ##  Calculate a minimal rectangle enclosing a set of points.
   ##
-  ##  ``Return`` `true` if any points were within the clipping rect
+  ##  ``Return`` `true` if any points were within the clipping rect.
 
 proc intersectRectAndLine*(
     rect: ptr Rect;

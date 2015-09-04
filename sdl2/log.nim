@@ -20,6 +20,7 @@
 #
 
 ##  log.nim
+##  =======
 ##
 ##  Simple log messages with categories and priorities.
 ##
@@ -90,15 +91,15 @@ type
 
 proc logSetAllPriority*(priority: LogPriority) {.
     cdecl, importc: "SDL_LogSetAllPriority", dynlib: SDL2_LIB.}
-  ##  Set the priority of all log categories
+  ##  Set the priority of all log categories.
 
 proc logSetPriority*(category: cint; priority: LogPriority) {.
     cdecl, importc: "SDL_LogSetPriority", dynlib: SDL2_LIB.}
-  ##  Set the priority of a particular log category
+  ##  Set the priority of a particular log category.
 
 proc logGetPriority*(category: cint): LogPriority {.
     cdecl, importc: "SDL_LogGetPriority", dynlib: SDL2_LIB.}
-  ##  Get the priority of a particular log category
+  ##  Get the priority of a particular log category.
 
 proc logResetPriorities*() {.
     cdecl, importc: "SDL_LogResetPriorities", dynlib: SDL2_LIB.}
@@ -108,31 +109,31 @@ proc logResetPriorities*() {.
 
 proc log*(fmt: cstring) {.
     varargs, cdecl, importc: "SDL_Log", dynlib: SDL2_LIB.}
-  ##  Log a message with `LOG_CATEGORY_APPLICATION` and `LOG_PRIORITY_INFO`
+  ##  Log a message with `LOG_CATEGORY_APPLICATION` and `LOG_PRIORITY_INFO`.
 
 proc logVerbose*(category: cint; fmt: cstring) {.
     varargs, cdecl, importc: "SDL_LogVerbose", dynlib: SDL2_LIB.}
-  ##  Log a message with `LOG_PRIORITY_VERBOSE`
+  ##  Log a message with `LOG_PRIORITY_VERBOSE`.
 
 proc logDebug*(category: cint; fmt: cstring) {.
     varargs, cdecl, importc: "SDL_LogDebug", dynlib: SDL2_LIB.}
-  ##  Log a message with `LOG_PRIORITY_DEBUG`
+  ##  Log a message with `LOG_PRIORITY_DEBUG`.
 
 proc logInfo*(category: cint; fmt: cstring) {.
     varargs, cdecl, importc: "SDL_LogInfo", dynlib: SDL2_LIB.}
-  ##  Log a message with `LOG_PRIORITY_INFO`
+  ##  Log a message with `LOG_PRIORITY_INFO`.
 
 proc logWarn*(category: cint; fmt: cstring) {.
     varargs, cdecl, importc: "SDL_LogWarn", dynlib: SDL2_LIB.}
-  ##  Log a message with LOG_PRIORITY_WARN
+  ##  Log a message with LOG_PRIORITY_WARN.
 
 proc logError*(category: cint; fmt: cstring) {.
     varargs, cdecl, importc: "SDL_LogError", dynlib: SDL2_LIB.}
-  ##  Log a message with `LOG_PRIORITY_ERROR`
+  ##  Log a message with `LOG_PRIORITY_ERROR`.
 
 proc logCritical*(category: cint; fmt: cstring) {.
     varargs, cdecl, importc: "SDL_LogCritical", dynlib: SDL2_LIB.}
-  ##  Log a message with `LOG_PRIORITY_CRITICAL`
+  ##  Log a message with `LOG_PRIORITY_CRITICAL`.
 
 proc logMessage*(category: cint; priority: LogPriority; fmt: cstring) {.
     varargs, cdecl, importc: "SDL_LogMessage", dynlib: SDL2_LIB.}
@@ -147,7 +148,7 @@ proc logMessage*(category: cint; priority: LogPriority; fmt: cstring) {.
 type
   LogOutputFunction* = proc (userdata: pointer; category: cint;
       priority: LogPriority; message: cstring) {.cdecl.}
-    ##  The prototype for the log output function
+    ##  The prototype for the log output function.
 
 proc logGetOutputFunction*(
     callback: ptr LogOutputFunction; userdata: ptr pointer) {.

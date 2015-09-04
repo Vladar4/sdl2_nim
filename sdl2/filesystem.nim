@@ -20,8 +20,9 @@
 #
 
 ##  filesystem.nim
+##  ==============
 ##
-##  Include file for filesystem SDL API functions
+##  Include file for filesystem SDL API functions.
 
 proc getBasePath*(): cstring {.
     cdecl, importc: "SDL_GetBasePath", dynlib: SDL2_LIB.}

@@ -31,7 +31,7 @@ const
 # Mutex functions
 
 type
-  Mutex* = pointer ##  The SDL mutex structure, defined in SDL_sysmutex.c
+  Mutex* = pointer  ##  The SDL mutex structure, defined in SDL_sysmutex.c
 
 proc createMutex*(): Mutex {.
     cdecl, importc: "SDL_CreateMutex", dynlib: SDL2_LIB.}
@@ -61,7 +61,7 @@ proc unlockMutex*(mutex: Mutex): cint {.
   ##
   ##  ``Return`` `0`, or `-1` on error.
   ##
-  ##  ``Warning`` It is an error to unlock a mutex that has not been locked
+  ##  ``Warning:`` It is an error to unlock a mutex that has not been locked
   ##  by the current thread, and doing so results in undefined behavior.
 
 proc destroyMutex*(mutex: Mutex) {.
@@ -105,7 +105,7 @@ proc semWaitTimeout*(sem: Sem; ms: uint32): cint {.
   ##  `MUTEX_TIMEDOUT` if the wait does not succeed in the allotted time,
   ##  and `-1` on error.
   ##
-  ##  ``Warning`` On some platforms this function is implemented by looping
+  ##  ``Warning:`` On some platforms this function is implemented by looping
   ##  with a delay of 1 ms, and so should be avoided if possible.
 
 proc semPost*(sem: Sem): cint {.
@@ -177,7 +177,7 @@ proc condWait*(cond: Cond; mutex: Mutex): cint {.
     cdecl, importc: "SDL_CondWait", dynlib: SDL2_LIB.}
   ##  Wait on the condition variable, unlocking the provided mutex.
   ##
-  ##  ``Warning`` The mutex must be locked before entering this function!
+  ##  ``Warning:`` The mutex must be locked before entering this function!
   ##
   ##  The mutex is re-locked once the condition variable is signaled.
   ##
@@ -189,5 +189,5 @@ proc condWaitTimeout*(cond: Cond; mutex: Mutex; ms: uint32): cint {.
   ##  variable is signaled, `MUTEX_TIMEDOUT` if the condition is not signaled
   ##  in the allotted time, and `-1` on error.
   ##
-  ##  ``Warning`` On some platforms this function is implemented by looping
+  ##  ``Warning:`` On some platforms this function is implemented by looping
   ##  with a delay of 1 ms, and so should be avoided if possible.

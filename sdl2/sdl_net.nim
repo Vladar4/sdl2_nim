@@ -331,7 +331,8 @@ type
 
 proc allocSocketSet*(maxsockets: cint): SocketSet {.
     cdecl, importc: "SDLNet_AllocSocketSet", dynlib: SDL2_NET_LIB.}
-  ##  Allocate a socket set for use with ``checkSockets()``
+  ##  Allocate a socket set for use with ``checkSockets()``.
+  ##
   ##  This returns a socket set for up to ``maxsockets`` sockets,
   ##  or `nil` if the function ran out of memory.
 
@@ -407,7 +408,7 @@ proc getError*(): cstring {.
 # Inline functions to read/write network data                         
 #*********************************************************************
 
-# Warning, some systems have data access alignment restrictions
+# Warning, some systems have data access alignment restrictions.
 when defined(sparc) or defined(mips) or defined(arm):
   const
     SDL_DATA_ALIGNED* = 1

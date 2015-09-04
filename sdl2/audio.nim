@@ -20,6 +20,7 @@
 #
 
 ##  audio.nim
+##  =========
 ##
 ##  Access to the raw audio mixing buffer for the SDL library.
 
@@ -129,7 +130,7 @@ type
     ##  This function is called when the audio device needs more data.
     ##
     ##  ``userdata`` An application-specific parameter
-    ##  saved in ``AudioSpec`` object
+    ##  saved in ``AudioSpec`` object.
     ##
     ##  ``stream`` A pointer to the audio data buffer.
     ##
@@ -178,21 +179,21 @@ type
 
 proc getNumAudioDrivers*(): cint {.
     cdecl, importc: "SDL_GetNumAudioDrivers", dynlib: SDL2_LIB.}
-  ##  Driver discovery functions
+  ##  Driver discovery functions. 
   ##
   ##  These functions return the list of built in audio drivers, in the
   ##  order that they are normally initialized by default.
 
 proc getAudioDriver*(index: cint): cstring {.
     cdecl, importc: "SDL_GetAudioDriver", dynlib: SDL2_LIB.}
-  ##  Driver discovery functions
+  ##  Driver discovery functions.
   ##
   ##  These functions return the list of built in audio drivers, in the
   ##  order that they are normally initialized by default.
 
 proc audioInit*(driver_name: cstring): cint {.
     cdecl, importc: "SDL_AudioInit", dynlib: SDL2_LIB.}
-  ##  Initialization
+  ##  Initialization.
   ##
   ##  ``Internal:`` These functions are used internally, and should not be used
   ##  unless you have a specific need to specify the audio driver you want to
@@ -200,7 +201,7 @@ proc audioInit*(driver_name: cstring): cint {.
 
 proc audioQuit*() {.
     cdecl, importc: "SDL_AudioQuit", dynlib: SDL2_LIB.}
-  ##  Cleanup
+  ##  Cleanup.
   ##
   ##  ``Internal``: These functions are used internally, and should not be used
   ##  unless you have a specific need to specify the audio driver you want to
@@ -208,7 +209,7 @@ proc audioQuit*() {.
 
 proc getCurrentAudioDriver*(): cstring {.
     cdecl, importc: "SDL_GetCurrentAudioDriver", dynlib: SDL2_LIB.}
-  ##  This function returns the name of the current audio driver, or NULL
+  ##  This function returns the name of the current audio driver, or `nil`
   ##  if no driver has been initialized.
 
 proc openAudio*(desired: ptr AudioSpec; obtained: ptr AudioSpec): cint {.
@@ -271,6 +272,7 @@ type
 proc getNumAudioDevices*(iscapture: cint): cint {.
     cdecl, importc: "SDL_GetNumAudioDevices", dynlib: SDL2_LIB.}
   ##  Get the number of available devices exposed by the current driver.
+  ##
   ##  Only valid after a successfully initializing the audio subsystem.
   ##  Returns `-1` if an explicit list of devices can't be determined; this is
   ##  not an error. For example, if SDL is set up to talk to a remote audio
@@ -284,6 +286,7 @@ proc getNumAudioDevices*(iscapture: cint): cint {.
 proc getAudioDeviceName*(index: cint; iscapture: cint): cstring {.
     cdecl, importc: "SDL_GetAudioDeviceName", dynlib: SDL2_LIB.}
   ##  Get the human-readable name of a specific audio device.
+  ##
   ##  Must be a value between `0` and `(number of audio devices-1)`.
   ##  Only valid after a successfully initializing the audio subsystem.
   ##  The values returned by this function reflect the latest call to
@@ -301,6 +304,7 @@ proc openAudioDevice*(
     allowed_changes: cint): AudioDeviceID {.
       cdecl, importc: "SDL_OpenAudioDevice", dynlib: SDL2_LIB.}
   ##  Open a specific audio device.
+  ##
   ##  Passing in a device name of `nil` requests the most reasonable default
   ##  (and is equivalent to calling ``openAudio()``).
   ##
@@ -371,6 +375,7 @@ proc loadWAV_RW*(
 
 template loadWAV*(file, spec, audio_buf, audio_len: expr): expr = ##  \
   ##  Loads a WAV from a file.
+  ##
   ##  Compatibility convenience template.
   loadWAV_RW(rwFromFile(file, "rb"), 1, spec, audio_buf, audio_len)
 
@@ -423,7 +428,7 @@ proc mixAudioFormat*(
 
 proc lockAudio*() {.
     cdecl, importc: "SDL_LockAudio", dynlib: SDL2_LIB.}
-  ##  Audio lock functions
+  ##  Audio lock function.
   ##
   ##  The lock manipulated by these functions protects the callback function.
   ##  During a ``lockAudio()``/``unlockAudio()`` pair, you can be guaranteed
@@ -432,7 +437,7 @@ proc lockAudio*() {.
 
 proc lockAudioDevice*(dev: AudioDeviceID) {.
     cdecl, importc: "SDL_LockAudioDevice", dynlib: SDL2_LIB.}
-  ##  Audio lock functions
+  ##  Audio lock function.
   ##
   ##  The lock manipulated by these functions protects the callback function.
   ##  During a ``lockAudio()``/``unlockAudio()`` pair, you can be guaranteed
@@ -441,7 +446,7 @@ proc lockAudioDevice*(dev: AudioDeviceID) {.
 
 proc unlockAudio*() {.
     cdecl, importc: "SDL_UnlockAudio", dynlib: SDL2_LIB.}
-  ##  Audio lock functions
+  ##  Audio unlock function.
   ##
   ##  The lock manipulated by these functions protects the callback function.
   ##  During a ``lockAudio()``/``unlockAudio()`` pair, you can be guaranteed
@@ -450,7 +455,7 @@ proc unlockAudio*() {.
 
 proc unlockAudioDevice*(dev: AudioDeviceID) {.
     cdecl, importc: "SDL_UnlockAudioDevice", dynlib: SDL2_LIB.}
-  ##  Audio lock functions
+  ##  Audio unlock function.
   ##
   ##  The lock manipulated by these functions protects the callback function.
   ##  During a ``lockAudio()``/``unlockAudio()`` pair, you can be guaranteed

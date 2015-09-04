@@ -20,9 +20,9 @@
 #
 
 ##  version.nim
+##  ===========
 ##
 ##  This header defines the current SDL version.
-##
 
 type
   Version* = object ##  \

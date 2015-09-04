@@ -20,6 +20,7 @@
 #
 
 ##  cpuinfo.nim
+##  ===========
 ##
 ##  CPU feature detection for SDL.
 

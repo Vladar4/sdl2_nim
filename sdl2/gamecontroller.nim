@@ -20,8 +20,9 @@
 #
 
 ##  gamecontroller.nim
+##  ==================
 ##
-##  Include file for SDL game controller event handling
+##  Include file for SDL game controller event handling.
 ##
 ##  In order to use these functions, ``init()`` must have been called
 ##  with the `INIT_JOYSTICK` flag.  This causes SDL to scan the system
@@ -115,20 +116,20 @@ template gameControllerAddMappingsFromFile*(file: expr): expr = ##  \
 
 proc gameControllerAddMapping*(mappingString: cstring): cint {.
     cdecl, importc: "SDL_GameControllerAddMapping", dynlib: SDL2_LIB.}
-  ##  Add or update an existing mapping configuration
+  ##  Add or update an existing mapping configuration.
   ##
-  ##  Return `1` if mapping is added, `0` if updated, `-1` on error
+  ##  ``Return`` `1` if mapping is added, `0` if updated, `-1` on error.
 
 proc gameControllerMappingForGUID*(guid: JoystickGUID): cstring {.
     cdecl, importc: "SDL_GameControllerMappingForGUID", dynlib: SDL2_LIB.}
-  ##  Get a mapping string for a GUID
+  ##  Get a mapping string for a GUID.
   ##
   ##  ``Return`` the mapping string.  Must be freed with ``free()``.
   ##  Returns `nil` if no mapping is available
 
 proc gameControllerMapping*(gamecontroller: GameController): cstring {.
     cdecl, importc: "SDL_GameControllerMapping", dynlib: SDL2_LIB.}
-  ##  Get a mapping string for an open GameController
+  ##  Get a mapping string for an open GameController.
   ##
   ##  ``Return`` the mapping string.  Must be freed with ``free()``.
   ##  Returns `nil` if no mapping is available
@@ -140,6 +141,7 @@ proc isGameController*(joystick_index: cint): bool {.
 proc gameControllerNameForIndex*(joystick_index: cint): cstring {.
     cdecl, importc: "SDL_GameControllerNameForIndex", dynlib: SDL2_LIB.}
   ##  Get the implementation dependent name of a game controller.
+  ##
   ##  This can be called before any controllers are opened.
   ##  If no name can be found, this function returns `nil`.
 
@@ -157,16 +159,16 @@ proc gameControllerOpen*(joystick_index: cint): GameController {.
 
 proc gameControllerName*(gamecontroller: GameController): cstring {.
     cdecl, importc: "SDL_GameControllerName", dynlib: SDL2_LIB.}
-  ##  Return the name for this currently opened controller
+  ##  ``Return`` the name for this currently opened controller.
 
 proc gameControllerGetAttached*(gamecontroller: GameController): bool {.
     cdecl, importc: "SDL_GameControllerGetAttached", dynlib: SDL2_LIB.}
-  ##  Returns `true` if the controller has been opened and currently connected,
-  ##  or `false` if it has not.
+  ##  ``Returns`` `true` if the controller has been opened and currently
+  ##  connected, or `false` if it has not.
 
 proc gameControllerGetJoystick*(gamecontroller: GameController): ptr Joystick {.
     cdecl, importc: "SDL_GameControllerGetJoystick", dynlib: SDL2_LIB.}
-  ##  Get the underlying joystick object used by a controller
+  ##  Get the underlying joystick object used by a controller.
 
 proc gameControllerEventState*(state: cint): cint {.
     cdecl, importc: "SDL_GameControllerEventState", dynlib: SDL2_LIB.}
@@ -196,17 +198,17 @@ type
 
 proc gameControllerGetAxisFromString*(pchString: cstring): GameControllerAxis {.
     cdecl, importc: "SDL_GameControllerGetAxisFromString", dynlib: SDL2_LIB.}
-  ##  turn this string into a axis mapping
+  ##  Turn this string into a axis mapping.
 
 proc gameControllerGetStringForAxis*(axis: GameControllerAxis): cstring {.
     cdecl, importc: "SDL_GameControllerGetStringForAxis", dynlib: SDL2_LIB.}
-  ##  turn this axis enum into a string mapping
+  ##  Turn this axis enum into a string mapping.
 
 proc gameControllerGetBindForAxis*(
     gamecontroller: GameController;
     axis: GameControllerAxis): GameControllerButtonBind {.
       cdecl, importc: "SDL_GameControllerGetBindForAxis", dynlib: SDL2_LIB.}
-  ##  Get the SDL joystick layer binding for this controller button mapping
+  ##  Get the SDL joystick layer binding for this controller button mapping.
 
 proc gameControllerGetAxis*(gamecontroller: GameController; 
                             axis: GameControllerAxis): int16 {.cdecl, 

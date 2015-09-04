@@ -20,6 +20,7 @@
 #
 
 ##  video.nim
+##  =========
 ##
 ##  Header file for SDL video functions.
 
@@ -219,7 +220,7 @@ type
 
 proc getNumVideoDrivers*(): cint {.
     cdecl, importc: "SDL_GetNumVideoDrivers", dynlib: SDL2_LIB.}
-  ##  Get the number of video drivers compiled into SDL
+  ##  Get the number of video drivers compiled into SDL.
   ##
   ##  See also:
   ##
@@ -243,7 +244,7 @@ proc videoInit*(driver_name: cstring): cint {.
   ##  ``driver_name`` Initialize a specific driver by name, or `nil` for the
   ##  default video driver.
   ##
-  ##  ``Return`` `0` on success, `-1` on error
+  ##  ``Return`` `0` on success, `-1` on error.
   ##
   ##  This function initializes the video subsystem; setting up a connection
   ##  to the window manager, etc, and determines the available display modes
@@ -268,7 +269,7 @@ proc getCurrentVideoDriver*(): cstring {.
   ##  Returns the name of the currently initialized video driver.
   ##
   ##  ``Return`` The name of the current video driver or `nil` if no driver
-  ##  has been initialized
+  ##  has been initialized.
   ##
   ##  See also:
   ##
@@ -286,7 +287,7 @@ proc getNumVideoDisplays*(): cint {.
 
 proc getDisplayName*(displayIndex: cint): cstring {.
     cdecl, importc: "SDL_GetDisplayName", dynlib: SDL2_LIB.}
-  ##  Get the name of a display in UTF-8 encoding
+  ##  Get the name of a display in UTF-8 encoding.
   ##
   ##  ``Return`` The name of a display, or `nil` for an invalid display index.
   ##
@@ -297,7 +298,7 @@ proc getDisplayName*(displayIndex: cint): cstring {.
 proc getDisplayBounds*(displayIndex: cint; rect: ptr Rect): cint {.
     cdecl, importc: "SDL_GetDisplayBounds", dynlib: SDL2_LIB.}
   ##  Get the desktop area represented by a display,
-  ##  with the primary display located at `0,0`
+  ##  with the primary display located at `0,0`.
   ##
   ##  ``Return`` `0` on success, or `-1` if the index is out of range.
   ##
@@ -343,7 +344,7 @@ proc getClosestDisplayMode*(displayIndex: cint;
   ##
   ##  ``displayIndex`` The index of display from which mode should be queried.
   ##
-  ##  ``mode`` The desired display mode
+  ##  ``mode`` The desired display mode.
   ##
   ##  ``closest`` A pointer to a display mode to be filled in with the closest
   ##  match of the available display modes.
@@ -446,7 +447,7 @@ proc createWindowFrom*(data: pointer): Window {.
     cdecl, importc: "SDL_CreateWindowFrom", dynlib: SDL2_LIB.}
   ##  Create an SDL window from an existing native window.
   ##
-  ##  ``data`` A pointer to driver-dependent window creation data
+  ##  ``data`` A pointer to driver-dependent window creation data.
   ##
   ##  ``Return`` the id of the window created,
   ##  or zero if window creation failed.
@@ -497,10 +498,12 @@ proc setWindowData*(
   ##  Associate an arbitrary named pointer with a window.
   ##
   ##  ``window`` The window to associate with the pointer.
+  ##
   ##  ``name`` The name of the pointer.
+  ##
   ##  ``userdata`` The associated pointer.
   ##
-  ##  ``Return`` The previous value associated with ``name``
+  ##  ``Return`` The previous value associated with ``name``.
   ##
   ##  ``Note:`` The name is case-sensitive.
   ##
@@ -516,7 +519,7 @@ proc getWindowData*(window: Window; name: cstring): pointer {.
   ##
   ##  ``name`` The name of the pointer.
   ##
-  ##  ``Return`` The value associated with ``name``
+  ##  ``Return`` The value associated with ``name``.
   ##
   ##  See also:
   ##
@@ -546,9 +549,9 @@ proc getWindowPosition*(window: Window; x: ptr cint; y: ptr cint) {.
   ##
   ##  ``window`` The window to query.
   ##
-  ##  ``x`` Pointer to variable for storing the x position, may be `nil`
+  ##  ``x`` Pointer to variable for storing the x position, may be `nil`.
   ##
-  ##  ``y`` Pointer to variable for storing the y position, may be `nil`
+  ##  ``y`` Pointer to variable for storing the y position, may be `nil`.
   ##
   ##  See also:
   ##
@@ -560,9 +563,9 @@ proc setWindowSize*(window: Window; w: cint; h: cint) {.
   ##
   ##  ``window`` The window to resize.
   ##
-  ##  ``w`` The width of the window, must be `>0`
+  ##  ``w`` The width of the window, must be `>0`.
   ##
-  ##  ``h`` The height of the window, must be `>0`
+  ##  ``h`` The height of the window, must be `>0`.
   ##
   ##  ``Note:`` You can't change the size of a fullscreen window,
   ##  it automatically matches the size of the display mode.
@@ -577,9 +580,9 @@ proc getWindowSize*(window: Window; w: ptr cint; h: ptr cint) {.
   ##
   ##  ``window`` The window to query.
   ##
-  ##  ``w`` Pointer to variable for storing the width, may be `nil`
+  ##  ``w`` Pointer to variable for storing the width, may be `nil`.
   ##
-  ##  ``h`` Pointer to variable for storing the height, may be `nil`
+  ##  ``h`` Pointer to variable for storing the height, may be `nil`.
   ##
   ##  See also:
   ##
@@ -591,9 +594,9 @@ proc setWindowMinimumSize*(window: Window; min_w: cint; min_h: cint) {.
   ##
   ##  ``window`` The window to set a new minimum size.
   ##
-  ##  ``min_w`` The minimum width of the window, must be `>0`
+  ##  ``min_w`` The minimum width of the window, must be `>0`.
   ##
-  ##  ``min_h`` The minimum height of the window, must be `>0`
+  ##  ``min_h`` The minimum height of the window, must be `>0`.
   ##
   ##  ``Note:`` You can't change the minimum size of a fullscreen window,
   ##  it automatically matches the size of the display mode.
@@ -610,9 +613,9 @@ proc getWindowMinimumSize*(window: Window; w: ptr cint; h: ptr cint) {.
   ##
   ##  ``window`` The window to query.
   ##
-  ##  ``w`` Pointer to variable for storing the minimum width, may be `nil`
+  ##  ``w`` Pointer to variable for storing the minimum width, may be `nil`.
   ##
-  ##  ``h`` Pointer to variable for storing the minimum height, may be `nil`
+  ##  ``h`` Pointer to variable for storing the minimum height, may be `nil`.
   ##
   ##  See also:
   ##
@@ -626,9 +629,9 @@ proc setWindowMaximumSize*(window: Window; max_w: cint; max_h: cint) {.
   ##
   ##  ``window`` The window to set a new maximum size.
   ##
-  ##  ``max_w`` The maximum width of the window, must be `>0`
+  ##  ``max_w`` The maximum width of the window, must be `>0`.
   ##
-  ##  ``max_h`` The maximum height of the window, must be `>0`
+  ##  ``max_h`` The maximum height of the window, must be `>0`.
   ##
   ##  ``Note:`` You can't change the maximum size of a fullscreen window,
   ##  it automatically matches the size of the display mode.
@@ -645,9 +648,9 @@ proc getWindowMaximumSize*(window: Window; w: ptr cint; h: ptr cint) {.
   ##
   ##  ``window`` The window to query.
   ##
-  ##  ``w`` Pointer to variable for storing the maximum width, may be `nil`
+  ##  ``w`` Pointer to variable for storing the maximum width, may be `nil`.
   ##
-  ##  ``h`` Pointer to variable for storing the maximum height, may be `nil`
+  ##  ``h`` Pointer to variable for storing the maximum height, may be `nil`.
   ##
   ##  See also:
   ##
@@ -881,7 +884,7 @@ proc isScreenSaverEnabled*(): bool {.
 
 proc enableScreenSaver*() {.
     cdecl, importc: "SDL_EnableScreenSaver", dynlib: SDL2_LIB.}
-  ##  Allow the screen to be blanked by a screensaver
+  ##  Allow the screen to be blanked by a screensaver.
   ##
   ##  See also:
   ##
@@ -891,7 +894,7 @@ proc enableScreenSaver*() {.
 
 proc disableScreenSaver*() {.
     cdecl, importc: "SDL_DisableScreenSaver", dynlib: SDL2_LIB.}
-  ##  Prevent the screen from being blanked by a screensaver
+  ##  Prevent the screen from being blanked by a screensaver.
   ##
   ##  See also:
   ##
@@ -943,7 +946,8 @@ proc glExtensionSupported*(extension: cstring): bool {.
 
 proc glResetAttributes*() {.
     cdecl, importc: "SDL_GL_ResetAttributes", dynlib: SDL2_LIB.}
-  ##  Reset all previously set OpenGL context attributes to their default values
+  ##  Reset all previously set OpenGL context attributes
+  ##  to their default values.
 
 proc glSetAttribute*(attr: GLattr; value: cint): cint {.
     cdecl, importc: "SDL_GL_SetAttribute", dynlib: SDL2_LIB.}
@@ -980,11 +984,11 @@ proc glGetDrawableSize*(window: Window; w: ptr cint; h: ptr cint) {.
     cdecl, importc: "SDL_GL_GetDrawableSize", dynlib: SDL2_LIB.}
   ##  Get the size of a window's underlying drawable (for use with glViewport).
   ##
-  ##  ``window`` Window from which the drawable size should be queried
+  ##  ``window`` Window from which the drawable size should be queried.
   ##
-  ##  ``w`` Pointer to variable for storing the width, may be `nil`
+  ##  ``w`` Pointer to variable for storing the width, may be `nil`.
   ##
-  ##  ``h`` Pointer to variable for storing the height, may be `nil`
+  ##  ``h`` Pointer to variable for storing the height, may be `nil`.
   ##
   ##  This may differ from ``getWindowSize()`` if we're rendering to a high-DPI
   ##  drawable, i.e. the window was created with `WINDOW_ALLOW_HIGHDPI` on a

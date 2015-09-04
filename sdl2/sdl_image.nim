@@ -19,7 +19,10 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 
-##  A simple library to load images of various formats as SDL surfaces
+##  sdl_image.nim
+##  =============
+##
+##  A simple library to load images of various formats as SDL surfaces.
 
 import
   sdl
@@ -73,6 +76,7 @@ proc loadTyped_RW*(
   ##  colorkey for the surface.  You can enable RLE acceleration on the
   ##  surface afterwards by calling:
   ##
+  ##  .. code-block:: nim
   ##    setColorKey(image, RLEACCEL, image.format.colorkey)
 
 # Convenience functions

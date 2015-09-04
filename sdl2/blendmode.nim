@@ -20,8 +20,9 @@
 #
 
 ##  blendmode.nim
+##  =============
 ##
-##  Header file declaring the BlendMode enumeration
+##  Header file declaring the BlendMode enumeration.
 
 type
   BlendMode* {.size: sizeof(cint).} = enum ##  \

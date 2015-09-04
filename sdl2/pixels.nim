@@ -20,6 +20,7 @@
 #
 
 ##  pixels.nim
+##  ==========
 ##
 ##  Header for the enumerated pixel format definitions.
 
@@ -135,10 +136,10 @@ template isPixelFormatAlpha*(format: expr): expr =
      (pixelOrder(format) == PACKEDORDER_BGRA)))
 
 template isPixelFormatFourCC*(format: expr): expr = ##  \
-  ##  The flag is set to `1` because 0x1? is not in the printable ASCII range
+  ##  The flag is set to `1` because 0x1? is not in the printable ASCII range.
   ((format) and (pixelFlag(format) != 1))
 
-# Note: If you modify this list, update getPixelFormatName() 
+# Note: If you modify this list, update getPixelFormatName()
 const
   PIXELFORMAT_UNKNOWN* = 0
   PIXELFORMAT_INDEX1LSB* = definePixelFormat(PIXELTYPE_INDEX1,
@@ -230,7 +231,7 @@ type
 
 type
   PixelFormat* = object ##  \
-    ##  Note: Everything in the pixel format object is read-only.
+    ##  ``Note:`` Everything in the pixel format object is read-only.
     format*: uint32
     palette*: ptr Palette
     BitsPerPixel*: uint8
@@ -253,7 +254,7 @@ type
 
 proc getPixelFormatName*(format: uint32): cstring {.
     cdecl, importc: "SDL_GetPixelFormatName", dynlib: SDL2_LIB.}
-  ## Get the human readable name of a pixel format
+  ##  Get the human readable name of a pixel format.
 
 proc pixelFormatEnumToMasks*(
     format: uint32; bpp: ptr cint;

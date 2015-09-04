@@ -20,10 +20,12 @@
 #
 
 ##  atomics.nim
+##  ===========
 ##
 ##  Atomic operations.
 ##
 ##  IMPORTANT:
+##  ----------
 ##
 ##  If you are not an expert in concurrent lockless programming, you should
 ##  only be using the atomic lock and reference counting functions in this
@@ -47,7 +49,7 @@
 ##
 ##  http://www.1024cores.net/home/lock-free-algorithms
 ##
-##  http://preshing.com/
+##  http://preshing.com
 ##
 ##  These operations may or may not actually be implemented using
 ##  processor specific atomic operations. When possible they are
@@ -57,7 +59,8 @@
 ##
 ##  All of the atomic operations that modify memory are full memory barriers.
 
-##  ``AtomicLock``
+##  AtomicLock
+##  ----------
 ##
 ##  The atomic locks are efficient spinlocks using CPU instructions,
 ##  but are vulnerable to starvation and can spin forever if a thread
@@ -67,7 +70,7 @@
 ##
 ##  The atomic locks are not safe to lock recursively.
 ##
-##  Porting Note:
+##  ``Porting Note:``
 ##  The spin lock functions and type are required and can not be
 ##  emulated because they are used in the atomic emulation code.
 

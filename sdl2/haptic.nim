@@ -20,6 +20,7 @@
 #
 
 ##  haptic.nim
+##  ==========
 ##
 ##  The SDL Haptic subsystem allows you to control
 ##  haptic (force feedback) devices.
@@ -86,7 +87,7 @@ const
     ##
     ##  ``HapticLeftRight``
     ##
-    ##  ``Warning`` this value was `HAPTIC_SQUARE` right before 2.0.0 shipped.
+    ##  ``Warning:`` this value was `HAPTIC_SQUARE` right before 2.0.0 shipped.
     ##  Sorry, we ran out of bits, and this is important for XInput devices.
 
 # !!! FIXME: put this back when we have more bits in 2.1 
@@ -247,7 +248,7 @@ const
   HAPTIC_INFINITY* = 4294967295'i64 ##  \
     ##  Used to play a device an infinite number of times.
     ##
-    ##   ``hapticRunEffect()``
+    ##  ``hapticRunEffect()``
 
 type
   HapticDirection* = object ##  \

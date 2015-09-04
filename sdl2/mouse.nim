@@ -20,6 +20,7 @@
 #
 
 ##  mouse.nim
+##  =========
 ##
 ##  Include file for SDL mouse event handling.
 

@@ -20,6 +20,7 @@
 #
 
 ##  render.nim
+##  ==========
 ##
 ##  Header file for SDL 2D rendering functions.
 
@@ -69,7 +70,7 @@ const
 
 type
   RendererInfo* = object ##  \
-    ##  Information on the capabilities of a render driver or context.
+    ##  Information on the capabilities of a render driver or context
     name*: cstring                ## The name of the renderer
     flags*: uint32                ## Supported ``RendererFlags``
     num_texture_formats*: uint32  ## The number of available texture formats
@@ -79,7 +80,7 @@ type
 
 #type
 #  TextureAccess* {.size: sizeof(cint).} = enum ##  \
-#    ##  The access pattern allowed for a texture.
+#    ##  The access pattern allowed for a texture
 #    TEXTUREACCESS_STATIC,    ## Changes rarely, not lockable
 #    TEXTUREACCESS_STREAMING, ## Changes frequently, lockable
 #    TEXTUREACCESS_TARGET     ## Texture can be used as a render target
@@ -95,7 +96,7 @@ type
 
 type
   TextureModulate* {.size: sizeof(cint).} = enum ##  \
-    ##  The texture channel modulation used in ``renderCopy()``.
+    ##  The texture channel modulation used in ``renderCopy()``
     TEXTUREMODULATE_NONE  = 0x00000000, ## No modulation
     TEXTUREMODULATE_COLOR = 0x00000001, ## srcC = srcC * color
     TEXTUREMODULATE_ALPHA = 0x00000002  ## srcA = srcA * alpha
@@ -125,8 +126,11 @@ proc getNumRenderDrivers*(): cint {.
   ##  management on a particular display.  Normally there is only one, but
   ##  some drivers may have several available with different capabilities.
   ##
-  ##  \sa SDL_GetRenderDriverInfo()
-  ##  \sa SDL_CreateRenderer()
+  ##  See also:
+  ##
+  ##  ``getRenderDriverInfo()``
+  ##
+  ##  ``createRenderer()``
 
 proc getRenderDriverInfo*(index: cint; info: ptr RendererInfo): cint {.
     cdecl, importc: "SDL_GetRenderDriverInfo", dynlib: SDL2_LIB.}
@@ -148,19 +152,19 @@ proc createWindowAndRenderer*(
     width: cint; height: cint; window_flags: uint32;
     window: ptr Window; renderer: ptr Renderer): cint {.
       cdecl, importc: "SDL_CreateWindowAndRenderer", dynlib: SDL2_LIB.}
-  ##  Create a window and default renderer
+  ##  Create a window and default renderer.
   ##
-  ##  ``width`` The width of the window
+  ##  ``width`` The width of the window.
   ##
-  ##  ``height`` The height of the window
+  ##  ``height`` The height of the window.
   ##
-  ##  ``window_flags`` The flags used to create the window
+  ##  ``window_flags`` The flags used to create the window.
   ##
-  ##  ``window`` A pointer filled with the window, or `nil` on error
+  ##  ``window`` A pointer filled with the window, or `nil` on error.
   ##
-  ##  ``renderer`` A pointer filled with the renderer, or `nil` on error
+  ##  ``renderer`` A pointer filled with the renderer, or `nil` on error.
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
 
 proc createRenderer*(window: Window; index: cint; flags: uint32): Renderer {.
     cdecl, importc: "SDL_CreateRenderer", dynlib: SDL2_LIB.}
@@ -260,7 +264,7 @@ proc queryTexture*(texture: Texture;
     format: ptr uint32; access: ptr TextureAccess;
       w: ptr cint; h: ptr cint): cint {.
       cdecl, importc: "SDL_QueryTexture", dynlib: SDL2_LIB.}
-  ##  Query the attributes of a texture
+  ##  Query the attributes of a texture.
   ##
   ##  ``texture`` A texture to be queried.
   ##
@@ -459,9 +463,9 @@ proc unlockTexture*(texture: Texture) {.
 
 proc renderTargetSupported*(renderer: Renderer): bool {.
     cdecl, importc: "SDL_RenderTargetSupported", dynlib: SDL2_LIB.}
-  ##  Determines whether a window supports the use of render targets
+  ##  Determines whether a window supports the use of render targets.
   ##
-  ##  ``renderer`` The renderer that will be checked
+  ##  ``renderer`` The renderer that will be checked.
   ##
   ##  ``Return`` `true` if supported, `false` if not.
 
@@ -474,7 +478,7 @@ proc setRenderTarget*(renderer: Renderer; texture: Texture): cint {.
   ##  ``texture`` The targeted texture, which must be created with the
   ##  `TEXTUREACCESS_TARGET`` flag, or `nil` for the default render target
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
   ##
   ##  See also:
   ##
@@ -484,7 +488,7 @@ proc getRenderTarget*(renderer: Renderer): Texture {.
     cdecl, importc: "SDL_GetRenderTarget", dynlib: SDL2_LIB.}
   ##  Get the current render target or `nil` for the default render target.
   ##
-  ##  ``Return`` The current render target
+  ##  ``Return`` The current render target.
   ##
   ##  See also:
   ##
@@ -492,7 +496,7 @@ proc getRenderTarget*(renderer: Renderer): Texture {.
 
 proc renderSetLogicalSize*(renderer: Renderer; w: cint; h: cint): cint {.
     cdecl, importc: "SDL_RenderSetLogicalSize", dynlib: SDL2_LIB.}
-  ##  Set device independent resolution for rendering
+  ##  Set device independent resolution for rendering.
   ##
   ##  ``renderer`` The renderer for which resolution should be set.
   ##
@@ -500,8 +504,8 @@ proc renderSetLogicalSize*(renderer: Renderer; w: cint; h: cint): cint {.
   ##
   ##  ``h`` The height of the logical resolution
   ##
-  ##  This function uses the viewport and scaling functionality to allow a fixed
-  ##  logical resolution for rendering, regardless of the actual output
+  ##  This function uses the viewport and scaling functionality to allow a
+  ##  fixed logical resolution for rendering, regardless of the actual output
   ##  resolution. If the actual  output resolution doesn't have the same aspect
   ##  ratio the output rendering will be centered within the output display.
   ##
@@ -521,13 +525,13 @@ proc renderSetLogicalSize*(renderer: Renderer; w: cint; h: cint): cint {.
 
 proc renderGetLogicalSize*(renderer: Renderer; w: ptr cint; h: ptr cint) {.
     cdecl, importc: "SDL_RenderGetLogicalSize", dynlib: SDL2_LIB.}
-  ##  Get device independent resolution for rendering
+  ##  Get device independent resolution for rendering.
   ##
   ##  ``renderer`` The renderer from which resolution should be queried.
   ##
-  ##  ``w`` A pointer filled with the width of the logical resolution
+  ##  ``w`` A pointer filled with the width of the logical resolution.
   ##
-  ##  ``h`` A pointer filled with the height of the logical resolution
+  ##  ``h`` A pointer filled with the height of the logical resolution.
   ##
   ##  See also:
   ##
@@ -544,7 +548,7 @@ proc renderSetViewport*(renderer: Renderer; rect: ptr Rect): cint {.
   ##
   ##  The `x`,`y` of the viewport rect represents the origin for rendering.
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
   ##
   ##  ``Note:`` If the window associated with the renderer is resized,
   ##  the viewport is automatically reset.
@@ -572,7 +576,7 @@ proc renderSetClipRect*(renderer: Renderer; rect: ptr Rect): cint {.
   ##  ``rect`` A pointer to the rectangle to set as the clip rectangle,
   ##  or `nil` to disable clipping.
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
   ##
   ##  See also:
   ##
@@ -598,9 +602,9 @@ proc renderSetScale*(
   ##
   ##  ``renderer`` The renderer for which the drawing scale should be set.
   ##
-  ##  ``scaleX`` The horizontal scaling factor
+  ##  ``scaleX`` The horizontal scaling factor.
   ##
-  ##  ``scaleY`` The vertical scaling factor
+  ##  ``scaleY`` The vertical scaling factor.
   ##
   ##  The drawing coordinates are scaled by the x/y scaling factors
   ##  before they are used by the renderer.  This allows resolution
@@ -623,9 +627,9 @@ proc renderGetScale*(
   ##
   ##  ``renderer`` The renderer from which drawing scale should be queried.
   ##
-  ##  ``scaleX`` A pointer filled in with the horizontal scaling factor
+  ##  ``scaleX`` A pointer filled in with the horizontal scaling factor.
   ##
-  ##  ``scaleY`` A pointer filled in with the vertical scaling factor
+  ##  ``scaleY`` A pointer filled in with the vertical scaling factor.
   ##
   ##  See also:
   ##
@@ -647,7 +651,7 @@ proc setRenderDrawColor*(renderer: Renderer;
   ##  ``a`` The alpha value used to draw on the rendering target,
   ##  usually `ALPHA_OPAQUE` (`255`).
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
 
 proc getRenderDrawColor*(renderer: Renderer;
     r: ptr uint8; g: ptr uint8; b: ptr uint8; a: ptr uint8): cint {.
@@ -665,7 +669,7 @@ proc getRenderDrawColor*(renderer: Renderer;
   ##  ``a`` A pointer to the alpha value used to draw on the rendering target,
   ##  usually `ALPHA_OPAQUE` (`255`).
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
 
 proc setRenderDrawBlendMode*(renderer: Renderer; blendMode: BlendMode): cint {.
     cdecl, importc: "SDL_SetRenderDrawBlendMode", dynlib: SDL2_LIB.}
@@ -693,7 +697,7 @@ proc getRenderDrawBlendMode*(
   ##
   ##  ``blendMode`` A pointer filled in with the current blend mode.
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
   ##
   ##  See also:
   ##
@@ -701,11 +705,11 @@ proc getRenderDrawBlendMode*(
 
 proc renderClear*(renderer: Renderer): cint {.
     cdecl, importc: "SDL_RenderClear", dynlib: SDL2_LIB.}
-  ##  Clear the current rendering target with the drawing color
+  ##  Clear the current rendering target with the drawing color.
   ##
   ##  This function clears the entire rendering target, ignoring the viewport.
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
 
 proc renderDrawPoint*(renderer: Renderer; x: cint; y: cint): cint {.
     cdecl, importc: "SDL_RenderDrawPoint", dynlib: SDL2_LIB.}
@@ -717,7 +721,7 @@ proc renderDrawPoint*(renderer: Renderer; x: cint; y: cint): cint {.
   ##
   ##  ``y`` The y coordinate of the point.
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
 
 proc renderDrawPoints*(
     renderer: Renderer; points: ptr Point; count: cint): cint {.
@@ -726,11 +730,11 @@ proc renderDrawPoints*(
   ##
   ##  ``renderer`` The renderer which should draw multiple points.
   ##
-  ##  ``points`` The points to draw
+  ##  ``points`` The points to draw.
   ##
-  ##  ``count`` The number of points to draw
+  ##  ``count`` The number of points to draw.
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
 
 proc renderDrawLine*(
     renderer: Renderer; x1: cint; y1: cint; x2: cint; y2: cint): cint {.
@@ -747,7 +751,7 @@ proc renderDrawLine*(
   ##
   ##  ``y2`` The y coordinate of the end point.
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
 
 proc renderDrawLines*(
     renderer: Renderer; points: ptr Point; count: cint): cint {.
@@ -756,11 +760,11 @@ proc renderDrawLines*(
   ##
   ##  ``renderer`` The renderer which should draw multiple lines.
   ##
-  ##  ``points`` The points along the lines
+  ##  ``points`` The points along the lines.
   ##
-  ##  ``count`` The number of points, drawing `count-1` lines
+  ##  ``count`` The number of points, drawing `count-1` lines.
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
 
 proc renderDrawRect*(renderer: Renderer; rect: ptr Rect): cint {.
     cdecl, importc: "SDL_RenderDrawRect", dynlib: SDL2_LIB.}
@@ -771,7 +775,7 @@ proc renderDrawRect*(renderer: Renderer; rect: ptr Rect): cint {.
   ##  ``rect`` A pointer to the destination rectangle,
   ##  or `nil` to outline the entire rendering target.
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
 
 proc renderDrawRects*(
     renderer: Renderer; rects: ptr Rect; count: cint): cint {.
@@ -784,7 +788,7 @@ proc renderDrawRects*(
   ##
   ##  ``count`` The number of rectangles.
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
 
 proc renderFillRect*(renderer: Renderer; rect: ptr Rect): cint {.
     cdecl, importc: "SDL_RenderFillRect", dynlib: SDL2_LIB.}
@@ -795,7 +799,7 @@ proc renderFillRect*(renderer: Renderer; rect: ptr Rect): cint {.
   ##  ``rect`` A pointer to the destination rectangle,
   ##  or `nil` for the entire rendering target.
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
 
 proc renderFillRects*(
     renderer: Renderer; rects: ptr Rect; count: cint): cint {.
@@ -809,7 +813,7 @@ proc renderFillRects*(
   ##
   ##  ``count`` The number of rectangles.
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
 
 proc renderCopy*(
     renderer: Renderer; texture: Texture;
@@ -827,7 +831,7 @@ proc renderCopy*(
   ##  ``dstrect`` A pointer to the destination rectangle,
   ##  or `nil` for the entire rendering target.
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
 
 proc renderCopyEx*(
     renderer: Renderer; texture: Texture;
@@ -835,7 +839,7 @@ proc renderCopyEx*(
     angle: cdouble; center: ptr Point; flip: RendererFlip): cint {.
       cdecl, importc: "SDL_RenderCopyEx", dynlib: SDL2_LIB.}
   ##  Copy a portion of the source texture to the current rendering target,
-  ##  rotating it by angle around the given center
+  ##  rotating it by angle around the given center.
   ##
   ##  ``renderer`` The renderer which should copy parts of a texture.
   ##
@@ -848,16 +852,16 @@ proc renderCopyEx*(
   ##  or `nil` for the entire rendering target.
   ##
   ##  ``angle`` An angle in degrees that indicates the rotation
-  ##  that will be applied to dstrect
+  ##  that will be applied to dstrect.
   ##
   ##  ``center`` A pointer to a point indicating the point
   ##  around which dstrect will be rotated
-  ##  (if `nil`, rotation will be done aroud `dstrect.w/2`, `dstrect.h/2`)
+  ##  (if `nil`, rotation will be done aroud `dstrect.w/2`, `dstrect.h/2`).
   ##
   ##  ``flip`` ``RendererFlip`` value stating which flipping actions should be
-  ##  performed on the texture
+  ##  performed on the texture.
   ##
-  ##  ``Return`` `0` on success, or `-1` on error
+  ##  ``Return`` `0` on success, or `-1` on error.
 
 proc renderReadPixels*(
     renderer: Renderer; rect: ptr Rect;
@@ -871,9 +875,9 @@ proc renderReadPixels*(
   ##  or `nil` for the entire render target.
   ##
   ##  ``format`` The desired format of the pixel data,
-  ##  or `0` to use the formatof the rendering target
+  ##  or `0` to use the formatof the rendering target.
   ##
-  ##  ``pixels`` A pointer to be filled in with the pixel data
+  ##  ``pixels`` A pointer to be filled in with the pixel data.
   ##
   ##  ``pitch`` The pitch of the pixels parameter.
   ##
@@ -910,18 +914,18 @@ proc glBindTexture*(
   ##  Bind the texture to the current OpenGL/ES/ES2 context for use
   ##  with OpenGL instructions.
   ##
-  ##  ``texture`` The SDL texture to bind
+  ##  ``texture`` The SDL texture to bind.
   ##
-  ##  ``texw`` A pointer to a float that will be filled with the texture width
+  ##  ``texw`` A pointer to a float that will be filled with the texture width.
   ##
-  ##  ``texh`` A pointer to a float that will be filled with the texture height
+  ##  ``texh`` A pointer to a float that will be filled with the texture height.
   ##
-  ##  ``Return`` `0` on success, or `-1` if the operation is not supported
+  ##  ``Return`` `0` on success, or `-1` if the operation is not supported.
 
 proc glUnbindTexture*(texture: Texture): cint {.
     cdecl, importc: "SDL_GL_UnbindTexture", dynlib: SDL2_LIB.}
   ##  Unbind a texture from the current OpenGL/ES/ES2 context.
   ##
-  ##  ``texture`` The SDL texture to unbind
+  ##  ``texture`` The SDL texture to unbind.
   ##
-  ##  ``Return`` `0` on success, or `-1` if the operation is not supported
+  ##  ``Return`` `0` on success, or `-1` if the operation is not supported.

@@ -51,7 +51,7 @@ const
 
 type
   MessageBoxButtonData* = object ##  \
-    ##  Individual button data.
+    ##  Individual button data
     flags*: uint32          ##  ``MessageBoxButtonFlags``
     buttonid*: cint         ##  \
       ## User defined button id (value returned via ``showMessageBox()``)
@@ -109,7 +109,7 @@ proc showMessageBox*(
 proc showSimpleMessageBox*(
     flags: uint32; title: cstring; message: cstring; window: Window): cint {.
       cdecl, importc: "SDL_ShowSimpleMessageBox", dynlib: SDL2_LIB.}
-  ##  Create a simple modal message box
+  ##  Create a simple modal message box.
   ##
   ##  ``flags`` ``MessageBoxFlags``
   ##

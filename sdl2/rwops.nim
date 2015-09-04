@@ -20,18 +20,19 @@
 #
 
 ##  rwops.nim
+##  =========
 ##
 ##  This file provides a general interface for SDL to read and write
-##  data streams.  It can easily be extended to files, memory, etc.
+##  data streams. It can easily be extended to files, memory, etc.
 
 # RWops Kinds
 const
-  RWOPS_UNKNOWN*    = 0 ## Unknown stream type
-  RWOPS_WINFILE*    = 1 ## Win32 file
-  RWOPS_STDFILE*    = 2 ## Stdio file
-  RWOPS_JNIFILE*    = 3 ## Android asset
-  RWOPS_MEMORY*     = 4 ## Memory stream
-  RWOPS_MEMORY_RO*  = 5 ## Read-Only memory stream
+  RWOPS_UNKNOWN*    = 0 ##  Unknown stream type
+  RWOPS_WINFILE*    = 1 ##  Win32 file
+  RWOPS_STDFILE*    = 2 ##  Stdio file
+  RWOPS_JNIFILE*    = 3 ##  Android asset
+  RWOPS_MEMORY*     = 4 ##  Memory stream
+  RWOPS_MEMORY_RO*  = 5 ##  Read-Only memory stream
 
 type
   RWopsAndroidio* = object

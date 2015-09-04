@@ -20,13 +20,14 @@
 #
 
 ##  surface.nim
+##  ===========
 ##
 ##  Header file for Surface definition and management functions.
 
 # Surface flags
 # These are the currently supported flags for the Surface.
 #
-#   Used internally (read-only).
+# Used internally (read-only).
 const
   SWSURFACE* = 0
   PREALLOC* = 0x00000001
@@ -176,7 +177,7 @@ proc setSurfaceRLE*(surface: Surface; flag: cint): cint {.
     cdecl, importc: "SDL_SetSurfaceRLE", dynlib: SDL2_LIB.}
   ##  Sets the RLE acceleration hint for a surface.
   ##
-  ##  ``Return`` `0` on success, or `-1` if the surface is not valid
+  ##  ``Return`` `0` on success, or `-1` if the surface is not valid.
   ##
   ##  ``Note:`` If RLE is enabled, colorkey and alpha blending blits are
   ##  much faster, but the surface must be locked before directly
@@ -186,13 +187,13 @@ proc setColorKey*(surface: Surface; flag: cint; key: uint32): cint {.
     cdecl, importc: "SDL_SetColorKey", dynlib: SDL2_LIB.}
   ##  Sets the color key (transparent pixel) in a blittable surface.
   ##
-  ##  ``surface`` The surface to update
+  ##  ``surface`` The surface to update.
   ##
-  ##  ``flag`` Non-zero to enable colorkey and `0` to disable colorkey
+  ##  ``flag`` Non-zero to enable colorkey and `0` to disable colorkey.
   ##
-  ##  ``key`` The transparent pixel in the native surface format
+  ##  ``key`` The transparent pixel in the native surface format.
   ##
-  ##  ``Return`` `0` on success, or `-1` if the surface is not valid
+  ##  ``Return`` `0` on success, or `-1` if the surface is not valid.
   ##
   ##  You can pass `RLEACCEL` to enable RLE accelerated blits.
 
@@ -200,10 +201,10 @@ proc getColorKey*(surface: Surface; key: ptr uint32): cint {.
     cdecl, importc: "SDL_GetColorKey", dynlib: SDL2_LIB.}
   ##  Gets the color key (transparent pixel) in a blittable surface.
   ##
-  ##  ``surface`` The surface to update
+  ##  ``surface`` The surface to update.
   ##
   ##  ``key`` A pointer filled in with the transparent pixel
-  ##  in the native surface format
+  ##  in the native surface format.
   ##
   ##  ``Return`` `0` on success, or `-1` if the surface is not valid or
   ##  colorkey is not enabled.
@@ -346,7 +347,7 @@ proc convertPixels*(
     src_format: uint32; src: pointer; src_pitch: cint;
     dst_format: uint32; dst: pointer; dst_pitch: cint): cint {.
       cdecl, importc: "SDL_ConvertPixels", dynlib: SDL2_LIB.}
-  ##  Copy a block of pixels of one format to another format
+  ##  Copy a block of pixels of one format to another format.
   ##
   ##  ``Return`` `0` on success, or `-1` if there was an error.
 
@@ -452,7 +453,7 @@ proc upperBlit*(
     dst: Surface; dstrect: ptr Rect): cint {.
       cdecl, importc: "SDL_UpperBlit", dynlib: SDL2_LIB.}
   ##  This is the public blit function, ``blitSurface()``, and it performs
-  ##  rectangle validation and clipping before passing it to ``lowerBlit()``
+  ##  rectangle validation and clipping before passing it to ``lowerBlit()``.
 
 proc lowerBlit*(
     src: Surface; srcrect: ptr Rect;
@@ -481,7 +482,7 @@ proc upperBlitScaled*(
       cdecl, importc: "SDL_UpperBlitScaled", dynlib: SDL2_LIB.}
   ##  This is the public scaled blit function, ``blitScaled()``,
   ##  and it performs rectangle validation and clipping before
-  ##  passing it to ``lowerBlitScaled()``
+  ##  passing it to ``lowerBlitScaled()``.
 
 proc lowerBlitScaled*(
     src: Surface; srcrect: ptr Rect;

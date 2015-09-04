@@ -20,6 +20,7 @@
 #
 
 ##  events.nim
+##  ==========
 ##
 ##  Include file for SDL event handling.
 
@@ -517,7 +518,7 @@ proc hasEvents*(minKind: EventKind; maxKind: EventKind): bool {.
 
 proc flushEvent*(kind: EventKind) {.
     cdecl, importc: "SDL_FlushEvent", dynlib: SDL2_LIB.}
-  ##  This function clears events from the event queue
+  ##  This function clears events from the event queue.
 
 proc flushEvents*(minKind: EventKind; maxKind: EventKind) {.
     cdecl, importc: "SDL_FlushEvents", dynlib: SDL2_LIB.}

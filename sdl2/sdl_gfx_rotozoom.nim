@@ -1,29 +1,29 @@
-#  
 #
-#SDL2_rotozoom.c: rotozoomer, zoomer and shrinker for 32bit or 8bit surfaces
 #
-#Copyright (C) 2001-2012  Andreas Schiffler
+# SDL2_rotozoom.c: rotozoomer, zoomer and shrinker for 32bit or 8bit surfaces
 #
-#This software is provided 'as-is', without any express or implied
-#warranty. In no event will the authors be held liable for any damages
-#arising from the use of this software.
+# Copyright (C) 2001-2012  Andreas Schiffler
 #
-#Permission is granted to anyone to use this software for any purpose,
-#including commercial applications, and to alter it and redistribute it
-#freely, subject to the following restrictions:
+# This software is provided 'as-is', without any express or implied
+# warranty. In no event will the authors be held liable for any damages
+# arising from the use of this software.
 #
-#1. The origin of this software must not be misrepresented; you must not
-#claim that you wrote the original software. If you use this software
-#in a product, an acknowledgment in the product documentation would be
-#appreciated but is not required.
+# Permission is granted to anyone to use this software for any purpose,
+# including commercial applications, and to alter it and redistribute it
+# freely, subject to the following restrictions:
 #
-#2. Altered source versions must be plainly marked as such, and must not be
-#misrepresented as being the original software.
+# 1. The origin of this software must not be misrepresented; you must not
+# claim that you wrote the original software. If you use this software
+# in a product, an acknowledgment in the product documentation would be
+# appreciated but is not required.
 #
-#3. This notice may not be removed or altered from any source
-#distribution.
+# 2. Altered source versions must be plainly marked as such, and must not be
+# misrepresented as being the original software.
 #
-#Andreas Schiffler -- aschiffler at ferzkopp dot net
+# 3. This notice may not be removed or altered from any source
+# distribution.
+#
+# Andreas Schiffler -- aschiffler at ferzkopp dot net
 #
 #
 

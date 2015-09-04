@@ -84,7 +84,7 @@ proc getThreadID*(thread: Thread): ThreadID {.
 
 proc setThreadPriority*(priority: ThreadPriority): cint {.
     cdecl, importc: "SDL_SetThreadPriority", dynlib: SDL2_LIB.}
-  ##  Set the priority for the current thread
+  ##  Set the priority for the current thread.
 
 proc waitThread*(thread: Thread; status: ptr cint) {.
     cdecl, importc: "SDL_WaitThread", dynlib: SDL2_LIB.}
@@ -168,7 +168,7 @@ proc tlsGet*(id: TLSID): pointer {.
   ##  Get the value associated with a thread local storage ID
   ##  for the current thread.
   ##
-  ##  ``id`` The thread local storage ID
+  ##  ``id`` The thread local storage ID.
   ##
   ##  ``Return`` The value associated with the ID for the current thread,
   ##  or `nil` if no value has been set.
@@ -186,7 +186,7 @@ proc tlsSet*(
   ##  Set the value associated with a thread local storage ID
   ##  for the current thread.
   ##
-  ##  ``id`` The thread local storage ID
+  ##  ``id`` The thread local storage ID.
   ##
   ##  ``value`` The value to associate with the ID for the current thread
   ##  ``destructor`` A function called when the thread exits, to free the value.

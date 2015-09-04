@@ -20,6 +20,7 @@
 #
 
 ##  quit.nim
+##  ========
 ##
 ##  Include file for SDL quit event handling.
 
@@ -40,7 +41,7 @@
 ##
 ##  ``quit()``
 ##
-##  There are no functions directly affecting the quit event 
+##  There are no functions directly affecting the quit event.
 
 proc quitRequested*(): bool =
   pumpEvents()
