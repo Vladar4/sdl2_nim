@@ -20,8 +20,9 @@
 #
 
 ##  keyboard.nim
+##  ============
 ##
-##  Include file for SDL keyboard event handling
+##  Include file for SDL keyboard event handling.
 
 type
   Keysym* = object ##  \
@@ -51,11 +52,12 @@ proc getKeyboardState*(numkeys: ptr cint): ptr array[NUM_SCANCODES.int, uint8] {
   ##
   ##  Example:
   ##
-  ##  const state: ptr uint8 = getKeyboardState(nil)
-  ##
-  ##  if state[SCANCODE_RETURN]:
-  ##
-  ##    echo("<RETURN> is pressed.\n");
+  ##  .. code-block:: nim
+  ##    let state = getKeyboardState(nil)
+  ##    if state[SCANCODE_RETURN] > 0:
+  ##      echo "<RETURN> is pressed."
+
+template `[]`*[Idx, T](a: array[Idx, T], x: Scancode): T = a[x.int]
 
 proc getModState*(): Keymod {.
     cdecl, importc: "SDL_GetModState", dynlib: SDL2_LIB.}
@@ -104,9 +106,9 @@ proc getScancodeName*(scancode: Scancode): cstring {.
 
 proc getScancodeFromName*(name: cstring): Scancode {.
     cdecl, importc: "SDL_GetScancodeFromName", dynlib: SDL2_LIB.}
-  ##  Get a scancode from a human-readable name
+  ##  Get a scancode from a human-readable name.
   ##
-  ##  ``Return`` scancode, or `SCANCODE_UNKNOWN` if the name wasn't recognized
+  ##  ``Return`` scancode, or `SCANCODE_UNKNOWN` if the name wasn't recognized.
   ##
   ##  See also:
   ##
@@ -127,9 +129,9 @@ proc getKeyName*(key: Keycode): cstring {.
 
 proc getKeyFromName*(name: cstring): Keycode {.
     cdecl, importc: "SDL_GetKeyFromName", dynlib: SDL2_LIB.}
-  ##  Get a key code from a human-readable name
+  ##  Get a key code from a human-readable name.
   ##
-  ##  ``Return`` key code, or `K_UNKNOWN` if the name wasn't recognized
+  ##  ``Return`` key code, or `K_UNKNOWN` if the name wasn't recognized.
   ##
   ##  See also:
   ##
@@ -138,6 +140,7 @@ proc getKeyFromName*(name: cstring): Keycode {.
 proc startTextInput*() {.
     cdecl, importc: "SDL_StartTextInput", dynlib: SDL2_LIB.}
   ##  Start accepting Unicode text input events.
+  ##
   ##  This function will show the on-screen keyboard if supported.
   ##
   ##  See also:
@@ -161,6 +164,7 @@ proc isTextInputActive*(): bool {.
 proc stopTextInput*() {.
     cdecl, importc: "SDL_StopTextInput", dynlib: SDL2_LIB.}
   ##  Stop receiving any text input events.
+  ##
   ##  This function will hide the on-screen keyboard if supported.
   ##
   ##  See also:
@@ -172,6 +176,7 @@ proc stopTextInput*() {.
 proc setTextInputRect*(rect: ptr Rect) {.
     cdecl, importc: "SDL_SetTextInputRect", dynlib: SDL2_LIB.}
   ##  Set the rectangle used to type Unicode text inputs.
+  ##
   ##  This is used as a hint for IME and on-screen keyboard placement.
   ##
   ##  See also:
