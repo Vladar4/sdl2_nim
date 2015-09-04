@@ -1,6 +1,6 @@
 include
   sdl_libname,
-  sdl_main,
+  sdl_init,
   atomics,
   rwops,
   audio,

@@ -19,15 +19,12 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 
-##  sdl.nim
+##  sdl_init.nim
+##  ============
 ##
-##  Main import file for the SDL library
+##  Header file for initialization and shutdown functions.
 
-#   \mainpage Simple DirectMedia Layer (SDL)
-#
-#   http://www.libsdl.org/
-#
-#   \section intro_sec Introduction
+#   Main import file for the SDL library
 #
 #   Simple DirectMedia Layer is a cross-platform development library designed
 #   to provide low level access to audio, keyboard, mouse, joystick, and
