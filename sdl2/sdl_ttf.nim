@@ -23,6 +23,11 @@
 #    http://www.freetype.org/
 #
 
+##  sdl_ttf.net
+##  ===========
+##
+##  TrueType font rendering library.
+
 import
   sdl
 

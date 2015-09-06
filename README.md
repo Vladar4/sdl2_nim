@@ -25,6 +25,10 @@ CHANGELOG:
 * Nim 0.10.2 adaptation.
 * Update to SDL2-2.0.3
 * added SDL2-gfx
+* type-related fixes
+* different fixes
+* documentation fixes and formatting
+* added html documentation
 * {***WIP***}
 
 **v0.9 alpha**

@@ -22,7 +22,7 @@
 ##  rect.nim
 ##  ========
 ##
-##  Header file for RectObj definition and management functions.
+##  Header file for Rect definition and management functions.
 
 type
   Point* = object ##  \

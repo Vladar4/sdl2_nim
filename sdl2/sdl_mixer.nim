@@ -19,6 +19,11 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 
+##  sdl_mixer.nim
+##  =============
+##
+##  Multi-channel audio mixer library.
+
 import
   sdl
 
