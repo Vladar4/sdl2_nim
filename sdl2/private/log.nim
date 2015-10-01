@@ -42,43 +42,44 @@ const
   ##
   ##  Messages longer than the maximum size will be truncated
 
-##  ``The predefined log categories``
-##
-##  By default the application category is enabled at the `INFO` level,
-##  the assert category is enabled at the `WARN` level, test is enabled
-##  at the `VERBOSE` level and all other categories are enabled at the
-##  `CRITICAL` level.
-const
-  LOG_CATEGORY_APPLICATION* = 0
-  LOG_CATEGORY_ERROR* = 1
-  LOG_CATEGORY_ASSERT* = 2
-  LOG_CATEGORY_SYSTEM* = 3
-  LOG_CATEGORY_AUDIO* = 4
-  LOG_CATEGORY_VIDEO* = 5
-  LOG_CATEGORY_RENDER* = 6
-  LOG_CATEGORY_INPUT* = 7
-  LOG_CATEGORY_TEST* = 8 ## Reserved for future SDL library use
-  LOG_CATEGORY_RESERVED1* = 9
-  LOG_CATEGORY_RESERVED2* = 10
-  LOG_CATEGORY_RESERVED3* = 11
-  LOG_CATEGORY_RESERVED4* = 12
-  LOG_CATEGORY_RESERVED5* = 13
-  LOG_CATEGORY_RESERVED6* = 14
-  LOG_CATEGORY_RESERVED7* = 15
-  LOG_CATEGORY_RESERVED8* = 16
-  LOG_CATEGORY_RESERVED9* = 17
-  LOG_CATEGORY_RESERVED10* = 18 ##  \
-    ##  Beyond this point is reserved for application use, e.g.
-    ##
-    ##  .. code-block:: nim
-    ##    type
-    ##      MYAPP_CATEGORY = enum
-    ##        MYAPP_CATEGORY_AWESOME1 = LOG_CATEGORY_CUSTOM,
-    ##        MYAPP_CATEGORY_AWESOME2,
-    ##        MYAPP_CATEGORY_AWESOME3
-  LOG_CATEGORY_CUSTOM* = 19
 
 type
+  LogCategory* {.size: sizeof(cint).} = enum  ##  \
+    ##  The predefined log categories
+    ##
+    ##  By default the application category is enabled at the `INFO` level,
+    ##  the assert category is enabled at the `WARN` level, test is enabled
+    ##  at the `VERBOSE` level and all other categories are enabled at the
+    ##  `CRITICAL` level.
+    LOG_CATEGORY_APPLICATION = 0,
+    LOG_CATEGORY_ERROR = 1,
+    LOG_CATEGORY_ASSERT = 2,
+    LOG_CATEGORY_SYSTEM = 3,
+    LOG_CATEGORY_AUDIO = 4,
+    LOG_CATEGORY_VIDEO = 5,
+    LOG_CATEGORY_RENDER = 6,
+    LOG_CATEGORY_INPUT = 7,
+    LOG_CATEGORY_TEST = 8, ## Reserved for future SDL library use
+    LOG_CATEGORY_RESERVED1 = 9,
+    LOG_CATEGORY_RESERVED2 = 10,
+    LOG_CATEGORY_RESERVED3 = 11,
+    LOG_CATEGORY_RESERVED4 = 12,
+    LOG_CATEGORY_RESERVED5 = 13,
+    LOG_CATEGORY_RESERVED6 = 14,
+    LOG_CATEGORY_RESERVED7 = 15,
+    LOG_CATEGORY_RESERVED8 = 16,
+    LOG_CATEGORY_RESERVED9 = 17,
+    LOG_CATEGORY_RESERVED10 = 18, ##  \
+      ##  Beyond this point is reserved for application use, e.g.
+      ##
+      ##  .. code-block:: nim
+      ##    type
+      ##      MYAPP_CATEGORY = enum
+      ##        MYAPP_CATEGORY_AWESOME1 = LOG_CATEGORY_CUSTOM,
+      ##        MYAPP_CATEGORY_AWESOME2,
+      ##        MYAPP_CATEGORY_AWESOME3
+    LOG_CATEGORY_CUSTOM = 19
+
   LogPriority* {.size: sizeof(cint).} = enum ##  \
     ##  The predefined log priorities
     LOG_PRIORITY_VERBOSE = 1,
@@ -93,11 +94,11 @@ proc logSetAllPriority*(priority: LogPriority) {.
     cdecl, importc: "SDL_LogSetAllPriority", dynlib: SDL2_LIB.}
   ##  Set the priority of all log categories.
 
-proc logSetPriority*(category: cint; priority: LogPriority) {.
+proc logSetPriority*(category: LogCategory; priority: LogPriority) {.
     cdecl, importc: "SDL_LogSetPriority", dynlib: SDL2_LIB.}
   ##  Set the priority of a particular log category.
 
-proc logGetPriority*(category: cint): LogPriority {.
+proc logGetPriority*(category: LogCategory): LogPriority {.
     cdecl, importc: "SDL_LogGetPriority", dynlib: SDL2_LIB.}
   ##  Get the priority of a particular log category.
 
@@ -111,42 +112,43 @@ proc log*(fmt: cstring) {.
     varargs, cdecl, importc: "SDL_Log", dynlib: SDL2_LIB.}
   ##  Log a message with `LOG_CATEGORY_APPLICATION` and `LOG_PRIORITY_INFO`.
 
-proc logVerbose*(category: cint; fmt: cstring) {.
+proc logVerbose*(category: LogCategory; fmt: cstring) {.
     varargs, cdecl, importc: "SDL_LogVerbose", dynlib: SDL2_LIB.}
   ##  Log a message with `LOG_PRIORITY_VERBOSE`.
 
-proc logDebug*(category: cint; fmt: cstring) {.
+proc logDebug*(category: LogCategory; fmt: cstring) {.
     varargs, cdecl, importc: "SDL_LogDebug", dynlib: SDL2_LIB.}
   ##  Log a message with `LOG_PRIORITY_DEBUG`.
 
-proc logInfo*(category: cint; fmt: cstring) {.
+proc logInfo*(category: LogCategory; fmt: cstring) {.
     varargs, cdecl, importc: "SDL_LogInfo", dynlib: SDL2_LIB.}
   ##  Log a message with `LOG_PRIORITY_INFO`.
 
-proc logWarn*(category: cint; fmt: cstring) {.
+proc logWarn*(category: LogCategory; fmt: cstring) {.
     varargs, cdecl, importc: "SDL_LogWarn", dynlib: SDL2_LIB.}
   ##  Log a message with LOG_PRIORITY_WARN.
 
-proc logError*(category: cint; fmt: cstring) {.
+proc logError*(category: LogCategory; fmt: cstring) {.
     varargs, cdecl, importc: "SDL_LogError", dynlib: SDL2_LIB.}
   ##  Log a message with `LOG_PRIORITY_ERROR`.
 
-proc logCritical*(category: cint; fmt: cstring) {.
+proc logCritical*(category: LogCategory; fmt: cstring) {.
     varargs, cdecl, importc: "SDL_LogCritical", dynlib: SDL2_LIB.}
   ##  Log a message with `LOG_PRIORITY_CRITICAL`.
 
-proc logMessage*(category: cint; priority: LogPriority; fmt: cstring) {.
+proc logMessage*(category: LogCategory; priority: LogPriority; fmt: cstring) {.
     varargs, cdecl, importc: "SDL_LogMessage", dynlib: SDL2_LIB.}
   ##  Log a message with the specified category and priority.
 
 #TODO deal with va_list
 #  proc logMessageV*(
-#      category: cint; priority: LogPriority; fmt: cstring; ap: va_list) {.
-#      cdecl, importc: "SDL_LogMessageV", dynlib: SDL2_LIB.}
+#      category: LogCategory; priority: LogPriority;
+#      fmt: cstring; ap: va_list) {.
+#        cdecl, importc: "SDL_LogMessageV", dynlib: SDL2_LIB.}
 #    ##  Log a message with the specified category and priority.
 
 type
-  LogOutputFunction* = proc (userdata: pointer; category: cint;
+  LogOutputFunction* = proc (userdata: pointer; category: LogCategory;
       priority: LogPriority; message: cstring) {.cdecl.}
     ##  The prototype for the log output function.
 

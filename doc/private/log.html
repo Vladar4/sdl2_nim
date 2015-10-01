@@ -1153,13 +1153,32 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 <li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#LogPriority"
+      <li><a class="reference" href="#LogCategory"
+    title="LogCategory* = enum 
+  LOG_CATEGORY_APPLICATION = 0, LOG_CATEGORY_ERROR = 1, LOG_CATEGORY_ASSERT = 2, 
+  LOG_CATEGORY_SYSTEM = 3, LOG_CATEGORY_AUDIO = 4, LOG_CATEGORY_VIDEO = 5, 
+  LOG_CATEGORY_RENDER = 6, LOG_CATEGORY_INPUT = 7, LOG_CATEGORY_TEST = 8, ## Reserved for future SDL library use
+  LOG_CATEGORY_RESERVED1 = 9, LOG_CATEGORY_RESERVED2 = 10, 
+  LOG_CATEGORY_RESERVED3 = 11, LOG_CATEGORY_RESERVED4 = 12, 
+  LOG_CATEGORY_RESERVED5 = 13, LOG_CATEGORY_RESERVED6 = 14, 
+  LOG_CATEGORY_RESERVED7 = 15, LOG_CATEGORY_RESERVED8 = 16, 
+  LOG_CATEGORY_RESERVED9 = 17, LOG_CATEGORY_RESERVED10 = 18, ##  \
+                                                             ##  Beyond this point is reserved for application use, e.g.
+                                                             ##
+                                                             ##  .. code-block:: nim
+                                                             ##    type
+                                                             ##      MYAPP_CATEGORY = enum
+                                                             ##        MYAPP_CATEGORY_AWESOME1 = LOG_CATEGORY_CUSTOM,
+                                                             ##        MYAPP_CATEGORY_AWESOME2,
+                                                             ##        MYAPP_CATEGORY_AWESOME3
+  LOG_CATEGORY_CUSTOM = 19"><wbr />Log<wbr />Category</a></li>
+  <li><a class="reference" href="#LogPriority"
     title="LogPriority* = enum 
   LOG_PRIORITY_VERBOSE = 1, LOG_PRIORITY_DEBUG, LOG_PRIORITY_INFO, 
   LOG_PRIORITY_WARN, LOG_PRIORITY_ERROR, LOG_PRIORITY_CRITICAL, 
   NUM_LOG_PRIORITIES"><wbr />Log<wbr />Priority</a></li>
   <li><a class="reference" href="#LogOutputFunction"
-    title="LogOutputFunction* = proc (userdata: pointer; category: cint; 
+    title="LogOutputFunction* = proc (userdata: pointer; category: LogCategory; 
                            priority: LogPriority; message: cstring)"><wbr />Log<wbr />Output<wbr />Function</a></li>
 
   </ul>
@@ -1169,46 +1188,6 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#MAX_LOG_MESSAGE"
     title="MAX_LOG_MESSAGE* = 4096"><wbr />MAX_<wbr />LOG_<wbr />MESSAGE</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_APPLICATION"
-    title="LOG_CATEGORY_APPLICATION* = 0"><wbr />LOG_<wbr />CATEGORY_<wbr />APPLICATION</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_ERROR"
-    title="LOG_CATEGORY_ERROR* = 1"><wbr />LOG_<wbr />CATEGORY_<wbr />ERROR</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_ASSERT"
-    title="LOG_CATEGORY_ASSERT* = 2"><wbr />LOG_<wbr />CATEGORY_<wbr />ASSERT</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_SYSTEM"
-    title="LOG_CATEGORY_SYSTEM* = 3"><wbr />LOG_<wbr />CATEGORY_<wbr />SYSTEM</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_AUDIO"
-    title="LOG_CATEGORY_AUDIO* = 4"><wbr />LOG_<wbr />CATEGORY_<wbr />AUDIO</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_VIDEO"
-    title="LOG_CATEGORY_VIDEO* = 5"><wbr />LOG_<wbr />CATEGORY_<wbr />VIDEO</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_RENDER"
-    title="LOG_CATEGORY_RENDER* = 6"><wbr />LOG_<wbr />CATEGORY_<wbr />RENDER</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_INPUT"
-    title="LOG_CATEGORY_INPUT* = 7"><wbr />LOG_<wbr />CATEGORY_<wbr />INPUT</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_TEST"
-    title="LOG_CATEGORY_TEST* = 8"><wbr />LOG_<wbr />CATEGORY_<wbr />TEST</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_RESERVED1"
-    title="LOG_CATEGORY_RESERVED1* = 9"><wbr />LOG_<wbr />CATEGORY_<wbr />RESERVED1</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_RESERVED2"
-    title="LOG_CATEGORY_RESERVED2* = 10"><wbr />LOG_<wbr />CATEGORY_<wbr />RESERVED2</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_RESERVED3"
-    title="LOG_CATEGORY_RESERVED3* = 11"><wbr />LOG_<wbr />CATEGORY_<wbr />RESERVED3</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_RESERVED4"
-    title="LOG_CATEGORY_RESERVED4* = 12"><wbr />LOG_<wbr />CATEGORY_<wbr />RESERVED4</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_RESERVED5"
-    title="LOG_CATEGORY_RESERVED5* = 13"><wbr />LOG_<wbr />CATEGORY_<wbr />RESERVED5</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_RESERVED6"
-    title="LOG_CATEGORY_RESERVED6* = 14"><wbr />LOG_<wbr />CATEGORY_<wbr />RESERVED6</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_RESERVED7"
-    title="LOG_CATEGORY_RESERVED7* = 15"><wbr />LOG_<wbr />CATEGORY_<wbr />RESERVED7</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_RESERVED8"
-    title="LOG_CATEGORY_RESERVED8* = 16"><wbr />LOG_<wbr />CATEGORY_<wbr />RESERVED8</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_RESERVED9"
-    title="LOG_CATEGORY_RESERVED9* = 17"><wbr />LOG_<wbr />CATEGORY_<wbr />RESERVED9</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_RESERVED10"
-    title="LOG_CATEGORY_RESERVED10* = 18"><wbr />LOG_<wbr />CATEGORY_<wbr />RESERVED10</a></li>
-  <li><a class="reference" href="#LOG_CATEGORY_CUSTOM"
-    title="LOG_CATEGORY_CUSTOM* = 19"><wbr />LOG_<wbr />CATEGORY_<wbr />CUSTOM</a></li>
 
   </ul>
 </li>
@@ -1217,28 +1196,28 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#logSetAllPriority,LogPriority"
     title="logSetAllPriority*(priority: LogPriority)"><wbr />log<wbr />Set<wbr />All<wbr />Priority</a></li>
-  <li><a class="reference" href="#logSetPriority,cint,LogPriority"
-    title="logSetPriority*(category: cint; priority: LogPriority)"><wbr />log<wbr />Set<wbr />Priority</a></li>
-  <li><a class="reference" href="#logGetPriority,cint"
-    title="logGetPriority*(category: cint): LogPriority"><wbr />log<wbr />Get<wbr />Priority</a></li>
+  <li><a class="reference" href="#logSetPriority,LogCategory,LogPriority"
+    title="logSetPriority*(category: LogCategory; priority: LogPriority)"><wbr />log<wbr />Set<wbr />Priority</a></li>
+  <li><a class="reference" href="#logGetPriority,LogCategory"
+    title="logGetPriority*(category: LogCategory): LogPriority"><wbr />log<wbr />Get<wbr />Priority</a></li>
   <li><a class="reference" href="#logResetPriorities,"
     title="logResetPriorities*()"><wbr />log<wbr />Reset<wbr />Priorities</a></li>
   <li><a class="reference" href="#log,cstring"
     title="log*(fmt: cstring)"><wbr />log</a></li>
-  <li><a class="reference" href="#logVerbose,cint,cstring"
-    title="logVerbose*(category: cint; fmt: cstring)"><wbr />log<wbr />Verbose</a></li>
-  <li><a class="reference" href="#logDebug,cint,cstring"
-    title="logDebug*(category: cint; fmt: cstring)"><wbr />log<wbr />Debug</a></li>
-  <li><a class="reference" href="#logInfo,cint,cstring"
-    title="logInfo*(category: cint; fmt: cstring)"><wbr />log<wbr />Info</a></li>
-  <li><a class="reference" href="#logWarn,cint,cstring"
-    title="logWarn*(category: cint; fmt: cstring)"><wbr />log<wbr />Warn</a></li>
-  <li><a class="reference" href="#logError,cint,cstring"
-    title="logError*(category: cint; fmt: cstring)"><wbr />log<wbr />Error</a></li>
-  <li><a class="reference" href="#logCritical,cint,cstring"
-    title="logCritical*(category: cint; fmt: cstring)"><wbr />log<wbr />Critical</a></li>
-  <li><a class="reference" href="#logMessage,cint,LogPriority,cstring"
-    title="logMessage*(category: cint; priority: LogPriority; fmt: cstring)"><wbr />log<wbr />Message</a></li>
+  <li><a class="reference" href="#logVerbose,LogCategory,cstring"
+    title="logVerbose*(category: LogCategory; fmt: cstring)"><wbr />log<wbr />Verbose</a></li>
+  <li><a class="reference" href="#logDebug,LogCategory,cstring"
+    title="logDebug*(category: LogCategory; fmt: cstring)"><wbr />log<wbr />Debug</a></li>
+  <li><a class="reference" href="#logInfo,LogCategory,cstring"
+    title="logInfo*(category: LogCategory; fmt: cstring)"><wbr />log<wbr />Info</a></li>
+  <li><a class="reference" href="#logWarn,LogCategory,cstring"
+    title="logWarn*(category: LogCategory; fmt: cstring)"><wbr />log<wbr />Warn</a></li>
+  <li><a class="reference" href="#logError,LogCategory,cstring"
+    title="logError*(category: LogCategory; fmt: cstring)"><wbr />log<wbr />Error</a></li>
+  <li><a class="reference" href="#logCritical,LogCategory,cstring"
+    title="logCritical*(category: LogCategory; fmt: cstring)"><wbr />log<wbr />Critical</a></li>
+  <li><a class="reference" href="#logMessage,LogCategory,LogPriority,cstring"
+    title="logMessage*(category: LogCategory; priority: LogPriority; fmt: cstring)"><wbr />log<wbr />Message</a></li>
   <li><a class="reference" href="#logGetOutputFunction,ptr.LogOutputFunction,ptr.pointer"
     title="logGetOutputFunction*(callback: ptr LogOutputFunction; userdata: ptr pointer)"><wbr />log<wbr />Get<wbr />Output<wbr />Function</a></li>
   <li><a class="reference" href="#logSetOutputFunction,LogOutputFunction,pointer"
@@ -1260,12 +1239,35 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 <p>Android: log output</p>
 <p>Others: standard error output (stderr)</p>
 </p></blockquote>
-<p><tt class="docutils literal"><span class="pre">The predefined log categories</span></tt></p>
-<p>By default the application category is enabled at the <cite>INFO</cite> level, the assert category is enabled at the <cite>WARN</cite> level, test is enabled at the <cite>VERBOSE</cite> level and all other categories are enabled at the <cite>CRITICAL</cite> level.</p>
 </p>
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
+<dt id="LogCategory"><a name="LogCategory"></a><pre><span class="Identifier">LogCategory</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span> 
+  <span class="Identifier">LOG_CATEGORY_APPLICATION</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">LOG_CATEGORY_ERROR</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">LOG_CATEGORY_ASSERT</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">,</span> 
+  <span class="Identifier">LOG_CATEGORY_SYSTEM</span> <span class="Other">=</span> <span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">LOG_CATEGORY_AUDIO</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">LOG_CATEGORY_VIDEO</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span> 
+  <span class="Identifier">LOG_CATEGORY_RENDER</span> <span class="Other">=</span> <span class="DecNumber">6</span><span class="Other">,</span> <span class="Identifier">LOG_CATEGORY_INPUT</span> <span class="Other">=</span> <span class="DecNumber">7</span><span class="Other">,</span> <span class="Identifier">LOG_CATEGORY_TEST</span> <span class="Other">=</span> <span class="DecNumber">8</span><span class="Other">,</span> <span class="Comment">## Reserved for future SDL library use</span>
+  <span class="Identifier">LOG_CATEGORY_RESERVED1</span> <span class="Other">=</span> <span class="DecNumber">9</span><span class="Other">,</span> <span class="Identifier">LOG_CATEGORY_RESERVED2</span> <span class="Other">=</span> <span class="DecNumber">10</span><span class="Other">,</span> 
+  <span class="Identifier">LOG_CATEGORY_RESERVED3</span> <span class="Other">=</span> <span class="DecNumber">11</span><span class="Other">,</span> <span class="Identifier">LOG_CATEGORY_RESERVED4</span> <span class="Other">=</span> <span class="DecNumber">12</span><span class="Other">,</span> 
+  <span class="Identifier">LOG_CATEGORY_RESERVED5</span> <span class="Other">=</span> <span class="DecNumber">13</span><span class="Other">,</span> <span class="Identifier">LOG_CATEGORY_RESERVED6</span> <span class="Other">=</span> <span class="DecNumber">14</span><span class="Other">,</span> 
+  <span class="Identifier">LOG_CATEGORY_RESERVED7</span> <span class="Other">=</span> <span class="DecNumber">15</span><span class="Other">,</span> <span class="Identifier">LOG_CATEGORY_RESERVED8</span> <span class="Other">=</span> <span class="DecNumber">16</span><span class="Other">,</span> 
+  <span class="Identifier">LOG_CATEGORY_RESERVED9</span> <span class="Other">=</span> <span class="DecNumber">17</span><span class="Other">,</span> <span class="Identifier">LOG_CATEGORY_RESERVED10</span> <span class="Other">=</span> <span class="DecNumber">18</span><span class="Other">,</span> <span class="Comment">##  \</span>
+                                                             <span class="Comment">##  Beyond this point is reserved for application use, e.g.</span>
+                                                             <span class="Comment">##</span>
+                                                             <span class="Comment">##  .. code-block:: nim</span>
+                                                             <span class="Comment">##    type</span>
+                                                             <span class="Comment">##      MYAPP_CATEGORY = enum</span>
+                                                             <span class="Comment">##        MYAPP_CATEGORY_AWESOME1 = LOG_CATEGORY_CUSTOM,</span>
+                                                             <span class="Comment">##        MYAPP_CATEGORY_AWESOME2,</span>
+                                                             <span class="Comment">##        MYAPP_CATEGORY_AWESOME3</span>
+  <span class="Identifier">LOG_CATEGORY_CUSTOM</span> <span class="Other">=</span> <span class="DecNumber">19</span></pre></dt>
+<dd>
+<p>
+The predefined log categories</p>
+<p>By default the application category is enabled at the <cite>INFO</cite> level, the assert category is enabled at the <cite>WARN</cite> level, test is enabled at the <cite>VERBOSE</cite> level and all other categories are enabled at the <cite>CRITICAL</cite> level.</p>
+
+
+</dd>
 <dt id="LogPriority"><a name="LogPriority"></a><pre><span class="Identifier">LogPriority</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span> 
   <span class="Identifier">LOG_PRIORITY_VERBOSE</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">LOG_PRIORITY_DEBUG</span><span class="Other">,</span> <span class="Identifier">LOG_PRIORITY_INFO</span><span class="Other">,</span> 
   <span class="Identifier">LOG_PRIORITY_WARN</span><span class="Other">,</span> <span class="Identifier">LOG_PRIORITY_ERROR</span><span class="Other">,</span> <span class="Identifier">LOG_PRIORITY_CRITICAL</span><span class="Other">,</span> 
@@ -1275,7 +1277,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 The predefined log priorities
 
 </dd>
-<dt id="LogOutputFunction"><a name="LogOutputFunction"></a><pre><span class="Identifier">LogOutputFunction</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> 
+<dt id="LogOutputFunction"><a name="LogOutputFunction"></a><pre><span class="Identifier">LogOutputFunction</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> 
                            <span class="Identifier">priority</span><span class="Other">:</span> <span class="Identifier">LogPriority</span><span class="Other">;</span> <span class="Identifier">message</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span></pre></dt>
 <dd>
 The prototype for the log output function.
@@ -1294,111 +1296,6 @@ The maximum size of a log message</p>
 
 
 </dd>
-<dt id="LOG_CATEGORY_APPLICATION"><a name="LOG_CATEGORY_APPLICATION"></a><pre><span class="Identifier">LOG_CATEGORY_APPLICATION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_ERROR"><a name="LOG_CATEGORY_ERROR"></a><pre><span class="Identifier">LOG_CATEGORY_ERROR</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_ASSERT"><a name="LOG_CATEGORY_ASSERT"></a><pre><span class="Identifier">LOG_CATEGORY_ASSERT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_SYSTEM"><a name="LOG_CATEGORY_SYSTEM"></a><pre><span class="Identifier">LOG_CATEGORY_SYSTEM</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">3</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_AUDIO"><a name="LOG_CATEGORY_AUDIO"></a><pre><span class="Identifier">LOG_CATEGORY_AUDIO</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">4</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_VIDEO"><a name="LOG_CATEGORY_VIDEO"></a><pre><span class="Identifier">LOG_CATEGORY_VIDEO</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">5</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_RENDER"><a name="LOG_CATEGORY_RENDER"></a><pre><span class="Identifier">LOG_CATEGORY_RENDER</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">6</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_INPUT"><a name="LOG_CATEGORY_INPUT"></a><pre><span class="Identifier">LOG_CATEGORY_INPUT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">7</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_TEST"><a name="LOG_CATEGORY_TEST"></a><pre><span class="Identifier">LOG_CATEGORY_TEST</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">8</span></pre></dt>
-<dd>
-Reserved for future SDL library use
-
-</dd>
-<dt id="LOG_CATEGORY_RESERVED1"><a name="LOG_CATEGORY_RESERVED1"></a><pre><span class="Identifier">LOG_CATEGORY_RESERVED1</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">9</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_RESERVED2"><a name="LOG_CATEGORY_RESERVED2"></a><pre><span class="Identifier">LOG_CATEGORY_RESERVED2</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">10</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_RESERVED3"><a name="LOG_CATEGORY_RESERVED3"></a><pre><span class="Identifier">LOG_CATEGORY_RESERVED3</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">11</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_RESERVED4"><a name="LOG_CATEGORY_RESERVED4"></a><pre><span class="Identifier">LOG_CATEGORY_RESERVED4</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">12</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_RESERVED5"><a name="LOG_CATEGORY_RESERVED5"></a><pre><span class="Identifier">LOG_CATEGORY_RESERVED5</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">13</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_RESERVED6"><a name="LOG_CATEGORY_RESERVED6"></a><pre><span class="Identifier">LOG_CATEGORY_RESERVED6</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">14</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_RESERVED7"><a name="LOG_CATEGORY_RESERVED7"></a><pre><span class="Identifier">LOG_CATEGORY_RESERVED7</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">15</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_RESERVED8"><a name="LOG_CATEGORY_RESERVED8"></a><pre><span class="Identifier">LOG_CATEGORY_RESERVED8</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">16</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_RESERVED9"><a name="LOG_CATEGORY_RESERVED9"></a><pre><span class="Identifier">LOG_CATEGORY_RESERVED9</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">17</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="LOG_CATEGORY_RESERVED10"><a name="LOG_CATEGORY_RESERVED10"></a><pre><span class="Identifier">LOG_CATEGORY_RESERVED10</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">18</span></pre></dt>
-<dd>
-
-Beyond this point is reserved for application use, e.g.<pre><span class="Keyword">type</span>
-  <span class="Identifier">MYAPP_CATEGORY</span> <span class="Operator">=</span> <span class="Keyword">enum</span>
-    <span class="Identifier">MYAPP_CATEGORY_AWESOME1</span> <span class="Operator">=</span> <span class="Identifier">LOG_CATEGORY_CUSTOM</span><span class="Punctuation">,</span>
-    <span class="Identifier">MYAPP_CATEGORY_AWESOME2</span><span class="Punctuation">,</span>
-    <span class="Identifier">MYAPP_CATEGORY_AWESOME3</span></pre>
-
-</dd>
-<dt id="LOG_CATEGORY_CUSTOM"><a name="LOG_CATEGORY_CUSTOM"></a><pre><span class="Identifier">LOG_CATEGORY_CUSTOM</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">19</span></pre></dt>
-<dd>
-
-
-</dd>
 
 </dl></div>
 <div class="section" id="12">
@@ -1410,13 +1307,13 @@ Beyond this point is reserved for application use, e.g.<pre><span class="Keyword
 Set the priority of all log categories.
 
 </dd>
-<dt id="logSetPriority"><a name="logSetPriority,cint,LogPriority"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logSetPriority</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">priority</span><span class="Other">:</span> <span class="Identifier">LogPriority</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="logSetPriority"><a name="logSetPriority,LogCategory,LogPriority"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logSetPriority</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> <span class="Identifier">priority</span><span class="Other">:</span> <span class="Identifier">LogPriority</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogSetPriority&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Set the priority of a particular log category.
 
 </dd>
-<dt id="logGetPriority"><a name="logGetPriority,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logGetPriority</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">LogPriority</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="logGetPriority"><a name="logGetPriority,LogCategory"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logGetPriority</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">LogPriority</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogGetPriority&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the priority of a particular log category.
@@ -1435,44 +1332,44 @@ Get the priority of a particular log category.
 Log a message with <cite>LOG_CATEGORY_APPLICATION</cite> and <cite>LOG_PRIORITY_INFO</cite>.
 
 </dd>
-<dt id="logVerbose"><a name="logVerbose,cint,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logVerbose</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="logVerbose"><a name="logVerbose,LogCategory,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logVerbose</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> 
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogVerbose&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Log a message with <cite>LOG_PRIORITY_VERBOSE</cite>.
 
 </dd>
-<dt id="logDebug"><a name="logDebug,cint,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logDebug</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="logDebug"><a name="logDebug,LogCategory,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logDebug</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> 
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogDebug&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Log a message with <cite>LOG_PRIORITY_DEBUG</cite>.
 
 </dd>
-<dt id="logInfo"><a name="logInfo,cint,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logInfo</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="logInfo"><a name="logInfo,LogCategory,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logInfo</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> 
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogInfo&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Log a message with <cite>LOG_PRIORITY_INFO</cite>.
 
 </dd>
-<dt id="logWarn"><a name="logWarn,cint,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logWarn</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="logWarn"><a name="logWarn,LogCategory,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logWarn</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> 
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogWarn&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Log a message with LOG_PRIORITY_WARN.
 
 </dd>
-<dt id="logError"><a name="logError,cint,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logError</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="logError"><a name="logError,LogCategory,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logError</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> 
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogError&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Log a message with <cite>LOG_PRIORITY_ERROR</cite>.
 
 </dd>
-<dt id="logCritical"><a name="logCritical,cint,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logCritical</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="logCritical"><a name="logCritical,LogCategory,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logCritical</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> 
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogCritical&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Log a message with <cite>LOG_PRIORITY_CRITICAL</cite>.
 
 </dd>
-<dt id="logMessage"><a name="logMessage,cint,LogPriority,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logMessage</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">priority</span><span class="Other">:</span> <span class="Identifier">LogPriority</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">varargs</span><span class="Other">,</span> 
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogMessage&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="logMessage"><a name="logMessage,LogCategory,LogPriority,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logMessage</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> <span class="Identifier">priority</span><span class="Other">:</span> <span class="Identifier">LogPriority</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span>
+    <span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogMessage&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Log a message with the specified category and priority.
 
@@ -1500,7 +1397,7 @@ This function allows you to replace the default log output function with one of 
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-09-06 21:27:37 UTC</small>
+        <small>Made with Nim. Generated: 2015-10-02 00:10:58 UTC</small>
       </div>
     </div>
   </div>
