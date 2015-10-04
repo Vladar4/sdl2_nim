@@ -1263,7 +1263,9 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 <dl class="item">
 <dt id="init"><a name="init,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">init</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Init&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function initializes  the subsystems specified by <tt class="docutils literal"><span class="pre">flags</span></tt> Unless the <cite>INIT_NOPARACHUTE</cite> flag is set, it will install cleanup signal handlers for some commonly ignored fatal signals (like SIGSEGV).
+<p>This function initializes  the subsystems specified by <tt class="docutils literal"><span class="pre">flags</span></tt> Unless the <cite>INIT_NOPARACHUTE</cite> flag is set, it will install cleanup signal handlers for some commonly ignored fatal signals (like SIGSEGV).</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success or a negative error code on failure.</p>
+
 
 </dd>
 <dt id="initSubSystem"><a name="initSubSystem,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">initSubSystem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_InitSubSystem&quot;</span><span class="Other">,</span> 
@@ -1301,7 +1303,7 @@ This function cleans up all initialized subsystems. You should call it upon all 
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-09-06 21:27:37 UTC</small>
+        <small>Made with Nim. Generated: 2015-10-04 22:57:21 UTC</small>
       </div>
     </div>
   </div>

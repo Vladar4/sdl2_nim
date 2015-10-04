@@ -1149,6 +1149,13 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     <div class="row">
   <div class="three columns">
   <ul class="simple simple-toc" id="toc-list">
+<li><a class="reference" id="sdl-gfx-framerate-nim_toc" href="#sdl-gfx-framerate-nim">sdl_gfx_framerate.nim</a></li>
+<li>
+  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
+  <ul class="simple simple-toc-section">
+    
+  </ul>
+</li>
 <li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
@@ -1195,8 +1202,14 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
   </div>
   <div class="nine columns" id="content">
-  <p class="module-desc"></p>
-  <div class="section" id="7">
+  <p class="module-desc">
+<h1><a class="toc-backref" id="sdl-gfx-framerate-nim" href="#sdl-gfx-framerate-nim">sdl_gfx_framerate.nim</a></h1></p>
+  <div class="section" id="6">
+<h1><a class="toc-backref" href="#6">Imports</a></h1>
+<dl class="item">
+<a class="reference external" href="sdl.html">sdl</a>
+</dl></div>
+<div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
 <dt id="FPSmanager"><a name="FPSmanager"></a><pre><span class="Identifier">FPSmanager</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
@@ -1242,31 +1255,38 @@ Default rate of framerate controller in Hz (1/s).
 <dt id="initFramerate"><a name="initFramerate,ptr.FPSmanager"></a><pre><span class="Keyword">proc</span> <span class="Identifier">initFramerate</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">manager</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">FPSmanager</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_initFramerate&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GFX_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-
+Initialize the framerate manager, set default framerate of 30Hz and reset delay interpolation.
 
 </dd>
 <dt id="setFramerate"><a name="setFramerate,ptr.FPSmanager,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setFramerate</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">manager</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">FPSmanager</span><span class="Other">;</span> <span class="Identifier">rate</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_setFramerate&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GFX_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> or value for sucess and <cite>-1</cite> for error.
+<p>Set the framerate in Hz.</p>
+<p>Sets a new framerate for the manager and reset delay interpolation. Rate values must be between <cite>FPS_LOWER_LIMIT</cite> and <cite>FPS_UPPER_LIMIT</cite> inclusive to be accepted.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> or value for sucess and <cite>-1</cite> for error.</p>
+
 
 </dd>
 <dt id="getFramerate"><a name="getFramerate,ptr.FPSmanager"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getFramerate</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">manager</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">FPSmanager</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_getFramerate&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GFX_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> or value for sucess and <cite>-1</cite> for error.
+<tt class="docutils literal"><span class="pre">Return</span></tt> the current target framerate in Hz or <cite>-1</cite> on error.
 
 </dd>
 <dt id="getFramecount"><a name="getFramecount,ptr.FPSmanager"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getFramecount</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">manager</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">FPSmanager</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_getFramecount&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GFX_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> or value for sucess and <cite>-1</cite> for error.
+<p>Get the current framecount from the framerate manager. A frame is counted each time <tt class="docutils literal"><span class="pre">framerateDelay()</span></tt> is called.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> current frame count or <cite>-1</cite> on error.</p>
+
 
 </dd>
 <dt id="framerateDelay"><a name="framerateDelay,ptr.FPSmanager"></a><pre><span class="Keyword">proc</span> <span class="Identifier">framerateDelay</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">manager</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">FPSmanager</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_framerateDelay&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GFX_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> or value for sucess and <cite>-1</cite> for error.
+<p>Generate a delay to accomodate currently set framerate. Call once in the graphics/rendering loop. If the computer cannot keep up with the rate (i.e. drawing too slow), the delay is zero and the delay interpolation is reset.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> time that passed since the last call to the procedure in ms. May return <cite>0</cite>.</p>
+
 
 </dd>
 
@@ -1279,7 +1299,7 @@ Default rate of framerate controller in Hz (1/s).
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-09-06 22:59:19 UTC</small>
+        <small>Made with Nim. Generated: 2015-10-04 22:57:31 UTC</small>
       </div>
     </div>
   </div>
