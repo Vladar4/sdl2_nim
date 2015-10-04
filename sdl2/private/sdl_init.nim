@@ -74,6 +74,8 @@ proc init*(flags: uint32): cint {.
   ##  This function initializes  the subsystems specified by ``flags``
   ##  Unless the `INIT_NOPARACHUTE` flag is set, it will install cleanup
   ##  signal handlers for some commonly ignored fatal signals (like SIGSEGV).
+  ##
+  ##  ``Return`` `0` on success or a negative error code on failure.
 
 proc initSubSystem*(flags: uint32): cint {.
     cdecl, importc: "SDL_InitSubSystem", dynlib: SDL2_LIB.}

@@ -58,19 +58,36 @@ type
 
 proc initFramerate*(manager: ptr FPSmanager) {.
     cdecl, importc: "SDL_initFramerate", dynlib: SDL2_GFX_LIB.}
+  ##  Initialize the framerate manager, set default framerate
+  ##  of 30Hz and reset delay interpolation.
 
 proc setFramerate*(manager: ptr FPSmanager; rate: uint32): cint {.
     cdecl, importc: "SDL_setFramerate", dynlib: SDL2_GFX_LIB.}
+  ##  Set the framerate in Hz.
+  ##
+  ##  Sets a new framerate for the manager and reset delay interpolation.
+  ##  Rate values must be between `FPS_LOWER_LIMIT` and `FPS_UPPER_LIMIT`
+  ##  inclusive to be accepted.
+  ##
   ##  ``Return`` `0` or value for sucess and `-1` for error.
 
 proc getFramerate*(manager: ptr FPSmanager): cint {.
     cdecl, importc: "SDL_getFramerate", dynlib: SDL2_GFX_LIB.}
-  ##  ``Return`` `0` or value for sucess and `-1` for error.
+  ##  ``Return`` the current target framerate in Hz or `-1` on error.
 
 proc getFramecount*(manager: ptr FPSmanager): cint {.
     cdecl, importc: "SDL_getFramecount", dynlib: SDL2_GFX_LIB.}
-  ##  ``Return`` `0` or value for sucess and `-1` for error.
+  ##  Get the current framecount from the framerate manager.
+  ##  A frame is counted each time ``framerateDelay()`` is called.
+  ##
+  ##  ``Return`` current frame count or `-1` on error.
 
 proc framerateDelay*(manager: ptr FPSmanager): uint32 {.
     cdecl, importc: "SDL_framerateDelay", dynlib: SDL2_GFX_LIB.}
-  ##  ``Return`` `0` or value for sucess and `-1` for error.
+  ##  Generate a delay to accomodate currently set framerate.
+  ##  Call once in the graphics/rendering loop.
+  ##  If the computer cannot keep up with the rate (i.e. drawing too slow),
+  ##  the delay is zero and the delay interpolation is reset.
+  ##
+  ##  ``Return`` time that passed since the last call to the procedure in ms.
+  ##  May return `0`.

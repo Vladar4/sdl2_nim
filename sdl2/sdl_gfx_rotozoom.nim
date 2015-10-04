@@ -46,21 +46,28 @@ proc rotozoomSurface*(
     src: Surface; angle: cdouble;
     zoom: cdouble; smooth: cint): Surface {.
       cdecl, importc: "rotozoomSurface", dynlib: SDL2_GFX_LIB.}
+  ##  Rotates and zooms a surface and optional anti-aliasing.
 
 proc rotozoomSurfaceXY*(
     src: Surface; angle: cdouble;
     zoomx: cdouble; zoomy: cdouble; smooth: cint): Surface {.
       cdecl, importc: "rotozoomSurfaceXY", dynlib: SDL2_GFX_LIB.}
+  ##  Rotates and zooms a surface with different horizontal and vertical
+  ##  scaling factors and optional anti-aliasing.
 
 proc rotozoomSurfaceSize*(
     width: cint; height: cint; angle: cdouble;
     zoom: cdouble; dstwidth: ptr cint; dstheight: ptr cint) {.
       cdecl, importc: "rotozoomSurfaceSize", dynlib: SDL2_GFX_LIB.}
+  ##  ``Return`` the size of the resulting target surface
+  ##  for a ``rotozoomSurface()`` call.
 
 proc rotozoomSurfaceSizeXY*(
     width: cint; height: cint; angle: cdouble;
     zoomx: cdouble; zoomy: cdouble; dstwidth: ptr cint; dstheight: ptr cint) {.
       cdecl, importc: "rotozoomSurfaceSizeXY", dynlib: SDL2_GFX_LIB.}
+  ##  ``Return`` the size of the resulting target surface
+  ##  for a ``rotozoomSurfaceXY()`` call.
 
 # Zooming functions
 
@@ -68,20 +75,25 @@ proc zoomSurface*(
     src: Surface;
     zoomx: cdouble; zoomy: cdouble; smooth: cint): Surface {.
       cdecl, importc: "zoomSurface", dynlib: SDL2_GFX_LIB.}
+  ##  Zoom a surface by independent horizontal and vertical factors
+  ##  with optional smoothing.
 
 proc zoomSurfaceSize*(
     width: cint; height: cint;
     zoomx: cdouble; zoomy: cdouble; dstwidth: ptr cint; dstheight: ptr cint) {.
       cdecl, importc: "zoomSurfaceSize", dynlib: SDL2_GFX_LIB.}
+  ##  Calculates the size of the target surface for a ``zoomSurface()`` call.
 
 # Shrinking functions
 
 proc shrinkSurface*(
     src: Surface; factorx: cint; factory: cint): Surface {.
       cdecl, importc: "shrinkSurface", dynlib: SDL2_GFX_LIB.}
+  ##  Shrink a surface by an integer ratio using averaging.
 
 # Specialized rotation functions
 
 proc rotateSurface90Degrees*(
     src: Surface; numClockwiseTurns: cint): Surface {.
       cdecl, importc: "rotateSurface90Degrees", dynlib: SDL2_GFX_LIB.}
+  ##  Rotates a 32 bit surface in increments of 90 degrees.
