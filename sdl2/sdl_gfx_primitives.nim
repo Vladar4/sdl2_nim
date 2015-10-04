@@ -27,6 +27,10 @@
 #
 #
 
+##  sdl_gfx_primitives.nim
+##  ======================
+##
+
 import
   sdl
 

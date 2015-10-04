@@ -23,7 +23,7 @@
 #    http://www.freetype.org/
 #
 
-##  sdl_ttf.net
+##  sdl_ttf.nim
 ##  ===========
 ##
 ##  TrueType font rendering library.

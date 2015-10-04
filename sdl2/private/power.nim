@@ -19,6 +19,10 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 
+##  power.nim
+##  =========
+##
+
 type
   PowerState* {.size: sizeof(cint).} = enum ##  \
     ##  The basic state for the system's power supply.

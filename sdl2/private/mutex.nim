@@ -19,6 +19,10 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 
+##  mutex.nim
+##  =========
+##
+
 const
   MUTEX_TIMEDOUT* = 1 ##  \
     ##  Synchronization functions which can time out return this value

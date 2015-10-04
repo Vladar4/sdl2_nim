@@ -27,6 +27,10 @@
 #
 #
 
+##  sdl_gfx_framerate.nim
+##  =====================
+##
+
 import
   sdl
 

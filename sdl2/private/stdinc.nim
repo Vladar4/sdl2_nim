@@ -19,6 +19,10 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 
+##  stdinc.nim
+##  ==========
+##
+
 template ptrMath*(body: untyped) =  ##  \
   ##  Pointer arithmetic. Could be used for pixels manipulation.
   ##

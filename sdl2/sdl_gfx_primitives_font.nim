@@ -2,6 +2,10 @@
 #
 #  ZLIB (c) A. Schiffler 2012
 
+##  sdl_gfx_primitives_font.nim
+##  ===========================
+##
+
 const
   FONTDATAMAX* = (8 * 256)
 

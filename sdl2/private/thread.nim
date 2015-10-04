@@ -19,6 +19,10 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 
+##  thread.nim
+##  ==========
+##
+
 type
   Thread* = pointer ##  The SDL thread structure, defined in SDL_thread.c
 

@@ -27,6 +27,10 @@
 #
 #
 
+##  sdl_gfx_imagefilter.nim
+##  =======================
+##
+
 import
   sdl
 
