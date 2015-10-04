@@ -27,6 +27,9 @@
 #
 #
 
+import
+  sdl
+
 # Definitions
 
 const

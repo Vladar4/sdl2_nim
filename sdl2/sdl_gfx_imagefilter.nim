@@ -27,6 +27,9 @@
 #
 #
 
+import
+  sdl
+
 # Function Prototypes
 
 ##  1. MMX functions work best if all data blocks are aligned
