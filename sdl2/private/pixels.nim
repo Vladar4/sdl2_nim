@@ -24,9 +24,6 @@
 ##
 ##  Header for the enumerated pixel format definitions.
 
-import
-  unsigned
-
 # Transparency definitions
 #
 # These define alpha as the opacity of a surface.
