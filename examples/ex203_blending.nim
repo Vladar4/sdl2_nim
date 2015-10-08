@@ -242,6 +242,28 @@ if init(app):
 
   # Main loop
   while not done:
+    # Clear screen with draw color
+    if app.renderer.renderClear() != 0:
+      sdl.logWarn(sdl.LogCategoryVideo,
+                  "Can't clear screen: %s",
+                  sdl.getError())
+
+    # Render textures
+    if not image2.renderEx(app.renderer, 0, 0, 300, 300):
+      sdl.logWarn(sdl.LogCategoryVideo,
+                  "Can't render image2: %s",
+                  sdl.getError())
+    if not image1.renderEx(app.renderer,
+                           ScreenW div 2 - w div 2,
+                           ScreenH div 2 - h div 2,
+                           w, h, angle, flip = flip):
+      sdl.logWarn(sdl.LogCategoryVideo,
+                  "Can't render image1: %s",
+                  sdl.getError())
+
+    # Update renderer
+    app.renderer.renderPresent()
+
     # Enent handling
     done = events(pressed)
 
@@ -280,29 +302,7 @@ if init(app):
     # Set alpha value
     image1.alpha = alpha
 
-    # Clear screen with draw color
-    if app.renderer.renderClear() != 0:
-      sdl.logWarn(sdl.LogCategoryVideo,
-                  "Can't clear screen: %s",
-                  sdl.getError())
-
-    # Render textures
-    if not image2.renderEx(app.renderer, 0, 0, 300, 300):
-      sdl.logWarn(sdl.LogCategoryVideo,
-                  "Can't render image2: %s",
-                  sdl.getError())
-    if not image1.renderEx(app.renderer,
-                           ScreenW div 2 - w div 2,
-                           ScreenH div 2 - h div 2,
-                           w, h, angle, flip = flip):
-      sdl.logWarn(sdl.LogCategoryVideo,
-                  "Can't render image1: %s",
-                  sdl.getError())
-
-    # Update renderer
-    app.renderer.renderPresent()
-
-  # Unload assets
+  # Free assets
   free(image1)
   free(image2)
 

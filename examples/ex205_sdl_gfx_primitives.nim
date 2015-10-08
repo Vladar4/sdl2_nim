@@ -229,9 +229,6 @@ if init(app):
 
   # Main loop
   while not done:
-    # Enent handling
-    done = events(pressed)
-
     # Clear screen with draw color
     discard app.renderer.setRenderDrawColor(0x00, 0x00, 0x00, 0xFF)
     if app.renderer.renderClear() != 0:
@@ -421,6 +418,9 @@ if init(app):
 
     # Update renderer
     app.renderer.renderPresent()
+
+    # Enent handling
+    done = events(pressed)
 
 # Shutdown
 exit(app)

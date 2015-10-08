@@ -1,10 +1,12 @@
-# ex204_drawing.nim
-# =================
-# VIDEO / Drawing geometric primitives
-# ------------------------------------
+# ex206_bitmap_fonts.nim
+# ======================
+# VIDEO / Using bitmap fonts
+# --------------------------
 
 
-import math, sdl2/sdl, sdl2/sdl_image as img
+import
+    math,
+    sdl2/sdl, sdl2/sdl_image as img
 
 
 const
@@ -26,6 +28,12 @@ type
   ImageObj = object of RootObj
     texture: sdl.Texture # Image texture
     w, h: int # Image dimensions
+
+
+  BitmapFont = ref BitmapFontObj
+  BitmapFontObj = object of ImageObj
+    cw, ch: int # char dimensions
+    cols, rows: int # grid dimensions
 
 
 #########
@@ -109,6 +117,48 @@ proc renderEx(obj: Image, renderer: sdl.Renderer, x, y: int,
     return true
   else:
     return false
+
+
+##############
+# BITMAPFONT #
+##############
+
+proc newBitmapFont(): BitmapFont =
+  BitmapFont(texture: nil, w: 0, h: 0, cw: 0, ch: 0, cols: 0, rows: 0)
+proc free(obj: BitmapFont) = Image(obj).free()
+proc cw(obj: BitmapFont): int {.inline.} = return obj.cw
+proc ch(obj: BitmapFont): int {.inline.} = return obj.ch
+proc cols(obj: BitmapFont): int {.inline.} = return obj.cols
+proc rows(obj: BitmapFont): int {.inline.} = return obj.rows
+
+
+proc load(obj: BitmapFont, renderer: sdl.Renderer, file: string,
+          cw = 10, ch = 10): bool =
+  result = true
+  if not Image(obj).load(renderer, file):
+    return false
+  obj.cw = cw
+  obj.ch = ch
+  obj.cols = obj.w div obj.cw
+  obj.rows = obj.h div obj.ch
+
+
+proc render(obj: BitmapFont, renderer: sdl.Renderer,
+            x, y: int, str: string): bool =
+  result = true
+  var srcRect, dstRect: sdl.Rect
+  srcRect.w = obj.cw
+  srcRect.h = obj.ch
+  dstRect.y = y
+  dstRect.w = obj.cw
+  dstRect.h = obj.ch
+  for i in 0..str.high:
+    let idx = ord(str[i])
+    srcRect.x = obj.cw * (idx mod obj.cols)
+    srcRect.y = obj.ch * (idx div obj.rows)
+    dstRect.x = x + i * obj.cw
+    if renderer.renderCopy(obj.texture, addr(srcRect), addr(dstRect)) != 0:
+      result = false
 
 
 ##########
@@ -209,6 +259,16 @@ var
 
 if init(app):
 
+  # Load assets
+  var
+    font = newBitmapFont()
+
+  if not font.load(app.renderer, "fnt/ascii_10x10.png"):
+    sdl.logCritical(sdl.LogCategoryError,
+                    "Can't load font: %s",
+                    img.getError())
+    done = true
+
   # Main loop
   while not done:
     # Clear screen with draw color
@@ -218,56 +278,18 @@ if init(app):
                   "Can't clear screen: %s",
                   sdl.getError())
 
-    # Drawing
+    # Render text
 
-    # Point
-    discard app.renderer.setRenderDrawColor(0xFF, 0x00, 0x00, 0xFF)
-    discard app.renderer.renderDrawPoint(10, 10)
-
-    # Line
-    discard app.renderer.setRenderDrawColor(0x00, 0xFF, 0x00, 0xFF)
-    discard app.renderer.renderDrawLine(10, 20, 110, 20)
-
-    # Rect
-    discard app.renderer.setRenderDrawColor(0x00, 0x00, 0xFF, 0xFF)
-    var rect = sdl.Rect(x: 10, y: 30, w: 100, h: 50)
-    discard app.renderer.renderDrawRect(addr(rect))
-
-    # Fill rect
-    discard app.renderer.setRenderDrawColor(0xFF, 0xFF, 0x00, 0xFF)
-    rect.y = 90
-    discard app.renderer.renderFillRect(addr(rect))
-
-    # Random points
-    discard app.renderer.setRenderDrawColor(0xFF, 0xFF, 0xFF, 0xFF)
-    rect.x = 120
-    rect.y = 10
-    rect.w = 510
-    rect.h = 460
-    discard app.renderer.renderDrawRect(addr(rect))
-    const numPoints = 100
-    var points: array[numPoints, sdl.Point]
-    for i in 0..numPoints-1:
-      points[i].x = rect.x + 1 + random(rect.w - 2)
-      points[i].y = rect.y + 1 + random(rect.h - 2)
-    discard app.renderer.renderDrawPoints(addr(points[0]), numPoints)
-
-    # Connected lines
-    discard app.renderer.setRenderDrawColor(0xFF, 0x00, 0xFF, 0xFF)
-    var figure: array[6, sdl.Point]
-    figure[0] = Point(x: 60, y: 150)  # top
-    figure[1] = Point(x: 92, y: 250)  # bottom-right
-    figure[2] = Point(x: 10, y: 188)  # left
-    figure[3] = Point(x: 110, y: 188) # right
-    figure[4] = Point(x: 28, y: 250)  # bottom-left
-    figure[5] = figure[0]
-    discard app.renderer.renderDrawLines(addr(figure[0]), 6)
+    discard font.render(app.renderer, 10, 10, "Test string.")
 
     # Update renderer
     app.renderer.renderPresent()
 
     # Enent handling
     done = events(pressed)
+
+  # Free assets
+  free(font)
 
 # Shutdown
 exit(app)

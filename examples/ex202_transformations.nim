@@ -213,6 +213,21 @@ if init(app):
 
   # Main loop
   while not done:
+    # Clear screen with draw color
+    if app.renderer.renderClear() != 0:
+      sdl.logWarn(sdl.LogCategoryVideo,
+                  "Can't clear screen: %s",
+                  sdl.getError())
+
+    # Render textures
+    if not image1.renderEx(app.renderer,
+                           ScreenW div 2 - w div 2,
+                           ScreenH div 2 - h div 2,
+                           w, h, angle, flip = flip):
+      sdl.logWarn(sdl.LogCategoryVideo,
+                  "Can't render image1: %s",
+                  sdl.getError())
+
     # Enent handling
     done = events(pressed)
 
@@ -240,25 +255,10 @@ if init(app):
     if angle >= 360: angle -= 360
     elif angle <= -360: angle += 360
 
-    # Clear screen with draw color
-    if app.renderer.renderClear() != 0:
-      sdl.logWarn(sdl.LogCategoryVideo,
-                  "Can't clear screen: %s",
-                  sdl.getError())
-
-    # Render textures
-    if not image1.renderEx(app.renderer,
-                           ScreenW div 2 - w div 2,
-                           ScreenH div 2 - h div 2,
-                           w, h, angle, flip = flip):
-      sdl.logWarn(sdl.LogCategoryVideo,
-                  "Can't render image1: %s",
-                  sdl.getError())
-
     # Update renderer
     app.renderer.renderPresent()
 
-  # Unload assets
+  # Free assets
   free(image1)
 
 # Shutdown

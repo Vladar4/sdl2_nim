@@ -104,11 +104,10 @@ var
 
 if init(app):
 
+  echo "Press any key..."
+
   # Main loop
   while not done:
-    # Enent handling
-    done = events()
-
     # Clear screen with draw color
     if app.renderer.renderClear() != 0:
       sdl.logWarn(sdl.LogCategoryVideo,
@@ -117,6 +116,10 @@ if init(app):
 
     # Update renderer
     app.renderer.renderPresent()
+
+    # Enent handling
+    done = events()
+
 
 # Shutdown
 exit(app)

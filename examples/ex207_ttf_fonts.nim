@@ -1,10 +1,13 @@
-# ex204_drawing.nim
-# =================
-# VIDEO / Drawing geometric primitives
-# ------------------------------------
+# ex207_ttf_fonts.nim
+# ===================
+# VIDEO / Using True Type fonts
+# -----------------------------
 
 
-import math, sdl2/sdl, sdl2/sdl_image as img
+import
+    math,
+    sdl2/sdl, sdl2/sdl_image as img,
+    sdl2/sdl_ttf as ttf
 
 
 const
@@ -130,6 +133,12 @@ proc init(app: App): bool =
                     "Can't initialize SDL_Image: %s",
                     img.getError())
 
+  # Inint SDL_TTF
+  if ttf.init() != 0:
+    sdl.logCritical(sdl.LogCategoryError,
+                    "Can't initialize SDL_TTF: %s",
+                    ttf.getError())
+
   # Create window
   app.window = sdl.createWindow(
     Title,
@@ -168,9 +177,26 @@ proc init(app: App): bool =
 proc exit(app: App) =
   app.renderer.destroyRenderer()
   app.window.destroyWindow()
+  ttf.quit()
   img.quit()
   sdl.logInfo(sdl.LogCategoryApplication, "SDL shutdown completed")
   sdl.quit()
+
+
+# Render surface
+proc render(renderer: sdl.Renderer,
+            surface: sdl.Surface, x, y: int): bool =
+  result = true
+  var rect = sdl.Rect(x: x, y: y, w: surface.w, h: surface.h)
+  # Convert to texture
+  var texture = sdl.createTextureFromSurface(renderer, surface)
+  if texture == nil:
+    return false
+  # Render texture
+  if renderer.renderCopy(texture, nil, addr(rect)) == 0:
+    result = false
+  # Clean
+  destroyTexture(texture)
 
 
 # Event handling
@@ -209,6 +235,24 @@ var
 
 if init(app):
 
+  # Load assets
+  var
+    font, outlinedFont: ttf.Font
+    textColor = sdl.Color(r: 0xFF, g: 0xFF, b: 0xFF)
+    bgColor = sdl.Color(r: 0x30, g: 0x30, b: 0x30)
+
+  font = ttf.openFont("fnt/FSEX300.ttf", 16)
+  outlinedFont = ttf.openFont("fnt/FSEX300.ttf", 48)
+
+  if font == nil or outlinedFont == nil:
+    sdl.logCritical(sdl.LogCategoryError,
+                    "Can't load font: %s",
+                    ttf.getError())
+    done = true
+
+  # Set outline thickness
+  outlinedFont.setFontOutline(1)
+
   # Main loop
   while not done:
     # Clear screen with draw color
@@ -218,56 +262,39 @@ if init(app):
                   "Can't clear screen: %s",
                   sdl.getError())
 
-    # Drawing
+    # Render text
 
-    # Point
-    discard app.renderer.setRenderDrawColor(0xFF, 0x00, 0x00, 0xFF)
-    discard app.renderer.renderDrawPoint(10, 10)
+    var s: sdl.Surface
 
-    # Line
-    discard app.renderer.setRenderDrawColor(0x00, 0xFF, 0x00, 0xFF)
-    discard app.renderer.renderDrawLine(10, 20, 110, 20)
+    s = font.renderUTF8_Solid("Solid text", textColor)
+    discard app.renderer.render(s, 10, 10)
+    sdl.freeSurface(s)
 
-    # Rect
-    discard app.renderer.setRenderDrawColor(0x00, 0x00, 0xFF, 0xFF)
-    var rect = sdl.Rect(x: 10, y: 30, w: 100, h: 50)
-    discard app.renderer.renderDrawRect(addr(rect))
+    s = font.renderUTF8_Shaded("Shaded text", textColor, bgColor)
+    discard app.renderer.render(s, 10, 30)
+    sdl.freeSurface(s)
 
-    # Fill rect
-    discard app.renderer.setRenderDrawColor(0xFF, 0xFF, 0x00, 0xFF)
-    rect.y = 90
-    discard app.renderer.renderFillRect(addr(rect))
+    s = font.renderUTF8_Blended("Blended text", textColor)
+    discard app.renderer.render(s, 10, 50)
+    sdl.freeSurface(s)
 
-    # Random points
-    discard app.renderer.setRenderDrawColor(0xFF, 0xFF, 0xFF, 0xFF)
-    rect.x = 120
-    rect.y = 10
-    rect.w = 510
-    rect.h = 460
-    discard app.renderer.renderDrawRect(addr(rect))
-    const numPoints = 100
-    var points: array[numPoints, sdl.Point]
-    for i in 0..numPoints-1:
-      points[i].x = rect.x + 1 + random(rect.w - 2)
-      points[i].y = rect.y + 1 + random(rect.h - 2)
-    discard app.renderer.renderDrawPoints(addr(points[0]), numPoints)
+    s = font.renderUTF8_Blended_Wrapped(
+      "This is really long line of text.", textColor, 150)
+    discard app.renderer.render(s, 10, 90)
+    sdl.freeSurface(s)
 
-    # Connected lines
-    discard app.renderer.setRenderDrawColor(0xFF, 0x00, 0xFF, 0xFF)
-    var figure: array[6, sdl.Point]
-    figure[0] = Point(x: 60, y: 150)  # top
-    figure[1] = Point(x: 92, y: 250)  # bottom-right
-    figure[2] = Point(x: 10, y: 188)  # left
-    figure[3] = Point(x: 110, y: 188) # right
-    figure[4] = Point(x: 28, y: 250)  # bottom-left
-    figure[5] = figure[0]
-    discard app.renderer.renderDrawLines(addr(figure[0]), 6)
+    s = outlinedFont.renderUTF8_Blended("Outlined text", textColor)
+    discard app.renderer.render(s, 10, 150)
+    sdl.freeSurface(s)
 
     # Update renderer
     app.renderer.renderPresent()
 
     # Enent handling
     done = events(pressed)
+
+  # Free assets
+  ttf.closeFont(font)
 
 # Shutdown
 exit(app)

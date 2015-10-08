@@ -113,13 +113,10 @@ var
 
 if init(app):
   # Starting timer
-  var timer = addTimer(1000, customTimer, nil)
+  var timer = sdl.addTimer(1000, customTimer, nil)
 
   # Main loop
   while not done:
-    # Enent handling
-    done = events()
-
     # Clear screen with draw color
     if app.renderer.renderClear() != 0:
       sdl.logWarn(sdl.LogCategoryVideo,
@@ -129,7 +126,10 @@ if init(app):
     # Update renderer
     app.renderer.renderPresent()
 
-  if not removeTimer(timer):
+    # Enent handling
+    done = events()
+
+  if not sdl.removeTimer(timer):
     sdl.logWarn(sdl.LogCategorySystem,
                 "Can't remove timer: %s",
                 sdl.getError())
