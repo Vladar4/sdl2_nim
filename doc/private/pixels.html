@@ -53,7 +53,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #2d2d2d;
+  color: #666;
   background-color: rgba(252, 248, 244, 0.75); }
 
 /* Skeleton grid */
@@ -489,7 +489,7 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0 10px 0px 10px;
+  margin: 0.25em 10px 0.25em 10px;
   font-size: 14px;
   line-height: 20px;
   white-space: pre !important;
@@ -892,6 +892,10 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+ul.simple > li {
+  margin-bottom: 0.5em }
+
 ol.simple, ul.simple {
   margin-bottom: 1em; }
 
@@ -1151,16 +1155,10 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <ul class="simple simple-toc" id="toc-list">
 <li><a class="reference" id="pixels-nim_toc" href="#pixels-nim">pixels.nim</a></li>
 <li>
-  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
-  <ul class="simple simple-toc-section">
-    
-  </ul>
-</li>
-<li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Color"
-    title="Color* = object 
+    title="Color* = object
   r*: uint8
   g*: uint8
   b*: uint8
@@ -1168,13 +1166,13 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <li><a class="reference" href="#Colour"
     title="Colour* = Color"><wbr />Colour</a></li>
   <li><a class="reference" href="#Palette"
-    title="Palette* = object 
+    title="Palette* = object
   ncolors*: cint
   colors*: ptr Color
   version*: uint32
   refcount*: cint"><wbr />Palette</a></li>
   <li><a class="reference" href="#PixelFormat"
-    title="PixelFormat* = object 
+    title="PixelFormat* = object
   format*: uint32
   palette*: ptr Palette
   BitsPerPixel*: uint8
@@ -1287,94 +1285,88 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <li><a class="reference" href="#PIXELFORMAT_UNKNOWN"
     title="PIXELFORMAT_UNKNOWN* = 0"><wbr />PIXELFORMAT_<wbr />UNKNOWN</a></li>
   <li><a class="reference" href="#PIXELFORMAT_INDEX1LSB"
-    title="PIXELFORMAT_INDEX1LSB* = definePixelFormat(PIXELTYPE_INDEX1, BITMAPORDER_4321, 
-    0, 1, 0)"><wbr />PIXELFORMAT_<wbr />INDEX1LSB</a></li>
+    title="PIXELFORMAT_INDEX1LSB* = definePixelFormat(PIXELTYPE_INDEX1, BITMAPORDER_4321, 0, 1, 0)"><wbr />PIXELFORMAT_<wbr />INDEX1LSB</a></li>
   <li><a class="reference" href="#PIXELFORMAT_INDEX1MSB"
-    title="PIXELFORMAT_INDEX1MSB* = definePixelFormat(PIXELTYPE_INDEX1, BITMAPORDER_1234, 
-    0, 1, 0)"><wbr />PIXELFORMAT_<wbr />INDEX1MSB</a></li>
+    title="PIXELFORMAT_INDEX1MSB* = definePixelFormat(PIXELTYPE_INDEX1, BITMAPORDER_1234, 0, 1, 0)"><wbr />PIXELFORMAT_<wbr />INDEX1MSB</a></li>
   <li><a class="reference" href="#PIXELFORMAT_INDEX4LSB"
-    title="PIXELFORMAT_INDEX4LSB* = definePixelFormat(PIXELTYPE_INDEX4, BITMAPORDER_4321, 
-    0, 4, 0)"><wbr />PIXELFORMAT_<wbr />INDEX4LSB</a></li>
+    title="PIXELFORMAT_INDEX4LSB* = definePixelFormat(PIXELTYPE_INDEX4, BITMAPORDER_4321, 0, 4, 0)"><wbr />PIXELFORMAT_<wbr />INDEX4LSB</a></li>
   <li><a class="reference" href="#PIXELFORMAT_INDEX4MSB"
-    title="PIXELFORMAT_INDEX4MSB* = definePixelFormat(PIXELTYPE_INDEX4, BITMAPORDER_1234, 
-    0, 4, 0)"><wbr />PIXELFORMAT_<wbr />INDEX4MSB</a></li>
+    title="PIXELFORMAT_INDEX4MSB* = definePixelFormat(PIXELTYPE_INDEX4, BITMAPORDER_1234, 0, 4, 0)"><wbr />PIXELFORMAT_<wbr />INDEX4MSB</a></li>
   <li><a class="reference" href="#PIXELFORMAT_INDEX8"
     title="PIXELFORMAT_INDEX8* = definePixelFormat(PIXELTYPE_INDEX8, 0, 0, 8, 1)"><wbr />PIXELFORMAT_<wbr />INDEX8</a></li>
   <li><a class="reference" href="#PIXELFORMAT_RGB332"
-    title="PIXELFORMAT_RGB332* = definePixelFormat(PIXELTYPE_PACKED8, PACKEDORDER_XRGB, 
-                                        PACKEDLAYOUT_332, 8, 1)"><wbr />PIXELFORMAT_<wbr />RGB332</a></li>
+    title="PIXELFORMAT_RGB332* = definePixelFormat(PIXELTYPE_PACKED8, PACKEDORDER_XRGB,
+                                      PACKEDLAYOUT_332, 8, 1)"><wbr />PIXELFORMAT_<wbr />RGB332</a></li>
   <li><a class="reference" href="#PIXELFORMAT_RGB444"
-    title="PIXELFORMAT_RGB444* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_XRGB, 
-                                        PACKEDLAYOUT_4444, 12, 2)"><wbr />PIXELFORMAT_<wbr />RGB444</a></li>
+    title="PIXELFORMAT_RGB444* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_XRGB,
+                                      PACKEDLAYOUT_4444, 12, 2)"><wbr />PIXELFORMAT_<wbr />RGB444</a></li>
   <li><a class="reference" href="#PIXELFORMAT_RGB555"
-    title="PIXELFORMAT_RGB555* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_XRGB, 
-                                        PACKEDLAYOUT_1555, 15, 2)"><wbr />PIXELFORMAT_<wbr />RGB555</a></li>
+    title="PIXELFORMAT_RGB555* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_XRGB,
+                                      PACKEDLAYOUT_1555, 15, 2)"><wbr />PIXELFORMAT_<wbr />RGB555</a></li>
   <li><a class="reference" href="#PIXELFORMAT_BGR555"
-    title="PIXELFORMAT_BGR555* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_XBGR, 
-                                        PACKEDLAYOUT_1555, 15, 2)"><wbr />PIXELFORMAT_<wbr />BGR555</a></li>
+    title="PIXELFORMAT_BGR555* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_XBGR,
+                                      PACKEDLAYOUT_1555, 15, 2)"><wbr />PIXELFORMAT_<wbr />BGR555</a></li>
   <li><a class="reference" href="#PIXELFORMAT_ARGB4444"
-    title="PIXELFORMAT_ARGB4444* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_ARGB, 
-    PACKEDLAYOUT_4444, 16, 2)"><wbr />PIXELFORMAT_<wbr />ARGB4444</a></li>
+    title="PIXELFORMAT_ARGB4444* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_ARGB,
+                                        PACKEDLAYOUT_4444, 16, 2)"><wbr />PIXELFORMAT_<wbr />ARGB4444</a></li>
   <li><a class="reference" href="#PIXELFORMAT_RGBA4444"
-    title="PIXELFORMAT_RGBA4444* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_RGBA, 
-    PACKEDLAYOUT_4444, 16, 2)"><wbr />PIXELFORMAT_<wbr />RGBA4444</a></li>
+    title="PIXELFORMAT_RGBA4444* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_RGBA,
+                                        PACKEDLAYOUT_4444, 16, 2)"><wbr />PIXELFORMAT_<wbr />RGBA4444</a></li>
   <li><a class="reference" href="#PIXELFORMAT_ABGR4444"
-    title="PIXELFORMAT_ABGR4444* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_ABGR, 
-    PACKEDLAYOUT_4444, 16, 2)"><wbr />PIXELFORMAT_<wbr />ABGR4444</a></li>
+    title="PIXELFORMAT_ABGR4444* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_ABGR,
+                                        PACKEDLAYOUT_4444, 16, 2)"><wbr />PIXELFORMAT_<wbr />ABGR4444</a></li>
   <li><a class="reference" href="#PIXELFORMAT_BGRA4444"
-    title="PIXELFORMAT_BGRA4444* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_BGRA, 
-    PACKEDLAYOUT_4444, 16, 2)"><wbr />PIXELFORMAT_<wbr />BGRA4444</a></li>
+    title="PIXELFORMAT_BGRA4444* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_BGRA,
+                                        PACKEDLAYOUT_4444, 16, 2)"><wbr />PIXELFORMAT_<wbr />BGRA4444</a></li>
   <li><a class="reference" href="#PIXELFORMAT_ARGB1555"
-    title="PIXELFORMAT_ARGB1555* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_ARGB, 
-    PACKEDLAYOUT_1555, 16, 2)"><wbr />PIXELFORMAT_<wbr />ARGB1555</a></li>
+    title="PIXELFORMAT_ARGB1555* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_ARGB,
+                                        PACKEDLAYOUT_1555, 16, 2)"><wbr />PIXELFORMAT_<wbr />ARGB1555</a></li>
   <li><a class="reference" href="#PIXELFORMAT_RGBA5551"
-    title="PIXELFORMAT_RGBA5551* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_RGBA, 
-    PACKEDLAYOUT_5551, 16, 2)"><wbr />PIXELFORMAT_<wbr />RGBA5551</a></li>
+    title="PIXELFORMAT_RGBA5551* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_RGBA,
+                                        PACKEDLAYOUT_5551, 16, 2)"><wbr />PIXELFORMAT_<wbr />RGBA5551</a></li>
   <li><a class="reference" href="#PIXELFORMAT_ABGR1555"
-    title="PIXELFORMAT_ABGR1555* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_ABGR, 
-    PACKEDLAYOUT_1555, 16, 2)"><wbr />PIXELFORMAT_<wbr />ABGR1555</a></li>
+    title="PIXELFORMAT_ABGR1555* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_ABGR,
+                                        PACKEDLAYOUT_1555, 16, 2)"><wbr />PIXELFORMAT_<wbr />ABGR1555</a></li>
   <li><a class="reference" href="#PIXELFORMAT_BGRA5551"
-    title="PIXELFORMAT_BGRA5551* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_BGRA, 
-    PACKEDLAYOUT_5551, 16, 2)"><wbr />PIXELFORMAT_<wbr />BGRA5551</a></li>
+    title="PIXELFORMAT_BGRA5551* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_BGRA,
+                                        PACKEDLAYOUT_5551, 16, 2)"><wbr />PIXELFORMAT_<wbr />BGRA5551</a></li>
   <li><a class="reference" href="#PIXELFORMAT_RGB565"
-    title="PIXELFORMAT_RGB565* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_XRGB, 
-                                        PACKEDLAYOUT_565, 16, 2)"><wbr />PIXELFORMAT_<wbr />RGB565</a></li>
+    title="PIXELFORMAT_RGB565* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_XRGB,
+                                      PACKEDLAYOUT_565, 16, 2)"><wbr />PIXELFORMAT_<wbr />RGB565</a></li>
   <li><a class="reference" href="#PIXELFORMAT_BGR565"
-    title="PIXELFORMAT_BGR565* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_XBGR, 
-                                        PACKEDLAYOUT_565, 16, 2)"><wbr />PIXELFORMAT_<wbr />BGR565</a></li>
+    title="PIXELFORMAT_BGR565* = definePixelFormat(PIXELTYPE_PACKED16, PACKEDORDER_XBGR,
+                                      PACKEDLAYOUT_565, 16, 2)"><wbr />PIXELFORMAT_<wbr />BGR565</a></li>
   <li><a class="reference" href="#PIXELFORMAT_RGB24"
-    title="PIXELFORMAT_RGB24* = definePixelFormat(PIXELTYPE_ARRAYU8, ARRAYORDER_RGB, 0, 24, 
-                                       3)"><wbr />PIXELFORMAT_<wbr />RGB24</a></li>
+    title="PIXELFORMAT_RGB24* = definePixelFormat(PIXELTYPE_ARRAYU8, ARRAYORDER_RGB, 0, 24, 3)"><wbr />PIXELFORMAT_<wbr />RGB24</a></li>
   <li><a class="reference" href="#PIXELFORMAT_BGR24"
-    title="PIXELFORMAT_BGR24* = definePixelFormat(PIXELTYPE_ARRAYU8, ARRAYORDER_BGR, 0, 24, 
-                                       3)"><wbr />PIXELFORMAT_<wbr />BGR24</a></li>
+    title="PIXELFORMAT_BGR24* = definePixelFormat(PIXELTYPE_ARRAYU8, ARRAYORDER_BGR, 0, 24, 3)"><wbr />PIXELFORMAT_<wbr />BGR24</a></li>
   <li><a class="reference" href="#PIXELFORMAT_RGB888"
-    title="PIXELFORMAT_RGB888* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_XRGB, 
-                                        PACKEDLAYOUT_8888, 24, 4)"><wbr />PIXELFORMAT_<wbr />RGB888</a></li>
+    title="PIXELFORMAT_RGB888* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_XRGB,
+                                      PACKEDLAYOUT_8888, 24, 4)"><wbr />PIXELFORMAT_<wbr />RGB888</a></li>
   <li><a class="reference" href="#PIXELFORMAT_RGBX8888"
-    title="PIXELFORMAT_RGBX8888* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_RGBX, 
-    PACKEDLAYOUT_8888, 24, 4)"><wbr />PIXELFORMAT_<wbr />RGBX8888</a></li>
+    title="PIXELFORMAT_RGBX8888* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_RGBX,
+                                        PACKEDLAYOUT_8888, 24, 4)"><wbr />PIXELFORMAT_<wbr />RGBX8888</a></li>
   <li><a class="reference" href="#PIXELFORMAT_BGR888"
-    title="PIXELFORMAT_BGR888* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_XBGR, 
-                                        PACKEDLAYOUT_8888, 24, 4)"><wbr />PIXELFORMAT_<wbr />BGR888</a></li>
+    title="PIXELFORMAT_BGR888* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_XBGR,
+                                      PACKEDLAYOUT_8888, 24, 4)"><wbr />PIXELFORMAT_<wbr />BGR888</a></li>
   <li><a class="reference" href="#PIXELFORMAT_BGRX8888"
-    title="PIXELFORMAT_BGRX8888* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_BGRX, 
-    PACKEDLAYOUT_8888, 24, 4)"><wbr />PIXELFORMAT_<wbr />BGRX8888</a></li>
+    title="PIXELFORMAT_BGRX8888* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_BGRX,
+                                        PACKEDLAYOUT_8888, 24, 4)"><wbr />PIXELFORMAT_<wbr />BGRX8888</a></li>
   <li><a class="reference" href="#PIXELFORMAT_ARGB8888"
-    title="PIXELFORMAT_ARGB8888* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_ARGB, 
-    PACKEDLAYOUT_8888, 32, 4)"><wbr />PIXELFORMAT_<wbr />ARGB8888</a></li>
+    title="PIXELFORMAT_ARGB8888* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_ARGB,
+                                        PACKEDLAYOUT_8888, 32, 4)"><wbr />PIXELFORMAT_<wbr />ARGB8888</a></li>
   <li><a class="reference" href="#PIXELFORMAT_RGBA8888"
-    title="PIXELFORMAT_RGBA8888* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_RGBA, 
-    PACKEDLAYOUT_8888, 32, 4)"><wbr />PIXELFORMAT_<wbr />RGBA8888</a></li>
+    title="PIXELFORMAT_RGBA8888* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_RGBA,
+                                        PACKEDLAYOUT_8888, 32, 4)"><wbr />PIXELFORMAT_<wbr />RGBA8888</a></li>
   <li><a class="reference" href="#PIXELFORMAT_ABGR8888"
-    title="PIXELFORMAT_ABGR8888* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_ABGR, 
-    PACKEDLAYOUT_8888, 32, 4)"><wbr />PIXELFORMAT_<wbr />ABGR8888</a></li>
+    title="PIXELFORMAT_ABGR8888* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_ABGR,
+                                        PACKEDLAYOUT_8888, 32, 4)"><wbr />PIXELFORMAT_<wbr />ABGR8888</a></li>
   <li><a class="reference" href="#PIXELFORMAT_BGRA8888"
-    title="PIXELFORMAT_BGRA8888* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_BGRA, 
-    PACKEDLAYOUT_8888, 32, 4)"><wbr />PIXELFORMAT_<wbr />BGRA8888</a></li>
+    title="PIXELFORMAT_BGRA8888* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_BGRA,
+                                        PACKEDLAYOUT_8888, 32, 4)"><wbr />PIXELFORMAT_<wbr />BGRA8888</a></li>
   <li><a class="reference" href="#PIXELFORMAT_ARGB2101010"
-    title="PIXELFORMAT_ARGB2101010* = definePixelFormat(PIXELTYPE_PACKED32, 
-    PACKEDORDER_ARGB, PACKEDLAYOUT_2101010, 32, 4)"><wbr />PIXELFORMAT_<wbr />ARGB2101010</a></li>
+    title="PIXELFORMAT_ARGB2101010* = definePixelFormat(PIXELTYPE_PACKED32, PACKEDORDER_ARGB,
+    PACKEDLAYOUT_2101010, 32, 4)"><wbr />PIXELFORMAT_<wbr />ARGB2101010</a></li>
   <li><a class="reference" href="#PIXELFORMAT_YV12"
     title="PIXELFORMAT_YV12* = definePixelFourCC(&#x27;Y&#x27;, &#x27;V&#x27;, &#x27;1&#x27;, &#x27;2&#x27;)"><wbr />PIXELFORMAT_<wbr />YV12</a></li>
   <li><a class="reference" href="#PIXELFORMAT_IYUV"
@@ -1394,10 +1386,10 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
       <li><a class="reference" href="#getPixelFormatName,uint32"
     title="getPixelFormatName*(format: uint32): cstring"><wbr />get<wbr />Pixel<wbr />Format<wbr />Name</a></li>
   <li><a class="reference" href="#pixelFormatEnumToMasks,uint32,ptr.cint,ptr.uint32,ptr.uint32,ptr.uint32,ptr.uint32"
-    title="pixelFormatEnumToMasks*(format: uint32; bpp: ptr cint; rMask: ptr uint32; 
+    title="pixelFormatEnumToMasks*(format: uint32; bpp: ptr cint; rMask: ptr uint32;
                         gMask: ptr uint32; bMask: ptr uint32; aMask: ptr uint32): bool"><wbr />pixel<wbr />Format<wbr />Enum<wbr />To<wbr />Masks</a></li>
   <li><a class="reference" href="#masksToPixelFormatEnum,cint,uint32,uint32,uint32,uint32"
-    title="masksToPixelFormatEnum*(bpp: cint; rMask: uint32; gMask: uint32; bMask: uint32; 
+    title="masksToPixelFormatEnum*(bpp: cint; rMask: uint32; gMask: uint32; bMask: uint32;
                         aMask: uint32): uint32"><wbr />masks<wbr />To<wbr />Pixel<wbr />Format<wbr />Enum</a></li>
   <li><a class="reference" href="#allocFormat,uint32"
     title="allocFormat*(pixel_format: uint32): ptr PixelFormat"><wbr />alloc<wbr />Format</a></li>
@@ -1408,20 +1400,27 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <li><a class="reference" href="#setPixelFormatPalette,ptr.PixelFormat,ptr.Palette"
     title="setPixelFormatPalette*(format: ptr PixelFormat; palette: ptr Palette): cint"><wbr />set<wbr />Pixel<wbr />Format<wbr />Palette</a></li>
   <li><a class="reference" href="#setPaletteColors,ptr.Palette,ptr.Color,cint,cint"
-    title="setPaletteColors*(palette: ptr Palette; colors: ptr Color; firstcolor: cint; 
+    title="setPaletteColors*(palette: ptr Palette; colors: ptr Color; firstcolor: cint;
                   ncolors: cint): cint"><wbr />set<wbr />Palette<wbr />Colors</a></li>
   <li><a class="reference" href="#freePalette,ptr.Palette"
     title="freePalette*(palette: ptr Palette)"><wbr />free<wbr />Palette</a></li>
   <li><a class="reference" href="#mapRGB,ptr.PixelFormat,uint8,uint8,uint8"
     title="mapRGB*(format: ptr PixelFormat; r: uint8; g: uint8; b: uint8): uint32"><wbr />map<wbr />RGB</a></li>
+  <li><a class="reference" href="#mapRGB,ptr.PixelFormat,Color"
+    title="mapRGB*(format: ptr PixelFormat; color: Color): uint32"><wbr />map<wbr />RGB</a></li>
   <li><a class="reference" href="#mapRGBA,ptr.PixelFormat,uint8,uint8,uint8,uint8"
     title="mapRGBA*(format: ptr PixelFormat; r: uint8; g: uint8; b: uint8; a: uint8): uint32"><wbr />map<wbr />RGBA</a></li>
+  <li><a class="reference" href="#mapRGBA,ptr.PixelFormat,Color"
+    title="mapRGBA*(format: ptr PixelFormat; color: Color): uint32"><wbr />map<wbr />RGBA</a></li>
   <li><a class="reference" href="#getRGB,uint32,ptr.PixelFormat,ptr.uint8,ptr.uint8,ptr.uint8"
-    title="getRGB*(pixel: uint32; format: ptr PixelFormat; r: ptr uint8; g: ptr uint8; 
-        b: ptr uint8)"><wbr />get<wbr />RGB</a></li>
+    title="getRGB*(pixel: uint32; format: ptr PixelFormat; r: ptr uint8; g: ptr uint8; b: ptr uint8)"><wbr />get<wbr />RGB</a></li>
+  <li><a class="reference" href="#getRGB,uint32,ptr.PixelFormat"
+    title="getRGB*(pixel: uint32; format: ptr PixelFormat): Color"><wbr />get<wbr />RGB</a></li>
   <li><a class="reference" href="#getRGBA,uint32,ptr.PixelFormat,ptr.uint8,ptr.uint8,ptr.uint8,ptr.uint8"
-    title="getRGBA*(pixel: uint32; format: ptr PixelFormat; r: ptr uint8; g: ptr uint8; 
-         b: ptr uint8; a: ptr uint8)"><wbr />get<wbr />RGBA</a></li>
+    title="getRGBA*(pixel: uint32; format: ptr PixelFormat; r: ptr uint8; g: ptr uint8; b: ptr uint8;
+         a: ptr uint8)"><wbr />get<wbr />RGBA</a></li>
+  <li><a class="reference" href="#getRGBA,uint32,ptr.PixelFormat"
+    title="getRGBA*(pixel: uint32; format: ptr PixelFormat): Color"><wbr />get<wbr />RGBA</a></li>
   <li><a class="reference" href="#calculateGammaRamp,cfloat,ptr.uint16"
     title="calculateGammaRamp*(gamma: cfloat; ramp: ptr uint16)"><wbr />calculate<wbr />Gamma<wbr />Ramp</a></li>
 
@@ -1463,15 +1462,10 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <p class="module-desc">
 <h1><a class="toc-backref" id="pixels-nim" href="#pixels-nim">pixels.nim</a></h1><p>Header for the enumerated pixel format definitions.</p>
 </p>
-  <div class="section" id="6">
-<h1><a class="toc-backref" href="#6">Imports</a></h1>
-<dl class="item">
-<a class="reference external" href="unsigned.html">unsigned</a>
-</dl></div>
-<div class="section" id="7">
+  <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="Color"><a name="Color"></a><pre><span class="Identifier">Color</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
+<dt id="Color"><a name="Color"></a><pre><span class="Identifier">Color</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">r</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">g</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">b</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
@@ -1486,7 +1480,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
 
 </dd>
-<dt id="Palette"><a name="Palette"></a><pre><span class="Identifier">Palette</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
+<dt id="Palette"><a name="Palette"></a><pre><span class="Identifier">Palette</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">ncolors</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
   <span class="Identifier">colors</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Color</span>
   <span class="Identifier">version</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
@@ -1496,7 +1490,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
 
 </dd>
-<dt id="PixelFormat"><a name="PixelFormat"></a><pre><span class="Identifier">PixelFormat</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
+<dt id="PixelFormat"><a name="PixelFormat"></a><pre><span class="Identifier">PixelFormat</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">format</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">palette</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Palette</span>
   <span class="Identifier">BitsPerPixel</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
@@ -1742,26 +1736,22 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
 
 </dd>
-<dt id="PIXELFORMAT_INDEX1LSB"><a name="PIXELFORMAT_INDEX1LSB"></a><pre><span class="Identifier">PIXELFORMAT_INDEX1LSB</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_INDEX1</span><span class="Other">,</span> <span class="Identifier">BITMAPORDER_4321</span><span class="Other">,</span> 
-    <span class="DecNumber">0</span><span class="Other">,</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="DecNumber">0</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_INDEX1LSB"><a name="PIXELFORMAT_INDEX1LSB"></a><pre><span class="Identifier">PIXELFORMAT_INDEX1LSB</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_INDEX1</span><span class="Other">,</span> <span class="Identifier">BITMAPORDER_4321</span><span class="Other">,</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="DecNumber">0</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_INDEX1MSB"><a name="PIXELFORMAT_INDEX1MSB"></a><pre><span class="Identifier">PIXELFORMAT_INDEX1MSB</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_INDEX1</span><span class="Other">,</span> <span class="Identifier">BITMAPORDER_1234</span><span class="Other">,</span> 
-    <span class="DecNumber">0</span><span class="Other">,</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="DecNumber">0</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_INDEX1MSB"><a name="PIXELFORMAT_INDEX1MSB"></a><pre><span class="Identifier">PIXELFORMAT_INDEX1MSB</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_INDEX1</span><span class="Other">,</span> <span class="Identifier">BITMAPORDER_1234</span><span class="Other">,</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="DecNumber">0</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_INDEX4LSB"><a name="PIXELFORMAT_INDEX4LSB"></a><pre><span class="Identifier">PIXELFORMAT_INDEX4LSB</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_INDEX4</span><span class="Other">,</span> <span class="Identifier">BITMAPORDER_4321</span><span class="Other">,</span> 
-    <span class="DecNumber">0</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="DecNumber">0</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_INDEX4LSB"><a name="PIXELFORMAT_INDEX4LSB"></a><pre><span class="Identifier">PIXELFORMAT_INDEX4LSB</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_INDEX4</span><span class="Other">,</span> <span class="Identifier">BITMAPORDER_4321</span><span class="Other">,</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="DecNumber">0</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_INDEX4MSB"><a name="PIXELFORMAT_INDEX4MSB"></a><pre><span class="Identifier">PIXELFORMAT_INDEX4MSB</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_INDEX4</span><span class="Other">,</span> <span class="Identifier">BITMAPORDER_1234</span><span class="Other">,</span> 
-    <span class="DecNumber">0</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="DecNumber">0</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_INDEX4MSB"><a name="PIXELFORMAT_INDEX4MSB"></a><pre><span class="Identifier">PIXELFORMAT_INDEX4MSB</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_INDEX4</span><span class="Other">,</span> <span class="Identifier">BITMAPORDER_1234</span><span class="Other">,</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="DecNumber">0</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
@@ -1771,152 +1761,150 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
 
 </dd>
-<dt id="PIXELFORMAT_RGB332"><a name="PIXELFORMAT_RGB332"></a><pre><span class="Identifier">PIXELFORMAT_RGB332</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED8</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_XRGB</span><span class="Other">,</span> 
-                                        <span class="Identifier">PACKEDLAYOUT_332</span><span class="Other">,</span> <span class="DecNumber">8</span><span class="Other">,</span> <span class="DecNumber">1</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_RGB332"><a name="PIXELFORMAT_RGB332"></a><pre><span class="Identifier">PIXELFORMAT_RGB332</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED8</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_XRGB</span><span class="Other">,</span>
+                                      <span class="Identifier">PACKEDLAYOUT_332</span><span class="Other">,</span> <span class="DecNumber">8</span><span class="Other">,</span> <span class="DecNumber">1</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_RGB444"><a name="PIXELFORMAT_RGB444"></a><pre><span class="Identifier">PIXELFORMAT_RGB444</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_XRGB</span><span class="Other">,</span> 
-                                        <span class="Identifier">PACKEDLAYOUT_4444</span><span class="Other">,</span> <span class="DecNumber">12</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_RGB444"><a name="PIXELFORMAT_RGB444"></a><pre><span class="Identifier">PIXELFORMAT_RGB444</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_XRGB</span><span class="Other">,</span>
+                                      <span class="Identifier">PACKEDLAYOUT_4444</span><span class="Other">,</span> <span class="DecNumber">12</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_RGB555"><a name="PIXELFORMAT_RGB555"></a><pre><span class="Identifier">PIXELFORMAT_RGB555</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_XRGB</span><span class="Other">,</span> 
-                                        <span class="Identifier">PACKEDLAYOUT_1555</span><span class="Other">,</span> <span class="DecNumber">15</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_RGB555"><a name="PIXELFORMAT_RGB555"></a><pre><span class="Identifier">PIXELFORMAT_RGB555</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_XRGB</span><span class="Other">,</span>
+                                      <span class="Identifier">PACKEDLAYOUT_1555</span><span class="Other">,</span> <span class="DecNumber">15</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_BGR555"><a name="PIXELFORMAT_BGR555"></a><pre><span class="Identifier">PIXELFORMAT_BGR555</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_XBGR</span><span class="Other">,</span> 
-                                        <span class="Identifier">PACKEDLAYOUT_1555</span><span class="Other">,</span> <span class="DecNumber">15</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_BGR555"><a name="PIXELFORMAT_BGR555"></a><pre><span class="Identifier">PIXELFORMAT_BGR555</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_XBGR</span><span class="Other">,</span>
+                                      <span class="Identifier">PACKEDLAYOUT_1555</span><span class="Other">,</span> <span class="DecNumber">15</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_ARGB4444"><a name="PIXELFORMAT_ARGB4444"></a><pre><span class="Identifier">PIXELFORMAT_ARGB4444</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_ARGB</span><span class="Other">,</span> 
-    <span class="Identifier">PACKEDLAYOUT_4444</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_ARGB4444"><a name="PIXELFORMAT_ARGB4444"></a><pre><span class="Identifier">PIXELFORMAT_ARGB4444</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_ARGB</span><span class="Other">,</span>
+                                        <span class="Identifier">PACKEDLAYOUT_4444</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_RGBA4444"><a name="PIXELFORMAT_RGBA4444"></a><pre><span class="Identifier">PIXELFORMAT_RGBA4444</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_RGBA</span><span class="Other">,</span> 
-    <span class="Identifier">PACKEDLAYOUT_4444</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_RGBA4444"><a name="PIXELFORMAT_RGBA4444"></a><pre><span class="Identifier">PIXELFORMAT_RGBA4444</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_RGBA</span><span class="Other">,</span>
+                                        <span class="Identifier">PACKEDLAYOUT_4444</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_ABGR4444"><a name="PIXELFORMAT_ABGR4444"></a><pre><span class="Identifier">PIXELFORMAT_ABGR4444</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_ABGR</span><span class="Other">,</span> 
-    <span class="Identifier">PACKEDLAYOUT_4444</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_ABGR4444"><a name="PIXELFORMAT_ABGR4444"></a><pre><span class="Identifier">PIXELFORMAT_ABGR4444</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_ABGR</span><span class="Other">,</span>
+                                        <span class="Identifier">PACKEDLAYOUT_4444</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_BGRA4444"><a name="PIXELFORMAT_BGRA4444"></a><pre><span class="Identifier">PIXELFORMAT_BGRA4444</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_BGRA</span><span class="Other">,</span> 
-    <span class="Identifier">PACKEDLAYOUT_4444</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_BGRA4444"><a name="PIXELFORMAT_BGRA4444"></a><pre><span class="Identifier">PIXELFORMAT_BGRA4444</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_BGRA</span><span class="Other">,</span>
+                                        <span class="Identifier">PACKEDLAYOUT_4444</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_ARGB1555"><a name="PIXELFORMAT_ARGB1555"></a><pre><span class="Identifier">PIXELFORMAT_ARGB1555</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_ARGB</span><span class="Other">,</span> 
-    <span class="Identifier">PACKEDLAYOUT_1555</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_ARGB1555"><a name="PIXELFORMAT_ARGB1555"></a><pre><span class="Identifier">PIXELFORMAT_ARGB1555</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_ARGB</span><span class="Other">,</span>
+                                        <span class="Identifier">PACKEDLAYOUT_1555</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_RGBA5551"><a name="PIXELFORMAT_RGBA5551"></a><pre><span class="Identifier">PIXELFORMAT_RGBA5551</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_RGBA</span><span class="Other">,</span> 
-    <span class="Identifier">PACKEDLAYOUT_5551</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_RGBA5551"><a name="PIXELFORMAT_RGBA5551"></a><pre><span class="Identifier">PIXELFORMAT_RGBA5551</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_RGBA</span><span class="Other">,</span>
+                                        <span class="Identifier">PACKEDLAYOUT_5551</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_ABGR1555"><a name="PIXELFORMAT_ABGR1555"></a><pre><span class="Identifier">PIXELFORMAT_ABGR1555</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_ABGR</span><span class="Other">,</span> 
-    <span class="Identifier">PACKEDLAYOUT_1555</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_ABGR1555"><a name="PIXELFORMAT_ABGR1555"></a><pre><span class="Identifier">PIXELFORMAT_ABGR1555</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_ABGR</span><span class="Other">,</span>
+                                        <span class="Identifier">PACKEDLAYOUT_1555</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_BGRA5551"><a name="PIXELFORMAT_BGRA5551"></a><pre><span class="Identifier">PIXELFORMAT_BGRA5551</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_BGRA</span><span class="Other">,</span> 
-    <span class="Identifier">PACKEDLAYOUT_5551</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_BGRA5551"><a name="PIXELFORMAT_BGRA5551"></a><pre><span class="Identifier">PIXELFORMAT_BGRA5551</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_BGRA</span><span class="Other">,</span>
+                                        <span class="Identifier">PACKEDLAYOUT_5551</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_RGB565"><a name="PIXELFORMAT_RGB565"></a><pre><span class="Identifier">PIXELFORMAT_RGB565</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_XRGB</span><span class="Other">,</span> 
-                                        <span class="Identifier">PACKEDLAYOUT_565</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_RGB565"><a name="PIXELFORMAT_RGB565"></a><pre><span class="Identifier">PIXELFORMAT_RGB565</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_XRGB</span><span class="Other">,</span>
+                                      <span class="Identifier">PACKEDLAYOUT_565</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_BGR565"><a name="PIXELFORMAT_BGR565"></a><pre><span class="Identifier">PIXELFORMAT_BGR565</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_XBGR</span><span class="Other">,</span> 
-                                        <span class="Identifier">PACKEDLAYOUT_565</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_BGR565"><a name="PIXELFORMAT_BGR565"></a><pre><span class="Identifier">PIXELFORMAT_BGR565</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED16</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_XBGR</span><span class="Other">,</span>
+                                      <span class="Identifier">PACKEDLAYOUT_565</span><span class="Other">,</span> <span class="DecNumber">16</span><span class="Other">,</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_RGB24"><a name="PIXELFORMAT_RGB24"></a><pre><span class="Identifier">PIXELFORMAT_RGB24</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_ARRAYU8</span><span class="Other">,</span> <span class="Identifier">ARRAYORDER_RGB</span><span class="Other">,</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="DecNumber">24</span><span class="Other">,</span> 
-                                       <span class="DecNumber">3</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_RGB24"><a name="PIXELFORMAT_RGB24"></a><pre><span class="Identifier">PIXELFORMAT_RGB24</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_ARRAYU8</span><span class="Other">,</span> <span class="Identifier">ARRAYORDER_RGB</span><span class="Other">,</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="DecNumber">24</span><span class="Other">,</span> <span class="DecNumber">3</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_BGR24"><a name="PIXELFORMAT_BGR24"></a><pre><span class="Identifier">PIXELFORMAT_BGR24</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_ARRAYU8</span><span class="Other">,</span> <span class="Identifier">ARRAYORDER_BGR</span><span class="Other">,</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="DecNumber">24</span><span class="Other">,</span> 
-                                       <span class="DecNumber">3</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_BGR24"><a name="PIXELFORMAT_BGR24"></a><pre><span class="Identifier">PIXELFORMAT_BGR24</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_ARRAYU8</span><span class="Other">,</span> <span class="Identifier">ARRAYORDER_BGR</span><span class="Other">,</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="DecNumber">24</span><span class="Other">,</span> <span class="DecNumber">3</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_RGB888"><a name="PIXELFORMAT_RGB888"></a><pre><span class="Identifier">PIXELFORMAT_RGB888</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_XRGB</span><span class="Other">,</span> 
+<dt id="PIXELFORMAT_RGB888"><a name="PIXELFORMAT_RGB888"></a><pre><span class="Identifier">PIXELFORMAT_RGB888</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_XRGB</span><span class="Other">,</span>
+                                      <span class="Identifier">PACKEDLAYOUT_8888</span><span class="Other">,</span> <span class="DecNumber">24</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="PIXELFORMAT_RGBX8888"><a name="PIXELFORMAT_RGBX8888"></a><pre><span class="Identifier">PIXELFORMAT_RGBX8888</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_RGBX</span><span class="Other">,</span>
                                         <span class="Identifier">PACKEDLAYOUT_8888</span><span class="Other">,</span> <span class="DecNumber">24</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_RGBX8888"><a name="PIXELFORMAT_RGBX8888"></a><pre><span class="Identifier">PIXELFORMAT_RGBX8888</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_RGBX</span><span class="Other">,</span> 
-    <span class="Identifier">PACKEDLAYOUT_8888</span><span class="Other">,</span> <span class="DecNumber">24</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_BGR888"><a name="PIXELFORMAT_BGR888"></a><pre><span class="Identifier">PIXELFORMAT_BGR888</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_XBGR</span><span class="Other">,</span>
+                                      <span class="Identifier">PACKEDLAYOUT_8888</span><span class="Other">,</span> <span class="DecNumber">24</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_BGR888"><a name="PIXELFORMAT_BGR888"></a><pre><span class="Identifier">PIXELFORMAT_BGR888</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_XBGR</span><span class="Other">,</span> 
+<dt id="PIXELFORMAT_BGRX8888"><a name="PIXELFORMAT_BGRX8888"></a><pre><span class="Identifier">PIXELFORMAT_BGRX8888</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_BGRX</span><span class="Other">,</span>
                                         <span class="Identifier">PACKEDLAYOUT_8888</span><span class="Other">,</span> <span class="DecNumber">24</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_BGRX8888"><a name="PIXELFORMAT_BGRX8888"></a><pre><span class="Identifier">PIXELFORMAT_BGRX8888</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_BGRX</span><span class="Other">,</span> 
-    <span class="Identifier">PACKEDLAYOUT_8888</span><span class="Other">,</span> <span class="DecNumber">24</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_ARGB8888"><a name="PIXELFORMAT_ARGB8888"></a><pre><span class="Identifier">PIXELFORMAT_ARGB8888</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_ARGB</span><span class="Other">,</span>
+                                        <span class="Identifier">PACKEDLAYOUT_8888</span><span class="Other">,</span> <span class="DecNumber">32</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_ARGB8888"><a name="PIXELFORMAT_ARGB8888"></a><pre><span class="Identifier">PIXELFORMAT_ARGB8888</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_ARGB</span><span class="Other">,</span> 
-    <span class="Identifier">PACKEDLAYOUT_8888</span><span class="Other">,</span> <span class="DecNumber">32</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_RGBA8888"><a name="PIXELFORMAT_RGBA8888"></a><pre><span class="Identifier">PIXELFORMAT_RGBA8888</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_RGBA</span><span class="Other">,</span>
+                                        <span class="Identifier">PACKEDLAYOUT_8888</span><span class="Other">,</span> <span class="DecNumber">32</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_RGBA8888"><a name="PIXELFORMAT_RGBA8888"></a><pre><span class="Identifier">PIXELFORMAT_RGBA8888</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_RGBA</span><span class="Other">,</span> 
-    <span class="Identifier">PACKEDLAYOUT_8888</span><span class="Other">,</span> <span class="DecNumber">32</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_ABGR8888"><a name="PIXELFORMAT_ABGR8888"></a><pre><span class="Identifier">PIXELFORMAT_ABGR8888</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_ABGR</span><span class="Other">,</span>
+                                        <span class="Identifier">PACKEDLAYOUT_8888</span><span class="Other">,</span> <span class="DecNumber">32</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_ABGR8888"><a name="PIXELFORMAT_ABGR8888"></a><pre><span class="Identifier">PIXELFORMAT_ABGR8888</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_ABGR</span><span class="Other">,</span> 
-    <span class="Identifier">PACKEDLAYOUT_8888</span><span class="Other">,</span> <span class="DecNumber">32</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_BGRA8888"><a name="PIXELFORMAT_BGRA8888"></a><pre><span class="Identifier">PIXELFORMAT_BGRA8888</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_BGRA</span><span class="Other">,</span>
+                                        <span class="Identifier">PACKEDLAYOUT_8888</span><span class="Other">,</span> <span class="DecNumber">32</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PIXELFORMAT_BGRA8888"><a name="PIXELFORMAT_BGRA8888"></a><pre><span class="Identifier">PIXELFORMAT_BGRA8888</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_BGRA</span><span class="Other">,</span> 
-    <span class="Identifier">PACKEDLAYOUT_8888</span><span class="Other">,</span> <span class="DecNumber">32</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="PIXELFORMAT_ARGB2101010"><a name="PIXELFORMAT_ARGB2101010"></a><pre><span class="Identifier">PIXELFORMAT_ARGB2101010</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> 
-    <span class="Identifier">PACKEDORDER_ARGB</span><span class="Other">,</span> <span class="Identifier">PACKEDLAYOUT_2101010</span><span class="Other">,</span> <span class="DecNumber">32</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
+<dt id="PIXELFORMAT_ARGB2101010"><a name="PIXELFORMAT_ARGB2101010"></a><pre><span class="Identifier">PIXELFORMAT_ARGB2101010</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFormat</span><span class="Other">(</span><span class="Identifier">PIXELTYPE_PACKED32</span><span class="Other">,</span> <span class="Identifier">PACKEDORDER_ARGB</span><span class="Other">,</span>
+    <span class="Identifier">PACKEDLAYOUT_2101010</span><span class="Other">,</span> <span class="DecNumber">32</span><span class="Other">,</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
@@ -1956,16 +1944,15 @@ Packed mode: Y0+V0+Y1+U0 (1 plane)
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="getPixelFormatName"><a name="getPixelFormatName,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getPixelFormatName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getPixelFormatName"><a name="getPixelFormatName,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getPixelFormatName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetPixelFormatName&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the human readable name of a pixel format.
 
 </dd>
-<dt id="pixelFormatEnumToMasks"><a name="pixelFormatEnumToMasks,uint32,ptr.cint,ptr.uint32,ptr.uint32,ptr.uint32,ptr.uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pixelFormatEnumToMasks</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">bpp</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">rMask</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">;</span> 
-                             <span class="Identifier">gMask</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">bMask</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">;</span> 
-                             <span class="Identifier">aMask</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PixelFormatEnumToMasks&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="pixelFormatEnumToMasks"><a name="pixelFormatEnumToMasks,uint32,ptr.cint,ptr.uint32,ptr.uint32,ptr.uint32,ptr.uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pixelFormatEnumToMasks</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">bpp</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">rMask</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">;</span>
+                            <span class="Identifier">gMask</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">bMask</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">aMask</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span>
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PixelFormatEnumToMasks&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Convert one of the enumerated pixel formats to a bpp and RGBA masks.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite>, or <cite>false</cite> if the conversion wasn't possible.</p>
@@ -1974,8 +1961,8 @@ Get the human readable name of a pixel format.
 
 
 </dd>
-<dt id="masksToPixelFormatEnum"><a name="masksToPixelFormatEnum,cint,uint32,uint32,uint32,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">masksToPixelFormatEnum</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">bpp</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">rMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">gMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> 
-                             <span class="Identifier">bMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">aMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="masksToPixelFormatEnum"><a name="masksToPixelFormatEnum,cint,uint32,uint32,uint32,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">masksToPixelFormatEnum</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">bpp</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">rMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">gMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">bMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span>
+                            <span class="Identifier">aMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MasksToPixelFormatEnum&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Convert a bpp and RGBA masks to an enumerated pixel format.</p>
@@ -1985,20 +1972,20 @@ Get the human readable name of a pixel format.
 
 
 </dd>
-<dt id="allocFormat"><a name="allocFormat,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocFormat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">pixel_format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="allocFormat"><a name="allocFormat,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocFormat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">pixel_format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AllocFormat&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Create an PixelFormat object from a pixel format enum.
 
 </dd>
-<dt id="freeFormat"><a name="freeFormat,ptr.PixelFormat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freeFormat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">format</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FreeFormat&quot;</span><span class="Other">,</span> 
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="freeFormat"><a name="freeFormat,ptr.PixelFormat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freeFormat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">format</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FreeFormat&quot;</span><span class="Other">,</span>
+                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Free an PixelFormat object.
 
 </dd>
-<dt id="allocPalette"><a name="allocPalette,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocPalette</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">ncolors</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Palette</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AllocPalette&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="allocPalette"><a name="allocPalette,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocPalette</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">ncolors</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Palette</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AllocPalette&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Create a palette structure with the specified number of color entries.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> a new palette, or <cite>nil</cite> if there wasn't enough memory.</p>
@@ -2014,9 +2001,9 @@ Free an PixelFormat object.
 Set the palette for a pixel format object.
 
 </dd>
-<dt id="setPaletteColors"><a name="setPaletteColors,ptr.Palette,ptr.Color,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setPaletteColors</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">palette</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Palette</span><span class="Other">;</span> <span class="Identifier">colors</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Color</span><span class="Other">;</span> 
-                       <span class="Identifier">firstcolor</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">ncolors</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetPaletteColors&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="setPaletteColors"><a name="setPaletteColors,ptr.Palette,ptr.Color,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setPaletteColors</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">palette</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Palette</span><span class="Other">;</span> <span class="Identifier">colors</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Color</span><span class="Other">;</span> <span class="Identifier">firstcolor</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
+                      <span class="Identifier">ncolors</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetPaletteColors&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set a range of colors in a palette.</p>
 <p><tt class="docutils literal"><span class="pre">palette</span></tt>    The palette to modify. <tt class="docutils literal"><span class="pre">colors</span></tt>     An array of colors to copy into the palette. <tt class="docutils literal"><span class="pre">firstcolor</span></tt> The index of the first palette entry to modify. <tt class="docutils literal"><span class="pre">ncolors</span></tt>    The number of entries to modify.</p>
@@ -2024,8 +2011,8 @@ Set the palette for a pixel format object.
 
 
 </dd>
-<dt id="freePalette"><a name="freePalette,ptr.Palette"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freePalette</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">palette</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Palette</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FreePalette&quot;</span><span class="Other">,</span> 
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="freePalette"><a name="freePalette,ptr.Palette"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freePalette</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">palette</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Palette</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FreePalette&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Free a palette created with allocPalette().</p>
 <p>See also:</p>
@@ -2033,12 +2020,17 @@ Set the palette for a pixel format object.
 
 
 </dd>
-<dt id="mapRGB"><a name="mapRGB,ptr.PixelFormat,uint8,uint8,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">mapRGB</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">format</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MapRGB&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="mapRGB"><a name="mapRGB,ptr.PixelFormat,uint8,uint8,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">mapRGB</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">format</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MapRGB&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Maps an RGB triple to an opaque pixel value for a given pixel format.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">mapRGBA()</span></tt></p>
+
+
+</dd>
+<dt id="mapRGB"><a name="mapRGB,ptr.PixelFormat,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">mapRGB</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">format</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">inline</span><span class="Other">.}</span></pre></dt>
+<dd>
 
 
 </dd>
@@ -2051,8 +2043,13 @@ Set the palette for a pixel format object.
 
 
 </dd>
-<dt id="getRGB"><a name="getRGB,uint32,ptr.PixelFormat,ptr.uint8,ptr.uint8,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRGB</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">pixel</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> 
-             <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRGB&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="mapRGBA"><a name="mapRGBA,ptr.PixelFormat,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">mapRGBA</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">format</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">inline</span><span class="Other">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="getRGB"><a name="getRGB,uint32,ptr.PixelFormat,ptr.uint8,ptr.uint8,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRGB</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">pixel</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span>
+            <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRGB&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the RGB components from a pixel of the specified format.</p>
 <p>See also:</p>
@@ -2060,9 +2057,14 @@ Set the palette for a pixel format object.
 
 
 </dd>
-<dt id="getRGBA"><a name="getRGBA,uint32,ptr.PixelFormat,ptr.uint8,ptr.uint8,ptr.uint8,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRGBA</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">pixel</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> 
-              <span class="Identifier">g</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRGBA&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getRGB"><a name="getRGB,uint32,ptr.PixelFormat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRGB</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">pixel</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Color</span> <span class="Other">{.</span><span class="Identifier">inline</span><span class="Other">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="getRGBA"><a name="getRGBA,uint32,ptr.PixelFormat,ptr.uint8,ptr.uint8,ptr.uint8,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRGBA</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">pixel</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span>
+             <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRGBA&quot;</span><span class="Other">,</span>
+                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the RGBA components from a pixel of the specified format.</p>
 <p>See also:</p>
@@ -2070,7 +2072,12 @@ Set the palette for a pixel format object.
 
 
 </dd>
-<dt id="calculateGammaRamp"><a name="calculateGammaRamp,cfloat,ptr.uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">calculateGammaRamp</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamma</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">;</span> <span class="Identifier">ramp</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getRGBA"><a name="getRGBA,uint32,ptr.PixelFormat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRGBA</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">pixel</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Color</span> <span class="Other">{.</span><span class="Identifier">inline</span><span class="Other">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="calculateGammaRamp"><a name="calculateGammaRamp,cfloat,ptr.uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">calculateGammaRamp</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamma</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">;</span> <span class="Identifier">ramp</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CalculateGammaRamp&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Calculate a 256 entry gamma ramp for a gamma value.
@@ -2147,7 +2154,7 @@ The flag is set to <cite>1</cite> because 0x1? is not in the printable ASCII ran
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-10-04 22:57:21 UTC</small>
+        <small>Made with Nim. Generated: 2015-11-30 22:39:26 UTC</small>
       </div>
     </div>
   </div>
