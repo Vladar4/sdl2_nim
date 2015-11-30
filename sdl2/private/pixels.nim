@@ -333,6 +333,9 @@ proc mapRGB*(format: ptr PixelFormat;
   ##
   ##  ``mapRGBA()``
 
+proc mapRGB*(format: ptr PixelFormat, color: Color): uint32 {.inline.} =
+  return mapRGB(format, color.r, color.g, color.b)
+
 proc mapRGBA*(format: ptr PixelFormat;
     r: uint8; g: uint8; b: uint8; a: uint8): uint32 {.
       cdecl, importc: "SDL_MapRGBA", dynlib: SDL2_LIB.}
@@ -341,6 +344,9 @@ proc mapRGBA*(format: ptr PixelFormat;
   ##  See also:
   ##
   ##  ``mapRGB()``
+
+proc mapRGBA*(format: ptr PixelFormat, color: Color): uint32 {.inline.} =
+  return mapRGBA(format, color.r, color.g, color.b, color.a)
 
 proc getRGB*(pixel: uint32; format: ptr PixelFormat;
     r: ptr uint8; g: ptr uint8; b: ptr uint8) {.
@@ -351,6 +357,10 @@ proc getRGB*(pixel: uint32; format: ptr PixelFormat;
   ##
   ##  ``getRGBA()``
 
+proc getRGB*(pixel: uint32, format: ptr PixelFormat): Color {.inline.} =
+  getRGB(pixel, format,
+    addr(result.r), addr(result.g), addr(result.b))
+
 proc getRGBA*(pixel: uint32; format: ptr PixelFormat;
     r: ptr uint8; g: ptr uint8; b: ptr uint8; a: ptr uint8) {.
       cdecl, importc: "SDL_GetRGBA", dynlib: SDL2_LIB.}
@@ -359,6 +369,10 @@ proc getRGBA*(pixel: uint32; format: ptr PixelFormat;
   ##  See also:
   ##
   ##  ``getRGB()``
+
+proc getRGBA*(pixel: uint32, format: ptr PixelFormat): Color {.inline.} =
+  getRGBA(pixel, format,
+    addr(result.r), addr(result.g), addr(result.b), addr(result.a))
 
 proc calculateGammaRamp*(gamma: cfloat; ramp: ptr uint16) {.
     cdecl, importc: "SDL_CalculateGammaRamp", dynlib: SDL2_LIB.}
