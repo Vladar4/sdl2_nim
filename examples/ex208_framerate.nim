@@ -68,29 +68,28 @@ proc alpha(obj: Image): int =
 proc `alpha=`(obj: Image, alpha: int) =
   discard obj.texture.setTextureAlphaMod(alpha.uint8)
 
+
 # Load image from file
 # Return true on success or false, if image can't be loaded
 proc load(obj: Image, renderer: sdl.Renderer, file: string): bool =
   result = true
-  # Load image to surface
-  let surface = img.load(file)
-  if surface == nil:
+  # Load image to texture
+  obj.texture = renderer.loadTexture(file)
+  if obj.texture == nil:
     sdl.logCritical(sdl.LogCategoryError,
                     "Can't load image %s: %s",
                     file, img.getError())
     return false
   # Get image dimensions
-  obj.w = surface.w
-  obj.h = surface.h
-  # Create texture from surface
-  obj.texture = sdl.createTextureFromSurface(renderer, surface)
-  if obj.texture == nil:
+  var w, h: cint
+  if obj.texture.queryTexture(nil, nil, addr(w), addr(h)) != 0:
     sdl.logCritical(sdl.LogCategoryError,
-                    "Can't create texture from image %s: %s",
-                    file, sdl.getError())
-    result = false
-  # Free temporary surface
-  sdl.freeSurface(surface)
+                    "Can't get texture attributes: %s",
+                    sdl.getError())
+    sdl.destroyTexture(obj.texture)
+    return false
+  obj.w = w
+  obj.h = h
 
 
 # Render texture to screen
@@ -256,7 +255,7 @@ proc events(pressed: var seq[sdl.Keycode]): bool =
       if pressed != nil:
         pressed.add(e.key.keysym.sym)
 
-      # Exit of Escape key press
+      # Exit on Escape key press
       if e.key.keysym.sym == sdl.K_Escape:
         return true
 
@@ -320,14 +319,14 @@ if init(app):
 
   fpsMgr.start()
 
-  ticks = getPerformanceCounter()
-
   echo "---------------------------"
   echo "|        Controls:        |"
   echo "|-------------------------|"
   echo "| Q/A: change FPS limit   |"
   echo "| F11: show/hide fps info |"
   echo "---------------------------"
+
+  ticks = getPerformanceCounter()
 
   # Main loop
   while not done:
@@ -352,10 +351,10 @@ if init(app):
     # Render Info
     if showInfo:
       var s = font.renderUTF8_Shaded($fpsMgr.fps & " FPS [Limit: " &
-                                    $fpsLimiter & "]",
-                                    sdl.Color(r: 0xFF, g: 0xFF, b: 0xFF),
-                                    sdl.Color(r: 0x00, g: 0x00, b: 0x00))
-      if not app.renderer.render(s, 10, 30):
+                                     $fpsLimiter & "]",
+                                     sdl.Color(r: 0xFF, g: 0xFF, b: 0xFF),
+                                     sdl.Color(r: 0x00, g: 0x00, b: 0x00))
+      if not app.renderer.render(s, 10, 10):
         sdl.logWarn(sdl.LogCategoryVideo,
                     "Can't render text: %s",
                     sdl.getError())

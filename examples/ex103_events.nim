@@ -89,7 +89,7 @@ proc events(): bool =
       # Show what key was pressed
       sdl.logInfo(sdl.LogCategoryApplication, "Pressed %s", $e.key.keysym.sym)
 
-      # Exit of Escape key press
+      # Exit on Escape key press
       if e.key.keysym.sym == sdl.K_Escape:
         return true
 

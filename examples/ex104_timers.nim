@@ -86,7 +86,7 @@ proc events(): bool =
 
     # Key pressed
     elif e.kind == sdl.KeyDown:
-      # Exit of Escape key press
+      # Exit on Escape key press
       if e.key.keysym.sym == sdl.K_Escape:
         return true
 

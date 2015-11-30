@@ -37,29 +37,28 @@ proc free(obj: Image) = sdl.destroyTexture(obj.texture)
 proc w(obj: Image): int {.inline.} = return obj.w
 proc h(obj: Image): int {.inline.} = return obj.h
 
+
 # Load image from file
 # Return true on success or false, if image can't be loaded
 proc load(obj: Image, renderer: sdl.Renderer, file: string): bool =
   result = true
-  # Load image to surface
-  let surface = img.load(file)
-  if surface == nil:
+  # Load image to texture
+  obj.texture = renderer.loadTexture(file)
+  if obj.texture == nil:
     sdl.logCritical(sdl.LogCategoryError,
                     "Can't load image %s: %s",
                     file, img.getError())
     return false
   # Get image dimensions
-  obj.w = surface.w
-  obj.h = surface.h
-  # Create texture from surface
-  obj.texture = sdl.createTextureFromSurface(renderer, surface)
-  if obj.texture == nil:
+  var w, h: cint
+  if obj.texture.queryTexture(nil, nil, addr(w), addr(h)) != 0:
     sdl.logCritical(sdl.LogCategoryError,
-                    "Can't create texture from image %s: %s",
-                    file, sdl.getError())
-    result = false
-  # Free temporary surface
-  sdl.freeSurface(surface)
+                    "Can't get texture attributes: %s",
+                    sdl.getError())
+    sdl.destroyTexture(obj.texture)
+    return false
+  obj.w = w
+  obj.h = h
 
 
 # Render texture to screen
@@ -146,7 +145,7 @@ proc events(): bool =
 
     # Key pressed
     elif e.kind == sdl.KeyDown:
-      # Exit of Escape key press
+      # Exit on Escape key press
       if e.key.keysym.sym == sdl.K_Escape:
         return true
 

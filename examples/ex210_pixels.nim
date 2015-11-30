@@ -1,10 +1,13 @@
-# ex204_drawing.nim
-# =================
-# VIDEO / Drawing geometric primitives
-# ------------------------------------
+# ex210_pixels.nim
+# ===============================
+# VIDEO / Accessing and modifying pixel data
+# ------------------------------------------
 
 
-import math, sdl2/sdl, sdl2/sdl_image as img
+import
+    math,
+    sdl2/sdl, sdl2/sdl_image as img,
+    sdl2/sdl_ttf as ttf
 
 
 const
@@ -26,6 +29,12 @@ type
   ImageObj = object of RootObj
     texture: sdl.Texture # Image texture
     w, h: int # Image dimensions
+
+
+  FpsManager = ref FpsManagerObj
+  FpsManagerObj = object
+    counter, fps: int
+    timer: sdl.TimerID
 
 
 #########
@@ -110,6 +119,37 @@ proc renderEx(obj: Image, renderer: sdl.Renderer, x, y: int,
     return false
 
 
+##############
+# FPSMANAGER #
+##############
+
+# FPS timer
+# param is FpsManager casted to pointer
+proc fpsTimer(interval: uint32, param: pointer): uint32 {.cdecl.} =
+  let obj = cast[FpsManager](param)
+  obj.fps = obj.counter
+  obj.counter = 0
+  return interval
+
+
+proc newFpsManager(): FpsManager = FpsManager(counter: 0, fps: 0, timer: 0)
+
+
+proc free(obj: FpsManager) =
+  discard sdl.removeTimer(obj.timer)
+  obj.timer = 0
+
+
+proc fps(obj: FpsManager): int {.inline.} = return obj.fps
+
+
+proc start(obj: FpsManager) =
+  obj.timer = sdl.addTimer(1000, fpsTimer, cast[pointer](obj))
+
+
+proc count(obj: FpsManager) {.inline.} = inc(obj.counter)
+
+
 ##########
 # COMMON #
 ##########
@@ -117,7 +157,7 @@ proc renderEx(obj: Image, renderer: sdl.Renderer, x, y: int,
 # Initialization sequence
 proc init(app: App): bool =
   # Init SDL
-  if sdl.init(sdl.InitVideo) != 0:
+  if sdl.init(sdl.InitVideo or sdl.InitTimer) != 0:
     sdl.logCritical(sdl.LogCategoryError,
                     "Can't initialize SDL: %s",
                     sdl.getError())
@@ -128,6 +168,12 @@ proc init(app: App): bool =
     sdl.logCritical(sdl.LogCategoryError,
                     "Can't initialize SDL_Image: %s",
                     img.getError())
+
+  # Inint SDL_TTF
+  if ttf.init() != 0:
+    sdl.logCritical(sdl.LogCategoryError,
+                    "Can't initialize SDL_TTF: %s",
+                    ttf.getError())
 
   # Create window
   app.window = sdl.createWindow(
@@ -167,9 +213,26 @@ proc init(app: App): bool =
 proc exit(app: App) =
   app.renderer.destroyRenderer()
   app.window.destroyWindow()
+  ttf.quit()
   img.quit()
   sdl.logInfo(sdl.LogCategoryApplication, "SDL shutdown completed")
   sdl.quit()
+
+
+# Render surface
+proc render(renderer: sdl.Renderer,
+            surface: sdl.Surface, x, y: int): bool =
+  result = true
+  var rect = sdl.Rect(x: x, y: y, w: surface.w, h: surface.h)
+  # Convert to texture
+  var texture = sdl.createTextureFromSurface(renderer, surface)
+  if texture == nil:
+    return false
+  # Render texture
+  if renderer.renderCopy(texture, nil, addr(rect)) != 0:
+    result = false
+  # Clean
+  destroyTexture(texture)
 
 
 # Event handling
@@ -208,8 +271,84 @@ var
 
 if init(app):
 
+  # Load assets
+  var
+    font: ttf.Font
+    src, dst: sdl.Surface
+    imagePos: sdl.Point
+
+  font = ttf.openFont("fnt/FSEX300.ttf", 16)
+
+  if font == nil:
+    sdl.logCritical(sdl.LogCategoryError,
+                    "Can't load font: %s",
+                    ttf.getError())
+    done = true
+
+  src = img.load("img/img2.png")
+  if src == nil:
+    sdl.logCritical(sdl.LogCategoryError,
+                    "Can't load image: %s",
+                    img.getError())
+
+  imagePos.x = (ScreenW - src.w) div 2
+  imagePos.y = (ScreenH - src.h) div 2
+
+  # Modify image pixels
+
+  # Create destination surface
+  dst = sdl.convertSurface(src, src.format, 0)
+  # Lock surfaces
+  discard sdl.lockSurface(src)
+  discard sdl.lockSurface(dst)
+  # Get pointers
+  var srcPixels = cast[ptr uint32](src.pixels)
+  var dstPixels = cast[ptr uint32](dst.pixels)
+
+  var srcPx, dstPx: sdl.Color
+  let pitch = src.pitch div 4
+
+  for y in 0..src.h-1:
+    for x in 0..pitch-1:
+      ptrMath:
+        # Read source
+        srcPx = getRGBA(srcPixels[x + y * pitch], src.format)
+        # Switch channels
+        dstPx.r = srcPx.g
+        dstPx.g = srcPx.b
+        dstPx.b = srcPx.r
+        dstPx.a = srcPx.a
+        # Write result
+        dstPixels[x + y * pitch] = mapRGBA(dst.format, dstPx)
+
+  # Unlock surfaces
+  sdl.unlockSurface(src)
+  sdl.unlockSurface(dst)
+
+  # Free source surface
+  sdl.freeSurface(src)
+
+  # Init FPS manager
+  var
+    fpsMgr = newFpsManager()
+    delta = 0.0 # Time passed since last frame in seconds
+    ticks: uint64 # Ticks counter
+    freq = sdl.getPerformanceFrequency() # Get counter frequency
+    showInfo = true
+
+  fpsMgr.start()
+
+  echo "---------------------------"
+  echo "|        Controls:        |"
+  echo "|-------------------------|"
+  echo "| F11: show/hide fps info |"
+  echo "---------------------------"
+
+  ticks = getPerformanceCounter()
+
   # Main loop
   while not done:
+
     # Clear screen with draw color
     discard app.renderer.setRenderDrawColor(0x00, 0x00, 0x00, 0xFF)
     if app.renderer.renderClear() != 0:
@@ -217,56 +356,40 @@ if init(app):
                   "Can't clear screen: %s",
                   sdl.getError())
 
-    # Drawing
+    # Render scene
+    discard app.renderer.render(dst, imagePos.x, imagePos.y)
 
-    # Point
-    discard app.renderer.setRenderDrawColor(0xFF, 0x00, 0x00, 0xFF)
-    discard app.renderer.renderDrawPoint(10, 10)
-
-    # Line
-    discard app.renderer.setRenderDrawColor(0x00, 0xFF, 0x00, 0xFF)
-    discard app.renderer.renderDrawLine(10, 20, 110, 20)
-
-    # Rect
-    discard app.renderer.setRenderDrawColor(0x00, 0x00, 0xFF, 0xFF)
-    var rect = sdl.Rect(x: 10, y: 30, w: 100, h: 50)
-    discard app.renderer.renderDrawRect(addr(rect))
-
-    # Fill rect
-    discard app.renderer.setRenderDrawColor(0xFF, 0xFF, 0x00, 0xFF)
-    rect.y = 90
-    discard app.renderer.renderFillRect(addr(rect))
-
-    # Random points
-    discard app.renderer.setRenderDrawColor(0xFF, 0xFF, 0xFF, 0xFF)
-    rect.x = 120
-    rect.y = 10
-    rect.w = 510
-    rect.h = 460
-    discard app.renderer.renderDrawRect(addr(rect))
-    const numPoints = 100
-    var points: array[numPoints, sdl.Point]
-    for i in 0..numPoints-1:
-      points[i].x = rect.x + 1 + random(rect.w - 2)
-      points[i].y = rect.y + 1 + random(rect.h - 2)
-    discard app.renderer.renderDrawPoints(addr(points[0]), numPoints)
-
-    # Connected lines
-    discard app.renderer.setRenderDrawColor(0xFF, 0x00, 0xFF, 0xFF)
-    var figure: array[6, sdl.Point]
-    figure[0] = Point(x: 60, y: 150)  # top
-    figure[1] = Point(x: 92, y: 250)  # bottom-right
-    figure[2] = Point(x: 10, y: 188)  # left
-    figure[3] = Point(x: 110, y: 188) # right
-    figure[4] = Point(x: 28, y: 250)  # bottom-left
-    figure[5] = figure[0]
-    discard app.renderer.renderDrawLines(addr(figure[0]), 6)
+    # Render Info
+    if showInfo:
+      var s = font.renderUTF8_Shaded($fpsMgr.fps & " FPS",
+                                     sdl.Color(r: 0xFF, g: 0xFF, b: 0xFF),
+                                     sdl.Color(r: 0x00, g: 0x00, b: 0x00))
+      if not app.renderer.render(s, 10, 10):
+        sdl.logWarn(sdl.LogCategoryVideo,
+                    "Can't render text: %s",
+                    sdl.getError())
+      sdl.freeSurface(s)
 
     # Update renderer
     app.renderer.renderPresent()
 
     # Enent handling
     done = events(pressed)
+    if K_F11 in pressed: showInfo = not showInfo
+
+    # Count frame
+    fpsMgr.count()
+
+    # Get frame duration
+    delta = (sdl.getPerformanceCounter() - ticks).float / freq.float
+    ticks = sdl.getPerformanceCounter()
+
+    # Update
+
+  # Free assets
+  sdl.freeSurface(dst)
+  free(fpsMgr)
+  ttf.closeFont(font)
 
 # Shutdown
 exit(app)
