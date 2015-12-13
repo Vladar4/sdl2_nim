@@ -21,3 +21,8 @@ SDL2 examples
     * ex209_viewports_and_scaling.nim   -   Using viewports and setting drawing scale
     * ex210_pixels.nim                  -   Accessing and modifying pixel data
 
+3. **INPUT**
+
+    * ex301_keyboard    -   Keyboard
+    * ex302_mouse       -   Mouse
+
