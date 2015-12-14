@@ -182,6 +182,14 @@ template button*(x: expr): expr = ##  \
   ##  * Button 1:  Left mouse button
   ##  * Button 2:  Middle mouse button
   ##  * Button 3:  Right mouse button
+  ##
+  ##  Example:
+  ##
+  ##  .. code-block:: nim
+  ##    buttons = int64(getMouseState(nil, nil))
+  ##    if (button(BUTTON_LEFT) and buttons) > 0:
+  ##      # Left button pressed
+  ##
   (1 shl ((x) - 1))
 
 const
