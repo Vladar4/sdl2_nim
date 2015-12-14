@@ -186,7 +186,7 @@ template button*(x: expr): expr = ##  \
   ##  Example:
   ##
   ##  .. code-block:: nim
-  ##    buttons = int64(getMouseState(nil, nil))
+  ##    let buttons = int64(getMouseState(nil, nil))
   ##    if (button(BUTTON_LEFT) and buttons) > 0:
   ##      # Left button pressed
   ##
