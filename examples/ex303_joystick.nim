@@ -1,5 +1,5 @@
 # ex303_joystick.nim
-# ===============================
+# ==================
 # INPUT / Joystick
 # ----------------
 
@@ -428,6 +428,18 @@ if init(app):
 
     text[6] = "Axis 0: " & $sdl.joystickGetAxis(joy, 0)
     text[7] = "Axis 1: " & $sdl.joystickGetAxis(joy, 1)
+
+    # Read joystick buttons
+    var joyBtn: seq[uint8] = @[]
+    for i in 0..sdl.joystickNumButtons(joy)-1:
+      joyBtn.add(sdl.joystickGetButton(joy, i))
+
+    text[9] = "Buttons pressed: "
+
+    for i in 0..joyBtn.high:
+      if joyBtn[i] > 0:
+        text[9] &= $i & " "
+
     text[16] = "Line length: " &
       $int(lineLength(imagePos.x, imagePos.y,
                       cursorPos.x, cursorPos.y))
@@ -447,6 +459,7 @@ if init(app):
     if cursorPos.y > ScreenH: cursorPos.y = ScreenH
 
   # Free assets
+  free(cursor)
   free(image)
   free(fpsMgr)
   ttf.closeFont(font)
