@@ -25,4 +25,5 @@ SDL2 examples
 
     * ex301_keyboard    -   Keyboard
     * ex302_mouse       -   Mouse
+    * ex303_joystick    -   Joystick
 
