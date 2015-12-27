@@ -1,13 +1,14 @@
-# ex302_mouse.nim
+# ex401_mixer.nim
 # ===============
-# INPUT / Mouse
-# -------------
+# AUDIO / sdl_mixer
+# -----------------
 
 
 import
     math,
     sdl2/sdl, sdl2/sdl_image as img,
-    sdl2/sdl_ttf as ttf
+    sdl2/sdl_ttf as ttf,
+    sdl2/sdl_mixer as mix
 
 
 const
@@ -159,7 +160,7 @@ proc count(obj: FpsManager) {.inline.} = inc(obj.counter)
 # Initialization sequence
 proc init(app: App): bool =
   # Init SDL
-  if sdl.init(sdl.InitVideo or sdl.InitTimer) != 0:
+  if sdl.init(sdl.InitVideo or sdl.InitTimer or sdl.InitAudio) != 0:
     sdl.logCritical(sdl.LogCategoryError,
                     "Can't initialize SDL: %s",
                     sdl.getError())
@@ -176,6 +177,21 @@ proc init(app: App): bool =
     sdl.logCritical(sdl.LogCategoryError,
                     "Can't initialize SDL_TTF: %s",
                     ttf.getError())
+
+  # Init SDL_MIXER
+  if mix.init(mix.InitMP3) == 0:
+    sdl.logCritical(sdl.LogCategoryError,
+                    "Can't initialize SDL_MIXER: %s",
+                    mix.getError())
+
+  if mix.openAudio(mix.DefaultFrequency,  # 22050
+                   mix.DefaultFormat,     # AudioS16LSB
+                   mix.DefaultChannels,   # 2
+                   1024 # chunksize in bytes
+                  ) != 0:
+    sdl.logCritical(sdl.LogCategoryError,
+                    "Can't open mixer with given audio format: %s",
+                    mix.getError())
 
   # Create window
   app.window = sdl.createWindow(
@@ -273,17 +289,14 @@ var
 
 if init(app):
 
-  template lineLength(x1, y1, x2, y2: float): float =
-    sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2))
-
   # Load assets
   var
     font: ttf.Font
-    image = newImage()
-    imagePos: tuple[x, y: float64]
-    mousePos: sdl.Point
-    imageSpd = 200.0
     text: array[22, string]
+    music: mix.Music
+    volume = mix.MaxVolume div 2
+    sound: mix.Chunk
+    soundChan = -1
 
   font = ttf.openFont("fnt/FSEX300.ttf", 16)
 
@@ -293,13 +306,13 @@ if init(app):
                     ttf.getError())
     done = true
 
-  if not image.load(app.renderer, "img/img1a.png"):
+  music = mix.loadMUS("snd/Vintage Education.mp3")
+  if music == nil:
     sdl.logCritical(sdl.LogCategoryError,
-                    "Can't load image: %s",
-                    img.getError())
+                    "Can't load music file: %s",
+                    mix.getError())
 
-  imagePos.x = ScreenW div 2
-  imagePos.y = ScreenH div 2
+  sound = mix.loadWAV("snd/tack.wav")
 
   # Init FPS manager
   var
@@ -311,13 +324,29 @@ if init(app):
 
   fpsMgr.start()
 
-  echo "---------------------------"
-  echo "|        Controls:        |"
-  echo "|-------------------------|"
-  echo "| F11: show/hide fps info |"
-  echo "---------------------------"
+  echo "----------------------------"
+  echo "|        Controls:         |"
+  echo "|--------------------------|"
+  echo "| F11: show/hide fps info  |"
+  echo "----------------------------"
+  echo ""
+  echo "Found audio drivers:"
+  echo "--------------------"
+  for i in 0..sdl.getNumAudioDrivers()-1:
+    echo sdl.getAudioDriver(i)
+  echo "--------------------"
+  echo "Using ", sdl.getCurrentAudioDriver()
+  echo "--------------------"
 
   ticks = getPerformanceCounter()
+
+  text[0] = "Controls:"
+  text[1] = "Enter - play music"
+  text[2] = "Space - pause music"
+  text[3] = "Backspace - stop music"
+  text[4] = "Up - increase music volume"
+  text[5] = "Down - decrease music volume"
+  text[6] = "S - play sound"
 
   # Main loop
   while not done:
@@ -330,15 +359,6 @@ if init(app):
                   sdl.getError())
 
     # Render scene
-
-    # Draw line between image and mouse cursor
-    discard app.renderer.setRenderDrawColor(0xFF, 0x00, 0x00, 0xFF)
-    discard app.renderer.renderDrawLine(imagePos.x.int, imagePos.y.int,
-                                        mousePos.x, mousePos.y)
-
-    discard image.render(app.renderer,
-                         imagePos.x.int - image.w div 2,
-                         imagePos.y.int - image.h div 2)
 
     # Render text
     for i in 0..text.high:
@@ -363,6 +383,34 @@ if init(app):
     # Enent handling
     done = events(pressed)
     if K_F11 in pressed: showInfo = not showInfo
+    # Play music
+    if K_Return in pressed:
+      discard mix.playMusic(music, 0)
+      discard mix.volumeMusic(volume)
+    # Pause music
+    if K_Space in pressed:
+      if mix.pausedMusic() == 0:
+        mix.pauseMusic()
+      else:
+        mix.resumeMusic()
+    # Stop music
+    if K_Backspace in pressed:
+      discard mix.haltMusic()
+    # Increase volume
+    if K_Up in pressed:
+      volume += 8
+      if volume > mix.MaxVolume:
+        volume = mix.MaxVolume
+      discard mix.volumeMusic(volume)
+    # Decrease volume
+    if K_Down in pressed:
+      volume -= 8
+      if volume < 0:
+        volume = 0
+      discard mix.volumeMusic(volume)
+    # Play sound
+    if K_S in pressed:
+      soundChan = mix.playChannel(-1, sound, 0)
 
     # Count frame
     fpsMgr.count()
@@ -372,36 +420,17 @@ if init(app):
     ticks = sdl.getPerformanceCounter()
 
     # Update
-    for i in 0..text.high:
+    for i in 8..text.high:
       text[i] = ""
-
-    # Retrieve the current state of the mouse
-    let mouseBtn = int64(sdl.getMouseState(addr(mousePos.x), addr(mousePos.y)))
-    for mb in 1..16:
-      if (sdl.button(mb) and mouseBtn) > 0: text[mb-1] = "Mouse Button " & $mb
-
-    # move
-    var vector: tuple[x, y: float]
-    vector.x = (mousePos.x.float - imagePos.x) * delta
-    vector.y = (mousePos.y.float - imagePos.y) * delta
-    imagePos.x += vector.x
-    imagePos.y += vector.y
-
-    text[16] = "Line length: " &
-      $int(lineLength(imagePos.x, imagePos.y,
-                      mousePos.x.float, mousePos.y.float))
-    text[18] = "dX: " & $vector.x
-    text[19] = "dY: " & $vector.y
-    text[text.high] = "Speed: " & $imageSpd & " px/s"
-
-    # Check screen borders
-    if imagePos.y < 0: imagePos.y = 0
-    if imagePos.x < 0: imagePos.x = 0
-    if imagePos.y > ScreenH: imagePos.y = ScreenH
-    if imagePos.x > ScreenW: imagePos.x = ScreenW
+    text[8] = "Volume: " & $volume
+    if mix.playingMusic() != 0:
+      text[10] = "Playing music"
+    if soundChan >= 0 and mix.playing(soundChan) > 0:
+      text[11] = "Playing sound"
 
   # Free assets
-  free(image)
+  mix.freeChunk(sound)
+  mix.freeMusic(music)
   free(fpsMgr)
   ttf.closeFont(font)
 

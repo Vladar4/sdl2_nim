@@ -27,3 +27,8 @@ SDL2 examples
     * ex302_mouse       -   Mouse
     * ex303_joystick    -   Joystick
 
+4. **AUDIO**
+
+    * ex401_mixer       -   sdl_mixer
+    * ex402_panning     -   sdl_mixer panning
+

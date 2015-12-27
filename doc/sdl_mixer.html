@@ -2406,7 +2406,10 @@ Iterate SoundFonts paths to use by supported MIDI backends.
 <dl class="item">
 <dt id="loadWAV"><a name="loadWAV.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">loadWAV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
 <dd>
-<p>Load file for use as a sample. This is actually <tt class="docutils literal"><span class="pre">sdl_mixer.loadWAV_RW(sdl.rwFromFile(file, &quot;rb&quot;), 1)</span></tt>. This can load WAVE, AIFF, RIFF, OGG, and VOC files.</p>
+<dl class="docutils"><dt>
+ Load file for use as a sample. This is actually</dt>
+<dd><tt class="docutils literal"><span class="pre">sdl_mixer.loadWAV_RW(sdl.rwFromFile(file, &quot;rb&quot;), 1)</span></tt>. This can load WAVE, AIFF, RIFF, OGG, and VOC files.</dd>
+</dl>
 <p><tt class="docutils literal"><span class="pre">file</span></tt> File name to load sample from.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> You must call <tt class="docutils literal"><span class="pre">sdl.openAudio()</span></tt> before this. It must know the output characteristics so it can convert the sample for playback, it does this conversion at load time.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> a pointer to the sample as a <tt class="docutils literal"><span class="pre">sdl_mixer.Chunk</span></tt>. <cite>nil</cite> is returned on errors.</p>
@@ -2460,7 +2463,7 @@ Play <tt class="docutils literal"><span class="pre">chunk</span></tt> on <tt cla
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-12-20 01:12:47 UTC</small>
+        <small>Made with Nim. Generated: 2015-12-27 18:28:43 UTC</small>
       </div>
     </div>
   </div>

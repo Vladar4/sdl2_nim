@@ -324,8 +324,7 @@ proc loadWAV_RW*(src: ptr RWops; freesrc: cint): Chunk {.
   ##  ``Return`` a pointer to the sample as a ``sdl_mixer.chunk()``.
   ##  `nil` is returned on errors.
 
-template loadWAV*(file: expr): expr =
-  loadWAV_RW(rwFromFile(file, "rb"), 1)
+template loadWAV*(file: expr): expr = ##  \
   ##   Load file for use as a sample. This is actually
   ##   ``sdl_mixer.loadWAV_RW(sdl.rwFromFile(file, "rb"), 1)``.
   ##   This can load WAVE, AIFF, RIFF, OGG, and VOC files.
@@ -338,6 +337,7 @@ template loadWAV*(file: expr): expr =
   ##
   ##  ``Return`` a pointer to the sample as a ``sdl_mixer.Chunk``.
   ##  `nil` is returned on errors.
+  loadWAV_RW(rwFromFile(file, "rb"), 1)
 
 proc loadMUS*(file: cstring): Music {.
     cdecl, importc: "Mix_LoadMUS", dynlib: SDL2_MIX_LIB.}

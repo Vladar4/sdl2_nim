@@ -171,7 +171,7 @@ proc init(app: App): bool =
                     "Can't initialize SDL_Image: %s",
                     img.getError())
 
-  # Inint SDL_TTF
+  # Init SDL_TTF
   if ttf.init() != 0:
     sdl.logCritical(sdl.LogCategoryError,
                     "Can't initialize SDL_TTF: %s",
@@ -293,6 +293,7 @@ if init(app):
     sdl.logCritical(sdl.LogCategoryError,
                     "Can't load image: %s",
                     img.getError())
+    done = true
 
   imagePos.x = ScreenW div 2
   imagePos.y = ScreenH div 2

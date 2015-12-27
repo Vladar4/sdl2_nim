@@ -1,13 +1,14 @@
-# ex302_mouse.nim
-# ===============
-# INPUT / Mouse
-# -------------
+# ex402_panning.nim
+# =================
+# AUDIO / sdl_mixer panning
+# -------------------------
 
 
 import
     math,
     sdl2/sdl, sdl2/sdl_image as img,
-    sdl2/sdl_ttf as ttf
+    sdl2/sdl_ttf as ttf,
+    sdl2/sdl_mixer as mix
 
 
 const
@@ -159,7 +160,7 @@ proc count(obj: FpsManager) {.inline.} = inc(obj.counter)
 # Initialization sequence
 proc init(app: App): bool =
   # Init SDL
-  if sdl.init(sdl.InitVideo or sdl.InitTimer) != 0:
+  if sdl.init(sdl.InitVideo or sdl.InitTimer or sdl.InitAudio) != 0:
     sdl.logCritical(sdl.LogCategoryError,
                     "Can't initialize SDL: %s",
                     sdl.getError())
@@ -176,6 +177,21 @@ proc init(app: App): bool =
     sdl.logCritical(sdl.LogCategoryError,
                     "Can't initialize SDL_TTF: %s",
                     ttf.getError())
+
+  # Init SDL_MIXER
+  if mix.init(mix.InitMP3) == 0:
+    sdl.logCritical(sdl.LogCategoryError,
+                    "Can't initialize SDL_MIXER: %s",
+                    mix.getError())
+
+  if mix.openAudio(mix.DefaultFrequency,  # 22050
+                   mix.DefaultFormat,     # AudioS16LSB
+                   mix.DefaultChannels,   # 2
+                   1024 # chunksize in bytes
+                  ) != 0:
+    sdl.logCritical(sdl.LogCategoryError,
+                    "Can't open mixer with given audio format: %s",
+                    mix.getError())
 
   # Create window
   app.window = sdl.createWindow(
@@ -273,17 +289,33 @@ var
 
 if init(app):
 
-  template lineLength(x1, y1, x2, y2: float): float =
-    sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2))
-
   # Load assets
   var
     font: ttf.Font
-    image = newImage()
-    imagePos: tuple[x, y: float64]
-    mousePos: sdl.Point
-    imageSpd = 200.0
     text: array[22, string]
+    image = newImage()
+    imageRect: sdl.Rect
+    imagePos: sdl.Point
+    imageScale = 1.0
+    imageScaleMin = 0.1
+    imageScaleMax = 2.0
+    imageSpd = 200.0
+    imageScaleSpd = 0.2
+    sound: mix.Chunk
+    soundChan = -1
+
+  if not image.load(app.renderer, "img/img1a.png"):
+    sdl.logCritical(sdl.LogCategoryError,
+                    "Can't load image: %s",
+                    img.getError())
+    done = true
+
+  imagePos.x = ScreenW div 2 - image.w div 2
+  imagePos.y = ScreenH div 2 - image.h
+  imageRect.x = imagePos.x
+  imageRect.y = imagePos.y
+  imageRect.w = image.w
+  imageRect.h = image.h
 
   font = ttf.openFont("fnt/FSEX300.ttf", 16)
 
@@ -293,13 +325,10 @@ if init(app):
                     ttf.getError())
     done = true
 
-  if not image.load(app.renderer, "img/img1a.png"):
-    sdl.logCritical(sdl.LogCategoryError,
-                    "Can't load image: %s",
-                    img.getError())
-
-  imagePos.x = ScreenW div 2
-  imagePos.y = ScreenH div 2
+  sound = mix.loadWAV("snd/tack.wav")
+  soundChan = mix.playChannel(-1, sound, -1)
+  discard mix.setPanning(soundChan, 127, 127)
+  discard mix.setDistance(soundChan, 127)
 
   # Init FPS manager
   var
@@ -311,13 +340,24 @@ if init(app):
 
   fpsMgr.start()
 
-  echo "---------------------------"
-  echo "|        Controls:        |"
-  echo "|-------------------------|"
-  echo "| F11: show/hide fps info |"
-  echo "---------------------------"
+  echo "----------------------------"
+  echo "|        Controls:         |"
+  echo "|--------------------------|"
+  echo "| F11: show/hide fps info  |"
+  echo "----------------------------"
+  echo ""
+  echo "Found audio drivers:"
+  echo "--------------------"
+  for i in 0..sdl.getNumAudioDrivers()-1:
+    echo sdl.getAudioDriver(i)
+  echo "--------------------"
+  echo "Using ", sdl.getCurrentAudioDriver()
+  echo "--------------------"
 
   ticks = getPerformanceCounter()
+
+  text[0] = "Controls:"
+  text[1] = "Arrows - move sound source"
 
   # Main loop
   while not done:
@@ -331,14 +371,8 @@ if init(app):
 
     # Render scene
 
-    # Draw line between image and mouse cursor
-    discard app.renderer.setRenderDrawColor(0xFF, 0x00, 0x00, 0xFF)
-    discard app.renderer.renderDrawLine(imagePos.x.int, imagePos.y.int,
-                                        mousePos.x, mousePos.y)
-
-    discard image.render(app.renderer,
-                         imagePos.x.int - image.w div 2,
-                         imagePos.y.int - image.h div 2)
+    discard image.renderEx(app.renderer, imageRect.x, imageRect.y,
+                           w = imageRect.w, h = imageRect.h)
 
     # Render text
     for i in 0..text.high:
@@ -364,6 +398,31 @@ if init(app):
     done = events(pressed)
     if K_F11 in pressed: showInfo = not showInfo
 
+    let kbd = sdl.getKeyboardState(nil)
+    if kbd[ScancodeUp]    > 0: imageScale -= imageScaleSpd * delta
+    if kbd[ScancodeDown]  > 0: imageScale += imageScaleSpd * delta
+    if kbd[ScancodeLeft]  > 0: imagePos.x -= int(imageSpd * delta)
+    if kbd[ScancodeRight] > 0: imagePos.x += int(imageSpd * delta)
+
+    if imageScale < imageScaleMin:
+      imageScale = imageScaleMin
+    elif imageScale > imageScaleMax:
+      imageScale = imageScaleMax
+
+    if imagePos.x < 0:
+      imagePos.x = 0
+    elif imagePos.x > ScreenW:
+      imagePos.x = ScreenW
+
+    imageRect.x = imagePos.x - imageRect.w div 2
+    imageRect.w = int(image.w.float64 * imageScale)
+    imageRect.h = int(image.h.float64 * imageScale)
+
+    let left = uint8((-(imagePos.x - ScreenW)) / ScreenW * 254 )
+    discard mix.setPanning(soundChan, left, 254'u8 - left)
+    discard mix.setDistance(soundChan, uint8(254 - 127 * imageScale))
+
+
     # Count frame
     fpsMgr.count()
 
@@ -372,36 +431,13 @@ if init(app):
     ticks = sdl.getPerformanceCounter()
 
     # Update
-    for i in 0..text.high:
+    for i in 3..text.high:
       text[i] = ""
-
-    # Retrieve the current state of the mouse
-    let mouseBtn = int64(sdl.getMouseState(addr(mousePos.x), addr(mousePos.y)))
-    for mb in 1..16:
-      if (sdl.button(mb) and mouseBtn) > 0: text[mb-1] = "Mouse Button " & $mb
-
-    # move
-    var vector: tuple[x, y: float]
-    vector.x = (mousePos.x.float - imagePos.x) * delta
-    vector.y = (mousePos.y.float - imagePos.y) * delta
-    imagePos.x += vector.x
-    imagePos.y += vector.y
-
-    text[16] = "Line length: " &
-      $int(lineLength(imagePos.x, imagePos.y,
-                      mousePos.x.float, mousePos.y.float))
-    text[18] = "dX: " & $vector.x
-    text[19] = "dY: " & $vector.y
-    text[text.high] = "Speed: " & $imageSpd & " px/s"
-
-    # Check screen borders
-    if imagePos.y < 0: imagePos.y = 0
-    if imagePos.x < 0: imagePos.x = 0
-    if imagePos.y > ScreenH: imagePos.y = ScreenH
-    if imagePos.x > ScreenW: imagePos.x = ScreenW
+    text[3] = "Left: " & $left.int & " Right: " & $(254 - left)
+    text[4] = "Distance: " & $(254 - 127 * imageScale)
 
   # Free assets
-  free(image)
+  mix.freeChunk(sound)
   free(fpsMgr)
   ttf.closeFont(font)
 
