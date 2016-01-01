@@ -53,7 +53,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #2d2d2d;
+  color: #666;
   background-color: rgba(252, 248, 244, 0.75); }
 
 /* Skeleton grid */
@@ -489,7 +489,7 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0 10px 0px 10px;
+  margin: 0.25em 10px 0.25em 10px;
   font-size: 14px;
   line-height: 20px;
   white-space: pre !important;
@@ -892,6 +892,10 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+ul.simple > li {
+  margin-bottom: 0.5em }
+
 ol.simple, ul.simple {
   margin-bottom: 1em; }
 
@@ -1150,6 +1154,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <div class="three columns">
   <ul class="simple simple-toc" id="toc-list">
 <li><a class="reference" id="sdl-net-nim_toc" href="#sdl-net-nim">sdl_net.nim</a></li>
+<li><a class="reference" id="network-byte-order_toc" href="#network-byte-order">Network Byte Order</a></li>
 <li>
   <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
   <ul class="simple simple-toc-section">
@@ -1160,28 +1165,29 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#IPaddress"
-    title="IPaddress* = object 
-  host*: uint32
-  port*: uint16               ##  16-bit protocol port"><wbr />IPaddress</a></li>
+    title="IPaddress* = object
+  host*: uint32                ##  the IPv4 address of a host, encoded in Network Byte Order
+  port*: uint16                ##  the IPv4 port number of a socket, \
+              ##  encoded in Network Byte Order."><wbr />IPaddress</a></li>
   <li><a class="reference" href="#TCPsocket"
     title="TCPsocket* = pointer"><wbr />TCPsocket</a></li>
   <li><a class="reference" href="#UDPsocket"
     title="UDPsocket* = pointer"><wbr />UDPsocket</a></li>
   <li><a class="reference" href="#UDPpacket"
-    title="UDPpacket* = object 
-  channel*: cint
-  data*: ptr uint8            ##  The packet data
-  len*: cint                  ##  The length of the packet data
-  maxlen*: cint               ##  The size of the data buffer
-  status*: cint               ##  Packet status after sending
-  address*: IPaddress         ##  \
-                              ##  The source&#x2F;dest address of an incoming&#x2F;outgoing packet"><wbr />UDPpacket</a></li>
+    title="UDPpacket* = object
+  channel*: cint               ##  The src&#x2F;dst channel of the packet
+  data*: ptr uint8              ##  The packet data
+  len*: cint                   ##  The length of the packet data
+  maxlen*: cint                ##  The size of the data buffer
+  status*: cint                ##  Packet status after sending
+  address*: IPaddress          ##  \
+                    ##  The source&#x2F;dest address of an incoming&#x2F;outgoing packet"><wbr />UDPpacket</a></li>
   <li><a class="reference" href="#SocketSet"
     title="SocketSet* = pointer"><wbr />Socket<wbr />Set</a></li>
   <li><a class="reference" href="#GenericSocket"
     title="GenericSocket* = ptr GenericSocketObj"><wbr />Generic<wbr />Socket</a></li>
   <li><a class="reference" href="#GenericSocketObj"
-    title="GenericSocketObj* = object 
+    title="GenericSocketObj* = object
   ready*: cint"><wbr />Generic<wbr />Socket<wbr />Obj</a></li>
 
   </ul>
@@ -1198,11 +1204,11 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <li><a class="reference" href="#INADDR_ANY"
     title="INADDR_ANY* = 0x00000000"><wbr />INADDR_<wbr />ANY</a></li>
   <li><a class="reference" href="#INADDR_NONE"
-    title="INADDR_NONE* = 0xFFFFFFFF"><wbr />INADDR_<wbr />NONE</a></li>
+    title="INADDR_NONE* = 0x00000000FFFFFFFF&#x27;i64"><wbr />INADDR_<wbr />NONE</a></li>
   <li><a class="reference" href="#INADDR_LOOPBACK"
     title="INADDR_LOOPBACK* = 0x7F000001"><wbr />INADDR_<wbr />LOOPBACK</a></li>
   <li><a class="reference" href="#INADDR_BROADCAST"
-    title="INADDR_BROADCAST* = 0xFFFFFFFF"><wbr />INADDR_<wbr />BROADCAST</a></li>
+    title="INADDR_BROADCAST* = 0x00000000FFFFFFFF&#x27;i64"><wbr />INADDR_<wbr />BROADCAST</a></li>
   <li><a class="reference" href="#MAX_UDPCHANNELS"
     title="MAX_UDPCHANNELS* = 32"><wbr />MAX_<wbr />UDPCHANNELS</a></li>
   <li><a class="reference" href="#MAX_UDPADDRESSES"
@@ -1226,21 +1232,21 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <li><a class="reference" href="#resolveHost,ptr.IPaddress,cstring,uint16"
     title="resolveHost*(address: ptr IPaddress; host: cstring; port: uint16): cint"><wbr />resolve<wbr />Host</a></li>
   <li><a class="reference" href="#resolveIP,ptr.IPaddress"
-    title="resolveIP*(ip: ptr IPaddress): cstring"><wbr />resolve<wbr />IP</a></li>
+    title="resolveIP*(address: ptr IPaddress): cstring"><wbr />resolve<wbr />IP</a></li>
   <li><a class="reference" href="#getLocalAddresses,ptr.IPaddress,cint"
     title="getLocalAddresses*(addresses: ptr IPaddress; maxcount: cint): cint"><wbr />get<wbr />Local<wbr />Addresses</a></li>
-  <li><a class="reference" href="#tcp_Open,ptr.IPaddress"
-    title="tcp_Open*(ip: ptr IPaddress): TCPsocket"><wbr />tcp_<wbr />Open</a></li>
-  <li><a class="reference" href="#tcp_Accept,TCPsocket"
-    title="tcp_Accept*(server: TCPsocket): TCPsocket"><wbr />tcp_<wbr />Accept</a></li>
-  <li><a class="reference" href="#tcp_GetPeerAddress,TCPsocket"
-    title="tcp_GetPeerAddress*(sock: TCPsocket): ptr IPaddress"><wbr />tcp_<wbr />Get<wbr />Peer<wbr />Address</a></li>
-  <li><a class="reference" href="#tcp_Send,TCPsocket,pointer,cint"
-    title="tcp_Send*(sock: TCPsocket; data: pointer; len: cint): cint"><wbr />tcp_<wbr />Send</a></li>
-  <li><a class="reference" href="#tcp_Recv,TCPsocket,pointer,cint"
-    title="tcp_Recv*(sock: TCPsocket; data: pointer; maxlen: cint): cint"><wbr />tcp_<wbr />Recv</a></li>
-  <li><a class="reference" href="#tcp_Close,TCPsocket"
-    title="tcp_Close*(sock: TCPsocket)"><wbr />tcp_<wbr />Close</a></li>
+  <li><a class="reference" href="#tcpOpen,ptr.IPaddress"
+    title="tcpOpen*(ip: ptr IPaddress): TCPsocket"><wbr />tcp<wbr />Open</a></li>
+  <li><a class="reference" href="#tcpAccept,TCPsocket"
+    title="tcpAccept*(server: TCPsocket): TCPsocket"><wbr />tcp<wbr />Accept</a></li>
+  <li><a class="reference" href="#tcpGetPeerAddress,TCPsocket"
+    title="tcpGetPeerAddress*(sock: TCPsocket): ptr IPaddress"><wbr />tcp<wbr />Get<wbr />Peer<wbr />Address</a></li>
+  <li><a class="reference" href="#tcpSend,TCPsocket,pointer,cint"
+    title="tcpSend*(sock: TCPsocket; data: pointer; len: cint): cint"><wbr />tcp<wbr />Send</a></li>
+  <li><a class="reference" href="#tcpRecv,TCPsocket,pointer,cint"
+    title="tcpRecv*(sock: TCPsocket; data: pointer; maxlen: cint): cint"><wbr />tcp<wbr />Recv</a></li>
+  <li><a class="reference" href="#tcpClose,TCPsocket"
+    title="tcpClose*(sock: TCPsocket)"><wbr />tcp<wbr />Close</a></li>
   <li><a class="reference" href="#allocPacket,cint"
     title="allocPacket*(size: cint): ptr UDPpacket"><wbr />alloc<wbr />Packet</a></li>
   <li><a class="reference" href="#resizePacket,ptr.UDPpacket,cint"
@@ -1251,26 +1257,26 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="allocPacketV*(howmany: cint; size: cint): ptr ptr UDPpacket"><wbr />alloc<wbr />Packet<wbr />V</a></li>
   <li><a class="reference" href="#freePacketV,ptr.ptr.UDPpacket"
     title="freePacketV*(packetV: ptr ptr UDPpacket)"><wbr />free<wbr />Packet<wbr />V</a></li>
-  <li><a class="reference" href="#udp_Open,uint16"
-    title="udp_Open*(port: uint16): UDPsocket"><wbr />udp_<wbr />Open</a></li>
-  <li><a class="reference" href="#udp_SetPacketLoss,UDPsocket,cint"
-    title="udp_SetPacketLoss*(sock: UDPsocket; percent: cint)"><wbr />udp_<wbr />Set<wbr />Packet<wbr />Loss</a></li>
-  <li><a class="reference" href="#udp_Bind,UDPsocket,cint,ptr.IPaddress"
-    title="udp_Bind*(sock: UDPsocket; channel: cint; address: ptr IPaddress): cint"><wbr />udp_<wbr />Bind</a></li>
-  <li><a class="reference" href="#udp_Unbind,UDPsocket,cint"
-    title="udp_Unbind*(sock: UDPsocket; channel: cint)"><wbr />udp_<wbr />Unbind</a></li>
-  <li><a class="reference" href="#udp_GetPeerAddress,UDPsocket,cint"
-    title="udp_GetPeerAddress*(sock: UDPsocket; channel: cint): ptr IPaddress"><wbr />udp_<wbr />Get<wbr />Peer<wbr />Address</a></li>
-  <li><a class="reference" href="#udp_SendV,UDPsocket,ptr.ptr.UDPpacket,cint"
-    title="udp_SendV*(sock: UDPsocket; packets: ptr ptr UDPpacket; npackets: cint): cint"><wbr />udp_<wbr />Send<wbr />V</a></li>
-  <li><a class="reference" href="#udp_Send,UDPsocket,cint,ptr.UDPpacket"
-    title="udp_Send*(sock: UDPsocket; channel: cint; packet: ptr UDPpacket): cint"><wbr />udp_<wbr />Send</a></li>
-  <li><a class="reference" href="#udp_RecvV,UDPsocket,ptr.ptr.UDPpacket"
-    title="udp_RecvV*(sock: UDPsocket; packets: ptr ptr UDPpacket): cint"><wbr />udp_<wbr />Recv<wbr />V</a></li>
-  <li><a class="reference" href="#udp_Recv,UDPsocket,ptr.UDPpacket"
-    title="udp_Recv*(sock: UDPsocket; packet: ptr UDPpacket): cint"><wbr />udp_<wbr />Recv</a></li>
-  <li><a class="reference" href="#udp_Close,UDPsocket"
-    title="udp_Close*(sock: UDPsocket)"><wbr />udp_<wbr />Close</a></li>
+  <li><a class="reference" href="#udpOpen,uint16"
+    title="udpOpen*(port: uint16): UDPsocket"><wbr />udp<wbr />Open</a></li>
+  <li><a class="reference" href="#udpSetPacketLoss,UDPsocket,cint"
+    title="udpSetPacketLoss*(sock: UDPsocket; percent: cint)"><wbr />udp<wbr />Set<wbr />Packet<wbr />Loss</a></li>
+  <li><a class="reference" href="#udpBind,UDPsocket,cint,ptr.IPaddress"
+    title="udpBind*(sock: UDPsocket; channel: cint; address: ptr IPaddress): cint"><wbr />udp<wbr />Bind</a></li>
+  <li><a class="reference" href="#udpUnbind,UDPsocket,cint"
+    title="udpUnbind*(sock: UDPsocket; channel: cint)"><wbr />udp<wbr />Unbind</a></li>
+  <li><a class="reference" href="#udpGetPeerAddress,UDPsocket,cint"
+    title="udpGetPeerAddress*(sock: UDPsocket; channel: cint): ptr IPaddress"><wbr />udp<wbr />Get<wbr />Peer<wbr />Address</a></li>
+  <li><a class="reference" href="#udpSendV,UDPsocket,ptr.ptr.UDPpacket,cint"
+    title="udpSendV*(sock: UDPsocket; packets: ptr ptr UDPpacket; npackets: cint): cint"><wbr />udp<wbr />Send<wbr />V</a></li>
+  <li><a class="reference" href="#udpSend,UDPsocket,cint,ptr.UDPpacket"
+    title="udpSend*(sock: UDPsocket; channel: cint; packet: ptr UDPpacket): cint"><wbr />udp<wbr />Send</a></li>
+  <li><a class="reference" href="#udpRecvV,UDPsocket,ptr.ptr.UDPpacket"
+    title="udpRecvV*(sock: UDPsocket; packets: ptr ptr UDPpacket): cint"><wbr />udp<wbr />Recv<wbr />V</a></li>
+  <li><a class="reference" href="#udpRecv,UDPsocket,ptr.UDPpacket"
+    title="udpRecv*(sock: UDPsocket; packet: ptr UDPpacket): cint"><wbr />udp<wbr />Recv</a></li>
+  <li><a class="reference" href="#udpClose,UDPsocket"
+    title="udpClose*(sock: UDPsocket)"><wbr />udp<wbr />Close</a></li>
   <li><a class="reference" href="#allocSocketSet,cint"
     title="allocSocketSet*(maxsockets: cint): SocketSet"><wbr />alloc<wbr />Socket<wbr />Set</a></li>
   <li><a class="reference" href="#addSocket,SocketSet,GenericSocket"
@@ -1279,6 +1285,8 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="delSocket*(set: SocketSet; sock: GenericSocket): cint"><wbr />del<wbr />Socket</a></li>
   <li><a class="reference" href="#checkSockets,SocketSet,uint32"
     title="checkSockets*(set: SocketSet; timeout: uint32): cint"><wbr />check<wbr />Sockets</a></li>
+  <li><a class="reference" href="#socketReady,GenericSocket"
+    title="socketReady*(sock: GenericSocket): cint"><wbr />socket<wbr />Ready</a></li>
   <li><a class="reference" href="#freeSocketSet,SocketSet"
     title="freeSocketSet*(set: SocketSet)"><wbr />free<wbr />Socket<wbr />Set</a></li>
   <li><a class="reference" href="#setError,cstring"
@@ -1291,26 +1299,22 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 <li>
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#tcp_AddSocket.t,SocketSet,TCPsocket"
-    title="tcp_AddSocket*(set: SocketSet; sock: TCPsocket): cint"><wbr />tcp_<wbr />Add<wbr />Socket</a></li>
-  <li><a class="reference" href="#udp_AddSocket.t,SocketSet,UDPsocket"
-    title="udp_AddSocket*(set: SocketSet; sock: UDPsocket): cint"><wbr />udp_<wbr />Add<wbr />Socket</a></li>
-  <li><a class="reference" href="#tcp_DelSocket.t,SocketSet,TCPsocket"
-    title="tcp_DelSocket*(set: SocketSet; sock: TCPsocket): cint"><wbr />tcp_<wbr />Del<wbr />Socket</a></li>
-  <li><a class="reference" href="#udp_DelSocket.t,SocketSet,UDPsocket"
-    title="udp_DelSocket*(set: SocketSet; sock: UDPsocket): cint"><wbr />udp_<wbr />Del<wbr />Socket</a></li>
-  <li><a class="reference" href="#socketReady.t,GenericSocket"
-    title="socketReady*(sock: GenericSocket): cint"><wbr />socket<wbr />Ready</a></li>
-  <li><a class="reference" href="#socketReady.t,expr"
-    title="socketReady*(sock: expr): cint"><wbr />socket<wbr />Ready</a></li>
-  <li><a class="reference" href="#write16.t,expr,expr"
-    title="write16*(value, areap: expr): expr"><wbr />write16</a></li>
-  <li><a class="reference" href="#write32.t,expr,expr"
-    title="write32*(value, areap: expr): expr"><wbr />write32</a></li>
-  <li><a class="reference" href="#read16.t,expr"
-    title="read16*(areap: expr): expr"><wbr />read16</a></li>
-  <li><a class="reference" href="#read32.t,expr"
-    title="read32*(areap: expr): expr"><wbr />read32</a></li>
+      <li><a class="reference" href="#tcpAddSocket.t,SocketSet,TCPsocket"
+    title="tcpAddSocket*(set: SocketSet; sock: TCPsocket): cint"><wbr />tcp<wbr />Add<wbr />Socket</a></li>
+  <li><a class="reference" href="#udpAddSocket.t,SocketSet,UDPsocket"
+    title="udpAddSocket*(set: SocketSet; sock: UDPsocket): cint"><wbr />udp<wbr />Add<wbr />Socket</a></li>
+  <li><a class="reference" href="#tcpDelSocket.t,SocketSet,TCPsocket"
+    title="tcpDelSocket*(set: SocketSet; sock: TCPsocket): cint"><wbr />tcp<wbr />Del<wbr />Socket</a></li>
+  <li><a class="reference" href="#udpDelSocket.t,SocketSet,UDPsocket"
+    title="udpDelSocket*(set: SocketSet; sock: UDPsocket): cint"><wbr />udp<wbr />Del<wbr />Socket</a></li>
+  <li><a class="reference" href="#write16.t,uint16,pointer"
+    title="write16*(value: uint16; area: pointer)"><wbr />write16</a></li>
+  <li><a class="reference" href="#write32.t,uint32,pointer"
+    title="write32*(value: uint32; area: pointer)"><wbr />write32</a></li>
+  <li><a class="reference" href="#read16.t,pointer"
+    title="read16*(area: pointer): uint16"><wbr />read16</a></li>
+  <li><a class="reference" href="#read32.t,pointer"
+    title="read32*(area: pointer): uint32"><wbr />read32</a></li>
 
   </ul>
 </li>
@@ -1320,58 +1324,79 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   </div>
   <div class="nine columns" id="content">
   <p class="module-desc">
-<h1><a class="toc-backref" id="sdl-net-nim" href="#sdl-net-nim">sdl_net.nim</a></h1><p>Cross-platform networking library.</p>
+<h1><a class="toc-backref" id="sdl-net-nim" href="#sdl-net-nim">sdl_net.nim</a></h1><p>Cross-platform networking library. </p>
+
+<h1><a class="toc-backref" id="network-byte-order" href="#network-byte-order">Network Byte Order</a></h1><p>Also known as <tt class="docutils literal"><span class="pre">Big-Endian</span></tt>. Which means the most significant byte comes first in storage. Sparc and Motorola 68k based chips are MSB ordered.</p>
+<p><tt class="docutils literal"><span class="pre">Little-Endian</span></tt> (LSB) is stored in the opposite order, with the least significant byte first in memory. Intel and AMD are two LSB machines.</p>
+<p>For network addresses, 1.2.3.4 is always stored as {0x01 0x02 0x03 0x04}.</p>
 </p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="sdl.html">sdl</a>, <a class="reference external" href="endians.html">endians</a>
+<a class="reference external" href="sdl.html">sdl</a>, <a class="reference external" href="private/endians.html">private/endians</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="IPaddress"><a name="IPaddress"></a><pre><span class="Identifier">IPaddress</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
-  <span class="Identifier">host</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">port</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">##  16-bit protocol port</span>
+<dt id="IPaddress"><a name="IPaddress"></a><pre><span class="Identifier">IPaddress</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">host</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>                <span class="Comment">##  the IPv4 address of a host, encoded in Network Byte Order</span>
+  <span class="Identifier">port</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">##  the IPv4 port number of a socket, \</span>
+              <span class="Comment">##  encoded in Network Byte Order.</span>
   </pre></dt>
 <dd>
-32-bit IPv4 host address
+
+This type contains the information used to form network connections and sockets.
 
 </dd>
 <dt id="TCPsocket"><a name="TCPsocket"></a><pre><span class="Identifier">TCPsocket</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 
+This is an opaque data type used for TCP connections. This is a pointer, and so it could be <cite>nil</cite> at times. <cite>nil</cite> would indicate no socket has been established.
 
 </dd>
 <dt id="UDPsocket"><a name="UDPsocket"></a><pre><span class="Identifier">UDPsocket</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 
+This is an opaque data type used for UDP sockets. This is a pointer, and so it could be <cite>nil</cite> at times. <cite>nil</cite> would indicate no socket has been established.
 
 </dd>
-<dt id="UDPpacket"><a name="UDPpacket"></a><pre><span class="Identifier">UDPpacket</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
-  <span class="Identifier">channel</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
-  <span class="Identifier">data</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span>            <span class="Comment">##  The packet data</span>
-  <span class="Identifier">len</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                  <span class="Comment">##  The length of the packet data</span>
-  <span class="Identifier">maxlen</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>               <span class="Comment">##  The size of the data buffer</span>
-  <span class="Identifier">status</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>               <span class="Comment">##  Packet status after sending</span>
-  <span class="Identifier">address</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">IPaddress</span>         <span class="Comment">##  \</span>
-                              <span class="Comment">##  The source/dest address of an incoming/outgoing packet</span>
+<dt id="UDPpacket"><a name="UDPpacket"></a><pre><span class="Identifier">UDPpacket</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">channel</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>               <span class="Comment">##  The src/dst channel of the packet</span>
+  <span class="Identifier">data</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span>              <span class="Comment">##  The packet data</span>
+  <span class="Identifier">len</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                   <span class="Comment">##  The length of the packet data</span>
+  <span class="Identifier">maxlen</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                <span class="Comment">##  The size of the data buffer</span>
+  <span class="Identifier">status</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                <span class="Comment">##  Packet status after sending</span>
+  <span class="Identifier">address</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">IPaddress</span>          <span class="Comment">##  \</span>
+                    <span class="Comment">##  The source/dest address of an incoming/outgoing packet</span>
   </pre></dt>
 <dd>
-The src/dst channel of the packet
+<p>
+<tt class="docutils literal"><span class="pre">channel</span></tt> The (software) channel number for this packet. This can also be used as a priority value for the packet. If no channel is assigned, the value is <cite>-1</cite>.</p>
+<p><tt class="docutils literal"><span class="pre">data</span></tt> The data contained in this packet, this is the meat.</p>
+<p><tt class="docutils literal"><span class="pre">len</span></tt> This is the meaningful length of the data in bytes.</p>
+<p><tt class="docutils literal"><span class="pre">maxlen</span></tt> This is size of the data buffer, which may be larger than the meaningful length. This is only used for packet creation on the senders side.</p>
+<p><tt class="docutils literal"><span class="pre">status</span></tt> This contains the number of bytes sent, or a <cite>-1</cite> on errors, after sending. This is useless for a received packet.</p>
+<p><tt class="docutils literal"><span class="pre">address</span></tt> This is the resolved <tt class="docutils literal"><span class="pre">IPaddress</span></tt> to be used when sending, or it is the remote source of a received packet.</p>
+<p>This struct is used with UDPsockets to send and receive data. It also helps keep track of a packets sending/receiving settings and status. The channels concept helps prioritize, or segregate differring types of data packets.</p>
+
 
 </dd>
 <dt id="SocketSet"><a name="SocketSet"></a><pre><span class="Identifier">SocketSet</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 
+This is an opaque data type used for socket sets. This is a pointer, and so it could be <cite>nil</cite> at times. <cite>nil</cite> would indicate no socket set has been created.
 
 </dd>
 <dt id="GenericSocket"><a name="GenericSocket"></a><pre><span class="Identifier">GenericSocket</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Identifier">GenericSocketObj</span></pre></dt>
 <dd>
+<p>
+This data type is able to be used for both <tt class="docutils literal"><span class="pre">UDPsocket</span></tt> and <tt class="docutils literal"><span class="pre">TCPsocket</span></tt> types.</p>
+<p><tt class="docutils literal"><span class="pre">ready</span></tt> Non-zero when data is ready to be read, or a server socket has a connection attempt ready to be accepted.</p>
+<p>After calling <tt class="docutils literal"><span class="pre">sdl_net.checkSockets()</span></tt>, if this socket is in <tt class="docutils literal"><span class="pre">sdl_net.socketSet()</span></tt> used, the <tt class="docutils literal"><span class="pre">ready</span></tt> will be set according to activity on the socket. This is the only real use for this type, as it doesn't help you know what type of socket it is.</p>
 
 
 </dd>
-<dt id="GenericSocketObj"><a name="GenericSocketObj"></a><pre><span class="Identifier">GenericSocketObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
+<dt id="GenericSocketObj"><a name="GenericSocketObj"></a><pre><span class="Identifier">GenericSocketObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">ready</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
 </pre></dt>
 <dd>
@@ -1386,27 +1411,27 @@ Any network socket can be safely cast to this socket type
 <dl class="item">
 <dt id="MAJOR_VERSION"><a name="MAJOR_VERSION"></a><pre><span class="Identifier">MAJOR_VERSION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
 <dd>
-
+SDL_net library major number at compilation time
 
 </dd>
 <dt id="MINOR_VERSION"><a name="MINOR_VERSION"></a><pre><span class="Identifier">MINOR_VERSION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
-
+SDL_net library minor number at compilation time
 
 </dd>
 <dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
-
+SDL_net library patch level at compilation time
 
 </dd>
 <dt id="INADDR_ANY"><a name="INADDR_ANY"></a><pre><span class="Identifier">INADDR_ANY</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000000</span></pre></dt>
 <dd>
-
+Used for listening on all network interfaces.
 
 </dd>
-<dt id="INADDR_NONE"><a name="INADDR_NONE"></a><pre><span class="Identifier">INADDR_NONE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0xFFFFFFFF</span></pre></dt>
+<dt id="INADDR_NONE"><a name="INADDR_NONE"></a><pre><span class="Identifier">INADDR_NONE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000000FFFFFFFF'i64</span></pre></dt>
 <dd>
-
+Which has limited applications.
 
 </dd>
 <dt id="INADDR_LOOPBACK"><a name="INADDR_LOOPBACK"></a><pre><span class="Identifier">INADDR_LOOPBACK</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x7F000001</span></pre></dt>
@@ -1414,9 +1439,10 @@ Any network socket can be safely cast to this socket type
 
 
 </dd>
-<dt id="INADDR_BROADCAST"><a name="INADDR_BROADCAST"></a><pre><span class="Identifier">INADDR_BROADCAST</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0xFFFFFFFF</span></pre></dt>
+<dt id="INADDR_BROADCAST"><a name="INADDR_BROADCAST"></a><pre><span class="Identifier">INADDR_BROADCAST</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000000FFFFFFFF'i64</span></pre></dt>
 <dd>
 
+Used as destination when sending a message to all clients on a subnet that allows broadcasts.
 
 </dd>
 <dt id="MAX_UDPCHANNELS"><a name="MAX_UDPCHANNELS"></a><pre><span class="Identifier">MAX_UDPCHANNELS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">32</span></pre></dt>
@@ -1446,8 +1472,8 @@ The maximum addresses bound to a single UDP socket channel
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="linkedVersion"><a name="linkedVersion,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">linkedVersion</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Version</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Linked_Version&quot;</span><span class="Other">,</span> 
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="linkedVersion"><a name="linkedVersion,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">linkedVersion</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Version</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Linked_Version&quot;</span><span class="Other">,</span>
+                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 This function gets the version of the dynamically linked SDL_net library. It should NOT be used to fill a version structure, instead you should use the <tt class="docutils literal"><span class="pre">version()</span></tt> template.
 
@@ -1455,268 +1481,651 @@ This function gets the version of the dynamically linked SDL_net library. It sho
 <dt id="init"><a name="init,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">init</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Init&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Initialize the network API.</p>
-<p>SDL must be initialized before calls to functions in this library, because this library uses utility functions from the SDL library.</p>
+<p>SDL must be initialized before calls to procedures in this library, because this library uses utility procedures from the SDL library.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, <cite>-1</cite> on errors.</p>
 
 
 </dd>
 <dt id="quit"><a name="quit,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">quit</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Quit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-Cleanup the network API
+<p>Shutdown and cleanup the network API.</p>
+<p>After calling this all sockets are closed, and the SDL_net procedures should not be used. You may, of course, use <tt class="docutils literal"><span class="pre">sdl_net.init()</span></tt> to use the functionality again.</p>
+
 
 </dd>
-<dt id="resolveHost"><a name="resolveHost,ptr.IPaddress,cstring,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">resolveHost</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">address</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">;</span> <span class="Identifier">host</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">port</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_ResolveHost&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="resolveHost"><a name="resolveHost,ptr.IPaddress,cstring,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">resolveHost</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">address</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">;</span> <span class="Identifier">host</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">port</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_ResolveHost&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Resolve a host name and port to an IP address in network form.</p>
-<p>If the function succeeds, it will return <cite>0</cite>.</p>
-<p>If the host couldn't be resolved, the host portion of the returned address will be <cite>INADDR_NONE</cite>, and the function will return <cite>-1</cite>.</p>
-<p>If <tt class="docutils literal"><span class="pre">host</span></tt> is <cite>nil</cite>, the resolved host will be set to <cite>INADDR_ANY</cite>.</p>
-
+<p><tt class="docutils literal"><span class="pre">address</span></tt> points to the <tt class="docutils literal"><span class="pre">IPaddress</span></tt> that will be filled in. It doesn't need to be set before calling this, but it must be allocated in memory.</p>
+<p><tt class="docutils literal"><span class="pre">host</span></tt> For connecting to a server, this is the hostname or IP in a string.</p>
+<p>For becoming a server, this is <cite>nil</cite>.</p>
+<p>If you do use <cite>nil</cite>, all network interfaces would be listened to for incoming connections, using the <cite>INADDR_ANY</cite> address.</p>
+<p><tt class="docutils literal"><span class="pre">port</span></tt> For connecting to a server, this is the the servers listening port number.</p>
+<p>For becoming a server, this is the port to listen on.</p>
+<p>If you are just doing Domain Name Resolution functions, this can be <cite>0</cite>.</p>
+<p>Resolve the string <tt class="docutils literal"><span class="pre">host</span></tt>, and fill in the <tt class="docutils literal"><span class="pre">IPaddress</span></tt> pointed to by <tt class="docutils literal"><span class="pre">address</span></tt> with the resolved IP and the port number passed in through <tt class="docutils literal"><span class="pre">port</span></tt>.</p>
+<p>This is the best way to fill in the <tt class="docutils literal"><span class="pre">IPaddress</span></tt> struct for later use. This procedure does not actually open any sockets, it is used to prepare the arguments for the socket opening functions.</p>
+<p><tt class="docutils literal"><span class="pre">WARNING:</span></tt> this procedure will put the <tt class="docutils literal"><span class="pre">host</span></tt> and <tt class="docutils literal"><span class="pre">port</span></tt> into Network Byte Order into the <tt class="docutils literal"><span class="pre">address</span></tt> fields, so make sure you pass in the data in your hosts byte order (normally not an issue).</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success. <cite>-1</cite> on errors, plus <tt class="docutils literal"><span class="pre">address.host</span></tt> will be <cite>INADDR_NONE</cite>. An error would likely be that the address could not be resolved.</p>
+<p>For a server listening on all interfaces, on port 1234:</p>
+<pre class = "listing"><span class="Comment"># create a server type IPaddress on port 1234</span>
+<span class="Keyword">var</span> <span class="Identifier">ipaddress</span><span class="Punctuation">:</span> <span class="Identifier">IPaddress</span>
+<span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">resolveHost</span><span class="Punctuation">(</span><span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">ipaddress</span><span class="Punctuation">)</span><span class="Punctuation">,</span> <span class="Keyword">nil</span><span class="Punctuation">,</span> <span class="DecNumber">1234</span><span class="Punctuation">)</span></pre><p>For a client connection to &quot;host.domain.ext&quot;, at port 1234:</p>
+<pre class = "listing"><span class="Comment"># create an IPaddress for host name &quot;host.domain.ext&quot; on port 1234</span>
+<span class="Comment"># this is used by a client</span>
+<span class="Keyword">var</span> <span class="Identifier">ipaddress</span><span class="Punctuation">:</span> <span class="Identifier">IPaddress</span>
+<span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">resolveHost</span><span class="Punctuation">(</span><span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">ipaddress</span><span class="Punctuation">)</span><span class="Punctuation">,</span> <span class="StringLit">&quot;host.domain.ext&quot;</span><span class="Punctuation">,</span> <span class="DecNumber">1234</span><span class="Punctuation">)</span></pre>
 
 </dd>
-<dt id="resolveIP"><a name="resolveIP,ptr.IPaddress"></a><pre><span class="Keyword">proc</span> <span class="Identifier">resolveIP</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">ip</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_ResolveIP&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="resolveIP"><a name="resolveIP,ptr.IPaddress"></a><pre><span class="Keyword">proc</span> <span class="Identifier">resolveIP</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">address</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_ResolveIP&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Resolve an ip address to a host name in canonical form.</p>
-<p>If the ip couldn't be resolved, this function returns <cite>nil</cite>, otherwise a pointer to a static buffer containing the hostname is returned.</p>
+<p><tt class="docutils literal"><span class="pre">address</span></tt> points to the <tt class="docutils literal"><span class="pre">IPaddress</span></tt> that will be resolved to a host name. The <tt class="docutils literal"><span class="pre">address.port</span></tt> is ignored.</p>
+<p>Resolve the IPv4 numeric address in <tt class="docutils literal"><span class="pre">address.host</span></tt>, and return the hostname as a string.</p>
 <p><tt class="docutils literal"><span class="pre">Note</span></tt> that this function is not thread-safe.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> a valid char pointer (<tt class="docutils literal"><span class="pre">cstring</span></tt>) on success. The returned hostname will have host and domain, as in &quot;host.domain.ext&quot;. <cite>nil</cite> is returned on errors, such as when it's not able to resolve the host name. The returned pointer is not to be freed. Each time you call this procedure the previous pointer's data will change to the new value, so you may have to copy it into a local buffer to keep it around longer.</p>
 
 
 </dd>
-<dt id="getLocalAddresses"><a name="getLocalAddresses,ptr.IPaddress,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getLocalAddresses</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">addresses</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">;</span> <span class="Identifier">maxcount</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getLocalAddresses"><a name="getLocalAddresses,ptr.IPaddress,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getLocalAddresses</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">addresses</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">;</span> <span class="Identifier">maxcount</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_GetLocalAddresses&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the addresses of network interfaces on this system.</p>
-<p>This returns the number of addresses saved in <tt class="docutils literal"><span class="pre">addresses</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of addresses saved in <tt class="docutils literal"><span class="pre">addresses</span></tt>.</p>
 
 
 </dd>
-<dt id="tcp_Open"><a name="tcp_Open,ptr.IPaddress"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcp_Open</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">ip</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_Open&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="tcpOpen"><a name="tcpOpen,ptr.IPaddress"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpOpen</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">ip</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_Open&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Open a TCP network socket.</p>
+<p><tt class="docutils literal"><span class="pre">ip</span></tt> This points to the <tt class="docutils literal"><span class="pre">IPaddress</span></tt> that contains the resolved IP address and port number to use.</p>
 <p>If <tt class="docutils literal"><span class="pre">ip.host</span></tt> is <cite>INADDR_NONE</cite> or <cite>INADDR_ANY</cite>, this creates a local server socket on the given port, otherwise a TCP connection to the remote host and port is attempted. The address passed in should already be swapped to network byte order (addresses returned from <tt class="docutils literal"><span class="pre">resolveHost()</span></tt> are already in the correct form).</p>
-<p>The newly created socket is returned, or <cite>nil</cite> if there was an error.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> a valid <tt class="docutils literal"><span class="pre">TCPsocket</span></tt> on success, which indicates a successful connection has been established, or a socket has been created that is valid to accept incoming TCP connections. <cite>nil</cite> is returned on errors, such as when it's not able to create a socket, or it cannot connect to host and/or port contained in ip.</p>
+<pre class = "listing"><span class="Comment"># connect to localhost at port 9999 using TCP (client)</span>
+<span class="Keyword">var</span>
+  <span class="Identifier">ip</span><span class="Punctuation">:</span> <span class="Identifier">IPaddress</span>
+  <span class="Identifier">tcpsock</span><span class="Punctuation">:</span> <span class="Identifier">TCPsocket</span>
 
+<span class="Keyword">if</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">resolveHost</span><span class="Punctuation">(</span><span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">ip</span><span class="Punctuation">)</span><span class="Punctuation">,</span> <span class="StringLit">&quot;localhost&quot;</span><span class="Punctuation">,</span> <span class="DecNumber">9999</span><span class="Punctuation">)</span> <span class="Operator">==</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.resolveHost: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Identifier">quit</span><span class="Punctuation">(</span><span class="Identifier">QuitFailure</span><span class="Punctuation">)</span>
+
+<span class="Identifier">tcpsock</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">tcpOpen</span><span class="Punctuation">(</span><span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">ip</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">tcpsock</span> <span class="Operator">==</span> <span class="Keyword">nil</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.tcpOpen: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Identifier">quit</span><span class="Punctuation">(</span><span class="Identifier">QuitFailure</span><span class="Punctuation">)</span></pre><pre class = "listing"><span class="Comment"># create a listening TCP socket on port 9999 (server)</span>
+<span class="Keyword">var</span>
+  <span class="Identifier">ip</span><span class="Punctuation">:</span> <span class="Identifier">IPaddress</span>
+  <span class="Identifier">tcpsock</span><span class="Punctuation">:</span> <span class="Identifier">TCPsocket</span>
+
+<span class="Keyword">if</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">resolveHost</span><span class="Punctuation">(</span><span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">ip</span><span class="Punctuation">)</span><span class="Punctuation">,</span> <span class="Keyword">nil</span><span class="Punctuation">,</span> <span class="DecNumber">9999</span><span class="Punctuation">)</span> <span class="Operator">==</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.resolveHost: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Identifier">quit</span><span class="Punctuation">(</span><span class="Identifier">QuitFailure</span><span class="Punctuation">)</span>
+
+<span class="Identifier">tcpsock</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">tcpOpen</span><span class="Punctuation">(</span><span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">ip</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">tcpsock</span> <span class="Operator">==</span> <span class="Keyword">nil</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.tcpOpen: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Identifier">quit</span><span class="Punctuation">(</span><span class="Identifier">QuitFailure</span><span class="Punctuation">)</span></pre>
 
 </dd>
-<dt id="tcp_Accept"><a name="tcp_Accept,TCPsocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcp_Accept</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">server</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_Accept&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="tcpAccept"><a name="tcpAccept,TCPsocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpAccept</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">server</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_Accept&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<p>Accept an incoming connection on the given server socket.</p>
-<p>The newly created socket is returned, or <cite>nil</cite> if there was an error.</p>
+<p>Accept an incoming connection on the given <tt class="docutils literal"><span class="pre">server</span></tt> <tt class="docutils literal"><span class="pre">TCPsocket</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">server</span></tt> This is the server <tt class="docutils literal"><span class="pre">TCPsocket</span></tt> which was previously created by <tt class="docutils literal"><span class="pre">sdl_net.tcpOpen()</span></tt>.</p>
+<p>Do not use this procedure on a connected socket. Server sockets are never connected to a remote host. What you get back is a new <tt class="docutils literal"><span class="pre">TCPsocket</span></tt> that is connected to the remote host.</p>
+<p>This is a non-blocking call, so if no connections are there to be accepted, you will get a <cite>nil</cite> <tt class="docutils literal"><span class="pre">TCPsocket</span></tt> and the program will continue going.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> a valid <tt class="docutils literal"><span class="pre">TCPsocket</span></tt> on success, which indicates a successful connection has been established. <cite>nil</cite> is returned on errors, such as when it's not able to create a socket, or it cannot finish connecting to the originating host and port. There also may not be a connection attempt in progress, so of course you cannot accept nothing, and you get a <tt class="docutils literal"><span class="pre">nil</span></tt> in this case as well.</p>
+<pre class = "listing"><span class="Comment"># accept a connection coming in on server_tcpsock</span>
+<span class="Keyword">var</span> <span class="Identifier">new_tcpsock</span><span class="Punctuation">:</span> <span class="Identifier">TCPsocket</span>
 
+<span class="Identifier">new_tcpsock</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">tcpAccept</span><span class="Punctuation">(</span><span class="Identifier">server_tcpsock</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">new_tcpsock</span> <span class="Operator">==</span> <span class="Keyword">nil</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.tcpAccept: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+<span class="Keyword">else</span><span class="Punctuation">:</span>
+  <span class="Comment"># communicate over new_tcpsock</span></pre>
 
 </dd>
-<dt id="tcp_GetPeerAddress"><a name="tcp_GetPeerAddress,TCPsocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcp_GetPeerAddress</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="tcpGetPeerAddress"><a name="tcpGetPeerAddress,TCPsocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpGetPeerAddress</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_GetPeerAddress&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the IP address of the remote system associated with the socket.</p>
-<p>If the socket is a server socket, this function returns <cite>nil</cite>.</p>
+<p><tt class="docutils literal"><span class="pre">sock</span></tt> This is a valid <tt class="docutils literal"><span class="pre">TCPsocket</span></tt>.</p>
+<p>Get the Peer's (the other side of the connection, the remote side, not the local side) IP address and port number.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> an <tt class="docutils literal"><span class="pre">IPaddress</span></tt>. <tt class="docutils literal"><span class="pre">nil</span></tt> is returned on errors, or when <tt class="docutils literal"><span class="pre">sock</span></tt> is a server socket.</p>
+<pre class = "listing"><span class="Comment"># get the remote IP and port</span>
+<span class="Comment"># var new_tcpsock: TCPsocket</span>
+<span class="Keyword">var</span> <span class="Identifier">remote_ip</span><span class="Punctuation">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span>
 
+<span class="Identifier">remote_ip</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">tcpGetPeerAddress</span><span class="Punctuation">(</span><span class="Identifier">new_tcpsock</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">remote_ip</span> <span class="Operator">==</span> <span class="Keyword">nil</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.tcpGetPeerAddress: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;This may be a server socket.&quot;</span>
+<span class="Keyword">else</span><span class="Punctuation">:</span>
+  <span class="Comment"># print the info in IPaddress or something else...</span></pre>
 
 </dd>
-<dt id="tcp_Send"><a name="tcp_Send,TCPsocket,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcp_Send</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="tcpSend"><a name="tcpSend,TCPsocket,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpSend</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_Send&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Send <tt class="docutils literal"><span class="pre">len</span></tt> bytes of <tt class="docutils literal"><span class="pre">data</span></tt> over the non-server socket <tt class="docutils literal"><span class="pre">sock</span></tt>.</p>
-<p>This function returns the actual amount of data sent.</p>
-<p>If the return value is less than the amount of data sent, then either the remote connection was closed, or an unknown socket error occurred.</p>
+<p><tt class="docutils literal"><span class="pre">sock</span></tt> This is a valid, connected, <tt class="docutils literal"><span class="pre">TCPsocket</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">data</span></tt> This is a pointer to the data to send over <tt class="docutils literal"><span class="pre">sock</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">len</span></tt> This is the length (in bytes) of the <tt class="docutils literal"><span class="pre">data</span></tt>.</p>
+<p>Send <tt class="docutils literal"><span class="pre">data</span></tt> of length <tt class="docutils literal"><span class="pre">len</span></tt> over the socket <tt class="docutils literal"><span class="pre">sock</span></tt>. This routine is not used for server sockets.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of bytes sent. If the number returned is less than <tt class="docutils literal"><span class="pre">len</span></tt>, then an error occured, such as the client disconnecting.</p>
+<pre class = "listing"><span class="Comment"># send a hello over sock</span>
+<span class="Comment"># var sock: TCPsocket</span>
+<span class="Keyword">var</span>
+  <span class="Identifier">msg</span> <span class="Operator">=</span> <span class="Punctuation">[</span><span class="CharLit">'H'</span><span class="Punctuation">,</span> <span class="CharLit">'e'</span><span class="Punctuation">,</span> <span class="CharLit">'l'</span><span class="Punctuation">,</span> <span class="CharLit">'l'</span><span class="Punctuation">,</span> <span class="CharLit">'o'</span><span class="Punctuation">,</span> <span class="CharLit">'!'</span><span class="Punctuation">]</span>
 
+<span class="Keyword">if</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">tcpSend</span><span class="Punctuation">(</span><span class="Identifier">sock</span><span class="Punctuation">,</span> <span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">msg</span><span class="Punctuation">)</span><span class="Punctuation">,</span> <span class="Identifier">msg</span><span class="Operator">.</span><span class="Identifier">len</span><span class="Punctuation">)</span> <span class="Operator">&lt;</span> <span class="Identifier">msg</span><span class="Operator">.</span><span class="Identifier">len</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.tcpSend: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Comment"># it may be ood to disconnect sock because it is likely invalid now</span></pre>
 
 </dd>
-<dt id="tcp_Recv"><a name="tcp_Recv,TCPsocket,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcp_Recv</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">maxlen</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="tcpRecv"><a name="tcpRecv,TCPsocket,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpRecv</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">maxlen</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_Recv&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Receive up to <tt class="docutils literal"><span class="pre">maxlen</span></tt> bytes of data over the non-server socket <tt class="docutils literal"><span class="pre">sock</span></tt>, and store them in the buffer pointed to by <tt class="docutils literal"><span class="pre">data</span></tt>.</p>
-<p>This function returns the actual amount of data received.</p>
-<p>If the return value is less than or equal to zero, then either the remote connection was closed, or an unknown socket error occurred.</p>
+<p><tt class="docutils literal"><span class="pre">sock</span></tt> This is a valid, connected, <tt class="docutils literal"><span class="pre">TCPsocket</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">data</span></tt> This is a pointer to the buffer that receives the data from <tt class="docutils literal"><span class="pre">sock</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">maxlen</span></tt> This is the maximum length (in bytes) that will be read into <tt class="docutils literal"><span class="pre">data</span></tt>.</p>
+<p>Receive data of <tt class="docutils literal"><span class="pre">exactly</span></tt> length <tt class="docutils literal"><span class="pre">maxlen</span></tt> bytes from the socket <tt class="docutils literal"><span class="pre">sock</span></tt>, into the memory pointed to by <tt class="docutils literal"><span class="pre">data</span></tt>.</p>
+<p>This routine is not used for server sockets.</p>
+<p>Unless there is an error, or the connection is closed, the buffer will read <tt class="docutils literal"><span class="pre">maxlen</span></tt> bytes. If you read more than is sent from the other end, then it will wait until the full requested length is sent, or until the connection is closed from the other end.</p>
+<p>You may have to read 1 byte at a time for some applications, for instance, text applications where blocks of text are sent, but you want to read line by line. In that case you may want to find the newline characters yourself to break the lines up, instead of reading some inordinate amount of text which may contain many lines, or not even a full line of text.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of bytes received. If the number returned is less than or equal to <cite>0</cite>, then an error occured, or the remote host has closed the connection.</p>
+<pre class = "listing"><span class="Comment"># receive some text from sock</span>
+<span class="Comment"># var sock: TCPsocket</span>
+<span class="Keyword">const</span>
+  <span class="Identifier">MaxLen</span> <span class="Operator">=</span> <span class="DecNumber">1024</span>
+<span class="Keyword">var</span>
+  <span class="Identifier">msg</span><span class="Punctuation">:</span> <span class="Identifier">array</span><span class="Punctuation">[</span><span class="Identifier">MaxLen</span><span class="Punctuation">,</span> <span class="Identifier">char</span><span class="Punctuation">]</span>
 
+<span class="Keyword">if</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">tcpRecv</span><span class="Punctuation">(</span><span class="Identifier">sock</span><span class="Punctuation">,</span> <span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">msg</span><span class="Punctuation">[</span><span class="DecNumber">0</span><span class="Punctuation">]</span><span class="Punctuation">)</span><span class="Punctuation">,</span> <span class="Identifier">MaxLen</span><span class="Punctuation">)</span> <span class="Operator">&lt;=</span> <span class="DecNumber">0</span><span class="Punctuation">:</span>
+  <span class="Comment"># an error may have occured, but sometimes you can just ignore it</span>
+  <span class="Comment"># it may be good to disconnect sock because it is likely invalid now</span>
+
+<span class="Identifier">echo</span> <span class="StringLit">&quot;Received: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">msg</span></pre>
 
 </dd>
-<dt id="tcp_Close"><a name="tcp_Close,TCPsocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcp_Close</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_Close&quot;</span><span class="Other">,</span> 
-                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="tcpClose"><a name="tcpClose,TCPsocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpClose</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_Close&quot;</span><span class="Other">,</span>
+                               <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-Close a TCP network socket.
+<p>Close a TCP network socket.</p>
+<p><tt class="docutils literal"><span class="pre">sock</span></tt> A valid <tt class="docutils literal"><span class="pre">TCPsocket</span></tt>. This can be a server or client type socket.</p>
+<p>This shutsdown, disconnects, and closes the <tt class="docutils literal"><span class="pre">TCPsocket</span></tt> sock.</p>
+<p>After this, you can be assured that this socket is not in use anymore. You can reuse the <tt class="docutils literal"><span class="pre">sock</span></tt> variable after this to open a new connection with <tt class="docutils literal"><span class="pre">sdl_net.tcpOpen()</span></tt>. Do not try to use any other procedures on a closed socket, as it is now invalid.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> nothing, this always succeeds for all we need to know.</p>
+
 
 </dd>
-<dt id="allocPacket"><a name="allocPacket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocPacket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_AllocPacket&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="allocPacket"><a name="allocPacket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocPacket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_AllocPacket&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Allocate a single UDP packet <tt class="docutils literal"><span class="pre">size</span></tt> bytes long.</p>
-<p>The new packet is returned, or <cite>nil</cite> if the function ran out of memory.</p>
+<p><tt class="docutils literal"><span class="pre">size</span></tt> Size, in bytes, of the data buffer to be allocated in the new <tt class="docutils literal"><span class="pre">UDPpacket</span></tt>. Zero is invalid.</p>
+<p>Create (via malloc) a new <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> with a data buffer of <tt class="docutils literal"><span class="pre">size</span></tt> bytes. The new packet should be freed using <tt class="docutils literal"><span class="pre">sdl_net.freePacket()</span></tt> when you are done using it.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> a pointer to a new empty <tt class="docutils literal"><span class="pre">UDPpacket</span></tt>. <cite>nil</cite> is returned on errors, such as out-of-memory.</p>
+<pre class = "listing"><span class="Comment"># create a new UDPpacket to hold 1024 bytes of data</span>
+<span class="Keyword">var</span> <span class="Identifier">packet</span><span class="Punctuation">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span>
 
+<span class="Identifier">packet</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">allocPacket</span><span class="Punctuation">(</span><span class="DecNumber">1024</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">packet</span> <span class="Operator">==</span> <span class="Keyword">nil</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.allocPacket: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Comment"># perhaps do something else since you can't make this packet</span>
+<span class="Keyword">else</span><span class="Punctuation">:</span>
+  <span class="Comment"># do stuff with this new packet</span>
+  <span class="Comment"># sdl_net.freePacket this packet when finished with it</span></pre>
 
 </dd>
-<dt id="resizePacket"><a name="resizePacket,ptr.UDPpacket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">resizePacket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">packet</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">;</span> <span class="Identifier">newsize</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="resizePacket"><a name="resizePacket,ptr.UDPpacket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">resizePacket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">packet</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">;</span> <span class="Identifier">newsize</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_ResizePacket&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Resize a single UDP packet <tt class="docutils literal"><span class="pre">size</span></tt> bytes long.</p>
-<p>The new packet is returned, or <cite>nil</cite> if the function ran out of memory.</p>
+<p><tt class="docutils literal"><span class="pre">packet</span></tt> A pointer to the <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> to be resized.</p>
+<p><tt class="docutils literal"><span class="pre">size</span></tt> The new desired size, in bytes, of the data buffer to be allocated in the <tt class="docutils literal"><span class="pre">UDPpacket</span></tt>.</p>
+<p>Resize a <tt class="docutils literal"><span class="pre">UDPpacket</span></tt>'s data buffer to <tt class="docutils literal"><span class="pre">size</span></tt> bytes. The old data buffer will not be retained, so the new buffer is invalid after this call.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the new size of the data in the packet. If the number returned is less than what you asked for, that's an error.</p>
+<pre class = "listing"><span class="Comment"># resize a UDPpacket to hold 2048 bytes of data</span>
+<span class="Comment"># var packet: ptr UDPpacket</span>
+<span class="Keyword">var</span> <span class="Identifier">newsize</span><span class="Punctuation">:</span> <span class="Identifier">int</span>
 
+<span class="Identifier">newsize</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">resizePacket</span><span class="Punctuation">(</span><span class="Identifier">packet</span><span class="Punctuation">,</span> <span class="DecNumber">2048</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">newsize</span> <span class="Operator">&lt;</span> <span class="DecNumber">2048</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.resizePacket: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Comment"># perhaps do something else since you didn't get the buffer you wanted</span>
+<span class="Keyword">else</span><span class="Punctuation">:</span>
+  <span class="Comment"># do stuff with the resized packet</span></pre>
 
 </dd>
-<dt id="freePacket"><a name="freePacket,ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freePacket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">packet</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_FreePacket&quot;</span><span class="Other">,</span> 
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="freePacket"><a name="freePacket,ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freePacket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">packet</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_FreePacket&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-Free a single UDP packet.
+<p>Free a single UDP packet.</p>
+<p><tt class="docutils literal"><span class="pre">packet</span></tt> A pointer to the <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> to be freed from memory.</p>
+<blockquote><p>Free a <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> from memory. Do not use this <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> after this function is called on it.</p></blockquote>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> nothing, this always succeeds.</p>
+<pre class = "listing"><span class="Comment"># free a UDPpacket</span>
+<span class="Comment"># var packet: ptr UDPpacket</span>
+
+<span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">freePacket</span><span class="Punctuation">(</span><span class="Identifier">packet</span><span class="Punctuation">)</span>
+<span class="Identifier">packet</span> <span class="Operator">=</span> <span class="Keyword">nil</span> <span class="Comment"># just to help you know that it is freed</span></pre>
 
 </dd>
-<dt id="allocPacketV"><a name="allocPacketV,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocPacketV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">howmany</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="allocPacketV"><a name="allocPacketV,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocPacketV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">howmany</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_AllocPacketV&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Allocate a UDP packet vector (array of packets) of <tt class="docutils literal"><span class="pre">howmany</span></tt> packets, each <tt class="docutils literal"><span class="pre">size</span></tt> bytes long.</p>
-<p>A pointer to the first packet in the array is returned, or <cite>nil</cite> if the function ran out of memory.</p>
+<p><tt class="docutils literal"><span class="pre">howmany</span></tt> The number of UDPpackets to allocate.</p>
+<p><tt class="docutils literal"><span class="pre">size</span></tt> Size, in bytes, of the data buffers to be allocated in the new UDPpackets. Zero is invalid.</p>
+<p>Create (via malloc) a vector of new UDPpackets, each with data buffers of <tt class="docutils literal"><span class="pre">size</span></tt> bytes. The new packet vector should be freed using <tt class="docutils literal"><span class="pre">sdl_net.freePacketV()</span></tt> when you are done using it. The returned vector is one entry longer than requested, for a terminating <cite>nil</cite>.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> a pointer to a new empty <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> vector. <cite>nil</cite> is returned on errors, such as out-of-memory.</p>
+<pre class = "listing"><span class="Comment"># create a new UDPpacket vector to hold 1024 bytes of data in 10 packets</span>
+<span class="Keyword">var</span> <span class="Identifier">packetV</span><span class="Punctuation">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span>
 
+<span class="Identifier">packetV</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">allocPacketV</span><span class="Punctuation">(</span><span class="DecNumber">10</span><span class="Punctuation">,</span> <span class="DecNumber">1024</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">packetV</span> <span class="Operator">==</span> <span class="Keyword">nil</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.allocPacketV: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Comment"># perhaps do something else since you can't make this packet</span>
+<span class="Keyword">else</span><span class="Punctuation">:</span>
+  <span class="Comment"># do stuff with this new packet vector</span>
+  <span class="Comment"># sdl_net.freePacketV this packet vector when finished with it</span></pre>
 
 </dd>
-<dt id="freePacketV"><a name="freePacketV,ptr.ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freePacketV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">packetV</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_FreePacketV&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
-<dd>
-Free a UDP packet vector (array of packets).
-
-</dd>
-<dt id="udp_Open"><a name="udp_Open,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udp_Open</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">port</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Open&quot;</span><span class="Other">,</span> 
+<dt id="freePacketV"><a name="freePacketV,ptr.ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freePacketV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">packetV</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_FreePacketV&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<p>Open a UDP network socket.</p>
-<p>If <tt class="docutils literal"><span class="pre">port</span></tt> is non-zero, the UDP socket is bound to a local port.</p>
-<p>The <tt class="docutils literal"><span class="pre">port</span></tt> should be given in native byte order, but is used internally in network (big endian) byte order, in addresses, etc. This allows other systems to send to this socket via a known port.</p>
+<p>Free a UDP packet vector (array of packets).</p>
+<p><tt class="docutils literal"><span class="pre">packetV</span></tt> A pointer to the <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> vector to be freed from memory.</p>
+<blockquote><p>Free a <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> vector from memory. Do not use this <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> vector, or any <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> in it, after this function is called on it.</p></blockquote>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> nothing, this always succeeds.</p>
+<pre class = "listing"><span class="Comment"># free a UDPpacket vector</span>
+<span class="Comment"># var packetV: ptr ptr UDPpacket</span>
 
+<span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">freePacketV</span><span class="Punctuation">(</span><span class="Identifier">packetV</span><span class="Punctuation">)</span>
+<span class="Identifier">packetV</span> <span class="Operator">=</span> <span class="Keyword">nil</span> <span class="Comment"># just to help you know that it is freed</span></pre>
 
 </dd>
-<dt id="udp_SetPacketLoss"><a name="udp_SetPacketLoss,UDPsocket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udp_SetPacketLoss</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">percent</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="udpOpen"><a name="udpOpen,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpOpen</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">port</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Open&quot;</span><span class="Other">,</span>
+                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+<p>Open a UDP network socket.</p>
+<p><tt class="docutils literal"><span class="pre">port</span></tt> This is the port number (in native byte order) on which to receive UDP packets. Most servers will want to use a known port number here so that clients can easily communicate with the server. This can also be zero, which then opens an anonymous unused port number, to most likely be used to send UDP packets from. The <tt class="docutils literal"><span class="pre">port</span></tt> should be given in native byte order, but is used internally in network (big endian) byte order, in addresses, etc. This allows other systems to send to this socket via a known port.</p>
+<p>Open a socket to be used for UDP packet sending and/or receiving. If a non-zero port is given it will be used, otherwise any open port number will be used automatically.</p>
+<p>Unlike TCP sockets, this socket does not require a remote host IP to connect to, this is because UDP ports are never actually connected like TCP ports are. This socket is able to send and receive directly after this simple creation.</p>
+<p><tt class="docutils literal"><span class="pre">Note</span></tt> that below I say server, but clients may also open a specific port, though it is prefered that a client be more flexible, given that the port may be already allocated by another process, such as a server. In such a case you will not be able to open the socket, and your program will be stuck, so it is better to just use whatever port you are given by using a specified port of zero. Then the client will always work. The client can inform the server what port to talk back to, or the server can just look at the source of the packets it is receiving to know where to respond to.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> a valid <tt class="docutils literal"><span class="pre">UDPsocket</span></tt> on success. <cite>nil</cite> is returned on errors, such as when it's not able to create a socket, or it cannot assign the non-zero port as requested.</p>
+<pre class = "listing"><span class="Comment"># create a UDPsocket on port 6666 (server)</span>
+<span class="Keyword">var</span> <span class="Identifier">udpsock</span><span class="Punctuation">:</span> <span class="Identifier">UDPsocket</span>
+
+<span class="Identifier">udpsock</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">udpOpen</span><span class="Punctuation">(</span><span class="DecNumber">6666</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">udpsock</span> <span class="Operator">==</span> <span class="Keyword">nil</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.udpOpen: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Identifier">quit</span><span class="Punctuation">(</span><span class="Identifier">QuitFailure</span><span class="Punctuation">)</span></pre><pre class = "listing"><span class="Comment"># create a UDPsocket on any available port (client)</span>
+<span class="Keyword">var</span> <span class="Identifier">udpsock</span><span class="Punctuation">:</span> <span class="Identifier">UDPsocket</span>
+
+<span class="Identifier">udpsocket</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">udpOpen</span><span class="Punctuation">(</span><span class="DecNumber">0</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">udpsock</span> <span class="Operator">==</span> <span class="Keyword">nil</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.udpOpen: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Identifier">quit</span><span class="Punctuation">(</span><span class="Identifier">QuitFailure</span><span class="Punctuation">)</span></pre>
+
+</dd>
+<dt id="udpSetPacketLoss"><a name="udpSetPacketLoss,UDPsocket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpSetPacketLoss</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">percent</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_SetPacketLoss&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Set the percentage of simulated packet loss for packets sent on the socket.
 
 </dd>
-<dt id="udp_Bind"><a name="udp_Bind,UDPsocket,cint,ptr.IPaddress"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udp_Bind</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">address</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Bind&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="udpBind"><a name="udpBind,UDPsocket,cint,ptr.IPaddress"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpBind</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">address</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Bind&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Bind the address <tt class="docutils literal"><span class="pre">address</span></tt> to the requested channel on the UDP socket.</p>
-<p>If the <tt class="docutils literal"><span class="pre">channel</span></tt> is <cite>-1</cite>, then the first unbound channel that has not yet been bound to the maximum number of addresses will be bound with the given address as it's primary address.</p>
-<p>If the <tt class="docutils literal"><span class="pre">channel</span></tt> is already bound, this new address will be added to the list of valid source addresses for packets arriving on the channel.</p>
-<p>If the <tt class="docutils literal"><span class="pre">channel</span></tt> is not already bound, then the address becomes the primary address, to which all outbound packets on the channel are sent.</p>
-<p>This function returns the channel which was bound, or <cite>-1</cite> on error.</p>
+<p><tt class="docutils literal"><span class="pre">sock</span></tt> the UDPsocket on which to assign the address.</p>
+<p><tt class="docutils literal"><span class="pre">channel</span></tt> The channel to assign address to. This should be less than <cite>sdl_net.MAX_UDPCHANNELS</cite>. If <cite>-1</cite> is used, then the first unbound channel will be used, this should only be used for incomming packet filtering, as it will find the first channel with less than <cite>SDLNET_MAX_UDPADDRESSES</cite> assigned to it and use that one. If the <tt class="docutils literal"><span class="pre">channel</span></tt> is already bound, this new address will be added to the list of valid source addresses for packets arriving on the channel. If the <tt class="docutils literal"><span class="pre">channel</span></tt> is not already bound, then the address becomes the primary address, to which all outbound packets on the channel are sent.</p>
+<p><tt class="docutils literal"><span class="pre">address</span></tt> The resolved <tt class="docutils literal"><span class="pre">IPaddress</span></tt> to assign to the socket's channel. The host and port are both used. It is not helpful to bind <cite>0.0.0.0</cite> to a channel.</p>
+<p>Incoming packets are only allowed from bound addresses for the socket channel. All outgoing packets on that channel, regardless of the packets internal address, will attempt to send once on each bound address on that channel. You may assign up to <cite>sdl_net.MAX_UDPADDRESSES</cite> to each channel.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the channel number that was bound. <cite>-1</cite> is returned on errors, such as no free channels, or this channel has <cite>sdl_net.MAX_UDPADDRESSES</cite> already assigned to it, or you have used a channel higher or equal to <cite>sdl_net.MAX_UDPCHANNELS</cite>, or lower than <cite>-1</cite>.</p>
+<pre class = "listing"><span class="Comment"># Bind address to the first free channel</span>
+<span class="Comment"># var udpsock: UDPsocket</span>
+<span class="Comment"># var address: IPaddress</span>
+<span class="Keyword">var</span> <span class="Identifier">channel</span><span class="Punctuation">:</span> <span class="Identifier">int</span>
 
+<span class="Identifier">channel</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">udpBind</span><span class="Punctuation">(</span><span class="Identifier">udpsock</span><span class="Punctuation">,</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">,</span> <span class="Identifier">address</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">channel</span> <span class="Operator">==</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.udpBind: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Comment"># do something because we failed to bind</span></pre>
 
 </dd>
-<dt id="udp_Unbind"><a name="udp_Unbind,UDPsocket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udp_Unbind</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Unbind&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="udpUnbind"><a name="udpUnbind,UDPsocket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpUnbind</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Unbind&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-Unbind all addresses from the given channel.
+<p>Unbind all addresses from the given channel.</p>
+<p><tt class="docutils literal"><span class="pre">sock</span></tt> A valid <tt class="docutils literal"><span class="pre">UDPsocket</span></tt> to unbind addresses from.</p>
+<p><tt class="docutils literal"><span class="pre">channel</span></tt> The channel to unbind the addresses from in the <tt class="docutils literal"><span class="pre">UDPsocket</span></tt>.</p>
+<blockquote><p>This removes all previously assigned (bound) addresses from a socket channel. After this you may bind new addresses to the socket channel.</p></blockquote>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> nothing, this always succeeds.</p>
+<pre class = "listing"><span class="Comment"># unbind all addresses on the UDPsocket channel 0</span>
+<span class="Comment"># var udpsock: UDPsocket</span>
+
+<span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">udpUnbind</span><span class="Punctuation">(</span><span class="Identifier">udpsock</span><span class="Punctuation">,</span> <span class="DecNumber">0</span><span class="Punctuation">)</span></pre>
 
 </dd>
-<dt id="udp_GetPeerAddress"><a name="udp_GetPeerAddress,UDPsocket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udp_GetPeerAddress</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="udpGetPeerAddress"><a name="udpGetPeerAddress,UDPsocket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpGetPeerAddress</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_GetPeerAddress&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the primary IP address of the remote system associated with the <tt class="docutils literal"><span class="pre">socket</span></tt> and <tt class="docutils literal"><span class="pre">channel</span></tt>.</p>
-<p>If the <tt class="docutils literal"><span class="pre">channel</span></tt> is <cite>-1</cite>, then the primary IP port of the UDP socket is returned -- this is only meaningful for sockets opened with a specific port.</p>
-<p>If the <tt class="docutils literal"><span class="pre">channel</span></tt> is not bound and not <cite>-1</cite>, this function returns <cite>nil</cite>.</p>
+<p><tt class="docutils literal"><span class="pre">sock</span></tt> A valid <tt class="docutils literal"><span class="pre">UDPsocket</span></tt> that probably has an address assigned to the channel.</p>
+<p><tt class="docutils literal"><span class="pre">channel</span></tt> The channel to get the primary address from in the socket. If the <tt class="docutils literal"><span class="pre">channel</span></tt> is <cite>-1</cite>, then the primary IP port of the UDP socket is returned - this is only meaningful for sockets opened with a specific port.</p>
+<p>Get the primary address assigned to this channel. Only the first bound address is returned. When channel is <cite>-1</cite>, get the port that this socket is bound to on the local computer, this only means something if you opened the socket with a specific port number. Do not free the returned <tt class="docutils literal"><span class="pre">IPaddress</span></tt> pointer.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> a pointer to an <tt class="docutils literal"><span class="pre">IPaddress</span></tt>. <cite>nil</cite> is returned for unbound channels and on any errors.</p>
+<pre class = "listing"><span class="Comment"># get the primary address bound to UDPsocket channel 0</span>
+<span class="Comment"># var udpsock: UDPsocket</span>
+<span class="Keyword">var</span> <span class="Identifier">address</span><span class="Punctuation">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span>
 
+<span class="Identifier">address</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">udpGetPeerAddress</span><span class="Punctuation">(</span><span class="Identifier">udpsock</span><span class="Punctuation">,</span> <span class="DecNumber">0</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">address</span> <span class="Operator">==</span> <span class="Keyword">nil</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.udpGetPeerAddress: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Comment"># do something because we failed to get the address</span>
+<span class="Keyword">else</span><span class="Punctuation">:</span>
+  <span class="Comment"># perhaps print out address.host and address.port</span></pre>
 
 </dd>
-<dt id="udp_SendV"><a name="udp_SendV,UDPsocket,ptr.ptr.UDPpacket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udp_SendV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">packets</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">;</span> <span class="Identifier">npackets</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_SendV&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="udpSendV"><a name="udpSendV,UDPsocket,ptr.ptr.UDPpacket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpSendV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">packets</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">;</span> <span class="Identifier">npackets</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_SendV&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Send a vector of packets to the the channels specified within the packet.</p>
-<p>If the channel specified in the packet is <cite>-1</cite>, the packet will be sent to the address in the <tt class="docutils literal"><span class="pre">src</span></tt> member of the packet.</p>
+<p><tt class="docutils literal"><span class="pre">sock</span></tt> A valid <tt class="docutils literal"><span class="pre">UDPsocket</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">packetV</span></tt> The vector of packets to send.</p>
+<p><tt class="docutils literal"><span class="pre">npackets</span></tt> number of packets in the <tt class="docutils literal"><span class="pre">packetV</span></tt> vector to send.</p>
+<p>Send <tt class="docutils literal"><span class="pre">npackets</span></tt> of <tt class="docutils literal"><span class="pre">packetV</span></tt> using the specified <tt class="docutils literal"><span class="pre">sock</span></tt> socket.</p>
+<p>Each packet is sent in the same way as in <tt class="docutils literal"><span class="pre">sdl_net.udpSend()</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> Don't forget to set the length of the packets in the <tt class="docutils literal"><span class="pre">len</span></tt> element of the <tt class="docutils literal"><span class="pre">packets</span></tt> you are sending!</p>
+<p>If the channel specified in the packet is <cite>-1</cite>, the packet will be sent to the address in the <tt class="docutils literal"><span class="pre">src</span></tt> member of the <tt class="docutils literal"><span class="pre">packet</span></tt>.</p>
 <p>Each packet will be updated with the status of the packet after it has been sent, <cite>-1</cite> if the packet send failed.</p>
-<p>This function returns the number of packets sent.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of destinations sent to that worked, for each packet in the vector, all summed up. <cite>0</cite> is returned on errors.</p>
+<pre class = "listing"><span class="Comment"># send a vector of 10 packets using UDPsocket</span>
+<span class="Comment"># var udpsock: UDPsocket</span>
+<span class="Comment"># var packetV: ptr ptr UDPpacket</span>
+<span class="Keyword">var</span> <span class="Identifier">numsent</span><span class="Punctuation">:</span> <span class="Identifier">int</span>
 
+<span class="Identifier">numsent</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">udpSendV</span><span class="Punctuation">(</span><span class="Identifier">udpsock</span><span class="Punctuation">,</span> <span class="Identifier">packetV</span><span class="Punctuation">,</span> <span class="DecNumber">10</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">numsent</span> <span class="Operator">==</span> <span class="DecNumber">0</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.udpSendV: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Comment"># do something because we failed to send</span>
+  <span class="Comment"># this may just be because no addresses are bound to the channels...</span></pre>
 
 </dd>
-<dt id="udp_Send"><a name="udp_Send,UDPsocket,cint,ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udp_Send</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">packet</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Send&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="udpSend"><a name="udpSend,UDPsocket,cint,ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpSend</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">packet</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Send&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Send a single <tt class="docutils literal"><span class="pre">packet</span></tt> to the specified <tt class="docutils literal"><span class="pre">channel</span></tt>.</p>
-<p>If the channel specified in the packet is <cite>-1</cite>, the packet will be sent to the address in the <tt class="docutils literal"><span class="pre">src</span></tt> member of the packet.</p>
-<p>The packet will be updated with the status of the packet after it has been sent.</p>
-<p>This function returns <cite>1</cite> if the packet was sent, or <cite>0</cite> on error.</p>
-<p><tt class="docutils literal"><span class="pre">Note:</span></tt> The maximum size of the packet is limited by the MTU (Maximum Transfer Unit) of the transport medium.  It can be as low as <cite>250</cite> bytes for some PPP links, and as high as <cite>1500</cite> bytes for ethernet.</p>
+<p><tt class="docutils literal"><span class="pre">sock</span></tt> A valid <tt class="docutils literal"><span class="pre">UDPsocket</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">channel</span></tt> What channel to sent packet on.</p>
+<p><tt class="docutils literal"><span class="pre">packet</span></tt> The packet to send.</p>
+<p>Send <tt class="docutils literal"><span class="pre">packet</span></tt> using the specified socket <tt class="docutils literal"><span class="pre">sock</span></tt>, using the specified <tt class="docutils literal"><span class="pre">channel</span></tt> or else the <tt class="docutils literal"><span class="pre">packet</span></tt>'s address.</p>
+<p>If <tt class="docutils literal"><span class="pre">channel</span></tt> is not <cite>-1</cite> then the packet is sent to all the <tt class="docutils literal"><span class="pre">socket</span></tt> channels bound addresses. If socket <tt class="docutils literal"><span class="pre">sock</span></tt>'s channel is not bound to any destinations, then the packet is not sent at all!</p>
+<p>If the channel is <cite>-1</cite>, then the <tt class="docutils literal"><span class="pre">packet</span></tt>'s address is used as the destination.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> Don't forget to set the length of the packet in the <tt class="docutils literal"><span class="pre">len</span></tt> element of the <tt class="docutils literal"><span class="pre">packet</span></tt> you are sending!</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> The <tt class="docutils literal"><span class="pre">packet.channel</span></tt> will be set to the channel passed in to this function.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> The maximum size of the packet is limited by the MTU (Maximum Transfer Unit) of the transport medium. It can be as low as <cite>250</cite> bytes for some PPP links, and as high as <cite>1500</cite> bytes for ethernet. Beyond that limit the packet will fragment, and make delivery more and more unreliable as lost fragments cause the whole packet to be discarded.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> The number of destinations sent to that worked. <cite>0</cite> is returned on errors.</p>
+<p><tt class="docutils literal"><span class="pre">Note</span></tt> that since a channel can point to multiple destinations, there should be just as many packets sent, so dont assume it will always return <cite>1</cite> on success. Unfortunately there's no way to get the number of destinations bound to a channel, so either you have to remember the number bound, or just test for the zero return value indicating all channels failed.</p>
+<pre class = "listing"><span class="Comment"># send a packet using a UDPsocket,</span>
+<span class="Comment"># using the packet's channel as the channel</span>
+<span class="Comment"># var udpsock: UDPsocket</span>
+<span class="Comment"># var packet: ptr UDPpacket</span>
+<span class="Keyword">var</span> <span class="Identifier">numsent</span><span class="Punctuation">:</span> <span class="Identifier">int</span>
 
+<span class="Identifier">numsent</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">udpSend</span><span class="Punctuation">(</span><span class="Identifier">udpsock</span><span class="Punctuation">,</span> <span class="Identifier">packet</span><span class="Operator">.</span><span class="Identifier">channel</span><span class="Punctuation">,</span> <span class="Identifier">packet</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">numsent</span> <span class="Operator">==</span> <span class="DecNumber">0</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.udpSend: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Comment"># do something because we failed to send</span>
+  <span class="Comment"># this may just be because no addresses are bound to the channel...</span></pre><p>Here's a way of sending one packet using it's internal channel setting. This is actually what <tt class="docutils literal"><span class="pre">sdl_net.udpSend()</span></tt> ends up calling for you.</p>
+<pre class = "listing"><span class="Comment"># send a packet using a UDPsocket,</span>
+<span class="Comment"># using the packet's channel as the channel</span>
+<span class="Comment"># var udpsock: UDPsocket</span>
+<span class="Comment"># var packet: ptr UDPpacket</span>
+<span class="Keyword">var</span> <span class="Identifier">numsent</span><span class="Punctuation">:</span> <span class="Identifier">int</span>
+
+<span class="Identifier">numsent</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">udpSendV</span><span class="Punctuation">(</span><span class="Identifier">sock</span><span class="Punctuation">,</span> <span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">packet</span><span class="Punctuation">)</span><span class="Punctuation">,</span> <span class="DecNumber">1</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">nusment</span> <span class="Operator">==</span> <span class="DecNumber">0</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.udpSendV: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Comment"># do something because we failed to send</span>
+  <span class="Comment"># this may just be because no addresses are bound to the channel...</span></pre>
 
 </dd>
-<dt id="udp_RecvV"><a name="udp_RecvV,UDPsocket,ptr.ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udp_RecvV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">packets</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="udpRecvV"><a name="udpRecvV,UDPsocket,ptr.ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpRecvV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">packets</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_RecvV&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Receive a vector of pending packets from the UDP socket.</p>
+<p><tt class="docutils literal"><span class="pre">sock</span></tt> A valid <tt class="docutils literal"><span class="pre">UDPsocket</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">packet</span></tt> The packet to receive into.</p>
+<p>Receive into a packet vector on the specified socket <tt class="docutils literal"><span class="pre">sock</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">packetV</span></tt> is a <cite>nil</cite> terminated array. Packets will be received until the <cite>nil</cite> is reached, or there are none ready to be received.</p>
+<p>This call is otherwise the same as <tt class="docutils literal"><span class="pre">sdl_net.udpRecv()</span></tt>.</p>
 <p>The returned packets contain the source address and the channel they arrived on.  If they did not arrive on a bound channel, the the channel will be set to <cite>-1</cite>.</p>
 <p>The channels are checked in highest to lowest order, so if an address is bound to multiple channels, the highest channel with the source address bound will be returned.</p>
-<p>This function returns the number of packets read from the network, or <cite>-1</cite> on error.</p>
 <p>This function does not block, so can return <cite>0</cite> packets pending.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of packets received. <cite>0</cite> is returned when no packets are received. <cite>-1</cite> is returned on errors.</p>
+<pre class = "listing"><span class="Comment"># try to receive some waiting udp packets</span>
+<span class="Comment"># var udpsock: UDPsocket</span>
+<span class="Comment"># var packetV: ptr ptr UDPpacket</span>
+<span class="Keyword">var</span> <span class="Identifier">numrecv</span><span class="Punctuation">,</span> <span class="Identifier">i</span><span class="Punctuation">:</span> <span class="Identifier">int</span>
 
+<span class="Identifier">numrecv</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">udpRecvV</span><span class="Punctuation">(</span><span class="Identifier">udpsock</span><span class="Punctuation">,</span> <span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">packetV</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">numrecv</span> <span class="Operator">==</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">:</span>
+  <span class="Comment"># handle error, perhaps just print out the sdl_net.getError string.</span>
+
+<span class="Keyword">for</span> <span class="Identifier">i</span> <span class="Keyword">in</span> <span class="FloatNumber">0.</span><span class="Operator">.</span><span class="Identifier">numrecv</span><span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">:</span>
+  <span class="Comment"># do something with packetV[i]</span></pre>
 
 </dd>
-<dt id="udp_Recv"><a name="udp_Recv,UDPsocket,ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udp_Recv</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">packet</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="udpRecv"><a name="udpRecv,UDPsocket,ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpRecv</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">packet</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Recv&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Receive a single packet from the UDP socket.</p>
-<p>The returned packet contains the source address and the channel it arrived on. If it did not arrive on a bound channel, the the channel will be set to <cite>-1</cite>.</p>
-<p>The channels are checked in highest to lowest order, so if an address is bound to multiple channels, the highest channel with the source address bound will be returned.</p>
-<p>This function returns the number of packets read from the network, or <cite>-1</cite> on error.</p>
-<p>This function does not block, so can return <cite>0</cite> packets pending.</p>
+<p><tt class="docutils literal"><span class="pre">sock</span></tt> A valid <tt class="docutils literal"><span class="pre">UDPsocket</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">packet</span></tt> The packet to receive into.</p>
+<p>Receive a packet on the specified sock socket.</p>
+<p>The <tt class="docutils literal"><span class="pre">packet</span></tt> you pass in must have enough of a data size allocated for the incoming packet data to fit into. This means you should have knowledge of your size needs before trying to receive UDP packets. The packet will have it's address set to the remote sender's address.</p>
+<p>The <tt class="docutils literal"><span class="pre">socket</span></tt>'s channels are checked in highest to lowest order, so if an address is bound to multiple channels, the highest channel with the source address bound will be retreived before the lower bound channels. So, the packets channel will also be set to the highest numbered channel that has the remote address and port assigned to it. Otherwise the channel will <cite>-1</cite>, which you can filter out easily if you want to ignore unbound source address.</p>
+<p><tt class="docutils literal"><span class="pre">Note</span></tt> that the local and remote channel numbers do not have to, and probably won't, match, as they are only local settings, they are not sent in the packet.</p>
+<p>This is a non-blocking call, meaning if there's no data ready to be received the function will return.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite> is returned when a packet is received. <cite>0</cite> is returned when no packets are received. <cite>-1</cite> is returned on errors.</p>
+<pre class = "listing"><span class="Comment"># try to receive a waiting udp packet</span>
+<span class="Comment"># var udpsock: UDPsocket</span>
+<span class="Keyword">var</span>
+  <span class="Identifier">packet</span><span class="Punctuation">:</span> <span class="Identifier">UDPpacket</span>
+  <span class="Identifier">numrecv</span><span class="Punctuation">:</span> <span class="Identifier">int</span>
 
+<span class="Identifier">numrecv</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">udpRecv</span><span class="Punctuation">(</span><span class="Identifier">udpsock</span><span class="Punctuation">,</span> <span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">packet</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">numrecv</span> <span class="Operator">&gt;</span> <span class="DecNumber">0</span><span class="Punctuation">:</span>
+  <span class="Comment"># do something with packet</span></pre>
 
 </dd>
-<dt id="udp_Close"><a name="udp_Close,UDPsocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udp_Close</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Close&quot;</span><span class="Other">,</span> 
-                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="udpClose"><a name="udpClose,UDPsocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpClose</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Close&quot;</span><span class="Other">,</span>
+                               <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-Close a UDP network socket.
+<p>Close a UDP network socket.</p>
+<p><tt class="docutils literal"><span class="pre">sock</span></tt> A valid <tt class="docutils literal"><span class="pre">UDPsocket</span></tt> to shutdown, close, and free.</p>
+<p>Shutdown, close, and free a <tt class="docutils literal"><span class="pre">UDPsocket</span></tt>. Don't use the <tt class="docutils literal"><span class="pre">UDPsocket</span></tt> after calling this, except to open a new one.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> nothing, this always succeeds.</p>
+<pre class = "listing"><span class="Comment"># var udpsock: UDPsocket</span>
+
+<span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">udpClose</span><span class="Punctuation">(</span><span class="Identifier">udpsock</span><span class="Punctuation">)</span>
+<span class="Identifier">udpsock</span> <span class="Operator">=</span> <span class="Keyword">nil</span> <span class="Comment"># this helps us know that this</span>
+              <span class="Comment"># UDPsocket is not valid anymore</span></pre>
 
 </dd>
-<dt id="allocSocketSet"><a name="allocSocketSet,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocSocketSet</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">maxsockets</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">SocketSet</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="allocSocketSet"><a name="allocSocketSet,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocSocketSet</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">maxsockets</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">SocketSet</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_AllocSocketSet&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<p>Allocate a socket set for use with <tt class="docutils literal"><span class="pre">checkSockets()</span></tt>.</p>
-<p>This returns a socket set for up to <tt class="docutils literal"><span class="pre">maxsockets</span></tt> sockets, or <cite>nil</cite> if the function ran out of memory.</p>
+<p>Allocate a socket set for use with <tt class="docutils literal"><span class="pre">sdl_net.checkSockets()</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">maxsockets</span></tt> The maximum number of sockets you will want to watch.</p>
+<p>Create a socket set that will be able to watch up to maxsockets number of sockets. The same socket set can be used for both UDP and TCP sockets.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> A new, empty, <tt class="docutils literal"><span class="pre">SocketSet</span></tt>. <cite>nil</cite> is returned on errors, such as out-of-memory.</p>
+<pre class = "listing"><span class="Comment"># create a socket set to handle up to 16 sockets</span>
+<span class="Keyword">var</span> <span class="Identifier">sset</span><span class="Punctuation">:</span> <span class="Identifier">SocketSet</span>
 
+<span class="Identifier">sset</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">allocSocketSet</span><span class="Punctuation">(</span><span class="DecNumber">16</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">sset</span> <span class="Operator">==</span> <span class="Keyword">nil</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.allocSocketSet: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Identifier">quit</span><span class="Punctuation">(</span><span class="Identifier">QuitFailure</span><span class="Punctuation">)</span> <span class="Comment"># most of the time this is a major error,</span>
+                    <span class="Comment"># but do what you want</span></pre>
 
 </dd>
-<dt id="addSocket"><a name="addSocket,SocketSet,GenericSocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">addSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">GenericSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="addSocket"><a name="addSocket,SocketSet,GenericSocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">addSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">GenericSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_AddSocket&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Add a socket to a set of sockets to be checked for available data.</p>
+<p><tt class="docutils literal"><span class="pre">set</span></tt> The socket set to add this socket to.</p>
+<p><tt class="docutils literal"><span class="pre">sock</span></tt> The socket to add to the socket set.</p>
+<blockquote><p><p>Add a socket to a socket set that will be watched.</p>
+<p>TCP and UDP sockets should be added using the corrosponding template (as in sdl_net.tcpAddSocket for a TCP socket). The generic socket function will be called by the TCP and UDP templates. Both TCP and UDP sockets may be added to the same socket set. TCP clients and servers may all be in the same socket set. There is no limitation on the sockets in the socket set, other than they have been opened.</p>
+</p></blockquote>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of sockets used in the set on success. <cite>-1</cite> is returned on errors.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">tcp_AddSocket()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">udp_AddSocket()</span></tt></p>
+<pre class = "listing"><span class="Comment"># add two sockets to a socket set</span>
+<span class="Comment"># var sset: SocketSet</span>
+<span class="Comment"># var udpsock: UDPsocket</span>
+<span class="Comment"># var tcpsock: TCPsocket</span>
+<span class="Keyword">var</span> <span class="Identifier">numused</span><span class="Punctuation">:</span> <span class="Identifier">int</span>
 
+<span class="Identifier">numused</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">udpAddSocket</span><span class="Punctuation">(</span><span class="Identifier">sset</span><span class="Punctuation">,</span> <span class="Identifier">udpsock</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">numused</span> <span class="Operator">==</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.addSocket: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Comment"># perhaps you need to restart the set and make it bigger..</span>
+
+<span class="Identifier">numused</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">udpAddSocket</span><span class="Punctuation">(</span><span class="Identifier">sset</span><span class="Punctuation">,</span> <span class="Identifier">tcpsock</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">numused</span> <span class="Operator">==</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.addSocket: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Comment"># perhaps you need to restart the set and make it bigger...</span></pre>
 
 </dd>
-<dt id="delSocket"><a name="delSocket,SocketSet,GenericSocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">delSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">GenericSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="delSocket"><a name="delSocket,SocketSet,GenericSocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">delSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">GenericSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_DelSocket&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Remove a socket from a set of sockets to be checked for available data.</p>
+<p><tt class="docutils literal"><span class="pre">sset</span></tt> The socket set to remove this socket from.</p>
+<p><tt class="docutils literal"><span class="pre">sock</span></tt> The socket to remove from the socket set.</p>
+<blockquote><p><p>Remove a socket from a socket set.</p>
+<p>Use this before closing a socket that you are watching with a socket set. This doesn't close the socket. Call the appropriate template for TCP or UDP sockets. The generic socket procedure will be called by the TCP and UDP macros.</p>
+</p></blockquote>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of sockets used in the set on success. <cite>-1</cite> is returned on errors.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">tcp_DelSocket()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">udp_DelSocket()</span></tt></p>
+<pre class = "listing"><span class="Comment"># remove two sockets from a socket set</span>
+<span class="Comment"># var sset: SocketSet</span>
+<span class="Comment"># udpsock: UDPsocket</span>
+<span class="Comment"># tcpsock: TCPsocket</span>
+<span class="Keyword">var</span> <span class="Identifier">numused</span><span class="Punctuation">:</span> <span class="Identifier">int</span>
 
+<span class="Identifier">numused</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">udpDelSocket</span><span class="Punctuation">(</span><span class="Identifier">sset</span><span class="Punctuation">,</span> <span class="Identifier">udpsock</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">numused</span> <span class="Operator">==</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.delSocket: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+
+<span class="Identifier">numused</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">tcpDelSocket</span><span class="Punctuation">(</span><span class="Identifier">sset</span><span class="Punctuation">,</span> <span class="Identifier">tcpsock</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">numused</span> <span class="Operator">==</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.delSocket: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Comment"># perhaps the socket is not in the set</span></pre>
 
 </dd>
-<dt id="checkSockets"><a name="checkSockets,SocketSet,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">checkSockets</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">timeout</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="checkSockets"><a name="checkSockets,SocketSet,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">checkSockets</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">timeout</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_CheckSockets&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<p>This function checks to see if data is available for reading on the given set of sockets.</p>
-<p>If <tt class="docutils literal"><span class="pre">timeout</span></tt> is <cite>0</cite>, it performs a quick poll, otherwise the function returns when either data is available for reading, or the timeout in milliseconds has elapsed, which ever occurs first.</p>
-<p>This function returns the number of sockets ready for reading, or <cite>-1</cite> if there was an error with the <tt class="docutils literal"><span class="pre">select()</span></tt> system call.</p>
+<p>This procedure checks to see if data is available for reading on the given set of sockets.</p>
+<p><tt class="docutils literal"><span class="pre">set</span></tt> The socket set to check.</p>
+<p><tt class="docutils literal"><span class="pre">timeout</span></tt> The amount of time (in milliseconds). <cite>0</cite> means no waiting. <cite>-1</cite> means to wait over 49 days! (think about it)</p>
+<p>Check all sockets in the socket set for activity. If a non-zero <tt class="docutils literal"><span class="pre">timeout</span></tt> is given then this procedure will wait for activity, or else it will wait for <tt class="docutils literal"><span class="pre">timeout</span></tt> milliseconds.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> &quot;activity&quot; also includes disconnections and other errors, which would be determined by a failed read/write attempt.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of sockets with activity. <cite>-1</cite> is returned on errors, and you may not get a meaningful error message. <cite>-1</cite> is also returned for an empty set (nothing to check).</p>
+<pre class = "listing"><span class="Comment"># wait for up to 1 second for network activity</span>
+<span class="Comment"># var sset: SocketSet</span>
+<span class="Keyword">var</span> <span class="Identifier">numready</span><span class="Punctuation">:</span> <span class="Identifier">int</span>
 
+<span class="Identifier">numready</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">checkSockets</span><span class="Punctuation">(</span><span class="Identifier">sset</span><span class="Punctuation">,</span> <span class="DecNumber">1000</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">numready</span> <span class="Operator">==</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.checkSockets: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Comment"># most of the time this is a system error</span>
+<span class="Keyword">else</span><span class="Punctuation">:</span>
+  <span class="Keyword">if</span> <span class="Identifier">numready</span> <span class="Operator">&gt;</span> <span class="DecNumber">0</span><span class="Punctuation">:</span>
+    <span class="Identifier">echo</span> <span class="StringLit">&quot;There are &quot;</span><span class="Punctuation">,</span> <span class="Identifier">numready</span><span class="Punctuation">,</span> <span class="StringLit">&quot; sockets with activity!&quot;</span>
+    <span class="Comment"># check all sockets with sdl_net.socketReady</span>
+    <span class="Comment"># and handle the active ones.</span></pre>
 
 </dd>
-<dt id="freeSocketSet"><a name="freeSocketSet,SocketSet"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freeSocketSet</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_FreeSocketSet&quot;</span><span class="Other">,</span> 
-                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="socketReady"><a name="socketReady,GenericSocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">socketReady</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">GenericSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">inline</span><span class="Other">.}</span></pre></dt>
 <dd>
-Free a set of sockets allocated by <tt class="docutils literal"><span class="pre">allocSocketSet()</span></tt>.
+<p>Check whether a socket has been marked as active.</p>
+<p><tt class="docutils literal"><span class="pre">sock</span></tt> The socket to check for activity. Both <tt class="docutils literal"><span class="pre">UDPsocket</span></tt> and <tt class="docutils literal"><span class="pre">TCPsocket</span></tt> can be used with this function.</p>
+<p>This procedure should only be used on a socket in a socket set, and that set has to have had <tt class="docutils literal"><span class="pre">sdl_net.CheckSockets()</span></tt> called upon it.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> non-zero for activity. <cite>0</cite> is returned for no activity.</p>
+<pre class = "listing"><span class="Comment"># wait forever for a connection attempt</span>
+<span class="Comment"># var sset: SocketSet</span>
+<span class="Comment"># var serversock, client: TCPsocket</span>
+<span class="Keyword">var</span> <span class="Identifier">numready</span><span class="Punctuation">:</span> <span class="Identifier">int</span>
+
+<span class="Identifier">numready</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">checkSockets</span><span class="Punctuation">(</span><span class="Identifier">sset</span><span class="Punctuation">,</span> <span class="DecNumber">1000</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">numready</span> <span class="Operator">==</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.checkSockets: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Comment"># most of the time this is a system error</span>
+<span class="Keyword">elif</span> <span class="Identifier">numready</span> <span class="Operator">&gt;</span> <span class="DecNumber">0</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;There are &quot;</span><span class="Punctuation">,</span> <span class="Identifier">numready</span><span class="Punctuation">,</span> <span class="StringLit">&quot; sockets with activity!&quot;</span>
+  <span class="Comment"># check all sockets with sdl_net.socketReady</span>
+  <span class="Comment"># and hanlde the active ones.</span>
+  <span class="Keyword">if</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">socketReady</span><span class="Punctuation">(</span><span class="Identifier">serversock</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+    <span class="Identifier">client</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">tcpAccept</span><span class="Punctuation">(</span><span class="Identifier">serversock</span><span class="Punctuation">)</span>
+    <span class="Keyword">if</span> <span class="Identifier">client</span><span class="Punctuation">:</span>
+      <span class="Comment"># play with the client.</span></pre><p>To just quickly do network handling with no waiting, we do this.</p>
+<pre class = "listing"><span class="Comment"># check for, and handle UDP data</span>
+<span class="Comment"># var sset: SocketSet</span>
+<span class="Comment"># udpsock: UDPsocket</span>
+<span class="Comment"># packet: ptr UDPpacket</span>
+<span class="Keyword">var</span> <span class="Identifier">numready</span><span class="Punctuation">,</span> <span class="Identifier">numpkts</span><span class="Punctuation">:</span> <span class="Identifier">int</span>
+
+<span class="Identifier">numready</span> <span class="Operator">=</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">checkSockets</span><span class="Punctuation">(</span><span class="Identifier">sset</span><span class="Punctuation">,</span> <span class="DecNumber">0</span><span class="Punctuation">)</span>
+<span class="Keyword">if</span> <span class="Identifier">numready</span> <span class="Operator">==</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;sdl_net.checkSockets: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">getError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+  <span class="Comment"># most of the time this is a system error</span>
+<span class="Keyword">elif</span> <span class="Identifier">numready</span> <span class="Operator">&gt;</span> <span class="DecNumber">0</span><span class="Punctuation">:</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;There are &quot;</span><span class="Punctuation">,</span> <span class="Identifier">numready</span><span class="Punctuation">,</span> <span class="StringLit">&quot; sockets with activity!&quot;</span>
+  <span class="Comment"># check all sockets with sdl_net.socketReady</span>
+  <span class="Comment"># and handle the active ones.</span>
+  <span class="Keyword">if</span> <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">udpRecv</span><span class="Punctuation">(</span><span class="Identifier">udpsock</span><span class="Punctuation">,</span> <span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">packet</span><span class="Punctuation">)</span>
+  <span class="Keyword">if</span> <span class="Identifier">numpkts</span> <span class="Operator">&gt;</span> <span class="DecNumber">0</span><span class="Punctuation">:</span>
+    <span class="Comment"># process the packet.</span></pre>
 
 </dd>
-<dt id="setError"><a name="setError,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setError</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_SetError&quot;</span><span class="Other">,</span> 
-                               <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="freeSocketSet"><a name="freeSocketSet,SocketSet"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freeSocketSet</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_FreeSocketSet&quot;</span><span class="Other">,</span>
+                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
+<p>Free a set of sockets allocated by <tt class="docutils literal"><span class="pre">allocSocketSet()</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">set</span></tt> The socket set to free from memory.</p>
+<p>Free the socket set from memory.</p>
+<p>Do not reference the <tt class="docutils literal"><span class="pre">set</span></tt> after this call, except to allocate a new one.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> nothing, this call always succeeds.</p>
+<pre class = "listing"><span class="Comment"># free a socket set</span>
+<span class="Comment"># var set: SocketSet</span>
 
+<span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">freeSocketSet</span><span class="Punctuation">(</span><span class="Identifier">set</span><span class="Punctuation">)</span>
+<span class="Identifier">set</span> <span class="Operator">=</span> <span class="Keyword">nil</span> <span class="Comment"># this helps us remember that this set is not allocated</span></pre>
 
 </dd>
-<dt id="getError"><a name="getError,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getError</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_GetError&quot;</span><span class="Other">,</span> 
+<dt id="setError"><a name="setError,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setError</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_SetError&quot;</span><span class="Other">,</span>
                             <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="getError"><a name="getError,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getError</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_GetError&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
@@ -1726,59 +2135,62 @@ Free a set of sockets allocated by <tt class="docutils literal"><span class="pre
 <div class="section" id="18">
 <h1><a class="toc-backref" href="#18">Templates</a></h1>
 <dl class="item">
-<dt id="tcp_AddSocket"><a name="tcp_AddSocket.t,SocketSet,TCPsocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">tcp_AddSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<dt id="tcpAddSocket"><a name="tcpAddSocket.t,SocketSet,TCPsocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">tcpAddSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="udp_AddSocket"><a name="udp_AddSocket.t,SocketSet,UDPsocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">udp_AddSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<dt id="udpAddSocket"><a name="udpAddSocket.t,SocketSet,UDPsocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">udpAddSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="tcp_DelSocket"><a name="tcp_DelSocket.t,SocketSet,TCPsocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">tcp_DelSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<dt id="tcpDelSocket"><a name="tcpDelSocket.t,SocketSet,TCPsocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">tcpDelSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="udp_DelSocket"><a name="udp_DelSocket.t,SocketSet,UDPsocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">udp_DelSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<dt id="udpDelSocket"><a name="udpDelSocket.t,SocketSet,UDPsocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">udpDelSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="socketReady"><a name="socketReady.t,GenericSocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">socketReady</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">GenericSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<dt id="write16"><a name="write16.t,uint16,pointer"></a><pre><span class="Keyword">template</span> <span class="Identifier">write16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">area</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span></pre></dt>
 <dd>
+<p>
+Write a 16-bit value to network packet buffer.</p>
+<p><tt class="docutils literal"><span class="pre">value</span></tt> The 16bit number to put into the area buffer.</p>
+<p><tt class="docutils literal"><span class="pre">area</span></tt> The pointer into a data buffer, at which to put the number.</p>
+<p>Put the 16bit (a short on 32bit systems) value into the data buffer area in network byte order. This helps avoid byte order differences between two systems that are talking over the network. The value can be a signed number, the unsigned parameter type doesn't affect the data. The area pointer need not be at the beginning of a buffer, but must have at least 2 bytes of space left, including the byte currently pointed at.</p>
 
 
 </dd>
-<dt id="socketReady"><a name="socketReady.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">socketReady</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<dt id="write32"><a name="write32.t,uint32,pointer"></a><pre><span class="Keyword">template</span> <span class="Identifier">write32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">area</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span></pre></dt>
 <dd>
+<p>
+Write a 32-bit value to network packet buffer.</p>
+<p><tt class="docutils literal"><span class="pre">value</span></tt> The 32bit number to put into the area buffer.</p>
+<p><tt class="docutils literal"><span class="pre">area</span></tt> The pointer into a data buffer, at which to put the number.</p>
+<p>Put the 32bit (a long on 32bit systems) value into the data buffer area in network byte order. This helps avoid byte order differences between two systems that are talking over the network. The value can be a signed number, the unsigned parameter type doesn't affect the data. The area pointer need not be at the beginning of a buffer, but must have at least 4 bytes of space left, including the byte currently pointed at.</p>
 
-After calling <tt class="docutils literal"><span class="pre">checkSockets()</span></tt>, you can use this template on a socket that was in the socket set, to find out if data is available for reading.
 
 </dd>
-<dt id="write16"><a name="write16.t,expr,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">write16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">value</span><span class="Other">,</span> <span class="Identifier">areap</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
+<dt id="read16"><a name="read16.t,pointer"></a><pre><span class="Keyword">template</span> <span class="Identifier">read16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">area</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span></pre></dt>
 <dd>
+<p>
+Read a 16-bit value from network packet buffer.</p>
+<p><tt class="docutils literal"><span class="pre">area</span></tt> The pointer into a data buffer, at which to get the number from.</p>
+<p>Get a 16bit (a short on 32bit systems) value from the data buffer area which is in network byte order. This helps avoid byte order differences between two systems that are talking over the network. The returned value can be a signed number, the unsigned parameter type doesn't affect the data. The area pointer need not be at the beginning of a buffer, but must have at least 2 bytes of space left, including the byte currently pointed at.</p>
 
-Write a 16-bit value to network packet buffer.
 
 </dd>
-<dt id="write32"><a name="write32.t,expr,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">write32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">value</span><span class="Other">,</span> <span class="Identifier">areap</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
+<dt id="read32"><a name="read32.t,pointer"></a><pre><span class="Keyword">template</span> <span class="Identifier">read32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">area</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span></pre></dt>
 <dd>
+<p>
+Read a 32-bit value from network packet buffer.</p>
+<p><tt class="docutils literal"><span class="pre">area</span></tt> The pointer into a data buffer, at which to get the number from.</p>
+<p>Get a 32bit (a long on 32bit systems) value from the data buffer area which is in network byte order. This helps avoid byte order differences between two systems that are talking over the network. The returned value can be a signed number, the unsigned parameter type doesn't affect the data. The area pointer need not be at the beginning of a buffer, but must have at least 4 bytes of space left, including the byte currently pointed at.</p>
 
-Write a 32-bit value to network packet buffer.
-
-</dd>
-<dt id="read16"><a name="read16.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">read16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">areap</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
-<dd>
-
-Read a 16-bit value from network packet buffer.
-
-</dd>
-<dt id="read32"><a name="read32.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">read32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">areap</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
-<dd>
-
-Read a 32-bit value from network packet buffer.
 
 </dd>
 
@@ -1791,7 +2203,7 @@ Read a 32-bit value from network packet buffer.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-10-04 22:57:31 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-01 20:44:37 UTC</small>
       </div>
     </div>
   </div>
