@@ -47,7 +47,7 @@ const
 
 proc linkedVersion*(): ptr Version {.
     cdecl, importc: "SDLNet_Linked_Version", dynlib: SDL2_NET_LIB.}
-  ##  This function gets the version of the dynamically linked SDL_net library.
+  ##  This procedure gets the version of the dynamically linked SDL_net library.
   ##  It should NOT be used to fill a version structure, instead you should
   ##  use the ``version()`` template.
 
@@ -124,7 +124,7 @@ proc resolveHost*(address: ptr IPaddress; host: cstring; port: uint16): cint {.
   ##
   ##  This is the best way to fill in the ``IPaddress`` struct for later use.
   ##  This procedure does not actually open any sockets, it is used to prepare
-  ##  the arguments for the socket opening functions.
+  ##  the arguments for the socket opening procedures.
   ##
   ##  ``WARNING:`` this procedure will put the ``host`` and ``port``
   ##  into Network Byte Order into the ``address`` fields, so make sure
@@ -161,7 +161,7 @@ proc resolveIP*(address: ptr IPaddress): cstring {.
   ##  Resolve the IPv4 numeric address in ``address.host``,
   ##  and return the hostname as a string.
   ##
-  ##  ``Note`` that this function is not thread-safe.
+  ##  ``Note`` that this procedure is not thread-safe.
   ##
   ##  ``Return`` a valid char pointer (``cstring``) on success.
   ##  The returned hostname will have host and domain, as in "host.domain.ext".
@@ -498,7 +498,7 @@ proc freePacket*(packet: ptr UDPpacket) {.
   ##  ``packet`` A pointer to the ``UDPpacket`` to be freed from memory.
   ##
   ##   Free a ``UDPpacket`` from memory.
-  ##   Do not use this ``UDPpacket`` after this function is called on it.
+  ##   Do not use this ``UDPpacket`` after this procedure is called on it.
   ##
   ##  ``Return`` nothing, this always succeeds.
   ##
@@ -548,7 +548,7 @@ proc freePacketV*(packetV: ptr ptr UDPpacket) {.
   ##  ``packetV`` A pointer to the ``UDPpacket`` vector to be freed from memory.
   ##
   ##   Free a ``UDPpacket`` vector from memory. Do not use this ``UDPpacket``
-  ##   vector, or any ``UDPpacket`` in it, after this function is called on it.
+  ##   vector, or any ``UDPpacket`` in it, after this procedure is called on it.
   ##
   ##  ``Return`` nothing, this always succeeds.
   ##
@@ -782,7 +782,7 @@ proc udpSend*(sock: UDPsocket; channel: cint; packet: ptr UDPpacket): cint {.
   ##  element of the ``packet`` you are sending!
   ##
   ##  ``Note:`` The ``packet.channel`` will be set to the channel passed in to
-  ##  this function.
+  ##  this procedure.
   ##
   ##  ``Note:`` The maximum size of the packet is limited by the MTU (Maximum
   ##  Transfer Unit) of the transport medium. It can be as low as `250` bytes
@@ -853,7 +853,7 @@ proc udpRecvV*(sock: UDPsocket; packets: ptr ptr UDPpacket): cint {.
   ##  bound to multiple channels, the highest channel with the source address
   ##  bound will be returned.
   ##
-  ##  This function does not block, so can return `0` packets pending.
+  ##  This procedure does not block, so can return `0` packets pending.
   ##
   ##  ``Return`` the number of packets received.
   ##  `0` is returned when no packets are received.
@@ -901,7 +901,7 @@ proc udpRecv*(sock: UDPsocket; packet: ptr UDPpacket): cint {.
   ##  in the packet.
   ##
   ##  This is a non-blocking call, meaning if there's no data ready to be
-  ##  received the function will return.
+  ##  received the procedure will return.
   ##
   ##  ``Return`` `1` is returned when a packet is received.
   ##  `0` is returned when no packets are received.
@@ -1000,7 +1000,7 @@ proc addSocket*(set: SocketSet; sock: GenericSocket): cint {.
   ##
   ##   TCP and UDP sockets should be added using the corrosponding template
   ##   (as in sdl_net.tcpAddSocket for a TCP socket). The generic socket
-  ##   function will be called by the TCP and UDP templates.
+  ##   procedure will be called by the TCP and UDP templates.
   ##   Both TCP and UDP sockets may be added to the same socket set.
   ##   TCP clients and servers may all be in the same socket set.
   ##   There is no limitation on the sockets in the socket set,
@@ -1129,7 +1129,7 @@ proc socketReady*(sock: GenericSocket): cint {.inline.} =
   ##  Check whether a socket has been marked as active.
   ##
   ##  ``sock`` The socket to check for activity.
-  ##  Both ``UDPsocket`` and ``TCPsocket`` can be used with this function.
+  ##  Both ``UDPsocket`` and ``TCPsocket`` can be used with this procedure.
   ##
   ##  This procedure should only be used on a socket in a socket set,
   ##  and that set has to have had ``sdl_net.CheckSockets()`` called upon it.
@@ -1202,7 +1202,7 @@ proc freeSocketSet*(set: SocketSet) {.
   ##
 
 #*********************************************************************
-# Error reporting functions                                           
+# Error reporting procedures                                          
 #*********************************************************************
 
 proc setError*(fmt: cstring) {.
@@ -1212,7 +1212,7 @@ proc getError*(): cstring {.
     cdecl, importc: "SDLNet_GetError", dynlib: SDL2_NET_LIB.}
 
 #*********************************************************************
-# Inline functions to read/write network data                         
+# Inline procedures to read/write network data                        
 #*********************************************************************
 
 # Warning, some systems have data access alignment restrictions.

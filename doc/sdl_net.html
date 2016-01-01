@@ -1475,7 +1475,7 @@ The maximum addresses bound to a single UDP socket channel
 <dt id="linkedVersion"><a name="linkedVersion,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">linkedVersion</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Version</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Linked_Version&quot;</span><span class="Other">,</span>
                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function gets the version of the dynamically linked SDL_net library. It should NOT be used to fill a version structure, instead you should use the <tt class="docutils literal"><span class="pre">version()</span></tt> template.
+This procedure gets the version of the dynamically linked SDL_net library. It should NOT be used to fill a version structure, instead you should use the <tt class="docutils literal"><span class="pre">version()</span></tt> template.
 
 </dd>
 <dt id="init"><a name="init,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">init</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Init&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span><span class="Other">.}</span></pre></dt>
@@ -1505,7 +1505,7 @@ This function gets the version of the dynamically linked SDL_net library. It sho
 <p>For becoming a server, this is the port to listen on.</p>
 <p>If you are just doing Domain Name Resolution functions, this can be <cite>0</cite>.</p>
 <p>Resolve the string <tt class="docutils literal"><span class="pre">host</span></tt>, and fill in the <tt class="docutils literal"><span class="pre">IPaddress</span></tt> pointed to by <tt class="docutils literal"><span class="pre">address</span></tt> with the resolved IP and the port number passed in through <tt class="docutils literal"><span class="pre">port</span></tt>.</p>
-<p>This is the best way to fill in the <tt class="docutils literal"><span class="pre">IPaddress</span></tt> struct for later use. This procedure does not actually open any sockets, it is used to prepare the arguments for the socket opening functions.</p>
+<p>This is the best way to fill in the <tt class="docutils literal"><span class="pre">IPaddress</span></tt> struct for later use. This procedure does not actually open any sockets, it is used to prepare the arguments for the socket opening procedures.</p>
 <p><tt class="docutils literal"><span class="pre">WARNING:</span></tt> this procedure will put the <tt class="docutils literal"><span class="pre">host</span></tt> and <tt class="docutils literal"><span class="pre">port</span></tt> into Network Byte Order into the <tt class="docutils literal"><span class="pre">address</span></tt> fields, so make sure you pass in the data in your hosts byte order (normally not an issue).</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success. <cite>-1</cite> on errors, plus <tt class="docutils literal"><span class="pre">address.host</span></tt> will be <cite>INADDR_NONE</cite>. An error would likely be that the address could not be resolved.</p>
 <p>For a server listening on all interfaces, on port 1234:</p>
@@ -1524,7 +1524,7 @@ This function gets the version of the dynamically linked SDL_net library. It sho
 <p>Resolve an ip address to a host name in canonical form.</p>
 <p><tt class="docutils literal"><span class="pre">address</span></tt> points to the <tt class="docutils literal"><span class="pre">IPaddress</span></tt> that will be resolved to a host name. The <tt class="docutils literal"><span class="pre">address.port</span></tt> is ignored.</p>
 <p>Resolve the IPv4 numeric address in <tt class="docutils literal"><span class="pre">address.host</span></tt>, and return the hostname as a string.</p>
-<p><tt class="docutils literal"><span class="pre">Note</span></tt> that this function is not thread-safe.</p>
+<p><tt class="docutils literal"><span class="pre">Note</span></tt> that this procedure is not thread-safe.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> a valid char pointer (<tt class="docutils literal"><span class="pre">cstring</span></tt>) on success. The returned hostname will have host and domain, as in &quot;host.domain.ext&quot;. <cite>nil</cite> is returned on errors, such as when it's not able to resolve the host name. The returned pointer is not to be freed. Each time you call this procedure the previous pointer's data will change to the new value, so you may have to copy it into a local buffer to keep it around longer.</p>
 
 
@@ -1708,7 +1708,7 @@ This function gets the version of the dynamically linked SDL_net library. It sho
 <dd>
 <p>Free a single UDP packet.</p>
 <p><tt class="docutils literal"><span class="pre">packet</span></tt> A pointer to the <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> to be freed from memory.</p>
-<blockquote><p>Free a <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> from memory. Do not use this <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> after this function is called on it.</p></blockquote>
+<blockquote><p>Free a <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> from memory. Do not use this <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> after this procedure is called on it.</p></blockquote>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> nothing, this always succeeds.</p>
 <pre class = "listing"><span class="Comment"># free a UDPpacket</span>
 <span class="Comment"># var packet: ptr UDPpacket</span>
@@ -1742,7 +1742,7 @@ This function gets the version of the dynamically linked SDL_net library. It sho
 <dd>
 <p>Free a UDP packet vector (array of packets).</p>
 <p><tt class="docutils literal"><span class="pre">packetV</span></tt> A pointer to the <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> vector to be freed from memory.</p>
-<blockquote><p>Free a <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> vector from memory. Do not use this <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> vector, or any <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> in it, after this function is called on it.</p></blockquote>
+<blockquote><p>Free a <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> vector from memory. Do not use this <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> vector, or any <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> in it, after this procedure is called on it.</p></blockquote>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> nothing, this always succeeds.</p>
 <pre class = "listing"><span class="Comment"># free a UDPpacket vector</span>
 <span class="Comment"># var packetV: ptr ptr UDPpacket</span>
@@ -1871,7 +1871,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
 <p>If <tt class="docutils literal"><span class="pre">channel</span></tt> is not <cite>-1</cite> then the packet is sent to all the <tt class="docutils literal"><span class="pre">socket</span></tt> channels bound addresses. If socket <tt class="docutils literal"><span class="pre">sock</span></tt>'s channel is not bound to any destinations, then the packet is not sent at all!</p>
 <p>If the channel is <cite>-1</cite>, then the <tt class="docutils literal"><span class="pre">packet</span></tt>'s address is used as the destination.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> Don't forget to set the length of the packet in the <tt class="docutils literal"><span class="pre">len</span></tt> element of the <tt class="docutils literal"><span class="pre">packet</span></tt> you are sending!</p>
-<p><tt class="docutils literal"><span class="pre">Note:</span></tt> The <tt class="docutils literal"><span class="pre">packet.channel</span></tt> will be set to the channel passed in to this function.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> The <tt class="docutils literal"><span class="pre">packet.channel</span></tt> will be set to the channel passed in to this procedure.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> The maximum size of the packet is limited by the MTU (Maximum Transfer Unit) of the transport medium. It can be as low as <cite>250</cite> bytes for some PPP links, and as high as <cite>1500</cite> bytes for ethernet. Beyond that limit the packet will fragment, and make delivery more and more unreliable as lost fragments cause the whole packet to be discarded.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> The number of destinations sent to that worked. <cite>0</cite> is returned on errors.</p>
 <p><tt class="docutils literal"><span class="pre">Note</span></tt> that since a channel can point to multiple destinations, there should be just as many packets sent, so dont assume it will always return <cite>1</cite> on success. Unfortunately there's no way to get the number of destinations bound to a channel, so either you have to remember the number bound, or just test for the zero return value indicating all channels failed.</p>
@@ -1910,7 +1910,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
 <p>This call is otherwise the same as <tt class="docutils literal"><span class="pre">sdl_net.udpRecv()</span></tt>.</p>
 <p>The returned packets contain the source address and the channel they arrived on.  If they did not arrive on a bound channel, the the channel will be set to <cite>-1</cite>.</p>
 <p>The channels are checked in highest to lowest order, so if an address is bound to multiple channels, the highest channel with the source address bound will be returned.</p>
-<p>This function does not block, so can return <cite>0</cite> packets pending.</p>
+<p>This procedure does not block, so can return <cite>0</cite> packets pending.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of packets received. <cite>0</cite> is returned when no packets are received. <cite>-1</cite> is returned on errors.</p>
 <pre class = "listing"><span class="Comment"># try to receive some waiting udp packets</span>
 <span class="Comment"># var udpsock: UDPsocket</span>
@@ -1935,7 +1935,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
 <p>The <tt class="docutils literal"><span class="pre">packet</span></tt> you pass in must have enough of a data size allocated for the incoming packet data to fit into. This means you should have knowledge of your size needs before trying to receive UDP packets. The packet will have it's address set to the remote sender's address.</p>
 <p>The <tt class="docutils literal"><span class="pre">socket</span></tt>'s channels are checked in highest to lowest order, so if an address is bound to multiple channels, the highest channel with the source address bound will be retreived before the lower bound channels. So, the packets channel will also be set to the highest numbered channel that has the remote address and port assigned to it. Otherwise the channel will <cite>-1</cite>, which you can filter out easily if you want to ignore unbound source address.</p>
 <p><tt class="docutils literal"><span class="pre">Note</span></tt> that the local and remote channel numbers do not have to, and probably won't, match, as they are only local settings, they are not sent in the packet.</p>
-<p>This is a non-blocking call, meaning if there's no data ready to be received the function will return.</p>
+<p>This is a non-blocking call, meaning if there's no data ready to be received the procedure will return.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite> is returned when a packet is received. <cite>0</cite> is returned when no packets are received. <cite>-1</cite> is returned on errors.</p>
 <pre class = "listing"><span class="Comment"># try to receive a waiting udp packet</span>
 <span class="Comment"># var udpsock: UDPsocket</span>
@@ -1986,7 +1986,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
 <p><tt class="docutils literal"><span class="pre">set</span></tt> The socket set to add this socket to.</p>
 <p><tt class="docutils literal"><span class="pre">sock</span></tt> The socket to add to the socket set.</p>
 <blockquote><p><p>Add a socket to a socket set that will be watched.</p>
-<p>TCP and UDP sockets should be added using the corrosponding template (as in sdl_net.tcpAddSocket for a TCP socket). The generic socket function will be called by the TCP and UDP templates. Both TCP and UDP sockets may be added to the same socket set. TCP clients and servers may all be in the same socket set. There is no limitation on the sockets in the socket set, other than they have been opened.</p>
+<p>TCP and UDP sockets should be added using the corrosponding template (as in sdl_net.tcpAddSocket for a TCP socket). The generic socket procedure will be called by the TCP and UDP templates. Both TCP and UDP sockets may be added to the same socket set. TCP clients and servers may all be in the same socket set. There is no limitation on the sockets in the socket set, other than they have been opened.</p>
 </p></blockquote>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of sockets used in the set on success. <cite>-1</cite> is returned on errors.</p>
 <p>See also:</p>
@@ -2065,7 +2065,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
 <dt id="socketReady"><a name="socketReady,GenericSocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">socketReady</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">GenericSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">inline</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Check whether a socket has been marked as active.</p>
-<p><tt class="docutils literal"><span class="pre">sock</span></tt> The socket to check for activity. Both <tt class="docutils literal"><span class="pre">UDPsocket</span></tt> and <tt class="docutils literal"><span class="pre">TCPsocket</span></tt> can be used with this function.</p>
+<p><tt class="docutils literal"><span class="pre">sock</span></tt> The socket to check for activity. Both <tt class="docutils literal"><span class="pre">UDPsocket</span></tt> and <tt class="docutils literal"><span class="pre">TCPsocket</span></tt> can be used with this procedure.</p>
 <p>This procedure should only be used on a socket in a socket set, and that set has to have had <tt class="docutils literal"><span class="pre">sdl_net.CheckSockets()</span></tt> called upon it.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> non-zero for activity. <cite>0</cite> is returned for no activity.</p>
 <pre class = "listing"><span class="Comment"># wait forever for a connection attempt</span>
@@ -2203,7 +2203,7 @@ Read a 32-bit value from network packet buffer.</p>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2016-01-01 20:44:37 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-01 20:55:18 UTC</small>
       </div>
     </div>
   </div>
