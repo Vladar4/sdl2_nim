@@ -126,7 +126,7 @@ if init(app):
     # Update renderer
     app.renderer.renderPresent()
 
-    # Enent handling
+    # Event handling
     done = events()
 
   if not sdl.removeTimer(timer):

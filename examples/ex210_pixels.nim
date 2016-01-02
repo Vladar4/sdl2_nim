@@ -373,7 +373,7 @@ if init(app):
     # Update renderer
     app.renderer.renderPresent()
 
-    # Enent handling
+    # Event handling
     done = events(pressed)
     if K_F11 in pressed: showInfo = not showInfo
 

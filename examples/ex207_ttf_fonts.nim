@@ -289,7 +289,7 @@ if init(app):
     # Update renderer
     app.renderer.renderPresent()
 
-    # Enent handling
+    # Event handling
     done = events(pressed)
 
   # Free assets

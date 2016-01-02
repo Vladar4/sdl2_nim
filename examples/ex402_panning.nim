@@ -231,6 +231,7 @@ proc init(app: App): bool =
 proc exit(app: App) =
   app.renderer.destroyRenderer()
   app.window.destroyWindow()
+  while mix.init(0) != 0: mix.quit()
   ttf.quit()
   img.quit()
   sdl.logInfo(sdl.LogCategoryApplication, "SDL shutdown completed")
@@ -394,7 +395,7 @@ if init(app):
     # Update renderer
     app.renderer.renderPresent()
 
-    # Enent handling
+    # Event handling
     done = events(pressed)
     if K_F11 in pressed: showInfo = not showInfo
 

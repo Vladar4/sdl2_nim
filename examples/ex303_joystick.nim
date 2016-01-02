@@ -400,7 +400,7 @@ if init(app):
     # Update renderer
     app.renderer.renderPresent()
 
-    # Enent handling
+    # Event handling
     done = events(pressed)
     if K_F11 in pressed: showInfo = not showInfo
 
@@ -419,7 +419,7 @@ if init(app):
     cursorPos.x += sdl.joystickGetAxis(joy, 0) / 1000
     cursorPos.y += sdl.joystickGetAxis(joy, 1) / 1000
 
-    # move
+    # Move
     var vector: tuple[x, y: float]
     vector.x = (cursorPos.x - imagePos.x) * delta
     vector.y = (cursorPos.y - imagePos.y) * delta

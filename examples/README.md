@@ -32,3 +32,9 @@ SDL2 examples
     * ex401_mixer       -   sdl_mixer
     * ex402_panning     -   sdl_mixer panning
 
+5. **NETWORK**
+    * ex501c_tcp        -   TCP sockets (client)
+    * ex501s_tcp        -   TCP sockets (server)
+    * ex502c_udp        -   UDP sockets (client)
+    * ex502s_udp        -   UDP sockets (server)
+

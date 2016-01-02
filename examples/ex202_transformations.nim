@@ -227,7 +227,7 @@ if init(app):
                   "Can't render image1: %s",
                   sdl.getError())
 
-    # Enent handling
+    # Event handling
     done = events(pressed)
 
     # Process input
