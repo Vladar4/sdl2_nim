@@ -299,6 +299,9 @@ proc setTextureColorMod*(
   ##
   ##  ``getTextureColorMod()``
 
+template setTextureColorMod*(texture: Texture; color: Color): expr =
+  setTextureColorMod(texture, color.r, color.g, color.b)
+
 proc getTextureColorMod*(
     texture: Texture; r: ptr uint8; g: ptr uint8; b: ptr uint8): cint {.
       cdecl, importc: "SDL_GetTextureColorMod", dynlib: SDL2_LIB.}
@@ -317,6 +320,10 @@ proc getTextureColorMod*(
   ##  See also:
   ##
   ##  ``setTextureColorMod()``
+
+template getTextureColorMod*(texture: Texture, color: Color): expr =
+  getTextureColorMod(texture,
+    addr(color.r), addr(color.g), addr(color.b))
 
 proc setTextureAlphaMod*(texture: Texture; alpha: uint8): cint {.
     cdecl, importc: "SDL_SetTextureAlphaMod", dynlib: SDL2_LIB.}
@@ -653,6 +660,9 @@ proc setRenderDrawColor*(renderer: Renderer;
   ##
   ##  ``Return`` `0` on success, or `-1` on error.
 
+template setRenderDrawColor*(renderer: Renderer; color: Color): expr =
+  setRenderDrawColor(renderer, color.r, color.g, color.b, color.a)
+
 proc getRenderDrawColor*(renderer: Renderer;
     r: ptr uint8; g: ptr uint8; b: ptr uint8; a: ptr uint8): cint {.
       cdecl, importc: "SDL_GetRenderDrawColor", dynlib: SDL2_LIB.}
@@ -670,6 +680,10 @@ proc getRenderDrawColor*(renderer: Renderer;
   ##  usually `ALPHA_OPAQUE` (`255`).
   ##
   ##  ``Return`` `0` on success, or `-1` on error.
+
+template getRenderDrawColor*(renderer: Renderer; color: Color): expr =
+  getRenderDrawColor(renderer,
+    addr(color.r), addr(color.g), addr(color.b), addr(color.a))
 
 proc setRenderDrawBlendMode*(renderer: Renderer; blendMode: BlendMode): cint {.
     cdecl, importc: "SDL_SetRenderDrawBlendMode", dynlib: SDL2_LIB.}
