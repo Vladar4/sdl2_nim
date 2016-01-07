@@ -1204,7 +1204,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <li><a class="reference" href="#MINOR_VERSION"
     title="MINOR_VERSION* = 0"><wbr />MINOR_<wbr />VERSION</a></li>
   <li><a class="reference" href="#PATCHLEVEL"
-    title="PATCHLEVEL* = 0"><wbr />PATCHLEVEL</a></li>
+    title="PATCHLEVEL* = 1"><wbr />PATCHLEVEL</a></li>
   <li><a class="reference" href="#INIT_FLAC"
     title="INIT_FLAC* = 0x00000001"><wbr />INIT_<wbr />FLAC</a></li>
   <li><a class="reference" href="#INIT_MOD"
@@ -1535,7 +1535,7 @@ This is the prototype for effect processing procedures.</p>
 
 
 </dd>
-<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
+<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
 
 
@@ -1834,8 +1834,7 @@ Load a music file from an RWop object assuming a specific format.
 <dt id="hookMusicFinished"><a name="hookMusicFinished,proc)"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hookMusicFinished</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">music_finished</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_HookMusicFinished&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_MIX_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<p>Add your own callback when the music has finished playing.</p>
-<p>This callback is only called if the music finishes naturally.</p>
+<p>Add your own callback for when the music has finished playing or when it is stopped from a call to <tt class="docutils literal"><span class="pre">mix.haltMusic()</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">music_finished</span></tt> Procedure pointer to a <tt class="docutils literal"><span class="pre">proc() {.cdecl.}</span></tt>. <cite>nil</cite> will remove the hook.</p>
 <p>This sets up a procedure to be called when music playback is halted. Any time music stops, the music_finished procedure will be called. Call with <cite>nil</cite> to remove the callback.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> NEVER call SDL_Mixer procedures, nor <tt class="docutils literal"><span class="pre">sdl.lockAudio()</span></tt>, from a callback procedure.</p>
@@ -2463,7 +2462,7 @@ Play <tt class="docutils literal"><span class="pre">chunk</span></tt> on <tt cla
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-12-27 18:28:43 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-07 21:58:47 UTC</small>
       </div>
     </div>
   </div>

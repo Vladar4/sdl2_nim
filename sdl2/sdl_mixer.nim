@@ -1,6 +1,6 @@
 #
 #  SDL_mixer:  An audio mixer library based on the SDL library
-#  Copyright (C) 1997-2013 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -70,7 +70,7 @@ import
 const
   MAJOR_VERSION* = 2
   MINOR_VERSION* = 0
-  PATCHLEVEL* = 0
+  PATCHLEVEL* = 1
 
 proc linkedVersion*(): ptr Version {.
     cdecl, importc: "Mix_Linked_Version", dynlib: SDL2_MIX_LIB.}
@@ -562,9 +562,8 @@ proc hookMusic*(
 
 proc hookMusicFinished*(music_finished: proc () {.cdecl.}) {.
     cdecl, importc: "Mix_HookMusicFinished", dynlib: SDL2_MIX_LIB.}
-  ##  Add your own callback when the music has finished playing.
-  ##
-  ##  This callback is only called if the music finishes naturally.
+  ##  Add your own callback for when the music has finished playing or when
+  ##  it is stopped from a call to ``mix.haltMusic()``.
   ##
   ##  ``music_finished`` Procedure pointer to a ``proc() {.cdecl.}``.
   ##  `nil` will remove the hook.
