@@ -53,7 +53,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #2d2d2d;
+  color: #666;
   background-color: rgba(252, 248, 244, 0.75); }
 
 /* Skeleton grid */
@@ -489,7 +489,7 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0 10px 0px 10px;
+  margin: 0.25em 10px 0.25em 10px;
   font-size: 14px;
   line-height: 20px;
   white-space: pre !important;
@@ -892,6 +892,10 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+ul.simple > li {
+  margin-bottom: 0.5em }
+
 ol.simple, ul.simple {
   margin-bottom: 1em; }
 
@@ -1268,20 +1272,22 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
 
 </dd>
-<dt id="initSubSystem"><a name="initSubSystem,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">initSubSystem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_InitSubSystem&quot;</span><span class="Other">,</span> 
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="initSubSystem"><a name="initSubSystem,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">initSubSystem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_InitSubSystem&quot;</span><span class="Other">,</span>
+                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function initializes specific SDL subsystems.
+<p>This function initializes specific SDL subsystems.</p>
+<p>Subsystem initialization is ref-counted, you must call <tt class="docutils literal"><span class="pre">sdl.quitSubSystem()</span></tt> for each <tt class="docutils literal"><span class="pre">sdl.initSubSystem()</span></tt> to correctly shutdown a subsystem manually (or call <tt class="docutils literal"><span class="pre">sdl.quit()</span></tt> to force shutdown).</p>
+<p>If a subsystem is already loaded then this call will increase the ref-count and return.</p>
+
 
 </dd>
-<dt id="quitSubSystem"><a name="quitSubSystem,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">quitSubSystem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_QuitSubSystem&quot;</span><span class="Other">,</span> 
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="quitSubSystem"><a name="quitSubSystem,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">quitSubSystem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_QuitSubSystem&quot;</span><span class="Other">,</span>
+                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 This function cleans up specific SDL subsystems.
 
 </dd>
-<dt id="wasInit"><a name="wasInit,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">wasInit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WasInit&quot;</span><span class="Other">,</span> 
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="wasInit"><a name="wasInit,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">wasInit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WasInit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>This function returns a mask of the specified subsystems which have previously been initialized.</p>
 <p>If <tt class="docutils literal"><span class="pre">flags</span></tt> is <cite>0</cite>, it returns a mask of all initialized subsystems.</p>
@@ -1303,7 +1309,7 @@ This function cleans up all initialized subsystems. You should call it upon all 
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-10-04 22:57:21 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
       </div>
     </div>
   </div>

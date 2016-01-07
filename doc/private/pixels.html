@@ -1377,6 +1377,10 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="PIXELFORMAT_UYVY* = definePixelFourCC(&#x27;U&#x27;, &#x27;Y&#x27;, &#x27;V&#x27;, &#x27;Y&#x27;)"><wbr />PIXELFORMAT_<wbr />UYVY</a></li>
   <li><a class="reference" href="#PIXELFORMAT_YVYU"
     title="PIXELFORMAT_YVYU* = definePixelFourCC(&#x27;Y&#x27;, &#x27;V&#x27;, &#x27;Y&#x27;, &#x27;U&#x27;)"><wbr />PIXELFORMAT_<wbr />YVYU</a></li>
+  <li><a class="reference" href="#PIXELFORMAT_NV12"
+    title="PIXELFORMAT_NV12* = definePixelFourCC(&#x27;N&#x27;, &#x27;V&#x27;, &#x27;1&#x27;, &#x27;2&#x27;)"><wbr />PIXELFORMAT_<wbr />NV12</a></li>
+  <li><a class="reference" href="#PIXELFORMAT_NV21"
+    title="PIXELFORMAT_NV21* = definePixelFourCC(&#x27;N&#x27;, &#x27;V&#x27;, &#x27;2&#x27;, &#x27;1&#x27;)"><wbr />PIXELFORMAT_<wbr />NV21</a></li>
 
   </ul>
 </li>
@@ -1447,6 +1451,10 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="bytesPerPixel*(x: expr): expr"><wbr />bytes<wbr />Per<wbr />Pixel</a></li>
   <li><a class="reference" href="#isPixelFormatIndexed.t,expr"
     title="isPixelFormatIndexed*(format: expr): expr"><wbr />is<wbr />Pixel<wbr />Format<wbr />Indexed</a></li>
+  <li><a class="reference" href="#isPixelFormatPacked.t,expr"
+    title="isPixelFormatPacked*(format: expr): expr"><wbr />is<wbr />Pixel<wbr />Format<wbr />Packed</a></li>
+  <li><a class="reference" href="#isPixelFormatArray.t,expr"
+    title="isPixelFormatArray*(format: expr): expr"><wbr />is<wbr />Pixel<wbr />Format<wbr />Array</a></li>
   <li><a class="reference" href="#isPixelFormatAlpha.t,expr"
     title="isPixelFormatAlpha*(format: expr): expr"><wbr />is<wbr />Pixel<wbr />Format<wbr />Alpha</a></li>
   <li><a class="reference" href="#isPixelFormatFourCC.t,expr"
@@ -1939,6 +1947,18 @@ Packed mode: U0+Y0+V0+Y1 (1 plane)
 Packed mode: Y0+V0+Y1+U0 (1 plane)
 
 </dd>
+<dt id="PIXELFORMAT_NV12"><a name="PIXELFORMAT_NV12"></a><pre><span class="Identifier">PIXELFORMAT_NV12</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFourCC</span><span class="Other">(</span><span class="CharLit">'N'</span><span class="Other">,</span> <span class="CharLit">'V'</span><span class="Other">,</span> <span class="CharLit">'1'</span><span class="Other">,</span> <span class="CharLit">'2'</span><span class="Other">)</span></pre></dt>
+<dd>
+
+Planar mode: Y + U/V interleaved (2 planes)
+
+</dd>
+<dt id="PIXELFORMAT_NV21"><a name="PIXELFORMAT_NV21"></a><pre><span class="Identifier">PIXELFORMAT_NV21</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">definePixelFourCC</span><span class="Other">(</span><span class="CharLit">'N'</span><span class="Other">,</span> <span class="CharLit">'V'</span><span class="Other">,</span> <span class="CharLit">'2'</span><span class="Other">,</span> <span class="CharLit">'1'</span><span class="Other">)</span></pre></dt>
+<dd>
+
+Planar mode: Y + V/U interleaved (2 planes)
+
+</dd>
 
 </dl></div>
 <div class="section" id="12">
@@ -2133,6 +2153,16 @@ Calculate a 256 entry gamma ramp for a gamma value.
 
 
 </dd>
+<dt id="isPixelFormatPacked"><a name="isPixelFormatPacked.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">isPixelFormatPacked</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="isPixelFormatArray"><a name="isPixelFormatArray.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">isPixelFormatArray</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
+<dd>
+
+
+</dd>
 <dt id="isPixelFormatAlpha"><a name="isPixelFormatAlpha.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">isPixelFormatAlpha</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
 <dd>
 
@@ -2154,7 +2184,7 @@ The flag is set to <cite>1</cite> because 0x1? is not in the printable ASCII ran
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-11-30 22:39:26 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
       </div>
     </div>
   </div>

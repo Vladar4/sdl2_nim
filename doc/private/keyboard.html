@@ -53,7 +53,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #2d2d2d;
+  color: #666;
   background-color: rgba(252, 248, 244, 0.75); }
 
 /* Skeleton grid */
@@ -489,7 +489,7 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0 10px 0px 10px;
+  margin: 0.25em 10px 0.25em 10px;
   font-size: 14px;
   line-height: 20px;
   white-space: pre !important;
@@ -892,6 +892,10 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+ul.simple > li {
+  margin-bottom: 0.5em }
+
 ol.simple, ul.simple {
   margin-bottom: 1em; }
 
@@ -1154,10 +1158,10 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Keysym"
-    title="Keysym* = object 
-  scancode*: Scancode         ## SDL physical key code - see ``Scancode`` for details
-  sym*: Keycode               ## SDL virtual key code - see ``Keycode`` for details
-  mods*: uint16               ## current key modifiers
+    title="Keysym* = object
+  scancode*: Scancode          ## SDL physical key code - see ``Scancode`` for details
+  sym*: Keycode                ## SDL virtual key code - see ``Keycode`` for details
+  mods*: uint16                ## current key modifiers
   unused*: uint32"><wbr />Keysym</a></li>
 
   </ul>
@@ -1219,10 +1223,10 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="Keysym"><a name="Keysym"></a><pre><span class="Identifier">Keysym</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
-  <span class="Identifier">scancode</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Scancode</span>         <span class="Comment">## SDL physical key code - see ``Scancode`` for details</span>
-  <span class="Identifier">sym</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Keycode</span>               <span class="Comment">## SDL virtual key code - see ``Keycode`` for details</span>
-  <span class="Identifier">mods</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">## current key modifiers</span>
+<dt id="Keysym"><a name="Keysym"></a><pre><span class="Identifier">Keysym</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">scancode</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Scancode</span>          <span class="Comment">## SDL physical key code - see ``Scancode`` for details</span>
+  <span class="Identifier">sym</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Keycode</span>                <span class="Comment">## SDL virtual key code - see ``Keycode`` for details</span>
+  <span class="Identifier">mods</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">## current key modifiers</span>
   <span class="Identifier">unused</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
 </pre></dt>
 <dd>
@@ -1237,39 +1241,38 @@ The SDL keysym object, used in key events.</p>
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="getKeyboardFocus"><a name="getKeyboardFocus,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getKeyboardFocus</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Window</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetKeyboardFocus&quot;</span><span class="Other">,</span> 
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getKeyboardFocus"><a name="getKeyboardFocus,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getKeyboardFocus</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Window</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetKeyboardFocus&quot;</span><span class="Other">,</span>
+                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the window which currently has keyboard focus.
 
 </dd>
-<dt id="getKeyboardState"><a name="getKeyboardState,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getKeyboardState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">numkeys</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">NUM_SCANCODES</span><span class="Other">.</span><span class="Identifier">int</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetKeyboardState&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getKeyboardState"><a name="getKeyboardState,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getKeyboardState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">numkeys</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">NUM_SCANCODES</span><span class="Other">.</span><span class="Identifier">int</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetKeyboardState&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get a snapshot of the current state of the keyboard.</p>
 <p><tt class="docutils literal"><span class="pre">numkeys</span></tt> if non-<cite>nil</cite>, receives the length of the returned array.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> an array of key states. Indexes into this array are obtained by using <tt class="docutils literal"><span class="pre">Scancode</span></tt> values.</p>
 <p>Example:</p>
-<pre><span class="Keyword">let</span> <span class="Identifier">state</span> <span class="Operator">=</span> <span class="Identifier">getKeyboardState</span><span class="Punctuation">(</span><span class="Keyword">nil</span><span class="Punctuation">)</span>
+<pre class = "listing"><span class="Keyword">let</span> <span class="Identifier">state</span> <span class="Operator">=</span> <span class="Identifier">getKeyboardState</span><span class="Punctuation">(</span><span class="Keyword">nil</span><span class="Punctuation">)</span>
 <span class="Keyword">if</span> <span class="Identifier">state</span><span class="Punctuation">[</span><span class="Identifier">SCANCODE_RETURN</span><span class="Punctuation">]</span> <span class="Operator">&gt;</span> <span class="DecNumber">0</span><span class="Punctuation">:</span>
   <span class="Identifier">echo</span> <span class="StringLit">&quot;&lt;RETURN&gt; is pressed.&quot;</span></pre>
 
 </dd>
-<dt id="getModState"><a name="getModState,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getModState</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Keymod</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetModState&quot;</span><span class="Other">,</span> 
-                              <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getModState"><a name="getModState,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getModState</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Keymod</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetModState&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the current key modifier state for the keyboard.
 
 </dd>
-<dt id="setModState"><a name="setModState,Keymod"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setModState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">modstate</span><span class="Other">:</span> <span class="Identifier">Keymod</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetModState&quot;</span><span class="Other">,</span> 
-                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="setModState"><a name="setModState,Keymod"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setModState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">modstate</span><span class="Other">:</span> <span class="Identifier">Keymod</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetModState&quot;</span><span class="Other">,</span>
+                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set the current key modifier state for the keyboard.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> This does not change the keyboard state, only the key modifier flags.</p>
 
 
 </dd>
-<dt id="getKeyFromScancode"><a name="getKeyFromScancode,Scancode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getKeyFromScancode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">scancode</span><span class="Other">:</span> <span class="Identifier">Scancode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Keycode</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getKeyFromScancode"><a name="getKeyFromScancode,Scancode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getKeyFromScancode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">scancode</span><span class="Other">:</span> <span class="Identifier">Scancode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Keycode</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetKeyFromScancode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the key code corresponding to the given scancode according to the current keyboard layout.</p>
@@ -1279,7 +1282,7 @@ Get the current key modifier state for the keyboard.
 
 
 </dd>
-<dt id="getScancodeFromKey"><a name="getScancodeFromKey,Keycode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getScancodeFromKey</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">Keycode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Scancode</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getScancodeFromKey"><a name="getScancodeFromKey,Keycode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getScancodeFromKey</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">Keycode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Scancode</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetScancodeFromKey&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the scancode corresponding to the given key code according to the current keyboard layout.</p>
@@ -1289,17 +1292,17 @@ Get the current key modifier state for the keyboard.
 
 
 </dd>
-<dt id="getScancodeName"><a name="getScancodeName,Scancode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getScancodeName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">scancode</span><span class="Other">:</span> <span class="Identifier">Scancode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getScancodeName"><a name="getScancodeName,Scancode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getScancodeName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">scancode</span><span class="Other">:</span> <span class="Identifier">Scancode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetScancodeName&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get a human-readable name for a scancode.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> a pointer to the name for the scancode. If the scancode doesn't have a name, this function returns an empty string (&quot;&quot;).</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> a pointer to the name for the scancode. If the scancode doesn't have a name, this procedure returns an empty string (&quot;&quot;).</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">Scancode</span></tt></p>
 
 
 </dd>
-<dt id="getScancodeFromName"><a name="getScancodeFromName,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getScancodeFromName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Scancode</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getScancodeFromName"><a name="getScancodeFromName,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getScancodeFromName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Scancode</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetScancodeFromName&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get a scancode from a human-readable name.</p>
@@ -1309,18 +1312,18 @@ Get the current key modifier state for the keyboard.
 
 
 </dd>
-<dt id="getKeyName"><a name="getKeyName,Keycode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getKeyName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">Keycode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetKeyName&quot;</span><span class="Other">,</span> 
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getKeyName"><a name="getKeyName,Keycode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getKeyName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">Keycode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetKeyName&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get a human-readable name for a key.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> a pointer to a UTF-8 string that stays valid at least until the next call to this function. If you need it around any longer, you must copy it. If the key doesn't have a name, this function returns an empty string (&quot;&quot;).</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> a pointer to a UTF-8 string that stays valid at least until the next call to this procedure. If you need it around any longer, you must copy it. If the key doesn't have a name, this procedure returns an empty string (&quot;&quot;).</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">Key</span></tt></p>
 
 
 </dd>
-<dt id="getKeyFromName"><a name="getKeyFromName,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getKeyFromName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Keycode</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetKeyFromName&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getKeyFromName"><a name="getKeyFromName,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getKeyFromName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Keycode</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetKeyFromName&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get a key code from a human-readable name.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> key code, or <cite>K_UNKNOWN</cite> if the name wasn't recognized.</p>
@@ -1332,7 +1335,7 @@ Get the current key modifier state for the keyboard.
 <dt id="startTextInput"><a name="startTextInput,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">startTextInput</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_StartTextInput&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Start accepting Unicode text input events.</p>
-<p>This function will show the on-screen keyboard if supported.</p>
+<p>This procedure will show the on-screen keyboard if supported.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">stopTextInput()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">setTextInputRect()</span></tt></p>
@@ -1340,8 +1343,8 @@ Get the current key modifier state for the keyboard.
 
 
 </dd>
-<dt id="isTextInputActive"><a name="isTextInputActive,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isTextInputActive</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_IsTextInputActive&quot;</span><span class="Other">,</span> 
-                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="isTextInputActive"><a name="isTextInputActive,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isTextInputActive</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_IsTextInputActive&quot;</span><span class="Other">,</span>
+                               <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Return whether or not Unicode text input events are enabled.</p>
 <p>See also:</p>
@@ -1353,15 +1356,15 @@ Get the current key modifier state for the keyboard.
 <dt id="stopTextInput"><a name="stopTextInput,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">stopTextInput</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_StopTextInput&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Stop receiving any text input events.</p>
-<p>This function will hide the on-screen keyboard if supported.</p>
+<p>This procedure will hide the on-screen keyboard if supported.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">startTextInput()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hasScreenKeyboardSupport()</span></tt></p>
 
 
 </dd>
-<dt id="setTextInputRect"><a name="setTextInputRect,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setTextInputRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetTextInputRect&quot;</span><span class="Other">,</span> 
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="setTextInputRect"><a name="setTextInputRect,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setTextInputRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetTextInputRect&quot;</span><span class="Other">,</span>
+                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set the rectangle used to type Unicode text inputs.</p>
 <p>This is used as a hint for IME and on-screen keyboard placement.</p>
@@ -1370,18 +1373,19 @@ Get the current key modifier state for the keyboard.
 
 
 </dd>
-<dt id="hasScreenKeyboardSupport"><a name="hasScreenKeyboardSupport,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasScreenKeyboardSupport</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasScreenKeyboardSupport&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="hasScreenKeyboardSupport"><a name="hasScreenKeyboardSupport,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasScreenKeyboardSupport</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+                                      <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasScreenKeyboardSupport&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Returns whether the platform has some screen keyboard support.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if some keyboard support is available else <cite>false</cite>.</p>
-<p><tt class="docutils literal"><span class="pre">Note:</span></tt> Not all screen keyboard functions are supported on all platforms.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> Not all screen keyboard procedures are supported on all platforms.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">isScreenKeyboardShown()</span></tt></p>
 
 
 </dd>
-<dt id="isScreenKeyboardShown"><a name="isScreenKeyboardShown,ptr.Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isScreenKeyboardShown</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="isScreenKeyboardShown"><a name="isScreenKeyboardShown,ptr.Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isScreenKeyboardShown</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_IsScreenKeyboardShown&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Returns whether the screen keyboard is shown for given window.</p>
@@ -1412,7 +1416,7 @@ Get the current key modifier state for the keyboard.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-10-04 22:57:21 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
       </div>
     </div>
   </div>

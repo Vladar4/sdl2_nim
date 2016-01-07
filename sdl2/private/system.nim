@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -22,10 +22,20 @@
 ##  system.nim
 ##  ==========
 ##
-##  Include file for platform specific SDL API functions.
+##  Include file for platform specific SDL API procedures.
 
-# Platform specific functions for Windows
+# Platform specific procedures for Windows
 when defined windows:
+
+  type
+    WindowsMessageHook* = proc (userdata: pointer; hWnd: pointer;
+      message: cuint; wParam: uint64; lParam: int64) {.cdecl.}
+
+  proc setWindowsMessageHook*(
+    callback: WindowsMessageHook; userdata: pointer) {.
+      cdecl, importc: "SDL_SetWindowsMessageHook", dynlib: SDL2_LIB.}
+    ##  Set a procedure that is called for every windows message,
+    ##  before ``translateMessage()``.
 
   proc direct3D9GetAdapterIndex*(displayIndex: cint): cint {.
       cdecl, importc: "SDL_Direct3D9GetAdapterIndex", dynlib: SDL2_LIB.}
@@ -42,20 +52,22 @@ when defined windows:
     ##  a D3D renderer. Once you are done using the device, you should release
     ##  it to avoid a resource leak.
 
-  proc dxgiGetOutputInfo*(
-      displayIndex: cint; adapterIndex: ptr cint; outputIndex: ptr cint) {.
-        cdecl, importc: "SDL_DXGIGetOutputInfo", dynlib: SDL2_LIB.}
+  proc dXGIGetOutputInfo*(
+    displayIndex: cint; adapterIndex: ptr cint; outputIndex: ptr cint): bool {.
+      cdecl, importc: "SDL_DXGIGetOutputInfo", dynlib: SDL2_LIB.}
     ##  Returns the DXGI Adapter and Output indices for the specified display
     ##  index. These can be passed to EnumAdapters and EnumOutputs respectively
     ##  to get the objects required to create a DX10 or DX11 device and swap
     ##  chain.
 
-
 # Currently disabled
 when false:
 
-  # Platform specific functions for iOS
+  # Platform specific procedures for iOS
   when defined iphoneos:
+    template iOSSetAnimationCallback*(
+        window, interval, callback, callbackParam: expr): expr =
+      iPhoneSetAnimationCallback(window, interval, callback, callbackParam)
 
     proc iPhoneSetAnimationCallback*(
         window: Window; interval: cint;
@@ -63,10 +75,13 @@ when false:
         callbackParam: pointer): cint {.
           cdecl, importc: "SDL_iPhoneSetAnimationCallback", dynlib: SDL2_LIB.}
 
+    template iOSSetEventPump*(enabled: expr): expr =
+      iPhoneSetEventPump(enabled)
+
     proc iPhoneSetEventPump*(enabled: bool) {.
         cdecl, importc: "SDL_iPhoneSetEventPump", dynlib: SDL2_LIB.}
 
-  # Platform specific functions for Android 
+  # Platform specific procedures for Android 
   when defined android:
 
     proc androidGetJNIEnv*(): pointer {.
@@ -111,7 +126,7 @@ when false:
       ##  This path is unique to your application, but is public and can be
       ##  written to by other applications.
 
-  # Platform specific functions for WinRT
+  # Platform specific procedures for WinRT
   when defined winrt:
 
     type

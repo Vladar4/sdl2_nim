@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -60,12 +60,12 @@
 const
   INIT_TIMER* = 0x00000001
   INIT_AUDIO* = 0x00000010
-  INIT_VIDEO* = 0x00000020
-  INIT_JOYSTICK* = 0x00000200
+  INIT_VIDEO* = 0x00000020  # implies INIT_EVENTS
+  INIT_JOYSTICK* = 0x00000200 # implies INIT_EVENTS
   INIT_HAPTIC* = 0x00001000
-  INIT_GAMECONTROLLER* = 0x00002000
+  INIT_GAMECONTROLLER* = 0x00002000 # implies INIT_JOYSTICK
   INIT_EVENTS* = 0x00004000
-  INIT_NOPARACHUTE* = 0x00100000
+  INIT_NOPARACHUTE* = 0x00100000 # compatibility; this flag is ignored
   INIT_EVERYTHING* = (INIT_TIMER or INIT_AUDIO or INIT_VIDEO or INIT_EVENTS or
       INIT_JOYSTICK or INIT_HAPTIC or INIT_GAMECONTROLLER)
 
@@ -80,6 +80,13 @@ proc init*(flags: uint32): cint {.
 proc initSubSystem*(flags: uint32): cint {.
     cdecl, importc: "SDL_InitSubSystem", dynlib: SDL2_LIB.}
   ##  This function initializes specific SDL subsystems.
+  ##
+  ##  Subsystem initialization is ref-counted, you must call
+  ##  ``sdl.quitSubSystem()`` for each ``sdl.initSubSystem()`` to correctly
+  ##  shutdown a subsystem manually (or call ``sdl.quit()`` to force shutdown).
+  ##
+  ##  If a subsystem is already loaded then this call
+  ##  will increase the ref-count and return.
 
 proc quitSubSystem*(flags: uint32) {.
     cdecl, importc: "SDL_QuitSubSystem", dynlib: SDL2_LIB.}

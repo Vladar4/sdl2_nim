@@ -53,7 +53,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #2d2d2d;
+  color: #666;
   background-color: rgba(252, 248, 244, 0.75); }
 
 /* Skeleton grid */
@@ -489,7 +489,7 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0 10px 0px 10px;
+  margin: 0.25em 10px 0.25em 10px;
   font-size: 14px;
   line-height: 20px;
   white-space: pre !important;
@@ -892,6 +892,10 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+ul.simple > li {
+  margin-bottom: 0.5em }
+
 ol.simple, ul.simple {
   margin-bottom: 1em; }
 
@@ -1185,6 +1189,8 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="hasSSE42*(): bool"><wbr />has<wbr />SSE42</a></li>
   <li><a class="reference" href="#hasAVX,"
     title="hasAVX*(): bool"><wbr />has<wbr />AVX</a></li>
+  <li><a class="reference" href="#hasAVX2,"
+    title="hasAVX2*(): bool"><wbr />has<wbr />AVX2</a></li>
   <li><a class="reference" href="#getSystemRAM,"
     title="getSystemRAM*(): cint"><wbr />get<wbr />System<wbr />RAM</a></li>
 
@@ -1214,71 +1220,75 @@ This is a guess for the cacheline size used for padding. Most x86 processors hav
 <dl class="item">
 <dt id="getCPUCount"><a name="getCPUCount,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCPUCount</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetCPUCount&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function returns the number of CPU cores available.
+This procedure returns the number of CPU cores available.
 
 </dd>
-<dt id="getCPUCacheLineSize"><a name="getCPUCacheLineSize,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCPUCacheLineSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetCPUCacheLineSize&quot;</span><span class="Other">,</span> 
-                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getCPUCacheLineSize"><a name="getCPUCacheLineSize,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCPUCacheLineSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetCPUCacheLineSize&quot;</span><span class="Other">,</span>
+                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<p>This function returns the L1 cache line size of the CPU</p>
+<p>This procedure returns the L1 cache line size of the CPU</p>
 <p>This is useful for determining multi-threaded structure padding or SIMD prefetch sizes.</p>
 
 
 </dd>
 <dt id="hasRDTSC"><a name="hasRDTSC,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasRDTSC</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasRDTSC&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function returns true if the CPU has the RDTSC instruction.
+This procedure returns true if the CPU has the RDTSC instruction.
 
 </dd>
 <dt id="hasAltiVec"><a name="hasAltiVec,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasAltiVec</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasAltiVec&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function returns true if the CPU has AltiVec features.
+This procedure returns true if the CPU has AltiVec features.
 
 </dd>
 <dt id="hasMMX"><a name="hasMMX,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasMMX</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasMMX&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function returns true if the CPU has MMX features.
+This procedure returns true if the CPU has MMX features.
 
 </dd>
 <dt id="has3DNow"><a name="has3DNow,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">has3DNow</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Has3DNow&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function returns true if the CPU has 3DNow! features.
+This procedure returns true if the CPU has 3DNow! features.
 
 </dd>
 <dt id="hasSSE"><a name="hasSSE,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasSSE</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasSSE&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function returns true if the CPU has SSE features.
+This procedure returns true if the CPU has SSE features.
 
 </dd>
 <dt id="hasSSE2"><a name="hasSSE2,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasSSE2</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasSSE2&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function returns true if the CPU has SSE2 features.
+This procedure returns true if the CPU has SSE2 features.
 
 </dd>
 <dt id="hasSSE3"><a name="hasSSE3,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasSSE3</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasSSE3&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function returns true if the CPU has SSE3 features.
+This procedure returns true if the CPU has SSE3 features.
 
 </dd>
 <dt id="hasSSE41"><a name="hasSSE41,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasSSE41</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasSSE41&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function returns true if the CPU has SSE4.1 features.
+This procedure returns true if the CPU has SSE4.1 features.
 
 </dd>
 <dt id="hasSSE42"><a name="hasSSE42,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasSSE42</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasSSE42&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function returns true if the CPU has SSE4.2 features.
+This procedure returns true if the CPU has SSE4.2 features.
 
 </dd>
 <dt id="hasAVX"><a name="hasAVX,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasAVX</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasAVX&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function returns true if the CPU has AVX features.
+This procedure returns true if the CPU has AVX features.
 
 </dd>
-<dt id="getSystemRAM"><a name="getSystemRAM,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getSystemRAM</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetSystemRAM&quot;</span><span class="Other">,</span> 
-                             <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="hasAVX2"><a name="hasAVX2,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasAVX2</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasAVX2&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function returns the amount of RAM configured in the system, in MB.
+This procedure returns true if the CPU has AVX2 features.
+
+</dd>
+<dt id="getSystemRAM"><a name="getSystemRAM,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getSystemRAM</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetSystemRAM&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+This procedure returns the amount of RAM configured in the system, in MB.
 
 </dd>
 
@@ -1291,7 +1301,7 @@ This function returns the amount of RAM configured in the system, in MB.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-10-04 22:57:21 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
       </div>
     </div>
   </div>

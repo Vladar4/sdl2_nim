@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -25,7 +25,7 @@
 ##  Include file for SDL game controller event handling.
 ##
 ##  In order to use these functions, ``init()`` must have been called
-##  with the `INIT_JOYSTICK` flag.  This causes SDL to scan the system
+##  with the `INIT_GAMECONTROLLER` flag.  This causes SDL to scan the system
 ##  for game controllers, and load appropriate drivers.
 ##
 ##  If you would like to receive controller updates while the application
@@ -152,10 +152,15 @@ proc gameControllerOpen*(joystick_index: cint): GameController {.
   ##  The index passed as an argument refers to the N'th game controller
   ##  on the system.
   ##
-  ##  This index is the value which will identify this controller in future
-  ##  controller events.
+  ##  This index is not the value which will identify this controller in future
+  ##  controller events. The joystick's instance id (``JoystickID``) will be
+  ##  used there instead.
   ##
   ##  ``Return`` a controller identifier, or `nil` if an error occurred.
+
+proc gameControllerFromInstanceID*(joyid: JoystickID): GameController {.
+    cdecl, importc: "SDL_GameControllerFromInstanceID", dynlib: SDL2_LIB.}
+  ##  ``Return`` the ``GameController`` associated with an instance id.
 
 proc gameControllerName*(gamecontroller: GameController): cstring {.
     cdecl, importc: "SDL_GameControllerName", dynlib: SDL2_LIB.}
@@ -215,7 +220,8 @@ proc gameControllerGetAxis*(gamecontroller: GameController;
     importc: "SDL_GameControllerGetAxis", dynlib: SDL2_LIB.}
   ##  Get the current state of an axis control on a game controller.
   ##
-  ##  The state is a value ranging from `-32768` to `32767`.
+  ##  The state is a value ranging from `-32768` to `32767`
+  ##  (except for the triggers, which range from `0` to `32767`.
   ##
   ##  The axis indices start at index `0`.
 

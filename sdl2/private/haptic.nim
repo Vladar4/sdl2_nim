@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -35,11 +35,6 @@
 ##  * Run the effect with ``hapticRunEffect()``.
 ##  * (optional) Free the effect with ``hapticDestroyEffect()``.
 ##  * Close the haptic device with ``hapticClose()``.
-##
-##  You can also find out more information on my blog:
-##  http://bobbens.dyndns.org/journal/2010/sdl_haptic/
-##
-##  ``Author`` Edgar Simo Serra
 
 type
   Haptic* = pointer ##  \
@@ -254,6 +249,9 @@ type
   HapticDirection* = object ##  \
     ##  Structure that represents a haptic direction.
     ##
+    ##  This is the direction where the force comes from,
+    ##  instead of the direction in which the force is exerted.
+    ##
     ##  Directions can be specified by:
     ##  * `HAPTIC_POLAR` : Specified by polar coordinates.
     ##  * `HAPTIC_CARTESIAN` : Specified by cartesian coordinates.
@@ -279,9 +277,9 @@ type
     ##
     ##  The cardinal directions would be:
     ##  * North:  `0,-1, 0`
-    ##  * East:  `-1, 0, 0`
+    ##  * East:  `1, 0, 0`
     ##  * South:  `0, 1, 0`
-    ##  * West:   `1, 0, 0`
+    ##  * West:   `-1, 0, 0`
     ##
     ##  The Z axis represents the height of the effect if supported, otherwise
     ##  it's unused.  In cartesian encoding (1, 2) would be the same as (2, 4),
@@ -330,7 +328,7 @@ type
     ##                         ^
     ##                         |
     ##                         |
-    ##    (1,0)  West <----[ HAPTIC ]----> East (-1,0)
+    ##    (-1,0)  West <----[ HAPTIC ]----> East (1,0)
     ##                         |
     ##                         |
     ##                         v
@@ -402,7 +400,7 @@ type
     ##  over time. The type determines the shape of the wave and the parameters
     ##  determine the dimensions of the wave.
     ##
-    ##  Phase is given by hundredth of a cycle meaning that giving the phase
+    ##  Phase is given by hundredth of a degree meaning that giving the phase
     ##  a value of `9000` will displace it 25% of its period.
     ##
     ##  Here are sample values:
@@ -466,9 +464,10 @@ type
     interval*: uint16 ##  How soon it can be triggered again after button
     # Periodic
     period*: uint16   ##  Period of the wave.
-    magnitude*: int16 ## Peak value.
-    offset*: int16    ## Mean value of the wave.
-    phase*: uint16    ## Horizontal shift given by hundredth of a cycle.
+    magnitude*: int16 ##  Peak value; \
+      ##  if negative, equivalent to `180` degrees extra phase shift.
+    offset*: int16    ##  Mean value of the wave.
+    phase*: uint16    ##  Positive phase shift given by hundredth of a degree.
     # Envelope
     attack_length*: uint16  ##  Duration of the attack.
     attack_level*: uint16   ##  Level at the start of the attack.
@@ -522,14 +521,15 @@ type
     interval*: uint16 ##  How soon it can be triggered again after button.
     # Condition
     right_sat*: array[3, uint16]  ##  \
-      ##  Level when joystick is to the positive side.
+      ##  Level when joystick is to the positive side; max `0xFFFF`.
     left_sat*: array[3, uint16]   ##  \
-      ##  Level when joystick is to the negative side.
+      ##  Level when joystick is to the negative side; max `0xFFFF`.
     right_coeff*: array[3, int16] ##  \
       ##  How fast to increase the force towards the positive side.
     left_coeff*: array[3, int16]  ##  \
       ##  How fast to increase the force towards the negative side.
-    deadband*: array[3, uint16]   ##  Size of the dead zone.
+    deadband*: array[3, uint16]   ##  Size of the dead zone;
+      ##  max ``0xFFFF`: whole axis-range when 0-centered.
     center*: array[3, int16]      ##  Position of the dead zone.
 
 type
@@ -708,7 +708,7 @@ type
     leftright*: HapticLeftRightObj  ##  Left/Right effect.
     custom*: HapticCustomObj        ##  Custom effect.
 
-# Function prototypes
+# Procedures
 
 proc numHaptics*(): cint {.
     cdecl, importc: "SDL_NumHaptics", dynlib: SDL2_LIB.}
@@ -721,7 +721,7 @@ proc hapticName*(device_index: cint): cstring {.
   ##  Get the implementation dependent name of a Haptic device.
   ##
   ##  This can be called before any joysticks are opened.
-  ##  If no name can be found, this function returns `nil`.
+  ##  If no name can be found, this procedure returns `nil`.
   ##
   ##  ``device_index`` Index of the device to get its name.
   ##
@@ -831,7 +831,7 @@ proc hapticOpenFromJoystick*(joystick: ptr Joystick): Haptic {.
     cdecl, importc: "SDL_HapticOpenFromJoystick", dynlib: SDL2_LIB.}
   ##  Opens a Haptic device for usage from a Joystick device.
   ##
-  ##  You must still close the haptic device seperately.
+  ##  You must still close the haptic device separately.
   ##  It will not be closed with the joystick.
   ##
   ##  When opening from a joystick you should first close the haptic device
@@ -894,7 +894,7 @@ proc hapticNumEffectsPlaying*(haptic: Haptic): cint {.
 
 proc hapticQuery*(haptic: Haptic): cuint {.
     cdecl, importc: "SDL_HapticQuery", dynlib: SDL2_LIB.}
-  ##  Gets the haptic devices supported features in bitwise matter.
+  ##  Gets the haptic device's supported features in bitwise manner.
   ##
   ##  Example:
   ##
@@ -1122,7 +1122,7 @@ proc hapticUnpause*(haptic: Haptic): cint {.
   ##
   ##  Call to unpause after ``hapticPause()``.
   ##
-  ##  ``haptic`` Haptic device to pause.
+  ##  ``haptic`` Haptic device to unpause.
   ##
   ##  ``Return`` `0` on success or `-1` on error.
   ##

@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -47,7 +47,7 @@ type
 const
   MAJOR_VERSION* = 2
   MINOR_VERSION* = 0
-  PATCHLEVEL* = 3
+  PATCHLEVEL* = 4
 
 template version*(x: expr) = ##  \
   ##  Template to determine SDL version program was compiled against.
@@ -93,7 +93,7 @@ proc getVersion*(ver: ref Version) {.
   ##
   ##  If you are linking to SDL dynamically, then it is possible that the
   ##  current version will be different than the version you compiled against.
-  ##  This function returns the current version, while version() is a
+  ##  This procedure returns the current version, while version() is a
   ##  template that tells you what version you compiled with.
   ##
   ##  .. code-block:: nim
@@ -103,7 +103,7 @@ proc getVersion*(ver: ref Version) {.
   ##    echo("We compiled against SDL version $1.$2.$3 ...", [$compiled.major, $compiled.minor, $compiled.patch])
   ##    echo("But we linked against SDL version $1.$2.$3.", [$linked.major, $linked.minor, $linked.patch])
   ##
-  ##  This function may be called safely at any time, even before ``init()``.
+  ##  This procedure may be called safely at any time, even before ``init()``.
   ##
   ##  See also:
   ##

@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -116,9 +116,9 @@ type
     mem*: RWopsKind
 
 
-#   RWFrom functions
+#   RWFrom procedures
 #
-#   Functions to create RWopsObj objects from various data streams.
+#   Procedures to create RWopsObj objects from various data streams.
 
 proc rwFromFile*(file: cstring; mode: cstring): ptr RWops {.
     cdecl, importc: "SDL_RWFromFile", dynlib: SDL2_LIB.}
@@ -137,7 +137,7 @@ proc rwFromConstMem*(mem: pointer; size: cint): ptr RWops {.
     cdecl, importc: "SDL_RWFromConstMem", dynlib: SDL2_LIB.}
 
 
-# RWFrom functions
+# RWFrom procedures
 
 proc allocRW*(): ptr RWops {.
     cdecl, importc: "SDL_AllocRW", dynlib: SDL2_LIB.}
@@ -177,7 +177,7 @@ template rwClose*(ctx: expr): expr =
 
 # Read/write macros
 
-#   Read endian functions
+#   Read endian procedures
 #
 #   Read an item of the specified endianness and return in native format.
 proc readU8*(src: ptr RWops): uint8 {.
@@ -202,7 +202,7 @@ proc readBE64*(src: ptr RWops): uint64 {.
     cdecl, importc: "SDL_ReadBE64", dynlib: SDL2_LIB.}
 
 
-#   Write endian functions
+#   Write endian procedures
 #
 #   Write an item of native format to the specified endianness.
 

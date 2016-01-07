@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -150,14 +150,14 @@ proc logMessage*(category: LogCategory; priority: LogPriority; fmt: cstring) {.
 type
   LogOutputFunction* = proc (userdata: pointer; category: LogCategory;
       priority: LogPriority; message: cstring) {.cdecl.}
-    ##  The prototype for the log output function.
+    ##  The prototype for the log output procedure.
 
 proc logGetOutputFunction*(
     callback: ptr LogOutputFunction; userdata: ptr pointer) {.
     cdecl, importc: "SDL_LogGetOutputFunction", dynlib: SDL2_LIB.}
-  ##  Get the current log output function.
+  ##  Get the current log output procedure.
 
 proc logSetOutputFunction*(callback: LogOutputFunction; userdata: pointer) {.
     cdecl, importc: "SDL_LogSetOutputFunction", dynlib: SDL2_LIB.}
-  ##  This function allows you to replace the default log output
-  ##  function with one of your own.
+  ##  This procedure allows you to replace the default log output
+  ##  procedure with one of your own.

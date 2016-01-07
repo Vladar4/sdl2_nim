@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -28,11 +28,11 @@
 ##  ----------
 ##
 ##  If you are not an expert in concurrent lockless programming, you should
-##  only be using the atomic lock and reference counting functions in this
+##  only be using the atomic lock and reference counting procedures in this
 ##  file.  In all other cases you should be protecting your data structures
 ##  with full mutexes.
 ##
-##  The list of "safe" functions to use are:
+##  The list of "safe" procedures to use are:
 ##  * ``atomicLock()``
 ##  * ``atomicUnlock()``
 ##  * ``atomicIncRef()``
@@ -71,7 +71,7 @@
 ##  The atomic locks are not safe to lock recursively.
 ##
 ##  ``Porting Note:``
-##  The spin lock functions and type are required and can not be
+##  The spin lock procedures and type are required and can not be
 ##  emulated because they are used in the atomic emulation code.
 
 type
@@ -110,7 +110,7 @@ proc atomicCAS*(a: ptr Atomic_t; oldval: cint; newval: cint): bool {.
   ##
   ##  ``Return`` `true` if the atomic variable was set, `false` otherwise.
   ##
-  ##  ``Note`` If you don't know what this function is for,
+  ##  ``Note`` If you don't know what this procedure is for,
   ##  you shouldn't use it!
 
 proc atomicSet*(a: ptr Atomic_t; v: cint): cint {.
@@ -150,7 +150,7 @@ proc atomicCASPtr*(a: ptr pointer; oldval: pointer; newval: pointer): bool {.
   ##
   ##  ``Return`` `true` if the pointer was set, `false` otherwise.
   ##
-  ##  ``Note`` If you don't know what this function is for,
+  ##  ``Note`` If you don't know what this procedure is for,
   ##  you shouldn't use it!
 
 proc atomicSetPtr*(a: ptr pointer; v: pointer): pointer {.

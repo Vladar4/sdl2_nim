@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -38,7 +38,7 @@
 ##  (a X360 wired controller for example).
 ##  This identifier is platform dependent.
 
-##  In order to use these functions, ``init()`` must have been called
+##  In order to use these procedures, ``init()`` must have been called
 ##  with the `INIT_JOYSTICK` flag.  This causes SDL to scan the system
 ##  for joysticks, and load appropriate drivers.
 ##
@@ -55,8 +55,16 @@ type
 
   JoystickID* = int32
 
+  JoystickPowerLevel* {.size: sizeof(cint).} = enum
+    JOYSTICK_POWER_UNKNOWN = - 1,
+    JOYSTICK_POWER_EMPTY,
+    JOYSTICK_POWER_LOW,
+    JOYSTICK_POWER_MEDIUM,
+    JOYSTICK_POWER_FULL,
+    JOYSTICK_POWER_WIRED,
+    JOYSTICK_POWER_MAX
 
-# Function prototypes
+# Procedures
 
 proc numJoysticks*(): cint {.
     cdecl, importc: "SDL_NumJoysticks", dynlib: SDL2_LIB.}
@@ -67,22 +75,27 @@ proc joystickNameForIndex*(device_index: cint): cstring {.
   ##  Get the implementation dependent name of a joystick.
   ##
   ##  This can be called before any joysticks are opened.
-  ##  If no name can be found, this function returns `nil`.
+  ##  If no name can be found, this procedure returns `nil`.
 
 proc joystickOpen*(device_index: cint): Joystick {.
     cdecl, importc: "SDL_JoystickOpen", dynlib: SDL2_LIB.}
   ##  Open a joystick for use.
   ##
-  ##  The index passed as an argument refers tothe N'th joystick on the system.
-  ##  This index is the value which will identify this joystick in future
-  ##  joystick events.
+  ##  The index passed as an argument refers to the N'th joystick on the system.
+  ##  This index is not the value which will identify this joystick in future
+  ##  joystick events. The joystick's instance id (``JoystickID``) will be used
+  ##  there instead.
   ##
   ##  ``Return`` a joystick identifier, or `nil` if an error occurred.
+
+proc joystickFromInstanceID*(joyid: JoystickID): Joystick {.
+    cdecl, importc: "SDL_JoystickFromInstanceID", dynlib: SDL2_LIB.}
+  ##  ``Return`` the ``Joystick`` associated with an instance id.
 
 proc joystickName*(joystick: Joystick): cstring {.
     cdecl, importc: "SDL_JoystickName", dynlib: SDL2_LIB.}
   ##  ``Return`` the name for this currently opened joystick.
-  ##  If no name can be found, this function returns `nil`.
+  ##  If no name can be found, this procedure returns `nil`.
 
 proc joystickGetDeviceGUID*(device_index: cint): JoystickGUID {.
     cdecl, importc: "SDL_JoystickGetDeviceGUID", dynlib: SDL2_LIB.}
@@ -205,3 +218,8 @@ proc joystickGetButton*(joystick: Joystick; button: cint): uint8 {.
 proc joystickClose*(joystick: Joystick) {.
     cdecl, importc: "SDL_JoystickClose", dynlib: SDL2_LIB.}
   ##  Close a joystick previously opened with ``joystickOpen()``.
+
+proc joystickCurrentPowerLevel*(joystick: Joystick): JoystickPowerLevel {.
+    cdecl, importc: "SDL_JoystickCurrentPowerLevel", dynlib: SDL2_LIB.}
+  ##  Return the battery level of this ``joystick``.
+

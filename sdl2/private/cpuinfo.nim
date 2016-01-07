@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -33,55 +33,59 @@ const
 
 proc getCPUCount*(): cint {.
     cdecl, importc: "SDL_GetCPUCount",  dynlib: SDL2_LIB.}
-  ##  This function returns the number of CPU cores available.
+  ##  This procedure returns the number of CPU cores available.
 
 proc getCPUCacheLineSize*(): cint {.
     cdecl, importc: "SDL_GetCPUCacheLineSize", dynlib: SDL2_LIB.}
-  ##  This function returns the L1 cache line size of the CPU
+  ##  This procedure returns the L1 cache line size of the CPU
   ##
   ##  This is useful for determining multi-threaded structure padding
   ##  or SIMD prefetch sizes.
 
 proc hasRDTSC*(): bool {.
     cdecl, importc: "SDL_HasRDTSC", dynlib: SDL2_LIB.}
-  ##  This function returns true if the CPU has the RDTSC instruction.
+  ##  This procedure returns true if the CPU has the RDTSC instruction.
 
 proc hasAltiVec*(): bool {.
     cdecl, importc: "SDL_HasAltiVec", dynlib: SDL2_LIB.}
-  ##  This function returns true if the CPU has AltiVec features.
+  ##  This procedure returns true if the CPU has AltiVec features.
 
 proc hasMMX*(): bool {.
     cdecl, importc: "SDL_HasMMX", dynlib: SDL2_LIB.}
-  ##  This function returns true if the CPU has MMX features.
+  ##  This procedure returns true if the CPU has MMX features.
 
 proc has3DNow*(): bool {.
     cdecl, importc: "SDL_Has3DNow", dynlib: SDL2_LIB.}
-  ##  This function returns true if the CPU has 3DNow! features.
+  ##  This procedure returns true if the CPU has 3DNow! features.
 
 proc hasSSE*(): bool {.
     cdecl, importc: "SDL_HasSSE", dynlib: SDL2_LIB.}
-  ##  This function returns true if the CPU has SSE features.
+  ##  This procedure returns true if the CPU has SSE features.
 
 proc hasSSE2*(): bool {.
     cdecl, importc: "SDL_HasSSE2", dynlib: SDL2_LIB.}
-  ##  This function returns true if the CPU has SSE2 features.
+  ##  This procedure returns true if the CPU has SSE2 features.
 
 proc hasSSE3*(): bool {.
     cdecl, importc: "SDL_HasSSE3", dynlib: SDL2_LIB.}
-  ##  This function returns true if the CPU has SSE3 features.
+  ##  This procedure returns true if the CPU has SSE3 features.
 
 proc hasSSE41*(): bool {.
     cdecl, importc: "SDL_HasSSE41", dynlib: SDL2_LIB.}
-  ##  This function returns true if the CPU has SSE4.1 features.
+  ##  This procedure returns true if the CPU has SSE4.1 features.
 
 proc hasSSE42*(): bool {.
     cdecl, importc: "SDL_HasSSE42", dynlib: SDL2_LIB.}
-  ##  This function returns true if the CPU has SSE4.2 features.
+  ##  This procedure returns true if the CPU has SSE4.2 features.
 
 proc hasAVX*(): bool {.
     cdecl, importc: "SDL_HasAVX", dynlib: SDL2_LIB.}
-  ##  This function returns true if the CPU has AVX features.
+  ##  This procedure returns true if the CPU has AVX features.
+
+proc hasAVX2*(): bool {.
+    cdecl, importc: "SDL_HasAVX2", dynlib: SDL2_LIB.}
+  ##  This procedure returns true if the CPU has AVX2 features.
 
 proc getSystemRAM*(): cint {.
     cdecl, importc: "SDL_GetSystemRAM", dynlib: SDL2_LIB.}
-  ##  This function returns the amount of RAM configured in the system, in MB.
+  ##  This procedure returns the amount of RAM configured in the system, in MB.

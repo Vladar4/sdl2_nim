@@ -1163,8 +1163,8 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   flags*: uint32               ## Supported ``RendererFlags``
   num_texture_formats*: uint32 ## The number of available texture formats
   texture_formats*: array[16, uint32] ## The available texture formats
-  max_texture_width*: cint     ## The maximimum texture width
-  max_texture_height*: cint    ## The maximimum texture height"><wbr />Renderer<wbr />Info</a></li>
+  max_texture_width*: cint     ## The maximum texture width
+  max_texture_height*: cint    ## The maximum texture height"><wbr />Renderer<wbr />Info</a></li>
   <li><a class="reference" href="#TextureAccess"
     title="TextureAccess* = enum
   TEXTUREACCESS_STATIC = 0x00000000, ## Changes rarely, not lockable
@@ -1268,6 +1268,8 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="renderSetClipRect*(renderer: Renderer; rect: ptr Rect): cint"><wbr />render<wbr />Set<wbr />Clip<wbr />Rect</a></li>
   <li><a class="reference" href="#renderGetClipRect,Renderer,ptr.Rect"
     title="renderGetClipRect*(renderer: Renderer; rect: ptr Rect)"><wbr />render<wbr />Get<wbr />Clip<wbr />Rect</a></li>
+  <li><a class="reference" href="#renderIsClipEnabled,Renderer"
+    title="renderIsClipEnabled*(renderer: Renderer): bool"><wbr />render<wbr />Is<wbr />Clip<wbr />Enabled</a></li>
   <li><a class="reference" href="#renderSetScale,Renderer,cfloat,cfloat"
     title="renderSetScale*(renderer: Renderer; scaleX: cfloat; scaleY: cfloat): cint"><wbr />render<wbr />Set<wbr />Scale</a></li>
   <li><a class="reference" href="#renderGetScale,Renderer,ptr.cfloat,ptr.cfloat"
@@ -1340,7 +1342,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   </div>
   <div class="nine columns" id="content">
   <p class="module-desc">
-<h1><a class="toc-backref" id="render-nim" href="#render-nim">render.nim</a></h1><p>Header file for SDL 2D rendering functions.</p>
+<h1><a class="toc-backref" id="render-nim" href="#render-nim">render.nim</a></h1><p>Header file for SDL 2D rendering procedures.</p>
 This API supports the following features:<ul class="simple"><li>single pixel points</li>
 <li>single pixel lines</li>
 <li>filled rectangles</li>
@@ -1349,7 +1351,7 @@ This API supports the following features:<ul class="simple"><li>single pixel poi
 <p>The primitives may be drawn in opaque, blended, or additive modes.</p>
 <p>The texture images may be drawn in opaque, blended, or additive modes. They can have an additional color tint or alpha modulation applied to them, and may also be stretched with linear interpolation.</p>
 <p>This API is designed to accelerate simple 2D operations. You may want more functionality such as polygons and particle effects and in that case you should use SDL's OpenGL/Direct3D support or one of the many good 3D engines.</p>
-<p>These functions must be called from the main thread. See this bug for details: <a class="reference external" href="http://bugzilla.libsdl.org/show_bug.cgi?id=1995">http://bugzilla.libsdl.org/show_bug.cgi?id=1995</a></p>
+<p>These procedures must be called from the main thread. See this bug for details: <a class="reference external" href="http://bugzilla.libsdl.org/show_bug.cgi?id=1995">http://bugzilla.libsdl.org/show_bug.cgi?id=1995</a></p>
 </p>
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
@@ -1359,8 +1361,8 @@ This API supports the following features:<ul class="simple"><li>single pixel poi
   <span class="Identifier">flags</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>               <span class="Comment">## Supported ``RendererFlags``</span>
   <span class="Identifier">num_texture_formats</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Comment">## The number of available texture formats</span>
   <span class="Identifier">texture_formats</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">16</span><span class="Other">,</span> <span class="Identifier">uint32</span><span class="Other">]</span> <span class="Comment">## The available texture formats</span>
-  <span class="Identifier">max_texture_width</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>     <span class="Comment">## The maximimum texture width</span>
-  <span class="Identifier">max_texture_height</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>    <span class="Comment">## The maximimum texture height</span>
+  <span class="Identifier">max_texture_width</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>     <span class="Comment">## The maximum texture width</span>
+  <span class="Identifier">max_texture_height</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>    <span class="Comment">## The maximum texture height</span>
   </pre></dt>
 <dd>
 
@@ -1519,7 +1521,7 @@ Get information about a rendering context.
 <dt id="getRendererOutputSize"><a name="getRendererOutputSize,Renderer,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRendererOutputSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRendererOutputSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-Get the output size of a rendering context.
+Get the output size in pixels of a rendering context.
 
 </dd>
 <dt id="createTexture"><a name="createTexture,Renderer,uint32,TextureAccess,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">access</span><span class="Other">:</span> <span class="Identifier">TextureAccess</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
@@ -1532,7 +1534,7 @@ Get the output size of a rendering context.
 <p><tt class="docutils literal"><span class="pre">access</span></tt> One of the enumerated values in <tt class="docutils literal"><span class="pre">TextureAccess</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">w</span></tt> The width of the texture in pixels.</p>
 <p><tt class="docutils literal"><span class="pre">h</span></tt> The height of the texture in pixels.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> The created texture is returned, or <cite>0</cite> if no rendering context was active, the format was unsupported, or the width or height were out of range.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> The created texture is returned, or <cite>nil</cite> if no rendering context was active, the format was unsupported, or the width or height were out of range.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">queryTexture()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">updateTexture()</span></tt></p>
@@ -1546,8 +1548,8 @@ Get the output size of a rendering context.
 <p>Create a texture from an existing surface.</p>
 <p><tt class="docutils literal"><span class="pre">renderer</span></tt> The renderer.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt> The surface containing pixel data used to fill the texture.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> The created texture is returned, or <cite>0</cite> on error.</p>
-<p><tt class="docutils literal"><span class="pre">Note:</span></tt> The surface is not modified or freed by this function.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> The created texture is returned, or <cite>nil</cite> on error.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> The surface is not modified or freed by this procedure.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">queryTexture()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">destroyTexture()</span></tt></p>
@@ -1652,9 +1654,9 @@ Get the output size of a rendering context.
 <p><tt class="docutils literal"><span class="pre">texture</span></tt> The texture to update</p>
 <p><tt class="docutils literal"><span class="pre">rect</span></tt> A pointer to the rectangle of pixels to update, or <cite>nil</cite> to update the entire texture.</p>
 <p><tt class="docutils literal"><span class="pre">pixels</span></tt> The raw pixel data.</p>
-<p><tt class="docutils literal"><span class="pre">pitch</span></tt> The number of bytes between rows of pixel data.</p>
+<p><tt class="docutils literal"><span class="pre">pitch</span></tt> The number of bytes in a row of pixel data, including padding between lines.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the texture is not valid.</p>
-<p><tt class="docutils literal"><span class="pre">Note:</span></tt> This is a fairly slow function.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> This is a fairly slow procedure.</p>
 
 
 </dd>
@@ -1672,7 +1674,7 @@ Get the output size of a rendering context.
 <p><tt class="docutils literal"><span class="pre">vPlane</span></tt> The raw pixel data for the V plane.</p>
 <p><tt class="docutils literal"><span class="pre">vPitch</span></tt> The number of bytes between rows of pixel data for the V plane.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the texture is not valid.</p>
-<p><tt class="docutils literal"><span class="pre">Note:</span></tt> You can use <tt class="docutils literal"><span class="pre">updateTexture()</span></tt> as long as your pixel data is a contiguous block of Y and U/V planes in the proper order, but this function is available if your pixel data is not contiguous.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> You can use <tt class="docutils literal"><span class="pre">updateTexture()</span></tt> as long as your pixel data is a contiguous block of Y and U/V planes in the proper order, but this procedure is available if your pixel data is not contiguous.</p>
 
 
 </dd>
@@ -1737,9 +1739,9 @@ Get the output size of a rendering context.
 <p><tt class="docutils literal"><span class="pre">renderer</span></tt> The renderer for which resolution should be set.</p>
 <p><tt class="docutils literal"><span class="pre">w</span></tt> The width of the logical resolution</p>
 <p><tt class="docutils literal"><span class="pre">h</span></tt> The height of the logical resolution</p>
-<p>This function uses the viewport and scaling functionality to allow a fixed logical resolution for rendering, regardless of the actual output resolution. If the actual  output resolution doesn't have the same aspect ratio the output rendering will be centered within the output display.</p>
+<p>This procedure uses the viewport and scaling functionality to allow a fixed logical resolution for rendering, regardless of the actual output resolution. If the actual  output resolution doesn't have the same aspect ratio the output rendering will be centered within the output display.</p>
 <p>If the output display is a window, mouse events in the window will be filtered and scaled so they seem to arrive within the logical resolution.</p>
-<p><tt class="docutils literal"><span class="pre">Note:</span></tt> If this function results in scaling or subpixel drawing by the rendering backend, it will be handled using the appropriate quality hints.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> If this procedure results in scaling or subpixel drawing by the rendering backend, it will be handled using the appropriate quality hints.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">renderGetLogicalSize()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">renderSetScale()</span></tt></p>
@@ -1803,6 +1805,16 @@ Get the output size of a rendering context.
 <p><tt class="docutils literal"><span class="pre">rect</span></tt> A pointer filled in with the current clip rectangle, or an empty rectangle if clipping is disabled.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">renderSetClipRect()</span></tt></p>
+
+
+</dd>
+<dt id="renderIsClipEnabled"><a name="renderIsClipEnabled,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderIsClipEnabled</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderIsClipEnabled&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+<p>Get whether clipping is enabled on the given renderer.</p>
+<p><tt class="docutils literal"><span class="pre">renderer</span></tt> The renderer from which clip state should be queried.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">renderGetClipRect()</span></tt></p>
 
 
 </dd>
@@ -1889,7 +1901,7 @@ Get the output size of a rendering context.
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Clear the current rendering target with the drawing color.</p>
-<p>This function clears the entire rendering target, ignoring the viewport.</p>
+<p>This procedure clears the entire rendering target, ignoring the viewport.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
 
@@ -2006,7 +2018,7 @@ Get the output size of a rendering context.
 <p><tt class="docutils literal"><span class="pre">srcrect</span></tt> A pointer to the source rectangle, or <cite>nil</cite> for the entire texture.</p>
 <p><tt class="docutils literal"><span class="pre">dstrect</span></tt> A pointer to the destination rectangle, or <cite>nil</cite> for the entire rendering target.</p>
 <p><tt class="docutils literal"><span class="pre">angle</span></tt> An angle in degrees that indicates the rotation that will be applied to dstrect.</p>
-<p><tt class="docutils literal"><span class="pre">center</span></tt> A pointer to a point indicating the point around which dstrect will be rotated (if <cite>nil</cite>, rotation will be done aroud <cite>dstrect.w/2</cite>, <cite>dstrect.h/2</cite>).</p>
+<p><tt class="docutils literal"><span class="pre">center</span></tt> A pointer to a point indicating the point around which <tt class="docutils literal"><span class="pre">dstrect</span></tt> will be rotated (if <cite>nil</cite>, rotation will be done around <cite>dstrect.w/2</cite>, <cite>dstrect.h/2</cite>).</p>
 <p><tt class="docutils literal"><span class="pre">flip</span></tt> <tt class="docutils literal"><span class="pre">RendererFlip</span></tt> value stating which flipping actions should be performed on the texture.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
@@ -2107,7 +2119,7 @@ Update the screen with rendering performed.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2016-01-02 14:33:48 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
       </div>
     </div>
   </div>

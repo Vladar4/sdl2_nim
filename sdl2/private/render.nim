@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -22,7 +22,7 @@
 ##  render.nim
 ##  ==========
 ##
-##  Header file for SDL 2D rendering functions.
+##  Header file for SDL 2D rendering procedures.
 
 ##  This API supports the following features:
 ##  * single pixel points
@@ -41,7 +41,7 @@
 ##  in that case you should use SDL's OpenGL/Direct3D support or one
 ##  of the many good 3D engines.
 ##
-##  These functions must be called from the main thread.
+##  These procedures must be called from the main thread.
 ##  See this bug for details: http://bugzilla.libsdl.org/show_bug.cgi?id=1995
 
 #type
@@ -75,8 +75,8 @@ type
     flags*: uint32                ## Supported ``RendererFlags``
     num_texture_formats*: uint32  ## The number of available texture formats
     texture_formats*: array[16, uint32] ## The available texture formats
-    max_texture_width*: cint      ## The maximimum texture width
-    max_texture_height*: cint     ## The maximimum texture height
+    max_texture_width*: cint      ## The maximum texture width
+    max_texture_height*: cint     ## The maximum texture height
 
 #type
 #  TextureAccess* {.size: sizeof(cint).} = enum ##  \
@@ -116,7 +116,7 @@ type
   Texture* = pointer ##  \
     ##  An efficient driver-specific representation of pixel data
 
-# Function prototypes
+# Procedures
 
 proc getNumRenderDrivers*(): cint {.
     cdecl, importc: "SDL_GetNumRenderDrivers", dynlib: SDL2_LIB.}
@@ -212,7 +212,7 @@ proc getRendererInfo*(renderer: Renderer; info: ptr RendererInfo): cint {.
 proc getRendererOutputSize*(
     renderer: Renderer; w: ptr cint; h: ptr cint): cint {.
       cdecl, importc: "SDL_GetRendererOutputSize", dynlib: SDL2_LIB.}
-  ##  Get the output size of a rendering context.
+  ##  Get the output size in pixels of a rendering context.
 
 proc createTexture*(renderer: Renderer;
     format: uint32; access: TextureAccess; w: cint; h: cint): Texture {.
@@ -229,7 +229,7 @@ proc createTexture*(renderer: Renderer;
   ##
   ##  ``h`` The height of the texture in pixels.
   ##
-  ##  ``Return`` The created texture is returned, or `0` if no rendering
+  ##  ``Return`` The created texture is returned, or `nil` if no rendering
   ##  context was active, the format was unsupported, or the width or height
   ##  were out of range.
   ##
@@ -250,9 +250,9 @@ proc createTextureFromSurface*(
   ##
   ##  ``surface`` The surface containing pixel data used to fill the texture.
   ##
-  ##  ``Return`` The created texture is returned, or `0` on error.
+  ##  ``Return`` The created texture is returned, or `nil` on error.
   ##
-  ##  ``Note:`` The surface is not modified or freed by this function.
+  ##  ``Note:`` The surface is not modified or freed by this procedure.
   ##
   ##  See also:
   ##
@@ -398,11 +398,12 @@ proc updateTexture*(
   ##
   ##  ``pixels`` The raw pixel data.
   ##
-  ##  ``pitch`` The number of bytes between rows of pixel data.
+  ##  ``pitch`` The number of bytes in a row of pixel data,
+  ##  including padding between lines.
   ##
   ##  ``Return`` `0` on success, or `-1` if the texture is not valid.
   ##
-  ##  ``Note:`` This is a fairly slow function.
+  ##  ``Note:`` This is a fairly slow procedure.
 
 proc updateYUVTexture*(
     texture: Texture; rect: ptr Rect;
@@ -434,7 +435,7 @@ proc updateYUVTexture*(
   ##
   ##  ``Note:`` You can use ``updateTexture()`` as long as your pixel data is
   ##  a contiguous block of Y and U/V planes in the proper order,
-  ##  but this function is available if your pixel data is not contiguous.
+  ##  but this procedure is available if your pixel data is not contiguous.
 
 proc lockTexture*(
     texture: Texture; rect: ptr Rect;
@@ -511,7 +512,7 @@ proc renderSetLogicalSize*(renderer: Renderer; w: cint; h: cint): cint {.
   ##
   ##  ``h`` The height of the logical resolution
   ##
-  ##  This function uses the viewport and scaling functionality to allow a
+  ##  This procedure uses the viewport and scaling functionality to allow a
   ##  fixed logical resolution for rendering, regardless of the actual output
   ##  resolution. If the actual  output resolution doesn't have the same aspect
   ##  ratio the output rendering will be centered within the output display.
@@ -519,7 +520,7 @@ proc renderSetLogicalSize*(renderer: Renderer; w: cint; h: cint): cint {.
   ##  If the output display is a window, mouse events in the window will be
   ##  filtered and scaled so they seem to arrive within the logical resolution.
   ##
-  ##  ``Note:`` If this function results in scaling or subpixel drawing by the
+  ##  ``Note:`` If this procedure results in scaling or subpixel drawing by the
   ##  rendering backend, it will be handled using the appropriate quality hints.
   ##
   ##  See also:
@@ -601,6 +602,16 @@ proc renderGetClipRect*(renderer: Renderer; rect: ptr Rect) {.
   ##  See also:
   ##
   ##  ``renderSetClipRect()``
+
+proc renderIsClipEnabled*(renderer: Renderer): bool {.
+    cdecl, importc: "SDL_RenderIsClipEnabled", dynlib: SDL2_LIB.}
+  ##  Get whether clipping is enabled on the given renderer.
+  ##
+  ##  ``renderer`` The renderer from which clip state should be queried.
+  ##
+  ##  See also:
+  ##
+  ##  ``renderGetClipRect()``
 
 proc renderSetScale*(
     renderer: Renderer; scaleX: cfloat; scaleY: cfloat): cint {.
@@ -721,7 +732,7 @@ proc renderClear*(renderer: Renderer): cint {.
     cdecl, importc: "SDL_RenderClear", dynlib: SDL2_LIB.}
   ##  Clear the current rendering target with the drawing color.
   ##
-  ##  This function clears the entire rendering target, ignoring the viewport.
+  ##  This procedure clears the entire rendering target, ignoring the viewport.
   ##
   ##  ``Return`` `0` on success, or `-1` on error.
 
@@ -869,8 +880,8 @@ proc renderCopyEx*(
   ##  that will be applied to dstrect.
   ##
   ##  ``center`` A pointer to a point indicating the point
-  ##  around which dstrect will be rotated
-  ##  (if `nil`, rotation will be done aroud `dstrect.w/2`, `dstrect.h/2`).
+  ##  around which ``dstrect`` will be rotated
+  ##  (if `nil`, rotation will be done around `dstrect.w/2`, `dstrect.h/2`).
   ##
   ##  ``flip`` ``RendererFlip`` value stating which flipping actions should be
   ##  performed on the texture.

@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -105,7 +105,7 @@ proc showMessageBox*(
   ##  ``Return`` `-1` on error, otherwise `0` and ``buttonid`` contains user id
   ##  of button hit or `-1` if dialog was closed.
   ##
-  ##  ``Note:`` This function should be called on the thread that created
+  ##  ``Note:`` This procedure should be called on the thread that created
   ##  the parent window, or on the main thread if the messagebox has no parent.
   ##  It will block execution of that thread until the user clicks a button or
   ##  closes the messagebox.

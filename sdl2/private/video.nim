@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -44,8 +44,8 @@ type
     ##
     ##  ``getWindowDisplayMode()``
     format*: uint32         ## pixel format
-    w*: cint                ## width
-    h*: cint                ## height
+    w*: cint                ## width, in screen coordinates
+    h*: cint                ## height, in screen coordinates
     refresh_rate*: cint     ## refresh rate (or zero for unspecified)
     driverdata*: pointer    ## driver-specific data, initialize to 0
 
@@ -125,20 +125,23 @@ type
 
 # WindowFlags
 const
-  WINDOW_FULLSCREEN*    = 0x00000001  ## fullscreen window
-  WINDOW_OPENGL*        = 0x00000002  ## window usable with OpenGL context
-  WINDOW_SHOWN*         = 0x00000004  ## window is visible
-  WINDOW_HIDDEN*        = 0x00000008  ## window is not visible
-  WINDOW_BORDERLESS*    = 0x00000010  ## no window decoration
-  WINDOW_RESIZABLE*     = 0x00000020  ## window can be resized
-  WINDOW_MINIMIZED*     = 0x00000040  ## window is minimized
-  WINDOW_MAXIMIZED*     = 0x00000080  ## window is maximized
-  WINDOW_INPUT_GRABBED* = 0x00000100  ## window has grabbed input focus
-  WINDOW_INPUT_FOCUS*   = 0x00000200  ## window has input focus
-  WINDOW_MOUSE_FOCUS*   = 0x00000400  ## window has mouse focus
-  WINDOW_FOREIGN*       = 0x00000800  ## window not created by SDL
+  WINDOW_FULLSCREEN*    = 0x00000001  ##  fullscreen window
+  WINDOW_OPENGL*        = 0x00000002  ##  window usable with OpenGL context
+  WINDOW_SHOWN*         = 0x00000004  ##  window is visible
+  WINDOW_HIDDEN*        = 0x00000008  ##  window is not visible
+  WINDOW_BORDERLESS*    = 0x00000010  ##  no window decoration
+  WINDOW_RESIZABLE*     = 0x00000020  ##  window can be resized
+  WINDOW_MINIMIZED*     = 0x00000040  ##  window is minimized
+  WINDOW_MAXIMIZED*     = 0x00000080  ##  window is maximized
+  WINDOW_INPUT_GRABBED* = 0x00000100  ##  window has grabbed input focus
+  WINDOW_INPUT_FOCUS*   = 0x00000200  ##  window has input focus
+  WINDOW_MOUSE_FOCUS*   = 0x00000400  ##  window has mouse focus
+  WINDOW_FOREIGN*       = 0x00000800  ##  window not created by SDL
   WINDOW_FULLSCREEN_DESKTOP* = (WINDOW_FULLSCREEN or 0x00001000)
-  WINDOW_ALLOW_HIGHDPI* = 0x00002000
+  WINDOW_ALLOW_HIGHDPI* = 0x00002000  ##  window should be created  \
+    ##  in high-DPI mode if supported
+  WINDOW_MOUSE_CAPTURE* = 0x00004000  ##  window has mouse captured \
+    ##  (unrelated to `INPUT_GRABBED`)
 
 const
   WINDOWPOS_UNDEFINED_MASK* = 0x1FFF0000
@@ -203,7 +206,8 @@ type
     GL_MULTISAMPLEBUFFERS, GL_MULTISAMPLESAMPLES, GL_ACCELERATED_VISUAL,
     GL_RETAINED_BACKING, GL_CONTEXT_MAJOR_VERSION, GL_CONTEXT_MINOR_VERSION,
     GL_CONTEXT_EGL, GL_CONTEXT_FLAGS, GL_CONTEXT_PROFILE_MASK,
-    GL_SHARE_WITH_CURRENT_CONTEXT, GL_FRAMEBUFFER_SRGB_CAPABLE
+    GL_SHARE_WITH_CURRENT_CONTEXT, GL_FRAMEBUFFER_SRGB_CAPABLE,
+    GL_CONTEXT_RELEASE_BEHAVIOR
 
   GLprofile* {.size: sizeof(cint).} = enum
     GL_CONTEXT_PROFILE_CORE = 0x00000001,
@@ -215,6 +219,10 @@ type
     GL_CONTEXT_FORWARD_COMPATIBLE_FLAG = 0x00000002,
     GL_CONTEXT_ROBUST_ACCESS_FLAG = 0x00000004,
     GL_CONTEXT_RESET_ISOLATION_FLAG = 0x00000008
+
+  GLcontextReleaseFlag* {.size: sizeof(cint).} = enum
+    GL_CONTEXT_RELEASE_BEHAVIOR_NONE = 0x0000,
+    GL_CONTEXT_RELEASE_BEHAVIOUR_FLUSH = 0x0001
 
 # Function prototypes
 
@@ -301,6 +309,21 @@ proc getDisplayBounds*(displayIndex: cint; rect: ptr Rect): cint {.
   ##  with the primary display located at `0,0`.
   ##
   ##  ``Return`` `0` on success, or `-1` if the index is out of range.
+  ##
+  ##  See also:
+  ##
+  ##  ``getNumVideoDisplays()``
+
+proc getDisplayDPI*(displayIndex: cint;
+  ddpi: ptr cfloat; hdpi: ptr cfloat; vdpi: ptr cfloat): cint {.
+    cdecl, importc: "SDL_GetDisplayDPI", dynlib: SDL2_LIB.}
+  ##  Get the dots/pixels-per-inch for a display.
+  ##
+  ##  ``Note`` Diagonal, horizontal and vertical DPI can all be optionally
+  ##  returned if the parameter is non-nil.
+  ##
+  ##  ``Return`` `0` on success, or `-1` if no DPI information is available
+  ##  or the index is out of range.
   ##
   ##  See also:
   ##
@@ -421,9 +444,9 @@ proc createWindow*(title: cstring;
   ##  ``y`` The y position of the window,
   ##  `WINDOWPOS_CENTERED`, or `WINDOWPOS_UNDEFINED`.
   ##
-  ##  ``w`` The width of the window.
+  ##  ``w`` The width of the window, in screen coordinates.
   ##
-  ##  ``h`` The height of the window.
+  ##  ``h`` The height of the window, in screen coordinates.
   ##
   ##  ``flags`` The flags for the window, a mask of any of the following:
   ##  `WINDOW_FULLSCREEN`,
@@ -438,6 +461,12 @@ proc createWindow*(title: cstring;
   ##
   ##  ``Return`` the id of the window created,
   ##  or zero if window creation failed.
+  ##
+  ##  If the window is created with the `WINDOW_ALLOW_HIGHDPI` flag, its size
+  ##  in pixels may differ from its size in screen coordinates on platforms with
+  ##  high-DPI support (e.g. iOS and Mac OS X). Use ``getWindowSize()`` to query
+  ##  the client area's size in screen coordinates, and ``glGetDrawableSize()``
+  ##  or ``getRendererOutputSize()`` to query the drawable size in pixels.
   ##
   ##  See also:
   ##
@@ -531,10 +560,10 @@ proc setWindowPosition*(window: Window; x: cint; y: cint) {.
   ##
   ##  ``window`` The window to reposition.
   ##
-  ##  ``x`` The x coordinate of the window,
+  ##  ``x`` The x coordinate of the window in screen coordinates,
   ##  WINDOWPOS_CENTERED, or WINDOWPOS_UNDEFINED.
   ##
-  ##  ``y`` The y coordinate of the window,
+  ##  ``y`` The y coordinate of the window in screen coordinates,
   ##  WINDOWPOS_CENTERED, or WINDOWPOS_UNDEFINED.
   ##
   ##  ``Note:`` The window coordinate origin is the upper left of the display.
@@ -549,9 +578,11 @@ proc getWindowPosition*(window: Window; x: ptr cint; y: ptr cint) {.
   ##
   ##  ``window`` The window to query.
   ##
-  ##  ``x`` Pointer to variable for storing the x position, may be `nil`.
+  ##  ``x`` Pointer to variable for storing the x position,
+  ##  in screen coordinates. May be `nil`.
   ##
-  ##  ``y`` Pointer to variable for storing the y position, may be `nil`.
+  ##  ``y`` Pointer to variable for storing the y position,
+  ##  in screen coordinates. May be `nil`.
   ##
   ##  See also:
   ##
@@ -563,12 +594,17 @@ proc setWindowSize*(window: Window; w: cint; h: cint) {.
   ##
   ##  ``window`` The window to resize.
   ##
-  ##  ``w`` The width of the window, must be `>0`.
+  ##  ``w`` The width of the window, in screen coordinates. Must be `>0`.
   ##
-  ##  ``h`` The height of the window, must be `>0`.
+  ##  ``h`` The height of the window, in screen coordinates. Must be `>0`.
   ##
   ##  ``Note:`` You can't change the size of a fullscreen window,
   ##  it automatically matches the size of the display mode.
+  ##
+  ##  The window size in screen coordinates may differ from the size in pixels,
+  ##  if the window was created with `WINDOW_ALLOW_HIGHDPI` on a platform with
+  ##  high-dpi support (e.g. iOS or OS X). Use ``getDrawableSize()`` or
+  ##  ``getRendererOutputSize()`` to get the real client area size in pixels.
   ##
   ##  See also:
   ##
@@ -580,9 +616,16 @@ proc getWindowSize*(window: Window; w: ptr cint; h: ptr cint) {.
   ##
   ##  ``window`` The window to query.
   ##
-  ##  ``w`` Pointer to variable for storing the width, may be `nil`.
+  ##  ``w`` Pointer to variable for storing the width, in screen coordinates.
+  ##  May be `nil`.
   ##
-  ##  ``h`` Pointer to variable for storing the height, may be `nil`.
+  ##  ``h`` Pointer to variable for storing the height, in screen coordinates.
+  ##  May be `nil`.
+  ##
+  ##  The window size in screen coordinates may differ from the size in pixels,
+  ##  if the window was created with `WINDOW_ALLOW_HIGHDPI` on a platform with
+  ##  high-dpi support (e.g. iOS or OS X). Use ``glGetDrawableSize()`` or
+  ##  ``getRendererOutputSize()`` to get the real client area size in pixels.
   ##
   ##  See also:
   ##
@@ -784,6 +827,9 @@ proc setWindowGrab*(window: Window; grabbed: bool) {.
   ##  ``window`` The window for which the input grab mode should be set.
   ##  ``grabbed`` This is `true` to grab input, and `false` to release input.
   ##
+  ##  If the caller enables a grab while another window is currently grabbed,
+  ##  the other window loses its grab in favor of the caller's window.
+  ##
   ##  See also:
   ##
   ##  ``getWindowGrab()``
@@ -793,6 +839,16 @@ proc getWindowGrab*(window: Window): bool {.
   ##  Get a window's input grab mode.
   ##
   ##  ``Return`` `true` if input is grabbed, and `false` otherwise.
+  ##
+  ##  See also:
+  ##
+  ##  ``setWindowGrab()``
+
+proc getGrabbedWindow*(): Window {.
+    cdecl, importc: "SDL_GetGrabbedWindow", dynlib: SDL2_LIB.}
+  ##  Get the window that currently has an input grab enabled.
+  ##
+  ##  ``Return`` the window if input is grabbed, and `nil` otherwise.
   ##
   ##  See also:
   ##
@@ -867,6 +923,72 @@ proc getWindowGammaRamp*(window: Window;
   ##  See also:
   ##
   ##  ``setWindowGammaRamp()``
+
+type
+  HitTestResult* {.size: sizeof(cint).} = enum  ##  \
+    ##  Possible return values from the ``HitTest`` callback.
+    HITTEST_NORMAL,           ##  Region is normal. No special properties.
+    HITTEST_DRAGGABLE,        ##  Region can drag entire window.
+    HITTEST_RESIZE_TOPLEFT,
+    HITTEST_RESIZE_TOP,
+    HITTEST_RESIZE_TOPRIGHT,
+    HITTEST_RESIZE_RIGHT,
+    HITTEST_RESIZE_BOTTOMRIGHT,
+    HITTEST_RESIZE_BOTTOM,
+    HITTEST_RESIZE_BOTTOMLEFT,
+    HITTEST_RESIZE_LEFT
+
+type
+  HitTest* = proc (
+    win: Window; area: ptr Point; data: pointer): HitTestResult {.
+      cdecl.} ##  \
+      ##  Callback used for hit-testing.
+      ##
+      ##  See also:
+      ##
+      ##  ``setWindowHitTest()``
+
+proc setWindowHitTest*(
+  window: Window; callback: HitTest; callbackData: pointer): cint {.
+    cdecl, importc: "SDL_SetWindowHitTest", dynlib: SDL2_LIB.}
+  ##  Provide a callback that decides if a window region has special properties.
+  ##
+  ##  Normally windows are dragged and resized by decorations provided by the
+  ##  system window manager (a title bar, borders, etc), but for some apps, it
+  ##  makes sense to drag them from somewhere else inside the window itself; for
+  ##  example, one might have a borderless window that wants to be draggable
+  ##  from any part, or simulate its own title bar, etc.
+  ##
+  ##  This function lets the app provide a callback that designates pieces of
+  ##  a given window as special. This callback is run during event processing
+  ##  if we need to tell the OS to treat a region of the window specially; the
+  ##  use of this callback is known as "hit testing".
+  ##
+  ##  Mouse input may not be delivered to your application if it is within
+  ##  a special area; the OS will often apply that input to moving the window or
+  ##  resizing the window and not deliver it to the application.
+  ##
+  ##  Specifying `nil` for a callback disables hit-testing. Hit-testing is
+  ##  disabled by default.
+  ##
+  ##  Platforms that don't support this functionality will return `-1`
+  ##  unconditionally, even if you're attempting to disable hit-testing.
+  ##
+  ##  Your callback may fire at any time, and its firing does not indicate any
+  ##  specific behavior (for example, on Windows, this certainly might fire
+  ##  when the OS is deciding whether to drag your window, but it fires for lots
+  ##  of other reasons, too, some unrelated to anything you probably care about
+  ##  _and when the mouse isn't actually at the location it is testing_).
+  ##  Since this can fire at any time, you should try to keep your callback
+  ##  efficient, devoid of allocations, etc.
+  ##
+  ##  ``window`` The window to set hit-testing on.
+  ##
+  ##  ``callback`` The callback to call when doing a hit-test.
+  ##
+  ##  ``callback_data`` An app-defined void pointer passed to the callback.
+  ##
+  ##  ``Return`` `0` on success, `-1` on error (including unsupported).
 
 proc destroyWindow*(window: Window) {.
     cdecl, importc: "SDL_DestroyWindow", dynlib: SDL2_LIB.}
@@ -982,13 +1104,14 @@ proc glGetCurrentContext*(): GLContext {.
 
 proc glGetDrawableSize*(window: Window; w: ptr cint; h: ptr cint) {.
     cdecl, importc: "SDL_GL_GetDrawableSize", dynlib: SDL2_LIB.}
-  ##  Get the size of a window's underlying drawable (for use with glViewport).
+  ##  Get the size of a window's underlying drawable in pixels
+  ##  (for use with glViewport).
   ##
   ##  ``window`` Window from which the drawable size should be queried.
   ##
-  ##  ``w`` Pointer to variable for storing the width, may be `nil`.
+  ##  ``w`` Pointer to variable for storing the width in pixels, may be `nil`.
   ##
-  ##  ``h`` Pointer to variable for storing the height, may be `nil`.
+  ##  ``h`` Pointer to variable for storing the height in pixels, may be `nil`.
   ##
   ##  This may differ from ``getWindowSize()`` if we're rendering to a high-DPI
   ##  drawable, i.e. the window was created with `WINDOW_ALLOW_HIGHDPI` on a

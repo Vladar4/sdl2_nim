@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -24,7 +24,7 @@
 ##
 ##  Official documentation for SDL configuration variables.
 ##
-##  This file contains functions to set and get configuration hints,
+##  This file contains procedures to set and get configuration hints,
 ##  as well as listing each of them alphabetically.
 ##
 ##  The convention for naming hints is `HINT_X`, where "X" is
@@ -96,7 +96,7 @@ const
     ##  By default the Direct3D device is created with thread-safety disabled.
 
 const
-  HINT_RENDER_DIRECT3D11_DEBUG* = "SDL_HINT_RENDER_DIRECT3D11_DEBUG" ##  \
+  HINT_RENDER_DIRECT3D11_DEBUG* = "SDL_RENDER_DIRECT3D11_DEBUG" ##  \
     ##  A variable controlling whether to enable Direct3D 11+'s Debug Layer.
     ##
     ##  This variable does not have any effect on the Direct3D 9 based renderer.
@@ -116,7 +116,7 @@ const
     ##  * "1" or "linear"  - Linear filtering (supported by OpenGL and Direct3D)
     ##  * "2" or "best"    - Currently this is the same as "linear"
     ##
-    ##  By default nearest pixel sampling is used
+    ##  By default nearest pixel sampling is used.
 
 const
   HINT_RENDER_VSYNC* = "SDL_RENDER_VSYNC" ##  \
@@ -174,6 +174,47 @@ const
     ##  By default SDL will not use XRandR because of window manager issues.
 
 const
+  HINT_VIDEO_X11_NET_WM_PING* = "SDL_VIDEO_X11_NET_WM_PING" ##  \
+    ##  A variable controlling whether the X11 _NET_WM_PING protocol
+    ##  should be supported.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - Disable _NET_WM_PING
+    ##  * "1"       - Enable _NET_WM_PING
+    ##
+    ##  By default SDL will use _NET_WM_PING, but for applications that know
+    ##  they will not always be able to respond to ping requests in a timely
+    ##  manner they can turn it off to avoid the window manager thinking the
+    ##  app is hung.
+    ##
+    ##  The hint is checked in ``createWindow()``.
+
+const
+  HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN* = "SDL_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN" ##  \
+    ##  A variable controlling whether the window frame and title bar are
+    ##  interactive when the cursor is hidden.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - The window frame is not interactive when the cursor is
+    ##    hidden (no move, resize, etc)
+    ##  * "1"       - The window frame is interactive when the cursor is hidden
+    ##
+    ##  By default SDL will allow interaction with the window frame
+    ##  when the cursor is hidden.
+
+const
+  HINT_WINDOWS_ENABLE_MESSAGELOOP* = "SDL_WINDOWS_ENABLE_MESSAGELOOP" ##  \
+    ##  A variable controlling whether the windows message loop is processed
+    ##  by SDL
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - The window message loop is not run
+    ##  * "1"       - The window message loop is processed in ``pumpEvents()``
+    ##
+    ##  By default SDL will process the windows message loop.
+
+
+const
   HINT_GRAB_KEYBOARD* = "SDL_GRAB_KEYBOARD" ##  \
     ##  A variable controlling whether grabbing input grabs the keyboard
     ##
@@ -193,7 +234,7 @@ const
     ##  * "0"       - Relative mouse mode uses raw input
     ##  * "1"       - Relative mouse mode uses mouse warping
     ##
-    ##  By default SDL will use raw input for relative mouse mode
+    ##  By default SDL will use raw input for relative mouse mode.
 
 const
   HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS* = "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS" ##  \
@@ -208,6 +249,10 @@ const
     ##  dimmed automatically. For games where the accelerometer is the only
     ##  input  this is problematic. This functionality can be disabled by
     ##  setting this hint.
+    ##
+    ##  As of SDL 2.0.4, ``enableScreenSaver()`` and ``disableScreenSaver()``
+    ##  accomplish the same thing on iOS. They should be preferred over this
+    ##  hint.
     ##
     ##  This variable can be set to the following values:
     ##  * "0"       - Enable idle timer
@@ -228,7 +273,7 @@ const
 
 const
   HINT_ACCELEROMETER_AS_JOYSTICK* = "SDL_ACCELEROMETER_AS_JOYSTICK" ##  \
-    ##  A variable controlling whether an Android built-in accelerometer
+    ##  A variable controlling whether an Android / iOS built-in accelerometer
     ##  should be listed as a joystick device, rather than listing actual
     ##  joysticks only.
     ##
@@ -245,6 +290,16 @@ const
     ##  The variable can be set to the following values:
     ##  * "0"       - Disable XInput detection (only uses direct input)
     ##  * "1"       - Enable XInput detection (the default)
+
+const
+  HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING* = "SDL_XINPUT_USE_OLD_JOYSTICK_MAPPING"  ##  \
+    ## A variable that causes SDL to use the old axis and button mapping for
+    ## XInput devices.
+    ##
+    ##  This hint is for backwards compatibility only and will be removed in
+    ##  SDL 2.1.
+    ##
+    ##  The default value is `0`.  This hint must be set before ``sdl.init()``.
 
 const
   HINT_GAMECONTROLLERCONFIG* = "SDL_GAMECONTROLLERCONFIG" ##  \
@@ -299,8 +354,24 @@ const
     ##  The default value is "1". This hint may be set at any time.
 
 const
+  HINT_THREAD_STACK_SIZE* = "SDL_THREAD_STACK_SIZE" ##  \
+    ##  A string specifying SDL's threads stack size in bytes
+    ##  or `0` for the backend's default size.
+    ##
+    ##  Use this hint in case you need to set SDL's threads stack size to other
+    ##  than the default.
+    ##
+    ##  This is specially useful if you build SDL against a non glibc libc
+    ##  library (such as musl) which provides a relatively small default thread
+    ##  stack size (a few kilobytes versus the default 8MB glibc uses).
+    ##
+    ##  Support for this hint is currently available
+    ##  only in the pthread backend.
+
+const
   HINT_VIDEO_HIGHDPI_DISABLED* = "SDL_VIDEO_HIGHDPI_DISABLED" ##  \
-    ##  If set to 1, then do not allow high-DPI windows. ("Retina" on Mac)
+    ##  If set to 1, then do not allow high-DPI windows.
+    ##  ("Retina" on Mac and iOS)
 
 const
   HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK* =
@@ -351,7 +422,7 @@ const
     ##  created with ``createWindowFrom()`` should share a pixel format with.
 
 const
-  HINT_WINRT_PRIVACY_POLICY_URL* = "SDL_HINT_WINRT_PRIVACY_POLICY_URL" ##  \
+  HINT_WINRT_PRIVACY_POLICY_URL* = "SDL_WINRT_PRIVACY_POLICY_URL" ##  \
     ##  A URL to a WinRT app's privacy policy
     ##
     ##  All network-enabled WinRT apps must make a privacy policy available
@@ -362,7 +433,7 @@ const
     ##
     ##  To setup a URL to an app's privacy policy, set
     ##  `HINT_WINRT_PRIVACY_POLICY_URL` before calling any ``init()``
-    ##  functions. The contents of the hint should be a valid URL.
+    ##  procedures. The contents of the hint should be a valid URL.
     ##  For example, "http://www.example.com".
     ##
     ##  The default value is "", which will prevent SDL from adding a privacy
@@ -380,13 +451,13 @@ const
 
 
 const
-  HINT_WINRT_PRIVACY_POLICY_LABEL* = "SDL_HINT_WINRT_PRIVACY_POLICY_LABEL" ##  \
+  HINT_WINRT_PRIVACY_POLICY_LABEL* = "SDL_WINRT_PRIVACY_POLICY_LABEL" ##  \
     ##  Label text for a WinRT app's privacy policy link
     ##
     ##  Network-enabled WinRT apps must include a privacy policy.
     ##  On Windows 8, 8.1, and RT, Microsoft mandates that this policy be
     ##  available via the Windows Settings charm. SDL provides code to add a
-    ##  link there, with it's label text being set via the optional hint,
+    ##  link there, with its label text being set via the optional hint,
     ##  `HINT_WINRT_PRIVACY_POLICY_LABEL`.
     ##
     ##  Please note that a privacy policy's contents are not set via this hint.
@@ -402,13 +473,62 @@ const
     ##  documentation for `HINT_WINRT_PRIVACY_POLICY_URL`.
 
 const
-  HINT_WINRT_HANDLE_BACK_BUTTON* = "SDL_HINT_WINRT_HANDLE_BACK_BUTTON" ##  \
-    ##  If set to "1", back button press events on Windows Phone 8+ will be
-    ##  marked as handled.
+  HINT_WINRT_HANDLE_BACK_BUTTON* = "SDL_WINRT_HANDLE_BACK_BUTTON" ##  \
+    ##  Allows back-button-press events on Windows Phone to be marked
+    ##  as handled.
     ##
-    ##  TODO, WinRT: document `HINT_WINRT_HANDLE_BACK_BUTTON` need and use
-    ##  For now, more details on why this is needed can be found at the
-    ##  beginning of the following web page:
+    ##  Windows Phone devices typically feature a Back button. When pressed,
+    ##  the OS will emit back-button-press events, which apps are expected to
+    ##  handle in an appropriate manner. If apps do not explicitly mark these
+    ##  events as 'Handled', then the OS will invoke its default behavior for
+    ##  unhandled back-button-press events, which on Windows Phone 8 and 8.1 is
+    ##  to terminate the app (and attempt to switch to the previous app, or to
+    ##  the device's home screen).
+    ##
+    ##  Setting the `HINT_WINRT_HANDLE_BACK_BUTTON` hint to `1` will cause SDL
+    ##  to mark back-button-press events as 'Handled', if and when one is sent
+    ##  to the app.
+    ##
+    ##  Internally, Windows Phone sends back button events as parameters to
+    ##  special back-button-press callback procedures. Apps that need to respond
+    ##  to back-button-press events are expected to register one or more
+    ##  callback procedures for such, shortly after being launched (during the
+    ##  app's initialization phase). After the back button is pressed, the OS
+    ##  will invoke these callbacks. If the app's callback(s) do not explicitly
+    ##  mark the event as handled by the time they return, or if the app never
+    ##  registers one of these callback, the OS will consider the event
+    ##  un-handled, and it will apply its default back button behavior
+    ##  (terminate the app).
+    ##
+    ##  SDL registers its own back-button-press callback with the Windows Phone
+    ##  OS.  This callback will emit a pair of SDL key-press events
+    ##  (`sdl.KEYDOWN` and `sdl.KEYUP`), each with a scancode of
+    ##  `SCANCODE_AC_BACK`, after which it will check the contents of the hint,
+    ##  `HINT_WINRT_HANDLE_BACK_BUTTON`.
+    ##
+    ##  If the hint's value is set to `1`, the back button event's 'Handled'
+    ##  property will get set to `true`.  If the hint's value is set to
+    ##  something else, or if it is unset, SDL will leave the event's 'Handled'
+    ##  property alone. (By default, the OS sets this property to `false`,
+    ##  to note.)
+    ##
+    ##  SDL apps can either set `HINT_WINRT_HANDLE_BACK_BUTTON` well before a
+    ##  back button is pressed, or can set it in direct-response to a
+    ##  back button being pressed.
+    ##
+    ##  In order to get notified when a back button is pressed, SDL apps should
+    ##  register a callback procedure with ``addEventWatch()``, and have it
+    ##  listen for `sdl.KEYDOWN` events that have a scancode of
+    ##  `SCANCODE_AC_BACK`.
+    ##
+    ##  (Alternatively, `sdl.KEYUP` events can be listened-for. Listening for
+    ##  either event type is suitable.) Any value of
+    ##  `HINT_WINRT_HANDLE_BACK_BUTTON` set by such a callback, will be applied
+    ##  to the OS' current back-button-press event.
+    ##
+    ##  More details on back button behavior in Windows Phone apps can be found
+    ##  at the following page, on Microsoft's developer site:
+    ##
     ##  http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj247550(v=vs.105).aspx
 
 const
@@ -423,11 +543,108 @@ const
     ##    button on their titlebars).
     ##  * "1"       - Enable Spaces support (`FULLSCREEN_DESKTOP` will use
     ##    them and `WINDOW_RESIZABLE` windows will offer the "fullscreen"
-    ##    button on their titlebars.
+    ##    button on their titlebars).
     ##
     ##  The default value is "1". Spaces are disabled regardless of this hint
     ##  if the OS isn't at least Mac OS X Lion (10.7). This hint must be set
     ##  before any windows are created.
+
+const
+  HINT_MAC_BACKGROUND_APP* = "SDL_MAC_BACKGROUND_APP" ##  \
+    ##  When set don't force the SDL app to become a foreground process
+    ##
+    ##  This hint only applies to Mac OS X.
+
+const
+  HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION* = "SDL_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION" ##  \
+    ##  Android APK expansion main file version.
+    ##  Should be a string number like "1", "2" etc.
+    ##
+    ##  Must be set together with
+    ##  `HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION`.
+    ##
+    ##  If both hints were set then ``rwFromFile()`` will look into expansion
+    ##  files after a given relative path was not found in the internal storage
+    ##  and assets.
+    ##
+    ##  By default this hint is not set and the APK expansion files are not
+    ##  searched.
+
+const
+  HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION* = "SDL_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION"  ##  \
+    ##  Android APK expansion patch file version.
+    ##  Should be a string number like "1", "2" etc.
+    ##
+    ##  Must be set together with
+    ##  `HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION`.
+    ##
+    ##  If both hints were set then ``rwFromFile()`` will look into expansion
+    ##  files after a given relative path was not found in the internal storage
+    ##  and assets.
+    ##
+    ##  By default this hint is not set and the APK expansion files are not
+    ##  searched.
+
+const
+  HIND_IME_INTERNAL_EDITING* = "SDL_IME_INTERNAL_EDITING" ##  \
+    ##  A variable to control whether certain IMEs should handle text editing
+    ##  internally instead of sending `sdl.TEXTEDITING` events.
+    ##
+    ##  The variable can be set to the following values:
+    ##  * "0"       - `sdl.TEXTEDITING` events are sent, and it is the
+    ##    application's responsibility to render the text from these events and
+    ##    differentiate it somehow from committed text. (default)
+    ##  * "1"       - If supported by the IME then `sdl.TEXTEDITING`
+    ##    events are not sent, and text that is being composed
+    ##    will be rendered in its own UI.
+
+const
+  HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH* = "SDL_ANDROID_SEPARATE_MOUSE_AND_TOUCH"  ##  \
+    ##  A variable to control whether mouse and touch events are to be treated
+    ##  together or separately.
+    ##
+    ##  The variable can be set to the following values:
+    ##  * "0"       - Mouse events will be handled as touch events,
+    ##    and touch will raise fake mouse events.
+    ##    This is the behaviour of SDL <= 2.0.3. (default)
+    ##  * "1"       - Mouse events will be handled separately
+    ##    from pure touch events.
+    ##
+    ##  The value of this hint is used at runtime,
+    ##  so it can be changed at any time.
+
+const
+  HINT_EMSCRIPTEN_KEYBOARD_ELEMENT* = "SDL_EMSCRIPTEN_KEYBOARD_ELEMENT" ##  \
+    ##  Override the binding element for keyboard inputs for Emscripten builds.
+    ##
+    ##  This hint only applies to the emscripten platform
+    ##
+    ##  The variable can be one of
+    ##  * "#window"      - The javascript window object (this is the default)
+    ##  * "#document"    - The javascript document object
+    ##  * "#screen"      - the javascript window.screen object
+    ##  * "#canvas"      - the WebGL canvas element
+    ##  * any other string without a leading `#` sign applies to the element
+    ##    on the page with that ID.
+
+const
+  HINT_NO_SIGNAL_HANDLERS* = "SDL_NO_SIGNAL_HANDLERS" ##  \
+    ##  Tell SDL not to catch the SIGINT or SIGTERM signals.
+    ##
+    ##  This hint only applies to Unix-like platforms.
+    ##
+    ##  The variable can be set to the following values:
+    ##  * "0"       - SDL will install a SIGINT and SIGTERM handler,
+    ##    and when it catches a signal, convert it into an `sdl.QUIT` event.
+    ##  * "1"       - SDL will not install a signal handler at all.
+
+const
+  HINT_WINDOWS_NO_CLOSE_ON_ALT_F4* = "SDL_WINDOWS_NO_CLOSE_ON_ALT_F4" ##  \
+    ##  Tell SDL not to generate window-close events for Alt+F4 on Windows.
+    ##
+    ##  The variable can be set to the following values:
+    ##  * "0"   - SDL will generate a window-close event when it sees Alt+F4.
+    ##  * "1"   - SDL will only do normal key handling for Alt+F4.
 
 type
   HintPriority* {.size: sizeof(cint).} = enum ##  \
@@ -465,27 +682,27 @@ type
 proc addHintCallback*(
     name: cstring; callback: HintCallback; userdata: pointer) {.
       cdecl, importc: "SDL_AddHintCallback", dynlib: SDL2_LIB.}
-  ##  Add a function to watch a particular hint.
+  ##  Add a procedure to watch a particular hint.
   ##
   ##  ``name`` The hint to watch.
   ##
-  ##  ``callback`` The function to call when the hint value changes.
+  ##  ``callback`` The procedure to call when the hint value changes.
   ##
-  ##  ``userdata`` A pointer to pass to the callback function.
+  ##  ``userdata`` A pointer to pass to the callback procedure.
 
 proc delHintCallback*(
     name: cstring; callback: HintCallback; userdata: pointer) {.
       cdecl, importc: "SDL_DelHintCallback", dynlib: SDL2_LIB.}
-  ##  Remove a function watching a particular hint.
+  ##  Remove a procedure watching a particular hint.
   ##
   ##  ``name`` The hint being watched.
   ##
-  ##  ``callback`` The function being called when the hint value changes.
+  ##  ``callback`` The procedure being called when the hint value changes.
   ##
-  ##  ``userdata`` A pointer being passed to the callback function.
+  ##  ``userdata`` A pointer being passed to the callback procedure.
 
 proc clearHints*() {.
     cdecl, importc: "SDL_ClearHints", dynlib: SDL2_LIB.}
   ##  Clear all hints.
   ##
-  ##  This function is called during ``quit()`` to free stored hints.
+  ##  This procedure is called during ``quit()`` to free stored hints.

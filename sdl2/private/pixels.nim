@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -65,6 +65,8 @@ const
   PACKEDORDER_BGRA* = 8
 
 # Array component order, low byte -> high byte.
+# !!! FIXME: in 2.1, make these not overlap differently with
+# !!! FIXME:  PACKEDORDER_*, so we can simplify ISPIXELFORMAT_ALPHA
 const
   ARRAYORDER_NONE* = 0
   ARRAYORDER_RGB* = 1
@@ -125,12 +127,31 @@ template isPixelFormatIndexed*(format: expr): expr =
      (pixelType(format) == PIXELTYPE_INDEX4) or
      (pixelType(format) == PIXELTYPE_INDEX8)))
 
-template isPixelFormatAlpha*(format: expr): expr =
+template isPixelFormatPacked*(format: expr): expr =
   (not isPixelFormatFourCC(format) and
+    ((pixelType(format) == PIXELTYPE_PACKED8) or
+     (pixelType(format) == PIXELTYPE_PACKED16) or
+     (pixelType(format) == PIXELTYPE_PACKED32)))
+
+template isPixelFormatArray*(format: expr): expr =
+  (not isPixelFormatFourCC(format) and
+    ((pixelType(format) == PIXELTYPE_ARRAYU8) or
+     (pixelType(format) == PIXELTYPE_ARRAYU16) or
+     (pixelType(format) == PIXELTYPE_ARRAYU32) or
+     (pixelType(format) == PIXELTYPE_ARRAYF16) or
+     (pixelType(format) == PIXELTYPE_ARRAYF32)))
+
+template isPixelFormatAlpha*(format: expr): expr =
+  ((isPixelFormatPacked(format) and
     ((pixelOrder(format) == PACKEDORDER_ARGB) or
      (pixelOrder(format) == PACKEDORDER_RGBA) or
      (pixelOrder(format) == PACKEDORDER_ABGR) or
-     (pixelOrder(format) == PACKEDORDER_BGRA)))
+     (pixelOrder(format) == PACKEDORDER_BGRA))) or
+    (isPixelFormatArray(format) and
+      ((pixelOrder(format) == ARRAYORDER_ARGB) or
+       (pixelOrder(format) == ARRAYORDER_RGBA) or
+       (pixelOrder(format) == ARRAYORDER_ABGR) or
+       (pixelOrder(format) == ARRAYORDER_BGRA))))
 
 template isPixelFormatFourCC*(format: expr): expr = ##  \
   ##  The flag is set to `1` because 0x1? is not in the printable ASCII range.
@@ -209,6 +230,10 @@ const
     ##  Packed mode: U0+Y0+V0+Y1 (1 plane)
   PIXELFORMAT_YVYU* = definePixelFourCC('Y', 'V', 'Y', 'U') ##  \
     ##  Packed mode: Y0+V0+Y1+U0 (1 plane)
+  PIXELFORMAT_NV12* = definePixelFourCC('N', 'V', '1', '2') ##  \
+    ##  Planar mode: Y + U/V interleaved (2 planes)
+  PIXELFORMAT_NV21* = definePixelFourCC('N', 'V', '2', '1') ##  \
+    ##  Planar mode: Y + V/U interleaved (2 planes)
 
 type
   Color* = object

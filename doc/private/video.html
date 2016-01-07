@@ -53,7 +53,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #2d2d2d;
+  color: #666;
   background-color: rgba(252, 248, 244, 0.75); }
 
 /* Skeleton grid */
@@ -489,7 +489,7 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0 10px 0px 10px;
+  margin: 0.25em 10px 0.25em 10px;
   font-size: 14px;
   line-height: 20px;
   white-space: pre !important;
@@ -892,6 +892,10 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+ul.simple > li {
+  margin-bottom: 0.5em }
+
 ol.simple, ul.simple {
   margin-bottom: 1em; }
 
@@ -1154,16 +1158,16 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#DisplayMode"
-    title="DisplayMode* = object 
-  format*: uint32             ## pixel format
-  w*: cint                    ## width
-  h*: cint                    ## height
-  refresh_rate*: cint         ## refresh rate (or zero for unspecified)
-  driverdata*: pointer        ## driver-specific data, initialize to 0"><wbr />Display<wbr />Mode</a></li>
+    title="DisplayMode* = object
+  format*: uint32              ## pixel format
+  w*: cint                     ## width, in screen coordinates
+  h*: cint                     ## height, in screen coordinates
+  refresh_rate*: cint          ## refresh rate (or zero for unspecified)
+  driverdata*: pointer         ## driver-specific data, initialize to 0"><wbr />Display<wbr />Mode</a></li>
   <li><a class="reference" href="#Window"
     title="Window* = pointer"><wbr />Window</a></li>
   <li><a class="reference" href="#WindowEventID"
-    title="WindowEventID* = enum 
+    title="WindowEventID* = enum
   WINDOWEVENT_NONE,           ## Never used
   WINDOWEVENT_SHOWN,          ## Window has been shown
   WINDOWEVENT_HIDDEN,         ## Window has been hidden
@@ -1171,40 +1175,53 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   WINDOWEVENT_MOVED,          ## Window has been moved to data1, data2
   WINDOWEVENT_RESIZED,        ## Window has been resized to data1*data2
   WINDOWEVENT_SIZE_CHANGED, ##  \
-                            ##  The window size has changed, either as a result of an API call or
-                            ##  through the system or user changing the window size.
+                           ##  The window size has changed, either as a result of an API call or
+                           ##  through the system or user changing the window size.
   WINDOWEVENT_MINIMIZED,      ## Window has been minimized
   WINDOWEVENT_MAXIMIZED,      ## Window has been maximized
   WINDOWEVENT_RESTORED,       ##  \
-                              ##  Window has been restored to normal size and position
+                       ##  Window has been restored to normal size and position
   WINDOWEVENT_ENTER,          ## Window has gained mouse focus
   WINDOWEVENT_LEAVE,          ## Window has lost mouse focus
   WINDOWEVENT_FOCUS_GAINED,   ## Window has gained keyboard focus
   WINDOWEVENT_FOCUS_LOST,     ## Window has lost keyboard focus
   WINDOWEVENT_CLOSE           ##  \
-                              ##  The window manager requests that the window be closed"><wbr />Window<wbr />Event<wbr />ID</a></li>
+                   ##  The window manager requests that the window be closed"><wbr />Window<wbr />Event<wbr />ID</a></li>
   <li><a class="reference" href="#GLContext"
     title="GLContext* = pointer"><wbr />GLContext</a></li>
   <li><a class="reference" href="#GLattr"
-    title="GLattr* = enum 
-  GL_RED_SIZE, GL_GREEN_SIZE, GL_BLUE_SIZE, GL_ALPHA_SIZE, GL_BUFFER_SIZE, 
-  GL_DOUBLEBUFFER, GL_DEPTH_SIZE, GL_STENCIL_SIZE, GL_ACCUM_RED_SIZE, 
-  GL_ACCUM_GREEN_SIZE, GL_ACCUM_BLUE_SIZE, GL_ACCUM_ALPHA_SIZE, GL_STEREO, 
-  GL_MULTISAMPLEBUFFERS, GL_MULTISAMPLESAMPLES, GL_ACCELERATED_VISUAL, 
-  GL_RETAINED_BACKING, GL_CONTEXT_MAJOR_VERSION, GL_CONTEXT_MINOR_VERSION, 
-  GL_CONTEXT_EGL, GL_CONTEXT_FLAGS, GL_CONTEXT_PROFILE_MASK, 
-  GL_SHARE_WITH_CURRENT_CONTEXT, GL_FRAMEBUFFER_SRGB_CAPABLE"><wbr />GLattr</a></li>
+    title="GLattr* = enum
+  GL_RED_SIZE, GL_GREEN_SIZE, GL_BLUE_SIZE, GL_ALPHA_SIZE, GL_BUFFER_SIZE,
+  GL_DOUBLEBUFFER, GL_DEPTH_SIZE, GL_STENCIL_SIZE, GL_ACCUM_RED_SIZE,
+  GL_ACCUM_GREEN_SIZE, GL_ACCUM_BLUE_SIZE, GL_ACCUM_ALPHA_SIZE, GL_STEREO,
+  GL_MULTISAMPLEBUFFERS, GL_MULTISAMPLESAMPLES, GL_ACCELERATED_VISUAL,
+  GL_RETAINED_BACKING, GL_CONTEXT_MAJOR_VERSION, GL_CONTEXT_MINOR_VERSION,
+  GL_CONTEXT_EGL, GL_CONTEXT_FLAGS, GL_CONTEXT_PROFILE_MASK,
+  GL_SHARE_WITH_CURRENT_CONTEXT, GL_FRAMEBUFFER_SRGB_CAPABLE,
+  GL_CONTEXT_RELEASE_BEHAVIOR"><wbr />GLattr</a></li>
   <li><a class="reference" href="#GLprofile"
-    title="GLprofile* = enum 
-  GL_CONTEXT_PROFILE_CORE = 0x00000001, 
-  GL_CONTEXT_PROFILE_COMPATIBILITY = 0x00000002, 
-  GL_CONTEXT_PROFILE_ES = 0x00000004"><wbr />GLprofile</a></li>
+    title="GLprofile* = enum
+  GL_CONTEXT_PROFILE_CORE = 0x00000001,
+  GL_CONTEXT_PROFILE_COMPATIBILITY = 0x00000002, GL_CONTEXT_PROFILE_ES = 0x00000004"><wbr />GLprofile</a></li>
   <li><a class="reference" href="#GLcontextFlag"
-    title="GLcontextFlag* = enum 
-  GL_CONTEXT_DEBUG_FLAG = 0x00000001, 
-  GL_CONTEXT_FORWARD_COMPATIBLE_FLAG = 0x00000002, 
-  GL_CONTEXT_ROBUST_ACCESS_FLAG = 0x00000004, 
+    title="GLcontextFlag* = enum
+  GL_CONTEXT_DEBUG_FLAG = 0x00000001,
+  GL_CONTEXT_FORWARD_COMPATIBLE_FLAG = 0x00000002,
+  GL_CONTEXT_ROBUST_ACCESS_FLAG = 0x00000004,
   GL_CONTEXT_RESET_ISOLATION_FLAG = 0x00000008"><wbr />GLcontext<wbr />Flag</a></li>
+  <li><a class="reference" href="#GLcontextReleaseFlag"
+    title="GLcontextReleaseFlag* = enum
+  GL_CONTEXT_RELEASE_BEHAVIOR_NONE = 0x00000000,
+  GL_CONTEXT_RELEASE_BEHAVIOUR_FLUSH = 0x00000001"><wbr />GLcontext<wbr />Release<wbr />Flag</a></li>
+  <li><a class="reference" href="#HitTestResult"
+    title="HitTestResult* = enum
+  HITTEST_NORMAL,             ##  Region is normal. No special properties.
+  HITTEST_DRAGGABLE,          ##  Region can drag entire window.
+  HITTEST_RESIZE_TOPLEFT, HITTEST_RESIZE_TOP, HITTEST_RESIZE_TOPRIGHT,
+  HITTEST_RESIZE_RIGHT, HITTEST_RESIZE_BOTTOMRIGHT, HITTEST_RESIZE_BOTTOM,
+  HITTEST_RESIZE_BOTTOMLEFT, HITTEST_RESIZE_LEFT"><wbr />Hit<wbr />Test<wbr />Result</a></li>
+  <li><a class="reference" href="#HitTest"
+    title="HitTest* = proc (win: Window; area: ptr Point; data: pointer): HitTestResult"><wbr />Hit<wbr />Test</a></li>
 
   </ul>
 </li>
@@ -1239,6 +1256,8 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="WINDOW_FULLSCREEN_DESKTOP* = (WINDOW_FULLSCREEN or 0x00001000)"><wbr />WINDOW_<wbr />FULLSCREEN_<wbr />DESKTOP</a></li>
   <li><a class="reference" href="#WINDOW_ALLOW_HIGHDPI"
     title="WINDOW_ALLOW_HIGHDPI* = 0x00002000"><wbr />WINDOW_<wbr />ALLOW_<wbr />HIGHDPI</a></li>
+  <li><a class="reference" href="#WINDOW_MOUSE_CAPTURE"
+    title="WINDOW_MOUSE_CAPTURE* = 0x00004000"><wbr />WINDOW_<wbr />MOUSE_<wbr />CAPTURE</a></li>
   <li><a class="reference" href="#WINDOWPOS_UNDEFINED_MASK"
     title="WINDOWPOS_UNDEFINED_MASK* = 0x1FFF0000"><wbr />WINDOWPOS_<wbr />UNDEFINED_<wbr />MASK</a></li>
   <li><a class="reference" href="#WINDOWPOS_UNDEFINED"
@@ -1269,6 +1288,8 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="getDisplayName*(displayIndex: cint): cstring"><wbr />get<wbr />Display<wbr />Name</a></li>
   <li><a class="reference" href="#getDisplayBounds,cint,ptr.Rect"
     title="getDisplayBounds*(displayIndex: cint; rect: ptr Rect): cint"><wbr />get<wbr />Display<wbr />Bounds</a></li>
+  <li><a class="reference" href="#getDisplayDPI,cint,ptr.cfloat,ptr.cfloat,ptr.cfloat"
+    title="getDisplayDPI*(displayIndex: cint; ddpi: ptr cfloat; hdpi: ptr cfloat; vdpi: ptr cfloat): cint"><wbr />get<wbr />Display<wbr />DPI</a></li>
   <li><a class="reference" href="#getNumDisplayModes,cint"
     title="getNumDisplayModes*(displayIndex: cint): cint"><wbr />get<wbr />Num<wbr />Display<wbr />Modes</a></li>
   <li><a class="reference" href="#getDisplayMode,cint,cint,ptr.DisplayMode"
@@ -1278,7 +1299,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <li><a class="reference" href="#getCurrentDisplayMode,cint,ptr.DisplayMode"
     title="getCurrentDisplayMode*(displayIndex: cint; mode: ptr DisplayMode): cint"><wbr />get<wbr />Current<wbr />Display<wbr />Mode</a></li>
   <li><a class="reference" href="#getClosestDisplayMode,cint,ptr.DisplayMode,ptr.DisplayMode"
-    title="getClosestDisplayMode*(displayIndex: cint; mode: ptr DisplayMode; 
+    title="getClosestDisplayMode*(displayIndex: cint; mode: ptr DisplayMode;
                        closest: ptr DisplayMode): ptr DisplayMode"><wbr />get<wbr />Closest<wbr />Display<wbr />Mode</a></li>
   <li><a class="reference" href="#getWindowDisplayIndex,Window"
     title="getWindowDisplayIndex*(window: Window): cint"><wbr />get<wbr />Window<wbr />Display<wbr />Index</a></li>
@@ -1350,16 +1371,18 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="setWindowGrab*(window: Window; grabbed: bool)"><wbr />set<wbr />Window<wbr />Grab</a></li>
   <li><a class="reference" href="#getWindowGrab,Window"
     title="getWindowGrab*(window: Window): bool"><wbr />get<wbr />Window<wbr />Grab</a></li>
+  <li><a class="reference" href="#getGrabbedWindow,"
+    title="getGrabbedWindow*(): Window"><wbr />get<wbr />Grabbed<wbr />Window</a></li>
   <li><a class="reference" href="#setWindowBrightness,Window,cfloat"
     title="setWindowBrightness*(window: Window; brightness: cfloat): cint"><wbr />set<wbr />Window<wbr />Brightness</a></li>
   <li><a class="reference" href="#getWindowBrightness,Window"
     title="getWindowBrightness*(window: Window): cfloat"><wbr />get<wbr />Window<wbr />Brightness</a></li>
   <li><a class="reference" href="#setWindowGammaRamp,Window,ptr.uint16,ptr.uint16,ptr.uint16"
-    title="setWindowGammaRamp*(window: Window; red: ptr uint16; green: ptr uint16; 
-                    blue: ptr uint16): cint"><wbr />set<wbr />Window<wbr />Gamma<wbr />Ramp</a></li>
+    title="setWindowGammaRamp*(window: Window; red: ptr uint16; green: ptr uint16; blue: ptr uint16): cint"><wbr />set<wbr />Window<wbr />Gamma<wbr />Ramp</a></li>
   <li><a class="reference" href="#getWindowGammaRamp,Window,ptr.uint16,ptr.uint16,ptr.uint16"
-    title="getWindowGammaRamp*(window: Window; red: ptr uint16; green: ptr uint16; 
-                    blue: ptr uint16): cint"><wbr />get<wbr />Window<wbr />Gamma<wbr />Ramp</a></li>
+    title="getWindowGammaRamp*(window: Window; red: ptr uint16; green: ptr uint16; blue: ptr uint16): cint"><wbr />get<wbr />Window<wbr />Gamma<wbr />Ramp</a></li>
+  <li><a class="reference" href="#setWindowHitTest,Window,HitTest,pointer"
+    title="setWindowHitTest*(window: Window; callback: HitTest; callbackData: pointer): cint"><wbr />set<wbr />Window<wbr />Hit<wbr />Test</a></li>
   <li><a class="reference" href="#destroyWindow,Window"
     title="destroyWindow*(window: Window)"><wbr />destroy<wbr />Window</a></li>
   <li><a class="reference" href="#isScreenSaverEnabled,"
@@ -1428,12 +1451,12 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="DisplayMode"><a name="DisplayMode"></a><pre><span class="Identifier">DisplayMode</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
-  <span class="Identifier">format</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>             <span class="Comment">## pixel format</span>
-  <span class="Identifier">w</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                    <span class="Comment">## width</span>
-  <span class="Identifier">h</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                    <span class="Comment">## height</span>
-  <span class="Identifier">refresh_rate</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>         <span class="Comment">## refresh rate (or zero for unspecified)</span>
-  <span class="Identifier">driverdata</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>        <span class="Comment">## driver-specific data, initialize to 0</span>
+<dt id="DisplayMode"><a name="DisplayMode"></a><pre><span class="Identifier">DisplayMode</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">format</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">## pixel format</span>
+  <span class="Identifier">w</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                     <span class="Comment">## width, in screen coordinates</span>
+  <span class="Identifier">h</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                     <span class="Comment">## height, in screen coordinates</span>
+  <span class="Identifier">refresh_rate</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>          <span class="Comment">## refresh rate (or zero for unspecified)</span>
+  <span class="Identifier">driverdata</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>         <span class="Comment">## driver-specific data, initialize to 0</span>
   </pre></dt>
 <dd>
 <p>
@@ -1480,7 +1503,7 @@ The type used to identify a window</p>
 
 
 </dd>
-<dt id="WindowEventID"><a name="WindowEventID"></a><pre><span class="Identifier">WindowEventID</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span> 
+<dt id="WindowEventID"><a name="WindowEventID"></a><pre><span class="Identifier">WindowEventID</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">WINDOWEVENT_NONE</span><span class="Other">,</span>           <span class="Comment">## Never used</span>
   <span class="Identifier">WINDOWEVENT_SHOWN</span><span class="Other">,</span>          <span class="Comment">## Window has been shown</span>
   <span class="Identifier">WINDOWEVENT_HIDDEN</span><span class="Other">,</span>         <span class="Comment">## Window has been hidden</span>
@@ -1488,18 +1511,18 @@ The type used to identify a window</p>
   <span class="Identifier">WINDOWEVENT_MOVED</span><span class="Other">,</span>          <span class="Comment">## Window has been moved to data1, data2</span>
   <span class="Identifier">WINDOWEVENT_RESIZED</span><span class="Other">,</span>        <span class="Comment">## Window has been resized to data1*data2</span>
   <span class="Identifier">WINDOWEVENT_SIZE_CHANGED</span><span class="Other">,</span> <span class="Comment">##  \</span>
-                            <span class="Comment">##  The window size has changed, either as a result of an API call or</span>
-                            <span class="Comment">##  through the system or user changing the window size.</span>
+                           <span class="Comment">##  The window size has changed, either as a result of an API call or</span>
+                           <span class="Comment">##  through the system or user changing the window size.</span>
   <span class="Identifier">WINDOWEVENT_MINIMIZED</span><span class="Other">,</span>      <span class="Comment">## Window has been minimized</span>
   <span class="Identifier">WINDOWEVENT_MAXIMIZED</span><span class="Other">,</span>      <span class="Comment">## Window has been maximized</span>
   <span class="Identifier">WINDOWEVENT_RESTORED</span><span class="Other">,</span>       <span class="Comment">##  \</span>
-                              <span class="Comment">##  Window has been restored to normal size and position</span>
+                       <span class="Comment">##  Window has been restored to normal size and position</span>
   <span class="Identifier">WINDOWEVENT_ENTER</span><span class="Other">,</span>          <span class="Comment">## Window has gained mouse focus</span>
   <span class="Identifier">WINDOWEVENT_LEAVE</span><span class="Other">,</span>          <span class="Comment">## Window has lost mouse focus</span>
   <span class="Identifier">WINDOWEVENT_FOCUS_GAINED</span><span class="Other">,</span>   <span class="Comment">## Window has gained keyboard focus</span>
   <span class="Identifier">WINDOWEVENT_FOCUS_LOST</span><span class="Other">,</span>     <span class="Comment">## Window has lost keyboard focus</span>
   <span class="Identifier">WINDOWEVENT_CLOSE</span>           <span class="Comment">##  \</span>
-                              <span class="Comment">##  The window manager requests that the window be closed</span></pre></dt>
+                   <span class="Comment">##  The window manager requests that the window be closed</span></pre></dt>
 <dd>
 
 Event subtype for window events
@@ -1510,33 +1533,60 @@ Event subtype for window events
 An opaque handle to an OpenGL context.
 
 </dd>
-<dt id="GLattr"><a name="GLattr"></a><pre><span class="Identifier">GLattr</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span> 
-  <span class="Identifier">GL_RED_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_GREEN_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_BLUE_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_ALPHA_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_BUFFER_SIZE</span><span class="Other">,</span> 
-  <span class="Identifier">GL_DOUBLEBUFFER</span><span class="Other">,</span> <span class="Identifier">GL_DEPTH_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_STENCIL_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_ACCUM_RED_SIZE</span><span class="Other">,</span> 
-  <span class="Identifier">GL_ACCUM_GREEN_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_ACCUM_BLUE_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_ACCUM_ALPHA_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_STEREO</span><span class="Other">,</span> 
-  <span class="Identifier">GL_MULTISAMPLEBUFFERS</span><span class="Other">,</span> <span class="Identifier">GL_MULTISAMPLESAMPLES</span><span class="Other">,</span> <span class="Identifier">GL_ACCELERATED_VISUAL</span><span class="Other">,</span> 
-  <span class="Identifier">GL_RETAINED_BACKING</span><span class="Other">,</span> <span class="Identifier">GL_CONTEXT_MAJOR_VERSION</span><span class="Other">,</span> <span class="Identifier">GL_CONTEXT_MINOR_VERSION</span><span class="Other">,</span> 
-  <span class="Identifier">GL_CONTEXT_EGL</span><span class="Other">,</span> <span class="Identifier">GL_CONTEXT_FLAGS</span><span class="Other">,</span> <span class="Identifier">GL_CONTEXT_PROFILE_MASK</span><span class="Other">,</span> 
-  <span class="Identifier">GL_SHARE_WITH_CURRENT_CONTEXT</span><span class="Other">,</span> <span class="Identifier">GL_FRAMEBUFFER_SRGB_CAPABLE</span></pre></dt>
+<dt id="GLattr"><a name="GLattr"></a><pre><span class="Identifier">GLattr</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">GL_RED_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_GREEN_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_BLUE_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_ALPHA_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_BUFFER_SIZE</span><span class="Other">,</span>
+  <span class="Identifier">GL_DOUBLEBUFFER</span><span class="Other">,</span> <span class="Identifier">GL_DEPTH_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_STENCIL_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_ACCUM_RED_SIZE</span><span class="Other">,</span>
+  <span class="Identifier">GL_ACCUM_GREEN_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_ACCUM_BLUE_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_ACCUM_ALPHA_SIZE</span><span class="Other">,</span> <span class="Identifier">GL_STEREO</span><span class="Other">,</span>
+  <span class="Identifier">GL_MULTISAMPLEBUFFERS</span><span class="Other">,</span> <span class="Identifier">GL_MULTISAMPLESAMPLES</span><span class="Other">,</span> <span class="Identifier">GL_ACCELERATED_VISUAL</span><span class="Other">,</span>
+  <span class="Identifier">GL_RETAINED_BACKING</span><span class="Other">,</span> <span class="Identifier">GL_CONTEXT_MAJOR_VERSION</span><span class="Other">,</span> <span class="Identifier">GL_CONTEXT_MINOR_VERSION</span><span class="Other">,</span>
+  <span class="Identifier">GL_CONTEXT_EGL</span><span class="Other">,</span> <span class="Identifier">GL_CONTEXT_FLAGS</span><span class="Other">,</span> <span class="Identifier">GL_CONTEXT_PROFILE_MASK</span><span class="Other">,</span>
+  <span class="Identifier">GL_SHARE_WITH_CURRENT_CONTEXT</span><span class="Other">,</span> <span class="Identifier">GL_FRAMEBUFFER_SRGB_CAPABLE</span><span class="Other">,</span>
+  <span class="Identifier">GL_CONTEXT_RELEASE_BEHAVIOR</span></pre></dt>
 <dd>
 
 OpenGL configuration attributes
 
 </dd>
-<dt id="GLprofile"><a name="GLprofile"></a><pre><span class="Identifier">GLprofile</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span> 
-  <span class="Identifier">GL_CONTEXT_PROFILE_CORE</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span><span class="Other">,</span> 
-  <span class="Identifier">GL_CONTEXT_PROFILE_COMPATIBILITY</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span><span class="Other">,</span> 
-  <span class="Identifier">GL_CONTEXT_PROFILE_ES</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
+<dt id="GLprofile"><a name="GLprofile"></a><pre><span class="Identifier">GLprofile</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">GL_CONTEXT_PROFILE_CORE</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span><span class="Other">,</span>
+  <span class="Identifier">GL_CONTEXT_PROFILE_COMPATIBILITY</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span><span class="Other">,</span> <span class="Identifier">GL_CONTEXT_PROFILE_ES</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="GLcontextFlag"><a name="GLcontextFlag"></a><pre><span class="Identifier">GLcontextFlag</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span> 
-  <span class="Identifier">GL_CONTEXT_DEBUG_FLAG</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span><span class="Other">,</span> 
-  <span class="Identifier">GL_CONTEXT_FORWARD_COMPATIBLE_FLAG</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span><span class="Other">,</span> 
-  <span class="Identifier">GL_CONTEXT_ROBUST_ACCESS_FLAG</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span><span class="Other">,</span> 
+<dt id="GLcontextFlag"><a name="GLcontextFlag"></a><pre><span class="Identifier">GLcontextFlag</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">GL_CONTEXT_DEBUG_FLAG</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span><span class="Other">,</span>
+  <span class="Identifier">GL_CONTEXT_FORWARD_COMPATIBLE_FLAG</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span><span class="Other">,</span>
+  <span class="Identifier">GL_CONTEXT_ROBUST_ACCESS_FLAG</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span><span class="Other">,</span>
   <span class="Identifier">GL_CONTEXT_RESET_ISOLATION_FLAG</span> <span class="Other">=</span> <span class="DecNumber">0x00000008</span></pre></dt>
 <dd>
+
+
+</dd>
+<dt id="GLcontextReleaseFlag"><a name="GLcontextReleaseFlag"></a><pre><span class="Identifier">GLcontextReleaseFlag</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">GL_CONTEXT_RELEASE_BEHAVIOR_NONE</span> <span class="Other">=</span> <span class="DecNumber">0x00000000</span><span class="Other">,</span>
+  <span class="Identifier">GL_CONTEXT_RELEASE_BEHAVIOUR_FLUSH</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="HitTestResult"><a name="HitTestResult"></a><pre><span class="Identifier">HitTestResult</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">HITTEST_NORMAL</span><span class="Other">,</span>             <span class="Comment">##  Region is normal. No special properties.</span>
+  <span class="Identifier">HITTEST_DRAGGABLE</span><span class="Other">,</span>          <span class="Comment">##  Region can drag entire window.</span>
+  <span class="Identifier">HITTEST_RESIZE_TOPLEFT</span><span class="Other">,</span> <span class="Identifier">HITTEST_RESIZE_TOP</span><span class="Other">,</span> <span class="Identifier">HITTEST_RESIZE_TOPRIGHT</span><span class="Other">,</span>
+  <span class="Identifier">HITTEST_RESIZE_RIGHT</span><span class="Other">,</span> <span class="Identifier">HITTEST_RESIZE_BOTTOMRIGHT</span><span class="Other">,</span> <span class="Identifier">HITTEST_RESIZE_BOTTOM</span><span class="Other">,</span>
+  <span class="Identifier">HITTEST_RESIZE_BOTTOMLEFT</span><span class="Other">,</span> <span class="Identifier">HITTEST_RESIZE_LEFT</span></pre></dt>
+<dd>
+
+Possible return values from the <tt class="docutils literal"><span class="pre">HitTest</span></tt> callback.
+
+</dd>
+<dt id="HitTest"><a name="HitTest"></a><pre><span class="Identifier">HitTest</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">win</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">area</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Point</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">HitTestResult</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span></pre></dt>
+<dd>
+<p>
+Callback used for hit-testing.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">setWindowHitTest()</span></tt></p>
 
 
 </dd>
@@ -1612,7 +1662,14 @@ window not created by SDL
 </dd>
 <dt id="WINDOW_ALLOW_HIGHDPI"><a name="WINDOW_ALLOW_HIGHDPI"></a><pre><span class="Identifier">WINDOW_ALLOW_HIGHDPI</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00002000</span></pre></dt>
 <dd>
+window should be created  
+in high-DPI mode if supported
 
+</dd>
+<dt id="WINDOW_MOUSE_CAPTURE"><a name="WINDOW_MOUSE_CAPTURE"></a><pre><span class="Identifier">WINDOW_MOUSE_CAPTURE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00004000</span></pre></dt>
+<dd>
+window has mouse captured 
+(unrelated to <cite>INPUT_GRABBED</cite>)
 
 </dd>
 <dt id="WINDOWPOS_UNDEFINED_MASK"><a name="WINDOWPOS_UNDEFINED_MASK"></a><pre><span class="Identifier">WINDOWPOS_UNDEFINED_MASK</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x1FFF0000</span></pre></dt>
@@ -1640,8 +1697,8 @@ window not created by SDL
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="getNumVideoDrivers"><a name="getNumVideoDrivers,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getNumVideoDrivers</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetNumVideoDrivers&quot;</span><span class="Other">,</span> 
-                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getNumVideoDrivers"><a name="getNumVideoDrivers,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getNumVideoDrivers</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetNumVideoDrivers&quot;</span><span class="Other">,</span>
+                                <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the number of video drivers compiled into SDL.</p>
 <p>See also:</p>
@@ -1649,8 +1706,8 @@ window not created by SDL
 
 
 </dd>
-<dt id="getVideoDriver"><a name="getVideoDriver,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getVideoDriver</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetVideoDriver&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getVideoDriver"><a name="getVideoDriver,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getVideoDriver</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetVideoDriver&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the name of a built in video driver.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> The video drivers are presented in the order in which they are normally checked during initialization.</p>
@@ -1659,7 +1716,7 @@ window not created by SDL
 
 
 </dd>
-<dt id="videoInit"><a name="videoInit,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">videoInit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">driver_name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_VideoInit&quot;</span><span class="Other">,</span> 
+<dt id="videoInit"><a name="videoInit,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">videoInit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">driver_name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_VideoInit&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Initialize the video subsystem, optionally specifying a video driver.</p>
@@ -1680,8 +1737,9 @@ window not created by SDL
 
 
 </dd>
-<dt id="getCurrentVideoDriver"><a name="getCurrentVideoDriver,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCurrentVideoDriver</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetCurrentVideoDriver&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getCurrentVideoDriver"><a name="getCurrentVideoDriver,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCurrentVideoDriver</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+                                      <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetCurrentVideoDriver&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Returns the name of the currently initialized video driver.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> The name of the current video driver or <cite>nil</cite> if no driver has been initialized.</p>
@@ -1691,8 +1749,8 @@ window not created by SDL
 
 
 </dd>
-<dt id="getNumVideoDisplays"><a name="getNumVideoDisplays,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getNumVideoDisplays</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetNumVideoDisplays&quot;</span><span class="Other">,</span> 
-                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getNumVideoDisplays"><a name="getNumVideoDisplays,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getNumVideoDisplays</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetNumVideoDisplays&quot;</span><span class="Other">,</span>
+                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Returns the number of available video displays.</p>
 <p>See also:</p>
@@ -1700,7 +1758,7 @@ window not created by SDL
 
 
 </dd>
-<dt id="getDisplayName"><a name="getDisplayName,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getDisplayName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getDisplayName"><a name="getDisplayName,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getDisplayName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetDisplayName&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the name of a display in UTF-8 encoding.</p>
@@ -1710,7 +1768,7 @@ window not created by SDL
 
 
 </dd>
-<dt id="getDisplayBounds"><a name="getDisplayBounds,cint,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getDisplayBounds</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getDisplayBounds"><a name="getDisplayBounds,cint,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getDisplayBounds</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetDisplayBounds&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the desktop area represented by a display, with the primary display located at <cite>0,0</cite>.</p>
@@ -1720,7 +1778,19 @@ window not created by SDL
 
 
 </dd>
-<dt id="getNumDisplayModes"><a name="getNumDisplayModes,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getNumDisplayModes</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getDisplayDPI"><a name="getDisplayDPI,cint,ptr.cfloat,ptr.cfloat,ptr.cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getDisplayDPI</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">ddpi</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">;</span> <span class="Identifier">hdpi</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">;</span>
+                   <span class="Identifier">vdpi</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetDisplayDPI&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+<p>Get the dots/pixels-per-inch for a display.</p>
+<p><tt class="docutils literal"><span class="pre">Note</span></tt> Diagonal, horizontal and vertical DPI can all be optionally returned if the parameter is non-nil.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if no DPI information is available or the index is out of range.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">getNumVideoDisplays()</span></tt></p>
+
+
+</dd>
+<dt id="getNumDisplayModes"><a name="getNumDisplayModes,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getNumDisplayModes</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetNumDisplayModes&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Returns the number of available display modes.</p>
@@ -1744,20 +1814,20 @@ window not created by SDL
 
 
 </dd>
-<dt id="getDesktopDisplayMode"><a name="getDesktopDisplayMode,cint,ptr.DisplayMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getDesktopDisplayMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetDesktopDisplayMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getDesktopDisplayMode"><a name="getDesktopDisplayMode,cint,ptr.DisplayMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getDesktopDisplayMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetDesktopDisplayMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Fill in information about the desktop display mode.
 
 </dd>
-<dt id="getCurrentDisplayMode"><a name="getCurrentDisplayMode,cint,ptr.DisplayMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCurrentDisplayMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetCurrentDisplayMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getCurrentDisplayMode"><a name="getCurrentDisplayMode,cint,ptr.DisplayMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCurrentDisplayMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetCurrentDisplayMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Fill in information about the current display mode.
 
 </dd>
-<dt id="getClosestDisplayMode"><a name="getClosestDisplayMode,cint,ptr.DisplayMode,ptr.DisplayMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getClosestDisplayMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">;</span> 
-                            <span class="Identifier">closest</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getClosestDisplayMode"><a name="getClosestDisplayMode,cint,ptr.DisplayMode,ptr.DisplayMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getClosestDisplayMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">;</span>
+                           <span class="Identifier">closest</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetClosestDisplayMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the closest match to the requested display mode.</p>
@@ -1773,7 +1843,7 @@ Fill in information about the current display mode.
 
 
 </dd>
-<dt id="getWindowDisplayIndex"><a name="getWindowDisplayIndex,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowDisplayIndex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getWindowDisplayIndex"><a name="getWindowDisplayIndex,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowDisplayIndex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowDisplayIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the display index associated with a window.</p>
@@ -1781,7 +1851,7 @@ Fill in information about the current display mode.
 
 
 </dd>
-<dt id="setWindowDisplayMode"><a name="setWindowDisplayMode,Window,ptr.DisplayMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowDisplayMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="setWindowDisplayMode"><a name="setWindowDisplayMode,Window,ptr.DisplayMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowDisplayMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowDisplayMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set the display mode used when a fullscreen window is visible.</p>
@@ -1795,7 +1865,7 @@ Fill in information about the current display mode.
 
 
 </dd>
-<dt id="getWindowDisplayMode"><a name="getWindowDisplayMode,Window,ptr.DisplayMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowDisplayMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getWindowDisplayMode"><a name="getWindowDisplayMode,Window,ptr.DisplayMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowDisplayMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowDisplayMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Fill in information about the display mode used when a fullscreen window is visible.</p>
@@ -1805,30 +1875,30 @@ Fill in information about the current display mode.
 
 
 </dd>
-<dt id="getWindowPixelFormat"><a name="getWindowPixelFormat,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowPixelFormat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getWindowPixelFormat"><a name="getWindowPixelFormat,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowPixelFormat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowPixelFormat&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the pixel format associated with the window.
 
 </dd>
-<dt id="createWindow"><a name="createWindow,cstring,cint,cint,cint,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">title</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> 
-                   <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Window</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateWindow&quot;</span><span class="Other">,</span> 
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="createWindow"><a name="createWindow,cstring,cint,cint,cint,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">title</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Window</span> <span class="Other">{.</span>
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateWindow&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Create a window with the specified position, dimensions, and flags.</p>
 <p><tt class="docutils literal"><span class="pre">title</span></tt> The title of the window, in UTF-8 encoding.</p>
 <p><tt class="docutils literal"><span class="pre">x</span></tt> The x position of the window, <cite>WINDOWPOS_CENTERED</cite>, or <cite>WINDOWPOS_UNDEFINED</cite>.</p>
 <p><tt class="docutils literal"><span class="pre">y</span></tt> The y position of the window, <cite>WINDOWPOS_CENTERED</cite>, or <cite>WINDOWPOS_UNDEFINED</cite>.</p>
-<p><tt class="docutils literal"><span class="pre">w</span></tt> The width of the window.</p>
-<p><tt class="docutils literal"><span class="pre">h</span></tt> The height of the window.</p>
+<p><tt class="docutils literal"><span class="pre">w</span></tt> The width of the window, in screen coordinates.</p>
+<p><tt class="docutils literal"><span class="pre">h</span></tt> The height of the window, in screen coordinates.</p>
 <p><tt class="docutils literal"><span class="pre">flags</span></tt> The flags for the window, a mask of any of the following: <cite>WINDOW_FULLSCREEN</cite>, <cite>WINDOW_OPENGL</cite>, <cite>WINDOW_HIDDEN</cite>, <cite>WINDOW_BORDERLESS</cite>, <cite>WINDOW_RESIZABLE</cite>, <cite>WINDOW_MAXIMIZED</cite>, <cite>WINDOW_MINIMIZED</cite>, <cite>WINDOW_INPUT_GRABBED</cite>, <cite>WINDOW_ALLOW_HIGHDPI</cite>.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the id of the window created, or zero if window creation failed.</p>
+<p>If the window is created with the <cite>WINDOW_ALLOW_HIGHDPI</cite> flag, its size in pixels may differ from its size in screen coordinates on platforms with high-DPI support (e.g. iOS and Mac OS X). Use <tt class="docutils literal"><span class="pre">getWindowSize()</span></tt> to query the client area's size in screen coordinates, and <tt class="docutils literal"><span class="pre">glGetDrawableSize()</span></tt> or <tt class="docutils literal"><span class="pre">getRendererOutputSize()</span></tt> to query the drawable size in pixels.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">destroyWindow()</span></tt></p>
 
 
 </dd>
-<dt id="createWindowFrom"><a name="createWindowFrom,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createWindowFrom</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Window</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="createWindowFrom"><a name="createWindowFrom,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createWindowFrom</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Window</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateWindowFrom&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Create an SDL window from an existing native window.</p>
@@ -1839,25 +1909,25 @@ Get the pixel format associated with the window.
 
 
 </dd>
-<dt id="getWindowID"><a name="getWindowID,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowID</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowID&quot;</span><span class="Other">,</span> 
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getWindowID"><a name="getWindowID,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowID</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowID&quot;</span><span class="Other">,</span>
+                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the numeric ID of a window, for logging purposes.
 
 </dd>
-<dt id="getWindowFromID"><a name="getWindowFromID,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowFromID</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">id</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Window</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowFromID&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getWindowFromID"><a name="getWindowFromID,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowFromID</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">id</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Window</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowFromID&quot;</span><span class="Other">,</span>
+                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get a window from a stored ID, or <cite>nil</cite> if it doesn't exist.
 
 </dd>
-<dt id="getWindowFlags"><a name="getWindowFlags,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowFlags</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowFlags&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getWindowFlags"><a name="getWindowFlags,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowFlags</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowFlags&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the window flags.
 
 </dd>
-<dt id="setWindowTitle"><a name="setWindowTitle,Window,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowTitle</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">title</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="setWindowTitle"><a name="setWindowTitle,Window,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowTitle</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">title</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowTitle&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set the title of a window, in UTF-8 format.</p>
@@ -1866,8 +1936,8 @@ Get the window flags.
 
 
 </dd>
-<dt id="getWindowTitle"><a name="getWindowTitle,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowTitle</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowTitle&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getWindowTitle"><a name="getWindowTitle,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowTitle</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowTitle&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the title of a window, in UTF-8 format.</p>
 <p>See also:</p>
@@ -1875,7 +1945,7 @@ Get the window flags.
 
 
 </dd>
-<dt id="setWindowIcon"><a name="setWindowIcon,Window,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowIcon</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">icon</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="setWindowIcon"><a name="setWindowIcon,Window,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowIcon</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">icon</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowIcon&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set the icon for a window.</p>
@@ -1884,8 +1954,8 @@ Get the window flags.
 
 
 </dd>
-<dt id="setWindowData"><a name="setWindowData,Window,cstring,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowData</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowData&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="setWindowData"><a name="setWindowData,Window,cstring,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowData</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowData&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Associate an arbitrary named pointer with a window.</p>
 <p><tt class="docutils literal"><span class="pre">window</span></tt> The window to associate with the pointer.</p>
@@ -1898,7 +1968,7 @@ Get the window flags.
 
 
 </dd>
-<dt id="getWindowData"><a name="getWindowData,Window,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowData</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getWindowData"><a name="getWindowData,Window,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowData</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowData&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Retrieve the data pointer associated with a window.</p>
@@ -1910,57 +1980,59 @@ Get the window flags.
 
 
 </dd>
-<dt id="setWindowPosition"><a name="setWindowPosition,Window,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowPosition</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="setWindowPosition"><a name="setWindowPosition,Window,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowPosition</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowPosition&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set the position of a window.</p>
 <p><tt class="docutils literal"><span class="pre">window</span></tt> The window to reposition.</p>
-<p><tt class="docutils literal"><span class="pre">x</span></tt> The x coordinate of the window, WINDOWPOS_CENTERED, or WINDOWPOS_UNDEFINED.</p>
-<p><tt class="docutils literal"><span class="pre">y</span></tt> The y coordinate of the window, WINDOWPOS_CENTERED, or WINDOWPOS_UNDEFINED.</p>
+<p><tt class="docutils literal"><span class="pre">x</span></tt> The x coordinate of the window in screen coordinates, WINDOWPOS_CENTERED, or WINDOWPOS_UNDEFINED.</p>
+<p><tt class="docutils literal"><span class="pre">y</span></tt> The y coordinate of the window in screen coordinates, WINDOWPOS_CENTERED, or WINDOWPOS_UNDEFINED.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> The window coordinate origin is the upper left of the display.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getWindowPosition()</span></tt></p>
 
 
 </dd>
-<dt id="getWindowPosition"><a name="getWindowPosition,Window,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowPosition</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getWindowPosition"><a name="getWindowPosition,Window,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowPosition</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowPosition&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the position of a window.</p>
 <p><tt class="docutils literal"><span class="pre">window</span></tt> The window to query.</p>
-<p><tt class="docutils literal"><span class="pre">x</span></tt> Pointer to variable for storing the x position, may be <cite>nil</cite>.</p>
-<p><tt class="docutils literal"><span class="pre">y</span></tt> Pointer to variable for storing the y position, may be <cite>nil</cite>.</p>
+<p><tt class="docutils literal"><span class="pre">x</span></tt> Pointer to variable for storing the x position, in screen coordinates. May be <cite>nil</cite>.</p>
+<p><tt class="docutils literal"><span class="pre">y</span></tt> Pointer to variable for storing the y position, in screen coordinates. May be <cite>nil</cite>.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setWindowPosition()</span></tt></p>
 
 
 </dd>
-<dt id="setWindowSize"><a name="setWindowSize,Window,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="setWindowSize"><a name="setWindowSize,Window,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set the size of a window's client area.</p>
 <p><tt class="docutils literal"><span class="pre">window</span></tt> The window to resize.</p>
-<p><tt class="docutils literal"><span class="pre">w</span></tt> The width of the window, must be <cite>&gt;0</cite>.</p>
-<p><tt class="docutils literal"><span class="pre">h</span></tt> The height of the window, must be <cite>&gt;0</cite>.</p>
+<p><tt class="docutils literal"><span class="pre">w</span></tt> The width of the window, in screen coordinates. Must be <cite>&gt;0</cite>.</p>
+<p><tt class="docutils literal"><span class="pre">h</span></tt> The height of the window, in screen coordinates. Must be <cite>&gt;0</cite>.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> You can't change the size of a fullscreen window, it automatically matches the size of the display mode.</p>
+<p>The window size in screen coordinates may differ from the size in pixels, if the window was created with <cite>WINDOW_ALLOW_HIGHDPI</cite> on a platform with high-dpi support (e.g. iOS or OS X). Use <tt class="docutils literal"><span class="pre">getDrawableSize()</span></tt> or <tt class="docutils literal"><span class="pre">getRendererOutputSize()</span></tt> to get the real client area size in pixels.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getWindowSize()</span></tt></p>
 
 
 </dd>
-<dt id="getWindowSize"><a name="getWindowSize,Window,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getWindowSize"><a name="getWindowSize,Window,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the size of a window's client area.</p>
 <p><tt class="docutils literal"><span class="pre">window</span></tt> The window to query.</p>
-<p><tt class="docutils literal"><span class="pre">w</span></tt> Pointer to variable for storing the width, may be <cite>nil</cite>.</p>
-<p><tt class="docutils literal"><span class="pre">h</span></tt> Pointer to variable for storing the height, may be <cite>nil</cite>.</p>
+<p><tt class="docutils literal"><span class="pre">w</span></tt> Pointer to variable for storing the width, in screen coordinates. May be <cite>nil</cite>.</p>
+<p><tt class="docutils literal"><span class="pre">h</span></tt> Pointer to variable for storing the height, in screen coordinates. May be <cite>nil</cite>.</p>
+<p>The window size in screen coordinates may differ from the size in pixels, if the window was created with <cite>WINDOW_ALLOW_HIGHDPI</cite> on a platform with high-dpi support (e.g. iOS or OS X). Use <tt class="docutils literal"><span class="pre">glGetDrawableSize()</span></tt> or <tt class="docutils literal"><span class="pre">getRendererOutputSize()</span></tt> to get the real client area size in pixels.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setWindowSize()</span></tt></p>
 
 
 </dd>
-<dt id="setWindowMinimumSize"><a name="setWindowMinimumSize,Window,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowMinimumSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">min_w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">min_h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="setWindowMinimumSize"><a name="setWindowMinimumSize,Window,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowMinimumSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">min_w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">min_h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowMinimumSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set the minimum size of a window's client area.</p>
@@ -1974,7 +2046,7 @@ Get the window flags.
 
 
 </dd>
-<dt id="getWindowMinimumSize"><a name="getWindowMinimumSize,Window,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowMinimumSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getWindowMinimumSize"><a name="getWindowMinimumSize,Window,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowMinimumSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowMinimumSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the minimum size of a window's client area.</p>
@@ -1987,7 +2059,7 @@ Get the window flags.
 
 
 </dd>
-<dt id="setWindowMaximumSize"><a name="setWindowMaximumSize,Window,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowMaximumSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">max_w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">max_h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="setWindowMaximumSize"><a name="setWindowMaximumSize,Window,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowMaximumSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">max_w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">max_h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowMaximumSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set the maximum size of a window's client area.</p>
@@ -2001,7 +2073,7 @@ Get the window flags.
 
 
 </dd>
-<dt id="getWindowMaximumSize"><a name="getWindowMaximumSize,Window,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowMaximumSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getWindowMaximumSize"><a name="getWindowMaximumSize,Window,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowMaximumSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowMaximumSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the maximum size of a window's client area.</p>
@@ -2014,7 +2086,7 @@ Get the window flags.
 
 
 </dd>
-<dt id="setWindowBordered"><a name="setWindowBordered,Window,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowBordered</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">bordered</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="setWindowBordered"><a name="setWindowBordered,Window,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowBordered</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">bordered</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowBordered&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set the border state of a window.</p>
@@ -2027,8 +2099,7 @@ Get the window flags.
 
 
 </dd>
-<dt id="showWindow"><a name="showWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">showWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ShowWindow&quot;</span><span class="Other">,</span> 
-                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="showWindow"><a name="showWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">showWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ShowWindow&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Show a window.</p>
 <p>See also:</p>
@@ -2036,8 +2107,7 @@ Get the window flags.
 
 
 </dd>
-<dt id="hideWindow"><a name="hideWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hideWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HideWindow&quot;</span><span class="Other">,</span> 
-                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="hideWindow"><a name="hideWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hideWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HideWindow&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Hide a window.</p>
 <p>See also:</p>
@@ -2045,14 +2115,14 @@ Get the window flags.
 
 
 </dd>
-<dt id="raiseWindow"><a name="raiseWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">raiseWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RaiseWindow&quot;</span><span class="Other">,</span> 
-                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="raiseWindow"><a name="raiseWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">raiseWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RaiseWindow&quot;</span><span class="Other">,</span>
+                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Raise a window above other windows and set the input focus.
 
 </dd>
-<dt id="maximizeWindow"><a name="maximizeWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">maximizeWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MaximizeWindow&quot;</span><span class="Other">,</span> 
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="maximizeWindow"><a name="maximizeWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">maximizeWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MaximizeWindow&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Make a window as large as possible.</p>
 <p>See also:</p>
@@ -2060,8 +2130,8 @@ Raise a window above other windows and set the input focus.
 
 
 </dd>
-<dt id="minimizeWindow"><a name="minimizeWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">minimizeWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MinimizeWindow&quot;</span><span class="Other">,</span> 
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="minimizeWindow"><a name="minimizeWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">minimizeWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MinimizeWindow&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Minimize a window to an iconic representation.</p>
 <p>See also:</p>
@@ -2069,8 +2139,8 @@ Raise a window above other windows and set the input focus.
 
 
 </dd>
-<dt id="restoreWindow"><a name="restoreWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">restoreWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RestoreWindow&quot;</span><span class="Other">,</span> 
-                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="restoreWindow"><a name="restoreWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">restoreWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RestoreWindow&quot;</span><span class="Other">,</span>
+                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Restore the size and position of a minimized or maximized window.</p>
 <p>See also:</p>
@@ -2079,7 +2149,7 @@ Raise a window above other windows and set the input focus.
 
 
 </dd>
-<dt id="setWindowFullscreen"><a name="setWindowFullscreen,Window,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowFullscreen</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="setWindowFullscreen"><a name="setWindowFullscreen,Window,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowFullscreen</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowFullscreen&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set a window's fullscreen state.</p>
@@ -2090,7 +2160,7 @@ Raise a window above other windows and set the input focus.
 
 
 </dd>
-<dt id="getWindowSurface"><a name="getWindowSurface,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getWindowSurface"><a name="getWindowSurface,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the SDL surface associated with the window.</p>
@@ -2103,7 +2173,7 @@ Raise a window above other windows and set the input focus.
 
 
 </dd>
-<dt id="updateWindowSurface"><a name="updateWindowSurface,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">updateWindowSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="updateWindowSurface"><a name="updateWindowSurface,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">updateWindowSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UpdateWindowSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Copy the window surface to the screen.</p>
@@ -2125,18 +2195,19 @@ Raise a window above other windows and set the input focus.
 
 
 </dd>
-<dt id="setWindowGrab"><a name="setWindowGrab,Window,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowGrab</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">grabbed</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="setWindowGrab"><a name="setWindowGrab,Window,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowGrab</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">grabbed</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowGrab&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set a window's input grab mode.</p>
 <p><tt class="docutils literal"><span class="pre">window</span></tt> The window for which the input grab mode should be set. <tt class="docutils literal"><span class="pre">grabbed</span></tt> This is <cite>true</cite> to grab input, and <cite>false</cite> to release input.</p>
+<p>If the caller enables a grab while another window is currently grabbed, the other window loses its grab in favor of the caller's window.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getWindowGrab()</span></tt></p>
 
 
 </dd>
-<dt id="getWindowGrab"><a name="getWindowGrab,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowGrab</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowGrab&quot;</span><span class="Other">,</span> 
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getWindowGrab"><a name="getWindowGrab,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowGrab</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowGrab&quot;</span><span class="Other">,</span>
+                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get a window's input grab mode.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if input is grabbed, and <cite>false</cite> otherwise.</p>
@@ -2145,7 +2216,17 @@ Raise a window above other windows and set the input focus.
 
 
 </dd>
-<dt id="setWindowBrightness"><a name="setWindowBrightness,Window,cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowBrightness</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">brightness</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getGrabbedWindow"><a name="getGrabbedWindow,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getGrabbedWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Window</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetGrabbedWindow&quot;</span><span class="Other">,</span>
+                                <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+<p>Get the window that currently has an input grab enabled.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the window if input is grabbed, and <cite>nil</cite> otherwise.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">setWindowGrab()</span></tt></p>
+
+
+</dd>
+<dt id="setWindowBrightness"><a name="setWindowBrightness,Window,cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowBrightness</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">brightness</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowBrightness&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set the brightness (gamma correction) for a window.</p>
@@ -2156,7 +2237,7 @@ Raise a window above other windows and set the input focus.
 
 
 </dd>
-<dt id="getWindowBrightness"><a name="getWindowBrightness,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowBrightness</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cfloat</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getWindowBrightness"><a name="getWindowBrightness,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowBrightness</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cfloat</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowBrightness&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the brightness (gamma correction) for a window.</p>
@@ -2166,8 +2247,8 @@ Raise a window above other windows and set the input focus.
 
 
 </dd>
-<dt id="setWindowGammaRamp"><a name="setWindowGammaRamp,Window,ptr.uint16,ptr.uint16,ptr.uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowGammaRamp</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">red</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">green</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> 
-                         <span class="Identifier">blue</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="setWindowGammaRamp"><a name="setWindowGammaRamp,Window,ptr.uint16,ptr.uint16,ptr.uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowGammaRamp</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">red</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">green</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span>
+                        <span class="Identifier">blue</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowGammaRamp&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set the gamma ramp for a window.</p>
@@ -2182,8 +2263,8 @@ Raise a window above other windows and set the input focus.
 
 
 </dd>
-<dt id="getWindowGammaRamp"><a name="getWindowGammaRamp,Window,ptr.uint16,ptr.uint16,ptr.uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowGammaRamp</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">red</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">green</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> 
-                         <span class="Identifier">blue</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getWindowGammaRamp"><a name="getWindowGammaRamp,Window,ptr.uint16,ptr.uint16,ptr.uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowGammaRamp</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">red</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">green</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span>
+                        <span class="Identifier">blue</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowGammaRamp&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the gamma ramp for a window.</p>
@@ -2197,14 +2278,31 @@ Raise a window above other windows and set the input focus.
 
 
 </dd>
-<dt id="destroyWindow"><a name="destroyWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroyWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroyWindow&quot;</span><span class="Other">,</span> 
-                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="setWindowHitTest"><a name="setWindowHitTest,Window,HitTest,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowHitTest</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">callback</span><span class="Other">:</span> <span class="Identifier">HitTest</span><span class="Other">;</span> <span class="Identifier">callbackData</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span>
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowHitTest&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+<p>Provide a callback that decides if a window region has special properties.</p>
+<p>Normally windows are dragged and resized by decorations provided by the system window manager (a title bar, borders, etc), but for some apps, it makes sense to drag them from somewhere else inside the window itself; for example, one might have a borderless window that wants to be draggable from any part, or simulate its own title bar, etc.</p>
+<p>This function lets the app provide a callback that designates pieces of a given window as special. This callback is run during event processing if we need to tell the OS to treat a region of the window specially; the use of this callback is known as &quot;hit testing&quot;.</p>
+<p>Mouse input may not be delivered to your application if it is within a special area; the OS will often apply that input to moving the window or resizing the window and not deliver it to the application.</p>
+<p>Specifying <cite>nil</cite> for a callback disables hit-testing. Hit-testing is disabled by default.</p>
+<p>Platforms that don't support this functionality will return <cite>-1</cite> unconditionally, even if you're attempting to disable hit-testing.</p>
+<p>Your callback may fire at any time, and its firing does not indicate any specific behavior (for example, on Windows, this certainly might fire when the OS is deciding whether to drag your window, but it fires for lots of other reasons, too, some unrelated to anything you probably care about _and when the mouse isn't actually at the location it is <a class="reference external" href="#testing">testing</a>). Since this can fire at any time, you should try to keep your callback efficient, devoid of allocations, etc.</p>
+<p><tt class="docutils literal"><span class="pre">window</span></tt> The window to set hit-testing on.</p>
+<p><tt class="docutils literal"><span class="pre">callback</span></tt> The callback to call when doing a hit-test.</p>
+<p><tt class="docutils literal"><span class="pre">callback_data</span></tt> An app-defined void pointer passed to the callback.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, <cite>-1</cite> on error (including unsupported).</p>
+
+
+</dd>
+<dt id="destroyWindow"><a name="destroyWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroyWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroyWindow&quot;</span><span class="Other">,</span>
+                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Destroy a window.
 
 </dd>
-<dt id="isScreenSaverEnabled"><a name="isScreenSaverEnabled,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isScreenSaverEnabled</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_IsScreenSaverEnabled&quot;</span><span class="Other">,</span> 
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="isScreenSaverEnabled"><a name="isScreenSaverEnabled,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isScreenSaverEnabled</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_IsScreenSaverEnabled&quot;</span><span class="Other">,</span>
+                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Returns whether the screensaver is currently enabled (default on).</p>
 <p>See also:</p>
@@ -2213,8 +2311,7 @@ Destroy a window.
 
 
 </dd>
-<dt id="enableScreenSaver"><a name="enableScreenSaver,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">enableScreenSaver</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_EnableScreenSaver&quot;</span><span class="Other">,</span> 
-                            <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="enableScreenSaver"><a name="enableScreenSaver,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">enableScreenSaver</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_EnableScreenSaver&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Allow the screen to be blanked by a screensaver.</p>
 <p>See also:</p>
@@ -2223,8 +2320,8 @@ Destroy a window.
 
 
 </dd>
-<dt id="disableScreenSaver"><a name="disableScreenSaver,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">disableScreenSaver</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DisableScreenSaver&quot;</span><span class="Other">,</span> 
-                             <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="disableScreenSaver"><a name="disableScreenSaver,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">disableScreenSaver</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DisableScreenSaver&quot;</span><span class="Other">,</span>
+                           <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Prevent the screen from being blanked by a screensaver.</p>
 <p>See also:</p>
@@ -2233,8 +2330,8 @@ Destroy a window.
 
 
 </dd>
-<dt id="glLoadLibrary"><a name="glLoadLibrary,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glLoadLibrary</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_LoadLibrary&quot;</span><span class="Other">,</span> 
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="glLoadLibrary"><a name="glLoadLibrary,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glLoadLibrary</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_LoadLibrary&quot;</span><span class="Other">,</span>
+                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Dynamically load an OpenGL library.</p>
 <p><tt class="docutils literal"><span class="pre">path</span></tt> The platform dependent OpenGL library name, or <cite>nil</cite> to open the default OpenGL library.</p>
@@ -2247,14 +2344,13 @@ Destroy a window.
 
 
 </dd>
-<dt id="glGetProcAddress"><a name="glGetProcAddress,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetProcAddress</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">glproc</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="glGetProcAddress"><a name="glGetProcAddress,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetProcAddress</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">glproc</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_GetProcAddress&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the address of an OpenGL function.
 
 </dd>
-<dt id="glUnloadLibrary"><a name="glUnloadLibrary,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glUnloadLibrary</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_UnloadLibrary&quot;</span><span class="Other">,</span> 
-                          <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="glUnloadLibrary"><a name="glUnloadLibrary,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glUnloadLibrary</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_UnloadLibrary&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Unload the OpenGL library previously loaded by <tt class="docutils literal"><span class="pre">glLoadLibrary()</span></tt>.</p>
 <p>See also:</p>
@@ -2262,31 +2358,31 @@ Get the address of an OpenGL function.
 
 
 </dd>
-<dt id="glExtensionSupported"><a name="glExtensionSupported,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glExtensionSupported</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">extension</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="glExtensionSupported"><a name="glExtensionSupported,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glExtensionSupported</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">extension</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_ExtensionSupported&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if an OpenGL extension is supported for the current context.
 
 </dd>
-<dt id="glResetAttributes"><a name="glResetAttributes,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glResetAttributes</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_ResetAttributes&quot;</span><span class="Other">,</span> 
-                            <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="glResetAttributes"><a name="glResetAttributes,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glResetAttributes</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_ResetAttributes&quot;</span><span class="Other">,</span>
+                          <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Reset all previously set OpenGL context attributes to their default values.
 
 </dd>
-<dt id="glSetAttribute"><a name="glSetAttribute,GLattr,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glSetAttribute</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">attr</span><span class="Other">:</span> <span class="Identifier">GLattr</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="glSetAttribute"><a name="glSetAttribute,GLattr,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glSetAttribute</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">attr</span><span class="Other">:</span> <span class="Identifier">GLattr</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_SetAttribute&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Set an OpenGL window attribute before window creation.
 
 </dd>
-<dt id="glGetAttribute"><a name="glGetAttribute,GLattr,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetAttribute</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">attr</span><span class="Other">:</span> <span class="Identifier">GLattr</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="glGetAttribute"><a name="glGetAttribute,GLattr,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetAttribute</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">attr</span><span class="Other">:</span> <span class="Identifier">GLattr</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_GetAttribute&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the actual value for an attribute from the current context.
 
 </dd>
-<dt id="glCreateContext"><a name="glCreateContext,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glCreateContext</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GLContext</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="glCreateContext"><a name="glCreateContext,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glCreateContext</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GLContext</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_CreateContext&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Create an OpenGL context for use with an OpenGL window, and make it current.</p>
@@ -2295,7 +2391,7 @@ Get the actual value for an attribute from the current context.
 
 
 </dd>
-<dt id="glMakeCurrent"><a name="glMakeCurrent,Window,GLContext"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glMakeCurrent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">context</span><span class="Other">:</span> <span class="Identifier">GLContext</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="glMakeCurrent"><a name="glMakeCurrent,Window,GLContext"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glMakeCurrent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">context</span><span class="Other">:</span> <span class="Identifier">GLContext</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_MakeCurrent&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set up an OpenGL context for rendering into an OpenGL window.</p>
@@ -2303,25 +2399,25 @@ Get the actual value for an attribute from the current context.
 
 
 </dd>
-<dt id="glGetCurrentWindow"><a name="glGetCurrentWindow,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetCurrentWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Window</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_GetCurrentWindow&quot;</span><span class="Other">,</span> 
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="glGetCurrentWindow"><a name="glGetCurrentWindow,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetCurrentWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Window</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_GetCurrentWindow&quot;</span><span class="Other">,</span>
+                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the currently active OpenGL window.
 
 </dd>
-<dt id="glGetCurrentContext"><a name="glGetCurrentContext,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetCurrentContext</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GLContext</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_GetCurrentContext&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="glGetCurrentContext"><a name="glGetCurrentContext,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetCurrentContext</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GLContext</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_GetCurrentContext&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the currently active OpenGL context.
 
 </dd>
-<dt id="glGetDrawableSize"><a name="glGetDrawableSize,Window,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetDrawableSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="glGetDrawableSize"><a name="glGetDrawableSize,Window,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetDrawableSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_GetDrawableSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<p>Get the size of a window's underlying drawable (for use with glViewport).</p>
+<p>Get the size of a window's underlying drawable in pixels (for use with glViewport).</p>
 <p><tt class="docutils literal"><span class="pre">window</span></tt> Window from which the drawable size should be queried.</p>
-<p><tt class="docutils literal"><span class="pre">w</span></tt> Pointer to variable for storing the width, may be <cite>nil</cite>.</p>
-<p><tt class="docutils literal"><span class="pre">h</span></tt> Pointer to variable for storing the height, may be <cite>nil</cite>.</p>
+<p><tt class="docutils literal"><span class="pre">w</span></tt> Pointer to variable for storing the width in pixels, may be <cite>nil</cite>.</p>
+<p><tt class="docutils literal"><span class="pre">h</span></tt> Pointer to variable for storing the height in pixels, may be <cite>nil</cite>.</p>
 <p>This may differ from <tt class="docutils literal"><span class="pre">getWindowSize()</span></tt> if we're rendering to a high-DPI drawable, i.e. the window was created with <cite>WINDOW_ALLOW_HIGHDPI</cite> on a platform with high-DPI support (Apple calls this &quot;Retina&quot;), and not disabled by the <cite>HINT_VIDEO_HIGHDPI_DISABLED</cite> hint.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getWindowSize()</span></tt></p>
@@ -2329,7 +2425,7 @@ Get the currently active OpenGL context.
 
 
 </dd>
-<dt id="glSetSwapInterval"><a name="glSetSwapInterval,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glSetSwapInterval</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">interval</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="glSetSwapInterval"><a name="glSetSwapInterval,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glSetSwapInterval</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">interval</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_SetSwapInterval&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set the swap interval for the current OpenGL context.</p>
@@ -2340,8 +2436,8 @@ Get the currently active OpenGL context.
 
 
 </dd>
-<dt id="glGetSwapInterval"><a name="glGetSwapInterval,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetSwapInterval</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_GetSwapInterval&quot;</span><span class="Other">,</span> 
-                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="glGetSwapInterval"><a name="glGetSwapInterval,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetSwapInterval</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_GetSwapInterval&quot;</span><span class="Other">,</span>
+                               <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the swap interval for the current OpenGL context.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> if there is no vertical retrace synchronization, <cite>1</cite> if the buffer swap is synchronized with the vertical retrace, and <cite>-1</cite> if late swaps happen immediately instead of waiting for the next retrace. If the system can't determine the swap interval, or there isn't a valid current context, this will return <cite>0</cite> as a safe default.</p>
@@ -2350,14 +2446,14 @@ Get the currently active OpenGL context.
 
 
 </dd>
-<dt id="glSwapWindow"><a name="glSwapWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glSwapWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_SwapWindow&quot;</span><span class="Other">,</span> 
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="glSwapWindow"><a name="glSwapWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glSwapWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_SwapWindow&quot;</span><span class="Other">,</span>
+                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Swap the OpenGL buffers for a window, if double-buffering is supported.
 
 </dd>
-<dt id="glDeleteContext"><a name="glDeleteContext,GLContext"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glDeleteContext</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Identifier">GLContext</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_DeleteContext&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="glDeleteContext"><a name="glDeleteContext,GLContext"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glDeleteContext</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Identifier">GLContext</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_DeleteContext&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Delete an OpenGL context.</p>
 <p>See also:</p>
@@ -2402,7 +2498,7 @@ Used to indicate that the window position should be centered.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-10-04 22:57:21 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
       </div>
     </div>
   </div>

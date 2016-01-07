@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -55,9 +55,9 @@ proc delay*(ms: uint32) {.
 type
   TimerCallback* = proc (interval: uint32; param: pointer): uint32 {.
       cdecl.} ##  \
-    ##  Function prototype for the timer callback function.
+    ##  Procedure prototype for the timer callback procedure.
     ##
-    ##  The callback function is passed the current timer interval and returns
+    ##  The callback procedure is passed the current timer interval and returns
     ##  the next timer interval.  If the returned value is the same as the one
     ##  passed in, the periodic alarm continues, otherwise a new alarm is
     ##  scheduled.  If the callback returns `0`, the periodic alarm is
@@ -70,7 +70,7 @@ proc addTimer*(
     cdecl, importc: "SDL_AddTimer", dynlib: SDL2_LIB.}
   ##  Add a new timer to the pool of timers already running.
   ##
-  ##  ``Return`` a timer ID, or `nil` when an error occurs.
+  ##  ``Return`` a timer ID, or `0` when an error occurs.
 
 proc removeTimer*(id: TimerID): bool {.cdecl, importc: "SDL_RemoveTimer", 
     dynlib: SDL2_LIB.}

@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -25,14 +25,14 @@
 
 const
   MUTEX_TIMEDOUT* = 1 ##  \
-    ##  Synchronization functions which can time out return this value
+    ##  Synchronization procedures which can time out return this value
     ##  if they time out.
 
 const
   MUTEX_MAXWAIT* = (not uint32(0))
     ##  This is the timeout value which corresponds to never time out.
 
-# Mutex functions
+# Mutex procedures
 
 type
   Mutex* = pointer  ##  The SDL mutex structure, defined in SDL_sysmutex.c
@@ -72,7 +72,7 @@ proc destroyMutex*(mutex: Mutex) {.
     cdecl, importc: "SDL_DestroyMutex", dynlib: SDL2_LIB.}
   ##  Destroy a mutex.
 
-# Semaphore functions
+# Semaphore procedures
 
 type
   Semaphore* = pointer ##  The SDL semaphore structure, defined in SDL_syssem.c
@@ -90,7 +90,7 @@ proc destroySemaphore*(sem: Sem) {.
 
 proc semWait*(sem: Sem): cint {.
     cdecl, importc: "SDL_SemWait", dynlib: SDL2_LIB.}
-  ##  This function suspends the calling thread until the semaphore pointed
+  ##  This procedure suspends the calling thread until the semaphore pointed
   ##  to by ``sem`` has a positive count. It then atomically decreases the
   ##  semaphore count.
 
@@ -109,7 +109,7 @@ proc semWaitTimeout*(sem: Sem; ms: uint32): cint {.
   ##  `MUTEX_TIMEDOUT` if the wait does not succeed in the allotted time,
   ##  and `-1` on error.
   ##
-  ##  ``Warning:`` On some platforms this function is implemented by looping
+  ##  ``Warning:`` On some platforms this procedure is implemented by looping
   ##  with a delay of 1 ms, and so should be avoided if possible.
 
 proc semPost*(sem: Sem): cint {.
@@ -181,7 +181,7 @@ proc condWait*(cond: Cond; mutex: Mutex): cint {.
     cdecl, importc: "SDL_CondWait", dynlib: SDL2_LIB.}
   ##  Wait on the condition variable, unlocking the provided mutex.
   ##
-  ##  ``Warning:`` The mutex must be locked before entering this function!
+  ##  ``Warning:`` The mutex must be locked before entering this procedure!
   ##
   ##  The mutex is re-locked once the condition variable is signaled.
   ##
@@ -193,5 +193,5 @@ proc condWaitTimeout*(cond: Cond; mutex: Mutex; ms: uint32): cint {.
   ##  variable is signaled, `MUTEX_TIMEDOUT` if the condition is not signaled
   ##  in the allotted time, and `-1` on error.
   ##
-  ##  ``Warning:`` On some platforms this function is implemented by looping
+  ##  ``Warning:`` On some platforms this procedure is implemented by looping
   ##  with a delay of 1 ms, and so should be avoided if possible.

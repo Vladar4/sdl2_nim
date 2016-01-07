@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -44,7 +44,12 @@ type
     SYSTEM_CURSOR_HAND,       ##  Hand
     NUM_SYSTEM_CURSORS
 
-# Function prototypes
+  MouseWheelDirection* {.size: sizeof(cint).} = enum  ##  \
+    ##  Scroll direction types for the Scroll event
+    MOUSEWHEEL_NORMAL,  ##  The scroll direction is normal
+    MOUSEWHEEL_FLIPPED  ##  The scroll direction is flipped / natural
+
+# Procedures
 
 proc getMouseFocus*(): ptr Window {.
     cdecl, importc: "SDL_GetMouseFocus", dynlib: SDL2_LIB.}
@@ -58,6 +63,35 @@ proc getMouseState*(x: ptr cint; y: ptr cint): uint32 {.
   ##  be tested using the ``button()`` template, and x and y are set to the
   ##  mouse cursor position relative to the focus window for the currently
   ##  selected mouse.  You can pass `nil` for either x or y.
+
+proc getGlobalMouseState*(x: ptr cint; y: ptr cint): uint32 {.
+    cdecl, importc: "SDL_GetGlobalMouseState", dynlib: SDL2_LIB.}
+  ##  Get the current state of the mouse, in relation to the desktop.
+  ##
+  ##  This works just like ``getMouseState()``, but the coordinates will be
+  ##  reported relative to the top-left of the desktop. This can be useful if
+  ##  you need to track the mouse outside of a specific window and
+  ##  ``captureMouse()`` doesn't fit your needs. For example, it could be
+  ##  useful if you need to track the mouse while dragging a window, where
+  ##  coordinates relative to a window might not be in sync at all times.
+  ##
+  ##  ``Note`` ``getMouseState()`` returns the mouse position as SDL understands
+  ##  it from the last pump of the event queue. This procedure, however,
+  ##  queries the OS for the current mouse position, and as such, might
+  ##  be a slightly less efficient procedure. Unless you know what you're
+  ##  doing and have a good reason to use this procedure, you probably want
+  ##  ``getMouseState()`` instead.
+  ##
+  ##  ``x`` Returns the current X coord, relative to the desktop. Can be `nil`.
+  ##
+  ##  ``y`` Returns the current Y coord, relative to the desktop. Can be `nil`.
+  ##
+  ##  ``Return`` the current button state as a bitmask, which can be tested
+  ##  using the ``sdl.BUTTON(X)`` template.
+  ##
+  ##  See also:
+  ##
+  ##  ``getMouseState()``
 
 proc getRelativeMouseState*(x: ptr cint; y: ptr cint): uint32 {.
     cdecl, importc: "SDL_GetRelativeMouseState", dynlib: SDL2_LIB.}
@@ -78,7 +112,20 @@ proc warpMouseInWindow*(window: ptr Window; x: cint; y: cint) {.
   ##
   ##  ``y`` The y coordinate within the window
   ##
-  ##  ``Note:`` This function generates a mouse motion event
+  ##  ``Note:`` This procedure generates a mouse motion event.
+
+proc warpMouseGlobal*(x: cint; y: cint): cint {.
+    cdecl, importc: "SDL_WarpMouseGlobal", dynlib: SDL2_LIB.}
+  ##  Moves the mouse to the given position in global screen space.
+  ##
+  ##  ``x`` The x coordinate
+  ##
+  ##  ``y`` The y coordinate
+  ##
+  ##  ``Return`` `0` on success, `-1` on error
+  ##  (usually: unsupported by a platform).
+  ##
+  ##  ``Note`` This procedure generates a mouse motion event.
 
 proc setRelativeMouseMode*(enabled: bool): cint {.
     cdecl, importc: "SDL_SetRelativeMouseMode", dynlib: SDL2_LIB.}
@@ -93,11 +140,41 @@ proc setRelativeMouseMode*(enabled: bool): cint {.
   ##  Only relative motion events will be delivered, the mouse position
   ##  will not change.
   ##
-  ##  ``Note:`` This function will flush any pending mouse motion.
+  ##  ``Note:`` This procedure will flush any pending mouse motion.
   ##
   ##  See also:
   ##
   ##  ``getRelativeMouseMode()``
+
+proc captureMouse*(enabled: bool): cint {.
+    cdecl, importc: "SDL_CaptureMouse", dynlib: SDL2_LIB.}
+  ##  Capture the mouse, to track input outside an SDL window.
+  ##
+  ##  ``enabled`` Whether or not to enable capturing
+  ##
+  ##  Capturing enables your app to obtain mouse events globally, instead of
+  ##  just within your window. Not all video targets support this procedure.
+  ##  When capturing is enabled, the current window will get all mouse events,
+  ##  but unlike relative mode, no change is made to the cursor and it is
+  ##  not restrained to your window.
+  ##
+  ##  This procedure may also deny mouse input to other windows - both those in
+  ##  your application and others on the system - so you should use this
+  ##  procedure sparingly, and in small bursts. For example, you might want to
+  ##  track the mouse while the user is dragging something, until the user
+  ##  releases a mouse button. It is not recommended that you capture the mouse
+  ##  for long periods of time, such as the entire time your app is running.
+  ##
+  ##  While captured, mouse events still report coordinates relative to the
+  ##  current (foreground) window, but those coordinates may be outside the
+  ##  bounds of the window (including negative values). Capturing is only
+  ##  allowed for the foreground window. If the window loses focus while
+  ##  capturing, the capture will be disabled automatically.
+  ##
+  ##  While capturing is enabled, the current window will have the
+  ##  `WINDOW_MOUSE_CAPTURE` flag set.
+  ##
+  ##  ``Return`` `0` on success, or `-1` if not supported.
 
 proc getRelativeMouseMode*(): bool {.
     cdecl, importc: "SDL_GetRelativeMouseMode", dynlib: SDL2_LIB.}

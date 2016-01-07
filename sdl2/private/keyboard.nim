@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -35,7 +35,7 @@ type
     mods*: uint16        ## current key modifiers
     unused*: uint32
 
-# Function prototypes
+# Procedures
 
 proc getKeyboardFocus*(): ptr Window {.
     cdecl, importc: "SDL_GetKeyboardFocus", dynlib: SDL2_LIB.}
@@ -97,7 +97,7 @@ proc getScancodeName*(scancode: Scancode): cstring {.
   ##  Get a human-readable name for a scancode.
   ##
   ##  ``Return`` a pointer to the name for the scancode.
-  ##  If the scancode doesn't have a name, this function
+  ##  If the scancode doesn't have a name, this procedure
   ##  returns an empty string ("").
   ##
   ##  See also:
@@ -119,8 +119,8 @@ proc getKeyName*(key: Keycode): cstring {.
   ##  Get a human-readable name for a key.
   ##
   ##  ``Return`` a pointer to a UTF-8 string that stays valid at least until
-  ##  the next call to this function. If you need it around any longer,
-  ##  you must copy it. If the key doesn't have a name, this function returns
+  ##  the next call to this procedure. If you need it around any longer,
+  ##  you must copy it. If the key doesn't have a name, this procedure returns
   ##  an empty string ("").
   ##
   ##  See also:
@@ -141,7 +141,7 @@ proc startTextInput*() {.
     cdecl, importc: "SDL_StartTextInput", dynlib: SDL2_LIB.}
   ##  Start accepting Unicode text input events.
   ##
-  ##  This function will show the on-screen keyboard if supported.
+  ##  This procedure will show the on-screen keyboard if supported.
   ##
   ##  See also:
   ##
@@ -165,7 +165,7 @@ proc stopTextInput*() {.
     cdecl, importc: "SDL_StopTextInput", dynlib: SDL2_LIB.}
   ##  Stop receiving any text input events.
   ##
-  ##  This function will hide the on-screen keyboard if supported.
+  ##  This procedure will hide the on-screen keyboard if supported.
   ##
   ##  See also:
   ##
@@ -189,7 +189,7 @@ proc hasScreenKeyboardSupport*(): bool {.
   ##
   ##  ``Return`` `true` if some keyboard support is available else `false`.
   ##
-  ##  ``Note:`` Not all screen keyboard functions are supported
+  ##  ``Note:`` Not all screen keyboard procedures are supported
   ##  on all platforms.
   ##
   ##  See also:

@@ -1175,6 +1175,10 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   SYSTEM_CURSOR_NO,           ##  Slashed circle or crossbones
   SYSTEM_CURSOR_HAND,         ##  Hand
   NUM_SYSTEM_CURSORS"><wbr />System<wbr />Cursor</a></li>
+  <li><a class="reference" href="#MouseWheelDirection"
+    title="MouseWheelDirection* = enum
+  MOUSEWHEEL_NORMAL,          ##  The scroll direction is normal
+  MOUSEWHEEL_FLIPPED          ##  The scroll direction is flipped &#x2F; natural"><wbr />Mouse<wbr />Wheel<wbr />Direction</a></li>
 
   </ul>
 </li>
@@ -1211,12 +1215,18 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="getMouseFocus*(): ptr Window"><wbr />get<wbr />Mouse<wbr />Focus</a></li>
   <li><a class="reference" href="#getMouseState,ptr.cint,ptr.cint"
     title="getMouseState*(x: ptr cint; y: ptr cint): uint32"><wbr />get<wbr />Mouse<wbr />State</a></li>
+  <li><a class="reference" href="#getGlobalMouseState,ptr.cint,ptr.cint"
+    title="getGlobalMouseState*(x: ptr cint; y: ptr cint): uint32"><wbr />get<wbr />Global<wbr />Mouse<wbr />State</a></li>
   <li><a class="reference" href="#getRelativeMouseState,ptr.cint,ptr.cint"
     title="getRelativeMouseState*(x: ptr cint; y: ptr cint): uint32"><wbr />get<wbr />Relative<wbr />Mouse<wbr />State</a></li>
   <li><a class="reference" href="#warpMouseInWindow,ptr.Window,cint,cint"
     title="warpMouseInWindow*(window: ptr Window; x: cint; y: cint)"><wbr />warp<wbr />Mouse<wbr />In<wbr />Window</a></li>
+  <li><a class="reference" href="#warpMouseGlobal,cint,cint"
+    title="warpMouseGlobal*(x: cint; y: cint): cint"><wbr />warp<wbr />Mouse<wbr />Global</a></li>
   <li><a class="reference" href="#setRelativeMouseMode,bool"
     title="setRelativeMouseMode*(enabled: bool): cint"><wbr />set<wbr />Relative<wbr />Mouse<wbr />Mode</a></li>
+  <li><a class="reference" href="#captureMouse,bool"
+    title="captureMouse*(enabled: bool): cint"><wbr />capture<wbr />Mouse</a></li>
   <li><a class="reference" href="#getRelativeMouseMode,"
     title="getRelativeMouseMode*(): bool"><wbr />get<wbr />Relative<wbr />Mouse<wbr />Mode</a></li>
   <li><a class="reference" href="#createCursor,ptr.uint8,ptr.uint8,cint,cint,cint,cint"
@@ -1280,6 +1290,14 @@ Implementation dependent
 <dd>
 
 Cursor types for <tt class="docutils literal"><span class="pre">createSystemCursor()</span></tt>.
+
+</dd>
+<dt id="MouseWheelDirection"><a name="MouseWheelDirection"></a><pre><span class="Identifier">MouseWheelDirection</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">MOUSEWHEEL_NORMAL</span><span class="Other">,</span>          <span class="Comment">##  The scroll direction is normal</span>
+  <span class="Identifier">MOUSEWHEEL_FLIPPED</span>          <span class="Comment">##  The scroll direction is flipped / natural</span></pre></dt>
+<dd>
+
+Scroll direction types for the Scroll event
 
 </dd>
 
@@ -1356,6 +1374,20 @@ Get the window which currently has mouse focus.
 
 
 </dd>
+<dt id="getGlobalMouseState"><a name="getGlobalMouseState,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getGlobalMouseState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetGlobalMouseState&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+<p>Get the current state of the mouse, in relation to the desktop.</p>
+<p>This works just like <tt class="docutils literal"><span class="pre">getMouseState()</span></tt>, but the coordinates will be reported relative to the top-left of the desktop. This can be useful if you need to track the mouse outside of a specific window and <tt class="docutils literal"><span class="pre">captureMouse()</span></tt> doesn't fit your needs. For example, it could be useful if you need to track the mouse while dragging a window, where coordinates relative to a window might not be in sync at all times.</p>
+<p><tt class="docutils literal"><span class="pre">Note</span></tt> <tt class="docutils literal"><span class="pre">getMouseState()</span></tt> returns the mouse position as SDL understands it from the last pump of the event queue. This procedure, however, queries the OS for the current mouse position, and as such, might be a slightly less efficient procedure. Unless you know what you're doing and have a good reason to use this procedure, you probably want <tt class="docutils literal"><span class="pre">getMouseState()</span></tt> instead.</p>
+<p><tt class="docutils literal"><span class="pre">x</span></tt> Returns the current X coord, relative to the desktop. Can be <cite>nil</cite>.</p>
+<p><tt class="docutils literal"><span class="pre">y</span></tt> Returns the current Y coord, relative to the desktop. Can be <cite>nil</cite>.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the current button state as a bitmask, which can be tested using the <tt class="docutils literal"><span class="pre">sdl.BUTTON(X)</span></tt> template.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">getMouseState()</span></tt></p>
+
+
+</dd>
 <dt id="getRelativeMouseState"><a name="getRelativeMouseState,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRelativeMouseState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRelativeMouseState&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
@@ -1371,7 +1403,18 @@ Get the window which currently has mouse focus.
 <p><tt class="docutils literal"><span class="pre">window</span></tt> The window to move the mouse into, or <cite>nil</cite> for the current mouse focus</p>
 <p><tt class="docutils literal"><span class="pre">x</span></tt> The x coordinate within the window</p>
 <p><tt class="docutils literal"><span class="pre">y</span></tt> The y coordinate within the window</p>
-<p><tt class="docutils literal"><span class="pre">Note:</span></tt> This function generates a mouse motion event</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> This procedure generates a mouse motion event.</p>
+
+
+</dd>
+<dt id="warpMouseGlobal"><a name="warpMouseGlobal,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">warpMouseGlobal</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WarpMouseGlobal&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+<p>Moves the mouse to the given position in global screen space.</p>
+<p><tt class="docutils literal"><span class="pre">x</span></tt> The x coordinate</p>
+<p><tt class="docutils literal"><span class="pre">y</span></tt> The y coordinate</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, <cite>-1</cite> on error (usually: unsupported by a platform).</p>
+<p><tt class="docutils literal"><span class="pre">Note</span></tt> This procedure generates a mouse motion event.</p>
 
 
 </dd>
@@ -1382,9 +1425,22 @@ Get the window which currently has mouse focus.
 <p><tt class="docutils literal"><span class="pre">enabled</span></tt> Whether or not to enable relative mode</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if relative mode is not supported.</p>
 <p>While the mouse is in relative mode, the cursor is hidden, and the driver will try to report continuous motion in the current window. Only relative motion events will be delivered, the mouse position will not change.</p>
-<p><tt class="docutils literal"><span class="pre">Note:</span></tt> This function will flush any pending mouse motion.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> This procedure will flush any pending mouse motion.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getRelativeMouseMode()</span></tt></p>
+
+
+</dd>
+<dt id="captureMouse"><a name="captureMouse,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">captureMouse</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">enabled</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CaptureMouse&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+<p>Capture the mouse, to track input outside an SDL window.</p>
+<p><tt class="docutils literal"><span class="pre">enabled</span></tt> Whether or not to enable capturing</p>
+<p>Capturing enables your app to obtain mouse events globally, instead of just within your window. Not all video targets support this procedure. When capturing is enabled, the current window will get all mouse events, but unlike relative mode, no change is made to the cursor and it is not restrained to your window.</p>
+<p>This procedure may also deny mouse input to other windows - both those in your application and others on the system - so you should use this procedure sparingly, and in small bursts. For example, you might want to track the mouse while the user is dragging something, until the user releases a mouse button. It is not recommended that you capture the mouse for long periods of time, such as the entire time your app is running.</p>
+<p>While captured, mouse events still report coordinates relative to the current (foreground) window, but those coordinates may be outside the bounds of the window (including negative values). Capturing is only allowed for the foreground window. If the window loses focus while capturing, the capture will be disabled automatically.</p>
+<p>While capturing is enabled, the current window will have the <cite>WINDOW_MOUSE_CAPTURE</cite> flag set.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if not supported.</p>
 
 
 </dd>
@@ -1494,7 +1550,7 @@ Used as a mask when testing buttons in buttonstate.<ul class="simple"><li>Button
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-12-14 21:50:42 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
       </div>
     </div>
   </div>

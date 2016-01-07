@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -26,7 +26,7 @@
 ##
 ##  Some things to keep in mind:
 ##
-##  * These functions only work on C function names. Other languages may
+##  * These procedures only work on C function names. Other languages may
 ##  have name mangling and intrinsic language support that varies from
 ##  compiler to compiler.
 ##
@@ -42,13 +42,13 @@
 
 proc loadObject*(sofile: cstring): pointer {.
     cdecl, importc: "SDL_LoadObject", dynlib: SDL2_LIB.}
-  ##  This function dynamically loads a shared object and returns a pointer
+  ##  This procedure dynamically loads a shared object and returns a pointer
   ##  to the object handle (or `nil` if there was an error).
   ##  The ``sofile`` parameter is a system dependent name of the object file.
 
 proc loadFunction*(handle: pointer; name: cstring): pointer {.
     cdecl, importc: "SDL_LoadFunction", dynlib: SDL2_LIB.}
-  ##  Given an object ``handle``, this function looks up the address of the
+  ##  Given an object ``handle``, this procedure looks up the address of the
   ##  named function in the shared object and returns it.  This address
   ##  is no longer valid after calling ``unloadObject()``.
 

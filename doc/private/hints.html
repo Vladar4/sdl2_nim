@@ -53,7 +53,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #2d2d2d;
+  color: #666;
   background-color: rgba(252, 248, 244, 0.75); }
 
 /* Skeleton grid */
@@ -489,7 +489,7 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0 10px 0px 10px;
+  margin: 0.25em 10px 0.25em 10px;
   font-size: 14px;
   line-height: 20px;
   white-space: pre !important;
@@ -892,6 +892,10 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+ul.simple > li {
+  margin-bottom: 0.5em }
+
 ol.simple, ul.simple {
   margin-bottom: 1em; }
 
@@ -1154,11 +1158,11 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#HintPriority"
-    title="HintPriority* = enum 
+    title="HintPriority* = enum
   HINT_DEFAULT, HINT_NORMAL, HINT_OVERRIDE"><wbr />Hint<wbr />Priority</a></li>
   <li><a class="reference" href="#HintCallback"
-    title="HintCallback* = proc (userdata: pointer; name: cstring; oldValue: cstring; 
-                      newValue: cstring)"><wbr />Hint<wbr />Callback</a></li>
+    title="HintCallback* = proc (userdata: pointer; name: cstring; oldValue: cstring;
+                   newValue: cstring)"><wbr />Hint<wbr />Callback</a></li>
 
   </ul>
 </li>
@@ -1174,7 +1178,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <li><a class="reference" href="#HINT_RENDER_DIRECT3D_THREADSAFE"
     title="HINT_RENDER_DIRECT3D_THREADSAFE* = &quot;SDL_RENDER_DIRECT3D_THREADSAFE&quot;"><wbr />HINT_<wbr />RENDER_<wbr />DIRECT3D_<wbr />THREADSAFE</a></li>
   <li><a class="reference" href="#HINT_RENDER_DIRECT3D11_DEBUG"
-    title="HINT_RENDER_DIRECT3D11_DEBUG* = &quot;SDL_HINT_RENDER_DIRECT3D11_DEBUG&quot;"><wbr />HINT_<wbr />RENDER_<wbr />DIRECT3D11_<wbr />DEBUG</a></li>
+    title="HINT_RENDER_DIRECT3D11_DEBUG* = &quot;SDL_RENDER_DIRECT3D11_DEBUG&quot;"><wbr />HINT_<wbr />RENDER_<wbr />DIRECT3D11_<wbr />DEBUG</a></li>
   <li><a class="reference" href="#HINT_RENDER_SCALE_QUALITY"
     title="HINT_RENDER_SCALE_QUALITY* = &quot;SDL_RENDER_SCALE_QUALITY&quot;"><wbr />HINT_<wbr />RENDER_<wbr />SCALE_<wbr />QUALITY</a></li>
   <li><a class="reference" href="#HINT_RENDER_VSYNC"
@@ -1187,6 +1191,12 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="HINT_VIDEO_X11_XINERAMA* = &quot;SDL_VIDEO_X11_XINERAMA&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />X11_<wbr />XINERAMA</a></li>
   <li><a class="reference" href="#HINT_VIDEO_X11_XRANDR"
     title="HINT_VIDEO_X11_XRANDR* = &quot;SDL_VIDEO_X11_XRANDR&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />X11_<wbr />XRANDR</a></li>
+  <li><a class="reference" href="#HINT_VIDEO_X11_NET_WM_PING"
+    title="HINT_VIDEO_X11_NET_WM_PING* = &quot;SDL_VIDEO_X11_NET_WM_PING&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />X11_<wbr />NET_<wbr />WM_<wbr />PING</a></li>
+  <li><a class="reference" href="#HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN"
+    title="HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN* = &quot;SDL_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN&quot;"><wbr />HINT_<wbr />WINDOW_<wbr />FRAME_<wbr />USABLE_<wbr />WHILE_<wbr />CURSOR_<wbr />HIDDEN</a></li>
+  <li><a class="reference" href="#HINT_WINDOWS_ENABLE_MESSAGELOOP"
+    title="HINT_WINDOWS_ENABLE_MESSAGELOOP* = &quot;SDL_WINDOWS_ENABLE_MESSAGELOOP&quot;"><wbr />HINT_<wbr />WINDOWS_<wbr />ENABLE_<wbr />MESSAGELOOP</a></li>
   <li><a class="reference" href="#HINT_GRAB_KEYBOARD"
     title="HINT_GRAB_KEYBOARD* = &quot;SDL_GRAB_KEYBOARD&quot;"><wbr />HINT_<wbr />GRAB_<wbr />KEYBOARD</a></li>
   <li><a class="reference" href="#HINT_MOUSE_RELATIVE_MODE_WARP"
@@ -1201,6 +1211,8 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="HINT_ACCELEROMETER_AS_JOYSTICK* = &quot;SDL_ACCELEROMETER_AS_JOYSTICK&quot;"><wbr />HINT_<wbr />ACCELEROMETER_<wbr />AS_<wbr />JOYSTICK</a></li>
   <li><a class="reference" href="#HINT_XINPUT_ENABLED"
     title="HINT_XINPUT_ENABLED* = &quot;SDL_XINPUT_ENABLED&quot;"><wbr />HINT_<wbr />XINPUT_<wbr />ENABLED</a></li>
+  <li><a class="reference" href="#HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING"
+    title="HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING* = &quot;SDL_XINPUT_USE_OLD_JOYSTICK_MAPPING&quot;"><wbr />HINT_<wbr />XINPUT_<wbr />USE_<wbr />OLD_<wbr />JOYSTICK_<wbr />MAPPING</a></li>
   <li><a class="reference" href="#HINT_GAMECONTROLLERCONFIG"
     title="HINT_GAMECONTROLLERCONFIG* = &quot;SDL_GAMECONTROLLERCONFIG&quot;"><wbr />HINT_<wbr />GAMECONTROLLERCONFIG</a></li>
   <li><a class="reference" href="#HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS"
@@ -1209,6 +1221,8 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="HINT_ALLOW_TOPMOST* = &quot;SDL_ALLOW_TOPMOST&quot;"><wbr />HINT_<wbr />ALLOW_<wbr />TOPMOST</a></li>
   <li><a class="reference" href="#HINT_TIMER_RESOLUTION"
     title="HINT_TIMER_RESOLUTION* = &quot;SDL_TIMER_RESOLUTION&quot;"><wbr />HINT_<wbr />TIMER_<wbr />RESOLUTION</a></li>
+  <li><a class="reference" href="#HINT_THREAD_STACK_SIZE"
+    title="HINT_THREAD_STACK_SIZE* = &quot;SDL_THREAD_STACK_SIZE&quot;"><wbr />HINT_<wbr />THREAD_<wbr />STACK_<wbr />SIZE</a></li>
   <li><a class="reference" href="#HINT_VIDEO_HIGHDPI_DISABLED"
     title="HINT_VIDEO_HIGHDPI_DISABLED* = &quot;SDL_VIDEO_HIGHDPI_DISABLED&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />HIGHDPI_<wbr />DISABLED</a></li>
   <li><a class="reference" href="#HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK"
@@ -1218,13 +1232,29 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <li><a class="reference" href="#HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT"
     title="HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT* = &quot;SDL_VIDEO_WINDOW_SHARE_PIXEL_FORMAT&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />WINDOW_<wbr />SHARE_<wbr />PIXEL_<wbr />FORMAT</a></li>
   <li><a class="reference" href="#HINT_WINRT_PRIVACY_POLICY_URL"
-    title="HINT_WINRT_PRIVACY_POLICY_URL* = &quot;SDL_HINT_WINRT_PRIVACY_POLICY_URL&quot;"><wbr />HINT_<wbr />WINRT_<wbr />PRIVACY_<wbr />POLICY_<wbr />URL</a></li>
+    title="HINT_WINRT_PRIVACY_POLICY_URL* = &quot;SDL_WINRT_PRIVACY_POLICY_URL&quot;"><wbr />HINT_<wbr />WINRT_<wbr />PRIVACY_<wbr />POLICY_<wbr />URL</a></li>
   <li><a class="reference" href="#HINT_WINRT_PRIVACY_POLICY_LABEL"
-    title="HINT_WINRT_PRIVACY_POLICY_LABEL* = &quot;SDL_HINT_WINRT_PRIVACY_POLICY_LABEL&quot;"><wbr />HINT_<wbr />WINRT_<wbr />PRIVACY_<wbr />POLICY_<wbr />LABEL</a></li>
+    title="HINT_WINRT_PRIVACY_POLICY_LABEL* = &quot;SDL_WINRT_PRIVACY_POLICY_LABEL&quot;"><wbr />HINT_<wbr />WINRT_<wbr />PRIVACY_<wbr />POLICY_<wbr />LABEL</a></li>
   <li><a class="reference" href="#HINT_WINRT_HANDLE_BACK_BUTTON"
-    title="HINT_WINRT_HANDLE_BACK_BUTTON* = &quot;SDL_HINT_WINRT_HANDLE_BACK_BUTTON&quot;"><wbr />HINT_<wbr />WINRT_<wbr />HANDLE_<wbr />BACK_<wbr />BUTTON</a></li>
+    title="HINT_WINRT_HANDLE_BACK_BUTTON* = &quot;SDL_WINRT_HANDLE_BACK_BUTTON&quot;"><wbr />HINT_<wbr />WINRT_<wbr />HANDLE_<wbr />BACK_<wbr />BUTTON</a></li>
   <li><a class="reference" href="#HINT_VIDEO_MAC_FULLSCREEN_SPACES"
     title="HINT_VIDEO_MAC_FULLSCREEN_SPACES* = &quot;SDL_VIDEO_MAC_FULLSCREEN_SPACES&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />MAC_<wbr />FULLSCREEN_<wbr />SPACES</a></li>
+  <li><a class="reference" href="#HINT_MAC_BACKGROUND_APP"
+    title="HINT_MAC_BACKGROUND_APP* = &quot;SDL_MAC_BACKGROUND_APP&quot;"><wbr />HINT_<wbr />MAC_<wbr />BACKGROUND_<wbr />APP</a></li>
+  <li><a class="reference" href="#HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION"
+    title="HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION* = &quot;SDL_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION&quot;"><wbr />HINT_<wbr />ANDROID_<wbr />APK_<wbr />EXPANSION_<wbr />MAIN_<wbr />FILE_<wbr />VERSION</a></li>
+  <li><a class="reference" href="#HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION"
+    title="HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION* = &quot;SDL_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION&quot;"><wbr />HINT_<wbr />ANDROID_<wbr />APK_<wbr />EXPANSION_<wbr />PATCH_<wbr />FILE_<wbr />VERSION</a></li>
+  <li><a class="reference" href="#HIND_IME_INTERNAL_EDITING"
+    title="HIND_IME_INTERNAL_EDITING* = &quot;SDL_IME_INTERNAL_EDITING&quot;"><wbr />HIND_<wbr />IME_<wbr />INTERNAL_<wbr />EDITING</a></li>
+  <li><a class="reference" href="#HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH"
+    title="HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH* = &quot;SDL_ANDROID_SEPARATE_MOUSE_AND_TOUCH&quot;"><wbr />HINT_<wbr />ANDROID_<wbr />SEPARATE_<wbr />MOUSE_<wbr />AND_<wbr />TOUCH</a></li>
+  <li><a class="reference" href="#HINT_EMSCRIPTEN_KEYBOARD_ELEMENT"
+    title="HINT_EMSCRIPTEN_KEYBOARD_ELEMENT* = &quot;SDL_EMSCRIPTEN_KEYBOARD_ELEMENT&quot;"><wbr />HINT_<wbr />EMSCRIPTEN_<wbr />KEYBOARD_<wbr />ELEMENT</a></li>
+  <li><a class="reference" href="#HINT_NO_SIGNAL_HANDLERS"
+    title="HINT_NO_SIGNAL_HANDLERS* = &quot;SDL_NO_SIGNAL_HANDLERS&quot;"><wbr />HINT_<wbr />NO_<wbr />SIGNAL_<wbr />HANDLERS</a></li>
+  <li><a class="reference" href="#HINT_WINDOWS_NO_CLOSE_ON_ALT_F4"
+    title="HINT_WINDOWS_NO_CLOSE_ON_ALT_F4* = &quot;SDL_WINDOWS_NO_CLOSE_ON_ALT_F4&quot;"><wbr />HINT_<wbr />WINDOWS_<wbr />NO_<wbr />CLOSE_<wbr />ON_<wbr />ALT_<wbr />F4</a></li>
 
   </ul>
 </li>
@@ -1253,22 +1283,22 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <div class="nine columns" id="content">
   <p class="module-desc">
 <h1><a class="toc-backref" id="hints-nim" href="#hints-nim">hints.nim</a></h1><p>Official documentation for SDL configuration variables.</p>
-<p>This file contains functions to set and get configuration hints, as well as listing each of them alphabetically.</p>
+<p>This file contains procedures to set and get configuration hints, as well as listing each of them alphabetically.</p>
 <p>The convention for naming hints is <cite>HINT_X</cite>, where &quot;X&quot; is the environment variable that can be used to override the default.</p>
 <p>In general these hints are just that - they may or may not be supported or applicable on any given platform, but they provide a way for an application or user to give the library a hint as to how they would like the library to work.</p>
 </p>
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="HintPriority"><a name="HintPriority"></a><pre><span class="Identifier">HintPriority</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span> 
+<dt id="HintPriority"><a name="HintPriority"></a><pre><span class="Identifier">HintPriority</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">HINT_DEFAULT</span><span class="Other">,</span> <span class="Identifier">HINT_NORMAL</span><span class="Other">,</span> <span class="Identifier">HINT_OVERRIDE</span></pre></dt>
 <dd>
 
 An enumeration of hint priorities
 
 </dd>
-<dt id="HintCallback"><a name="HintCallback"></a><pre><span class="Identifier">HintCallback</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">oldValue</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> 
-                      <span class="Identifier">newValue</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span></pre></dt>
+<dt id="HintCallback"><a name="HintCallback"></a><pre><span class="Identifier">HintCallback</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">oldValue</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span>
+                   <span class="Identifier">newValue</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
@@ -1333,7 +1363,7 @@ A variable controlling whether the Direct3D device is initialized for thread-saf
 
 
 </dd>
-<dt id="HINT_RENDER_DIRECT3D11_DEBUG"><a name="HINT_RENDER_DIRECT3D11_DEBUG"></a><pre><span class="Identifier">HINT_RENDER_DIRECT3D11_DEBUG</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_HINT_RENDER_DIRECT3D11_DEBUG&quot;</span></pre></dt>
+<dt id="HINT_RENDER_DIRECT3D11_DEBUG"><a name="HINT_RENDER_DIRECT3D11_DEBUG"></a><pre><span class="Identifier">HINT_RENDER_DIRECT3D11_DEBUG</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_DIRECT3D11_DEBUG&quot;</span></pre></dt>
 <dd>
 <p>
 A variable controlling whether to enable Direct3D 11+'s Debug Layer.</p>
@@ -1355,7 +1385,7 @@ A variable controlling the scaling quality</p>
 <li>&quot;1&quot; or &quot;linear&quot;  - Linear filtering (supported by OpenGL and Direct3D)</li>
 <li>&quot;2&quot; or &quot;best&quot;    - Currently this is the same as &quot;linear&quot;</li>
 </ul>
-<p>By default nearest pixel sampling is used</p>
+<p>By default nearest pixel sampling is used.</p>
 
 
 </dd>
@@ -1419,6 +1449,43 @@ A variable controlling whether the X11 XRandR extension should be used.</p>
 
 
 </dd>
+<dt id="HINT_VIDEO_X11_NET_WM_PING"><a name="HINT_VIDEO_X11_NET_WM_PING"></a><pre><span class="Identifier">HINT_VIDEO_X11_NET_WM_PING</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_X11_NET_WM_PING&quot;</span></pre></dt>
+<dd>
+<p>
+A variable controlling whether the X11 _NET_WM_PING protocol should be supported.</p>
+<p>This variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;0&quot;       - Disable _NET_WM_PING</li>
+<li>&quot;1&quot;       - Enable _NET_WM_PING</li>
+</ul>
+<p>By default SDL will use _NET_WM_PING, but for applications that know they will not always be able to respond to ping requests in a timely manner they can turn it off to avoid the window manager thinking the app is hung.</p>
+<p>The hint is checked in <tt class="docutils literal"><span class="pre">createWindow()</span></tt>.</p>
+
+
+</dd>
+<dt id="HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN"><a name="HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN"></a><pre><span class="Identifier">HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN&quot;</span></pre></dt>
+<dd>
+<p>
+A variable controlling whether the window frame and title bar are interactive when the cursor is hidden.</p>
+<p>This variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;0&quot;       - The window frame is not interactive when the cursor is hidden (no move, resize, etc)</li>
+<li>&quot;1&quot;       - The window frame is interactive when the cursor is hidden</li>
+</ul>
+<p>By default SDL will allow interaction with the window frame when the cursor is hidden.</p>
+
+
+</dd>
+<dt id="HINT_WINDOWS_ENABLE_MESSAGELOOP"><a name="HINT_WINDOWS_ENABLE_MESSAGELOOP"></a><pre><span class="Identifier">HINT_WINDOWS_ENABLE_MESSAGELOOP</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_ENABLE_MESSAGELOOP&quot;</span></pre></dt>
+<dd>
+<p>
+A variable controlling whether the windows message loop is processed by SDL</p>
+<p>This variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;0&quot;       - The window message loop is not run</li>
+<li>&quot;1&quot;       - The window message loop is processed in <tt class="docutils literal"><span class="pre">pumpEvents()</span></tt></li>
+</ul>
+<p>By default SDL will process the windows message loop.</p>
+
+
+</dd>
 <dt id="HINT_GRAB_KEYBOARD"><a name="HINT_GRAB_KEYBOARD"></a><pre><span class="Identifier">HINT_GRAB_KEYBOARD</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_GRAB_KEYBOARD&quot;</span></pre></dt>
 <dd>
 <p>
@@ -1439,7 +1506,7 @@ A variable controlling whether relative mouse mode is implemented using mouse wa
 <ul class="simple"><li>&quot;0&quot;       - Relative mouse mode uses raw input</li>
 <li>&quot;1&quot;       - Relative mouse mode uses mouse warping</li>
 </ul>
-<p>By default SDL will use raw input for relative mouse mode</p>
+<p>By default SDL will use raw input for relative mouse mode.</p>
 
 
 </dd>
@@ -1454,6 +1521,7 @@ Minimize your <tt class="docutils literal"><span class="pre">Window</span></tt> 
 <p>
 A variable controlling whether the idle timer is disabled on iOS.</p>
 <p>When an iOS app does not receive touches for some time, the screen is dimmed automatically. For games where the accelerometer is the only input  this is problematic. This functionality can be disabled by setting this hint.</p>
+<p>As of SDL 2.0.4, <tt class="docutils literal"><span class="pre">enableScreenSaver()</span></tt> and <tt class="docutils literal"><span class="pre">disableScreenSaver()</span></tt> accomplish the same thing on iOS. They should be preferred over this hint.</p>
 <p>This variable can be set to the following values:</p>
 <ul class="simple"><li>&quot;0&quot;       - Enable idle timer</li>
 <li>&quot;1&quot;       - Disable idle timer</li>
@@ -1478,7 +1546,7 @@ A variable controlling which orientations are allowed on iOS.</p>
 <dt id="HINT_ACCELEROMETER_AS_JOYSTICK"><a name="HINT_ACCELEROMETER_AS_JOYSTICK"></a><pre><span class="Identifier">HINT_ACCELEROMETER_AS_JOYSTICK</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ACCELEROMETER_AS_JOYSTICK&quot;</span></pre></dt>
 <dd>
 <p>
-A variable controlling whether an Android built-in accelerometer should be listed as a joystick device, rather than listing actual joysticks only.</p>
+A variable controlling whether an Android / iOS built-in accelerometer should be listed as a joystick device, rather than listing actual joysticks only.</p>
 <p>This variable can be set to the following values:</p>
 <ul class="simple"><li>&quot;0&quot;       - List only real joysticks and accept input from them</li>
 <li>&quot;1&quot;       - List real joysticks along with the accelerometer as if it were a 3 axis joystick (the default).</li>
@@ -1494,6 +1562,15 @@ A variable that lets you disable the detection and use of Xinput gamepad devices
 <ul class="simple"><li>&quot;0&quot;       - Disable XInput detection (only uses direct input)</li>
 <li>&quot;1&quot;       - Enable XInput detection (the default)</li>
 </ul>
+
+
+</dd>
+<dt id="HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING"><a name="HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING"></a><pre><span class="Identifier">HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_XINPUT_USE_OLD_JOYSTICK_MAPPING&quot;</span></pre></dt>
+<dd>
+<p>
+A variable that causes SDL to use the old axis and button mapping for XInput devices.</p>
+<p>This hint is for backwards compatibility only and will be removed in SDL 2.1.</p>
+<p>The default value is <cite>0</cite>.  This hint must be set before <tt class="docutils literal"><span class="pre">sdl.init()</span></tt>.</p>
 
 
 </dd>
@@ -1541,10 +1618,20 @@ A variable that controls the timer resolution, in milliseconds.</p>
 
 
 </dd>
+<dt id="HINT_THREAD_STACK_SIZE"><a name="HINT_THREAD_STACK_SIZE"></a><pre><span class="Identifier">HINT_THREAD_STACK_SIZE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_THREAD_STACK_SIZE&quot;</span></pre></dt>
+<dd>
+<p>
+A string specifying SDL's threads stack size in bytes or <cite>0</cite> for the backend's default size.</p>
+<p>Use this hint in case you need to set SDL's threads stack size to other than the default.</p>
+<p>This is specially useful if you build SDL against a non glibc libc library (such as musl) which provides a relatively small default thread stack size (a few kilobytes versus the default 8MB glibc uses).</p>
+<p>Support for this hint is currently available only in the pthread backend.</p>
+
+
+</dd>
 <dt id="HINT_VIDEO_HIGHDPI_DISABLED"><a name="HINT_VIDEO_HIGHDPI_DISABLED"></a><pre><span class="Identifier">HINT_VIDEO_HIGHDPI_DISABLED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_HIGHDPI_DISABLED&quot;</span></pre></dt>
 <dd>
 
-If set to 1, then do not allow high-DPI windows. (&quot;Retina&quot; on Mac)
+If set to 1, then do not allow high-DPI windows. (&quot;Retina&quot; on Mac and iOS)
 
 </dd>
 <dt id="HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK"><a name="HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK"></a><pre><span class="Identifier">HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK&quot;</span></pre></dt>
@@ -1580,23 +1667,23 @@ A variable that is the address of another <tt class="docutils literal"><span cla
 
 
 </dd>
-<dt id="HINT_WINRT_PRIVACY_POLICY_URL"><a name="HINT_WINRT_PRIVACY_POLICY_URL"></a><pre><span class="Identifier">HINT_WINRT_PRIVACY_POLICY_URL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_HINT_WINRT_PRIVACY_POLICY_URL&quot;</span></pre></dt>
+<dt id="HINT_WINRT_PRIVACY_POLICY_URL"><a name="HINT_WINRT_PRIVACY_POLICY_URL"></a><pre><span class="Identifier">HINT_WINRT_PRIVACY_POLICY_URL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINRT_PRIVACY_POLICY_URL&quot;</span></pre></dt>
 <dd>
 <p>
 A URL to a WinRT app's privacy policy</p>
 <p>All network-enabled WinRT apps must make a privacy policy available to its users.  On Windows 8, 8.1, and RT, Microsoft mandates that this policy be be available in the Windows Settings charm, as accessed from within the app. SDL provides code to add a URL-based link there, which can point to the app's privacy policy.</p>
-<p>To setup a URL to an app's privacy policy, set <cite>HINT_WINRT_PRIVACY_POLICY_URL</cite> before calling any <tt class="docutils literal"><span class="pre">init()</span></tt> functions. The contents of the hint should be a valid URL. For example, &quot;<a class="reference external" href="http://www.example.com&quot;">http://www.example.com&quot;</a>.</p>
+<p>To setup a URL to an app's privacy policy, set <cite>HINT_WINRT_PRIVACY_POLICY_URL</cite> before calling any <tt class="docutils literal"><span class="pre">init()</span></tt> procedures. The contents of the hint should be a valid URL. For example, &quot;<a class="reference external" href="http://www.example.com&quot;">http://www.example.com&quot;</a>.</p>
 <p>The default value is &quot;&quot;, which will prevent SDL from adding a privacy policy link to the Settings charm.  This hint should only be set during app init.</p>
 <p>The label text of an app's &quot;Privacy Policy&quot; link may be customized via another hint, <cite>HINT_WINRT_PRIVACY_POLICY_LABEL</cite>.</p>
 <p>Please note that on Windows Phone, Microsoft does not provide standard UI for displaying a privacy policy link, and as such, <cite>HINT_WINRT_PRIVACY_POLICY_URL</cite> will not get used on that platform. Network-enabled phone apps should display their privacy policy through some other, in-app means.</p>
 
 
 </dd>
-<dt id="HINT_WINRT_PRIVACY_POLICY_LABEL"><a name="HINT_WINRT_PRIVACY_POLICY_LABEL"></a><pre><span class="Identifier">HINT_WINRT_PRIVACY_POLICY_LABEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_HINT_WINRT_PRIVACY_POLICY_LABEL&quot;</span></pre></dt>
+<dt id="HINT_WINRT_PRIVACY_POLICY_LABEL"><a name="HINT_WINRT_PRIVACY_POLICY_LABEL"></a><pre><span class="Identifier">HINT_WINRT_PRIVACY_POLICY_LABEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINRT_PRIVACY_POLICY_LABEL&quot;</span></pre></dt>
 <dd>
 <p>
 Label text for a WinRT app's privacy policy link</p>
-<p>Network-enabled WinRT apps must include a privacy policy. On Windows 8, 8.1, and RT, Microsoft mandates that this policy be available via the Windows Settings charm. SDL provides code to add a link there, with it's label text being set via the optional hint, <cite>HINT_WINRT_PRIVACY_POLICY_LABEL</cite>.</p>
+<p>Network-enabled WinRT apps must include a privacy policy. On Windows 8, 8.1, and RT, Microsoft mandates that this policy be available via the Windows Settings charm. SDL provides code to add a link there, with its label text being set via the optional hint, <cite>HINT_WINRT_PRIVACY_POLICY_LABEL</cite>.</p>
 <p>Please note that a privacy policy's contents are not set via this hint. A separate hint, <cite>HINT_WINRT_PRIVACY_POLICY_URL</cite>, is used to link to the actual text of the policy.</p>
 <p>The contents of this hint should be encoded as a UTF8 string.</p>
 <p>The default value is &quot;Privacy Policy&quot;.  This hint should only be set during app initialization, preferably before any calls to <tt class="docutils literal"><span class="pre">init()</span></tt>.</p>
@@ -1604,11 +1691,20 @@ Label text for a WinRT app's privacy policy link</p>
 
 
 </dd>
-<dt id="HINT_WINRT_HANDLE_BACK_BUTTON"><a name="HINT_WINRT_HANDLE_BACK_BUTTON"></a><pre><span class="Identifier">HINT_WINRT_HANDLE_BACK_BUTTON</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_HINT_WINRT_HANDLE_BACK_BUTTON&quot;</span></pre></dt>
+<dt id="HINT_WINRT_HANDLE_BACK_BUTTON"><a name="HINT_WINRT_HANDLE_BACK_BUTTON"></a><pre><span class="Identifier">HINT_WINRT_HANDLE_BACK_BUTTON</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINRT_HANDLE_BACK_BUTTON&quot;</span></pre></dt>
 <dd>
 <p>
-If set to &quot;1&quot;, back button press events on Windows Phone 8+ will be marked as handled.</p>
-<p>TODO, WinRT: document <cite>HINT_WINRT_HANDLE_BACK_BUTTON</cite> need and use For now, more details on why this is needed can be found at the beginning of the following web page: <a class="reference external" href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj247550(v=vs.105).aspx">http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj247550(v=vs.105).aspx</a></p>
+Allows back-button-press events on Windows Phone to be marked as handled.</p>
+<p>Windows Phone devices typically feature a Back button. When pressed, the OS will emit back-button-press events, which apps are expected to handle in an appropriate manner. If apps do not explicitly mark these events as 'Handled', then the OS will invoke its default behavior for unhandled back-button-press events, which on Windows Phone 8 and 8.1 is to terminate the app (and attempt to switch to the previous app, or to the device's home screen).</p>
+<p>Setting the <cite>HINT_WINRT_HANDLE_BACK_BUTTON</cite> hint to <cite>1</cite> will cause SDL to mark back-button-press events as 'Handled', if and when one is sent to the app.</p>
+<p>Internally, Windows Phone sends back button events as parameters to special back-button-press callback procedures. Apps that need to respond to back-button-press events are expected to register one or more callback procedures for such, shortly after being launched (during the app's initialization phase). After the back button is pressed, the OS will invoke these callbacks. If the app's callback(s) do not explicitly mark the event as handled by the time they return, or if the app never registers one of these callback, the OS will consider the event un-handled, and it will apply its default back button behavior (terminate the app).</p>
+<p>SDL registers its own back-button-press callback with the Windows Phone OS.  This callback will emit a pair of SDL key-press events (<cite>sdl.KEYDOWN</cite> and <cite>sdl.KEYUP</cite>), each with a scancode of <cite>SCANCODE_AC_BACK</cite>, after which it will check the contents of the hint, <cite>HINT_WINRT_HANDLE_BACK_BUTTON</cite>.</p>
+<p>If the hint's value is set to <cite>1</cite>, the back button event's 'Handled' property will get set to <cite>true</cite>.  If the hint's value is set to something else, or if it is unset, SDL will leave the event's 'Handled' property alone. (By default, the OS sets this property to <cite>false</cite>, to note.)</p>
+<p>SDL apps can either set <cite>HINT_WINRT_HANDLE_BACK_BUTTON</cite> well before a back button is pressed, or can set it in direct-response to a back button being pressed.</p>
+<p>In order to get notified when a back button is pressed, SDL apps should register a callback procedure with <tt class="docutils literal"><span class="pre">addEventWatch()</span></tt>, and have it listen for <cite>sdl.KEYDOWN</cite> events that have a scancode of <cite>SCANCODE_AC_BACK</cite>.</p>
+<p>(Alternatively, <cite>sdl.KEYUP</cite> events can be listened-for. Listening for either event type is suitable.) Any value of <cite>HINT_WINRT_HANDLE_BACK_BUTTON</cite> set by such a callback, will be applied to the OS' current back-button-press event.</p>
+<p>More details on back button behavior in Windows Phone apps can be found at the following page, on Microsoft's developer site:</p>
+<p><a class="reference external" href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj247550(v=vs.105).aspx">http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj247550(v=vs.105).aspx</a></p>
 
 
 </dd>
@@ -1619,9 +1715,98 @@ A variable that dictates policy for fullscreen Spaces on Mac OS X.</p>
 <p>This hint only applies to Mac OS X.</p>
 <p>The variable can be set to the following values:</p>
 <ul class="simple"><li>&quot;0&quot;       - Disable Spaces support (<cite>FULLSCREEN_DESKTOP</cite> won't use them and <cite>WINDOW_RESIZABLE</cite> windows won't offer the &quot;fullscreen&quot; button on their titlebars).</li>
-<li>&quot;1&quot;       - Enable Spaces support (<cite>FULLSCREEN_DESKTOP</cite> will use them and <cite>WINDOW_RESIZABLE</cite> windows will offer the &quot;fullscreen&quot; button on their titlebars.</li>
+<li>&quot;1&quot;       - Enable Spaces support (<cite>FULLSCREEN_DESKTOP</cite> will use them and <cite>WINDOW_RESIZABLE</cite> windows will offer the &quot;fullscreen&quot; button on their titlebars).</li>
 </ul>
 <p>The default value is &quot;1&quot;. Spaces are disabled regardless of this hint if the OS isn't at least Mac OS X Lion (10.7). This hint must be set before any windows are created.</p>
+
+
+</dd>
+<dt id="HINT_MAC_BACKGROUND_APP"><a name="HINT_MAC_BACKGROUND_APP"></a><pre><span class="Identifier">HINT_MAC_BACKGROUND_APP</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MAC_BACKGROUND_APP&quot;</span></pre></dt>
+<dd>
+<p>
+When set don't force the SDL app to become a foreground process</p>
+<p>This hint only applies to Mac OS X.</p>
+
+
+</dd>
+<dt id="HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION"><a name="HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION"></a><pre><span class="Identifier">HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION&quot;</span></pre></dt>
+<dd>
+<p>
+Android APK expansion main file version. Should be a string number like &quot;1&quot;, &quot;2&quot; etc.</p>
+<p>Must be set together with <cite>HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION</cite>.</p>
+<p>If both hints were set then <tt class="docutils literal"><span class="pre">rwFromFile()</span></tt> will look into expansion files after a given relative path was not found in the internal storage and assets.</p>
+<p>By default this hint is not set and the APK expansion files are not searched.</p>
+
+
+</dd>
+<dt id="HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION"><a name="HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION"></a><pre><span class="Identifier">HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION&quot;</span></pre></dt>
+<dd>
+<p>
+Android APK expansion patch file version. Should be a string number like &quot;1&quot;, &quot;2&quot; etc.</p>
+<p>Must be set together with <cite>HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION</cite>.</p>
+<p>If both hints were set then <tt class="docutils literal"><span class="pre">rwFromFile()</span></tt> will look into expansion files after a given relative path was not found in the internal storage and assets.</p>
+<p>By default this hint is not set and the APK expansion files are not searched.</p>
+
+
+</dd>
+<dt id="HIND_IME_INTERNAL_EDITING"><a name="HIND_IME_INTERNAL_EDITING"></a><pre><span class="Identifier">HIND_IME_INTERNAL_EDITING</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_IME_INTERNAL_EDITING&quot;</span></pre></dt>
+<dd>
+<p>
+A variable to control whether certain IMEs should handle text editing internally instead of sending <cite>sdl.TEXTEDITING</cite> events.</p>
+<p>The variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;0&quot;       - <cite>sdl.TEXTEDITING</cite> events are sent, and it is the application's responsibility to render the text from these events and differentiate it somehow from committed text. (default)</li>
+<li>&quot;1&quot;       - If supported by the IME then <cite>sdl.TEXTEDITING</cite> events are not sent, and text that is being composed will be rendered in its own UI.</li>
+</ul>
+
+
+</dd>
+<dt id="HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH"><a name="HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH"></a><pre><span class="Identifier">HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ANDROID_SEPARATE_MOUSE_AND_TOUCH&quot;</span></pre></dt>
+<dd>
+<p>
+A variable to control whether mouse and touch events are to be treated together or separately.</p>
+<p>The variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;0&quot;       - Mouse events will be handled as touch events, and touch will raise fake mouse events. This is the behaviour of SDL &lt;= 2.0.3. (default)</li>
+<li>&quot;1&quot;       - Mouse events will be handled separately from pure touch events.</li>
+</ul>
+<p>The value of this hint is used at runtime, so it can be changed at any time.</p>
+
+
+</dd>
+<dt id="HINT_EMSCRIPTEN_KEYBOARD_ELEMENT"><a name="HINT_EMSCRIPTEN_KEYBOARD_ELEMENT"></a><pre><span class="Identifier">HINT_EMSCRIPTEN_KEYBOARD_ELEMENT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_EMSCRIPTEN_KEYBOARD_ELEMENT&quot;</span></pre></dt>
+<dd>
+<p>
+Override the binding element for keyboard inputs for Emscripten builds.</p>
+<p>This hint only applies to the emscripten platform</p>
+<p>The variable can be one of</p>
+<ul class="simple"><li>&quot;#window&quot;      - The javascript window object (this is the default)</li>
+<li>&quot;#document&quot;    - The javascript document object</li>
+<li>&quot;#screen&quot;      - the javascript window.screen object</li>
+<li>&quot;#canvas&quot;      - the WebGL canvas element</li>
+<li>any other string without a leading <cite>#</cite> sign applies to the element on the page with that ID.</li>
+</ul>
+
+
+</dd>
+<dt id="HINT_NO_SIGNAL_HANDLERS"><a name="HINT_NO_SIGNAL_HANDLERS"></a><pre><span class="Identifier">HINT_NO_SIGNAL_HANDLERS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_NO_SIGNAL_HANDLERS&quot;</span></pre></dt>
+<dd>
+<p>
+Tell SDL not to catch the SIGINT or SIGTERM signals.</p>
+<p>This hint only applies to Unix-like platforms.</p>
+<p>The variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;0&quot;       - SDL will install a SIGINT and SIGTERM handler, and when it catches a signal, convert it into an <cite>sdl.QUIT</cite> event.</li>
+<li>&quot;1&quot;       - SDL will not install a signal handler at all.</li>
+</ul>
+
+
+</dd>
+<dt id="HINT_WINDOWS_NO_CLOSE_ON_ALT_F4"><a name="HINT_WINDOWS_NO_CLOSE_ON_ALT_F4"></a><pre><span class="Identifier">HINT_WINDOWS_NO_CLOSE_ON_ALT_F4</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_NO_CLOSE_ON_ALT_F4&quot;</span></pre></dt>
+<dd>
+<p>
+Tell SDL not to generate window-close events for Alt+F4 on Windows.</p>
+<p>The variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;0&quot;   - SDL will generate a window-close event when it sees Alt+F4.</li>
+<li>&quot;1&quot;   - SDL will only do normal key handling for Alt+F4.</li>
+</ul>
 
 
 </dd>
@@ -1639,16 +1824,15 @@ A variable that dictates policy for fullscreen Spaces on Mac OS X.</p>
 
 
 </dd>
-<dt id="setHint"><a name="setHint,cstring,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setHint</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetHint&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="setHint"><a name="setHint,cstring,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setHint</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetHint&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Set a hint with normal priority.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if the hint was set, <cite>false</cite> otherwise.</p>
 
 
 </dd>
-<dt id="getHint"><a name="getHint,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getHint</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetHint&quot;</span><span class="Other">,</span> 
-                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getHint"><a name="getHint,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getHint</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetHint&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get a hint.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the string value of a hint variable.</p>
@@ -1658,27 +1842,27 @@ A variable that dictates policy for fullscreen Spaces on Mac OS X.</p>
 <dt id="addHintCallback"><a name="addHintCallback,cstring,HintCallback,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">addHintCallback</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">callback</span><span class="Other">:</span> <span class="Identifier">HintCallback</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other">{.</span>
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AddHintCallback&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<p>Add a function to watch a particular hint.</p>
+<p>Add a procedure to watch a particular hint.</p>
 <p><tt class="docutils literal"><span class="pre">name</span></tt> The hint to watch.</p>
-<p><tt class="docutils literal"><span class="pre">callback</span></tt> The function to call when the hint value changes.</p>
-<p><tt class="docutils literal"><span class="pre">userdata</span></tt> A pointer to pass to the callback function.</p>
+<p><tt class="docutils literal"><span class="pre">callback</span></tt> The procedure to call when the hint value changes.</p>
+<p><tt class="docutils literal"><span class="pre">userdata</span></tt> A pointer to pass to the callback procedure.</p>
 
 
 </dd>
 <dt id="delHintCallback"><a name="delHintCallback,cstring,HintCallback,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">delHintCallback</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">callback</span><span class="Other">:</span> <span class="Identifier">HintCallback</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other">{.</span>
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DelHintCallback&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<p>Remove a function watching a particular hint.</p>
+<p>Remove a procedure watching a particular hint.</p>
 <p><tt class="docutils literal"><span class="pre">name</span></tt> The hint being watched.</p>
-<p><tt class="docutils literal"><span class="pre">callback</span></tt> The function being called when the hint value changes.</p>
-<p><tt class="docutils literal"><span class="pre">userdata</span></tt> A pointer being passed to the callback function.</p>
+<p><tt class="docutils literal"><span class="pre">callback</span></tt> The procedure being called when the hint value changes.</p>
+<p><tt class="docutils literal"><span class="pre">userdata</span></tt> A pointer being passed to the callback procedure.</p>
 
 
 </dd>
 <dt id="clearHints"><a name="clearHints,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">clearHints</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ClearHints&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Clear all hints.</p>
-<p>This function is called during <tt class="docutils literal"><span class="pre">quit()</span></tt> to free stored hints.</p>
+<p>This procedure is called during <tt class="docutils literal"><span class="pre">quit()</span></tt> to free stored hints.</p>
 
 
 </dd>
@@ -1692,7 +1876,7 @@ A variable that dictates policy for fullscreen Spaces on Mac OS X.</p>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-10-04 22:57:21 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
       </div>
     </div>
   </div>

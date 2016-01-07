@@ -53,7 +53,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #2d2d2d;
+  color: #666;
   background-color: rgba(252, 248, 244, 0.75); }
 
 /* Skeleton grid */
@@ -489,7 +489,7 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0 10px 0px 10px;
+  margin: 0.25em 10px 0.25em 10px;
   font-size: 14px;
   line-height: 20px;
   white-space: pre !important;
@@ -892,6 +892,10 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+ul.simple > li {
+  margin-bottom: 0.5em }
+
 ol.simple, ul.simple {
   margin-bottom: 1em; }
 
@@ -1200,7 +1204,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 <p>
 Pointer arithmetic. Could be used for pixels manipulation.</p>
 <p>Example:</p>
-<pre><span class="Keyword">var</span> <span class="Identifier">surface</span> <span class="Operator">=</span> <span class="Identifier">sdl</span><span class="Operator">.</span><span class="Identifier">convertSurfaceFormat</span><span class="Punctuation">(</span>
+<pre class = "listing"><span class="Keyword">var</span> <span class="Identifier">surface</span> <span class="Operator">=</span> <span class="Identifier">sdl</span><span class="Operator">.</span><span class="Identifier">convertSurfaceFormat</span><span class="Punctuation">(</span>
   <span class="Identifier">sourceSurface</span><span class="Punctuation">,</span> <span class="Identifier">sdl</span><span class="Operator">.</span><span class="Identifier">PixelFormat_RGBA8888</span><span class="Punctuation">,</span> <span class="DecNumber">0</span><span class="Punctuation">)</span>
 <span class="Keyword">discard</span> <span class="Identifier">sdl</span><span class="Operator">.</span><span class="Identifier">lockSurface</span><span class="Punctuation">(</span><span class="Identifier">surface</span><span class="Punctuation">)</span>
 <span class="Keyword">var</span> <span class="Identifier">pixels</span> <span class="Operator">=</span> <span class="Keyword">cast</span><span class="Punctuation">[</span><span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Punctuation">]</span><span class="Punctuation">(</span><span class="Identifier">surface</span><span class="Operator">.</span><span class="Identifier">pixels</span><span class="Punctuation">)</span>
@@ -1229,7 +1233,7 @@ Define a four character code as a uint32.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-10-04 22:57:21 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
       </div>
     </div>
   </div>

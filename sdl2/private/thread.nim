@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -44,7 +44,7 @@ type
 
 type
   ThreadFunction* = proc (data: pointer): cint {.cdecl.} ##  \
-    ##  The function passed to ``createThread()``.
+    ##  The procedure passed to ``createThread()``.
     ##  It is passed a ``pointer`` user context parameter
     ##  and returns an ``int``.
 
@@ -71,7 +71,7 @@ proc createThread*(
 proc getThreadName*(thread: Thread): cstring {.
     cdecl, importc: "SDL_GetThreadName", dynlib: SDL2_LIB.}
   ##  Get the thread name, as it was specified in ``createThread()``.
-  ##  This function returns a pointer to a UTF-8 string that names the
+  ##  This procedure returns a pointer to a UTF-8 string that names the
   ##  specified thread, or `nil` if it doesn't have a name. This is internal
   ##  memory, not to be ``free()``'d by the caller, and remains valid until the
   ##  specified thread is cleaned up by ``waitThread()``.
@@ -93,21 +93,21 @@ proc setThreadPriority*(priority: ThreadPriority): cint {.
 proc waitThread*(thread: Thread; status: ptr cint) {.
     cdecl, importc: "SDL_WaitThread", dynlib: SDL2_LIB.}
   ##  Wait for a thread to finish. Threads that haven't been detached will
-  ##  remain (as a "zombie") until this function cleans them up. Not doing so
+  ##  remain (as a "zombie") until this procedure cleans them up. Not doing so
   ##  is a resource leak.
   ##
-  ##  Once a thread has been cleaned up through this function, the ``Thread``
+  ##  Once a thread has been cleaned up through this procedure, the ``Thread``
   ##  that references it becomes invalid and should not be referenced again.
   ##  As such, only one thread may call ``WaitThread()`` on another.
   ##
-  ##  The return code for the thread function is placed in the area
+  ##  The return code for the thread procedure is placed in the area
   ##  pointed to by ``status``, if ``status`` is not `nil`.
   ##
   ##  You may not wait on a thread that has been used in a call to
-  ##  ``detachThread()``. Use either that function or this one, but not
+  ##  ``detachThread()``. Use either that procedure or this one, but not
   ##  both, or behavior is undefined.
   ##
-  ##  It is safe to pass `nil` to this function; it is a no-op.
+  ##  It is safe to pass `nil` to this procedure; it is a no-op.
 
 proc detachThread*(thread: Thread) {.
     cdecl, importc: "SDL_DetachThread", dynlib: SDL2_LIB.}
@@ -132,10 +132,10 @@ proc detachThread*(thread: Thread) {.
   ##  ``waitThread()``.
   ##
   ##  You may not call ``waitThread()`` on a thread that has been detached.
-  ##  Use either that function or this one, but not both, or behavior is
+  ##  Use either that procedure or this one, but not both, or behavior is
   ##  undefined.
   ##
-  ##  It is safe to pass `nil` to this function; it is a no-op.
+  ##  It is safe to pass `nil` to this procedure; it is a no-op.
 
 proc tlsCreate*(): TLSID {.
     cdecl, importc: "SDL_TLSCreate", dynlib: SDL2_LIB.}
@@ -155,8 +155,8 @@ proc tlsCreate*(): TLSID {.
   ##        atomicLock(addr(tls_lock))
   ##          if not thread_local_storage:
   ##            thread_local_storage = tlsCreate()
-  ##          atomicUnLock(addr(tls_lock))
-  ##      tlsSet(thread_local_storage, value)
+  ##          atomicUnlock(addr(tls_lock))
+  ##      tlsSet(thread_local_storage, value, 0)
   ##
   ##    proc getMyThreadData(): pointer =
   ##      return tlsGet(thread_local_storage)
@@ -193,7 +193,7 @@ proc tlsSet*(
   ##  ``id`` The thread local storage ID.
   ##
   ##  ``value`` The value to associate with the ID for the current thread
-  ##  ``destructor`` A function called when the thread exits, to free the value.
+  ##  ``destructor`` A procedure called when the thread exits, to free the value.
   ##
   ##  ``Return`` `0` on success, `-1` on error.
   ##

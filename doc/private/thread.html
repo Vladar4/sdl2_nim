@@ -53,7 +53,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #2d2d2d;
+  color: #666;
   background-color: rgba(252, 248, 244, 0.75); }
 
 /* Skeleton grid */
@@ -489,7 +489,7 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0 10px 0px 10px;
+  margin: 0.25em 10px 0.25em 10px;
   font-size: 14px;
   line-height: 20px;
   white-space: pre !important;
@@ -892,6 +892,10 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+ul.simple > li {
+  margin-bottom: 0.5em }
+
 ol.simple, ul.simple {
   margin-bottom: 1em; }
 
@@ -1160,7 +1164,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <li><a class="reference" href="#TLSID"
     title="TLSID* = cuint"><wbr />TLSID</a></li>
   <li><a class="reference" href="#ThreadPriority"
-    title="ThreadPriority* = enum 
+    title="ThreadPriority* = enum
   THREAD_PRIORITY_LOW, THREAD_PRIORITY_NORMAL, THREAD_PRIORITY_HIGH"><wbr />Thread<wbr />Priority</a></li>
   <li><a class="reference" href="#ThreadFunction"
     title="ThreadFunction* = proc (data: pointer): cint"><wbr />Thread<wbr />Function</a></li>
@@ -1218,7 +1222,7 @@ The SDL thread ID
 Thread local storage ID, <cite>0</cite> is the invalid ID
 
 </dd>
-<dt id="ThreadPriority"><a name="ThreadPriority"></a><pre><span class="Identifier">ThreadPriority</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span> 
+<dt id="ThreadPriority"><a name="ThreadPriority"></a><pre><span class="Identifier">ThreadPriority</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">THREAD_PRIORITY_LOW</span><span class="Other">,</span> <span class="Identifier">THREAD_PRIORITY_NORMAL</span><span class="Other">,</span> <span class="Identifier">THREAD_PRIORITY_HIGH</span></pre></dt>
 <dd>
 <p>
@@ -1230,7 +1234,7 @@ The SDL thread priority.</p>
 <dt id="ThreadFunction"><a name="ThreadFunction"></a><pre><span class="Identifier">ThreadFunction</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span></pre></dt>
 <dd>
 
-The function passed to <tt class="docutils literal"><span class="pre">createThread()</span></tt>. It is passed a <tt class="docutils literal"><span class="pre">pointer</span></tt> user context parameter and returns an <tt class="docutils literal"><span class="pre">int</span></tt>.
+The procedure passed to <tt class="docutils literal"><span class="pre">createThread()</span></tt>. It is passed a <tt class="docutils literal"><span class="pre">pointer</span></tt> user context parameter and returns an <tt class="docutils literal"><span class="pre">int</span></tt>.
 
 </dd>
 
@@ -1238,8 +1242,8 @@ The function passed to <tt class="docutils literal"><span class="pre">createThre
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="createThread"><a name="createThread,ThreadFunction,cstring,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createThread</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">fn</span><span class="Other">:</span> <span class="Identifier">ThreadFunction</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Thread</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateThread&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="createThread"><a name="createThread,ThreadFunction,cstring,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createThread</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">fn</span><span class="Other">:</span> <span class="Identifier">ThreadFunction</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Thread</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateThread&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Create a thread.</p>
 <p>Thread naming is a little complicated: Most systems have very small limits for the string length (Haiku has 32 bytes, Linux currently has 16, Visual C++ 6.0 has nine!), and possibly other arbitrary rules. You'll have to see what happens with your system's debugger. The name should be UTF-8 (but using the naming limits of C identifiers is a better bet). There are no requirements for thread naming conventions, so long as the string is null-terminated UTF-8, but these guidelines are helpful in choosing a name:</p>
@@ -1248,10 +1252,10 @@ The function passed to <tt class="docutils literal"><span class="pre">createThre
 
 
 </dd>
-<dt id="getThreadName"><a name="getThreadName,Thread"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getThreadName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">thread</span><span class="Other">:</span> <span class="Identifier">Thread</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetThreadName&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getThreadName"><a name="getThreadName,Thread"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getThreadName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">thread</span><span class="Other">:</span> <span class="Identifier">Thread</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetThreadName&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-Get the thread name, as it was specified in <tt class="docutils literal"><span class="pre">createThread()</span></tt>. This function returns a pointer to a UTF-8 string that names the specified thread, or <cite>nil</cite> if it doesn't have a name. This is internal memory, not to be <tt class="docutils literal"><span class="pre">free()</span></tt>'d by the caller, and remains valid until the specified thread is cleaned up by <tt class="docutils literal"><span class="pre">waitThread()</span></tt>.
+Get the thread name, as it was specified in <tt class="docutils literal"><span class="pre">createThread()</span></tt>. This procedure returns a pointer to a UTF-8 string that names the specified thread, or <cite>nil</cite> if it doesn't have a name. This is internal memory, not to be <tt class="docutils literal"><span class="pre">free()</span></tt>'d by the caller, and remains valid until the specified thread is cleaned up by <tt class="docutils literal"><span class="pre">waitThread()</span></tt>.
 
 </dd>
 <dt id="threadID"><a name="threadID,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">threadID</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">ThreadID</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ThreadID&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
@@ -1259,7 +1263,7 @@ Get the thread name, as it was specified in <tt class="docutils literal"><span c
 Get the thread identifier for the current thread.
 
 </dd>
-<dt id="getThreadID"><a name="getThreadID,Thread"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getThreadID</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">thread</span><span class="Other">:</span> <span class="Identifier">Thread</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">ThreadID</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetThreadID&quot;</span><span class="Other">,</span> 
+<dt id="getThreadID"><a name="getThreadID,Thread"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getThreadID</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">thread</span><span class="Other">:</span> <span class="Identifier">Thread</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">ThreadID</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetThreadID&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the thread identifier for the specified thread.</p>
@@ -1267,32 +1271,32 @@ Get the thread identifier for the current thread.
 
 
 </dd>
-<dt id="setThreadPriority"><a name="setThreadPriority,ThreadPriority"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setThreadPriority</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">priority</span><span class="Other">:</span> <span class="Identifier">ThreadPriority</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="setThreadPriority"><a name="setThreadPriority,ThreadPriority"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setThreadPriority</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">priority</span><span class="Other">:</span> <span class="Identifier">ThreadPriority</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetThreadPriority&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Set the priority for the current thread.
 
 </dd>
-<dt id="waitThread"><a name="waitThread,Thread,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">waitThread</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">thread</span><span class="Other">:</span> <span class="Identifier">Thread</span><span class="Other">;</span> <span class="Identifier">status</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WaitThread&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="waitThread"><a name="waitThread,Thread,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">waitThread</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">thread</span><span class="Other">:</span> <span class="Identifier">Thread</span><span class="Other">;</span> <span class="Identifier">status</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WaitThread&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<p>Wait for a thread to finish. Threads that haven't been detached will remain (as a &quot;zombie&quot;) until this function cleans them up. Not doing so is a resource leak.</p>
-<p>Once a thread has been cleaned up through this function, the <tt class="docutils literal"><span class="pre">Thread</span></tt> that references it becomes invalid and should not be referenced again. As such, only one thread may call <tt class="docutils literal"><span class="pre">WaitThread()</span></tt> on another.</p>
-<p>The return code for the thread function is placed in the area pointed to by <tt class="docutils literal"><span class="pre">status</span></tt>, if <tt class="docutils literal"><span class="pre">status</span></tt> is not <cite>nil</cite>.</p>
-<p>You may not wait on a thread that has been used in a call to <tt class="docutils literal"><span class="pre">detachThread()</span></tt>. Use either that function or this one, but not both, or behavior is undefined.</p>
-<p>It is safe to pass <cite>nil</cite> to this function; it is a no-op.</p>
+<p>Wait for a thread to finish. Threads that haven't been detached will remain (as a &quot;zombie&quot;) until this procedure cleans them up. Not doing so is a resource leak.</p>
+<p>Once a thread has been cleaned up through this procedure, the <tt class="docutils literal"><span class="pre">Thread</span></tt> that references it becomes invalid and should not be referenced again. As such, only one thread may call <tt class="docutils literal"><span class="pre">WaitThread()</span></tt> on another.</p>
+<p>The return code for the thread procedure is placed in the area pointed to by <tt class="docutils literal"><span class="pre">status</span></tt>, if <tt class="docutils literal"><span class="pre">status</span></tt> is not <cite>nil</cite>.</p>
+<p>You may not wait on a thread that has been used in a call to <tt class="docutils literal"><span class="pre">detachThread()</span></tt>. Use either that procedure or this one, but not both, or behavior is undefined.</p>
+<p>It is safe to pass <cite>nil</cite> to this procedure; it is a no-op.</p>
 
 
 </dd>
-<dt id="detachThread"><a name="detachThread,Thread"></a><pre><span class="Keyword">proc</span> <span class="Identifier">detachThread</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">thread</span><span class="Other">:</span> <span class="Identifier">Thread</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DetachThread&quot;</span><span class="Other">,</span> 
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="detachThread"><a name="detachThread,Thread"></a><pre><span class="Keyword">proc</span> <span class="Identifier">detachThread</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">thread</span><span class="Other">:</span> <span class="Identifier">Thread</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DetachThread&quot;</span><span class="Other">,</span>
+                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>A thread may be &quot;detached&quot; to signify that it should not remain until another thread has called <tt class="docutils literal"><span class="pre">waitThread()</span></tt> on it. Detaching a thread is useful for long-running threads that nothing needs to synchronize with or further manage. When a detached thread is done, it simply goes away.</p>
 <p>There is no way to recover the return code of a detached thread. If you need this, don't detach the thread and instead use <tt class="docutils literal"><span class="pre">waitThread()</span></tt>.</p>
 <p>Once a thread is detached, you should usually assume the <tt class="docutils literal"><span class="pre">Thread</span></tt> isn't safe to reference again, as it will become invalid immediately upon the detached thread's exit, instead of remaining until someone has called <tt class="docutils literal"><span class="pre">waitThread()</span></tt> to finally clean it up. As such, don't detach the same thread more than once.</p>
 <p>If a thread has already exited when passed to <tt class="docutils literal"><span class="pre">detachThread()</span></tt>, it will stop waiting for a call to <tt class="docutils literal"><span class="pre">waitThread()</span></tt> and clean up immediately. It is not safe to detach a thread that might be used with <tt class="docutils literal"><span class="pre">waitThread()</span></tt>.</p>
-<p>You may not call <tt class="docutils literal"><span class="pre">waitThread()</span></tt> on a thread that has been detached. Use either that function or this one, but not both, or behavior is undefined.</p>
-<p>It is safe to pass <cite>nil</cite> to this function; it is a no-op.</p>
+<p>You may not call <tt class="docutils literal"><span class="pre">waitThread()</span></tt> on a thread that has been detached. Use either that procedure or this one, but not both, or behavior is undefined.</p>
+<p>It is safe to pass <cite>nil</cite> to this procedure; it is a no-op.</p>
 
 
 </dd>
@@ -1300,7 +1304,7 @@ Set the priority for the current thread.
 <dd>
 <p>Create an identifier that is globally visible to all threads but refers to data that is thread-specific.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> The newly created thread local storage identifier, or <cite>0</cite> on error.</p>
-<pre><span class="Keyword">var</span>
+<pre class = "listing"><span class="Keyword">var</span>
   <span class="Identifier">tls_lock</span><span class="Punctuation">:</span> <span class="Identifier">SpinLock</span>
   <span class="Identifier">thread_local_storage</span><span class="Punctuation">:</span> <span class="Identifier">SDL_TLSID</span>
 
@@ -1309,8 +1313,8 @@ Set the priority for the current thread.
     <span class="Identifier">atomicLock</span><span class="Punctuation">(</span><span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">tls_lock</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
       <span class="Keyword">if</span> <span class="Keyword">not</span> <span class="Identifier">thread_local_storage</span><span class="Punctuation">:</span>
         <span class="Identifier">thread_local_storage</span> <span class="Operator">=</span> <span class="Identifier">tlsCreate</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
-      <span class="Identifier">atomicUnLock</span><span class="Punctuation">(</span><span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">tls_lock</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
-  <span class="Identifier">tlsSet</span><span class="Punctuation">(</span><span class="Identifier">thread_local_storage</span><span class="Punctuation">,</span> <span class="Identifier">value</span><span class="Punctuation">)</span>
+      <span class="Identifier">atomicUnlock</span><span class="Punctuation">(</span><span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">tls_lock</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
+  <span class="Identifier">tlsSet</span><span class="Punctuation">(</span><span class="Identifier">thread_local_storage</span><span class="Punctuation">,</span> <span class="Identifier">value</span><span class="Punctuation">,</span> <span class="DecNumber">0</span><span class="Punctuation">)</span>
 
 <span class="Keyword">proc</span> <span class="Identifier">getMyThreadData</span><span class="Punctuation">(</span><span class="Punctuation">)</span><span class="Punctuation">:</span> <span class="Identifier">pointer</span> <span class="Operator">=</span>
   <span class="Keyword">return</span> <span class="Identifier">tlsGet</span><span class="Punctuation">(</span><span class="Identifier">thread_local_storage</span><span class="Punctuation">)</span></pre><p>See also:</p>
@@ -1320,8 +1324,7 @@ Set the priority for the current thread.
 
 
 </dd>
-<dt id="tlsGet"><a name="tlsGet,TLSID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tlsGet</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">id</span><span class="Other">:</span> <span class="Identifier">TLSID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_TLSGet&quot;</span><span class="Other">,</span> 
-                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="tlsGet"><a name="tlsGet,TLSID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tlsGet</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">id</span><span class="Other">:</span> <span class="Identifier">TLSID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_TLSGet&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the value associated with a thread local storage ID for the current thread.</p>
 <p><tt class="docutils literal"><span class="pre">id</span></tt> The thread local storage ID.</p>
@@ -1337,7 +1340,7 @@ Set the priority for the current thread.
 <dd>
 <p>Set the value associated with a thread local storage ID for the current thread.</p>
 <p><tt class="docutils literal"><span class="pre">id</span></tt> The thread local storage ID.</p>
-<p><tt class="docutils literal"><span class="pre">value</span></tt> The value to associate with the ID for the current thread <tt class="docutils literal"><span class="pre">destructor</span></tt> A function called when the thread exits, to free the value.</p>
+<p><tt class="docutils literal"><span class="pre">value</span></tt> The value to associate with the ID for the current thread <tt class="docutils literal"><span class="pre">destructor</span></tt> A procedure called when the thread exits, to free the value.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, <cite>-1</cite> on error.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">tlsCreate()</span></tt></p>
@@ -1355,7 +1358,7 @@ Set the priority for the current thread.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-10-04 22:57:21 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
       </div>
     </div>
   </div>

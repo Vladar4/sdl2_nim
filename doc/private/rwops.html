@@ -53,7 +53,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #2d2d2d;
+  color: #666;
   background-color: rgba(252, 248, 244, 0.75); }
 
 /* Skeleton grid */
@@ -489,7 +489,7 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0 10px 0px 10px;
+  margin: 0.25em 10px 0.25em 10px;
   font-size: 14px;
   line-height: 20px;
   white-space: pre !important;
@@ -892,6 +892,10 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+ul.simple > li {
+  margin-bottom: 0.5em }
+
 ol.simple, ul.simple {
   margin-bottom: 1em; }
 
@@ -1154,7 +1158,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#RWopsAndroidio"
-    title="RWopsAndroidio* = object 
+    title="RWopsAndroidio* = object
   fileNameRef*: pointer
   inputStreamRef*: pointer
   readableByteChannelRef*: pointer
@@ -1165,62 +1169,62 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   offset*: clong
   fd*: cint"><wbr />RWops<wbr />Androidio</a></li>
   <li><a class="reference" href="#RWopsWindowsioBuffer"
-    title="RWopsWindowsioBuffer* = object 
+    title="RWopsWindowsioBuffer* = object
   data*: pointer
   size*: csize
   left*: csize"><wbr />RWops<wbr />Windowsio<wbr />Buffer</a></li>
   <li><a class="reference" href="#RWopsWindowsio"
-    title="RWopsWindowsio* = object 
+    title="RWopsWindowsio* = object
   append*: bool
   h*: pointer
   buffer*: RWopsWindowsioBuffer"><wbr />RWops<wbr />Windowsio</a></li>
   <li><a class="reference" href="#RWopsStdio"
-    title="RWopsStdio* = object 
+    title="RWopsStdio* = object
   autoclose*: bool
   fp*: File"><wbr />RWops<wbr />Stdio</a></li>
   <li><a class="reference" href="#RWopsMemio"
-    title="RWopsMemio* = object 
+    title="RWopsMemio* = object
   base*: ptr uint8
   here*: ptr uint8
   stop*: ptr uint8"><wbr />RWops<wbr />Memio</a></li>
   <li><a class="reference" href="#RWopsUnknownio"
-    title="RWopsUnknownio* = object 
+    title="RWopsUnknownio* = object
   data1*: pointer
   data2*: pointer"><wbr />RWops<wbr />Unknownio</a></li>
   <li><a class="reference" href="#RWopsKind"
-    title="RWopsKind* = object 
+    title="RWopsKind* = object
   androidio*: RWopsAndroidio
   windowsio*: RWopsWindowsio
   stdio*: RWopsStdio
   mem*: RWopsMemio
   unknown*: RWopsUnknownio"><wbr />RWops<wbr />Kind</a></li>
   <li><a class="reference" href="#RWops"
-    title="RWops* = object 
+    title="RWops* = object
   size*: proc (context: ptr RWops): int64 ##  \
-                                          ##  ``Return`` the size of the file in this rwops, or `-1` if unknown
+                                    ##  ``Return`` the size of the file in this rwops, or `-1` if unknown
   seek*: proc (context: ptr RWops; offset: int64; whence: cint): int64 ##  \
-                                                                       ##  Seek to ``offset`` relative to ``whence``,
-                                                                       ##  one of stdio&#x27;s whence values:
-                                                                       ##
-                                                                       ##  `RW_SEEK_SET`, `RW_SEEK_CUR`, `RW_SEEK_END`
-                                                                       ##
-                                                                       ##  ``Return`` the final offset in the data stream, or `-1` on error.
+                                                             ##  Seek to ``offset`` relative to ``whence``,
+                                                             ##  one of stdio&#x27;s whence values:
+                                                             ##
+                                                             ##  `RW_SEEK_SET`, `RW_SEEK_CUR`, `RW_SEEK_END`
+                                                             ##
+                                                             ##  ``Return`` the final offset in the data stream, or `-1` on error.
   read*: proc (context: ptr RWops; p: pointer; size: csize; maxnum: csize): csize ##  \
-                                                                                  ##  Read up to ``maxnum`` objects each of size ``size`` from the data
-                                                                                  ##  stream to the area pointed at by ``ptr``.
-                                                                                  ##
-                                                                                  ##  ``Return`` the number of objects read, or `0` at error or end of file.
+                                                                      ##  Read up to ``maxnum`` objects each of size ``size`` from the data
+                                                                      ##  stream to the area pointed at by ``ptr``.
+                                                                      ##
+                                                                      ##  ``Return`` the number of objects read, or `0` at error or end of file.
   write*: proc (context: ptr RWops; p: pointer; size: csize; num: csize): csize ##  \
-                                                                                ##  Write exactly ``num`` objects each of size ``size`` from the area
-                                                                                ##  pointed at by ``ptr`` to data stream.
-                                                                                ##
-                                                                                ##  ``Return`` the number of objects written,
-                                                                                ##  or `0` at error or end of file.
+                                                                    ##  Write exactly ``num`` objects each of size ``size`` from the area
+                                                                    ##  pointed at by ``ptr`` to data stream.
+                                                                    ##
+                                                                    ##  ``Return`` the number of objects written,
+                                                                    ##  or `0` at error or end of file.
   close*: proc (context: ptr RWops): cint ##  \
-                                          ##  Close and free an allocated RWops object.
-                                          ##
-                                          ##  ``Return`` `0` if successful,
-                                          ##  or `-1` on write error when flushing data.
+                                    ##  Close and free an allocated RWops object.
+                                    ##
+                                    ##  ``Return`` `0` if successful,
+                                    ##  or `-1` on write error when flushing data.
   kind*: uint32
   mem*: RWopsKind"><wbr />RWops</a></li>
 
@@ -1325,7 +1329,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="RWopsAndroidio"><a name="RWopsAndroidio"></a><pre><span class="Identifier">RWopsAndroidio</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
+<dt id="RWopsAndroidio"><a name="RWopsAndroidio"></a><pre><span class="Identifier">RWopsAndroidio</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">fileNameRef</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>
   <span class="Identifier">inputStreamRef</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>
   <span class="Identifier">readableByteChannelRef</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>
@@ -1340,7 +1344,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
 
 </dd>
-<dt id="RWopsWindowsioBuffer"><a name="RWopsWindowsioBuffer"></a><pre><span class="Identifier">RWopsWindowsioBuffer</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
+<dt id="RWopsWindowsioBuffer"><a name="RWopsWindowsioBuffer"></a><pre><span class="Identifier">RWopsWindowsioBuffer</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">data</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>
   <span class="Identifier">size</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">csize</span>
   <span class="Identifier">left</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">csize</span>
@@ -1349,7 +1353,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
 
 </dd>
-<dt id="RWopsWindowsio"><a name="RWopsWindowsio"></a><pre><span class="Identifier">RWopsWindowsio</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
+<dt id="RWopsWindowsio"><a name="RWopsWindowsio"></a><pre><span class="Identifier">RWopsWindowsio</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">append</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">h</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>
   <span class="Identifier">buffer</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">RWopsWindowsioBuffer</span>
@@ -1358,7 +1362,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
 
 </dd>
-<dt id="RWopsStdio"><a name="RWopsStdio"></a><pre><span class="Identifier">RWopsStdio</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
+<dt id="RWopsStdio"><a name="RWopsStdio"></a><pre><span class="Identifier">RWopsStdio</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">autoclose</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">fp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">File</span>
 </pre></dt>
@@ -1366,7 +1370,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
 
 </dd>
-<dt id="RWopsMemio"><a name="RWopsMemio"></a><pre><span class="Identifier">RWopsMemio</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
+<dt id="RWopsMemio"><a name="RWopsMemio"></a><pre><span class="Identifier">RWopsMemio</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">base</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span>
   <span class="Identifier">here</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span>
   <span class="Identifier">stop</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span>
@@ -1375,7 +1379,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
 
 </dd>
-<dt id="RWopsUnknownio"><a name="RWopsUnknownio"></a><pre><span class="Identifier">RWopsUnknownio</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
+<dt id="RWopsUnknownio"><a name="RWopsUnknownio"></a><pre><span class="Identifier">RWopsUnknownio</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">data1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>
   <span class="Identifier">data2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>
 </pre></dt>
@@ -1383,7 +1387,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
 
 </dd>
-<dt id="RWopsKind"><a name="RWopsKind"></a><pre><span class="Identifier">RWopsKind</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>  <span class="Other">{.</span><span class="Identifier">union</span><span class="Other">.}</span>
+<dt id="RWopsKind"><a name="RWopsKind"></a><pre><span class="Identifier">RWopsKind</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other">{.</span><span class="Identifier">union</span><span class="Other">.}</span>
   <span class="Identifier">androidio</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">RWopsAndroidio</span>
   <span class="Identifier">windowsio</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">RWopsWindowsio</span>
   <span class="Identifier">stdio</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">RWopsStdio</span>
@@ -1394,34 +1398,32 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
 
 </dd>
-<dt id="RWops"><a name="RWops"></a><pre><span class="Identifier">RWops</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
+<dt id="RWops"><a name="RWops"></a><pre><span class="Identifier">RWops</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">size</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int64</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">##  \</span>
-                                                    <span class="Comment">##  ``Return`` the size of the file in this rwops, or `-1` if unknown</span>
+                                             <span class="Comment">##  ``Return`` the size of the file in this rwops, or `-1` if unknown</span>
   <span class="Identifier">seek</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">offset</span><span class="Other">:</span> <span class="Identifier">int64</span><span class="Other">;</span> <span class="Identifier">whence</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int64</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">##  \</span>
-                                                                                 <span class="Comment">##  Seek to ``offset`` relative to ``whence``,</span>
-                                                                                 <span class="Comment">##  one of stdio's whence values:</span>
-                                                                                 <span class="Comment">##</span>
-                                                                                 <span class="Comment">##  `RW_SEEK_SET`, `RW_SEEK_CUR`, `RW_SEEK_END`</span>
-                                                                                 <span class="Comment">##</span>
-                                                                                 <span class="Comment">##  ``Return`` the final offset in the data stream, or `-1` on error.</span>
-  <span class="Identifier">read</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">p</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">;</span> <span class="Identifier">maxnum</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span>
-      <span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">##  \</span>
-              <span class="Comment">##  Read up to ``maxnum`` objects each of size ``size`` from the data</span>
-              <span class="Comment">##  stream to the area pointed at by ``ptr``.</span>
-              <span class="Comment">##</span>
-              <span class="Comment">##  ``Return`` the number of objects read, or `0` at error or end of file.</span>
-  <span class="Identifier">write</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">p</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">;</span> <span class="Identifier">num</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span>
-      <span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">##  \</span>
-              <span class="Comment">##  Write exactly ``num`` objects each of size ``size`` from the area</span>
-              <span class="Comment">##  pointed at by ``ptr`` to data stream.</span>
-              <span class="Comment">##</span>
-              <span class="Comment">##  ``Return`` the number of objects written,</span>
-              <span class="Comment">##  or `0` at error or end of file.</span>
+                                                                      <span class="Comment">##  Seek to ``offset`` relative to ``whence``,</span>
+                                                                      <span class="Comment">##  one of stdio's whence values:</span>
+                                                                      <span class="Comment">##</span>
+                                                                      <span class="Comment">##  `RW_SEEK_SET`, `RW_SEEK_CUR`, `RW_SEEK_END`</span>
+                                                                      <span class="Comment">##</span>
+                                                                      <span class="Comment">##  ``Return`` the final offset in the data stream, or `-1` on error.</span>
+  <span class="Identifier">read</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">p</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">;</span> <span class="Identifier">maxnum</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">##  \</span>
+                                                                               <span class="Comment">##  Read up to ``maxnum`` objects each of size ``size`` from the data</span>
+                                                                               <span class="Comment">##  stream to the area pointed at by ``ptr``.</span>
+                                                                               <span class="Comment">##</span>
+                                                                               <span class="Comment">##  ``Return`` the number of objects read, or `0` at error or end of file.</span>
+  <span class="Identifier">write</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">p</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">;</span> <span class="Identifier">num</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">##  \</span>
+                                                                             <span class="Comment">##  Write exactly ``num`` objects each of size ``size`` from the area</span>
+                                                                             <span class="Comment">##  pointed at by ``ptr`` to data stream.</span>
+                                                                             <span class="Comment">##</span>
+                                                                             <span class="Comment">##  ``Return`` the number of objects written,</span>
+                                                                             <span class="Comment">##  or `0` at error or end of file.</span>
   <span class="Identifier">close</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">##  \</span>
-                                                    <span class="Comment">##  Close and free an allocated RWops object.</span>
-                                                    <span class="Comment">##</span>
-                                                    <span class="Comment">##  ``Return`` `0` if successful,</span>
-                                                    <span class="Comment">##  or `-1` on write error when flushing data.</span>
+                                             <span class="Comment">##  Close and free an allocated RWops object.</span>
+                                             <span class="Comment">##</span>
+                                             <span class="Comment">##  ``Return`` `0` if successful,</span>
+                                             <span class="Comment">##  or `-1` on write error when flushing data.</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">mem</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">RWopsKind</span>
 </pre></dt>
@@ -1485,25 +1487,25 @@ Seek relative to the end of data
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="rwFromFile"><a name="rwFromFile,cstring,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rwFromFile</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="rwFromFile"><a name="rwFromFile,cstring,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rwFromFile</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RWFromFile&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="rwFromFP"><a name="rwFromFP,File,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rwFromFP</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">fp</span><span class="Other">:</span> <span class="Identifier">File</span><span class="Other">;</span> <span class="Identifier">autoclose</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RWFromFP&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="rwFromFP"><a name="rwFromFP,File,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rwFromFP</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">fp</span><span class="Other">:</span> <span class="Identifier">File</span><span class="Other">;</span> <span class="Identifier">autoclose</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RWFromFP&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="rwFromMem"><a name="rwFromMem,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rwFromMem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mem</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RWFromMem&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="rwFromMem"><a name="rwFromMem,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rwFromMem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mem</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RWFromMem&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="rwFromConstMem"><a name="rwFromConstMem,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rwFromConstMem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mem</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="rwFromConstMem"><a name="rwFromConstMem,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rwFromConstMem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mem</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RWFromConstMem&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
@@ -1519,86 +1521,85 @@ Seek relative to the end of data
 
 
 </dd>
-<dt id="readU8"><a name="readU8,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readU8</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadU8&quot;</span><span class="Other">,</span> 
-                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="readU8"><a name="readU8,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readU8</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadU8&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="readLE16"><a name="readLE16,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readLE16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadLE16&quot;</span><span class="Other">,</span> 
+<dt id="readLE16"><a name="readLE16,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readLE16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadLE16&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="readBE16"><a name="readBE16,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readBE16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadBE16&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="readLE32"><a name="readLE32,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readLE32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadLE32&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="readBE32"><a name="readBE32,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readBE32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadBE32&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="readLE64"><a name="readLE64,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readLE64</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint64</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadLE64&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="readBE64"><a name="readBE64,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readBE64</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint64</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadBE64&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="writeU8"><a name="writeU8,ptr.RWops,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeU8</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteU8&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="readBE16"><a name="readBE16,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readBE16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadBE16&quot;</span><span class="Other">,</span> 
+<dt id="writeLE16"><a name="writeLE16,ptr.RWops,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeLE16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteLE16&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="readLE32"><a name="readLE32,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readLE32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadLE32&quot;</span><span class="Other">,</span> 
+<dt id="writeBE16"><a name="writeBE16,ptr.RWops,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeBE16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteBE16&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="readBE32"><a name="readBE32,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readBE32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadBE32&quot;</span><span class="Other">,</span> 
+<dt id="writeLE32"><a name="writeLE32,ptr.RWops,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeLE32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteLE32&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="readLE64"><a name="readLE64,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readLE64</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint64</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadLE64&quot;</span><span class="Other">,</span> 
+<dt id="writeBE32"><a name="writeBE32,ptr.RWops,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeBE32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteBE32&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="readBE64"><a name="readBE64,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readBE64</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint64</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadBE64&quot;</span><span class="Other">,</span> 
+<dt id="writeLE64"><a name="writeLE64,ptr.RWops,uint64"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeLE64</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint64</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteLE64&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="writeU8"><a name="writeU8,ptr.RWops,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeU8</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteU8&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="writeLE16"><a name="writeLE16,ptr.RWops,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeLE16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteLE16&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="writeBE16"><a name="writeBE16,ptr.RWops,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeBE16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteBE16&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="writeLE32"><a name="writeLE32,ptr.RWops,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeLE32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteLE32&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="writeBE32"><a name="writeBE32,ptr.RWops,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeBE32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteBE32&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="writeLE64"><a name="writeLE64,ptr.RWops,uint64"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeLE64</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint64</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteLE64&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="writeBE64"><a name="writeBE64,ptr.RWops,uint64"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeBE64</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint64</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteBE64&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="writeBE64"><a name="writeBE64,ptr.RWops,uint64"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeBE64</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint64</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteBE64&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
@@ -1648,7 +1649,7 @@ Seek relative to the end of data
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-10-04 22:57:21 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
       </div>
     </div>
   </div>

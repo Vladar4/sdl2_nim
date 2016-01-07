@@ -53,7 +53,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #2d2d2d;
+  color: #666;
   background-color: rgba(252, 248, 244, 0.75); }
 
 /* Skeleton grid */
@@ -489,7 +489,7 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0 10px 0px 10px;
+  margin: 0.25em 10px 0.25em 10px;
   font-size: 14px;
   line-height: 20px;
   white-space: pre !important;
@@ -892,6 +892,10 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+ul.simple > li {
+  margin-bottom: 0.5em }
+
 ol.simple, ul.simple {
   margin-bottom: 1em; }
 
@@ -1156,35 +1160,35 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
       <li><a class="reference" href="#GameController"
     title="GameController* = pointer"><wbr />Game<wbr />Controller</a></li>
   <li><a class="reference" href="#GameControllerBindType"
-    title="GameControllerBindType* = enum 
-  CONTROLLER_BINDTYPE_NONE = 0, CONTROLLER_BINDTYPE_BUTTON, 
+    title="GameControllerBindType* = enum
+  CONTROLLER_BINDTYPE_NONE = 0, CONTROLLER_BINDTYPE_BUTTON,
   CONTROLLER_BINDTYPE_AXIS, CONTROLLER_BINDTYPE_HAT"><wbr />Game<wbr />Controller<wbr />Bind<wbr />Type</a></li>
   <li><a class="reference" href="#GameControllerButtonBindValueHat"
-    title="GameControllerButtonBindValueHat* = object 
+    title="GameControllerButtonBindValueHat* = object
   hat*: cint
   hat_mask*: cint"><wbr />Game<wbr />Controller<wbr />Button<wbr />Bind<wbr />Value<wbr />Hat</a></li>
   <li><a class="reference" href="#GameControllerButtonBindValue"
-    title="GameControllerButtonBindValue* = object 
+    title="GameControllerButtonBindValue* = object
   button*: cint
   axis*: cint
   hat*: GameControllerButtonBindValueHat"><wbr />Game<wbr />Controller<wbr />Button<wbr />Bind<wbr />Value</a></li>
   <li><a class="reference" href="#GameControllerButtonBind"
-    title="GameControllerButtonBind* = object 
+    title="GameControllerButtonBind* = object
   bindType*: GameControllerBindType
   value*: GameControllerButtonBindValue"><wbr />Game<wbr />Controller<wbr />Button<wbr />Bind</a></li>
   <li><a class="reference" href="#GameControllerAxis"
-    title="GameControllerAxis* = enum 
-  CONTROLLER_AXIS_INVALID = - 1, CONTROLLER_AXIS_LEFTX, CONTROLLER_AXIS_LEFTY, 
-  CONTROLLER_AXIS_RIGHTX, CONTROLLER_AXIS_RIGHTY, CONTROLLER_AXIS_TRIGGERLEFT, 
+    title="GameControllerAxis* = enum
+  CONTROLLER_AXIS_INVALID = - 1, CONTROLLER_AXIS_LEFTX, CONTROLLER_AXIS_LEFTY,
+  CONTROLLER_AXIS_RIGHTX, CONTROLLER_AXIS_RIGHTY, CONTROLLER_AXIS_TRIGGERLEFT,
   CONTROLLER_AXIS_TRIGGERRIGHT, CONTROLLER_AXIS_MAX"><wbr />Game<wbr />Controller<wbr />Axis</a></li>
   <li><a class="reference" href="#GameControllerButton"
-    title="GameControllerButton* = enum 
-  CONTROLLER_BUTTON_INVALID = - 1, CONTROLLER_BUTTON_A, CONTROLLER_BUTTON_B, 
-  CONTROLLER_BUTTON_X, CONTROLLER_BUTTON_Y, CONTROLLER_BUTTON_BACK, 
-  CONTROLLER_BUTTON_GUIDE, CONTROLLER_BUTTON_START, CONTROLLER_BUTTON_LEFTSTICK, 
-  CONTROLLER_BUTTON_RIGHTSTICK, CONTROLLER_BUTTON_LEFTSHOULDER, 
-  CONTROLLER_BUTTON_RIGHTSHOULDER, CONTROLLER_BUTTON_DPAD_UP, 
-  CONTROLLER_BUTTON_DPAD_DOWN, CONTROLLER_BUTTON_DPAD_LEFT, 
+    title="GameControllerButton* = enum
+  CONTROLLER_BUTTON_INVALID = - 1, CONTROLLER_BUTTON_A, CONTROLLER_BUTTON_B,
+  CONTROLLER_BUTTON_X, CONTROLLER_BUTTON_Y, CONTROLLER_BUTTON_BACK,
+  CONTROLLER_BUTTON_GUIDE, CONTROLLER_BUTTON_START, CONTROLLER_BUTTON_LEFTSTICK,
+  CONTROLLER_BUTTON_RIGHTSTICK, CONTROLLER_BUTTON_LEFTSHOULDER,
+  CONTROLLER_BUTTON_RIGHTSHOULDER, CONTROLLER_BUTTON_DPAD_UP,
+  CONTROLLER_BUTTON_DPAD_DOWN, CONTROLLER_BUTTON_DPAD_LEFT,
   CONTROLLER_BUTTON_DPAD_RIGHT, CONTROLLER_BUTTON_MAX"><wbr />Game<wbr />Controller<wbr />Button</a></li>
 
   </ul>
@@ -1206,6 +1210,8 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="gameControllerNameForIndex*(joystick_index: cint): cstring"><wbr />game<wbr />Controller<wbr />Name<wbr />For<wbr />Index</a></li>
   <li><a class="reference" href="#gameControllerOpen,cint"
     title="gameControllerOpen*(joystick_index: cint): GameController"><wbr />game<wbr />Controller<wbr />Open</a></li>
+  <li><a class="reference" href="#gameControllerFromInstanceID,JoystickID"
+    title="gameControllerFromInstanceID*(joyid: JoystickID): GameController"><wbr />game<wbr />Controller<wbr />From<wbr />Instance<wbr />ID</a></li>
   <li><a class="reference" href="#gameControllerName,GameController"
     title="gameControllerName*(gamecontroller: GameController): cstring"><wbr />game<wbr />Controller<wbr />Name</a></li>
   <li><a class="reference" href="#gameControllerGetAttached,GameController"
@@ -1221,7 +1227,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <li><a class="reference" href="#gameControllerGetStringForAxis,GameControllerAxis"
     title="gameControllerGetStringForAxis*(axis: GameControllerAxis): cstring"><wbr />game<wbr />Controller<wbr />Get<wbr />String<wbr />For<wbr />Axis</a></li>
   <li><a class="reference" href="#gameControllerGetBindForAxis,GameController,GameControllerAxis"
-    title="gameControllerGetBindForAxis*(gamecontroller: GameController; 
+    title="gameControllerGetBindForAxis*(gamecontroller: GameController;
                               axis: GameControllerAxis): GameControllerButtonBind"><wbr />game<wbr />Controller<wbr />Get<wbr />Bind<wbr />For<wbr />Axis</a></li>
   <li><a class="reference" href="#gameControllerGetAxis,GameController,GameControllerAxis"
     title="gameControllerGetAxis*(gamecontroller: GameController; axis: GameControllerAxis): int16"><wbr />game<wbr />Controller<wbr />Get<wbr />Axis</a></li>
@@ -1230,10 +1236,10 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <li><a class="reference" href="#gameControllerGetStringForButton,GameControllerButton"
     title="gameControllerGetStringForButton*(button: GameControllerButton): cstring"><wbr />game<wbr />Controller<wbr />Get<wbr />String<wbr />For<wbr />Button</a></li>
   <li><a class="reference" href="#gameControllerGetBindForButton,GameController,GameControllerButton"
-    title="gameControllerGetBindForButton*(gamecontroller: GameController; 
+    title="gameControllerGetBindForButton*(gamecontroller: GameController;
                                 button: GameControllerButton): GameControllerButtonBind"><wbr />game<wbr />Controller<wbr />Get<wbr />Bind<wbr />For<wbr />Button</a></li>
   <li><a class="reference" href="#gameControllerGetButton,GameController,GameControllerButton"
-    title="gameControllerGetButton*(gamecontroller: GameController; 
+    title="gameControllerGetButton*(gamecontroller: GameController;
                          button: GameControllerButton): uint8"><wbr />game<wbr />Controller<wbr />Get<wbr />Button</a></li>
   <li><a class="reference" href="#gameControllerClose,GameController"
     title="gameControllerClose*(gamecontroller: GameController)"><wbr />game<wbr />Controller<wbr />Close</a></li>
@@ -1255,9 +1261,9 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <div class="nine columns" id="content">
   <p class="module-desc">
 <h1><a class="toc-backref" id="gamecontroller-nim" href="#gamecontroller-nim">gamecontroller.nim</a></h1><p>Include file for SDL game controller event handling.</p>
-<p>In order to use these functions, <tt class="docutils literal"><span class="pre">init()</span></tt> must have been called with the <cite>INIT_JOYSTICK</cite> flag.  This causes SDL to scan the system for game controllers, and load appropriate drivers.</p>
+<p>In order to use these functions, <tt class="docutils literal"><span class="pre">init()</span></tt> must have been called with the <cite>INIT_GAMECONTROLLER</cite> flag.  This causes SDL to scan the system for game controllers, and load appropriate drivers.</p>
 <p>If you would like to receive controller updates while the application is in the background, you should set the following hint before calling <tt class="docutils literal"><span class="pre">init()</span></tt>: <cite>HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS</cite></p>
-To count the number of game controllers in the system for the following:<pre><span class="Keyword">var</span> <span class="Identifier">nJoysticks</span><span class="Punctuation">:</span> <span class="Identifier">int</span> <span class="Operator">=</span> <span class="Identifier">numJoysticks</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+To count the number of game controllers in the system for the following:<pre class = "listing"><span class="Keyword">var</span> <span class="Identifier">nJoysticks</span><span class="Punctuation">:</span> <span class="Identifier">int</span> <span class="Operator">=</span> <span class="Identifier">numJoysticks</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
 <span class="Keyword">var</span> <span class="Identifier">nGameControllers</span><span class="Punctuation">:</span> <span class="Identifier">int</span> <span class="Operator">=</span> <span class="DecNumber">0</span>
 <span class="Keyword">for</span> <span class="Identifier">i</span> <span class="Keyword">in</span> <span class="FloatNumber">0.</span><span class="Operator">.</span><span class="Identifier">nJoysticks</span><span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">:</span>
   <span class="Keyword">if</span> <span class="Identifier">isGameController</span><span class="Punctuation">(</span><span class="Identifier">i</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
@@ -1283,14 +1289,14 @@ To count the number of game controllers in the system for the following:<pre><sp
 
 
 </dd>
-<dt id="GameControllerBindType"><a name="GameControllerBindType"></a><pre><span class="Identifier">GameControllerBindType</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span> 
-  <span class="Identifier">CONTROLLER_BINDTYPE_NONE</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BINDTYPE_BUTTON</span><span class="Other">,</span> 
+<dt id="GameControllerBindType"><a name="GameControllerBindType"></a><pre><span class="Identifier">GameControllerBindType</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">CONTROLLER_BINDTYPE_NONE</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BINDTYPE_BUTTON</span><span class="Other">,</span>
   <span class="Identifier">CONTROLLER_BINDTYPE_AXIS</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BINDTYPE_HAT</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="GameControllerButtonBindValueHat"><a name="GameControllerButtonBindValueHat"></a><pre><span class="Identifier">GameControllerButtonBindValueHat</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
+<dt id="GameControllerButtonBindValueHat"><a name="GameControllerButtonBindValueHat"></a><pre><span class="Identifier">GameControllerButtonBindValueHat</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">hat</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
   <span class="Identifier">hat_mask</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
 </pre></dt>
@@ -1298,7 +1304,7 @@ To count the number of game controllers in the system for the following:<pre><sp
 
 
 </dd>
-<dt id="GameControllerButtonBindValue"><a name="GameControllerButtonBindValue"></a><pre><span class="Identifier">GameControllerButtonBindValue</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>  <span class="Other">{.</span><span class="Identifier">union</span><span class="Other">.}</span>
+<dt id="GameControllerButtonBindValue"><a name="GameControllerButtonBindValue"></a><pre><span class="Identifier">GameControllerButtonBindValue</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other">{.</span><span class="Identifier">union</span><span class="Other">.}</span>
   <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
   <span class="Identifier">axis</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
   <span class="Identifier">hat</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">GameControllerButtonBindValueHat</span>
@@ -1307,7 +1313,7 @@ To count the number of game controllers in the system for the following:<pre><sp
 
 
 </dd>
-<dt id="GameControllerButtonBind"><a name="GameControllerButtonBind"></a><pre><span class="Identifier">GameControllerButtonBind</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> 
+<dt id="GameControllerButtonBind"><a name="GameControllerButtonBind"></a><pre><span class="Identifier">GameControllerButtonBind</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">bindType</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">GameControllerBindType</span>
   <span class="Identifier">value</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">GameControllerButtonBindValue</span>
 </pre></dt>
@@ -1317,22 +1323,22 @@ Get the SDL joystick layer binding
 for this controller button/axis mapping
 
 </dd>
-<dt id="GameControllerAxis"><a name="GameControllerAxis"></a><pre><span class="Identifier">GameControllerAxis</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span> 
-  <span class="Identifier">CONTROLLER_AXIS_INVALID</span> <span class="Other">=</span> <span class="Operator">-</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_LEFTX</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_LEFTY</span><span class="Other">,</span> 
-  <span class="Identifier">CONTROLLER_AXIS_RIGHTX</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_RIGHTY</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_TRIGGERLEFT</span><span class="Other">,</span> 
+<dt id="GameControllerAxis"><a name="GameControllerAxis"></a><pre><span class="Identifier">GameControllerAxis</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">CONTROLLER_AXIS_INVALID</span> <span class="Other">=</span> <span class="Operator">-</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_LEFTX</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_LEFTY</span><span class="Other">,</span>
+  <span class="Identifier">CONTROLLER_AXIS_RIGHTX</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_RIGHTY</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_TRIGGERLEFT</span><span class="Other">,</span>
   <span class="Identifier">CONTROLLER_AXIS_TRIGGERRIGHT</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_MAX</span></pre></dt>
 <dd>
 
 The list of axes available from a controller
 
 </dd>
-<dt id="GameControllerButton"><a name="GameControllerButton"></a><pre><span class="Identifier">GameControllerButton</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span> 
-  <span class="Identifier">CONTROLLER_BUTTON_INVALID</span> <span class="Other">=</span> <span class="Operator">-</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_A</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_B</span><span class="Other">,</span> 
-  <span class="Identifier">CONTROLLER_BUTTON_X</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_Y</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_BACK</span><span class="Other">,</span> 
-  <span class="Identifier">CONTROLLER_BUTTON_GUIDE</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_START</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_LEFTSTICK</span><span class="Other">,</span> 
-  <span class="Identifier">CONTROLLER_BUTTON_RIGHTSTICK</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_LEFTSHOULDER</span><span class="Other">,</span> 
-  <span class="Identifier">CONTROLLER_BUTTON_RIGHTSHOULDER</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_DPAD_UP</span><span class="Other">,</span> 
-  <span class="Identifier">CONTROLLER_BUTTON_DPAD_DOWN</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_DPAD_LEFT</span><span class="Other">,</span> 
+<dt id="GameControllerButton"><a name="GameControllerButton"></a><pre><span class="Identifier">GameControllerButton</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">CONTROLLER_BUTTON_INVALID</span> <span class="Other">=</span> <span class="Operator">-</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_A</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_B</span><span class="Other">,</span>
+  <span class="Identifier">CONTROLLER_BUTTON_X</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_Y</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_BACK</span><span class="Other">,</span>
+  <span class="Identifier">CONTROLLER_BUTTON_GUIDE</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_START</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_LEFTSTICK</span><span class="Other">,</span>
+  <span class="Identifier">CONTROLLER_BUTTON_RIGHTSTICK</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_LEFTSHOULDER</span><span class="Other">,</span>
+  <span class="Identifier">CONTROLLER_BUTTON_RIGHTSHOULDER</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_DPAD_UP</span><span class="Other">,</span>
+  <span class="Identifier">CONTROLLER_BUTTON_DPAD_DOWN</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_DPAD_LEFT</span><span class="Other">,</span>
   <span class="Identifier">CONTROLLER_BUTTON_DPAD_RIGHT</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_MAX</span></pre></dt>
 <dd>
 
@@ -1344,8 +1350,8 @@ The list of buttons available from a controller
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="gameControllerAddMappingsFromRW"><a name="gameControllerAddMappingsFromRW,ptr.RWops,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerAddMappingsFromRW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">rw</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freerw</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerAddMappingsFromRW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="gameControllerAddMappingsFromRW"><a name="gameControllerAddMappingsFromRW,ptr.RWops,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerAddMappingsFromRW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">rw</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freerw</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerAddMappingsFromRW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Load a set of mappings from a seekable SDL data stream (memory or file), filtered by the current <tt class="docutils literal"><span class="pre">getPlatform()</span></tt>.</p>
 <p>A community sourced database of controllers is available at <a class="reference external" href="https://raw.github.com/gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt">https://raw.github.com/gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt</a></p>
@@ -1354,7 +1360,7 @@ The list of buttons available from a controller
 
 
 </dd>
-<dt id="gameControllerAddMapping"><a name="gameControllerAddMapping,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerAddMapping</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mappingString</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="gameControllerAddMapping"><a name="gameControllerAddMapping,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerAddMapping</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mappingString</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerAddMapping&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Add or update an existing mapping configuration.</p>
@@ -1362,7 +1368,7 @@ The list of buttons available from a controller
 
 
 </dd>
-<dt id="gameControllerMappingForGUID"><a name="gameControllerMappingForGUID,JoystickGUID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerMappingForGUID</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">guid</span><span class="Other">:</span> <span class="Identifier">JoystickGUID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="gameControllerMappingForGUID"><a name="gameControllerMappingForGUID,JoystickGUID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerMappingForGUID</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">guid</span><span class="Other">:</span> <span class="Identifier">JoystickGUID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerMappingForGUID&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get a mapping string for a GUID.</p>
@@ -1370,7 +1376,7 @@ The list of buttons available from a controller
 
 
 </dd>
-<dt id="gameControllerMapping"><a name="gameControllerMapping,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerMapping</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="gameControllerMapping"><a name="gameControllerMapping,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerMapping</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerMapping&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get a mapping string for an open GameController.</p>
@@ -1378,13 +1384,13 @@ The list of buttons available from a controller
 
 
 </dd>
-<dt id="isGameController"><a name="isGameController,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isGameController</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="isGameController"><a name="isGameController,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isGameController</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_IsGameController&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Is the joystick on this index supported by the game controller interface?
 
 </dd>
-<dt id="gameControllerNameForIndex"><a name="gameControllerNameForIndex,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerNameForIndex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="gameControllerNameForIndex"><a name="gameControllerNameForIndex,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerNameForIndex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerNameForIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the implementation dependent name of a game controller.</p>
@@ -1392,23 +1398,29 @@ Is the joystick on this index supported by the game controller interface?
 
 
 </dd>
-<dt id="gameControllerOpen"><a name="gameControllerOpen,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerOpen</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GameController</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="gameControllerOpen"><a name="gameControllerOpen,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerOpen</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GameController</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerOpen&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Open a game controller for use.</p>
 <p>The index passed as an argument refers to the N'th game controller on the system.</p>
-<p>This index is the value which will identify this controller in future controller events.</p>
+<p>This index is not the value which will identify this controller in future controller events. The joystick's instance id (<tt class="docutils literal"><span class="pre">JoystickID</span></tt>) will be used there instead.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> a controller identifier, or <cite>nil</cite> if an error occurred.</p>
 
 
 </dd>
-<dt id="gameControllerName"><a name="gameControllerName,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="gameControllerFromInstanceID"><a name="gameControllerFromInstanceID,JoystickID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerFromInstanceID</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joyid</span><span class="Other">:</span> <span class="Identifier">JoystickID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GameController</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerFromInstanceID&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+<tt class="docutils literal"><span class="pre">Return</span></tt> the <tt class="docutils literal"><span class="pre">GameController</span></tt> associated with an instance id.
+
+</dd>
+<dt id="gameControllerName"><a name="gameControllerName,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerName&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <tt class="docutils literal"><span class="pre">Return</span></tt> the name for this currently opened controller.
 
 </dd>
-<dt id="gameControllerGetAttached"><a name="gameControllerGetAttached,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetAttached</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="gameControllerGetAttached"><a name="gameControllerGetAttached,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetAttached</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetAttached&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <tt class="docutils literal"><span class="pre">Returns</span></tt> <cite>true</cite> if the controller has been opened and currently connected, or <cite>false</cite> if it has not.
@@ -1420,7 +1432,7 @@ Is the joystick on this index supported by the game controller interface?
 Get the underlying joystick object used by a controller.
 
 </dd>
-<dt id="gameControllerEventState"><a name="gameControllerEventState,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerEventState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">state</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="gameControllerEventState"><a name="gameControllerEventState,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerEventState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">state</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerEventState&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Enable/disable controller event polling.</p>
@@ -1429,8 +1441,8 @@ Get the underlying joystick object used by a controller.
 
 
 </dd>
-<dt id="gameControllerUpdate"><a name="gameControllerUpdate,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerUpdate</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerUpdate&quot;</span><span class="Other">,</span> 
-                               <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="gameControllerUpdate"><a name="gameControllerUpdate,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerUpdate</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerUpdate&quot;</span><span class="Other">,</span>
+                             <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Update the current state of the open game controllers.</p>
 <p>This is called automatically by the event loop if any game controller events are enabled.</p>
@@ -1443,25 +1455,25 @@ Get the underlying joystick object used by a controller.
 Turn this string into a axis mapping.
 
 </dd>
-<dt id="gameControllerGetStringForAxis"><a name="gameControllerGetStringForAxis,GameControllerAxis"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetStringForAxis</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">GameControllerAxis</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="gameControllerGetStringForAxis"><a name="gameControllerGetStringForAxis,GameControllerAxis"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetStringForAxis</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">GameControllerAxis</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetStringForAxis&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Turn this axis enum into a string mapping.
 
 </dd>
-<dt id="gameControllerGetBindForAxis"><a name="gameControllerGetBindForAxis,GameController,GameControllerAxis"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetBindForAxis</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">;</span> 
-                                   <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">GameControllerAxis</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GameControllerButtonBind</span> <span class="Other">{.</span>
+<dt id="gameControllerGetBindForAxis"><a name="gameControllerGetBindForAxis,GameController,GameControllerAxis"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetBindForAxis</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">;</span>
+                                  <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">GameControllerAxis</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GameControllerButtonBind</span> <span class="Other">{.</span>
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetBindForAxis&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the SDL joystick layer binding for this controller button mapping.
 
 </dd>
-<dt id="gameControllerGetAxis"><a name="gameControllerGetAxis,GameController,GameControllerAxis"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetAxis</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">;</span> 
-                            <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">GameControllerAxis</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int16</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="gameControllerGetAxis"><a name="gameControllerGetAxis,GameController,GameControllerAxis"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetAxis</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">;</span>
+                           <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">GameControllerAxis</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int16</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetAxis&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the current state of an axis control on a game controller.</p>
-<p>The state is a value ranging from <cite>-32768</cite> to <cite>32767</cite>.</p>
+<p>The state is a value ranging from <cite>-32768</cite> to <cite>32767</cite> (except for the triggers, which range from <cite>0</cite> to <cite>32767</cite>.</p>
 <p>The axis indices start at index <cite>0</cite>.</p>
 
 
@@ -1478,15 +1490,15 @@ Turn this string into a button mapping.
 Turn this button enum into a string mapping.
 
 </dd>
-<dt id="gameControllerGetBindForButton"><a name="gameControllerGetBindForButton,GameController,GameControllerButton"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetBindForButton</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">;</span> 
-                                     <span class="Identifier">button</span><span class="Other">:</span> <span class="Identifier">GameControllerButton</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GameControllerButtonBind</span> <span class="Other">{.</span>
+<dt id="gameControllerGetBindForButton"><a name="gameControllerGetBindForButton,GameController,GameControllerButton"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetBindForButton</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">;</span>
+                                    <span class="Identifier">button</span><span class="Other">:</span> <span class="Identifier">GameControllerButton</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GameControllerButtonBind</span> <span class="Other">{.</span>
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetBindForButton&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the SDL joystick layer binding for this controller button mapping.
 
 </dd>
-<dt id="gameControllerGetButton"><a name="gameControllerGetButton,GameController,GameControllerButton"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetButton</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">;</span> 
-                              <span class="Identifier">button</span><span class="Other">:</span> <span class="Identifier">GameControllerButton</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="gameControllerGetButton"><a name="gameControllerGetButton,GameController,GameControllerButton"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetButton</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">;</span>
+                             <span class="Identifier">button</span><span class="Other">:</span> <span class="Identifier">GameControllerButton</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetButton&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the current state of a button on a game controller.</p>
@@ -1494,7 +1506,7 @@ Get the SDL joystick layer binding for this controller button mapping.
 
 
 </dd>
-<dt id="gameControllerClose"><a name="gameControllerClose,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerClose</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="gameControllerClose"><a name="gameControllerClose,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerClose</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerClose&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Close a controller previously opened with <tt class="docutils literal"><span class="pre">gameControllerOpen()</span></tt>.
@@ -1522,7 +1534,7 @@ filtered by the current <tt class="docutils literal"><span class="pre">getPlatfo
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-10-04 22:57:21 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
       </div>
     </div>
   </div>

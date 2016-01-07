@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -40,7 +40,7 @@ type
     QUIT = 0x00000100,  ##  User-requested quit
 
     # These application events have special meaning on iOS,
-    # see README-ios.txt for details.
+    # see README-ios.md for details.
 
     APP_TERMINATING,  ##  \
       ##  The application is being terminated by the OS
@@ -91,6 +91,8 @@ type
     KEYUP,                    ##  Key released
     TEXTEDITING,              ##  Keyboard text editing (composition)
     TEXTINPUT,                ##  Keyboard text input
+    KEYMAPCHANGED,            ##  Keymap changed due to a system event such as \
+                              ##  an input language or keyboard layout change.
 
     # Mouse events
 
@@ -139,10 +141,17 @@ type
 
     DROPFILE = 0x00001000,  ##  The system requests a file open
 
+    # Audio hotplug events
+
+    AUDIODEVICEADDED = 0x1100,  ##  A new audio device is available
+    AUDIODEVICEREMOVED,         ##  An audio device has been removed
+
     # Render events
 
-    RENDER_TARGETS_RESET = 0x00002000,  ##  \
-      ##  The render targets have been reset
+    RENDER_TARGETS_RESET = 0x00002000,  ##  The render targets have been reset \
+      ##  and their contents need to be updated
+    RENDER_DEVICE_RESET,  ##  The device has beed reset and all textures need \
+      ## to be recreated
 
     USEREVENT = 0x00008000, ##  \
       ##  Events `USEREVENT` through `LASTEVENT` are for your use,
@@ -246,6 +255,10 @@ type
     y*: int32               ##  \
       ##  The amount scrolled vertically,
       ##  positive away from the user and negative toward the user
+    direction*: uint32      ##  \
+      ##  Set to one of the `MOUSEWHEEL_*`.
+      ##  When `MOUSEWHEEL_FLIPPED` the values in X and Y will be opposite.
+      ##  Multiply by `-1` to change them back.
 
 type
   JoyAxisEventObj* = object ##  \
@@ -349,6 +362,22 @@ type
       ##  instance id for the `REMOVED` or `REMAPPED` event 
 
 type
+  AudioDeviceEventObj* = object ##  \
+    ##  Audio device event structure (`event.adevice.*`)
+    kind*: EventKind        ##  `AUDIODEVICEADDED`, or `AUDIODEVICEREMOVED`
+    timestamp*: uint32
+    which*: uint32          ##  \
+      ##  The audio device index for the `ADDED` event (valid until next
+      ##  ``getNumAudioDevices()`` call),
+      ##  ``AudioDeviceID`` for the `REMOVED` event.
+    iscapture*: uint8        ##  \
+      ##  `0` if an output device,
+      ##  non-zero if a capture device.
+    padding1*: uint8
+    padding2*: uint8
+    padding3*: uint8
+
+type
   TouchFingerEventObj* = object ##  \
     ##  Touch finger event structure (`event.tfinger.*`)
     kind*: EventKind        ##  `FINGERMOTION` or `FINGERDOWN` or `FINGERUP`
@@ -357,8 +386,8 @@ type
     fingerId*: FingerID
     x*: cfloat              ##  Normalized in the range 0...1
     y*: cfloat              ##  Normalized in the range 0...1
-    dx*: cfloat             ##  Normalized in the range 0...1
-    dy*: cfloat             ##  Normalized in the range 0...1
+    dx*: cfloat             ##  Normalized in the range -1...1
+    dy*: cfloat             ##  Normalized in the range -1...1
     pressure*: cfloat       ##  Normalized in the range 0...1
 
 type
@@ -377,7 +406,7 @@ type
 type
   DollarGestureEventObj* = object
     ##  Dollar Gesture Event (`event.dgesture.*`)
-    kind*: EventKind        ##  DOLLARGESTURE
+    kind*: EventKind        ##  `DOLLARGESTURE` or `DOLLARRECORD`
     timestamp*: uint32
     touchId*: TouchID       ##  The touch device id
     gestureId*: GestureID
@@ -390,10 +419,10 @@ type
   DropEventObj* = object ##  \
     ##  An event used to request a file open by the system (`event.drop.*`)
     ##
-    ##  This event is disabled by default,
-    ##  you can enable it with ``eventState()``
+    ##  This event is enabled by default,
+    ##  you can disable it with ``eventState()``
     ##
-    ##  ``Note:`` If you enable this event,
+    ##  ``Note:`` If this event is enabled,
     ##  you must free the filename in the event.
     kind*: EventKind    ##  `DROPFILE`
     timestamp*: uint32
@@ -457,6 +486,7 @@ type
     caxis*: ControllerAxisEventObj      ##  Game Controller axis event data
     cbutton*: ControllerButtonEventObj  ##  Game Controller button event data
     cdevice*: ControllerDeviceEventObj  ##  Game Controller device event data
+    adevice*: AudioDeviceEventObj       ##  Audio device event data
     quit*: QuitEventObj                 ##  Quit request event data
     user*: UserEventObj                 ##  Custom event data
     syswm*: SysWMEventObj               ##  System dependent window event data
@@ -472,13 +502,13 @@ type
       ##
       ##  So... we'll add padding to force the size to be 56 bytes for both.
 
-# Function prototypes
+# Procedures
 
 proc pumpEvents*() {.
     cdecl, importc: "SDL_PumpEvents", dynlib: SDL2_LIB.}
   ##  Pumps the event loop, gathering events from the input devices.
   ##
-  ##  This function updates the event queue and internal input device state.
+  ##  This procedure updates the event queue and internal input device state.
   ##
   ##  This should only be run in the thread that sets the video mode.
 
@@ -507,7 +537,7 @@ proc peepEvents*(
   ##  ``Return`` the number of events actually stored,
   ##  or `-1` if there was an error.
   ##
-  ##  This function is thread-safe.
+  ##  This procedure is thread-safe.
 
 proc hasEvent*(kind: EventKind): bool {.
     cdecl, importc: "SDL_HasEvent", dynlib: SDL2_LIB.}
@@ -518,7 +548,12 @@ proc hasEvents*(minKind: EventKind; maxKind: EventKind): bool {.
 
 proc flushEvent*(kind: EventKind) {.
     cdecl, importc: "SDL_FlushEvent", dynlib: SDL2_LIB.}
-  ##  This function clears events from the event queue.
+  ##  This procedure clears events from the event queue.
+  ##
+  ##  This procedure only affects currently queued events.
+  ##  If you want to make sure that all pending OS events are flushed,
+  ##  you can call ``pumpEvents()`` on the main thread immediately before
+  ##  flush call.
 
 proc flushEvents*(minKind: EventKind; maxKind: EventKind) {.
     cdecl, importc: "SDL_FlushEvents", dynlib: SDL2_LIB.}
@@ -580,7 +615,7 @@ proc setEventFilter*(filter: EventFilter; userdata: pointer) {.
   ##  but the internal state will still be updated.  This allows selective
   ##  filtering of dynamically arriving events.
   ##
-  ##  ``Warning:`` Be very careful of what you do in the event filter function,
+  ##  ``Warning:`` Be very careful of what you do in the event filter procedure,
   ##  as it may run in a different thread!
   ##
   ##  There is one caveat when dealing with the ``QuitEvent`` event type.  The
@@ -594,19 +629,19 @@ proc setEventFilter*(filter: EventFilter; userdata: pointer) {.
 proc getEventFilter*(filter: ptr EventFilter; userdata: ptr pointer): bool {.
     cdecl, importc: "SDL_GetEventFilter", dynlib: SDL2_LIB.}
   ##  Return the current event filter - can be used to "chain" filters.
-  ##  If there is no event filter set, this function returns `false`.
+  ##  If there is no event filter set, this procedure returns `false`.
 
 proc addEventWatch*(filter: EventFilter; userdata: pointer) {.
     cdecl, importc: "SDL_AddEventWatch", dynlib: SDL2_LIB.}
-  ##  Add a function which is called when an event is added to the queue.
+  ##  Add a procedure which is called when an event is added to the queue.
 
 proc delEventWatch*(filter: EventFilter; userdata: pointer) {.
     cdecl, importc: "SDL_DelEventWatch", dynlib: SDL2_LIB.}
-  ##  Remove an event watch function added with ``addEventWatch()``
+  ##  Remove an event watch procedure added with ``addEventWatch()``
 
 proc filterEvents*(filter: EventFilter; userdata: pointer) {.
     cdecl, importc: "SDL_FilterEvents", dynlib: SDL2_LIB.}
-  ##  Run the filter function on the current event queue, removing any
+  ##  Run the filter procedure on the current event queue, removing any
   ##  events for which the filter returns `0`.
 
 const
@@ -617,7 +652,7 @@ const
 
 proc eventState*(kind: EventKind; state: cint): uint8 {.
     cdecl, importc: "SDL_EventState", dynlib: SDL2_LIB.}
-  ##  This function allows you to set the state of processing certain events.
+  ##  This procedure allows you to set the state of processing certain events.
   ##
   ##  * If ``state`` is set to `IGNORE`, that event will be automatically \
   ##  dropped from the event queue and will not event be filtered.
@@ -630,8 +665,8 @@ template getEventState*(kind: expr): expr =
 
 proc registerEvents*(numevents: cint): uint32 {.
     cdecl, importc: "SDL_RegisterEvents", dynlib: SDL2_LIB.}
-  ##  This function allocates a set of user-defined events, and returns
+  ##  This procedure allocates a set of user-defined events, and returns
   ##  the beginning event number for that set of events.
   ##
-  ##  If there aren't enough user-defined events left, this function
+  ##  If there aren't enough user-defined events left, this procedure
   ##  returns `-1'u32`.

@@ -53,7 +53,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #2d2d2d;
+  color: #666;
   background-color: rgba(252, 248, 244, 0.75); }
 
 /* Skeleton grid */
@@ -489,7 +489,7 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0 10px 0px 10px;
+  margin: 0.25em 10px 0.25em 10px;
   font-size: 14px;
   line-height: 20px;
   white-space: pre !important;
@@ -892,6 +892,10 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+ul.simple > li {
+  margin-bottom: 0.5em }
+
 ol.simple, ul.simple {
   margin-bottom: 1em; }
 
@@ -1265,7 +1269,7 @@ The SDL condition variable structure, defined in SDL_syscond.c
 <dt id="MUTEX_TIMEDOUT"><a name="MUTEX_TIMEDOUT"></a><pre><span class="Identifier">MUTEX_TIMEDOUT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
 
-Synchronization functions which can time out return this value if they time out.
+Synchronization procedures which can time out return this value if they time out.
 
 </dd>
 <dt id="MUTEX_MAXWAIT"><a name="MUTEX_MAXWAIT"></a><pre><span class="Identifier">MUTEX_MAXWAIT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="Keyword">not</span> <span class="Identifier">uint32</span><span class="Other">(</span><span class="DecNumber">0</span><span class="Other">)</span><span class="Other">)</span></pre></dt>
@@ -1283,24 +1287,23 @@ This is the timeout value which corresponds to never time out.
 Create a mutex, initialized unlocked.
 
 </dd>
-<dt id="lockMutex"><a name="lockMutex,Mutex"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockMutex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockMutex&quot;</span><span class="Other">,</span> 
-                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="lockMutex"><a name="lockMutex,Mutex"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockMutex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockMutex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Lock the mutex.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite>, or <cite>-1</cite> on error.</p>
 
 
 </dd>
-<dt id="tryLockMutex"><a name="tryLockMutex,Mutex"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tryLockMutex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_TryLockMutex&quot;</span><span class="Other">,</span> 
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="tryLockMutex"><a name="tryLockMutex,Mutex"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tryLockMutex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_TryLockMutex&quot;</span><span class="Other">,</span>
+                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Try to lock the mutex</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite>, <cite>MUTEX_TIMEDOUT</cite>, or <cite>-1</cite> on error.</p>
 
 
 </dd>
-<dt id="unlockMutex"><a name="unlockMutex,Mutex"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockMutex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockMutex&quot;</span><span class="Other">,</span> 
-                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="unlockMutex"><a name="unlockMutex,Mutex"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockMutex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockMutex&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Unlock the mutex.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite>, or <cite>-1</cite> on error.</p>
@@ -1308,43 +1311,42 @@ Create a mutex, initialized unlocked.
 
 
 </dd>
-<dt id="destroyMutex"><a name="destroyMutex,Mutex"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroyMutex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroyMutex&quot;</span><span class="Other">,</span> 
-                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="destroyMutex"><a name="destroyMutex,Mutex"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroyMutex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroyMutex&quot;</span><span class="Other">,</span>
+                                <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Destroy a mutex.
 
 </dd>
-<dt id="createSemaphore"><a name="createSemaphore,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createSemaphore</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">initial_value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Sem</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="createSemaphore"><a name="createSemaphore,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createSemaphore</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">initial_value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Sem</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateSemaphore&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Create a semaphore, initialized with value, returns <cite>nil</cite> on failure.
 
 </dd>
-<dt id="destroySemaphore"><a name="destroySemaphore,Sem"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroySemaphore</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sem</span><span class="Other">:</span> <span class="Identifier">Sem</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroySemaphore&quot;</span><span class="Other">,</span> 
-                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="destroySemaphore"><a name="destroySemaphore,Sem"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroySemaphore</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sem</span><span class="Other">:</span> <span class="Identifier">Sem</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroySemaphore&quot;</span><span class="Other">,</span>
+                                <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Destroy a semaphore.
 
 </dd>
 <dt id="semWait"><a name="semWait,Sem"></a><pre><span class="Keyword">proc</span> <span class="Identifier">semWait</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sem</span><span class="Other">:</span> <span class="Identifier">Sem</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SemWait&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function suspends the calling thread until the semaphore pointed to by <tt class="docutils literal"><span class="pre">sem</span></tt> has a positive count. It then atomically decreases the semaphore count.
+This procedure suspends the calling thread until the semaphore pointed to by <tt class="docutils literal"><span class="pre">sem</span></tt> has a positive count. It then atomically decreases the semaphore count.
 
 </dd>
-<dt id="semTryWait"><a name="semTryWait,Sem"></a><pre><span class="Keyword">proc</span> <span class="Identifier">semTryWait</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sem</span><span class="Other">:</span> <span class="Identifier">Sem</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SemTryWait&quot;</span><span class="Other">,</span> 
-                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="semTryWait"><a name="semTryWait,Sem"></a><pre><span class="Keyword">proc</span> <span class="Identifier">semTryWait</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sem</span><span class="Other">:</span> <span class="Identifier">Sem</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SemTryWait&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Non-blocking variant of <tt class="docutils literal"><span class="pre">semWait()</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> if the wait succeeds, <cite>MUTEX_TIMEDOUT</cite> if the wait would block, and <cite>-1</cite> on error.</p>
 
 
 </dd>
-<dt id="semWaitTimeout"><a name="semWaitTimeout,Sem,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">semWaitTimeout</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sem</span><span class="Other">:</span> <span class="Identifier">Sem</span><span class="Other">;</span> <span class="Identifier">ms</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="semWaitTimeout"><a name="semWaitTimeout,Sem,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">semWaitTimeout</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sem</span><span class="Other">:</span> <span class="Identifier">Sem</span><span class="Other">;</span> <span class="Identifier">ms</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SemWaitTimeout&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Variant of <tt class="docutils literal"><span class="pre">semWait()</span></tt> with a timeout in milliseconds.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> if the wait succeeds, <cite>MUTEX_TIMEDOUT</cite> if the wait does not succeed in the allotted time, and <cite>-1</cite> on error.</p>
-<p><tt class="docutils literal"><span class="pre">Warning:</span></tt> On some platforms this function is implemented by looping with a delay of 1 ms, and so should be avoided if possible.</p>
+<p><tt class="docutils literal"><span class="pre">Warning:</span></tt> On some platforms this procedure is implemented by looping with a delay of 1 ms, and so should be avoided if possible.</p>
 
 
 </dd>
@@ -1355,8 +1357,7 @@ This function suspends the calling thread until the semaphore pointed to by <tt 
 
 
 </dd>
-<dt id="semValue"><a name="semValue,Sem"></a><pre><span class="Keyword">proc</span> <span class="Identifier">semValue</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sem</span><span class="Other">:</span> <span class="Identifier">Sem</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SemValue&quot;</span><span class="Other">,</span> 
-                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="semValue"><a name="semValue,Sem"></a><pre><span class="Keyword">proc</span> <span class="Identifier">semValue</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sem</span><span class="Other">:</span> <span class="Identifier">Sem</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SemValue&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Returns the current count of the semaphore.
 
@@ -1366,14 +1367,14 @@ Returns the current count of the semaphore.
 <p>Create a condition variable.</p>
 <p>Typical use of condition variables:</p>
 <p>Thread A:</p>
-<pre><span class="Identifier">lockMutex</span><span class="Punctuation">(</span><span class="Identifier">lock</span><span class="Punctuation">)</span>
+<pre class = "listing"><span class="Identifier">lockMutex</span><span class="Punctuation">(</span><span class="Identifier">lock</span><span class="Punctuation">)</span>
 
 <span class="Keyword">while</span> <span class="Punctuation">(</span><span class="Keyword">not</span> <span class="Identifier">condition</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
   
   <span class="Identifier">condWait</span><span class="Punctuation">(</span><span class="Identifier">cond</span><span class="Punctuation">,</span> <span class="Identifier">lock</span><span class="Punctuation">)</span>
 
 <span class="Identifier">unlockMutex</span><span class="Punctuation">(</span><span class="Identifier">lock</span><span class="Punctuation">)</span></pre><p>Thread B:</p>
-<pre><span class="Identifier">lockMutex</span><span class="Punctuation">(</span><span class="Identifier">lock</span><span class="Punctuation">)</span>
+<pre class = "listing"><span class="Identifier">lockMutex</span><span class="Punctuation">(</span><span class="Identifier">lock</span><span class="Punctuation">)</span>
 <span class="Operator">...</span>
 <span class="Identifier">condition</span> <span class="Operator">=</span> <span class="Identifier">true</span>
 <span class="Operator">...</span>
@@ -1383,43 +1384,41 @@ Returns the current count of the semaphore.
 
 
 </dd>
-<dt id="destroyCond"><a name="destroyCond,Cond"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroyCond</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cond</span><span class="Other">:</span> <span class="Identifier">Cond</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroyCond&quot;</span><span class="Other">,</span> 
-                                <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="destroyCond"><a name="destroyCond,Cond"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroyCond</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cond</span><span class="Other">:</span> <span class="Identifier">Cond</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroyCond&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Destroy a condition variable.
 
 </dd>
-<dt id="condSignal"><a name="condSignal,Cond"></a><pre><span class="Keyword">proc</span> <span class="Identifier">condSignal</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cond</span><span class="Other">:</span> <span class="Identifier">Cond</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CondSignal&quot;</span><span class="Other">,</span> 
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="condSignal"><a name="condSignal,Cond"></a><pre><span class="Keyword">proc</span> <span class="Identifier">condSignal</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cond</span><span class="Other">:</span> <span class="Identifier">Cond</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CondSignal&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Restart one of the threads that are waiting on the condition variable.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> or <cite>-1</cite> on error.</p>
 
 
 </dd>
-<dt id="condBroadcast"><a name="condBroadcast,Cond"></a><pre><span class="Keyword">proc</span> <span class="Identifier">condBroadcast</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cond</span><span class="Other">:</span> <span class="Identifier">Cond</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CondBroadcast&quot;</span><span class="Other">,</span> 
-                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="condBroadcast"><a name="condBroadcast,Cond"></a><pre><span class="Keyword">proc</span> <span class="Identifier">condBroadcast</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cond</span><span class="Other">:</span> <span class="Identifier">Cond</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CondBroadcast&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Restart all threads that are waiting on the condition variable.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> or <cite>-1</cite> on error.</p>
 
 
 </dd>
-<dt id="condWait"><a name="condWait,Cond,Mutex"></a><pre><span class="Keyword">proc</span> <span class="Identifier">condWait</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cond</span><span class="Other">:</span> <span class="Identifier">Cond</span><span class="Other">;</span> <span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CondWait&quot;</span><span class="Other">,</span> 
+<dt id="condWait"><a name="condWait,Cond,Mutex"></a><pre><span class="Keyword">proc</span> <span class="Identifier">condWait</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cond</span><span class="Other">:</span> <span class="Identifier">Cond</span><span class="Other">;</span> <span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CondWait&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Wait on the condition variable, unlocking the provided mutex.</p>
-<p><tt class="docutils literal"><span class="pre">Warning:</span></tt> The mutex must be locked before entering this function!</p>
+<p><tt class="docutils literal"><span class="pre">Warning:</span></tt> The mutex must be locked before entering this procedure!</p>
 <p>The mutex is re-locked once the condition variable is signaled.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> when it is signaled, or <cite>-1</cite> on error.</p>
 
 
 </dd>
-<dt id="condWaitTimeout"><a name="condWaitTimeout,Cond,Mutex,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">condWaitTimeout</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cond</span><span class="Other">:</span> <span class="Identifier">Cond</span><span class="Other">;</span> <span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">;</span> <span class="Identifier">ms</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="condWaitTimeout"><a name="condWaitTimeout,Cond,Mutex,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">condWaitTimeout</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cond</span><span class="Other">:</span> <span class="Identifier">Cond</span><span class="Other">;</span> <span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">;</span> <span class="Identifier">ms</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CondWaitTimeout&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Waits for at most <tt class="docutils literal"><span class="pre">ms</span></tt> milliseconds, and returns <cite>0</cite> if the condition variable is signaled, <cite>MUTEX_TIMEDOUT</cite> if the condition is not signaled in the allotted time, and <cite>-1</cite> on error.</p>
-<p><tt class="docutils literal"><span class="pre">Warning:</span></tt> On some platforms this function is implemented by looping with a delay of 1 ms, and so should be avoided if possible.</p>
+<p><tt class="docutils literal"><span class="pre">Warning:</span></tt> On some platforms this procedure is implemented by looping with a delay of 1 ms, and so should be avoided if possible.</p>
 
 
 </dd>
@@ -1448,7 +1447,7 @@ Destroy a condition variable.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-10-04 22:57:21 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
       </div>
     </div>
   </div>

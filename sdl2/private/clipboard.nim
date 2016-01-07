@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -24,7 +24,7 @@
 ##
 ##  Include file for SDL clipboard handling.
 
-# Function prototypes
+# Procedures
 
 proc setClipboardText*(text: cstring): cint {.
     cdecl, importc: "SDL_SetClipboardText", dynlib: SDL2_LIB.}

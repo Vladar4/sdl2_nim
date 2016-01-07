@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -22,7 +22,7 @@
 ##  rect.nim
 ##  ========
 ##
-##  Header file for Rect definition and management functions.
+##  Header file for Rect definition and management procedures.
 
 type
   Point* = object ##  \
@@ -30,7 +30,9 @@ type
     ##
     ##  See also:
     ##
-    ##  ``enclosePoints``
+    ##  ``enclosePoints()``
+    ##
+    ##  ``pointInRect()``
     x*: cint
     y*: cint
 
@@ -40,21 +42,26 @@ type
     ##
     ##  See also:
     ##
-    ##  ``rectEmpty``
+    ##  ``rectEmpty()``
     ##
-    ##  ``rectEquals``
+    ##  ``rectEquals()``
     ##
-    ##  ``hasIntersection``
+    ##  ``hasIntersection()``
     ##
-    ##  ``intersectRect``
+    ##  ``intersectRect()``
     ##
-    ##  ``unionRect``
+    ##  ``unionRect()``
     ##
-    ##  ``enclosePoints``
+    ##  ``enclosePoints()``
     x*: cint
     y*: cint
     w*: cint
     h*: cint
+
+template pointInRect*(p: expr, r: expr): bool = ##  \
+  ##  ``Return`` `true` if point resides inside a rectangle.
+  ((p.x >= r.x) and (p.x < (r.x + r.w)) and
+   (p.y >= r.y) and (p.y < (r.y + r.h)))
 
 template rectEmpty*(r: expr): bool = ##  \
   ##  ``Return`` `true` if the rectangle has no area.

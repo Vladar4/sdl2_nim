@@ -53,7 +53,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #2d2d2d;
+  color: #666;
   background-color: rgba(252, 248, 244, 0.75); }
 
 /* Skeleton grid */
@@ -489,7 +489,7 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0 10px 0px 10px;
+  margin: 0.25em 10px 0.25em 10px;
   font-size: 14px;
   line-height: 20px;
   white-space: pre !important;
@@ -892,6 +892,10 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+ul.simple > li {
+  margin-bottom: 0.5em }
+
 ol.simple, ul.simple {
   margin-bottom: 1em; }
 
@@ -1154,29 +1158,29 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#BlendMode"
-    title="BlendMode* = enum 
-  BLENDMODE_NONE = 0x00000000, ##  \
-                               ##  no blending
-                               ##
-                               ##  dstRGBA = srcRGBA
+    title="BlendMode* = enum
+  BLENDMODE_NONE = 0x00000000,  ##  \
+                            ##  no blending
+                            ##
+                            ##  dstRGBA = srcRGBA
   BLENDMODE_BLEND = 0x00000001, ##  \
-                                ##  alpha blending
-                                ##
-                                ##  dstRGB = (srcRGB * srcA) + (dstRGB * (1-srcA))
-                                ##
-                                ##  dstA = srcA + (dstA * (1-srcA))
-  BLENDMODE_ADD = 0x00000002, ##  \
-                              ##  additive blending
-                              ##
-                              ##  dstRGB = (srcRGB * srcA) + dstRGB
-                              ##
-                              ##  dstA = dstA
-  BLENDMODE_MOD = 0x00000004  ##  \
-                              ##  color modulate
-                              ##
-                              ##  dstRGB = srcRGB * dstRGB
-                              ##
-                              ##  dstA = dstA"><wbr />Blend<wbr />Mode</a></li>
+                             ##  alpha blending
+                             ##
+                             ##  dstRGB = (srcRGB * srcA) + (dstRGB * (1-srcA))
+                             ##
+                             ##  dstA = srcA + (dstA * (1-srcA))
+  BLENDMODE_ADD = 0x00000002,   ##  \
+                           ##  additive blending
+                           ##
+                           ##  dstRGB = (srcRGB * srcA) + dstRGB
+                           ##
+                           ##  dstA = dstA
+  BLENDMODE_MOD = 0x00000004    ##  \
+                          ##  color modulate
+                          ##
+                          ##  dstRGB = srcRGB * dstRGB
+                          ##
+                          ##  dstA = dstA"><wbr />Blend<wbr />Mode</a></li>
 
   </ul>
 </li>
@@ -1191,29 +1195,29 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="BlendMode"><a name="BlendMode"></a><pre><span class="Identifier">BlendMode</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span> 
-  <span class="Identifier">BLENDMODE_NONE</span> <span class="Other">=</span> <span class="DecNumber">0x00000000</span><span class="Other">,</span> <span class="Comment">##  \</span>
-                               <span class="Comment">##  no blending</span>
-                               <span class="Comment">##</span>
-                               <span class="Comment">##  dstRGBA = srcRGBA</span>
+<dt id="BlendMode"><a name="BlendMode"></a><pre><span class="Identifier">BlendMode</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">BLENDMODE_NONE</span> <span class="Other">=</span> <span class="DecNumber">0x00000000</span><span class="Other">,</span>  <span class="Comment">##  \</span>
+                            <span class="Comment">##  no blending</span>
+                            <span class="Comment">##</span>
+                            <span class="Comment">##  dstRGBA = srcRGBA</span>
   <span class="Identifier">BLENDMODE_BLEND</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span><span class="Other">,</span> <span class="Comment">##  \</span>
-                                <span class="Comment">##  alpha blending</span>
-                                <span class="Comment">##</span>
-                                <span class="Comment">##  dstRGB = (srcRGB * srcA) + (dstRGB * (1-srcA))</span>
-                                <span class="Comment">##</span>
-                                <span class="Comment">##  dstA = srcA + (dstA * (1-srcA))</span>
-  <span class="Identifier">BLENDMODE_ADD</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span><span class="Other">,</span> <span class="Comment">##  \</span>
-                              <span class="Comment">##  additive blending</span>
-                              <span class="Comment">##</span>
-                              <span class="Comment">##  dstRGB = (srcRGB * srcA) + dstRGB</span>
-                              <span class="Comment">##</span>
-                              <span class="Comment">##  dstA = dstA</span>
-  <span class="Identifier">BLENDMODE_MOD</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span>  <span class="Comment">##  \</span>
-                              <span class="Comment">##  color modulate</span>
-                              <span class="Comment">##</span>
-                              <span class="Comment">##  dstRGB = srcRGB * dstRGB</span>
-                              <span class="Comment">##</span>
-                              <span class="Comment">##  dstA = dstA</span></pre></dt>
+                             <span class="Comment">##  alpha blending</span>
+                             <span class="Comment">##</span>
+                             <span class="Comment">##  dstRGB = (srcRGB * srcA) + (dstRGB * (1-srcA))</span>
+                             <span class="Comment">##</span>
+                             <span class="Comment">##  dstA = srcA + (dstA * (1-srcA))</span>
+  <span class="Identifier">BLENDMODE_ADD</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span><span class="Other">,</span>   <span class="Comment">##  \</span>
+                           <span class="Comment">##  additive blending</span>
+                           <span class="Comment">##</span>
+                           <span class="Comment">##  dstRGB = (srcRGB * srcA) + dstRGB</span>
+                           <span class="Comment">##</span>
+                           <span class="Comment">##  dstA = dstA</span>
+  <span class="Identifier">BLENDMODE_MOD</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span>    <span class="Comment">##  \</span>
+                          <span class="Comment">##  color modulate</span>
+                          <span class="Comment">##</span>
+                          <span class="Comment">##  dstRGB = srcRGB * dstRGB</span>
+                          <span class="Comment">##</span>
+                          <span class="Comment">##  dstA = dstA</span></pre></dt>
 <dd>
 
 The blend mode used in renderCopy() and drawing operations.
@@ -1229,7 +1233,7 @@ The blend mode used in renderCopy() and drawing operations.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-10-04 22:57:21 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
       </div>
     </div>
   </div>
