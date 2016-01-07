@@ -1,6 +1,6 @@
 #
 #  SDL_net:  An example cross-platform network library for use with SDL
-#  Copyright (C) 1997-2013 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 #  Copyright (C) 2012 Simeon Maxein <smaxein@googlemail.com>
 #
 #  This software is provided 'as-is', without any express or implied
@@ -43,7 +43,7 @@ import
 const
   MAJOR_VERSION* = 2  ##  SDL_net library major number at compilation time
   MINOR_VERSION* = 0  ##  SDL_net library minor number at compilation time
-  PATCHLEVEL* = 0     ##  SDL_net library patch level at compilation time
+  PATCHLEVEL* = 1     ##  SDL_net library patch level at compilation time
 
 proc linkedVersion*(): ptr Version {.
     cdecl, importc: "SDLNet_Linked_Version", dynlib: SDL2_NET_LIB.}
