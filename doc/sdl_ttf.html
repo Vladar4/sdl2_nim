@@ -53,7 +53,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #2d2d2d;
+  color: #666;
   background-color: rgba(252, 248, 244, 0.75); }
 
 /* Skeleton grid */
@@ -489,7 +489,7 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0 10px 0px 10px;
+  margin: 0.25em 10px 0.25em 10px;
   font-size: 14px;
   line-height: 20px;
   white-space: pre !important;
@@ -892,6 +892,10 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+ul.simple > li {
+  margin-bottom: 0.5em }
+
 ol.simple, ul.simple {
   margin-bottom: 1em; }
 
@@ -1172,7 +1176,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <li><a class="reference" href="#MINOR_VERSION"
     title="MINOR_VERSION* = 0"><wbr />MINOR_<wbr />VERSION</a></li>
   <li><a class="reference" href="#PATCHLEVEL"
-    title="PATCHLEVEL* = 12"><wbr />PATCHLEVEL</a></li>
+    title="PATCHLEVEL* = 13"><wbr />PATCHLEVEL</a></li>
   <li><a class="reference" href="#UNICODE_BOM_NATIVE"
     title="UNICODE_BOM_NATIVE* = 0x0000FEFF"><wbr />UNICODE_<wbr />BOM_<wbr />NATIVE</a></li>
   <li><a class="reference" href="#UNICODE_BOM_SWAPPED"
@@ -1250,8 +1254,8 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <li><a class="reference" href="#glyphIsProvided,Font,uint16"
     title="glyphIsProvided*(font: Font; ch: uint16): cint"><wbr />glyph<wbr />Is<wbr />Provided</a></li>
   <li><a class="reference" href="#glyphMetrics,Font,uint16,ptr.cint,ptr.cint,ptr.cint,ptr.cint,ptr.cint"
-    title="glyphMetrics*(font: Font; ch: uint16; minx: ptr cint; maxx: ptr cint; 
-              miny: ptr cint; maxy: ptr cint; advance: ptr cint): cint"><wbr />glyph<wbr />Metrics</a></li>
+    title="glyphMetrics*(font: Font; ch: uint16; minx: ptr cint; maxx: ptr cint; miny: ptr cint;
+              maxy: ptr cint; advance: ptr cint): cint"><wbr />glyph<wbr />Metrics</a></li>
   <li><a class="reference" href="#sizeText,Font,cstring,ptr.cint,ptr.cint"
     title="sizeText*(font: Font; text: cstring; w: ptr cint; h: ptr cint): cint"><wbr />size<wbr />Text</a></li>
   <li><a class="reference" href="#sizeUTF8,Font,cstring,ptr.cint,ptr.cint"
@@ -1281,13 +1285,11 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <li><a class="reference" href="#renderUNICODE_Blended,Font,ptr.uint16,Color"
     title="renderUNICODE_Blended*(font: Font; text: ptr uint16; fg: Color): Surface"><wbr />render<wbr />UNICODE_<wbr />Blended</a></li>
   <li><a class="reference" href="#renderText_Blended_Wrapped,Font,cstring,Color,uint32"
-    title="renderText_Blended_Wrapped*(font: Font; text: cstring; fg: Color; 
-                            wrapLength: uint32): Surface"><wbr />render<wbr />Text_<wbr />Blended_<wbr />Wrapped</a></li>
+    title="renderText_Blended_Wrapped*(font: Font; text: cstring; fg: Color; wrapLength: uint32): Surface"><wbr />render<wbr />Text_<wbr />Blended_<wbr />Wrapped</a></li>
   <li><a class="reference" href="#renderUTF8_Blended_Wrapped,Font,cstring,Color,uint32"
-    title="renderUTF8_Blended_Wrapped*(font: Font; text: cstring; fg: Color; 
-                            wrapLength: uint32): Surface"><wbr />render<wbr />UTF8_<wbr />Blended_<wbr />Wrapped</a></li>
+    title="renderUTF8_Blended_Wrapped*(font: Font; text: cstring; fg: Color; wrapLength: uint32): Surface"><wbr />render<wbr />UTF8_<wbr />Blended_<wbr />Wrapped</a></li>
   <li><a class="reference" href="#renderUNICODE_Blended_Wrapped,Font,ptr.uint16,Color,uint32"
-    title="renderUNICODE_Blended_Wrapped*(font: Font; text: ptr uint16; fg: Color; 
+    title="renderUNICODE_Blended_Wrapped*(font: Font; text: ptr uint16; fg: Color;
                                wrapLength: uint32): Surface"><wbr />render<wbr />UNICODE_<wbr />Blended_<wbr />Wrapped</a></li>
   <li><a class="reference" href="#renderGlyph_Blended,Font,uint16,Color"
     title="renderGlyph_Blended*(font: Font; ch: uint16; fg: Color): Surface"><wbr />render<wbr />Glyph_<wbr />Blended</a></li>
@@ -1297,8 +1299,8 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="quit*()"><wbr />quit</a></li>
   <li><a class="reference" href="#wasInit,"
     title="wasInit*(): cint"><wbr />was<wbr />Init</a></li>
-  <li><a class="reference" href="#getFontKerningSize,Font,cint,cint"
-    title="getFontKerningSize*(font: Font; prev_index: cint; index: cint): cint"><wbr />get<wbr />Font<wbr />Kerning<wbr />Size</a></li>
+  <li><a class="reference" href="#getFontKerningSize,Font,uint16,uint16"
+    title="getFontKerningSize*(font: Font; previous_ch: uint16; ch: uint16): cint"><wbr />get<wbr />Font<wbr />Kerning<wbr />Size</a></li>
 
   </ul>
 </li>
@@ -1354,7 +1356,7 @@ The internal structure containing font information
 
 
 </dd>
-<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">12</span></pre></dt>
+<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">13</span></pre></dt>
 <dd>
 
 
@@ -1419,14 +1421,14 @@ The internal structure containing font information
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="linkedVersion"><a name="linkedVersion,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">linkedVersion</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Version</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_Linked_Version&quot;</span><span class="Other">,</span> 
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="linkedVersion"><a name="linkedVersion,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">linkedVersion</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Version</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_Linked_Version&quot;</span><span class="Other">,</span>
+                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 This function gets the version of the dynamically linked SDL_ttf library. It should NOT be used to fill a version structure, instead you should use the <tt class="docutils literal"><span class="pre">version()</span></tt> template.
 
 </dd>
-<dt id="byteSwappedUNICODE"><a name="byteSwappedUNICODE,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">byteSwappedUNICODE</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">swapped</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_ByteSwappedUNICODE&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="byteSwappedUNICODE"><a name="byteSwappedUNICODE,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">byteSwappedUNICODE</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">swapped</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_ByteSwappedUNICODE&quot;</span><span class="Other">,</span>
+                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 This function tells the library whether UNICODE text is generally byteswapped.  A UNICODE BOM character in a string will override this setting for the remainder of that string.
 
@@ -1438,8 +1440,8 @@ This function tells the library whether UNICODE text is generally byteswapped.  
 
 
 </dd>
-<dt id="openFont"><a name="openFont,cstring,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">openFont</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">ptsize</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Font</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_OpenFont&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="openFont"><a name="openFont,cstring,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">openFont</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">ptsize</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Font</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_OpenFont&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Open a font file and create a font of the specified point size. Some .fon fonts will have several sizes embedded in the file, so the point size becomes the index of choosing which size.  If the value is too high, the last indexed size will be the default.</p>
 <p>See also:</p>
@@ -1449,13 +1451,13 @@ This function tells the library whether UNICODE text is generally byteswapped.  
 
 
 </dd>
-<dt id="openFontIndex"><a name="openFontIndex,cstring,cint,clong"></a><pre><span class="Keyword">proc</span> <span class="Identifier">openFontIndex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">ptsize</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">clong</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Font</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="openFontIndex"><a name="openFontIndex,cstring,cint,clong"></a><pre><span class="Keyword">proc</span> <span class="Identifier">openFontIndex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">ptsize</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">clong</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Font</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_OpenFontIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="openFontRW"><a name="openFontRW,ptr.RWops,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">openFontRW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">ptsize</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Font</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="openFontRW"><a name="openFontRW,ptr.RWops,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">openFontRW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">ptsize</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Font</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_OpenFontRW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
@@ -1467,115 +1469,115 @@ This function tells the library whether UNICODE text is generally byteswapped.  
 
 
 </dd>
-<dt id="getFontStyle"><a name="getFontStyle,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getFontStyle</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_GetFontStyle&quot;</span><span class="Other">,</span> 
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getFontStyle"><a name="getFontStyle,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getFontStyle</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_GetFontStyle&quot;</span><span class="Other">,</span>
+                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="setFontStyle"><a name="setFontStyle,Font,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setFontStyle</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">style</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SetFontStyle&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="getFontOutline"><a name="getFontOutline,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getFontOutline</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_GetFontOutline&quot;</span><span class="Other">,</span> 
+<dt id="setFontStyle"><a name="setFontStyle,Font,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setFontStyle</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">style</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SetFontStyle&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="setFontOutline"><a name="setFontOutline,Font,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setFontOutline</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">outline</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="getFontOutline"><a name="getFontOutline,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getFontOutline</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_GetFontOutline&quot;</span><span class="Other">,</span>
+                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="setFontOutline"><a name="setFontOutline,Font,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setFontOutline</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">outline</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SetFontOutline&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="getFontHinting"><a name="getFontHinting,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getFontHinting</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_GetFontHinting&quot;</span><span class="Other">,</span> 
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getFontHinting"><a name="getFontHinting,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getFontHinting</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_GetFontHinting&quot;</span><span class="Other">,</span>
+                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="setFontHinting"><a name="setFontHinting,Font,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setFontHinting</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">hinting</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="setFontHinting"><a name="setFontHinting,Font,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setFontHinting</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">hinting</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SetFontHinting&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="fontHeight"><a name="fontHeight,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fontHeight</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontHeight&quot;</span><span class="Other">,</span> 
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="fontHeight"><a name="fontHeight,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fontHeight</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontHeight&quot;</span><span class="Other">,</span>
+                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the total height of the font - usually equal to point size.
 
 </dd>
-<dt id="fontAscent"><a name="fontAscent,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fontAscent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontAscent&quot;</span><span class="Other">,</span> 
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="fontAscent"><a name="fontAscent,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fontAscent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontAscent&quot;</span><span class="Other">,</span>
+                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the offset from the baseline to the top of the font.</p>
 <p>This is a positive value, relative to the baseline.</p>
 
 
 </dd>
-<dt id="fontDescent"><a name="fontDescent,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fontDescent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontDescent&quot;</span><span class="Other">,</span> 
-                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="fontDescent"><a name="fontDescent,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fontDescent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontDescent&quot;</span><span class="Other">,</span>
+                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the offset from the baseline to the bottom of the font.</p>
 <p>This is a negative value, relative to the baseline.</p>
 
 
 </dd>
-<dt id="fontLineSkip"><a name="fontLineSkip,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fontLineSkip</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontLineSkip&quot;</span><span class="Other">,</span> 
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="fontLineSkip"><a name="fontLineSkip,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fontLineSkip</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontLineSkip&quot;</span><span class="Other">,</span>
+                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the recommended spacing between lines of text for this font.
 
 </dd>
-<dt id="getFontKerning"><a name="getFontKerning,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getFontKerning</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_GetFontKerning&quot;</span><span class="Other">,</span> 
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getFontKerning"><a name="getFontKerning,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getFontKerning</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_GetFontKerning&quot;</span><span class="Other">,</span>
+                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get whether or not kerning is allowed for this font.
 
 </dd>
-<dt id="setFontKerning"><a name="setFontKerning,Font,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setFontKerning</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">allowed</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="setFontKerning"><a name="setFontKerning,Font,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setFontKerning</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">allowed</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SetFontKerning&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Set whether or not kerning is allowed for this font.
 
 </dd>
-<dt id="fontFaces"><a name="fontFaces,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fontFaces</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">clong</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontFaces&quot;</span><span class="Other">,</span> 
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="fontFaces"><a name="fontFaces,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fontFaces</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">clong</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontFaces&quot;</span><span class="Other">,</span>
+                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the number of faces of the font.
 
 </dd>
-<dt id="fontFaceIsFixedWidth"><a name="fontFaceIsFixedWidth,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fontFaceIsFixedWidth</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="fontFaceIsFixedWidth"><a name="fontFaceIsFixedWidth,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fontFaceIsFixedWidth</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontFaceIsFixedWidth&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the font face attributes, if any.
 
 </dd>
-<dt id="fontFaceFamilyName"><a name="fontFaceFamilyName,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fontFaceFamilyName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="fontFaceFamilyName"><a name="fontFaceFamilyName,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fontFaceFamilyName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontFaceFamilyName&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="fontFaceStyleName"><a name="fontFaceStyleName,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fontFaceStyleName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="fontFaceStyleName"><a name="fontFaceStyleName,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fontFaceStyleName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontFaceStyleName&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="glyphIsProvided"><a name="glyphIsProvided,Font,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glyphIsProvided</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">ch</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="glyphIsProvided"><a name="glyphIsProvided,Font,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glyphIsProvided</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">ch</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_GlyphIsProvided&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Check wether a glyph is provided by the font or not.
 
 </dd>
-<dt id="glyphMetrics"><a name="glyphMetrics,Font,uint16,ptr.cint,ptr.cint,ptr.cint,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glyphMetrics</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">ch</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">minx</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">maxx</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> 
-                   <span class="Identifier">miny</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">maxy</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">advance</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_GlyphMetrics&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="glyphMetrics"><a name="glyphMetrics,Font,uint16,ptr.cint,ptr.cint,ptr.cint,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glyphMetrics</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">ch</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">minx</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">maxx</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">miny</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span>
+                  <span class="Identifier">maxy</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">advance</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_GlyphMetrics&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the metrics (dimensions) of a glyph.</p>
 <p>To understand what these metrics mean, here is a useful link:</p>
@@ -1583,8 +1585,8 @@ Check wether a glyph is provided by the font or not.
 
 
 </dd>
-<dt id="sizeText"><a name="sizeText,Font,cstring,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">sizeText</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SizeText&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="sizeText"><a name="sizeText,Font,cstring,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">sizeText</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SizeText&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Get the dimensions of a rendered string of text.</p>
 <p>See also:</p>
@@ -1593,19 +1595,19 @@ Check wether a glyph is provided by the font or not.
 
 
 </dd>
-<dt id="sizeUTF8"><a name="sizeUTF8,Font,cstring,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">sizeUTF8</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SizeUTF8&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="sizeUTF8"><a name="sizeUTF8,Font,cstring,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">sizeUTF8</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SizeUTF8&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="sizeUNICODE"><a name="sizeUNICODE,Font,ptr.uint16,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">sizeUNICODE</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SizeUNICODE&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="sizeUNICODE"><a name="sizeUNICODE,Font,ptr.uint16,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">sizeUNICODE</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SizeUNICODE&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="renderText_Solid"><a name="renderText_Solid,Font,cstring,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderText_Solid</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="renderText_Solid"><a name="renderText_Solid,Font,cstring,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderText_Solid</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderText_Solid&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Create an 8-bit palettized surface and render the given text at fast quality with the given font and color.  The 0 pixel is the colorkey, giving a transparent background, and the 1 pixel is set to the text color.</p>
@@ -1616,19 +1618,19 @@ Check wether a glyph is provided by the font or not.
 
 
 </dd>
-<dt id="renderUTF8_Solid"><a name="renderUTF8_Solid,Font,cstring,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderUTF8_Solid</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="renderUTF8_Solid"><a name="renderUTF8_Solid,Font,cstring,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderUTF8_Solid</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderUTF8_Solid&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="renderUNICODE_Solid"><a name="renderUNICODE_Solid,Font,ptr.uint16,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderUNICODE_Solid</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderUNICODE_Solid&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="renderUNICODE_Solid"><a name="renderUNICODE_Solid,Font,ptr.uint16,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderUNICODE_Solid</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderUNICODE_Solid&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="renderGlyph_Solid"><a name="renderGlyph_Solid,Font,uint16,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGlyph_Solid</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">ch</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="renderGlyph_Solid"><a name="renderGlyph_Solid,Font,uint16,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGlyph_Solid</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">ch</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderGlyph_Solid&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Create an 8-bit palettized surface and render the given glyph at fast quality with the given font and color.  The 0 pixel is the colorkey, giving a transparent background, and the 1 pixel is set to the text color.</p>
@@ -1637,8 +1639,8 @@ Check wether a glyph is provided by the font or not.
 
 
 </dd>
-<dt id="renderText_Shaded"><a name="renderText_Shaded,Font,cstring,Color,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderText_Shaded</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">;</span> <span class="Identifier">bg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderText_Shaded&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="renderText_Shaded"><a name="renderText_Shaded,Font,cstring,Color,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderText_Shaded</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">;</span> <span class="Identifier">bg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderText_Shaded&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Create an 8-bit palettized surface and render the given text at high quality with the given font and colors. The 0 pixel is background, while other pixels have varying degrees of the foreground color.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the new surface, or <cite>nil</cite> if there was an error.</p>
@@ -1648,8 +1650,8 @@ Check wether a glyph is provided by the font or not.
 
 
 </dd>
-<dt id="renderUTF8_Shaded"><a name="renderUTF8_Shaded,Font,cstring,Color,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderUTF8_Shaded</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">;</span> <span class="Identifier">bg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderUTF8_Shaded&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="renderUTF8_Shaded"><a name="renderUTF8_Shaded,Font,cstring,Color,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderUTF8_Shaded</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">;</span> <span class="Identifier">bg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderUTF8_Shaded&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
@@ -1660,8 +1662,8 @@ Check wether a glyph is provided by the font or not.
 
 
 </dd>
-<dt id="renderGlyph_Shaded"><a name="renderGlyph_Shaded,Font,uint16,Color,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGlyph_Shaded</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">ch</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">;</span> <span class="Identifier">bg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderGlyph_Shaded&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="renderGlyph_Shaded"><a name="renderGlyph_Shaded,Font,uint16,Color,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGlyph_Shaded</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">ch</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">;</span> <span class="Identifier">bg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderGlyph_Shaded&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Create an 8-bit palettized surface and render the given glyph at high quality with the given font and colors.  The 0 pixel is background, while other pixels have varying degrees of the foreground color.</p>
 <p>The glyph is rendered without any padding or centering in the X direction, and aligned normally in the Y direction.</p>
@@ -1669,7 +1671,7 @@ Check wether a glyph is provided by the font or not.
 
 
 </dd>
-<dt id="renderText_Blended"><a name="renderText_Blended,Font,cstring,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderText_Blended</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="renderText_Blended"><a name="renderText_Blended,Font,cstring,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderText_Blended</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderText_Blended&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Create a 32-bit ARGB surface and render the given text at high quality, using alpha blending to dither the font with the given color.</p>
@@ -1680,20 +1682,20 @@ Check wether a glyph is provided by the font or not.
 
 
 </dd>
-<dt id="renderUTF8_Blended"><a name="renderUTF8_Blended,Font,cstring,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderUTF8_Blended</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="renderUTF8_Blended"><a name="renderUTF8_Blended,Font,cstring,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderUTF8_Blended</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderUTF8_Blended&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="renderUNICODE_Blended"><a name="renderUNICODE_Blended,Font,ptr.uint16,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderUNICODE_Blended</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderUNICODE_Blended&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="renderUNICODE_Blended"><a name="renderUNICODE_Blended,Font,ptr.uint16,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderUNICODE_Blended</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderUNICODE_Blended&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="renderText_Blended_Wrapped"><a name="renderText_Blended_Wrapped,Font,cstring,Color,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderText_Blended_Wrapped</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">;</span> 
-                                 <span class="Identifier">wrapLength</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="renderText_Blended_Wrapped"><a name="renderText_Blended_Wrapped,Font,cstring,Color,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderText_Blended_Wrapped</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">;</span>
+                                <span class="Identifier">wrapLength</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderText_Blended_Wrapped&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Create a 32-bit ARGB surface and render the given text at high quality, using alpha blending to dither the font with the given color. Text is wrapped to multiple lines on line endings and on word boundaries if it extends beyond wrapLength in pixels.</p>
@@ -1704,21 +1706,21 @@ Check wether a glyph is provided by the font or not.
 
 
 </dd>
-<dt id="renderUTF8_Blended_Wrapped"><a name="renderUTF8_Blended_Wrapped,Font,cstring,Color,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderUTF8_Blended_Wrapped</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">;</span> 
-                                 <span class="Identifier">wrapLength</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="renderUTF8_Blended_Wrapped"><a name="renderUTF8_Blended_Wrapped,Font,cstring,Color,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderUTF8_Blended_Wrapped</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">;</span>
+                                <span class="Identifier">wrapLength</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderUTF8_Blended_Wrapped&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="renderUNICODE_Blended_Wrapped"><a name="renderUNICODE_Blended_Wrapped,Font,ptr.uint16,Color,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderUNICODE_Blended_Wrapped</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">;</span> 
-                                    <span class="Identifier">wrapLength</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="renderUNICODE_Blended_Wrapped"><a name="renderUNICODE_Blended_Wrapped,Font,ptr.uint16,Color,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderUNICODE_Blended_Wrapped</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">;</span>
+                                   <span class="Identifier">wrapLength</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderUNICODE_Blended_Wrapped&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="renderGlyph_Blended"><a name="renderGlyph_Blended,Font,uint16,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGlyph_Blended</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">ch</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="renderGlyph_Blended"><a name="renderGlyph_Blended,Font,uint16,Color"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGlyph_Blended</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">ch</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderGlyph_Blended&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <p>Create a 32-bit ARGB surface and render the given glyph at high quality, using alpha blending to dither the font with the given color. The glyph is rendered without any padding or centering in the X direction, and aligned normally in the Y direction.</p>
@@ -1726,8 +1728,7 @@ Check wether a glyph is provided by the font or not.
 
 
 </dd>
-<dt id="closeFont"><a name="closeFont,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">closeFont</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_CloseFont&quot;</span><span class="Other">,</span> 
-                              <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="closeFont"><a name="closeFont,Font"></a><pre><span class="Keyword">proc</span> <span class="Identifier">closeFont</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_CloseFont&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Close an opened font file.
 
@@ -1742,8 +1743,8 @@ De-initialize the TTF engine.
 Check if the TTF engine is initialized.
 
 </dd>
-<dt id="getFontKerningSize"><a name="getFontKerningSize,Font,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getFontKerningSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">prev_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_GetFontKerningSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getFontKerningSize"><a name="getFontKerningSize,Font,uint16,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getFontKerningSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">Font</span><span class="Other">;</span> <span class="Identifier">previous_ch</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">ch</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_GetFontKerningSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_TTF_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Get the kerning size of two glyphs.
 
@@ -1788,7 +1789,7 @@ Get the kerning size of two glyphs.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-10-04 22:57:31 UTC</small>
+        <small>Made with Nim. Generated: 2016-01-07 22:05:27 UTC</small>
       </div>
     </div>
   </div>

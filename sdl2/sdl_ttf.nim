@@ -35,7 +35,7 @@ import
 const
   MAJOR_VERSION* = 2
   MINOR_VERSION* = 0
-  PATCHLEVEL* = 12
+  PATCHLEVEL* = 13
 
 proc linkedVersion*(): ptr Version {.
     cdecl, importc: "TTF_Linked_Version", dynlib: SDL2_TTF_LIB.}
@@ -356,7 +356,7 @@ proc wasInit*(): cint {.
     cdecl, importc: "TTF_WasInit", dynlib: SDL2_TTF_LIB.}
   ##  Check if the TTF engine is initialized.
 
-proc getFontKerningSize*(font: Font; prev_index: cint; index: cint): cint {.
+proc getFontKerningSize*(font: Font; previous_ch: uint16; ch: uint16): cint {.
     cdecl, importc: "TTF_GetFontKerningSize", dynlib: SDL2_TTF_LIB.}
   ##  Get the kerning size of two glyphs.
 
