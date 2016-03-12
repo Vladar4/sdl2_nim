@@ -10,11 +10,11 @@
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
-<title>Module sdl2-nim</title>
+<title>Module sdl_syswm</title>
 <style type="text/css" >
 /*
 Stylesheet for use with Docutils/rst2html.
@@ -53,7 +53,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #2d2d2d;
+  color: #666;
   background-color: rgba(252, 248, 244, 0.75); }
 
 /* Skeleton grid */
@@ -489,7 +489,7 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0 10px 0px 10px;
+  margin: 0.25em 10px 0.25em 10px;
   font-size: 14px;
   line-height: 20px;
   white-space: pre !important;
@@ -892,6 +892,10 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+ul.simple > li {
+  margin-bottom: 0.5em }
+
 ol.simple, ul.simple {
   margin-bottom: 1em; }
 
@@ -1145,29 +1149,51 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 <body>
 <div class="document" id="documentId">
   <div class="container">
-    <h1 class="title" id="header">sdl2-nim</h1>
+    <h1 class="title">Module sdl_syswm</h1>
     <div class="row">
   <div class="three columns">
   <ul class="simple simple-toc" id="toc-list">
-    <li><a class="reference reference-toplevel" href="#basics" id="56">Basics</a></li>
-    <li><a class="reference reference-toplevel" href="#video" id="56">Video</a></li>
-    <li><a class="reference reference-toplevel" href="#input" id="56">Input Events</a></li>
-    <li><a class="reference reference-toplevel" href="#feedback" id="56">Force Feedback</a></li>
-    <li><a class="reference reference-toplevel" href="#audio" id="56">Audio</a></li>
-    <li><a class="reference reference-toplevel" href="#threads" id="56">Threads</a></li>
-    <li><a class="reference reference-toplevel" href="#timers" id="56">Timers</a></li>
-    <li><a class="reference reference-toplevel" href="#files" id="56">File Abstraction</a></li>
-    <li><a class="reference reference-toplevel" href="#shared" id="56">Shared Object Support</a></li>
-    <li><a class="reference reference-toplevel" href="#platform" id="56">Platform and CPU Information</a></li>
-    <li><a class="reference reference-toplevel" href="#power" id="56">Power Management</a></li>
-    <li><a class="reference reference-toplevel" href="#additional" id="56">Additional</a></li>
-    <li><a class="reference reference-toplevel" href="#gfx" id="56">SDL_GFX</a></li>
-    <li><a class="reference reference-toplevel" href="#image" id="56">SDL_IMAGE</a></li>
-    <li><a class="reference reference-toplevel" href="#mixer" id="56">SDL_MIXER</a></li>
-    <li><a class="reference reference-toplevel" href="#net" id="56">SDL_NET</a></li>
-    <li><a class="reference reference-toplevel" href="#ttf" id="56">SDL_TTF</a></li>
+<li><a class="reference" id="syswm-nim_toc" href="#syswm-nim">syswm.nim</a></li>
+<li>
+  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
   <ul class="simple simple-toc-section">
     
+  </ul>
+</li>
+<li>
+  <a class="reference reference-toplevel" href="#7" id="57">Types</a>
+  <ul class="simple simple-toc-section">
+      <li><a class="reference" href="#SysWMKind"
+    title="SysWMKind = enum
+  SYSWM_UNKNOWN, SYSWM_WINDOWS, SYSWM_X11, SYSWM_DIRECTFB, SYSWM_COCOA, SYSWM_UIKIT,
+  SYSWM_WAYLAND, SYSWM_MIR, SYSWM_WINRT, SYSWM_ANDROID"><wbr />Sys<wbr />WMKind</a></li>
+  <li><a class="reference" href="#SysWMmsgKindObj"
+    title="SysWMmsgKindObj = object
+  dummy*: cint"><wbr />Sys<wbr />WMmsg<wbr />Kind<wbr />Obj</a></li>
+  <li><a class="reference" href="#SysWMmsg"
+    title="SysWMmsg = ptr SysWMmsgObj"><wbr />Sys<wbr />WMmsg</a></li>
+  <li><a class="reference" href="#SysWMmsgObj"
+    title="SysWMmsgObj = object
+  version*: Version
+  subsystem*: SysWMKind
+  msg*: SysWMmsgKindObj"><wbr />Sys<wbr />WMmsg<wbr />Obj</a></li>
+  <li><a class="reference" href="#SysWMinfoKindObj"
+    title="SysWMinfoKindObj = object
+  dummy*: cint"><wbr />Sys<wbr />WMinfo<wbr />Kind<wbr />Obj</a></li>
+  <li><a class="reference" href="#SysWMinfo"
+    title="SysWMinfo = object
+  version*: Version
+  subsystem*: SysWMKind
+  info*: SysWMinfoKindObj"><wbr />Sys<wbr />WMinfo</a></li>
+
+  </ul>
+</li>
+<li>
+  <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
+  <ul class="simple simple-toc-section">
+      <li><a class="reference" href="#getWindowWMInfo,Window,ptr.SysWMinfo"
+    title="getWindowWMInfo(window: Window; info: ptr SysWMinfo): bool"><wbr />get<wbr />Window<wbr />WMInfo</a></li>
+
   </ul>
 </li>
 
@@ -1175,79 +1201,86 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
   </div>
   <div class="nine columns" id="content">
-  <p class="module-desc"></p>
+  <p class="module-desc">
+<h1><a class="toc-backref" id="syswm-nim" href="#syswm-nim">syswm.nim</a></h1><p>Include file for SDL custom system window manager hooks.</p>
+<p>Your application has access to a special type of event <tt class="docutils literal"><span class="pre">SYSWMEVENT</span></tt>, which contains window-manager specific information and arrives whenever an unhandled window event occurs.  This event is ignored by default, but you can enable it with <tt class="docutils literal"><span class="pre">eventState()</span></tt>.</p>
+</p>
   <div class="section" id="6">
-<h1>SDL2</h1>
+<h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-    <a href="#header"><h2 id="basics">Basics</h2></a><ul>
-        <li><a class="reference external" href="private/sdl_init.html">sdl_init</a> Initialization and shutdown.</li>
-        <li><a class="reference external" href="private/quit.html">quit</a> Quit event handling.</li>
-        <li><a class="reference external" href="private/hints.html">hints</a> Configuration variables.</li>
-        <li><a class="reference external" href="private/error.html">error</a> Error handling.</li>
-        <li><a class="reference external" href="private/log.html">log</a> Log handling.</li>
-        <li><a class="reference external" href="private/version.html">version</a> Querying SDL version.</li>
-        <li><a class="reference external" href="private/revision.html">revision</a> SDL revision.</li>
-    </ul><a href="#header"><h2 id="video">Video</h2></a><ul>
-        <li><a class="reference external" href="private/video.html">video</a> Display and window management.</li>
-        <li><a class="reference external" href="private/render.html">render</a> 2D accelerated rendering.</li>
-        <li><a class="reference external" href="private/pixels.html">pixels</a> Pixel formats and conversion routines.</li>
-        <li><a class="reference external" href="private/rect.html">rect</a> Rectangle functions.</li>
-        <li><a class="reference external" href="private/surface.html">surface</a> Surface creation and simple drawing.</li>
-        <li><a class="reference external" href="private/clipboard.html">clipboard</a> Clipboard handling.</li>
-        <li><a class="reference external" href="private/blendmode.html">blendmode</a> BlendMode enumeration.</li>
-        <li><a class="reference external" href="private/messagebox.html">messagebox</a> Message box functions.</li>
-        <li><a class="reference external" href="private/shape.html">shape</a> Shaped window API.</li>
-		<li><a class="reference external" href="sdl_syswm.html">sdl_syswm</a> Platform-specific Window Management.</li><ul>
-		<li><a class="reference external" href="sdl_syswm_windows.html">windows</a></li>
-		<li><a class="reference external" href="sdl_syswm_x11.html">x11</a></li></ul>
-    </ul><a href="#header"><h2 id="input">Input Events</h2></a><ul>
-        <li><a class="reference external" href="private/events.html">events</a> Event handling.</li>
-        <li><a class="reference external" href="private/keyboard.html">keyboard</a> Keyboard support.</li>
-        <li><a class="reference external" href="private/keycode.html">keycode</a> Keyboard keys and modifiers.</li>
-        <li><a class="reference external" href="private/scancode.html">scancode</a> Keyboard scancodes.</li>
-        <li><a class="reference external" href="private/mouse.html">mouse</a> Mouse support.</li>
-        <li><a class="reference external" href="private/joystick.html">joystick</a> Joystick support.</li>
-        <li><a class="reference external" href="private/gamecontroller.html">gamecontroller</a> Game controller support.</li>
-        <li><a class="reference external" href="private/touch.html">touch</a> Touch event handling.</li>
-        <li><a class="reference external" href="private/gesture.html">gesture</a> Gesture event handling.</li>
-    </ul><a href="#header"><h2 id="feedback">Force Feedback</h2></a><ul>
-        <li><a class="reference external" href="private/haptic.html">haptic</a> Force feedback support.</li>
-    </ul><a href="#header"><h2 id="audio">Audio</h2></a><ul>
-        <li><a class="reference external" href="private/audio.html">audio</a> Audio device management, playing and recording.</li>
-    </ul><a href="#header"><h2 id="threads">Threads</h2></a><ul>
-        <li><a class="reference external" href="private/thread.html">thread</a> Thread management.</li>
-        <li><a class="reference external" href="private/mutex.html">mutex</a> Thread synchronization primitives.</li>
-        <li><a class="reference external" href="private/atomics.html">atomics</a> Atomic operations.</li>
-    </ul><a href="#header"><h2 id="timers">Timers</h2></a><ul>
-        <li><a class="reference external" href="private/timer.html">timer</a> Timer support.</li>
-    </ul><a href="#header"><h2 id="files">File Abstraction</h2></a><ul>
-        <li><a class="reference external" href="private/filesystem.html">filesystem</a> Filesystem paths.</li>
-        <li><a class="reference external" href="private/rwops.html">rwops</a> File I/O abstraction.</li>
-    </ul><a href="#header"><h2 id="shared">Shared Object Support</h2></a><ul>
-        <li><a class="reference external" href="private/loadso.html">loadso</a> Shared object loading and function lookup.</li>
-    </ul><a href="#header"><h2 id="platform">Platform and CPU Information</h2></a><ul>
-        <li><a class="reference external" href="private/platform.html">platform</a> Platform detection.</li>
-        <li><a class="reference external" href="private/cpuinfo.html">cpuinfo</a> CPU feature detection.</li>
-    </ul><a href="#header"><h2 id="power">Power Management</h2></a><ul>
-        <li><a class="reference external" href="private/power.html">power</a> Power management status.</li>
-    </ul><a href="#header"><h2 id="additional">Additional</h2></a><ul>
-        <li><a class="reference external" href="private/system.html">system</a> Platform specific SDL API functions.</li>
-        <li><a class="reference external" href="private/stdinc.html">stdinc</a> Other.</li>
-    </ul><a href="#header"><h2 id="gfx">SDL_GFX</h2></a><ul>
-        <li><a class="reference external" href="sdl_gfx_primitives.html">sdl_gfx_primitives</a> Graphic primitives.</li>
-        <li><a class="reference external" href="sdl_gfx_framerate.html">sdl_gfx_framerate</a> Framerate control.</li>
-        <li><a class="reference external" href="sdl_gfx_rotozoom.html">sdl_gfx_rotozoom</a> Rotozoomer.</li>
-        <li><a class="reference external" href="sdl_gfx_imagefilter.html">sdl_gfx_imagefilter</a> MMX image filters.</li>
-        <li><a class="reference external" href="sdl_gfx_primitives_font.html">sdl_gfx_primitives_font</a> Build-in 8x8 font.</li>
-    </ul><a href="#header"><h2 id="image">SDL_IMAGE</h2></a><ul>
-        <li><a class="reference external" href="sdl_image.html">sdl_image</a> A simple library to load images of various formats as SDL surfaces.</li>
-    </ul><a href="#header"><h2 id="mixer">SDL_MIXER</h2></a><ul>
-        <li><a class="reference external" href="sdl_mixer.html">sdl_mixer</a> Multi-channel audio mixer library.</li>
-    </ul><a href="#header"><h2 id="net">SDL_NET</h2></a><ul>
-        <li><a class="reference external" href="sdl_net.html">sdl_net</a> Cross-platform networking library.</li>
-    </ul><a href="#header"><h2 id="ttf">SDL_TTF</h2></a><ul>
-        <li><a class="reference external" href="sdl_ttf.html">sdl_ttf</a> TrueType font rendering library.</li>
-    </ul>
+<a class="reference external" href="sdl.html">sdl</a>
+</dl></div>
+<div class="section" id="7">
+<h1><a class="toc-backref" href="#7">Types</a></h1>
+<dl class="item">
+<dt id="SysWMKind"><a name="SysWMKind"></a><pre><span class="Identifier">SysWMKind</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">SYSWM_UNKNOWN</span><span class="Other">,</span> <span class="Identifier">SYSWM_WINDOWS</span><span class="Other">,</span> <span class="Identifier">SYSWM_X11</span><span class="Other">,</span> <span class="Identifier">SYSWM_DIRECTFB</span><span class="Other">,</span> <span class="Identifier">SYSWM_COCOA</span><span class="Other">,</span> <span class="Identifier">SYSWM_UIKIT</span><span class="Other">,</span>
+  <span class="Identifier">SYSWM_WAYLAND</span><span class="Other">,</span> <span class="Identifier">SYSWM_MIR</span><span class="Other">,</span> <span class="Identifier">SYSWM_WINRT</span><span class="Other">,</span> <span class="Identifier">SYSWM_ANDROID</span></pre></dt>
+<dd>
+
+These are the various supported windowing subsystems
+
+</dd>
+<dt id="SysWMmsgKindObj"><a name="SysWMmsgKindObj"></a><pre><span class="Identifier">SysWMmsgKindObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">dummy</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
+</pre></dt>
+<dd>
+
+
+</dd>
+<dt id="SysWMmsg"><a name="SysWMmsg"></a><pre><span class="Identifier">SysWMmsg</span> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Identifier">SysWMmsgObj</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="SysWMmsgObj"><a name="SysWMmsgObj"></a><pre><span class="Identifier">SysWMmsgObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">version</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Version</span>
+  <span class="Identifier">subsystem</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMKind</span>
+  <span class="Identifier">msg</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMmsgKindObj</span>
+</pre></dt>
+<dd>
+The custom event structure.
+
+</dd>
+<dt id="SysWMinfoKindObj"><a name="SysWMinfoKindObj"></a><pre><span class="Identifier">SysWMinfoKindObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">dummy</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
+</pre></dt>
+<dd>
+
+
+</dd>
+<dt id="SysWMinfo"><a name="SysWMinfo"></a><pre><span class="Identifier">SysWMinfo</span> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">version</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Version</span>
+  <span class="Identifier">subsystem</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMKind</span>
+  <span class="Identifier">info</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMinfoKindObj</span>
+</pre></dt>
+<dd>
+<p>
+The custom window manager information structure.</p>
+<p>When this structure is returned, it holds information about which low level system it is using, and will be one of <tt class="docutils literal"><span class="pre">SysWMKind</span></tt>.</p>
+
+
+</dd>
+
+</dl></div>
+<div class="section" id="12">
+<h1><a class="toc-backref" href="#12">Procs</a></h1>
+<dl class="item">
+<dt id="getWindowWMInfo"><a name="getWindowWMInfo,Window,ptr.SysWMinfo"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowWMInfo</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">SysWMinfo</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowWMInfo&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dd>
+<p>This procedure allows access to driver-dependent window information.</p>
+<p><tt class="docutils literal"><span class="pre">window</span></tt> The window about which information is being requested</p>
+<p><tt class="docutils literal"><span class="pre">info</span></tt> This object must be initialized with the SDL version, and is then filled in with information about the given window.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">true</span></tt> if the procedure is implemented and the version member of the <tt class="docutils literal"><span class="pre">info</span></tt> object is valid, <tt class="docutils literal"><span class="pre">false</span></tt> otherwise.</p>
+<p>You typically use this function like this:</p>
+<pre class = "listing"><span class="Keyword">var</span> <span class="Identifier">info</span><span class="Punctuation">:</span> <span class="Identifier">SysWMinfo</span>
+<span class="Identifier">version</span><span class="Punctuation">(</span><span class="Identifier">info</span><span class="Operator">.</span><span class="Identifier">version</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+<span class="Keyword">if</span> <span class="Identifier">getWindowWMInfo</span><span class="Punctuation">(</span><span class="Identifier">window</span><span class="Punctuation">,</span> <span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">info</span><span class="Punctuation">)</span><span class="Punctuation">)</span><span class="StringLit">&quot;</span>
+  <span class="Operator">...</span></pre>
+
+</dd>
+
 </dl></div>
 
   </div>
@@ -1256,8 +1289,8 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     <div class="row">
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
-        <br>
-        <small>Made with Nim. Generated: 2015-09-06 21:26:16 UTC</small>
+        <br/>
+        <small>Made with Nim. Generated: 2016-03-13 00:42:29 UTC</small>
       </div>
     </div>
   </div>
