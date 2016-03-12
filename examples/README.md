@@ -20,6 +20,7 @@ SDL2 examples
     * ex208_framerate.nim               -   Framerate control
     * ex209_viewports_and_scaling.nim   -   Using viewports and setting drawing scale
     * ex210_pixels.nim                  -   Accessing and modifying pixel data
+    * ex211_opengl.nim                  -   Using OpenGL
 
 3. **INPUT**
 

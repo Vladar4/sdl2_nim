@@ -20,10 +20,7 @@ SDL_ttf 2.0.13
 What does not implemented here:
 -------------------------------
 
-* SDL_egl.h
-* SDL_opengl.h
-* SDL_opengles.h
-* SDL_opengles2.h
+* OpenGL headers (use [opengl](https://github.com/nim-lang/opengl) lib instead)
 * SDL_syswm.h
 
 ----------------------------------------
