@@ -38,6 +38,25 @@ when defined(SDL_PROTOTYPES_ONLY):
 
 else:
 
+  when defined(SDL_VIDEO_DRIVER_WINDOWS):
+    import windows  ## oldwinapi lib
+  elif defined(SDL_VIDEO_DRIVER_X11):
+    import x, xlib  ## x11 lib
+  elif defined(SDL_VIDEO_DRIVER_DIRECTFB):
+    nil
+  elif defined(SDL_VIDEO_DRIVER_COCOA):
+    nil
+  elif defined(SDL_VIDEO_DRIVER_UIKIT):
+    nil
+  elif defined(SDL_VIDEO_DRIVER_WAYLAND):
+    nil
+  elif defined(SDL_VIDEO_DRIVER_MIR):
+    nil
+  elif defined(SDL_VIDEO_DRIVER_WINRT):
+    nil
+  elif defined(SDL_VIDEO_DRIVER_ANDROID):
+    nil
+
   type
     SysWMKind* {.size: sizeof(cint).} = enum  ##  \
         ##  These are the various supported windowing subsystems
@@ -68,21 +87,21 @@ else:
 
   when defined(SDL_VIDEO_DRIVER_WINDOWS):
     type
-      SysWMMsgWinObj* = object
-        hwnd*: Hwnd     ## The window for the message
-        msg*: Uint      ## The type of message
-        wParam*: Wparam ## WORD message parameter
-        lParam*: Lparam ## LONG message parameter
+      SysWMMsgWinObj* = object  ##  when defined(SDL_VIDEO_DRIVER_WINDOWS)
+        hwnd*: HWND     ## The window for the message
+        msg*: WINUINT   ## The type of message
+        wParam*: WPARAM ## WORD message parameter
+        lParam*: LPARAM ## LONG message parameter
 
-      SysWMmsgKindObj* = object
+      SysWMmsgKindObj* = object ##  when defined(SDL_VIDEO_DRIVER_WINDOWS)
         win*: SysWMMsgWinObj
 
   elif defined(SDL_VIDEO_DRIVER_X11):
     type
-      SysWMmsgX11Obj* = object
-        event*: XEvent
+      SysWMmsgX11Obj* = object  ## when defined(SDL_VIDEO_DRIVER_X11)
+        event*: TXEvent
 
-      SysWMmsgKindObj* = object
+      SysWMmsgKindObj* = object ## when defined(SDL_VIDEO_DRIVER_X11)
         x11*: SysWMMsgX11Obj
 
   elif defined(SDL_VIDEO_DRIVER_DIRECTFB):
@@ -145,11 +164,11 @@ else:
 
   when defined(SDL_VIDEO_DRIVER_WINDOWS):
     type
-      SysWMinfoWinObj* = object
-        window*: Hwnd ##  The window handle
-        hdc*: Hdc     ## window device context
+      SysWMinfoWinObj* = object  ## when defined(SDL_VIDEO_DRIVER_WINDOWS)
+        window*: HWND ##  The window handle
+        hdc*: HDC     ## window device context
 
-      SysWMinfoKindObj* = object
+      SysWMinfoKindObj* = object  ##  when defined(SDL_VIDEO_DRIVER_WINDOWS)
         win*: SysWMinfoWinObj
 
 
@@ -163,11 +182,11 @@ else:
 
   elif defined(SDL_VIDEO_DRIVER_X11):
     type
-      SysWMinfoX11Obj* = object
-        display*: ptr Display ##  The X11 display
-        window*: Window       ##  The X11 window
+      SysWMinfoX11Obj* = object  ## when defined(SDL_VIDEO_DRIVER_X11)
+        display*: ptr xlib.TXDisplay  ##  The X11 display
+        window*: x.TWindow            ##  The X11 window
 
-      SysWMinfoKindObj* = object
+      SysWMinfoKindObj* = object ## when defined(SDL_VIDEO_DRIVER_X11)
         x11*: SysWMinfoX11Obj
 
   elif defined(SDL_VIDEO_DRIVER_DIRECTFB):
