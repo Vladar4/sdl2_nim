@@ -7,6 +7,7 @@ SDL2 examples
     * ex102_logs.nim    -   Log messages
     * ex103_events.nim  -   Event handling
     * ex104_timers.nim  -   Using timers
+    * ex105_syswm.nim   -   Getting window system info
 
 2. **GRAPHICS**
 
