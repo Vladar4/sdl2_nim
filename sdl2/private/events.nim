@@ -451,7 +451,7 @@ type
     data2*: pointer         ##  User defined data pointer
 
 type
-  SysWMmsg* = pointer
+  SysWMmsg* = pointer ##  declared in sdl_syswm.nim
 
 type
   SysWMEventObj* = object ##  \

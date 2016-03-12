@@ -1216,14 +1216,14 @@ proc getError*(): cstring {.
 #*********************************************************************
 
 # Warning, some systems have data access alignment restrictions.
-when defined(sparc) or defined(mips) or defined(arm):
+when defined(sparc) or defined(mips) or defined(__arm__):
   const
     SDL_DATA_ALIGNED* = 1
 when not(declared(SDL_DATA_ALIGNED)):
   const
     SDL_DATA_ALIGNED* = 0
 
-when not declared(WITHOUT_SDL) and (SDL_DATA_ALIGNED != 0):
+when not(declared(WITHOUT_SDL) and (SDL_DATA_ALIGNED != 0)):
 
   import private/endians
 

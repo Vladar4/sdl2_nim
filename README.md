@@ -27,6 +27,11 @@ What does not implemented here:
 
 CHANGELOG:
 ==========
+**v0.96 beta** ***{WIP}***
+* added sdl_syswm.nim
+* added more SDL2 examples
+* ***WIP***
+
 **v0.95 beta**
 * Nim 0.12.0 adaptation.
 * Update to SDL2-2.0.4
