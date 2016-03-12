@@ -21,7 +21,6 @@ What does not implemented here:
 -------------------------------
 
 * OpenGL headers (use [opengl](https://github.com/nim-lang/opengl) lib instead)
-* SDL_syswm.h
 
 ----------------------------------------
 
