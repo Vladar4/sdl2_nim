@@ -269,9 +269,7 @@ else:
       info*: SysWMinfoKindObj
 
 
-#
-# Function prototypes
-#
+# Procedure prototypes
 
 
 proc getWindowWMInfo*(window: Window; info: ptr SysWMinfo): bool {.
@@ -286,7 +284,7 @@ proc getWindowWMInfo*(window: Window; info: ptr SysWMinfo): bool {.
   ##  ``Return`` ``true`` if the procedure is implemented and the version
   ##  member of the ``info`` object is valid, ``false`` otherwise.
   ##
-  ##  You typically use this function like this:
+  ##  You typically use this procedure like this:
   ##
   ##  .. code-block:: nim
   ##    var info: SysWMinfo

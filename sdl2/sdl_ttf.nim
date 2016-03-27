@@ -39,7 +39,7 @@ const
 
 proc linkedVersion*(): ptr Version {.
     cdecl, importc: "TTF_Linked_Version", dynlib: SDL2_TTF_LIB.}
-  ##  This function gets the version of the dynamically linked SDL_ttf library.
+  ##  This procedure gets the version of the dynamically linked SDL_ttf library.
   ##  It should NOT be used to fill a version structure, instead you should
   ##  use the ``version()`` template.
 
@@ -50,7 +50,7 @@ const
 
 proc byteSwappedUNICODE*(swapped: cint) {.
     cdecl, importc: "TTF_ByteSwappedUNICODE", dynlib: SDL2_TTF_LIB.}
-  ##  This function tells the library whether UNICODE text is generally
+  ##  This procedure tells the library whether UNICODE text is generally
   ##  byteswapped.  A UNICODE BOM character in a string will override
   ##  this setting for the remainder of that string.
 
@@ -332,7 +332,7 @@ proc renderGlyph_Blended*(
   ##
   ##  ``Return`` the new surface, or `nil` if there was an error.
 
-# For compatibility with previous versions, here are the old functions
+# For compatibility with previous versions, here are the old procedures
 
 template renderText*(font, text, fg, bg: expr): expr =
   renderText_Shaded(font, text, fg, bg)

@@ -42,9 +42,9 @@ const
 const
   SMOOTHING_ON* = 1   ##  Enable anti-aliasing (smoothing).
 
-# Function Prototypes
+# Procedure prototypes
 
-# Rotozoom functions
+# Rotozoom procedures
 
 proc rotozoomSurface*(
     src: Surface; angle: cdouble;
@@ -73,7 +73,7 @@ proc rotozoomSurfaceSizeXY*(
   ##  ``Return`` the size of the resulting target surface
   ##  for a ``rotozoomSurfaceXY()`` call.
 
-# Zooming functions
+# Zooming procedures
 
 proc zoomSurface*(
     src: Surface;
@@ -88,14 +88,14 @@ proc zoomSurfaceSize*(
       cdecl, importc: "zoomSurfaceSize", dynlib: SDL2_GFX_LIB.}
   ##  Calculates the size of the target surface for a ``zoomSurface()`` call.
 
-# Shrinking functions
+# Shrinking procedures
 
 proc shrinkSurface*(
     src: Surface; factorx: cint; factory: cint): Surface {.
       cdecl, importc: "shrinkSurface", dynlib: SDL2_GFX_LIB.}
   ##  Shrink a surface by an integer ratio using averaging.
 
-# Specialized rotation functions
+# Specialized rotation procedures
 
 proc rotateSurface90Degrees*(
     src: Surface; numClockwiseTurns: cint): Surface {.

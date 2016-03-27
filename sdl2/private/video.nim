@@ -22,7 +22,7 @@
 ##  video.nim
 ##  =========
 ##
-##  Header file for SDL video functions.
+##  Header file for SDL video procedures.
 
 type
   DisplayMode* = object ##  \
@@ -224,7 +224,7 @@ type
     GL_CONTEXT_RELEASE_BEHAVIOR_NONE = 0x0000,
     GL_CONTEXT_RELEASE_BEHAVIOUR_FLUSH = 0x0001
 
-# Function prototypes
+# Procedure prototypes
 
 proc getNumVideoDrivers*(): cint {.
     cdecl, importc: "SDL_GetNumVideoDrivers", dynlib: SDL2_LIB.}
@@ -254,7 +254,7 @@ proc videoInit*(driver_name: cstring): cint {.
   ##
   ##  ``Return`` `0` on success, `-1` on error.
   ##
-  ##  This function initializes the video subsystem; setting up a connection
+  ##  This procedure initializes the video subsystem; setting up a connection
   ##  to the window manager, etc, and determines the available display modes
   ##  and pixel formats, but does not initialize a window or graphics mode.
   ##
@@ -266,7 +266,7 @@ proc videoQuit*() {.
     cdecl, importc: "SDL_VideoQuit", dynlib: SDL2_LIB.}
   ##  Shuts down the video subsystem.
   ##
-  ##  This function closes all windows, and restores the original video mode.
+  ##  This procedure closes all windows, and restores the original video mode.
   ##
   ##  See also:
   ##
@@ -959,7 +959,7 @@ proc setWindowHitTest*(
   ##  example, one might have a borderless window that wants to be draggable
   ##  from any part, or simulate its own title bar, etc.
   ##
-  ##  This function lets the app provide a callback that designates pieces of
+  ##  This procedure lets the app provide a callback that designates pieces of
   ##  a given window as special. This callback is run during event processing
   ##  if we need to tell the OS to treat a region of the window specially; the
   ##  use of this callback is known as "hit testing".
@@ -1024,7 +1024,7 @@ proc disableScreenSaver*() {.
   ##
   ##  ``enableScreenSaver()``
 
-# OpenGL support functions
+# OpenGL support procedures
 
 proc glLoadLibrary*(path: cstring): cint {.
     cdecl, importc: "SDL_GL_LoadLibrary", dynlib: SDL2_LIB.}
@@ -1040,7 +1040,7 @@ proc glLoadLibrary*(path: cstring): cint {.
   ##  library will be loaded upon creation of the first OpenGL window.
   ##
   ##  ``Note:`` If you do this, you need to retrieve
-  ##  all of the GL functions used in your program
+  ##  all of the GL procedures used in your program
   ##  from the dynamic library using ``glGetProcAddress()``.
   ##
   ##  See also:
@@ -1051,7 +1051,7 @@ proc glLoadLibrary*(path: cstring): cint {.
 
 proc glGetProcAddress*(glproc: cstring): pointer {.
     cdecl, importc: "SDL_GL_GetProcAddress", dynlib: SDL2_LIB.}
-  ##  Get the address of an OpenGL function.
+  ##  Get the address of an OpenGL procedure.
 
 proc glUnloadLibrary*() {.
     cdecl, importc: "SDL_GL_UnloadLibrary", dynlib: SDL2_LIB.}

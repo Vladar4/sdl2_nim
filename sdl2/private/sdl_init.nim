@@ -22,7 +22,7 @@
 ##  sdl_init.nim
 ##  ============
 ##
-##  Header file for initialization and shutdown functions.
+##  Header file for initialization and shutdown procedures.
 
 ##  Simple DirectMedia Layer is a cross-platform development library designed
 ##  to provide low level access to audio, keyboard, mouse, joystick, and
@@ -71,7 +71,7 @@ const
 
 proc init*(flags: uint32): cint {.
     cdecl, importc: "SDL_Init", dynlib: SDL2_LIB.}
-  ##  This function initializes  the subsystems specified by ``flags``
+  ##  This procedure initializes the subsystems specified by ``flags``
   ##  Unless the `INIT_NOPARACHUTE` flag is set, it will install cleanup
   ##  signal handlers for some commonly ignored fatal signals (like SIGSEGV).
   ##
@@ -79,7 +79,7 @@ proc init*(flags: uint32): cint {.
 
 proc initSubSystem*(flags: uint32): cint {.
     cdecl, importc: "SDL_InitSubSystem", dynlib: SDL2_LIB.}
-  ##  This function initializes specific SDL subsystems.
+  ##  This procedure initializes specific SDL subsystems.
   ##
   ##  Subsystem initialization is ref-counted, you must call
   ##  ``sdl.quitSubSystem()`` for each ``sdl.initSubSystem()`` to correctly
@@ -90,16 +90,16 @@ proc initSubSystem*(flags: uint32): cint {.
 
 proc quitSubSystem*(flags: uint32) {.
     cdecl, importc: "SDL_QuitSubSystem", dynlib: SDL2_LIB.}
-  ##  This function cleans up specific SDL subsystems.
+  ##  This procedure cleans up specific SDL subsystems.
 
 proc wasInit*(flags: uint32): uint32 {.
     cdecl, importc: "SDL_WasInit", dynlib: SDL2_LIB.}
-  ##  This function returns a mask of the specified subsystems which have
+  ##  This procedure returns a mask of the specified subsystems which have
   ##  previously been initialized.
   ##
   ##  If ``flags`` is `0`, it returns a mask of all initialized subsystems.
 
 proc quit*() {.
     cdecl, importc: "SDL_Quit", dynlib: SDL2_LIB.}
-  ##  This function cleans up all initialized subsystems. You should
+  ##  This procedure cleans up all initialized subsystems. You should
   ##  call it upon all exit conditions.

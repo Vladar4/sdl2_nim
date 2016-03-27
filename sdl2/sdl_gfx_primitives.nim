@@ -40,7 +40,7 @@ const
   MINOR* = 0
   MICRO* = 1
 
-# Function Prototypes
+# Procedure prototypes
 
 ## ``Note:`` all ___Color routines expect the color to be in format 0xRRGGBBAA.
 

@@ -58,7 +58,7 @@ type
     lastticks*: uint32
     rate*: uint32
 
-# Function Prototypes
+# Procedure prototypes
 
 proc initFramerate*(manager: ptr FPSmanager) {.
     cdecl, importc: "SDL_initFramerate", dynlib: SDL2_GFX_LIB.}

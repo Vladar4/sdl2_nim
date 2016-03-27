@@ -35,7 +35,7 @@ const
 
 proc linkedVersion*(): ptr Version {.
     cdecl, importc: "IMG_Linked_Version", dynlib: SDL2_IMG_LIB.}
-  ##  This function gets the version of the dynamically linked SDL_image
+  ##  This procedure gets the version of the dynamically linked SDL_image
   ##  library. It should NOT be used to fill a version structure, instead you
   ##  should use the ``version()`` template.
 
@@ -79,7 +79,7 @@ proc loadTyped_RW*(
   ##  .. code-block:: nim
   ##    setColorKey(image, RLEACCEL, image.format.colorkey)
 
-# Convenience functions
+# Convenience procedures
 
 proc load*(file: cstring): Surface {.
     cdecl, importc: "IMG_Load", dynlib: SDL2_IMG_LIB.}
@@ -103,7 +103,7 @@ when versionAtLeast(2, 0, 0):
       kind: cstring): Texture {.
         cdecl, importc: "IMG_LoadTextureTyped_RW", dynlib: SDL2_IMG_LIB.}
 
-# Functions to detect a file type, given a seekable source 
+# Procedures to detect a file type, given a seekable source 
 
 proc isICO*(src: ptr RWops): cint {.
     cdecl, importc: "IMG_isICO", dynlib: SDL2_IMG_LIB.}
@@ -147,7 +147,7 @@ proc isXV*(src: ptr RWops): cint {.
 proc isWEBP*(src: ptr RWops): cint {.
     cdecl, importc: "IMG_isWEBP", dynlib: SDL2_IMG_LIB.}
 
-# Individual loading functions
+# Individual loading procedures
 
 proc loadICO_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadICO_RW", dynlib: SDL2_IMG_LIB.}
@@ -197,7 +197,7 @@ proc loadWEBP_RW*(src: ptr RWops): Surface {.
 proc readXPMFromArray*(xpm: cstringArray): Surface {.
     cdecl, importc: "IMG_ReadXPMFromArray", dynlib: SDL2_IMG_LIB.}
 
-# Individual saving functions
+# Individual saving procedures
 
 proc savePNG*(surface: Surface; file: cstring): cint {.
     cdecl, importc: "IMG_SavePNG", dynlib: SDL2_IMG_LIB.}

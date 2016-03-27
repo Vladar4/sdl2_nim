@@ -24,7 +24,7 @@
 ##
 ##  Include file for SDL game controller event handling.
 ##
-##  In order to use these functions, ``init()`` must have been called
+##  In order to use these procedures, ``init()`` must have been called
 ##  with the `INIT_GAMECONTROLLER` flag.  This causes SDL to scan the system
 ##  for game controllers, and load appropriate drivers.
 ##
@@ -143,7 +143,7 @@ proc gameControllerNameForIndex*(joystick_index: cint): cstring {.
   ##  Get the implementation dependent name of a game controller.
   ##
   ##  This can be called before any controllers are opened.
-  ##  If no name can be found, this function returns `nil`.
+  ##  If no name can be found, this procedure returns `nil`.
 
 proc gameControllerOpen*(joystick_index: cint): GameController {.
     cdecl, importc: "SDL_GameControllerOpen", dynlib: SDL2_LIB.}
