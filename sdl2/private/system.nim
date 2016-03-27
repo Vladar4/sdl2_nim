@@ -44,7 +44,7 @@ when defined windows:
     ##  and controls on which monitor a full screen application will appear.
 
   type
-    IDirect3DDevice9 = pointer
+    IDirect3DDevice9* = pointer
 
   proc renderGetD3D9Device*(renderer: ptr Renderer): IDirect3DDevice9 {.
       cdecl, importc: "SDL_RenderGetD3D9Device", dynlib: SDL2_LIB.}
