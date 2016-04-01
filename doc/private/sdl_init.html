@@ -10,8 +10,8 @@
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module sdl_init</title>
@@ -1201,7 +1201,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   </div>
   <div class="nine columns" id="content">
   <p class="module-desc">
-<h1><a class="toc-backref" id="sdl-init-nim" href="#sdl-init-nim">sdl_init.nim</a></h1><p>Header file for initialization and shutdown functions.</p>
+<h1><a class="toc-backref" id="sdl-init-nim" href="#sdl-init-nim">sdl_init.nim</a></h1><p>Header file for initialization and shutdown procedures.</p>
 <p>Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D. It is used by video playback software, emulators, and popular games including Valve's award winning catalog and many Humble Bundle games.</p>
 <p>SDL officially supports Windows, Mac OS X, Linux, iOS, and Android. Support for other platforms may be found in the source code.</p>
 <p>SDL is written in C, works natively with C++, and there are bindings available for several other languages, including C# and Python.</p>
@@ -1267,7 +1267,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 <dl class="item">
 <dt id="init"><a name="init,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">init</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Init&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<p>This function initializes  the subsystems specified by <tt class="docutils literal"><span class="pre">flags</span></tt> Unless the <cite>INIT_NOPARACHUTE</cite> flag is set, it will install cleanup signal handlers for some commonly ignored fatal signals (like SIGSEGV).</p>
+<p>This procedure initializes the subsystems specified by <tt class="docutils literal"><span class="pre">flags</span></tt> Unless the <cite>INIT_NOPARACHUTE</cite> flag is set, it will install cleanup signal handlers for some commonly ignored fatal signals (like SIGSEGV).</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success or a negative error code on failure.</p>
 
 
@@ -1275,7 +1275,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 <dt id="initSubSystem"><a name="initSubSystem,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">initSubSystem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_InitSubSystem&quot;</span><span class="Other">,</span>
                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<p>This function initializes specific SDL subsystems.</p>
+<p>This procedure initializes specific SDL subsystems.</p>
 <p>Subsystem initialization is ref-counted, you must call <tt class="docutils literal"><span class="pre">sdl.quitSubSystem()</span></tt> for each <tt class="docutils literal"><span class="pre">sdl.initSubSystem()</span></tt> to correctly shutdown a subsystem manually (or call <tt class="docutils literal"><span class="pre">sdl.quit()</span></tt> to force shutdown).</p>
 <p>If a subsystem is already loaded then this call will increase the ref-count and return.</p>
 
@@ -1284,19 +1284,19 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 <dt id="quitSubSystem"><a name="quitSubSystem,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">quitSubSystem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_QuitSubSystem&quot;</span><span class="Other">,</span>
                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function cleans up specific SDL subsystems.
+This procedure cleans up specific SDL subsystems.
 
 </dd>
 <dt id="wasInit"><a name="wasInit,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">wasInit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WasInit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-<p>This function returns a mask of the specified subsystems which have previously been initialized.</p>
+<p>This procedure returns a mask of the specified subsystems which have previously been initialized.</p>
 <p>If <tt class="docutils literal"><span class="pre">flags</span></tt> is <cite>0</cite>, it returns a mask of all initialized subsystems.</p>
 
 
 </dd>
 <dt id="quit"><a name="quit,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">quit</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Quit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
-This function cleans up all initialized subsystems. You should call it upon all exit conditions.
+This procedure cleans up all initialized subsystems. You should call it upon all exit conditions.
 
 </dd>
 
@@ -1308,8 +1308,8 @@ This function cleans up all initialized subsystems. You should call it upon all 
     <div class="row">
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
-        <br>
-        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
+        <br/>
+        <small>Made with Nim. Generated: 2016-04-01 21:48:01 UTC</small>
       </div>
     </div>
   </div>

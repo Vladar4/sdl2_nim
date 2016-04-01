@@ -10,8 +10,8 @@
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module rwops</title>
@@ -1200,31 +1200,31 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   unknown*: RWopsUnknownio"><wbr />RWops<wbr />Kind</a></li>
   <li><a class="reference" href="#RWops"
     title="RWops* = object
-  size*: proc (context: ptr RWops): int64 ##  \
-                                    ##  ``Return`` the size of the file in this rwops, or `-1` if unknown
-  seek*: proc (context: ptr RWops; offset: int64; whence: cint): int64 ##  \
-                                                             ##  Seek to ``offset`` relative to ``whence``,
-                                                             ##  one of stdio&#x27;s whence values:
-                                                             ##
-                                                             ##  `RW_SEEK_SET`, `RW_SEEK_CUR`, `RW_SEEK_END`
-                                                             ##
-                                                             ##  ``Return`` the final offset in the data stream, or `-1` on error.
-  read*: proc (context: ptr RWops; p: pointer; size: csize; maxnum: csize): csize ##  \
-                                                                      ##  Read up to ``maxnum`` objects each of size ``size`` from the data
-                                                                      ##  stream to the area pointed at by ``ptr``.
-                                                                      ##
-                                                                      ##  ``Return`` the number of objects read, or `0` at error or end of file.
-  write*: proc (context: ptr RWops; p: pointer; size: csize; num: csize): csize ##  \
-                                                                    ##  Write exactly ``num`` objects each of size ``size`` from the area
-                                                                    ##  pointed at by ``ptr`` to data stream.
-                                                                    ##
-                                                                    ##  ``Return`` the number of objects written,
-                                                                    ##  or `0` at error or end of file.
-  close*: proc (context: ptr RWops): cint ##  \
-                                    ##  Close and free an allocated RWops object.
-                                    ##
-                                    ##  ``Return`` `0` if successful,
-                                    ##  or `-1` on write error when flushing data.
+  size*: proc (context: ptr RWops): int64 ## \
+                                    ## ``Return`` the size of the file in this rwops, or `-1` if unknown
+  seek*: proc (context: ptr RWops; offset: int64; whence: cint): int64 ## \
+                                                             ## Seek to ``offset`` relative to ``whence``,
+                                                             ## one of stdio&#x27;s whence values:
+                                                             ## 
+                                                             ## `RW_SEEK_SET`, `RW_SEEK_CUR`, `RW_SEEK_END`
+                                                             ## 
+                                                             ## ``Return`` the final offset in the data stream, or `-1` on error.
+  read*: proc (context: ptr RWops; p: pointer; size: csize; maxnum: csize): csize ## \
+                                                                      ## Read up to ``maxnum`` objects each of size ``size`` from the data
+                                                                      ## stream to the area pointed at by ``ptr``.
+                                                                      ## 
+                                                                      ## ``Return`` the number of objects read, or `0` at error or end of file.
+  write*: proc (context: ptr RWops; p: pointer; size: csize; num: csize): csize ## \
+                                                                    ## Write exactly ``num`` objects each of size ``size`` from the area
+                                                                    ## pointed at by ``ptr`` to data stream.
+                                                                    ## 
+                                                                    ## ``Return`` the number of objects written,
+                                                                    ## or `0` at error or end of file.
+  close*: proc (context: ptr RWops): cint ## \
+                                    ## Close and free an allocated RWops object.
+                                    ## 
+                                    ## ``Return`` `0` if successful,
+                                    ## or `-1` on write error when flushing data.
   kind*: uint32
   mem*: RWopsKind"><wbr />RWops</a></li>
 
@@ -1301,7 +1301,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   </ul>
 </li>
 <li>
-  <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
+  <a class="reference reference-toplevel" href="#17" id="67">Templates</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#rwSize.t,expr"
     title="rwSize*(ctx: expr): expr"><wbr />rw<wbr />Size</a></li>
@@ -1399,31 +1399,31 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
 </dd>
 <dt id="RWops"><a name="RWops"></a><pre><span class="Identifier">RWops</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">size</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int64</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">##  \</span>
-                                             <span class="Comment">##  ``Return`` the size of the file in this rwops, or `-1` if unknown</span>
-  <span class="Identifier">seek</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">offset</span><span class="Other">:</span> <span class="Identifier">int64</span><span class="Other">;</span> <span class="Identifier">whence</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int64</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">##  \</span>
-                                                                      <span class="Comment">##  Seek to ``offset`` relative to ``whence``,</span>
-                                                                      <span class="Comment">##  one of stdio's whence values:</span>
-                                                                      <span class="Comment">##</span>
-                                                                      <span class="Comment">##  `RW_SEEK_SET`, `RW_SEEK_CUR`, `RW_SEEK_END`</span>
-                                                                      <span class="Comment">##</span>
-                                                                      <span class="Comment">##  ``Return`` the final offset in the data stream, or `-1` on error.</span>
-  <span class="Identifier">read</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">p</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">;</span> <span class="Identifier">maxnum</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">##  \</span>
-                                                                               <span class="Comment">##  Read up to ``maxnum`` objects each of size ``size`` from the data</span>
-                                                                               <span class="Comment">##  stream to the area pointed at by ``ptr``.</span>
-                                                                               <span class="Comment">##</span>
-                                                                               <span class="Comment">##  ``Return`` the number of objects read, or `0` at error or end of file.</span>
-  <span class="Identifier">write</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">p</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">;</span> <span class="Identifier">num</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">##  \</span>
-                                                                             <span class="Comment">##  Write exactly ``num`` objects each of size ``size`` from the area</span>
-                                                                             <span class="Comment">##  pointed at by ``ptr`` to data stream.</span>
-                                                                             <span class="Comment">##</span>
-                                                                             <span class="Comment">##  ``Return`` the number of objects written,</span>
-                                                                             <span class="Comment">##  or `0` at error or end of file.</span>
-  <span class="Identifier">close</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">##  \</span>
-                                             <span class="Comment">##  Close and free an allocated RWops object.</span>
-                                             <span class="Comment">##</span>
-                                             <span class="Comment">##  ``Return`` `0` if successful,</span>
-                                             <span class="Comment">##  or `-1` on write error when flushing data.</span>
+  <span class="Identifier">size</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int64</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">## \</span>
+                                             <span class="Comment">## ``Return`` the size of the file in this rwops, or `-1` if unknown</span>
+  <span class="Identifier">seek</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">offset</span><span class="Other">:</span> <span class="Identifier">int64</span><span class="Other">;</span> <span class="Identifier">whence</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int64</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">## \</span>
+                                                                      <span class="Comment">## Seek to ``offset`` relative to ``whence``,</span>
+                                                                      <span class="Comment">## one of stdio's whence values:</span>
+                                                                      <span class="Comment">## </span>
+                                                                      <span class="Comment">## `RW_SEEK_SET`, `RW_SEEK_CUR`, `RW_SEEK_END`</span>
+                                                                      <span class="Comment">## </span>
+                                                                      <span class="Comment">## ``Return`` the final offset in the data stream, or `-1` on error.</span>
+  <span class="Identifier">read</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">p</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">;</span> <span class="Identifier">maxnum</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">## \</span>
+                                                                               <span class="Comment">## Read up to ``maxnum`` objects each of size ``size`` from the data</span>
+                                                                               <span class="Comment">## stream to the area pointed at by ``ptr``.</span>
+                                                                               <span class="Comment">## </span>
+                                                                               <span class="Comment">## ``Return`` the number of objects read, or `0` at error or end of file.</span>
+  <span class="Identifier">write</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">p</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">;</span> <span class="Identifier">num</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">## \</span>
+                                                                             <span class="Comment">## Write exactly ``num`` objects each of size ``size`` from the area</span>
+                                                                             <span class="Comment">## pointed at by ``ptr`` to data stream.</span>
+                                                                             <span class="Comment">## </span>
+                                                                             <span class="Comment">## ``Return`` the number of objects written,</span>
+                                                                             <span class="Comment">## or `0` at error or end of file.</span>
+  <span class="Identifier">close</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span> <span class="Comment">## \</span>
+                                             <span class="Comment">## Close and free an allocated RWops object.</span>
+                                             <span class="Comment">## </span>
+                                             <span class="Comment">## ``Return`` `0` if successful,</span>
+                                             <span class="Comment">## or `-1` on write error when flushing data.</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">mem</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">RWopsKind</span>
 </pre></dt>
@@ -1606,8 +1606,8 @@ Seek relative to the end of data
 </dd>
 
 </dl></div>
-<div class="section" id="18">
-<h1><a class="toc-backref" href="#18">Templates</a></h1>
+<div class="section" id="17">
+<h1><a class="toc-backref" href="#17">Templates</a></h1>
 <dl class="item">
 <dt id="rwSize"><a name="rwSize.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">rwSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
 <dd>
@@ -1648,8 +1648,8 @@ Seek relative to the end of data
     <div class="row">
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
-        <br>
-        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
+        <br/>
+        <small>Made with Nim. Generated: 2016-04-01 21:48:01 UTC</small>
       </div>
     </div>
   </div>

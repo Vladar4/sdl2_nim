@@ -10,8 +10,8 @@
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module sdl_gfx_rotozoom</title>
@@ -53,7 +53,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #2d2d2d;
+  color: #666;
   background-color: rgba(252, 248, 244, 0.75); }
 
 /* Skeleton grid */
@@ -489,7 +489,7 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0 10px 0px 10px;
+  margin: 0.25em 10px 0.25em 10px;
   font-size: 14px;
   line-height: 20px;
   white-space: pre !important;
@@ -892,6 +892,10 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+ul.simple > li {
+  margin-bottom: 0.5em }
+
 ol.simple, ul.simple {
   margin-bottom: 1em; }
 
@@ -1172,19 +1176,18 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
       <li><a class="reference" href="#rotozoomSurface,Surface,cdouble,cdouble,cint"
     title="rotozoomSurface*(src: Surface; angle: cdouble; zoom: cdouble; smooth: cint): Surface"><wbr />rotozoom<wbr />Surface</a></li>
   <li><a class="reference" href="#rotozoomSurfaceXY,Surface,cdouble,cdouble,cdouble,cint"
-    title="rotozoomSurfaceXY*(src: Surface; angle: cdouble; zoomx: cdouble; zoomy: cdouble; 
+    title="rotozoomSurfaceXY*(src: Surface; angle: cdouble; zoomx: cdouble; zoomy: cdouble;
                    smooth: cint): Surface"><wbr />rotozoom<wbr />Surface<wbr />XY</a></li>
   <li><a class="reference" href="#rotozoomSurfaceSize,cint,cint,cdouble,cdouble,ptr.cint,ptr.cint"
-    title="rotozoomSurfaceSize*(width: cint; height: cint; angle: cdouble; zoom: cdouble; 
+    title="rotozoomSurfaceSize*(width: cint; height: cint; angle: cdouble; zoom: cdouble;
                      dstwidth: ptr cint; dstheight: ptr cint)"><wbr />rotozoom<wbr />Surface<wbr />Size</a></li>
   <li><a class="reference" href="#rotozoomSurfaceSizeXY,cint,cint,cdouble,cdouble,cdouble,ptr.cint,ptr.cint"
-    title="rotozoomSurfaceSizeXY*(width: cint; height: cint; angle: cdouble; 
-                       zoomx: cdouble; zoomy: cdouble; dstwidth: ptr cint; 
-                       dstheight: ptr cint)"><wbr />rotozoom<wbr />Surface<wbr />Size<wbr />XY</a></li>
+    title="rotozoomSurfaceSizeXY*(width: cint; height: cint; angle: cdouble; zoomx: cdouble;
+                       zoomy: cdouble; dstwidth: ptr cint; dstheight: ptr cint)"><wbr />rotozoom<wbr />Surface<wbr />Size<wbr />XY</a></li>
   <li><a class="reference" href="#zoomSurface,Surface,cdouble,cdouble,cint"
     title="zoomSurface*(src: Surface; zoomx: cdouble; zoomy: cdouble; smooth: cint): Surface"><wbr />zoom<wbr />Surface</a></li>
   <li><a class="reference" href="#zoomSurfaceSize,cint,cint,cdouble,cdouble,ptr.cint,ptr.cint"
-    title="zoomSurfaceSize*(width: cint; height: cint; zoomx: cdouble; zoomy: cdouble; 
+    title="zoomSurfaceSize*(width: cint; height: cint; zoomx: cdouble; zoomy: cdouble;
                  dstwidth: ptr cint; dstheight: ptr cint)"><wbr />zoom<wbr />Surface<wbr />Size</a></li>
   <li><a class="reference" href="#shrinkSurface,Surface,cint,cint"
     title="shrinkSurface*(src: Surface; factorx: cint; factory: cint): Surface"><wbr />shrink<wbr />Surface</a></li>
@@ -1229,24 +1232,23 @@ Enable anti-aliasing (smoothing).
 Rotates and zooms a surface and optional anti-aliasing.
 
 </dd>
-<dt id="rotozoomSurfaceXY"><a name="rotozoomSurfaceXY,Surface,cdouble,cdouble,cdouble,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rotozoomSurfaceXY</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">angle</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">zoomx</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> 
-                        <span class="Identifier">zoomy</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">smooth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;rotozoomSurfaceXY&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GFX_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="rotozoomSurfaceXY"><a name="rotozoomSurfaceXY,Surface,cdouble,cdouble,cdouble,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rotozoomSurfaceXY</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">angle</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">zoomx</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">zoomy</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span>
+                       <span class="Identifier">smooth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;rotozoomSurfaceXY&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GFX_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Rotates and zooms a surface with different horizontal and vertical scaling factors and optional anti-aliasing.
 
 </dd>
-<dt id="rotozoomSurfaceSize"><a name="rotozoomSurfaceSize,cint,cint,cdouble,cdouble,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rotozoomSurfaceSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">angle</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> 
-                          <span class="Identifier">zoom</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">dstwidth</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dstheight</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;rotozoomSurfaceSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GFX_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="rotozoomSurfaceSize"><a name="rotozoomSurfaceSize,cint,cint,cdouble,cdouble,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rotozoomSurfaceSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">angle</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">zoom</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span>
+                         <span class="Identifier">dstwidth</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dstheight</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;rotozoomSurfaceSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GFX_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <tt class="docutils literal"><span class="pre">Return</span></tt> the size of the resulting target surface for a <tt class="docutils literal"><span class="pre">rotozoomSurface()</span></tt> call.
 
 </dd>
-<dt id="rotozoomSurfaceSizeXY"><a name="rotozoomSurfaceSizeXY,cint,cint,cdouble,cdouble,cdouble,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rotozoomSurfaceSizeXY</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">angle</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> 
-                            <span class="Identifier">zoomx</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">zoomy</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">dstwidth</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> 
-                            <span class="Identifier">dstheight</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;rotozoomSurfaceSizeXY&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GFX_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="rotozoomSurfaceSizeXY"><a name="rotozoomSurfaceSizeXY,cint,cint,cdouble,cdouble,cdouble,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rotozoomSurfaceSizeXY</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">angle</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">zoomx</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span>
+                           <span class="Identifier">zoomy</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">dstwidth</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dstheight</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span>
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;rotozoomSurfaceSizeXY&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GFX_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 <tt class="docutils literal"><span class="pre">Return</span></tt> the size of the resulting target surface for a <tt class="docutils literal"><span class="pre">rotozoomSurfaceXY()</span></tt> call.
 
@@ -1257,21 +1259,21 @@ Rotates and zooms a surface with different horizontal and vertical scaling facto
 Zoom a surface by independent horizontal and vertical factors with optional smoothing.
 
 </dd>
-<dt id="zoomSurfaceSize"><a name="zoomSurfaceSize,cint,cint,cdouble,cdouble,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">zoomSurfaceSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">zoomx</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">zoomy</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> 
-                      <span class="Identifier">dstwidth</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dstheight</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> 
+<dt id="zoomSurfaceSize"><a name="zoomSurfaceSize,cint,cint,cdouble,cdouble,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">zoomSurfaceSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">zoomx</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">zoomy</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span>
+                     <span class="Identifier">dstwidth</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dstheight</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;zoomSurfaceSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GFX_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Calculates the size of the target surface for a <tt class="docutils literal"><span class="pre">zoomSurface()</span></tt> call.
 
 </dd>
-<dt id="shrinkSurface"><a name="shrinkSurface,Surface,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">shrinkSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">factorx</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">factory</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;shrinkSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GFX_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="shrinkSurface"><a name="shrinkSurface,Surface,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">shrinkSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">factorx</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">factory</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;shrinkSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GFX_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Shrink a surface by an integer ratio using averaging.
 
 </dd>
-<dt id="rotateSurface90Degrees"><a name="rotateSurface90Degrees,Surface,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rotateSurface90Degrees</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">numClockwiseTurns</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;rotateSurface90Degrees&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GFX_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="rotateSurface90Degrees"><a name="rotateSurface90Degrees,Surface,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rotateSurface90Degrees</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">numClockwiseTurns</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;rotateSurface90Degrees&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GFX_LIB</span><span class="Other">.}</span></pre></dt>
 <dd>
 Rotates a 32 bit surface in increments of 90 degrees.
 
@@ -1285,8 +1287,8 @@ Rotates a 32 bit surface in increments of 90 degrees.
     <div class="row">
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
-        <br>
-        <small>Made with Nim. Generated: 2015-10-04 22:57:31 UTC</small>
+        <br/>
+        <small>Made with Nim. Generated: 2016-04-01 21:47:08 UTC</small>
       </div>
     </div>
   </div>

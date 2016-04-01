@@ -10,8 +10,8 @@
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module events</title>
@@ -1159,278 +1159,278 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#EventKind"
     title="EventKind* = enum
-  FIRSTEVENT = 0,               ##  Unused (do not remove)
-  QUIT = 0x00000100,            ##  User-requested quit
-  APP_TERMINATING, ##  \
-                  ##  The application is being terminated by the OS
-                  ##
-                  ##  Called on iOS in ``applicationWillTerminate()``
-                  ##
-                  ##  Called on Android in ``onDestroy()``
-  APP_LOWMEMORY, ##  \
-                ##  The application is low on memory, free memory if possible.
-                ##
-                ##  Called on iOS in ``applicationDidReceiveMemoryWarning()``
-                ##
-                ##  Called on Android in ``onLowMemory()``
-  APP_WILLENTERBACKGROUND, ##  \
-                          ##  The application is about to enter the background
-                          ##
-                          ##  Called on iOS in ``applicationWillResignActive()``
-                          ##
-                          ##  Called on Android in ``onPause()``
-  APP_DIDENTERBACKGROUND, ##  \
-                         ##  The application did enter the background
-                         ##  and may not get CPU for some time
-                         ##
-                         ##  Called on iOS in ``applicationDidEnterBackground()``
-                         ##
-                         ##  Called on Android in ``onPause()``
-  APP_WILLENTERFOREGROUND, ##  \
-                          ##  The application is about to enter the foreground
-                          ##
-                          ##  Called on iOS in ``applicationWillEnterForeground()``
-                          ##
-                          ##  Called on Android in ``onResume()``
-  APP_DIDENTERFOREGROUND, ##  \
-                         ##  The application is now interactive
-                         ##
-                         ##  Called on iOS in ``applicationDidBecomeActive()``
-                         ##
-                         ##  Called on Android ``in onResume()``
-  WINDOWEVENT = 0x00000200,     ##  Window state change
-  SYSWMEVENT,                 ##  System specific event
-  KEYDOWN = 0x00000300,         ##  Key pressed
-  KEYUP,                      ##  Key released
-  TEXTEDITING,                ##  Keyboard text editing (composition)
-  TEXTINPUT,                  ##  Keyboard text input
-  KEYMAPCHANGED,              ##  Keymap changed due to a system event such as \
-                ##  an input language or keyboard layout change.
-  MOUSEMOTION = 0x00000400,     ##  Mouse moved
-  MOUSEBUTTONDOWN,            ##  Mouse button pressed
-  MOUSEBUTTONUP,              ##  Mouse button released
-  MOUSEWHEEL,                 ##  Mouse wheel motion
-  JOYAXISMOTION = 0x00000600,   ##  Joystick axis motion
-  JOYBALLMOTION,              ##  Joystick trackball motion
-  JOYHATMOTION,               ##  Joystick hat position change
-  JOYBUTTONDOWN,              ##  Joystick button pressed
-  JOYBUTTONUP,                ##  Joystick button released
-  JOYDEVICEADDED,             ##  A new joystick has been inserted into the system
+  FIRSTEVENT = 0,               ## Unused (do not remove)
+  QUIT = 0x00000100,            ## User-requested quit
+  APP_TERMINATING,            ## \
+                  ## The application is being terminated by the OS
+                  ## 
+                  ## Called on iOS in ``applicationWillTerminate()``
+                  ## 
+                  ## Called on Android in ``onDestroy()``
+  APP_LOWMEMORY, ## \
+                ## The application is low on memory, free memory if possible.
+                ## 
+                ## Called on iOS in ``applicationDidReceiveMemoryWarning()``
+                ## 
+                ## Called on Android in ``onLowMemory()``
+  APP_WILLENTERBACKGROUND,    ## \
+                          ## The application is about to enter the background
+                          ## 
+                          ## Called on iOS in ``applicationWillResignActive()``
+                          ## 
+                          ## Called on Android in ``onPause()``
+  APP_DIDENTERBACKGROUND, ## \
+                         ## The application did enter the background
+                         ## and may not get CPU for some time
+                         ## 
+                         ## Called on iOS in ``applicationDidEnterBackground()``
+                         ## 
+                         ## Called on Android in ``onPause()``
+  APP_WILLENTERFOREGROUND, ## \
+                          ## The application is about to enter the foreground
+                          ## 
+                          ## Called on iOS in ``applicationWillEnterForeground()``
+                          ## 
+                          ## Called on Android in ``onResume()``
+  APP_DIDENTERFOREGROUND,     ## \
+                         ## The application is now interactive
+                         ## 
+                         ## Called on iOS in ``applicationDidBecomeActive()``
+                         ## 
+                         ## Called on Android ``in onResume()``
+  WINDOWEVENT = 0x00000200,     ## Window state change
+  SYSWMEVENT,                 ## System specific event
+  KEYDOWN = 0x00000300,         ## Key pressed
+  KEYUP,                      ## Key released
+  TEXTEDITING,                ## Keyboard text editing (composition)
+  TEXTINPUT,                  ## Keyboard text input
+  KEYMAPCHANGED,              ## Keymap changed due to a system event such as \
+                ## an input language or keyboard layout change.
+  MOUSEMOTION = 0x00000400,     ## Mouse moved
+  MOUSEBUTTONDOWN,            ## Mouse button pressed
+  MOUSEBUTTONUP,              ## Mouse button released
+  MOUSEWHEEL,                 ## Mouse wheel motion
+  JOYAXISMOTION = 0x00000600,   ## Joystick axis motion
+  JOYBALLMOTION,              ## Joystick trackball motion
+  JOYHATMOTION,               ## Joystick hat position change
+  JOYBUTTONDOWN,              ## Joystick button pressed
+  JOYBUTTONUP,                ## Joystick button released
+  JOYDEVICEADDED,             ## A new joystick has been inserted into the system
   JOYDEVICEREMOVED,           ## An opened joystick has been removed
-  CONTROLLERAXISMOTION = 0x00000650, ##  Game controller axis motion
-  CONTROLLERBUTTONDOWN,       ##  Game controller button pressed
-  CONTROLLERBUTTONUP,         ##  Game controller button released
-  CONTROLLERDEVICEADDED,      ##  \
-                        ##  A new Game controller has been inserted into the system
-  CONTROLLERDEVICEREMOVED,    ##  An opened Game controller has been removed
-  CONTROLLERDEVICEREMAPPED,   ##  The controller mapping was updated
+  CONTROLLERAXISMOTION = 0x00000650, ## Game controller axis motion
+  CONTROLLERBUTTONDOWN,       ## Game controller button pressed
+  CONTROLLERBUTTONUP,         ## Game controller button released
+  CONTROLLERDEVICEADDED,      ## \
+                        ## A new Game controller has been inserted into the system
+  CONTROLLERDEVICEREMOVED,    ## An opened Game controller has been removed
+  CONTROLLERDEVICEREMAPPED,   ## The controller mapping was updated
   FINGERDOWN = 0x00000700, FINGERUP, FINGERMOTION, DOLLARGESTURE = 0x00000800,
-  DOLLARRECORD, MULTIGESTURE, CLIPBOARDUPDATE = 0x00000900, ##  The clipboard changed
-  DROPFILE = 0x00001000,        ##  The system requests a file open
-  AUDIODEVICEADDED = 0x00001100, ##  A new audio device is available
-  AUDIODEVICEREMOVED,         ##  An audio device has been removed
-  RENDER_TARGETS_RESET = 0x00002000, ##  The render targets have been reset \
-                                  ##  and their contents need to be updated
-  RENDER_DEVICE_RESET, ##  The device has beed reset and all textures need \
+  DOLLARRECORD, MULTIGESTURE, CLIPBOARDUPDATE = 0x00000900, ## The clipboard changed
+  DROPFILE = 0x00001000,        ## The system requests a file open
+  AUDIODEVICEADDED = 0x00001100, ## A new audio device is available
+  AUDIODEVICEREMOVED,         ## An audio device has been removed
+  RENDER_TARGETS_RESET = 0x00002000, ## The render targets have been reset \
+                                  ## and their contents need to be updated
+  RENDER_DEVICE_RESET,        ## The device has beed reset and all textures need \
                       ## to be recreated
-  USEREVENT = 0x00008000, ##  \
-                       ##  Events `USEREVENT` through `LASTEVENT` are for your use,
-                       ##  and should be allocated with ``registerEvents()``
-  LASTEVENT = 0x0000FFFF        ##  \
-                      ##  This last event is only for bounding internal arrays"><wbr />Event<wbr />Kind</a></li>
+  USEREVENT = 0x00008000, ## \
+                       ## Events `USEREVENT` through `LASTEVENT` are for your use,
+                       ## and should be allocated with ``registerEvents()``
+  LASTEVENT = 0x0000FFFF        ## \
+                      ## This last event is only for bounding internal arrays"><wbr />Event<wbr />Kind</a></li>
   <li><a class="reference" href="#CommonEventObj"
     title="CommonEventObj* = object
   kind*: EventKind
   timestamp*: uint32"><wbr />Common<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#WindowEventObj"
     title="WindowEventObj* = object
-  kind*: EventKind             ##  `WINDOWEVENT`
+  kind*: EventKind             ## `WINDOWEVENT`
   timestamp*: uint32
-  windowID*: uint32            ##  The associated window
-  event*: WindowEventID        ##  WindowEventID
+  windowID*: uint32            ## The associated window
+  event*: WindowEventID        ## WindowEventID
   padding1*: uint8
   padding2*: uint8
   padding3*: uint8
-  data1*: int32                ##  event dependent data
-  data2*: int32                ##  event dependent data"><wbr />Window<wbr />Event<wbr />Obj</a></li>
+  data1*: int32                ## event dependent data
+  data2*: int32                ## event dependent data"><wbr />Window<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#KeyboardEventObj"
     title="KeyboardEventObj* = object
-  kind*: EventKind             ##  `KEYDOWN` or `KEYUP`
+  kind*: EventKind             ## `KEYDOWN` or `KEYUP`
   timestamp*: uint32
-  windowID*: uint32            ##  The window with keyboard focus, if any
-  state*: uint8                ##  `PRESSED` or `RELEASED`
-  repeat*: uint8               ##  Non-zero if this is a key repeat
+  windowID*: uint32            ## The window with keyboard focus, if any
+  state*: uint8                ## `PRESSED` or `RELEASED`
+  repeat*: uint8               ## Non-zero if this is a key repeat
   padding2*: uint8
   padding3*: uint8
-  keysym*: Keysym              ##  The key that was pressed or released"><wbr />Keyboard<wbr />Event<wbr />Obj</a></li>
+  keysym*: Keysym              ## The key that was pressed or released"><wbr />Keyboard<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#TextEditingEventObj"
     title="TextEditingEventObj* = object
-  kind*: EventKind             ##  `TEXTEDITING`
+  kind*: EventKind             ## `TEXTEDITING`
   timestamp*: uint32
-  windowID*: uint32            ##  The window with keyboard focus, if any
-  text*: array[TEXTEDITINGEVENT_TEXT_SIZE, char] ##  The editing text
-  start*: int32                ##  The start cursor of selected editing text
-  length*: int32               ##  The length of selected editing text"><wbr />Text<wbr />Editing<wbr />Event<wbr />Obj</a></li>
+  windowID*: uint32            ## The window with keyboard focus, if any
+  text*: array[TEXTEDITINGEVENT_TEXT_SIZE, char] ## The editing text
+  start*: int32                ## The start cursor of selected editing text
+  length*: int32               ## The length of selected editing text"><wbr />Text<wbr />Editing<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#TextInputEventObj"
     title="TextInputEventObj* = object
-  kind*: EventKind             ##  `TEXTINPUT`
+  kind*: EventKind             ## `TEXTINPUT`
   timestamp*: uint32
-  windowID*: uint32            ##  The window with keyboard focus, if any
-  text*: array[TEXTINPUTEVENT_TEXT_SIZE, char] ##  The input text"><wbr />Text<wbr />Input<wbr />Event<wbr />Obj</a></li>
+  windowID*: uint32            ## The window with keyboard focus, if any
+  text*: array[TEXTINPUTEVENT_TEXT_SIZE, char] ## The input text"><wbr />Text<wbr />Input<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#MouseMotionEventObj"
     title="MouseMotionEventObj* = object
-  kind*: EventKind             ##  `MOUSEMOTION`
+  kind*: EventKind             ## `MOUSEMOTION`
   timestamp*: uint32
-  windowID*: uint32            ##  The window with mouse focus, if any
-  which*: uint32               ##  The mouse instance id, or `TOUCH_MOUSEID`
-  state*: uint32               ##  The current button state
-  x*: int32                    ##  X coordinate, relative to window
-  y*: int32                    ##  Y coordinate, relative to window
-  xrel*: int32                 ##  The relative motion in the X direction
-  yrel*: int32                 ##  The relative motion in the Y direction"><wbr />Mouse<wbr />Motion<wbr />Event<wbr />Obj</a></li>
+  windowID*: uint32            ## The window with mouse focus, if any
+  which*: uint32               ## The mouse instance id, or `TOUCH_MOUSEID`
+  state*: uint32               ## The current button state
+  x*: int32                    ## X coordinate, relative to window
+  y*: int32                    ## Y coordinate, relative to window
+  xrel*: int32                 ## The relative motion in the X direction
+  yrel*: int32                 ## The relative motion in the Y direction"><wbr />Mouse<wbr />Motion<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#MouseButtonEventObj"
     title="MouseButtonEventObj* = object
-  kind*: EventKind             ##  `MOUSEBUTTONDOWN` or `MOUSEBUTTONUP`
+  kind*: EventKind             ## `MOUSEBUTTONDOWN` or `MOUSEBUTTONUP`
   timestamp*: uint32
-  windowID*: uint32            ##  The window with mouse focus, if any
-  which*: uint32               ##  The mouse instance id, or `TOUCH_MOUSEID`
-  button*: uint8               ##  The mouse button index
-  state*: uint8                ##  `PRESSED` or `RELEASED`
-  clicks*: uint8               ##  `1` for single-click, `2` for double-click, etc.
+  windowID*: uint32            ## The window with mouse focus, if any
+  which*: uint32               ## The mouse instance id, or `TOUCH_MOUSEID`
+  button*: uint8               ## The mouse button index
+  state*: uint8                ## `PRESSED` or `RELEASED`
+  clicks*: uint8               ## `1` for single-click, `2` for double-click, etc.
   padding1*: uint8
-  x*: int32                    ##  X coordinate, relative to window
-  y*: int32                    ##  Y coordinate, relative to window"><wbr />Mouse<wbr />Button<wbr />Event<wbr />Obj</a></li>
+  x*: int32                    ## X coordinate, relative to window
+  y*: int32                    ## Y coordinate, relative to window"><wbr />Mouse<wbr />Button<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#MouseWheelEventObj"
     title="MouseWheelEventObj* = object
-  kind*: EventKind             ##  `MOUSEWHEEL`
+  kind*: EventKind             ## `MOUSEWHEEL`
   timestamp*: uint32
-  windowID*: uint32            ##  The window with mouse focus, if any
-  which*: uint32               ##  The mouse instance id, or `TOUCH_MOUSEID`
-  x*: int32                    ##  \
-          ##  The amount scrolled horizontally,
-          ##  positive to the right and negative to the left
-  y*: int32                    ##  \
-          ##  The amount scrolled vertically,
-          ##  positive away from the user and negative toward the user
-  direction*: uint32 ##  \
-                   ##  Set to one of the `MOUSEWHEEL_*`.
-                   ##  When `MOUSEWHEEL_FLIPPED` the values in X and Y will be opposite.
-                   ##  Multiply by `-1` to change them back."><wbr />Mouse<wbr />Wheel<wbr />Event<wbr />Obj</a></li>
+  windowID*: uint32            ## The window with mouse focus, if any
+  which*: uint32               ## The mouse instance id, or `TOUCH_MOUSEID`
+  x*: int32                    ## \
+          ## The amount scrolled horizontally,
+          ## positive to the right and negative to the left
+  y*: int32                    ## \
+          ## The amount scrolled vertically,
+          ## positive away from the user and negative toward the user
+  direction*: uint32 ## \
+                   ## Set to one of the `MOUSEWHEEL_*`.
+                   ## When `MOUSEWHEEL_FLIPPED` the values in X and Y will be opposite.
+                   ## Multiply by `-1` to change them back."><wbr />Mouse<wbr />Wheel<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#JoyAxisEventObj"
     title="JoyAxisEventObj* = object
-  kind*: EventKind             ##  `JOYAXISMOTION`
+  kind*: EventKind             ## `JOYAXISMOTION`
   timestamp*: uint32
-  which*: JoystickID           ##  The joystick instance id
-  axis*: uint8                 ##  The joystick axis index
+  which*: JoystickID           ## The joystick instance id
+  axis*: uint8                 ## The joystick axis index
   padding1*: uint8
   padding2*: uint8
   padding3*: uint8
-  value*: int16                ##  The axis value (range: `-32768` to `32767`)
+  value*: int16                ## The axis value (range: `-32768` to `32767`)
   padding4*: uint16"><wbr />Joy<wbr />Axis<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#JoyBallEventObj"
     title="JoyBallEventObj* = object
-  kind*: EventKind             ##  `JOYBALLMOTION`
+  kind*: EventKind             ## `JOYBALLMOTION`
   timestamp*: uint32
-  which*: JoystickID           ##  The joystick instance id
-  ball*: uint8                 ##  The joystick trackball index
+  which*: JoystickID           ## The joystick instance id
+  ball*: uint8                 ## The joystick trackball index
   padding1*: uint8
   padding2*: uint8
   padding3*: uint8
-  xrel*: int16                 ##  The relative motion in the X direction
-  yrel*: int16                 ##  The relative motion in the Y direction"><wbr />Joy<wbr />Ball<wbr />Event<wbr />Obj</a></li>
+  xrel*: int16                 ## The relative motion in the X direction
+  yrel*: int16                 ## The relative motion in the Y direction"><wbr />Joy<wbr />Ball<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#JoyHatEventObj"
     title="JoyHatEventObj* = object
-  kind*: EventKind             ##  `JOYHATMOTION`
+  kind*: EventKind             ## `JOYHATMOTION`
   timestamp*: uint32
-  which*: JoystickID           ##  The joystick instance id
-  hat*: uint8                  ##  The joystick hat index
-  value*: uint8 ##  \
-              ##  The hat position value.
-              ##
-              ##  See also:
-              ##
-              ##  `HAT_LEFTUP`, `HAT_UP`, `SDL_HAT_RIGHTUP`, `HAT_LEFT`, `HAT_CENTERED`,
-              ##  `HAT_RIGHT`, `HAT_LEFTDOWN`, `HAT_DOWN`, `HAT_RIGHTDOWN`
-              ##
-              ##  Note that zero means the POV is centered.
+  which*: JoystickID           ## The joystick instance id
+  hat*: uint8                  ## The joystick hat index
+  value*: uint8 ## \
+              ## The hat position value.
+              ## 
+              ## See also:
+              ## 
+              ## `HAT_LEFTUP`, `HAT_UP`, `SDL_HAT_RIGHTUP`, `HAT_LEFT`, `HAT_CENTERED`,
+              ## `HAT_RIGHT`, `HAT_LEFTDOWN`, `HAT_DOWN`, `HAT_RIGHTDOWN`
+              ## 
+              ## Note that zero means the POV is centered.
   padding1*: uint8
   padding2*: uint8"><wbr />Joy<wbr />Hat<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#JoyButtonEventObj"
     title="JoyButtonEventObj* = object
-  kind*: EventKind             ##  `JOYBUTTONDOWN` or `JOYBUTTONUP`
+  kind*: EventKind             ## `JOYBUTTONDOWN` or `JOYBUTTONUP`
   timestamp*: uint32
-  which*: JoystickID           ##  The joystick instance id
-  button*: uint8               ##  The joystick button index
-  state*: uint8                ##  `PRESSED` or `RELEASED`
+  which*: JoystickID           ## The joystick instance id
+  button*: uint8               ## The joystick button index
+  state*: uint8                ## `PRESSED` or `RELEASED`
   padding1*: uint8
   padding2*: uint8"><wbr />Joy<wbr />Button<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#JoyDeviceEventObj"
     title="JoyDeviceEventObj* = object
-  kind*: EventKind             ##  `JOYDEVICEADDED` or `JOYDEVICEREMOVED`
+  kind*: EventKind             ## `JOYDEVICEADDED` or `JOYDEVICEREMOVED`
   timestamp*: uint32
-  which*: int32 ##  \
-              ##  The joystick device index for the `ADDED` event,
-              ##  instance id for the `REMOVED` event"><wbr />Joy<wbr />Device<wbr />Event<wbr />Obj</a></li>
+  which*: int32                ## \
+              ## The joystick device index for the `ADDED` event,
+              ## instance id for the `REMOVED` event"><wbr />Joy<wbr />Device<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#ControllerAxisEventObj"
     title="ControllerAxisEventObj* = object
-  kind*: EventKind             ##  `CONTROLLERAXISMOTION`
+  kind*: EventKind             ## `CONTROLLERAXISMOTION`
   timestamp*: uint32
-  which*: JoystickID           ##  The joystick instance id
-  axis*: uint8                 ##  The controller axis (``GameControllerAxis``)
+  which*: JoystickID           ## The joystick instance id
+  axis*: uint8                 ## The controller axis (``GameControllerAxis``)
   padding1*: uint8
   padding2*: uint8
   padding3*: uint8
-  value*: int16                ##  The axis value (range: `-32768` to `32767`)
+  value*: int16                ## The axis value (range: `-32768` to `32767`)
   padding4*: uint16"><wbr />Controller<wbr />Axis<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#ControllerButtonEventObj"
     title="ControllerButtonEventObj* = object
-  kind*: EventKind             ##  `CONTROLLERBUTTONDOWN` or `CONTROLLERBUTTONUP`
+  kind*: EventKind             ## `CONTROLLERBUTTONDOWN` or `CONTROLLERBUTTONUP`
   timestamp*: uint32
-  which*: JoystickID           ##  The joystick instance id
-  button*: uint8               ##  The controller button (``GameControllerButton``)
-  state*: uint8                ##  `PRESSED` or `RELEASED`
+  which*: JoystickID           ## The joystick instance id
+  button*: uint8               ## The controller button (``GameControllerButton``)
+  state*: uint8                ## `PRESSED` or `RELEASED`
   padding1*: uint8
   padding2*: uint8"><wbr />Controller<wbr />Button<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#ControllerDeviceEventObj"
     title="ControllerDeviceEventObj* = object
-  kind*: EventKind             ##  \
-                 ##  `CONTROLLERDEVICEADDED`,
-                 ##  `CONTROLLERDEVICEREMOVED, or
-                 ##  `CONTROLLERDEVICEREMAPPED`
+  kind*: EventKind             ## \
+                 ## `CONTROLLERDEVICEADDED`,
+                 ## `CONTROLLERDEVICEREMOVED, or
+                 ## `CONTROLLERDEVICEREMAPPED`
   timestamp*: uint32
-  which*: int32 ##  \
-              ##  The joystick device index for the `ADDED` event,
-              ##  instance id for the `REMOVED` or `REMAPPED` event"><wbr />Controller<wbr />Device<wbr />Event<wbr />Obj</a></li>
+  which*: int32                ## \
+              ## The joystick device index for the `ADDED` event,
+              ## instance id for the `REMOVED` or `REMAPPED` event"><wbr />Controller<wbr />Device<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#AudioDeviceEventObj"
     title="AudioDeviceEventObj* = object
-  kind*: EventKind             ##  `AUDIODEVICEADDED`, or `AUDIODEVICEREMOVED`
+  kind*: EventKind             ## `AUDIODEVICEADDED`, or `AUDIODEVICEREMOVED`
   timestamp*: uint32
-  which*: uint32 ##  \
-               ##  The audio device index for the `ADDED` event (valid until next
-               ##  ``getNumAudioDevices()`` call),
-               ##  ``AudioDeviceID`` for the `REMOVED` event.
-  iscapture*: uint8            ##  \
-                  ##  `0` if an output device,
-                  ##  non-zero if a capture device.
+  which*: uint32 ## \
+               ## The audio device index for the `ADDED` event (valid until next
+               ## ``getNumAudioDevices()`` call),
+               ## ``AudioDeviceID`` for the `REMOVED` event.
+  iscapture*: uint8            ## \
+                  ## `0` if an output device,
+                  ## non-zero if a capture device.
   padding1*: uint8
   padding2*: uint8
   padding3*: uint8"><wbr />Audio<wbr />Device<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#TouchFingerEventObj"
     title="TouchFingerEventObj* = object
-  kind*: EventKind             ##  `FINGERMOTION` or `FINGERDOWN` or `FINGERUP`
+  kind*: EventKind             ## `FINGERMOTION` or `FINGERDOWN` or `FINGERUP`
   timestamp*: uint32
-  touchId*: TouchID            ##  The touch device id
+  touchId*: TouchID            ## The touch device id
   fingerId*: FingerID
-  x*: cfloat                   ##  Normalized in the range 0...1
-  y*: cfloat                   ##  Normalized in the range 0...1
-  dx*: cfloat                  ##  Normalized in the range -1...1
-  dy*: cfloat                  ##  Normalized in the range -1...1
-  pressure*: cfloat            ##  Normalized in the range 0...1"><wbr />Touch<wbr />Finger<wbr />Event<wbr />Obj</a></li>
+  x*: cfloat                   ## Normalized in the range 0...1
+  y*: cfloat                   ## Normalized in the range 0...1
+  dx*: cfloat                  ## Normalized in the range -1...1
+  dy*: cfloat                  ## Normalized in the range -1...1
+  pressure*: cfloat            ## Normalized in the range 0...1"><wbr />Touch<wbr />Finger<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#MultiGestureEventObj"
     title="MultiGestureEventObj* = object
-  kind*: EventKind             ##  `MULTIGESTURE`
+  kind*: EventKind             ## `MULTIGESTURE`
   timestamp*: uint32
-  touchId*: TouchID            ##  The touch device index
+  touchId*: TouchID            ## The touch device index
   dTheta*: cfloat
   dDist*: cfloat
   x*: cfloat
@@ -1439,76 +1439,76 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   padding*: uint16"><wbr />Multi<wbr />Gesture<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#DollarGestureEventObj"
     title="DollarGestureEventObj* = object
-  kind*: EventKind             ##  `DOLLARGESTURE` or `DOLLARRECORD`
+  kind*: EventKind             ## `DOLLARGESTURE` or `DOLLARRECORD`
   timestamp*: uint32
-  touchId*: TouchID            ##  The touch device id
+  touchId*: TouchID            ## The touch device id
   gestureId*: GestureID
   numFingers*: uint32
   error*: cfloat
-  x*: cfloat                   ##  Normalized center of gesture
-  y*: cfloat                   ##  Normalized center of gesture"><wbr />Dollar<wbr />Gesture<wbr />Event<wbr />Obj</a></li>
+  x*: cfloat                   ## Normalized center of gesture
+  y*: cfloat                   ## Normalized center of gesture"><wbr />Dollar<wbr />Gesture<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#DropEventObj"
     title="DropEventObj* = object
-  kind*: EventKind             ##  `DROPFILE`
+  kind*: EventKind             ## `DROPFILE`
   timestamp*: uint32
-  file*: cstring               ##  The file name, which should be freed with ``free()`"><wbr />Drop<wbr />Event<wbr />Obj</a></li>
+  file*: cstring               ## The file name, which should be freed with ``free()`"><wbr />Drop<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#QuitEventObj"
     title="QuitEventObj* = object
   kind*: EventKind             ## `QUIT`
   timestamp*: uint32"><wbr />Quit<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#OSEventObj"
     title="OSEventObj* = object
-  kind*: EventKind             ##  `QUIT`
+  kind*: EventKind             ## `QUIT`
   timestamp*: uint32"><wbr />OSEvent<wbr />Obj</a></li>
   <li><a class="reference" href="#UserEventObj"
     title="UserEventObj* = object
-  kind*: EventKind             ##  `USEREVENT` through `LASTEVENT-1`
+  kind*: EventKind             ## `USEREVENT` through `LASTEVENT-1`
   timestamp*: uint32
-  windowID*: uint32            ##  The associated window if any
-  code*: int32                 ##  User defined event code
-  data1*: pointer              ##  User defined data pointer
-  data2*: pointer              ##  User defined data pointer"><wbr />User<wbr />Event<wbr />Obj</a></li>
+  windowID*: uint32            ## The associated window if any
+  code*: int32                 ## User defined event code
+  data1*: pointer              ## User defined data pointer
+  data2*: pointer              ## User defined data pointer"><wbr />User<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#SysWMmsg"
     title="SysWMmsg* = pointer"><wbr />Sys<wbr />WMmsg</a></li>
   <li><a class="reference" href="#SysWMEventObj"
     title="SysWMEventObj* = object
-  kind*: EventKind             ##  `SYSWMEVENT`
+  kind*: EventKind             ## `SYSWMEVENT`
   timestamp*: uint32
-  msg*: SysWMmsg               ##  driver dependent data, defined in ``syswm.nim``"><wbr />Sys<wbr />WMEvent<wbr />Obj</a></li>
+  msg*: SysWMmsg               ## driver dependent data, defined in ``syswm.nim``"><wbr />Sys<wbr />WMEvent<wbr />Obj</a></li>
   <li><a class="reference" href="#Event"
     title="Event* = object
   kind*: EventKind             ## Event type, shared with all events
-  common*: CommonEventObj      ##  Common event data
-  window*: WindowEventObj      ##  Window event data
-  key*: KeyboardEventObj       ##  Keyboard event data
-  edit*: TextEditingEventObj   ##  Text editing event data
-  text*: TextInputEventObj     ##  Text input event data
-  motion*: MouseMotionEventObj ##  Mouse motion event data
-  button*: MouseButtonEventObj ##  Mouse button event data
-  wheel*: MouseWheelEventObj   ##  Mouse wheel event data
-  jaxis*: JoyAxisEventObj      ##  Joystick axis event data
-  jball*: JoyBallEventObj      ##  Joystick ball event data
-  jhat*: JoyHatEventObj        ##  Joystick hat event data
-  jbutton*: JoyButtonEventObj  ##  Joystick button event data
-  jdevice*: JoyDeviceEventObj  ##  Joystick device change event data
-  caxis*: ControllerAxisEventObj ##  Game Controller axis event data
-  cbutton*: ControllerButtonEventObj ##  Game Controller button event data
-  cdevice*: ControllerDeviceEventObj ##  Game Controller device event data
-  adevice*: AudioDeviceEventObj ##  Audio device event data
-  quit*: QuitEventObj          ##  Quit request event data
-  user*: UserEventObj          ##  Custom event data
-  syswm*: SysWMEventObj        ##  System dependent window event data
-  tfinger*: TouchFingerEventObj ##  Touch finger event data
-  mgesture*: MultiGestureEventObj ##  Gesture event data
-  dgesture*: DollarGestureEventObj ##  Gesture event data
-  drop*: DropEventObj          ##  Drag and drop event data
-  padding*: array[56, uint8] ##  \
-                          ##  This is necessary for ABI compatibility between Visual C++ and GCC.
-                          ##  Visual C++ will respect the push pack pragma and use 52 bytes for
-                          ##  this structure, and GCC will use the alignment of the largest
-                          ##  datatype within the union, which is 8 bytes.
-                          ##
-                          ##  So... we&#x27;ll add padding to force the size to be 56 bytes for both."><wbr />Event</a></li>
+  common*: CommonEventObj      ## Common event data
+  window*: WindowEventObj      ## Window event data
+  key*: KeyboardEventObj       ## Keyboard event data
+  edit*: TextEditingEventObj   ## Text editing event data
+  text*: TextInputEventObj     ## Text input event data
+  motion*: MouseMotionEventObj ## Mouse motion event data
+  button*: MouseButtonEventObj ## Mouse button event data
+  wheel*: MouseWheelEventObj   ## Mouse wheel event data
+  jaxis*: JoyAxisEventObj      ## Joystick axis event data
+  jball*: JoyBallEventObj      ## Joystick ball event data
+  jhat*: JoyHatEventObj        ## Joystick hat event data
+  jbutton*: JoyButtonEventObj  ## Joystick button event data
+  jdevice*: JoyDeviceEventObj  ## Joystick device change event data
+  caxis*: ControllerAxisEventObj ## Game Controller axis event data
+  cbutton*: ControllerButtonEventObj ## Game Controller button event data
+  cdevice*: ControllerDeviceEventObj ## Game Controller device event data
+  adevice*: AudioDeviceEventObj ## Audio device event data
+  quit*: QuitEventObj          ## Quit request event data
+  user*: UserEventObj          ## Custom event data
+  syswm*: SysWMEventObj        ## System dependent window event data
+  tfinger*: TouchFingerEventObj ## Touch finger event data
+  mgesture*: MultiGestureEventObj ## Gesture event data
+  dgesture*: DollarGestureEventObj ## Gesture event data
+  drop*: DropEventObj          ## Drag and drop event data
+  padding*: array[56, uint8] ## \
+                          ## This is necessary for ABI compatibility between Visual C++ and GCC.
+                          ## Visual C++ will respect the push pack pragma and use 52 bytes for
+                          ## this structure, and GCC will use the alignment of the largest
+                          ## datatype within the union, which is 8 bytes.
+                          ## 
+                          ## So... we&#x27;ll add padding to force the size to be 56 bytes for both."><wbr />Event</a></li>
   <li><a class="reference" href="#EventAction"
     title="EventAction* = enum
   ADDEVENT, PEEKEVENT, GETEVENT"><wbr />Event<wbr />Action</a></li>
@@ -1581,7 +1581,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   </ul>
 </li>
 <li>
-  <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
+  <a class="reference reference-toplevel" href="#17" id="67">Templates</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#getEventState.t,expr"
     title="getEventState*(kind: expr): expr"><wbr />get<wbr />Event<wbr />State</a></li>
@@ -1600,85 +1600,85 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
 <dt id="EventKind"><a name="EventKind"></a><pre><span class="Identifier">EventKind</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">FIRSTEVENT</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span>               <span class="Comment">##  Unused (do not remove)</span>
-  <span class="Identifier">QUIT</span> <span class="Other">=</span> <span class="DecNumber">0x00000100</span><span class="Other">,</span>            <span class="Comment">##  User-requested quit</span>
-  <span class="Identifier">APP_TERMINATING</span><span class="Other">,</span> <span class="Comment">##  \</span>
-                  <span class="Comment">##  The application is being terminated by the OS</span>
-                  <span class="Comment">##</span>
-                  <span class="Comment">##  Called on iOS in ``applicationWillTerminate()``</span>
-                  <span class="Comment">##</span>
-                  <span class="Comment">##  Called on Android in ``onDestroy()``</span>
-  <span class="Identifier">APP_LOWMEMORY</span><span class="Other">,</span> <span class="Comment">##  \</span>
-                <span class="Comment">##  The application is low on memory, free memory if possible.</span>
-                <span class="Comment">##</span>
-                <span class="Comment">##  Called on iOS in ``applicationDidReceiveMemoryWarning()``</span>
-                <span class="Comment">##</span>
-                <span class="Comment">##  Called on Android in ``onLowMemory()``</span>
-  <span class="Identifier">APP_WILLENTERBACKGROUND</span><span class="Other">,</span> <span class="Comment">##  \</span>
-                          <span class="Comment">##  The application is about to enter the background</span>
-                          <span class="Comment">##</span>
-                          <span class="Comment">##  Called on iOS in ``applicationWillResignActive()``</span>
-                          <span class="Comment">##</span>
-                          <span class="Comment">##  Called on Android in ``onPause()``</span>
-  <span class="Identifier">APP_DIDENTERBACKGROUND</span><span class="Other">,</span> <span class="Comment">##  \</span>
-                         <span class="Comment">##  The application did enter the background</span>
-                         <span class="Comment">##  and may not get CPU for some time</span>
-                         <span class="Comment">##</span>
-                         <span class="Comment">##  Called on iOS in ``applicationDidEnterBackground()``</span>
-                         <span class="Comment">##</span>
-                         <span class="Comment">##  Called on Android in ``onPause()``</span>
-  <span class="Identifier">APP_WILLENTERFOREGROUND</span><span class="Other">,</span> <span class="Comment">##  \</span>
-                          <span class="Comment">##  The application is about to enter the foreground</span>
-                          <span class="Comment">##</span>
-                          <span class="Comment">##  Called on iOS in ``applicationWillEnterForeground()``</span>
-                          <span class="Comment">##</span>
-                          <span class="Comment">##  Called on Android in ``onResume()``</span>
-  <span class="Identifier">APP_DIDENTERFOREGROUND</span><span class="Other">,</span> <span class="Comment">##  \</span>
-                         <span class="Comment">##  The application is now interactive</span>
-                         <span class="Comment">##</span>
-                         <span class="Comment">##  Called on iOS in ``applicationDidBecomeActive()``</span>
-                         <span class="Comment">##</span>
-                         <span class="Comment">##  Called on Android ``in onResume()``</span>
-  <span class="Identifier">WINDOWEVENT</span> <span class="Other">=</span> <span class="DecNumber">0x00000200</span><span class="Other">,</span>     <span class="Comment">##  Window state change</span>
-  <span class="Identifier">SYSWMEVENT</span><span class="Other">,</span>                 <span class="Comment">##  System specific event</span>
-  <span class="Identifier">KEYDOWN</span> <span class="Other">=</span> <span class="DecNumber">0x00000300</span><span class="Other">,</span>         <span class="Comment">##  Key pressed</span>
-  <span class="Identifier">KEYUP</span><span class="Other">,</span>                      <span class="Comment">##  Key released</span>
-  <span class="Identifier">TEXTEDITING</span><span class="Other">,</span>                <span class="Comment">##  Keyboard text editing (composition)</span>
-  <span class="Identifier">TEXTINPUT</span><span class="Other">,</span>                  <span class="Comment">##  Keyboard text input</span>
-  <span class="Identifier">KEYMAPCHANGED</span><span class="Other">,</span>              <span class="Comment">##  Keymap changed due to a system event such as \</span>
-                <span class="Comment">##  an input language or keyboard layout change.</span>
-  <span class="Identifier">MOUSEMOTION</span> <span class="Other">=</span> <span class="DecNumber">0x00000400</span><span class="Other">,</span>     <span class="Comment">##  Mouse moved</span>
-  <span class="Identifier">MOUSEBUTTONDOWN</span><span class="Other">,</span>            <span class="Comment">##  Mouse button pressed</span>
-  <span class="Identifier">MOUSEBUTTONUP</span><span class="Other">,</span>              <span class="Comment">##  Mouse button released</span>
-  <span class="Identifier">MOUSEWHEEL</span><span class="Other">,</span>                 <span class="Comment">##  Mouse wheel motion</span>
-  <span class="Identifier">JOYAXISMOTION</span> <span class="Other">=</span> <span class="DecNumber">0x00000600</span><span class="Other">,</span>   <span class="Comment">##  Joystick axis motion</span>
-  <span class="Identifier">JOYBALLMOTION</span><span class="Other">,</span>              <span class="Comment">##  Joystick trackball motion</span>
-  <span class="Identifier">JOYHATMOTION</span><span class="Other">,</span>               <span class="Comment">##  Joystick hat position change</span>
-  <span class="Identifier">JOYBUTTONDOWN</span><span class="Other">,</span>              <span class="Comment">##  Joystick button pressed</span>
-  <span class="Identifier">JOYBUTTONUP</span><span class="Other">,</span>                <span class="Comment">##  Joystick button released</span>
-  <span class="Identifier">JOYDEVICEADDED</span><span class="Other">,</span>             <span class="Comment">##  A new joystick has been inserted into the system</span>
+  <span class="Identifier">FIRSTEVENT</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span>               <span class="Comment">## Unused (do not remove)</span>
+  <span class="Identifier">QUIT</span> <span class="Other">=</span> <span class="DecNumber">0x00000100</span><span class="Other">,</span>            <span class="Comment">## User-requested quit</span>
+  <span class="Identifier">APP_TERMINATING</span><span class="Other">,</span>            <span class="Comment">## \</span>
+                  <span class="Comment">## The application is being terminated by the OS</span>
+                  <span class="Comment">## </span>
+                  <span class="Comment">## Called on iOS in ``applicationWillTerminate()``</span>
+                  <span class="Comment">## </span>
+                  <span class="Comment">## Called on Android in ``onDestroy()``</span>
+  <span class="Identifier">APP_LOWMEMORY</span><span class="Other">,</span> <span class="Comment">## \</span>
+                <span class="Comment">## The application is low on memory, free memory if possible.</span>
+                <span class="Comment">## </span>
+                <span class="Comment">## Called on iOS in ``applicationDidReceiveMemoryWarning()``</span>
+                <span class="Comment">## </span>
+                <span class="Comment">## Called on Android in ``onLowMemory()``</span>
+  <span class="Identifier">APP_WILLENTERBACKGROUND</span><span class="Other">,</span>    <span class="Comment">## \</span>
+                          <span class="Comment">## The application is about to enter the background</span>
+                          <span class="Comment">## </span>
+                          <span class="Comment">## Called on iOS in ``applicationWillResignActive()``</span>
+                          <span class="Comment">## </span>
+                          <span class="Comment">## Called on Android in ``onPause()``</span>
+  <span class="Identifier">APP_DIDENTERBACKGROUND</span><span class="Other">,</span> <span class="Comment">## \</span>
+                         <span class="Comment">## The application did enter the background</span>
+                         <span class="Comment">## and may not get CPU for some time</span>
+                         <span class="Comment">## </span>
+                         <span class="Comment">## Called on iOS in ``applicationDidEnterBackground()``</span>
+                         <span class="Comment">## </span>
+                         <span class="Comment">## Called on Android in ``onPause()``</span>
+  <span class="Identifier">APP_WILLENTERFOREGROUND</span><span class="Other">,</span> <span class="Comment">## \</span>
+                          <span class="Comment">## The application is about to enter the foreground</span>
+                          <span class="Comment">## </span>
+                          <span class="Comment">## Called on iOS in ``applicationWillEnterForeground()``</span>
+                          <span class="Comment">## </span>
+                          <span class="Comment">## Called on Android in ``onResume()``</span>
+  <span class="Identifier">APP_DIDENTERFOREGROUND</span><span class="Other">,</span>     <span class="Comment">## \</span>
+                         <span class="Comment">## The application is now interactive</span>
+                         <span class="Comment">## </span>
+                         <span class="Comment">## Called on iOS in ``applicationDidBecomeActive()``</span>
+                         <span class="Comment">## </span>
+                         <span class="Comment">## Called on Android ``in onResume()``</span>
+  <span class="Identifier">WINDOWEVENT</span> <span class="Other">=</span> <span class="DecNumber">0x00000200</span><span class="Other">,</span>     <span class="Comment">## Window state change</span>
+  <span class="Identifier">SYSWMEVENT</span><span class="Other">,</span>                 <span class="Comment">## System specific event</span>
+  <span class="Identifier">KEYDOWN</span> <span class="Other">=</span> <span class="DecNumber">0x00000300</span><span class="Other">,</span>         <span class="Comment">## Key pressed</span>
+  <span class="Identifier">KEYUP</span><span class="Other">,</span>                      <span class="Comment">## Key released</span>
+  <span class="Identifier">TEXTEDITING</span><span class="Other">,</span>                <span class="Comment">## Keyboard text editing (composition)</span>
+  <span class="Identifier">TEXTINPUT</span><span class="Other">,</span>                  <span class="Comment">## Keyboard text input</span>
+  <span class="Identifier">KEYMAPCHANGED</span><span class="Other">,</span>              <span class="Comment">## Keymap changed due to a system event such as \</span>
+                <span class="Comment">## an input language or keyboard layout change.</span>
+  <span class="Identifier">MOUSEMOTION</span> <span class="Other">=</span> <span class="DecNumber">0x00000400</span><span class="Other">,</span>     <span class="Comment">## Mouse moved</span>
+  <span class="Identifier">MOUSEBUTTONDOWN</span><span class="Other">,</span>            <span class="Comment">## Mouse button pressed</span>
+  <span class="Identifier">MOUSEBUTTONUP</span><span class="Other">,</span>              <span class="Comment">## Mouse button released</span>
+  <span class="Identifier">MOUSEWHEEL</span><span class="Other">,</span>                 <span class="Comment">## Mouse wheel motion</span>
+  <span class="Identifier">JOYAXISMOTION</span> <span class="Other">=</span> <span class="DecNumber">0x00000600</span><span class="Other">,</span>   <span class="Comment">## Joystick axis motion</span>
+  <span class="Identifier">JOYBALLMOTION</span><span class="Other">,</span>              <span class="Comment">## Joystick trackball motion</span>
+  <span class="Identifier">JOYHATMOTION</span><span class="Other">,</span>               <span class="Comment">## Joystick hat position change</span>
+  <span class="Identifier">JOYBUTTONDOWN</span><span class="Other">,</span>              <span class="Comment">## Joystick button pressed</span>
+  <span class="Identifier">JOYBUTTONUP</span><span class="Other">,</span>                <span class="Comment">## Joystick button released</span>
+  <span class="Identifier">JOYDEVICEADDED</span><span class="Other">,</span>             <span class="Comment">## A new joystick has been inserted into the system</span>
   <span class="Identifier">JOYDEVICEREMOVED</span><span class="Other">,</span>           <span class="Comment">## An opened joystick has been removed</span>
-  <span class="Identifier">CONTROLLERAXISMOTION</span> <span class="Other">=</span> <span class="DecNumber">0x00000650</span><span class="Other">,</span> <span class="Comment">##  Game controller axis motion</span>
-  <span class="Identifier">CONTROLLERBUTTONDOWN</span><span class="Other">,</span>       <span class="Comment">##  Game controller button pressed</span>
-  <span class="Identifier">CONTROLLERBUTTONUP</span><span class="Other">,</span>         <span class="Comment">##  Game controller button released</span>
-  <span class="Identifier">CONTROLLERDEVICEADDED</span><span class="Other">,</span>      <span class="Comment">##  \</span>
-                        <span class="Comment">##  A new Game controller has been inserted into the system</span>
-  <span class="Identifier">CONTROLLERDEVICEREMOVED</span><span class="Other">,</span>    <span class="Comment">##  An opened Game controller has been removed</span>
-  <span class="Identifier">CONTROLLERDEVICEREMAPPED</span><span class="Other">,</span>   <span class="Comment">##  The controller mapping was updated</span>
+  <span class="Identifier">CONTROLLERAXISMOTION</span> <span class="Other">=</span> <span class="DecNumber">0x00000650</span><span class="Other">,</span> <span class="Comment">## Game controller axis motion</span>
+  <span class="Identifier">CONTROLLERBUTTONDOWN</span><span class="Other">,</span>       <span class="Comment">## Game controller button pressed</span>
+  <span class="Identifier">CONTROLLERBUTTONUP</span><span class="Other">,</span>         <span class="Comment">## Game controller button released</span>
+  <span class="Identifier">CONTROLLERDEVICEADDED</span><span class="Other">,</span>      <span class="Comment">## \</span>
+                        <span class="Comment">## A new Game controller has been inserted into the system</span>
+  <span class="Identifier">CONTROLLERDEVICEREMOVED</span><span class="Other">,</span>    <span class="Comment">## An opened Game controller has been removed</span>
+  <span class="Identifier">CONTROLLERDEVICEREMAPPED</span><span class="Other">,</span>   <span class="Comment">## The controller mapping was updated</span>
   <span class="Identifier">FINGERDOWN</span> <span class="Other">=</span> <span class="DecNumber">0x00000700</span><span class="Other">,</span> <span class="Identifier">FINGERUP</span><span class="Other">,</span> <span class="Identifier">FINGERMOTION</span><span class="Other">,</span> <span class="Identifier">DOLLARGESTURE</span> <span class="Other">=</span> <span class="DecNumber">0x00000800</span><span class="Other">,</span>
-  <span class="Identifier">DOLLARRECORD</span><span class="Other">,</span> <span class="Identifier">MULTIGESTURE</span><span class="Other">,</span> <span class="Identifier">CLIPBOARDUPDATE</span> <span class="Other">=</span> <span class="DecNumber">0x00000900</span><span class="Other">,</span> <span class="Comment">##  The clipboard changed</span>
-  <span class="Identifier">DROPFILE</span> <span class="Other">=</span> <span class="DecNumber">0x00001000</span><span class="Other">,</span>        <span class="Comment">##  The system requests a file open</span>
-  <span class="Identifier">AUDIODEVICEADDED</span> <span class="Other">=</span> <span class="DecNumber">0x00001100</span><span class="Other">,</span> <span class="Comment">##  A new audio device is available</span>
-  <span class="Identifier">AUDIODEVICEREMOVED</span><span class="Other">,</span>         <span class="Comment">##  An audio device has been removed</span>
-  <span class="Identifier">RENDER_TARGETS_RESET</span> <span class="Other">=</span> <span class="DecNumber">0x00002000</span><span class="Other">,</span> <span class="Comment">##  The render targets have been reset \</span>
-                                  <span class="Comment">##  and their contents need to be updated</span>
-  <span class="Identifier">RENDER_DEVICE_RESET</span><span class="Other">,</span> <span class="Comment">##  The device has beed reset and all textures need \</span>
+  <span class="Identifier">DOLLARRECORD</span><span class="Other">,</span> <span class="Identifier">MULTIGESTURE</span><span class="Other">,</span> <span class="Identifier">CLIPBOARDUPDATE</span> <span class="Other">=</span> <span class="DecNumber">0x00000900</span><span class="Other">,</span> <span class="Comment">## The clipboard changed</span>
+  <span class="Identifier">DROPFILE</span> <span class="Other">=</span> <span class="DecNumber">0x00001000</span><span class="Other">,</span>        <span class="Comment">## The system requests a file open</span>
+  <span class="Identifier">AUDIODEVICEADDED</span> <span class="Other">=</span> <span class="DecNumber">0x00001100</span><span class="Other">,</span> <span class="Comment">## A new audio device is available</span>
+  <span class="Identifier">AUDIODEVICEREMOVED</span><span class="Other">,</span>         <span class="Comment">## An audio device has been removed</span>
+  <span class="Identifier">RENDER_TARGETS_RESET</span> <span class="Other">=</span> <span class="DecNumber">0x00002000</span><span class="Other">,</span> <span class="Comment">## The render targets have been reset \</span>
+                                  <span class="Comment">## and their contents need to be updated</span>
+  <span class="Identifier">RENDER_DEVICE_RESET</span><span class="Other">,</span>        <span class="Comment">## The device has beed reset and all textures need \</span>
                       <span class="Comment">## to be recreated</span>
-  <span class="Identifier">USEREVENT</span> <span class="Other">=</span> <span class="DecNumber">0x00008000</span><span class="Other">,</span> <span class="Comment">##  \</span>
-                       <span class="Comment">##  Events `USEREVENT` through `LASTEVENT` are for your use,</span>
-                       <span class="Comment">##  and should be allocated with ``registerEvents()``</span>
-  <span class="Identifier">LASTEVENT</span> <span class="Other">=</span> <span class="DecNumber">0x0000FFFF</span>        <span class="Comment">##  \</span>
-                      <span class="Comment">##  This last event is only for bounding internal arrays</span></pre></dt>
+  <span class="Identifier">USEREVENT</span> <span class="Other">=</span> <span class="DecNumber">0x00008000</span><span class="Other">,</span> <span class="Comment">## \</span>
+                       <span class="Comment">## Events `USEREVENT` through `LASTEVENT` are for your use,</span>
+                       <span class="Comment">## and should be allocated with ``registerEvents()``</span>
+  <span class="Identifier">LASTEVENT</span> <span class="Other">=</span> <span class="DecNumber">0x0000FFFF</span>        <span class="Comment">## \</span>
+                      <span class="Comment">## This last event is only for bounding internal arrays</span></pre></dt>
 <dd>
 
 The types of events that can be delivered.
@@ -1694,15 +1694,15 @@ Fields shared by every event
 
 </dd>
 <dt id="WindowEventObj"><a name="WindowEventObj"></a><pre><span class="Identifier">WindowEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `WINDOWEVENT`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `WINDOWEVENT`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">##  The associated window</span>
-  <span class="Identifier">event</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">WindowEventID</span>        <span class="Comment">##  WindowEventID</span>
+  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The associated window</span>
+  <span class="Identifier">event</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">WindowEventID</span>        <span class="Comment">## WindowEventID</span>
   <span class="Identifier">padding1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding3</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
-  <span class="Identifier">data1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                <span class="Comment">##  event dependent data</span>
-  <span class="Identifier">data2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                <span class="Comment">##  event dependent data</span>
+  <span class="Identifier">data1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                <span class="Comment">## event dependent data</span>
+  <span class="Identifier">data2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                <span class="Comment">## event dependent data</span>
   </pre></dt>
 <dd>
 
@@ -1710,14 +1710,14 @@ Window state change event data (<cite>event.window.*</cite>)
 
 </dd>
 <dt id="KeyboardEventObj"><a name="KeyboardEventObj"></a><pre><span class="Identifier">KeyboardEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `KEYDOWN` or `KEYUP`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `KEYDOWN` or `KEYUP`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">##  The window with keyboard focus, if any</span>
-  <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                <span class="Comment">##  `PRESSED` or `RELEASED`</span>
-  <span class="Identifier">repeat</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>               <span class="Comment">##  Non-zero if this is a key repeat</span>
+  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with keyboard focus, if any</span>
+  <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                <span class="Comment">## `PRESSED` or `RELEASED`</span>
+  <span class="Identifier">repeat</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>               <span class="Comment">## Non-zero if this is a key repeat</span>
   <span class="Identifier">padding2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding3</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
-  <span class="Identifier">keysym</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Keysym</span>              <span class="Comment">##  The key that was pressed or released</span>
+  <span class="Identifier">keysym</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Keysym</span>              <span class="Comment">## The key that was pressed or released</span>
   </pre></dt>
 <dd>
 
@@ -1725,12 +1725,12 @@ Keyboard button event structure (<cite>event.key.*</cite>)
 
 </dd>
 <dt id="TextEditingEventObj"><a name="TextEditingEventObj"></a><pre><span class="Identifier">TextEditingEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `TEXTEDITING`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `TEXTEDITING`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">##  The window with keyboard focus, if any</span>
-  <span class="Identifier">text</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">TEXTEDITINGEVENT_TEXT_SIZE</span><span class="Other">,</span> <span class="Identifier">char</span><span class="Other">]</span> <span class="Comment">##  The editing text</span>
-  <span class="Identifier">start</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                <span class="Comment">##  The start cursor of selected editing text</span>
-  <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>               <span class="Comment">##  The length of selected editing text</span>
+  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with keyboard focus, if any</span>
+  <span class="Identifier">text</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">TEXTEDITINGEVENT_TEXT_SIZE</span><span class="Other">,</span> <span class="Identifier">char</span><span class="Other">]</span> <span class="Comment">## The editing text</span>
+  <span class="Identifier">start</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                <span class="Comment">## The start cursor of selected editing text</span>
+  <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>               <span class="Comment">## The length of selected editing text</span>
   </pre></dt>
 <dd>
 
@@ -1738,10 +1738,10 @@ Keyboard text editing event structure (<cite>event.edit.*</cite>)
 
 </dd>
 <dt id="TextInputEventObj"><a name="TextInputEventObj"></a><pre><span class="Identifier">TextInputEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `TEXTINPUT`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `TEXTINPUT`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">##  The window with keyboard focus, if any</span>
-  <span class="Identifier">text</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">TEXTINPUTEVENT_TEXT_SIZE</span><span class="Other">,</span> <span class="Identifier">char</span><span class="Other">]</span> <span class="Comment">##  The input text</span>
+  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with keyboard focus, if any</span>
+  <span class="Identifier">text</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">TEXTINPUTEVENT_TEXT_SIZE</span><span class="Other">,</span> <span class="Identifier">char</span><span class="Other">]</span> <span class="Comment">## The input text</span>
   </pre></dt>
 <dd>
 
@@ -1749,15 +1749,15 @@ Keyboard text input event structure (<cite>event.text.*</cite>)
 
 </dd>
 <dt id="MouseMotionEventObj"><a name="MouseMotionEventObj"></a><pre><span class="Identifier">MouseMotionEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `MOUSEMOTION`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `MOUSEMOTION`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">##  The window with mouse focus, if any</span>
-  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>               <span class="Comment">##  The mouse instance id, or `TOUCH_MOUSEID`</span>
-  <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>               <span class="Comment">##  The current button state</span>
-  <span class="Identifier">x</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                    <span class="Comment">##  X coordinate, relative to window</span>
-  <span class="Identifier">y</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                    <span class="Comment">##  Y coordinate, relative to window</span>
-  <span class="Identifier">xrel</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                 <span class="Comment">##  The relative motion in the X direction</span>
-  <span class="Identifier">yrel</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                 <span class="Comment">##  The relative motion in the Y direction</span>
+  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with mouse focus, if any</span>
+  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>               <span class="Comment">## The mouse instance id, or `TOUCH_MOUSEID`</span>
+  <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>               <span class="Comment">## The current button state</span>
+  <span class="Identifier">x</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                    <span class="Comment">## X coordinate, relative to window</span>
+  <span class="Identifier">y</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                    <span class="Comment">## Y coordinate, relative to window</span>
+  <span class="Identifier">xrel</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                 <span class="Comment">## The relative motion in the X direction</span>
+  <span class="Identifier">yrel</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                 <span class="Comment">## The relative motion in the Y direction</span>
   </pre></dt>
 <dd>
 
@@ -1765,16 +1765,16 @@ Mouse motion event structure (<cite>event.motion.*</cite>)
 
 </dd>
 <dt id="MouseButtonEventObj"><a name="MouseButtonEventObj"></a><pre><span class="Identifier">MouseButtonEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `MOUSEBUTTONDOWN` or `MOUSEBUTTONUP`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `MOUSEBUTTONDOWN` or `MOUSEBUTTONUP`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">##  The window with mouse focus, if any</span>
-  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>               <span class="Comment">##  The mouse instance id, or `TOUCH_MOUSEID`</span>
-  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>               <span class="Comment">##  The mouse button index</span>
-  <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                <span class="Comment">##  `PRESSED` or `RELEASED`</span>
-  <span class="Identifier">clicks</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>               <span class="Comment">##  `1` for single-click, `2` for double-click, etc.</span>
+  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with mouse focus, if any</span>
+  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>               <span class="Comment">## The mouse instance id, or `TOUCH_MOUSEID`</span>
+  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>               <span class="Comment">## The mouse button index</span>
+  <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                <span class="Comment">## `PRESSED` or `RELEASED`</span>
+  <span class="Identifier">clicks</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>               <span class="Comment">## `1` for single-click, `2` for double-click, etc.</span>
   <span class="Identifier">padding1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
-  <span class="Identifier">x</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                    <span class="Comment">##  X coordinate, relative to window</span>
-  <span class="Identifier">y</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                    <span class="Comment">##  Y coordinate, relative to window</span>
+  <span class="Identifier">x</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                    <span class="Comment">## X coordinate, relative to window</span>
+  <span class="Identifier">y</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                    <span class="Comment">## Y coordinate, relative to window</span>
   </pre></dt>
 <dd>
 
@@ -1782,20 +1782,20 @@ Mouse button event structure (<cite>event.button.*</cite>)
 
 </dd>
 <dt id="MouseWheelEventObj"><a name="MouseWheelEventObj"></a><pre><span class="Identifier">MouseWheelEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `MOUSEWHEEL`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `MOUSEWHEEL`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">##  The window with mouse focus, if any</span>
-  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>               <span class="Comment">##  The mouse instance id, or `TOUCH_MOUSEID`</span>
-  <span class="Identifier">x</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                    <span class="Comment">##  \</span>
-          <span class="Comment">##  The amount scrolled horizontally,</span>
-          <span class="Comment">##  positive to the right and negative to the left</span>
-  <span class="Identifier">y</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                    <span class="Comment">##  \</span>
-          <span class="Comment">##  The amount scrolled vertically,</span>
-          <span class="Comment">##  positive away from the user and negative toward the user</span>
-  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Comment">##  \</span>
-                   <span class="Comment">##  Set to one of the `MOUSEWHEEL_*`.</span>
-                   <span class="Comment">##  When `MOUSEWHEEL_FLIPPED` the values in X and Y will be opposite.</span>
-                   <span class="Comment">##  Multiply by `-1` to change them back.</span>
+  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with mouse focus, if any</span>
+  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>               <span class="Comment">## The mouse instance id, or `TOUCH_MOUSEID`</span>
+  <span class="Identifier">x</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                    <span class="Comment">## \</span>
+          <span class="Comment">## The amount scrolled horizontally,</span>
+          <span class="Comment">## positive to the right and negative to the left</span>
+  <span class="Identifier">y</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                    <span class="Comment">## \</span>
+          <span class="Comment">## The amount scrolled vertically,</span>
+          <span class="Comment">## positive away from the user and negative toward the user</span>
+  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Comment">## \</span>
+                   <span class="Comment">## Set to one of the `MOUSEWHEEL_*`.</span>
+                   <span class="Comment">## When `MOUSEWHEEL_FLIPPED` the values in X and Y will be opposite.</span>
+                   <span class="Comment">## Multiply by `-1` to change them back.</span>
   </pre></dt>
 <dd>
 
@@ -1803,14 +1803,14 @@ Mouse wheel event structure (<cite>event.wheel.*</cite>)
 
 </dd>
 <dt id="JoyAxisEventObj"><a name="JoyAxisEventObj"></a><pre><span class="Identifier">JoyAxisEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `JOYAXISMOTION`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `JOYAXISMOTION`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">##  The joystick instance id</span>
-  <span class="Identifier">axis</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                 <span class="Comment">##  The joystick axis index</span>
+  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
+  <span class="Identifier">axis</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                 <span class="Comment">## The joystick axis index</span>
   <span class="Identifier">padding1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding3</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
-  <span class="Identifier">value</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>                <span class="Comment">##  The axis value (range: `-32768` to `32767`)</span>
+  <span class="Identifier">value</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>                <span class="Comment">## The axis value (range: `-32768` to `32767`)</span>
   <span class="Identifier">padding4</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>
 </pre></dt>
 <dd>
@@ -1819,15 +1819,15 @@ Joystick axis motion event structure (<cite>event.jaxis.*</cite>)
 
 </dd>
 <dt id="JoyBallEventObj"><a name="JoyBallEventObj"></a><pre><span class="Identifier">JoyBallEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `JOYBALLMOTION`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `JOYBALLMOTION`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">##  The joystick instance id</span>
-  <span class="Identifier">ball</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                 <span class="Comment">##  The joystick trackball index</span>
+  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
+  <span class="Identifier">ball</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                 <span class="Comment">## The joystick trackball index</span>
   <span class="Identifier">padding1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding3</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
-  <span class="Identifier">xrel</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>                 <span class="Comment">##  The relative motion in the X direction</span>
-  <span class="Identifier">yrel</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>                 <span class="Comment">##  The relative motion in the Y direction</span>
+  <span class="Identifier">xrel</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>                 <span class="Comment">## The relative motion in the X direction</span>
+  <span class="Identifier">yrel</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>                 <span class="Comment">## The relative motion in the Y direction</span>
   </pre></dt>
 <dd>
 
@@ -1835,19 +1835,19 @@ Joystick trackball motion event structure (<cite>event.jball.*</cite>)
 
 </dd>
 <dt id="JoyHatEventObj"><a name="JoyHatEventObj"></a><pre><span class="Identifier">JoyHatEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `JOYHATMOTION`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `JOYHATMOTION`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">##  The joystick instance id</span>
-  <span class="Identifier">hat</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                  <span class="Comment">##  The joystick hat index</span>
-  <span class="Identifier">value</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span class="Comment">##  \</span>
-              <span class="Comment">##  The hat position value.</span>
-              <span class="Comment">##</span>
-              <span class="Comment">##  See also:</span>
-              <span class="Comment">##</span>
-              <span class="Comment">##  `HAT_LEFTUP`, `HAT_UP`, `SDL_HAT_RIGHTUP`, `HAT_LEFT`, `HAT_CENTERED`,</span>
-              <span class="Comment">##  `HAT_RIGHT`, `HAT_LEFTDOWN`, `HAT_DOWN`, `HAT_RIGHTDOWN`</span>
-              <span class="Comment">##</span>
-              <span class="Comment">##  Note that zero means the POV is centered.</span>
+  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
+  <span class="Identifier">hat</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                  <span class="Comment">## The joystick hat index</span>
+  <span class="Identifier">value</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span class="Comment">## \</span>
+              <span class="Comment">## The hat position value.</span>
+              <span class="Comment">## </span>
+              <span class="Comment">## See also:</span>
+              <span class="Comment">## </span>
+              <span class="Comment">## `HAT_LEFTUP`, `HAT_UP`, `SDL_HAT_RIGHTUP`, `HAT_LEFT`, `HAT_CENTERED`,</span>
+              <span class="Comment">## `HAT_RIGHT`, `HAT_LEFTDOWN`, `HAT_DOWN`, `HAT_RIGHTDOWN`</span>
+              <span class="Comment">## </span>
+              <span class="Comment">## Note that zero means the POV is centered.</span>
   <span class="Identifier">padding1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
 </pre></dt>
@@ -1857,11 +1857,11 @@ Joystick hat position change event structure (<cite>event.jhat.*</cite>)
 
 </dd>
 <dt id="JoyButtonEventObj"><a name="JoyButtonEventObj"></a><pre><span class="Identifier">JoyButtonEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `JOYBUTTONDOWN` or `JOYBUTTONUP`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `JOYBUTTONDOWN` or `JOYBUTTONUP`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">##  The joystick instance id</span>
-  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>               <span class="Comment">##  The joystick button index</span>
-  <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                <span class="Comment">##  `PRESSED` or `RELEASED`</span>
+  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
+  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>               <span class="Comment">## The joystick button index</span>
+  <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                <span class="Comment">## `PRESSED` or `RELEASED`</span>
   <span class="Identifier">padding1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
 </pre></dt>
@@ -1871,11 +1871,11 @@ Joystick button event structure (<cite>event.jbutton.*</cite>)
 
 </dd>
 <dt id="JoyDeviceEventObj"><a name="JoyDeviceEventObj"></a><pre><span class="Identifier">JoyDeviceEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `JOYDEVICEADDED` or `JOYDEVICEREMOVED`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `JOYDEVICEADDED` or `JOYDEVICEREMOVED`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span> <span class="Comment">##  \</span>
-              <span class="Comment">##  The joystick device index for the `ADDED` event,</span>
-              <span class="Comment">##  instance id for the `REMOVED` event</span>
+  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                <span class="Comment">## \</span>
+              <span class="Comment">## The joystick device index for the `ADDED` event,</span>
+              <span class="Comment">## instance id for the `REMOVED` event</span>
   </pre></dt>
 <dd>
 
@@ -1883,14 +1883,14 @@ Joystick device event structure (<cite>event.jdevice.*</cite>)
 
 </dd>
 <dt id="ControllerAxisEventObj"><a name="ControllerAxisEventObj"></a><pre><span class="Identifier">ControllerAxisEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `CONTROLLERAXISMOTION`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `CONTROLLERAXISMOTION`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">##  The joystick instance id</span>
-  <span class="Identifier">axis</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                 <span class="Comment">##  The controller axis (``GameControllerAxis``)</span>
+  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
+  <span class="Identifier">axis</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                 <span class="Comment">## The controller axis (``GameControllerAxis``)</span>
   <span class="Identifier">padding1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding3</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
-  <span class="Identifier">value</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>                <span class="Comment">##  The axis value (range: `-32768` to `32767`)</span>
+  <span class="Identifier">value</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>                <span class="Comment">## The axis value (range: `-32768` to `32767`)</span>
   <span class="Identifier">padding4</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>
 </pre></dt>
 <dd>
@@ -1899,11 +1899,11 @@ Game controller axis motion event structure (<cite>event.caxis.*</cite>)
 
 </dd>
 <dt id="ControllerButtonEventObj"><a name="ControllerButtonEventObj"></a><pre><span class="Identifier">ControllerButtonEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `CONTROLLERBUTTONDOWN` or `CONTROLLERBUTTONUP`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `CONTROLLERBUTTONDOWN` or `CONTROLLERBUTTONUP`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">##  The joystick instance id</span>
-  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>               <span class="Comment">##  The controller button (``GameControllerButton``)</span>
-  <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                <span class="Comment">##  `PRESSED` or `RELEASED`</span>
+  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
+  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>               <span class="Comment">## The controller button (``GameControllerButton``)</span>
+  <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                <span class="Comment">## `PRESSED` or `RELEASED`</span>
   <span class="Identifier">padding1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
 </pre></dt>
@@ -1913,14 +1913,14 @@ Game controller button event structure (<cite>event.cbutton.*</cite>)
 
 </dd>
 <dt id="ControllerDeviceEventObj"><a name="ControllerDeviceEventObj"></a><pre><span class="Identifier">ControllerDeviceEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  \</span>
-                 <span class="Comment">##  `CONTROLLERDEVICEADDED`,</span>
-                 <span class="Comment">##  `CONTROLLERDEVICEREMOVED, or</span>
-                 <span class="Comment">##  `CONTROLLERDEVICEREMAPPED`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## \</span>
+                 <span class="Comment">## `CONTROLLERDEVICEADDED`,</span>
+                 <span class="Comment">## `CONTROLLERDEVICEREMOVED, or</span>
+                 <span class="Comment">## `CONTROLLERDEVICEREMAPPED`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span> <span class="Comment">##  \</span>
-              <span class="Comment">##  The joystick device index for the `ADDED` event,</span>
-              <span class="Comment">##  instance id for the `REMOVED` or `REMAPPED` event </span>
+  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                <span class="Comment">## \</span>
+              <span class="Comment">## The joystick device index for the `ADDED` event,</span>
+              <span class="Comment">## instance id for the `REMOVED` or `REMAPPED` event </span>
   </pre></dt>
 <dd>
 
@@ -1928,15 +1928,15 @@ Controller device event structure (<cite>event.cdevice.*</cite>)
 
 </dd>
 <dt id="AudioDeviceEventObj"><a name="AudioDeviceEventObj"></a><pre><span class="Identifier">AudioDeviceEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `AUDIODEVICEADDED`, or `AUDIODEVICEREMOVED`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `AUDIODEVICEADDED`, or `AUDIODEVICEREMOVED`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Comment">##  \</span>
-               <span class="Comment">##  The audio device index for the `ADDED` event (valid until next</span>
-               <span class="Comment">##  ``getNumAudioDevices()`` call),</span>
-               <span class="Comment">##  ``AudioDeviceID`` for the `REMOVED` event.</span>
-  <span class="Identifier">iscapture</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>            <span class="Comment">##  \</span>
-                  <span class="Comment">##  `0` if an output device,</span>
-                  <span class="Comment">##  non-zero if a capture device.</span>
+  <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Comment">## \</span>
+               <span class="Comment">## The audio device index for the `ADDED` event (valid until next</span>
+               <span class="Comment">## ``getNumAudioDevices()`` call),</span>
+               <span class="Comment">## ``AudioDeviceID`` for the `REMOVED` event.</span>
+  <span class="Identifier">iscapture</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>            <span class="Comment">## \</span>
+                  <span class="Comment">## `0` if an output device,</span>
+                  <span class="Comment">## non-zero if a capture device.</span>
   <span class="Identifier">padding1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding3</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
@@ -1947,15 +1947,15 @@ Audio device event structure (<cite>event.adevice.*</cite>)
 
 </dd>
 <dt id="TouchFingerEventObj"><a name="TouchFingerEventObj"></a><pre><span class="Identifier">TouchFingerEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `FINGERMOTION` or `FINGERDOWN` or `FINGERUP`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `FINGERMOTION` or `FINGERDOWN` or `FINGERUP`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">touchId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchID</span>            <span class="Comment">##  The touch device id</span>
+  <span class="Identifier">touchId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchID</span>            <span class="Comment">## The touch device id</span>
   <span class="Identifier">fingerId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">FingerID</span>
-  <span class="Identifier">x</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>                   <span class="Comment">##  Normalized in the range 0...1</span>
-  <span class="Identifier">y</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>                   <span class="Comment">##  Normalized in the range 0...1</span>
-  <span class="Identifier">dx</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>                  <span class="Comment">##  Normalized in the range -1...1</span>
-  <span class="Identifier">dy</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>                  <span class="Comment">##  Normalized in the range -1...1</span>
-  <span class="Identifier">pressure</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>            <span class="Comment">##  Normalized in the range 0...1</span>
+  <span class="Identifier">x</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>                   <span class="Comment">## Normalized in the range 0...1</span>
+  <span class="Identifier">y</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>                   <span class="Comment">## Normalized in the range 0...1</span>
+  <span class="Identifier">dx</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>                  <span class="Comment">## Normalized in the range -1...1</span>
+  <span class="Identifier">dy</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>                  <span class="Comment">## Normalized in the range -1...1</span>
+  <span class="Identifier">pressure</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>            <span class="Comment">## Normalized in the range 0...1</span>
   </pre></dt>
 <dd>
 
@@ -1963,9 +1963,9 @@ Touch finger event structure (<cite>event.tfinger.*</cite>)
 
 </dd>
 <dt id="MultiGestureEventObj"><a name="MultiGestureEventObj"></a><pre><span class="Identifier">MultiGestureEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `MULTIGESTURE`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `MULTIGESTURE`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">touchId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchID</span>            <span class="Comment">##  The touch device index</span>
+  <span class="Identifier">touchId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchID</span>            <span class="Comment">## The touch device index</span>
   <span class="Identifier">dTheta</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>
   <span class="Identifier">dDist</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>
   <span class="Identifier">x</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>
@@ -1978,23 +1978,23 @@ Multiple Finger Gesture Event (<cite>event.mgesture.*</cite>)
 
 </dd>
 <dt id="DollarGestureEventObj"><a name="DollarGestureEventObj"></a><pre><span class="Identifier">DollarGestureEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `DOLLARGESTURE` or `DOLLARRECORD`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `DOLLARGESTURE` or `DOLLARRECORD`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">touchId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchID</span>            <span class="Comment">##  The touch device id</span>
+  <span class="Identifier">touchId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchID</span>            <span class="Comment">## The touch device id</span>
   <span class="Identifier">gestureId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">GestureID</span>
   <span class="Identifier">numFingers</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">error</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>
-  <span class="Identifier">x</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>                   <span class="Comment">##  Normalized center of gesture</span>
-  <span class="Identifier">y</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>                   <span class="Comment">##  Normalized center of gesture</span>
+  <span class="Identifier">x</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>                   <span class="Comment">## Normalized center of gesture</span>
+  <span class="Identifier">y</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>                   <span class="Comment">## Normalized center of gesture</span>
   </pre></dt>
 <dd>
 Dollar Gesture Event (<cite>event.dgesture.*</cite>)
 
 </dd>
 <dt id="DropEventObj"><a name="DropEventObj"></a><pre><span class="Identifier">DropEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `DROPFILE`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `DROPFILE`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">file</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cstring</span>               <span class="Comment">##  The file name, which should be freed with ``free()`</span>
+  <span class="Identifier">file</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cstring</span>               <span class="Comment">## The file name, which should be freed with ``free()`</span>
   </pre></dt>
 <dd>
 <p>
@@ -2014,7 +2014,7 @@ The &quot;quit requested&quot; event
 
 </dd>
 <dt id="OSEventObj"><a name="OSEventObj"></a><pre><span class="Identifier">OSEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `QUIT`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `QUIT`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
 </pre></dt>
 <dd>
@@ -2023,12 +2023,12 @@ OS Specific event
 
 </dd>
 <dt id="UserEventObj"><a name="UserEventObj"></a><pre><span class="Identifier">UserEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `USEREVENT` through `LASTEVENT-1`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `USEREVENT` through `LASTEVENT-1`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">##  The associated window if any</span>
-  <span class="Identifier">code</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                 <span class="Comment">##  User defined event code</span>
-  <span class="Identifier">data1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>              <span class="Comment">##  User defined data pointer</span>
-  <span class="Identifier">data2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>              <span class="Comment">##  User defined data pointer</span>
+  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The associated window if any</span>
+  <span class="Identifier">code</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                 <span class="Comment">## User defined event code</span>
+  <span class="Identifier">data1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>              <span class="Comment">## User defined data pointer</span>
+  <span class="Identifier">data2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>              <span class="Comment">## User defined data pointer</span>
   </pre></dt>
 <dd>
 
@@ -2037,13 +2037,13 @@ A user-defined event type (<cite>event.user.*</cite>)
 </dd>
 <dt id="SysWMmsg"><a name="SysWMmsg"></a><pre><span class="Identifier">SysWMmsg</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
-
+declared in sdl_syswm.nim
 
 </dd>
 <dt id="SysWMEventObj"><a name="SysWMEventObj"></a><pre><span class="Identifier">SysWMEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">##  `SYSWMEVENT`</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `SYSWMEVENT`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-  <span class="Identifier">msg</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMmsg</span>               <span class="Comment">##  driver dependent data, defined in ``syswm.nim``</span>
+  <span class="Identifier">msg</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMmsg</span>               <span class="Comment">## driver dependent data, defined in ``syswm.nim``</span>
   </pre></dt>
 <dd>
 <p>
@@ -2055,37 +2055,37 @@ A video driver dependent system event (<cite>event.syswm.*</cite>)</p>
 </dd>
 <dt id="Event"><a name="Event"></a><pre><span class="Identifier">Event</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other">{.</span><span class="Identifier">union</span><span class="Other">.}</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## Event type, shared with all events</span>
-  <span class="Identifier">common</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">CommonEventObj</span>      <span class="Comment">##  Common event data</span>
-  <span class="Identifier">window</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">WindowEventObj</span>      <span class="Comment">##  Window event data</span>
-  <span class="Identifier">key</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">KeyboardEventObj</span>       <span class="Comment">##  Keyboard event data</span>
-  <span class="Identifier">edit</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TextEditingEventObj</span>   <span class="Comment">##  Text editing event data</span>
-  <span class="Identifier">text</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TextInputEventObj</span>     <span class="Comment">##  Text input event data</span>
-  <span class="Identifier">motion</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">MouseMotionEventObj</span> <span class="Comment">##  Mouse motion event data</span>
-  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">MouseButtonEventObj</span> <span class="Comment">##  Mouse button event data</span>
-  <span class="Identifier">wheel</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">MouseWheelEventObj</span>   <span class="Comment">##  Mouse wheel event data</span>
-  <span class="Identifier">jaxis</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoyAxisEventObj</span>      <span class="Comment">##  Joystick axis event data</span>
-  <span class="Identifier">jball</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoyBallEventObj</span>      <span class="Comment">##  Joystick ball event data</span>
-  <span class="Identifier">jhat</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoyHatEventObj</span>        <span class="Comment">##  Joystick hat event data</span>
-  <span class="Identifier">jbutton</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoyButtonEventObj</span>  <span class="Comment">##  Joystick button event data</span>
-  <span class="Identifier">jdevice</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoyDeviceEventObj</span>  <span class="Comment">##  Joystick device change event data</span>
-  <span class="Identifier">caxis</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">ControllerAxisEventObj</span> <span class="Comment">##  Game Controller axis event data</span>
-  <span class="Identifier">cbutton</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">ControllerButtonEventObj</span> <span class="Comment">##  Game Controller button event data</span>
-  <span class="Identifier">cdevice</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">ControllerDeviceEventObj</span> <span class="Comment">##  Game Controller device event data</span>
-  <span class="Identifier">adevice</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AudioDeviceEventObj</span> <span class="Comment">##  Audio device event data</span>
-  <span class="Identifier">quit</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">QuitEventObj</span>          <span class="Comment">##  Quit request event data</span>
-  <span class="Identifier">user</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">UserEventObj</span>          <span class="Comment">##  Custom event data</span>
-  <span class="Identifier">syswm</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMEventObj</span>        <span class="Comment">##  System dependent window event data</span>
-  <span class="Identifier">tfinger</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchFingerEventObj</span> <span class="Comment">##  Touch finger event data</span>
-  <span class="Identifier">mgesture</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">MultiGestureEventObj</span> <span class="Comment">##  Gesture event data</span>
-  <span class="Identifier">dgesture</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">DollarGestureEventObj</span> <span class="Comment">##  Gesture event data</span>
-  <span class="Identifier">drop</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">DropEventObj</span>          <span class="Comment">##  Drag and drop event data</span>
-  <span class="Identifier">padding</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">56</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span> <span class="Comment">##  \</span>
-                          <span class="Comment">##  This is necessary for ABI compatibility between Visual C++ and GCC.</span>
-                          <span class="Comment">##  Visual C++ will respect the push pack pragma and use 52 bytes for</span>
-                          <span class="Comment">##  this structure, and GCC will use the alignment of the largest</span>
-                          <span class="Comment">##  datatype within the union, which is 8 bytes.</span>
-                          <span class="Comment">##</span>
-                          <span class="Comment">##  So... we'll add padding to force the size to be 56 bytes for both.</span>
+  <span class="Identifier">common</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">CommonEventObj</span>      <span class="Comment">## Common event data</span>
+  <span class="Identifier">window</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">WindowEventObj</span>      <span class="Comment">## Window event data</span>
+  <span class="Identifier">key</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">KeyboardEventObj</span>       <span class="Comment">## Keyboard event data</span>
+  <span class="Identifier">edit</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TextEditingEventObj</span>   <span class="Comment">## Text editing event data</span>
+  <span class="Identifier">text</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TextInputEventObj</span>     <span class="Comment">## Text input event data</span>
+  <span class="Identifier">motion</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">MouseMotionEventObj</span> <span class="Comment">## Mouse motion event data</span>
+  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">MouseButtonEventObj</span> <span class="Comment">## Mouse button event data</span>
+  <span class="Identifier">wheel</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">MouseWheelEventObj</span>   <span class="Comment">## Mouse wheel event data</span>
+  <span class="Identifier">jaxis</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoyAxisEventObj</span>      <span class="Comment">## Joystick axis event data</span>
+  <span class="Identifier">jball</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoyBallEventObj</span>      <span class="Comment">## Joystick ball event data</span>
+  <span class="Identifier">jhat</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoyHatEventObj</span>        <span class="Comment">## Joystick hat event data</span>
+  <span class="Identifier">jbutton</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoyButtonEventObj</span>  <span class="Comment">## Joystick button event data</span>
+  <span class="Identifier">jdevice</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoyDeviceEventObj</span>  <span class="Comment">## Joystick device change event data</span>
+  <span class="Identifier">caxis</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">ControllerAxisEventObj</span> <span class="Comment">## Game Controller axis event data</span>
+  <span class="Identifier">cbutton</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">ControllerButtonEventObj</span> <span class="Comment">## Game Controller button event data</span>
+  <span class="Identifier">cdevice</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">ControllerDeviceEventObj</span> <span class="Comment">## Game Controller device event data</span>
+  <span class="Identifier">adevice</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AudioDeviceEventObj</span> <span class="Comment">## Audio device event data</span>
+  <span class="Identifier">quit</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">QuitEventObj</span>          <span class="Comment">## Quit request event data</span>
+  <span class="Identifier">user</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">UserEventObj</span>          <span class="Comment">## Custom event data</span>
+  <span class="Identifier">syswm</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMEventObj</span>        <span class="Comment">## System dependent window event data</span>
+  <span class="Identifier">tfinger</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchFingerEventObj</span> <span class="Comment">## Touch finger event data</span>
+  <span class="Identifier">mgesture</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">MultiGestureEventObj</span> <span class="Comment">## Gesture event data</span>
+  <span class="Identifier">dgesture</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">DollarGestureEventObj</span> <span class="Comment">## Gesture event data</span>
+  <span class="Identifier">drop</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">DropEventObj</span>          <span class="Comment">## Drag and drop event data</span>
+  <span class="Identifier">padding</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">56</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span> <span class="Comment">## \</span>
+                          <span class="Comment">## This is necessary for ABI compatibility between Visual C++ and GCC.</span>
+                          <span class="Comment">## Visual C++ will respect the push pack pragma and use 52 bytes for</span>
+                          <span class="Comment">## this structure, and GCC will use the alignment of the largest</span>
+                          <span class="Comment">## datatype within the union, which is 8 bytes.</span>
+                          <span class="Comment">## </span>
+                          <span class="Comment">## So... we'll add padding to force the size to be 56 bytes for both.</span>
   </pre></dt>
 <dd>
 
@@ -2294,8 +2294,8 @@ current processing state of the specified event.</li>
 </dd>
 
 </dl></div>
-<div class="section" id="18">
-<h1><a class="toc-backref" href="#18">Templates</a></h1>
+<div class="section" id="17">
+<h1><a class="toc-backref" href="#17">Templates</a></h1>
 <dl class="item">
 <dt id="getEventState"><a name="getEventState.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">getEventState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
 <dd>
@@ -2311,8 +2311,8 @@ current processing state of the specified event.</li>
     <div class="row">
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
-        <br>
-        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
+        <br/>
+        <small>Made with Nim. Generated: 2016-04-01 21:48:00 UTC</small>
       </div>
     </div>
   </div>

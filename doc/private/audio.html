@@ -10,8 +10,8 @@
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module audio</title>
@@ -1163,32 +1163,32 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="AudioCallback* = proc (userdata: pointer; stream: ptr uint8; len: cint)"><wbr />Audio<wbr />Callback</a></li>
   <li><a class="reference" href="#AudioSpec"
     title="AudioSpec* = object
-  freq*: cint                  ##  DSP frequency -- samples per second
-  format*: AudioFormat         ##  Audio data format
-  channels*: uint8             ##  Number of channels: `1` mono, `2` stereo
-  silence*: uint8              ##  Audio buffer silence value (calculated)
-  samples*: uint16             ##  Audio buffer size in samples (power of 2)
-  padding*: uint16             ##  Necessary for some compile environments
-  size*: uint32                ##  Audio buffer size in bytes (calculated)
-  callback*: AudioCallback     ##  Callback that feeds the audio device  \
-                         ##  (`nil` to use ``queueAudio()``).
-  userdata*: pointer           ##  Userdata passed to callback \
-                   ##  (ignored for `nil` callbacks)."><wbr />Audio<wbr />Spec</a></li>
+  freq*: cint                  ## DSP frequency -- samples per second
+  format*: AudioFormat         ## Audio data format
+  channels*: uint8             ## Number of channels: `1` mono, `2` stereo
+  silence*: uint8              ## Audio buffer silence value (calculated)
+  samples*: uint16             ## Audio buffer size in samples (power of 2)
+  padding*: uint16             ## Necessary for some compile environments
+  size*: uint32                ## Audio buffer size in bytes (calculated)
+  callback*: AudioCallback     ## Callback that feeds the audio device  \
+                         ## (`nil` to use ``queueAudio()``).
+  userdata*: pointer           ## Userdata passed to callback \
+                   ## (ignored for `nil` callbacks)."><wbr />Audio<wbr />Spec</a></li>
   <li><a class="reference" href="#AudioFilter"
     title="AudioFilter* = proc (cvt: ptr AudioCVT; format: AudioFormat)"><wbr />Audio<wbr />Filter</a></li>
   <li><a class="reference" href="#AudioCVT"
     title="AudioCVT* = object
-  needed*: cint                ##  Set to `1` if conversion possible
-  src_format*: AudioFormat     ##  Source audio format
-  dst_format*: AudioFormat     ##  Target audio format
-  rate_incr*: cdouble          ##  Rate conversion increment
-  buf*: ptr uint8               ##  Buffer to hold entire audio data
-  len*: cint                   ##  Length of original audio buffer
-  len_cvt*: cint               ##  Length of converted audio buffer
-  len_mult*: cint              ##  buffer must be `len*len_mult` big
-  len_ratio*: cdouble          ##  Given len, final size is `len*len_ratio`
-  filters*: array[10, AudioFilter] ##  Filter list
-  filter_index*: cint          ##  Current audio conversion procedure"><wbr />Audio<wbr />CVT</a></li>
+  needed*: cint                ## Set to `1` if conversion possible
+  src_format*: AudioFormat     ## Source audio format
+  dst_format*: AudioFormat     ## Target audio format
+  rate_incr*: cdouble          ## Rate conversion increment
+  buf*: ptr uint8               ## Buffer to hold entire audio data
+  len*: cint                   ## Length of original audio buffer
+  len_cvt*: cint               ## Length of converted audio buffer
+  len_mult*: cint              ## buffer must be `len*len_mult` big
+  len_ratio*: cdouble          ## Given len, final size is `len*len_ratio`
+  filters*: array[10, AudioFilter] ## Filter list
+  filter_index*: cint          ## Current audio conversion procedure"><wbr />Audio<wbr />CVT</a></li>
   <li><a class="reference" href="#AudioDeviceID"
     title="AudioDeviceID* = uint32"><wbr />Audio<wbr />Device<wbr />ID</a></li>
   <li><a class="reference" href="#AudioStatus"
@@ -1326,7 +1326,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   </ul>
 </li>
 <li>
-  <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
+  <a class="reference reference-toplevel" href="#17" id="67">Templates</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#audioBitSize.t,expr"
     title="audioBitSize*(x: expr): expr"><wbr />audio<wbr />Bit<wbr />Size</a></li>
@@ -1389,17 +1389,17 @@ This procedure is called when the audio device needs more data.</p>
 
 </dd>
 <dt id="AudioSpec"><a name="AudioSpec"></a><pre><span class="Identifier">AudioSpec</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">freq</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                  <span class="Comment">##  DSP frequency -- samples per second</span>
-  <span class="Identifier">format</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span>         <span class="Comment">##  Audio data format</span>
-  <span class="Identifier">channels</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>             <span class="Comment">##  Number of channels: `1` mono, `2` stereo</span>
-  <span class="Identifier">silence</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>              <span class="Comment">##  Audio buffer silence value (calculated)</span>
-  <span class="Identifier">samples</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>             <span class="Comment">##  Audio buffer size in samples (power of 2)</span>
-  <span class="Identifier">padding</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>             <span class="Comment">##  Necessary for some compile environments</span>
-  <span class="Identifier">size</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>                <span class="Comment">##  Audio buffer size in bytes (calculated)</span>
-  <span class="Identifier">callback</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AudioCallback</span>     <span class="Comment">##  Callback that feeds the audio device  \</span>
-                         <span class="Comment">##  (`nil` to use ``queueAudio()``).</span>
-  <span class="Identifier">userdata</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>           <span class="Comment">##  Userdata passed to callback \</span>
-                   <span class="Comment">##  (ignored for `nil` callbacks).</span>
+  <span class="Identifier">freq</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                  <span class="Comment">## DSP frequency -- samples per second</span>
+  <span class="Identifier">format</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span>         <span class="Comment">## Audio data format</span>
+  <span class="Identifier">channels</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>             <span class="Comment">## Number of channels: `1` mono, `2` stereo</span>
+  <span class="Identifier">silence</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>              <span class="Comment">## Audio buffer silence value (calculated)</span>
+  <span class="Identifier">samples</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>             <span class="Comment">## Audio buffer size in samples (power of 2)</span>
+  <span class="Identifier">padding</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>             <span class="Comment">## Necessary for some compile environments</span>
+  <span class="Identifier">size</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>                <span class="Comment">## Audio buffer size in bytes (calculated)</span>
+  <span class="Identifier">callback</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AudioCallback</span>     <span class="Comment">## Callback that feeds the audio device  \</span>
+                         <span class="Comment">## (`nil` to use ``queueAudio()``).</span>
+  <span class="Identifier">userdata</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>           <span class="Comment">## Userdata passed to callback \</span>
+                   <span class="Comment">## (ignored for `nil` callbacks).</span>
   </pre></dt>
 <dd>
 
@@ -1412,17 +1412,17 @@ The calculated values in this object are calculated by <tt class="docutils liter
 
 </dd>
 <dt id="AudioCVT"><a name="AudioCVT"></a><pre><span class="Identifier">AudioCVT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other">{.</span><span class="Identifier">packed</span><span class="Other">.}</span>
-  <span class="Identifier">needed</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                <span class="Comment">##  Set to `1` if conversion possible</span>
-  <span class="Identifier">src_format</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span>     <span class="Comment">##  Source audio format</span>
-  <span class="Identifier">dst_format</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span>     <span class="Comment">##  Target audio format</span>
-  <span class="Identifier">rate_incr</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cdouble</span>          <span class="Comment">##  Rate conversion increment</span>
-  <span class="Identifier">buf</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span>               <span class="Comment">##  Buffer to hold entire audio data</span>
-  <span class="Identifier">len</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                   <span class="Comment">##  Length of original audio buffer</span>
-  <span class="Identifier">len_cvt</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>               <span class="Comment">##  Length of converted audio buffer</span>
-  <span class="Identifier">len_mult</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>              <span class="Comment">##  buffer must be `len*len_mult` big</span>
-  <span class="Identifier">len_ratio</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cdouble</span>          <span class="Comment">##  Given len, final size is `len*len_ratio`</span>
-  <span class="Identifier">filters</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">10</span><span class="Other">,</span> <span class="Identifier">AudioFilter</span><span class="Other">]</span> <span class="Comment">##  Filter list</span>
-  <span class="Identifier">filter_index</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>          <span class="Comment">##  Current audio conversion procedure</span>
+  <span class="Identifier">needed</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                <span class="Comment">## Set to `1` if conversion possible</span>
+  <span class="Identifier">src_format</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span>     <span class="Comment">## Source audio format</span>
+  <span class="Identifier">dst_format</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span>     <span class="Comment">## Target audio format</span>
+  <span class="Identifier">rate_incr</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cdouble</span>          <span class="Comment">## Rate conversion increment</span>
+  <span class="Identifier">buf</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span>               <span class="Comment">## Buffer to hold entire audio data</span>
+  <span class="Identifier">len</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                   <span class="Comment">## Length of original audio buffer</span>
+  <span class="Identifier">len_cvt</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>               <span class="Comment">## Length of converted audio buffer</span>
+  <span class="Identifier">len_mult</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>              <span class="Comment">## buffer must be `len*len_mult` big</span>
+  <span class="Identifier">len_ratio</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cdouble</span>          <span class="Comment">## Given len, final size is `len*len_ratio`</span>
+  <span class="Identifier">filters</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">10</span><span class="Other">,</span> <span class="Identifier">AudioFilter</span><span class="Other">]</span> <span class="Comment">## Filter list</span>
+  <span class="Identifier">filter_index</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>          <span class="Comment">## Current audio conversion procedure</span>
   </pre></dt>
 <dd>
 <p>
@@ -1846,8 +1846,8 @@ This procedure shuts down audio processing and closes the audio device.
 </dd>
 
 </dl></div>
-<div class="section" id="18">
-<h1><a class="toc-backref" href="#18">Templates</a></h1>
+<div class="section" id="17">
+<h1><a class="toc-backref" href="#17">Templates</a></h1>
 <dl class="item">
 <dt id="audioBitSize"><a name="audioBitSize.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioBitSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
 <dd>
@@ -1901,8 +1901,8 @@ Loads a WAV from a file.</p>
     <div class="row">
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
-        <br>
-        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
+        <br/>
+        <small>Made with Nim. Generated: 2016-04-01 21:48:00 UTC</small>
       </div>
     </div>
   </div>

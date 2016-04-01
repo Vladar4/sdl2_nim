@@ -10,8 +10,8 @@
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module haptic</title>
@@ -1161,106 +1161,106 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
     title="Haptic* = pointer"><wbr />Haptic</a></li>
   <li><a class="reference" href="#HapticDirection"
     title="HapticDirection* = object
-  kind*: uint8                 ##  The type of encoding.
-  dir*: array[3, int32]         ##  The encoded direction."><wbr />Haptic<wbr />Direction</a></li>
+  kind*: uint8                 ## The type of encoding.
+  dir*: array[3, int32]         ## The encoded direction."><wbr />Haptic<wbr />Direction</a></li>
   <li><a class="reference" href="#HapticConstantObj"
     title="HapticConstantObj* = object
-  kind*: uint16                ##  `HAPTIC_CONSTANT`
-  direction*: HapticDirection  ##  Direction of the effect.
-  length*: uint32              ##  Duration of the effect.
-  delay*: uint16               ##  Delay before starting the effect.
-  button*: uint16              ##  Button that triggers the effect.
-  interval*: uint16            ##  How soon it can be triggered again after button.
-  level*: int16                ##  Strength of the constant effect.
-  attack_length*: uint16       ##  Duration of the attack.
-  attack_level*: uint16        ##  Level at the start of the attack.
-  fade_length*: uint16         ##  Duration of the fade.
-  fade_level*: uint16          ##  Level at the end of the fade."><wbr />Haptic<wbr />Constant<wbr />Obj</a></li>
+  kind*: uint16                ## `HAPTIC_CONSTANT`
+  direction*: HapticDirection  ## Direction of the effect.
+  length*: uint32              ## Duration of the effect.
+  delay*: uint16               ## Delay before starting the effect.
+  button*: uint16              ## Button that triggers the effect.
+  interval*: uint16            ## How soon it can be triggered again after button.
+  level*: int16                ## Strength of the constant effect.
+  attack_length*: uint16       ## Duration of the attack.
+  attack_level*: uint16        ## Level at the start of the attack.
+  fade_length*: uint16         ## Duration of the fade.
+  fade_level*: uint16          ## Level at the end of the fade."><wbr />Haptic<wbr />Constant<wbr />Obj</a></li>
   <li><a class="reference" href="#HapticPeriodicObj"
     title="HapticPeriodicObj* = object
-  kind*: uint16 ##  \
-              ##  `HAPTIC_SINE`, `HAPTIC_LEFTRIGHT`, `HAPTIC_TRIANGLE,
-              ##  `SDL_HAPTIC_SAWTOOTHUP` or `HAPTIC_SAWTOOTHDOWN`
-  direction*: HapticDirection  ##  Direction of the effect.
-  length*: uint32              ##  uration of the effect.
-  delay*: uint16               ##  Delay before starting the effect.
-  button*: uint16              ##  Button that triggers the effect.
-  interval*: uint16            ##  How soon it can be triggered again after button
-  period*: uint16              ##  Period of the wave.
-  magnitude*: int16            ##  Peak value; \
-                  ##  if negative, equivalent to `180` degrees extra phase shift.
-  offset*: int16               ##  Mean value of the wave.
-  phase*: uint16               ##  Positive phase shift given by hundredth of a degree.
-  attack_length*: uint16       ##  Duration of the attack.
-  attack_level*: uint16        ##  Level at the start of the attack.
-  fade_length*: uint16         ##  Duration of the fade.
-  fade_level*: uint16          ##  Level at the end of the fade."><wbr />Haptic<wbr />Periodic<wbr />Obj</a></li>
+  kind*: uint16 ## \
+              ## `HAPTIC_SINE`, `HAPTIC_LEFTRIGHT`, `HAPTIC_TRIANGLE,
+              ## `SDL_HAPTIC_SAWTOOTHUP` or `HAPTIC_SAWTOOTHDOWN`
+  direction*: HapticDirection  ## Direction of the effect.
+  length*: uint32              ## uration of the effect.
+  delay*: uint16               ## Delay before starting the effect.
+  button*: uint16              ## Button that triggers the effect.
+  interval*: uint16            ## How soon it can be triggered again after button
+  period*: uint16              ## Period of the wave.
+  magnitude*: int16            ## Peak value; \
+                  ## if negative, equivalent to `180` degrees extra phase shift.
+  offset*: int16               ## Mean value of the wave.
+  phase*: uint16               ## Positive phase shift given by hundredth of a degree.
+  attack_length*: uint16       ## Duration of the attack.
+  attack_level*: uint16        ## Level at the start of the attack.
+  fade_length*: uint16         ## Duration of the fade.
+  fade_level*: uint16          ## Level at the end of the fade."><wbr />Haptic<wbr />Periodic<wbr />Obj</a></li>
   <li><a class="reference" href="#HapticConditionObj"
     title="HapticConditionObj* = object
-  kind*: uint16                ##  \
-              ##  `HAPTIC_SPRING`, `HAPTIC_DAMPER`,
-              ##  `HAPTIC_INERTIA` or `HAPTIC_FRICTION`
-  direction*: HapticDirection  ##  Direction of the effect - Not used ATM.
-  length*: uint32              ##  Duration of the effect.
-  delay*: uint16               ##  Delay before starting the effect.
-  button*: uint16              ##  Button that triggers the effect.
-  interval*: uint16            ##  How soon it can be triggered again after button.
-  right_sat*: array[3, uint16]  ##  \
-                            ##  Level when joystick is to the positive side; max `0xFFFF`.
-  left_sat*: array[3, uint16]   ##  \
-                           ##  Level when joystick is to the negative side; max `0xFFFF`.
-  right_coeff*: array[3, int16] ##  \
-                             ##  How fast to increase the force towards the positive side.
-  left_coeff*: array[3, int16]  ##  \
-                            ##  How fast to increase the force towards the negative side.
-  deadband*: array[3, uint16]   ##  Size of the dead zone;
-                           ##  max ``0xFFFF`: whole axis-range when 0-centered.
-  center*: array[3, int16]      ##  Position of the dead zone."><wbr />Haptic<wbr />Condition<wbr />Obj</a></li>
+  kind*: uint16                ## \
+              ## `HAPTIC_SPRING`, `HAPTIC_DAMPER`,
+              ## `HAPTIC_INERTIA` or `HAPTIC_FRICTION`
+  direction*: HapticDirection  ## Direction of the effect - Not used ATM.
+  length*: uint32              ## Duration of the effect.
+  delay*: uint16               ## Delay before starting the effect.
+  button*: uint16              ## Button that triggers the effect.
+  interval*: uint16            ## How soon it can be triggered again after button.
+  right_sat*: array[3, uint16]  ## \
+                            ## Level when joystick is to the positive side; max `0xFFFF`.
+  left_sat*: array[3, uint16]   ## \
+                           ## Level when joystick is to the negative side; max `0xFFFF`.
+  right_coeff*: array[3, int16] ## \
+                             ## How fast to increase the force towards the positive side.
+  left_coeff*: array[3, int16]  ## \
+                            ## How fast to increase the force towards the negative side.
+  deadband*: array[3, uint16]   ## Size of the dead zone;
+                           ## max ``0xFFFF`: whole axis-range when 0-centered.
+  center*: array[3, int16]      ## Position of the dead zone."><wbr />Haptic<wbr />Condition<wbr />Obj</a></li>
   <li><a class="reference" href="#HapticRampObj"
     title="HapticRampObj* = object
-  kind*: uint16                ##  `HAPTIC_RAMP`
-  direction*: HapticDirection  ##  Direction of the effect.
-  length*: uint32              ##  Duration of the effect.
-  delay*: uint16               ##  Delay before starting the effect.
-  button*: uint16              ##  Button that triggers the effect.
+  kind*: uint16                ## `HAPTIC_RAMP`
+  direction*: HapticDirection  ## Direction of the effect.
+  length*: uint32              ## Duration of the effect.
+  delay*: uint16               ## Delay before starting the effect.
+  button*: uint16              ## Button that triggers the effect.
   interval*: uint16            ## How soon it can be triggered again after button.
-  start*: int16                ##  Beginning strength level.
-  ends*: int16                 ##  Ending strength level.
-  attack_length*: uint16       ##  Duration of the attack.
-  attack_level*: uint16        ##  Level at the start of the attack.
-  fade_length*: uint16         ##  Duration of the fade.
-  fade_level*: uint16          ##  Level at the end of the fade."><wbr />Haptic<wbr />Ramp<wbr />Obj</a></li>
+  start*: int16                ## Beginning strength level.
+  ends*: int16                 ## Ending strength level.
+  attack_length*: uint16       ## Duration of the attack.
+  attack_level*: uint16        ## Level at the start of the attack.
+  fade_length*: uint16         ## Duration of the fade.
+  fade_level*: uint16          ## Level at the end of the fade."><wbr />Haptic<wbr />Ramp<wbr />Obj</a></li>
   <li><a class="reference" href="#HapticLeftRightObj"
     title="HapticLeftRightObj* = object
-  kind*: uint16                ##  `HAPTIC_LEFTRIGHT`
-  length*: uint32              ##  Duration of the effect.
-  large_magnitude*: uint16     ##  Control of the large controller motor.
-  small_magnitude*: uint16     ##  Control of the small controller motor."><wbr />Haptic<wbr />Left<wbr />Right<wbr />Obj</a></li>
+  kind*: uint16                ## `HAPTIC_LEFTRIGHT`
+  length*: uint32              ## Duration of the effect.
+  large_magnitude*: uint16     ## Control of the large controller motor.
+  small_magnitude*: uint16     ## Control of the small controller motor."><wbr />Haptic<wbr />Left<wbr />Right<wbr />Obj</a></li>
   <li><a class="reference" href="#HapticCustomObj"
     title="HapticCustomObj* = object
-  kind*: uint16                ##  `HAPTIC_CUSTOM`
-  direction*: HapticDirection  ##  Direction of the effect.
-  length*: uint32              ##  Duration of the effect.
-  delay*: uint16               ##  Delay before starting the effect.
-  button*: uint16              ##  Button that triggers the effect.
-  interval*: uint16            ##  How soon it can be triggered again after button.
-  channels*: uint8             ##  Axes to use, minimum of one.
-  period*: uint16              ##  Sample periods.
-  samples*: uint16             ##  Amount of samples.
-  data*: ptr uint16             ##  Should contain channels*samples items.
-  attack_length*: uint16       ##  Duration of the attack.
-  attack_level*: uint16        ##  Level at the start of the attack.
-  fade_length*: uint16         ##  Duration of the fade.
-  fade_level*: uint16          ##  Level at the end of the fade."><wbr />Haptic<wbr />Custom<wbr />Obj</a></li>
+  kind*: uint16                ## `HAPTIC_CUSTOM`
+  direction*: HapticDirection  ## Direction of the effect.
+  length*: uint32              ## Duration of the effect.
+  delay*: uint16               ## Delay before starting the effect.
+  button*: uint16              ## Button that triggers the effect.
+  interval*: uint16            ## How soon it can be triggered again after button.
+  channels*: uint8             ## Axes to use, minimum of one.
+  period*: uint16              ## Sample periods.
+  samples*: uint16             ## Amount of samples.
+  data*: ptr uint16             ## Should contain channels*samples items.
+  attack_length*: uint16       ## Duration of the attack.
+  attack_level*: uint16        ## Level at the start of the attack.
+  fade_length*: uint16         ## Duration of the fade.
+  fade_level*: uint16          ## Level at the end of the fade."><wbr />Haptic<wbr />Custom<wbr />Obj</a></li>
   <li><a class="reference" href="#HapticEffect"
     title="HapticEffect* = object
-  kind*: uint16                ##  Effect type.
-  constant*: HapticConstantObj ##  Constant effect.
-  periodic*: HapticPeriodicObj ##  Periodic effect.
-  condition*: HapticConditionObj ##  Condition effect.
-  ramp*: HapticRampObj         ##  Ramp effect.
-  leftright*: HapticLeftRightObj ##  Left&#x2F;Right effect.
-  custom*: HapticCustomObj     ##  Custom effect."><wbr />Haptic<wbr />Effect</a></li>
+  kind*: uint16                ## Effect type.
+  constant*: HapticConstantObj ## Constant effect.
+  periodic*: HapticPeriodicObj ## Periodic effect.
+  condition*: HapticConditionObj ## Condition effect.
+  ramp*: HapticRampObj         ## Ramp effect.
+  leftright*: HapticLeftRightObj ## Left&#x2F;Right effect.
+  custom*: HapticCustomObj     ## Custom effect."><wbr />Haptic<wbr />Effect</a></li>
 
   </ul>
 </li>
@@ -1411,8 +1411,8 @@ The haptic structure used to identify an SDL haptic.</p>
 
 </dd>
 <dt id="HapticDirection"><a name="HapticDirection"></a><pre><span class="Identifier">HapticDirection</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                 <span class="Comment">##  The type of encoding.</span>
-  <span class="Identifier">dir</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">int32</span><span class="Other">]</span>         <span class="Comment">##  The encoded direction.</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                 <span class="Comment">## The type of encoding.</span>
+  <span class="Identifier">dir</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">int32</span><span class="Other">]</span>         <span class="Comment">## The encoded direction.</span>
   </pre></dt>
 <dd>
 <p>
@@ -1493,17 +1493,17 @@ Structure that represents a haptic direction.</p>
 
 </dd>
 <dt id="HapticConstantObj"><a name="HapticConstantObj"></a><pre><span class="Identifier">HapticConstantObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">##  `HAPTIC_CONSTANT`</span>
-  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticDirection</span>  <span class="Comment">##  Direction of the effect.</span>
-  <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">##  Duration of the effect.</span>
-  <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">##  Delay before starting the effect.</span>
-  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">##  Button that triggers the effect.</span>
-  <span class="Identifier">interval</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>            <span class="Comment">##  How soon it can be triggered again after button.</span>
-  <span class="Identifier">level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>                <span class="Comment">##  Strength of the constant effect.</span>
-  <span class="Identifier">attack_length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>       <span class="Comment">##  Duration of the attack.</span>
-  <span class="Identifier">attack_level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>        <span class="Comment">##  Level at the start of the attack.</span>
-  <span class="Identifier">fade_length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>         <span class="Comment">##  Duration of the fade.</span>
-  <span class="Identifier">fade_level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>          <span class="Comment">##  Level at the end of the fade.</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">## `HAPTIC_CONSTANT`</span>
+  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticDirection</span>  <span class="Comment">## Direction of the effect.</span>
+  <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">## Duration of the effect.</span>
+  <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">## Delay before starting the effect.</span>
+  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">## Button that triggers the effect.</span>
+  <span class="Identifier">interval</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>            <span class="Comment">## How soon it can be triggered again after button.</span>
+  <span class="Identifier">level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>                <span class="Comment">## Strength of the constant effect.</span>
+  <span class="Identifier">attack_length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>       <span class="Comment">## Duration of the attack.</span>
+  <span class="Identifier">attack_level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>        <span class="Comment">## Level at the start of the attack.</span>
+  <span class="Identifier">fade_length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>         <span class="Comment">## Duration of the fade.</span>
+  <span class="Identifier">fade_level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>          <span class="Comment">## Level at the end of the fade.</span>
   </pre></dt>
 <dd>
 <p>A structure containing a template for a Constant effect.</p>
@@ -1516,23 +1516,23 @@ Structure that represents a haptic direction.</p>
 
 </dd>
 <dt id="HapticPeriodicObj"><a name="HapticPeriodicObj"></a><pre><span class="Identifier">HapticPeriodicObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span class="Comment">##  \</span>
-              <span class="Comment">##  `HAPTIC_SINE`, `HAPTIC_LEFTRIGHT`, `HAPTIC_TRIANGLE,</span>
-              <span class="Comment">##  `SDL_HAPTIC_SAWTOOTHUP` or `HAPTIC_SAWTOOTHDOWN`</span>
-  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticDirection</span>  <span class="Comment">##  Direction of the effect.</span>
-  <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">##  uration of the effect.</span>
-  <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">##  Delay before starting the effect.</span>
-  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">##  Button that triggers the effect.</span>
-  <span class="Identifier">interval</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>            <span class="Comment">##  How soon it can be triggered again after button</span>
-  <span class="Identifier">period</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">##  Period of the wave.</span>
-  <span class="Identifier">magnitude</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>            <span class="Comment">##  Peak value; \</span>
-                  <span class="Comment">##  if negative, equivalent to `180` degrees extra phase shift.</span>
-  <span class="Identifier">offset</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>               <span class="Comment">##  Mean value of the wave.</span>
-  <span class="Identifier">phase</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">##  Positive phase shift given by hundredth of a degree.</span>
-  <span class="Identifier">attack_length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>       <span class="Comment">##  Duration of the attack.</span>
-  <span class="Identifier">attack_level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>        <span class="Comment">##  Level at the start of the attack.</span>
-  <span class="Identifier">fade_length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>         <span class="Comment">##  Duration of the fade.</span>
-  <span class="Identifier">fade_level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>          <span class="Comment">##  Level at the end of the fade.</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span class="Comment">## \</span>
+              <span class="Comment">## `HAPTIC_SINE`, `HAPTIC_LEFTRIGHT`, `HAPTIC_TRIANGLE,</span>
+              <span class="Comment">## `SDL_HAPTIC_SAWTOOTHUP` or `HAPTIC_SAWTOOTHDOWN`</span>
+  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticDirection</span>  <span class="Comment">## Direction of the effect.</span>
+  <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">## uration of the effect.</span>
+  <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">## Delay before starting the effect.</span>
+  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">## Button that triggers the effect.</span>
+  <span class="Identifier">interval</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>            <span class="Comment">## How soon it can be triggered again after button</span>
+  <span class="Identifier">period</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">## Period of the wave.</span>
+  <span class="Identifier">magnitude</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>            <span class="Comment">## Peak value; \</span>
+                  <span class="Comment">## if negative, equivalent to `180` degrees extra phase shift.</span>
+  <span class="Identifier">offset</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>               <span class="Comment">## Mean value of the wave.</span>
+  <span class="Identifier">phase</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">## Positive phase shift given by hundredth of a degree.</span>
+  <span class="Identifier">attack_length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>       <span class="Comment">## Duration of the attack.</span>
+  <span class="Identifier">attack_level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>        <span class="Comment">## Level at the start of the attack.</span>
+  <span class="Identifier">fade_length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>         <span class="Comment">## Duration of the fade.</span>
+  <span class="Identifier">fade_level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>          <span class="Comment">## Level at the end of the fade.</span>
   </pre></dt>
 <dd>
 <p>
@@ -1590,25 +1590,25 @@ SDL_HAPTIC_SAWTOOTHDOWN
 
 </dd>
 <dt id="HapticConditionObj"><a name="HapticConditionObj"></a><pre><span class="Identifier">HapticConditionObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">##  \</span>
-              <span class="Comment">##  `HAPTIC_SPRING`, `HAPTIC_DAMPER`,</span>
-              <span class="Comment">##  `HAPTIC_INERTIA` or `HAPTIC_FRICTION`</span>
-  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticDirection</span>  <span class="Comment">##  Direction of the effect - Not used ATM.</span>
-  <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">##  Duration of the effect.</span>
-  <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">##  Delay before starting the effect.</span>
-  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">##  Button that triggers the effect.</span>
-  <span class="Identifier">interval</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>            <span class="Comment">##  How soon it can be triggered again after button.</span>
-  <span class="Identifier">right_sat</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">uint16</span><span class="Other">]</span>  <span class="Comment">##  \</span>
-                            <span class="Comment">##  Level when joystick is to the positive side; max `0xFFFF`.</span>
-  <span class="Identifier">left_sat</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">uint16</span><span class="Other">]</span>   <span class="Comment">##  \</span>
-                           <span class="Comment">##  Level when joystick is to the negative side; max `0xFFFF`.</span>
-  <span class="Identifier">right_coeff</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">int16</span><span class="Other">]</span> <span class="Comment">##  \</span>
-                             <span class="Comment">##  How fast to increase the force towards the positive side.</span>
-  <span class="Identifier">left_coeff</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">int16</span><span class="Other">]</span>  <span class="Comment">##  \</span>
-                            <span class="Comment">##  How fast to increase the force towards the negative side.</span>
-  <span class="Identifier">deadband</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">uint16</span><span class="Other">]</span>   <span class="Comment">##  Size of the dead zone;</span>
-                           <span class="Comment">##  max ``0xFFFF`: whole axis-range when 0-centered.</span>
-  <span class="Identifier">center</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">int16</span><span class="Other">]</span>      <span class="Comment">##  Position of the dead zone.</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">## \</span>
+              <span class="Comment">## `HAPTIC_SPRING`, `HAPTIC_DAMPER`,</span>
+              <span class="Comment">## `HAPTIC_INERTIA` or `HAPTIC_FRICTION`</span>
+  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticDirection</span>  <span class="Comment">## Direction of the effect - Not used ATM.</span>
+  <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">## Duration of the effect.</span>
+  <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">## Delay before starting the effect.</span>
+  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">## Button that triggers the effect.</span>
+  <span class="Identifier">interval</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>            <span class="Comment">## How soon it can be triggered again after button.</span>
+  <span class="Identifier">right_sat</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">uint16</span><span class="Other">]</span>  <span class="Comment">## \</span>
+                            <span class="Comment">## Level when joystick is to the positive side; max `0xFFFF`.</span>
+  <span class="Identifier">left_sat</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">uint16</span><span class="Other">]</span>   <span class="Comment">## \</span>
+                           <span class="Comment">## Level when joystick is to the negative side; max `0xFFFF`.</span>
+  <span class="Identifier">right_coeff</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">int16</span><span class="Other">]</span> <span class="Comment">## \</span>
+                             <span class="Comment">## How fast to increase the force towards the positive side.</span>
+  <span class="Identifier">left_coeff</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">int16</span><span class="Other">]</span>  <span class="Comment">## \</span>
+                            <span class="Comment">## How fast to increase the force towards the negative side.</span>
+  <span class="Identifier">deadband</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">uint16</span><span class="Other">]</span>   <span class="Comment">## Size of the dead zone;</span>
+                           <span class="Comment">## max ``0xFFFF`: whole axis-range when 0-centered.</span>
+  <span class="Identifier">center</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">int16</span><span class="Other">]</span>      <span class="Comment">## Position of the dead zone.</span>
   </pre></dt>
 <dd>
 <p>
@@ -1633,18 +1633,18 @@ A structure containing a template for a Condition effect.</p>
 
 </dd>
 <dt id="HapticRampObj"><a name="HapticRampObj"></a><pre><span class="Identifier">HapticRampObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">##  `HAPTIC_RAMP`</span>
-  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticDirection</span>  <span class="Comment">##  Direction of the effect.</span>
-  <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">##  Duration of the effect.</span>
-  <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">##  Delay before starting the effect.</span>
-  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">##  Button that triggers the effect.</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">## `HAPTIC_RAMP`</span>
+  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticDirection</span>  <span class="Comment">## Direction of the effect.</span>
+  <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">## Duration of the effect.</span>
+  <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">## Delay before starting the effect.</span>
+  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">## Button that triggers the effect.</span>
   <span class="Identifier">interval</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>            <span class="Comment">## How soon it can be triggered again after button.</span>
-  <span class="Identifier">start</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>                <span class="Comment">##  Beginning strength level.</span>
-  <span class="Identifier">ends</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>                 <span class="Comment">##  Ending strength level.</span>
-  <span class="Identifier">attack_length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>       <span class="Comment">##  Duration of the attack.</span>
-  <span class="Identifier">attack_level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>        <span class="Comment">##  Level at the start of the attack.</span>
-  <span class="Identifier">fade_length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>         <span class="Comment">##  Duration of the fade.</span>
-  <span class="Identifier">fade_level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>          <span class="Comment">##  Level at the end of the fade.</span>
+  <span class="Identifier">start</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>                <span class="Comment">## Beginning strength level.</span>
+  <span class="Identifier">ends</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int16</span>                 <span class="Comment">## Ending strength level.</span>
+  <span class="Identifier">attack_length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>       <span class="Comment">## Duration of the attack.</span>
+  <span class="Identifier">attack_level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>        <span class="Comment">## Level at the start of the attack.</span>
+  <span class="Identifier">fade_length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>         <span class="Comment">## Duration of the fade.</span>
+  <span class="Identifier">fade_level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>          <span class="Comment">## Level at the end of the fade.</span>
   </pre></dt>
 <dd>
 <p>
@@ -1658,10 +1658,10 @@ A structure containing a template for a Ramp effect.</p>
 
 </dd>
 <dt id="HapticLeftRightObj"><a name="HapticLeftRightObj"></a><pre><span class="Identifier">HapticLeftRightObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">##  `HAPTIC_LEFTRIGHT`</span>
-  <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">##  Duration of the effect.</span>
-  <span class="Identifier">large_magnitude</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>     <span class="Comment">##  Control of the large controller motor.</span>
-  <span class="Identifier">small_magnitude</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>     <span class="Comment">##  Control of the small controller motor.</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">## `HAPTIC_LEFTRIGHT`</span>
+  <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">## Duration of the effect.</span>
+  <span class="Identifier">large_magnitude</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>     <span class="Comment">## Control of the large controller motor.</span>
+  <span class="Identifier">small_magnitude</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>     <span class="Comment">## Control of the small controller motor.</span>
   </pre></dt>
 <dd>
 <p>
@@ -1675,20 +1675,20 @@ A structure containing a template for a Left/Right effect.</p>
 
 </dd>
 <dt id="HapticCustomObj"><a name="HapticCustomObj"></a><pre><span class="Identifier">HapticCustomObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">##  `HAPTIC_CUSTOM`</span>
-  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticDirection</span>  <span class="Comment">##  Direction of the effect.</span>
-  <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">##  Duration of the effect.</span>
-  <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">##  Delay before starting the effect.</span>
-  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">##  Button that triggers the effect.</span>
-  <span class="Identifier">interval</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>            <span class="Comment">##  How soon it can be triggered again after button.</span>
-  <span class="Identifier">channels</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>             <span class="Comment">##  Axes to use, minimum of one.</span>
-  <span class="Identifier">period</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">##  Sample periods.</span>
-  <span class="Identifier">samples</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>             <span class="Comment">##  Amount of samples.</span>
-  <span class="Identifier">data</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span>             <span class="Comment">##  Should contain channels*samples items.</span>
-  <span class="Identifier">attack_length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>       <span class="Comment">##  Duration of the attack.</span>
-  <span class="Identifier">attack_level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>        <span class="Comment">##  Level at the start of the attack.</span>
-  <span class="Identifier">fade_length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>         <span class="Comment">##  Duration of the fade.</span>
-  <span class="Identifier">fade_level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>          <span class="Comment">##  Level at the end of the fade.</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">## `HAPTIC_CUSTOM`</span>
+  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticDirection</span>  <span class="Comment">## Direction of the effect.</span>
+  <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">## Duration of the effect.</span>
+  <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">## Delay before starting the effect.</span>
+  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">## Button that triggers the effect.</span>
+  <span class="Identifier">interval</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>            <span class="Comment">## How soon it can be triggered again after button.</span>
+  <span class="Identifier">channels</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>             <span class="Comment">## Axes to use, minimum of one.</span>
+  <span class="Identifier">period</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">## Sample periods.</span>
+  <span class="Identifier">samples</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>             <span class="Comment">## Amount of samples.</span>
+  <span class="Identifier">data</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span>             <span class="Comment">## Should contain channels*samples items.</span>
+  <span class="Identifier">attack_length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>       <span class="Comment">## Duration of the attack.</span>
+  <span class="Identifier">attack_level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>        <span class="Comment">## Level at the start of the attack.</span>
+  <span class="Identifier">fade_length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>         <span class="Comment">## Duration of the fade.</span>
+  <span class="Identifier">fade_level</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>          <span class="Comment">## Level at the end of the fade.</span>
   </pre></dt>
 <dd>
 <p>
@@ -1702,13 +1702,13 @@ A structure containing a template for the <cite>HAPTIC_CUSTOM</cite> effect.</p>
 
 </dd>
 <dt id="HapticEffect"><a name="HapticEffect"></a><pre><span class="Identifier">HapticEffect</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other">{.</span><span class="Identifier">union</span><span class="Other">.}</span>
-  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">##  Effect type.</span>
-  <span class="Identifier">constant</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticConstantObj</span> <span class="Comment">##  Constant effect.</span>
-  <span class="Identifier">periodic</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticPeriodicObj</span> <span class="Comment">##  Periodic effect.</span>
-  <span class="Identifier">condition</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticConditionObj</span> <span class="Comment">##  Condition effect.</span>
-  <span class="Identifier">ramp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticRampObj</span>         <span class="Comment">##  Ramp effect.</span>
-  <span class="Identifier">leftright</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticLeftRightObj</span> <span class="Comment">##  Left/Right effect.</span>
-  <span class="Identifier">custom</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticCustomObj</span>     <span class="Comment">##  Custom effect.</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">## Effect type.</span>
+  <span class="Identifier">constant</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticConstantObj</span> <span class="Comment">## Constant effect.</span>
+  <span class="Identifier">periodic</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticPeriodicObj</span> <span class="Comment">## Periodic effect.</span>
+  <span class="Identifier">condition</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticConditionObj</span> <span class="Comment">## Condition effect.</span>
+  <span class="Identifier">ramp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticRampObj</span>         <span class="Comment">## Ramp effect.</span>
+  <span class="Identifier">leftright</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticLeftRightObj</span> <span class="Comment">## Left/Right effect.</span>
+  <span class="Identifier">custom</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticCustomObj</span>     <span class="Comment">## Custom effect.</span>
   </pre></dt>
 <dd>
 <p>
@@ -2345,8 +2345,8 @@ Used to play a device an infinite number of times.</p>
     <div class="row">
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
-        <br>
-        <small>Made with Nim. Generated: 2016-01-07 19:02:02 UTC</small>
+        <br/>
+        <small>Made with Nim. Generated: 2016-04-01 21:48:00 UTC</small>
       </div>
     </div>
   </div>
