@@ -15,7 +15,7 @@ Includes:
 * SDL_image 2.0.1
 * SDL_mixer 2.0.1
 * SDL_net 2.0.1
-* SDL_ttf 2.0.13
+* SDL_ttf 2.0.14
 
 What does not implemented here:
 -------------------------------
@@ -28,12 +28,13 @@ CHANGELOG:
 ==========
 **v0.96 beta** ***{WIP}***
 * added sdl_syswm.nim
+* updated SDL2_ttf to v2.0.14
 * added more SDL2 examples
 * ***WIP***
 
 **v0.95 beta**
 * Nim 0.12.0 adaptation.
-* Update to SDL2-2.0.4
+* updated to SDL2-2.0.4
 * added SDL2-gfx
 * type-related fixes
 * different fixes

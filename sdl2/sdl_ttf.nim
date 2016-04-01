@@ -28,6 +28,11 @@
 ##
 ##  TrueType font rendering library.
 
+##  ``Note:``
+##  In many places, SDL_ttf will say "glyph" when it means "code point."
+##  Unicode is hard, we learn as we go, and we apologize for adding to the
+##  confusion.
+
 import
   sdl
 
@@ -35,7 +40,7 @@ import
 const
   MAJOR_VERSION* = 2
   MINOR_VERSION* = 0
-  PATCHLEVEL* = 13
+  PATCHLEVEL* = 14
 
 proc linkedVersion*(): ptr Version {.
     cdecl, importc: "TTF_Linked_Version", dynlib: SDL2_TTF_LIB.}
@@ -356,8 +361,19 @@ proc wasInit*(): cint {.
     cdecl, importc: "TTF_WasInit", dynlib: SDL2_TTF_LIB.}
   ##  Check if the TTF engine is initialized.
 
-proc getFontKerningSize*(font: Font; previous_ch: uint16; ch: uint16): cint {.
-    cdecl, importc: "TTF_GetFontKerningSize", dynlib: SDL2_TTF_LIB.}
+proc getFontKerningSize*(font: Font; prev_index: cint, index: cint): cint {.
+    cdecl, importc: "TTF_GetFontKerningSize", dynlib: SDL2_TTF_LIB, deprecated.}
+  ##  Get the kerning size of two glyphs indices.
+  ##
+  ##  ``DEPRECATED:`` this function requires FreeType font indexes, not glyphs,
+  ##  by accident, which we don't expose through this API, so it could give
+  ##  wildly incorrect results, especially with non-ASCII values.
+  ##  Going forward, please use ``getFontKerningSizeGlyphs()`` instead, which
+  ##  does what you probably expected this function to do.
+
+proc getFontKerningSizeGlyphs*(
+    font: Font; previous_ch: uint16; ch: uint16): cint {.
+      cdecl, importc: "TTF_GetFontKerningSizeGlyphs", dynlib: SDL2_TTF_LIB.}
   ##  Get the kerning size of two glyphs.
 
 template setError*(fmt: expr): cint =
