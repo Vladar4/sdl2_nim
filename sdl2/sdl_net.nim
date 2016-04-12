@@ -1216,57 +1216,8 @@ proc getError*(): cstring {.
 #*********************************************************************
 
 # Warning, some systems have data access alignment restrictions.
-when defined(sparc) or defined(mips) or defined(__arm__):
-  const
-    SDL_DATA_ALIGNED* = 1
-when not(declared(SDL_DATA_ALIGNED)):
-  const
-    SDL_DATA_ALIGNED* = 0
 
-when not(declared(WITHOUT_SDL) and (SDL_DATA_ALIGNED != 0)):
-
-  import private/endians
-
-  template netWrite16(value: uint16; area: pointer) =
-    # cast[ptr uint16](area)[] = SDL_swapBE16(value)
-    bigEndian16(area, value)
-
-  template netWrite32(value: uint32; area: pointer) =
-    # cast[ptr uint32](area)[] = SDL_swapBE32(value)
-    bigEndian32(area, value)
-
-  template netRead16(area: pointer): uint16 =
-    # SDL_swapBE16(cast[ptr uint16](area)[])
-    bigEndian16(area, area)
-
-  template netRead32(area: pointer): uint32 =
-    # SDL_swapBE32(cast[ptr uint32](area)[])
-    bigEndian32(area, area)
-
-else:
-
-  template netWrite16(value: uint16; area: pointer) =
-    var areap: ptr uint8 = cast[ptr uint8](area)
-    areap[0] = (value shr 8) and 0x000000FF
-    areap[1] = value and 0x000000FF
-
-  template netWrite32(value: uint32; area: pointer) =
-    var areap: ptr uint8 = cast[ptr uint8](area)
-    areap[0] = (value shr 24) and 0x000000FF
-    areap[1] = (value shr 16) and 0x000000FF
-    areap[2] = (value shr 8) and 0x000000FF
-    areap[3] = value and 0x000000FF
-
-  template netRead16(area: pointer): uint16 =
-    var areap: ptr uint8 = cast[ptr uint8](area)
-    (cast[uint16](areap[0])) shl 8 or (cast[uint16](areap[1]))
-
-  template netRead32(area: pointer): uint32 =
-    var areap: ptr uint8 = cast[ptr uint8](area)
-    (cast[uint32](areap[0])) shl 24 or (cast[uint32](areap[1])) shl 16 or
-        (cast[uint32](areap[2])) shl 8 or (cast[uint32](areap[3]))
-
-template write16*(value: uint16, area: pointer) = ##  \
+proc write16*(value: uint16, area: pointer) {.cdecl, importc: "SDLNet_Write16", dynlib: SDL2_NET_LIB.}
   ##  Write a 16-bit value to network packet buffer.
   ##
   ##  ``value`` The 16bit number to put into the area buffer.
@@ -1280,9 +1231,7 @@ template write16*(value: uint16, area: pointer) = ##  \
   ##  pointer need not be at the beginning of a buffer, but must have at least
   ##  2 bytes of space left, including the byte currently pointed at.
 
-  netWrite16(value, area)
-
-template write32*(value: uint32, area: pointer) = ##  \
+proc write32*(value: uint32, area: pointer) {.cdecl, importc: "SDLNet_Write32", dynlib: SDL2_NET_LIB.}
   ##  Write a 32-bit value to network packet buffer.
   ##
   ##  ``value`` The 32bit number to put into the area buffer.
@@ -1295,9 +1244,8 @@ template write32*(value: uint32, area: pointer) = ##  \
   ##  number, the unsigned parameter type doesn't affect the data. The area
   ##  pointer need not be at the beginning of a buffer, but must have at least
   ##  4 bytes of space left, including the byte currently pointed at.
-  netWrite32(value, area)
 
-template read16*(area: pointer): uint16 = ##  \
+proc read16*(area: pointer): uint16 {.cdecl, importc: "SDLNet_Read16", dynlib: SDL2_NET_LIB.}
   ##  Read a 16-bit value from network packet buffer.
   ##
   ##  ``area`` The pointer into a data buffer, at which to get the number from.
@@ -1309,9 +1257,8 @@ template read16*(area: pointer): uint16 = ##  \
   ##  data. The area pointer need not be at the beginning of a buffer, but must
   ##  have at least 2 bytes of space left, including the byte currently pointed
   ##  at.
-  netRead16(area)
 
-template read32*(area: pointer): uint32 = ##  \
+proc read32*(area: pointer): uint32 {.cdecl, importc: "SDLNet_Read32", dynlib: SDL2_NET_LIB.}
   ##  Read a 32-bit value from network packet buffer.
   ##
   ##  ``area`` The pointer into a data buffer, at which to get the number from.
@@ -1323,4 +1270,3 @@ template read32*(area: pointer): uint32 = ##  \
   ##  data. The area pointer need not be at the beginning of a buffer, but must
   ##  have at least 4 bytes of space left, including the byte currently pointed
   ##  at.
-  netRead32(area)
