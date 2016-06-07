@@ -30,10 +30,11 @@ CHANGELOG:
 * added sdl_syswm.nim
 * updated SDL2_ttf to v2.0.14
 * added more SDL2 examples
+* Nim 0.14.0 adaptation
 * ***WIP***
 
 **v0.95 beta**
-* Nim 0.12.0 adaptation.
+* Nim 0.12.0 adaptation
 * updated to SDL2-2.0.4
 * added SDL2-gfx
 * type-related fixes

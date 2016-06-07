@@ -5,7 +5,7 @@
 
 
 import
-    math,
+    random,
     sdl2/sdl, sdl2/sdl_image as img,
     sdl2/sdl_gfx_primitives as gfx, sdl2/sdl_gfx_primitives_font as font
 

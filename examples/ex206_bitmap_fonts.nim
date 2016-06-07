@@ -5,7 +5,7 @@
 
 
 import
-    math,
+    random,
     sdl2/sdl, sdl2/sdl_image as img
 
 

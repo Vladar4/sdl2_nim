@@ -4,7 +4,9 @@
 # ------------------------------------
 
 
-import math, sdl2/sdl, sdl2/sdl_image as img
+import
+  random,
+  sdl2/sdl, sdl2/sdl_image as img
 
 
 const
