@@ -24,6 +24,26 @@ What does not implemented here:
 
 ----------------------------------------
 
+FAQ:
+====
+**Q**: Why it exist if there's official [nim-lang/sdl2](https://github.com/nim-lang/sdl2) repository?
+
+**A**: This wrapper is actually was created before the official (Aug.2013 vs. Mar.2014). It may be, I wouldn't make it if there was other wrapper at the time.
+
+**Q**: How it is different from the official wrapper?
+
+**A**: Obviously, it can't be *much* different, as they both are wrappers for the same library, but what comes to mind:
+
+* This one is fully documented, nim-style, with the generated documentation as a bonus;
+* I personally created a series of highly commented examples for almost every aspect of the library and its "satelites" (gfx, ttf, etc.);
+* Design decisions that I thought made more sence than official one's (like Event type through {.union.} vs. evConv template with casting; naming sceme closer to the original sdl2, etc.);
+* Source files' structure is closely following the original library.
+
+**Q**: Why should I use this one vs. the official?
+
+**A**: No reason. It's a question of preference.
+
+
 CHANGELOG:
 ==========
 **v0.96 beta** ***{WIP}***
