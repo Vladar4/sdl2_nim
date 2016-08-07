@@ -255,7 +255,7 @@ type
     y*: int32               ##  \
       ##  The amount scrolled vertically,
       ##  positive away from the user and negative toward the user
-    direction*: uint32      ##  \
+    direction*: MouseWheelDirection ##  \
       ##  Set to one of the `MOUSEWHEEL_*`.
       ##  When `MOUSEWHEEL_FLIPPED` the values in X and Y will be opposite.
       ##  Multiply by `-1` to change them back.

@@ -44,7 +44,7 @@ type
     SYSTEM_CURSOR_HAND,       ##  Hand
     NUM_SYSTEM_CURSORS
 
-  MouseWheelDirection* {.size: sizeof(cint).} = enum  ##  \
+  MouseWheelDirection* {.size: sizeof(uint32).} = enum  ##  \
     ##  Scroll direction types for the Scroll event
     MOUSEWHEEL_NORMAL,  ##  The scroll direction is normal
     MOUSEWHEEL_FLIPPED  ##  The scroll direction is flipped / natural
