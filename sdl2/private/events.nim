@@ -344,7 +344,7 @@ type
     kind*: EventKind        ##  `CONTROLLERBUTTONDOWN` or `CONTROLLERBUTTONUP`
     timestamp*: uint32
     which*: JoystickID      ##  The joystick instance id
-    button*: uint8          ##  The controller button (``GameControllerButton``)
+    button*: GameControllerButton ##  The controller button (``GameControllerButton``)
     state*: uint8           ##  `PRESSED` or `RELEASED`
     padding1*: uint8
     padding2*: uint8

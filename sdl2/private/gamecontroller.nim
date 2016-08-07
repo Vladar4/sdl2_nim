@@ -193,7 +193,7 @@ proc gameControllerUpdate*() {.
   ##  events are enabled.
 
 type
-  GameControllerAxis* {.size: sizeof(cint).} = enum ##  \
+  GameControllerAxis* {.size: sizeof(uint8).} = enum ##  \
     ##  The list of axes available from a controller
     CONTROLLER_AXIS_INVALID = - 1,
     CONTROLLER_AXIS_LEFTX,  CONTROLLER_AXIS_LEFTY,
@@ -226,7 +226,7 @@ proc gameControllerGetAxis*(gamecontroller: GameController;
   ##  The axis indices start at index `0`.
 
 type
-  GameControllerButton* {.size: sizeof(cint).} = enum ##  \
+  GameControllerButton* {.size: sizeof(uint8).} = enum ##  \
     ##  The list of buttons available from a controller
     CONTROLLER_BUTTON_INVALID = - 1,
     CONTROLLER_BUTTON_A, CONTROLLER_BUTTON_B,
