@@ -1143,10 +1143,46 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
+  div.pragma {
+    display: none;
+  }
+  span.pragmabegin {
+    cursor: pointer;
+  }
+  span.pragmaend {
+    cursor: pointer;
+  }
 </style>
 
+
+<script type="text/javascript">
+function togglepragma(d) {
+  if (d.style.display != 'inline')
+    d.style.display = 'inline';
+  else
+    d.style.display = 'none';
+}
+
+function main() {
+  var elements = document.getElementsByClassName("pragmabegin");
+  for (var i = 0; i < elements.length; ++i) {
+    var e = elements[i];
+    e.onclick = function(event) {
+      togglepragma(event.target.nextSibling);
+    };
+  }
+  var elements = document.getElementsByClassName("pragmaend");
+  for (var i = 0; i < elements.length; ++i) {
+    var e = elements[i];
+    e.onclick = function(event) {
+      togglepragma(event.target.previousSibling);
+    };
+  }
+}
+</script>
+
 </head>
-<body>
+<body onload="main()">
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Module events</h1>
@@ -1158,7 +1194,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#EventKind"
-    title="EventKind* = enum
+    title="EventKind = enum
   FIRSTEVENT = 0,               ## Unused (do not remove)
   QUIT = 0x00000100,            ## User-requested quit
   APP_TERMINATING,            ## \
@@ -1239,11 +1275,11 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   LASTEVENT = 0x0000FFFF        ## \
                       ## This last event is only for bounding internal arrays"><wbr />Event<wbr />Kind</a></li>
   <li><a class="reference" href="#CommonEventObj"
-    title="CommonEventObj* = object
+    title="CommonEventObj = object
   kind*: EventKind
   timestamp*: uint32"><wbr />Common<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#WindowEventObj"
-    title="WindowEventObj* = object
+    title="WindowEventObj = object
   kind*: EventKind             ## `WINDOWEVENT`
   timestamp*: uint32
   windowID*: uint32            ## The associated window
@@ -1254,7 +1290,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   data1*: int32                ## event dependent data
   data2*: int32                ## event dependent data"><wbr />Window<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#KeyboardEventObj"
-    title="KeyboardEventObj* = object
+    title="KeyboardEventObj = object
   kind*: EventKind             ## `KEYDOWN` or `KEYUP`
   timestamp*: uint32
   windowID*: uint32            ## The window with keyboard focus, if any
@@ -1264,7 +1300,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   padding3*: uint8
   keysym*: Keysym              ## The key that was pressed or released"><wbr />Keyboard<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#TextEditingEventObj"
-    title="TextEditingEventObj* = object
+    title="TextEditingEventObj = object
   kind*: EventKind             ## `TEXTEDITING`
   timestamp*: uint32
   windowID*: uint32            ## The window with keyboard focus, if any
@@ -1272,13 +1308,13 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   start*: int32                ## The start cursor of selected editing text
   length*: int32               ## The length of selected editing text"><wbr />Text<wbr />Editing<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#TextInputEventObj"
-    title="TextInputEventObj* = object
+    title="TextInputEventObj = object
   kind*: EventKind             ## `TEXTINPUT`
   timestamp*: uint32
   windowID*: uint32            ## The window with keyboard focus, if any
   text*: array[TEXTINPUTEVENT_TEXT_SIZE, char] ## The input text"><wbr />Text<wbr />Input<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#MouseMotionEventObj"
-    title="MouseMotionEventObj* = object
+    title="MouseMotionEventObj = object
   kind*: EventKind             ## `MOUSEMOTION`
   timestamp*: uint32
   windowID*: uint32            ## The window with mouse focus, if any
@@ -1289,7 +1325,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   xrel*: int32                 ## The relative motion in the X direction
   yrel*: int32                 ## The relative motion in the Y direction"><wbr />Mouse<wbr />Motion<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#MouseButtonEventObj"
-    title="MouseButtonEventObj* = object
+    title="MouseButtonEventObj = object
   kind*: EventKind             ## `MOUSEBUTTONDOWN` or `MOUSEBUTTONUP`
   timestamp*: uint32
   windowID*: uint32            ## The window with mouse focus, if any
@@ -1301,7 +1337,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   x*: int32                    ## X coordinate, relative to window
   y*: int32                    ## Y coordinate, relative to window"><wbr />Mouse<wbr />Button<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#MouseWheelEventObj"
-    title="MouseWheelEventObj* = object
+    title="MouseWheelEventObj = object
   kind*: EventKind             ## `MOUSEWHEEL`
   timestamp*: uint32
   windowID*: uint32            ## The window with mouse focus, if any
@@ -1312,12 +1348,12 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   y*: int32                    ## \
           ## The amount scrolled vertically,
           ## positive away from the user and negative toward the user
-  direction*: uint32 ## \
-                   ## Set to one of the `MOUSEWHEEL_*`.
-                   ## When `MOUSEWHEEL_FLIPPED` the values in X and Y will be opposite.
-                   ## Multiply by `-1` to change them back."><wbr />Mouse<wbr />Wheel<wbr />Event<wbr />Obj</a></li>
+  direction*: MouseWheelDirection ## \
+                                ## Set to one of the `MOUSEWHEEL_*`.
+                                ## When `MOUSEWHEEL_FLIPPED` the values in X and Y will be opposite.
+                                ## Multiply by `-1` to change them back."><wbr />Mouse<wbr />Wheel<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#JoyAxisEventObj"
-    title="JoyAxisEventObj* = object
+    title="JoyAxisEventObj = object
   kind*: EventKind             ## `JOYAXISMOTION`
   timestamp*: uint32
   which*: JoystickID           ## The joystick instance id
@@ -1328,7 +1364,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   value*: int16                ## The axis value (range: `-32768` to `32767`)
   padding4*: uint16"><wbr />Joy<wbr />Axis<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#JoyBallEventObj"
-    title="JoyBallEventObj* = object
+    title="JoyBallEventObj = object
   kind*: EventKind             ## `JOYBALLMOTION`
   timestamp*: uint32
   which*: JoystickID           ## The joystick instance id
@@ -1339,7 +1375,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   xrel*: int16                 ## The relative motion in the X direction
   yrel*: int16                 ## The relative motion in the Y direction"><wbr />Joy<wbr />Ball<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#JoyHatEventObj"
-    title="JoyHatEventObj* = object
+    title="JoyHatEventObj = object
   kind*: EventKind             ## `JOYHATMOTION`
   timestamp*: uint32
   which*: JoystickID           ## The joystick instance id
@@ -1356,7 +1392,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   padding1*: uint8
   padding2*: uint8"><wbr />Joy<wbr />Hat<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#JoyButtonEventObj"
-    title="JoyButtonEventObj* = object
+    title="JoyButtonEventObj = object
   kind*: EventKind             ## `JOYBUTTONDOWN` or `JOYBUTTONUP`
   timestamp*: uint32
   which*: JoystickID           ## The joystick instance id
@@ -1365,34 +1401,34 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   padding1*: uint8
   padding2*: uint8"><wbr />Joy<wbr />Button<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#JoyDeviceEventObj"
-    title="JoyDeviceEventObj* = object
+    title="JoyDeviceEventObj = object
   kind*: EventKind             ## `JOYDEVICEADDED` or `JOYDEVICEREMOVED`
   timestamp*: uint32
   which*: int32                ## \
               ## The joystick device index for the `ADDED` event,
               ## instance id for the `REMOVED` event"><wbr />Joy<wbr />Device<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#ControllerAxisEventObj"
-    title="ControllerAxisEventObj* = object
+    title="ControllerAxisEventObj = object
   kind*: EventKind             ## `CONTROLLERAXISMOTION`
   timestamp*: uint32
   which*: JoystickID           ## The joystick instance id
-  axis*: uint8                 ## The controller axis (``GameControllerAxis``)
+  axis*: GameControllerAxis    ## The controller axis (``GameControllerAxis``)
   padding1*: uint8
   padding2*: uint8
   padding3*: uint8
   value*: int16                ## The axis value (range: `-32768` to `32767`)
   padding4*: uint16"><wbr />Controller<wbr />Axis<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#ControllerButtonEventObj"
-    title="ControllerButtonEventObj* = object
+    title="ControllerButtonEventObj = object
   kind*: EventKind             ## `CONTROLLERBUTTONDOWN` or `CONTROLLERBUTTONUP`
   timestamp*: uint32
   which*: JoystickID           ## The joystick instance id
-  button*: uint8               ## The controller button (``GameControllerButton``)
+  button*: GameControllerButton ## The controller button (``GameControllerButton``)
   state*: uint8                ## `PRESSED` or `RELEASED`
   padding1*: uint8
   padding2*: uint8"><wbr />Controller<wbr />Button<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#ControllerDeviceEventObj"
-    title="ControllerDeviceEventObj* = object
+    title="ControllerDeviceEventObj = object
   kind*: EventKind             ## \
                  ## `CONTROLLERDEVICEADDED`,
                  ## `CONTROLLERDEVICEREMOVED, or
@@ -1402,7 +1438,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
               ## The joystick device index for the `ADDED` event,
               ## instance id for the `REMOVED` or `REMAPPED` event"><wbr />Controller<wbr />Device<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#AudioDeviceEventObj"
-    title="AudioDeviceEventObj* = object
+    title="AudioDeviceEventObj = object
   kind*: EventKind             ## `AUDIODEVICEADDED`, or `AUDIODEVICEREMOVED`
   timestamp*: uint32
   which*: uint32 ## \
@@ -1416,7 +1452,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   padding2*: uint8
   padding3*: uint8"><wbr />Audio<wbr />Device<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#TouchFingerEventObj"
-    title="TouchFingerEventObj* = object
+    title="TouchFingerEventObj = object
   kind*: EventKind             ## `FINGERMOTION` or `FINGERDOWN` or `FINGERUP`
   timestamp*: uint32
   touchId*: TouchID            ## The touch device id
@@ -1427,7 +1463,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   dy*: cfloat                  ## Normalized in the range -1...1
   pressure*: cfloat            ## Normalized in the range 0...1"><wbr />Touch<wbr />Finger<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#MultiGestureEventObj"
-    title="MultiGestureEventObj* = object
+    title="MultiGestureEventObj = object
   kind*: EventKind             ## `MULTIGESTURE`
   timestamp*: uint32
   touchId*: TouchID            ## The touch device index
@@ -1438,7 +1474,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   numFingers*: uint16
   padding*: uint16"><wbr />Multi<wbr />Gesture<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#DollarGestureEventObj"
-    title="DollarGestureEventObj* = object
+    title="DollarGestureEventObj = object
   kind*: EventKind             ## `DOLLARGESTURE` or `DOLLARRECORD`
   timestamp*: uint32
   touchId*: TouchID            ## The touch device id
@@ -1448,20 +1484,20 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   x*: cfloat                   ## Normalized center of gesture
   y*: cfloat                   ## Normalized center of gesture"><wbr />Dollar<wbr />Gesture<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#DropEventObj"
-    title="DropEventObj* = object
+    title="DropEventObj = object
   kind*: EventKind             ## `DROPFILE`
   timestamp*: uint32
   file*: cstring               ## The file name, which should be freed with ``free()`"><wbr />Drop<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#QuitEventObj"
-    title="QuitEventObj* = object
+    title="QuitEventObj = object
   kind*: EventKind             ## `QUIT`
   timestamp*: uint32"><wbr />Quit<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#OSEventObj"
-    title="OSEventObj* = object
+    title="OSEventObj = object
   kind*: EventKind             ## `QUIT`
   timestamp*: uint32"><wbr />OSEvent<wbr />Obj</a></li>
   <li><a class="reference" href="#UserEventObj"
-    title="UserEventObj* = object
+    title="UserEventObj = object
   kind*: EventKind             ## `USEREVENT` through `LASTEVENT-1`
   timestamp*: uint32
   windowID*: uint32            ## The associated window if any
@@ -1469,14 +1505,14 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   data1*: pointer              ## User defined data pointer
   data2*: pointer              ## User defined data pointer"><wbr />User<wbr />Event<wbr />Obj</a></li>
   <li><a class="reference" href="#SysWMmsg"
-    title="SysWMmsg* = pointer"><wbr />Sys<wbr />WMmsg</a></li>
+    title="SysWMmsg = pointer"><wbr />Sys<wbr />WMmsg</a></li>
   <li><a class="reference" href="#SysWMEventObj"
-    title="SysWMEventObj* = object
+    title="SysWMEventObj = object
   kind*: EventKind             ## `SYSWMEVENT`
   timestamp*: uint32
   msg*: SysWMmsg               ## driver dependent data, defined in ``syswm.nim``"><wbr />Sys<wbr />WMEvent<wbr />Obj</a></li>
   <li><a class="reference" href="#Event"
-    title="Event* = object
+    title="Event = object
   kind*: EventKind             ## Event type, shared with all events
   common*: CommonEventObj      ## Common event data
   window*: WindowEventObj      ## Window event data
@@ -1510,10 +1546,10 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
                           ## 
                           ## So... we&#x27;ll add padding to force the size to be 56 bytes for both."><wbr />Event</a></li>
   <li><a class="reference" href="#EventAction"
-    title="EventAction* = enum
+    title="EventAction = enum
   ADDEVENT, PEEKEVENT, GETEVENT"><wbr />Event<wbr />Action</a></li>
   <li><a class="reference" href="#EventFilter"
-    title="EventFilter* = proc (userdata: pointer; event: ptr Event): cint"><wbr />Event<wbr />Filter</a></li>
+    title="EventFilter = proc (userdata: pointer; event: ptr Event): cint"><wbr />Event<wbr />Filter</a></li>
 
   </ul>
 </li>
@@ -1521,21 +1557,21 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#RELEASED"
-    title="RELEASED* = 0"><wbr />RELEASED</a></li>
+    title="RELEASED = 0"><wbr />RELEASED</a></li>
   <li><a class="reference" href="#PRESSED"
-    title="PRESSED* = 1"><wbr />PRESSED</a></li>
+    title="PRESSED = 1"><wbr />PRESSED</a></li>
   <li><a class="reference" href="#TEXTEDITINGEVENT_TEXT_SIZE"
-    title="TEXTEDITINGEVENT_TEXT_SIZE* = 32"><wbr />TEXTEDITINGEVENT_<wbr />TEXT_<wbr />SIZE</a></li>
+    title="TEXTEDITINGEVENT_TEXT_SIZE = 32"><wbr />TEXTEDITINGEVENT_<wbr />TEXT_<wbr />SIZE</a></li>
   <li><a class="reference" href="#TEXTINPUTEVENT_TEXT_SIZE"
-    title="TEXTINPUTEVENT_TEXT_SIZE* = 32"><wbr />TEXTINPUTEVENT_<wbr />TEXT_<wbr />SIZE</a></li>
+    title="TEXTINPUTEVENT_TEXT_SIZE = 32"><wbr />TEXTINPUTEVENT_<wbr />TEXT_<wbr />SIZE</a></li>
   <li><a class="reference" href="#QUERY"
-    title="QUERY* = - 1"><wbr />QUERY</a></li>
+    title="QUERY = -1"><wbr />QUERY</a></li>
   <li><a class="reference" href="#IGNORE"
-    title="IGNORE* = 0"><wbr />IGNORE</a></li>
+    title="IGNORE = 0"><wbr />IGNORE</a></li>
   <li><a class="reference" href="#DISABLE"
-    title="DISABLE* = 0"><wbr />DISABLE</a></li>
+    title="DISABLE = 0"><wbr />DISABLE</a></li>
   <li><a class="reference" href="#ENABLE"
-    title="ENABLE* = 1"><wbr />ENABLE</a></li>
+    title="ENABLE = 1"><wbr />ENABLE</a></li>
 
   </ul>
 </li>
@@ -1543,40 +1579,40 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#pumpEvents,"
-    title="pumpEvents*()"><wbr />pump<wbr />Events</a></li>
+    title="pumpEvents()"><wbr />pump<wbr />Events</a></li>
   <li><a class="reference" href="#peepEvents,ptr.Event,cint,EventAction,EventKind,EventKind"
-    title="peepEvents*(events: ptr Event; numevents: cint; action: EventAction;
-            minKind: EventKind; maxKind: EventKind): cint"><wbr />peep<wbr />Events</a></li>
+    title="peepEvents(events: ptr Event; numevents: cint; action: EventAction; minKind: EventKind;
+           maxKind: EventKind): cint"><wbr />peep<wbr />Events</a></li>
   <li><a class="reference" href="#hasEvent,EventKind"
-    title="hasEvent*(kind: EventKind): bool"><wbr />has<wbr />Event</a></li>
+    title="hasEvent(kind: EventKind): bool"><wbr />has<wbr />Event</a></li>
   <li><a class="reference" href="#hasEvents,EventKind,EventKind"
-    title="hasEvents*(minKind: EventKind; maxKind: EventKind): bool"><wbr />has<wbr />Events</a></li>
+    title="hasEvents(minKind: EventKind; maxKind: EventKind): bool"><wbr />has<wbr />Events</a></li>
   <li><a class="reference" href="#flushEvent,EventKind"
-    title="flushEvent*(kind: EventKind)"><wbr />flush<wbr />Event</a></li>
+    title="flushEvent(kind: EventKind)"><wbr />flush<wbr />Event</a></li>
   <li><a class="reference" href="#flushEvents,EventKind,EventKind"
-    title="flushEvents*(minKind: EventKind; maxKind: EventKind)"><wbr />flush<wbr />Events</a></li>
+    title="flushEvents(minKind: EventKind; maxKind: EventKind)"><wbr />flush<wbr />Events</a></li>
   <li><a class="reference" href="#pollEvent,ptr.Event"
-    title="pollEvent*(event: ptr Event): cint"><wbr />poll<wbr />Event</a></li>
+    title="pollEvent(event: ptr Event): cint"><wbr />poll<wbr />Event</a></li>
   <li><a class="reference" href="#waitEvent,ptr.Event"
-    title="waitEvent*(event: ptr Event): cint"><wbr />wait<wbr />Event</a></li>
+    title="waitEvent(event: ptr Event): cint"><wbr />wait<wbr />Event</a></li>
   <li><a class="reference" href="#waitEventTimeout,ptr.Event,cint"
-    title="waitEventTimeout*(event: ptr Event; timeout: cint): cint"><wbr />wait<wbr />Event<wbr />Timeout</a></li>
+    title="waitEventTimeout(event: ptr Event; timeout: cint): cint"><wbr />wait<wbr />Event<wbr />Timeout</a></li>
   <li><a class="reference" href="#pushEvent,ptr.Event"
-    title="pushEvent*(event: ptr Event): cint"><wbr />push<wbr />Event</a></li>
+    title="pushEvent(event: ptr Event): cint"><wbr />push<wbr />Event</a></li>
   <li><a class="reference" href="#setEventFilter,EventFilter,pointer"
-    title="setEventFilter*(filter: EventFilter; userdata: pointer)"><wbr />set<wbr />Event<wbr />Filter</a></li>
+    title="setEventFilter(filter: EventFilter; userdata: pointer)"><wbr />set<wbr />Event<wbr />Filter</a></li>
   <li><a class="reference" href="#getEventFilter,ptr.EventFilter,ptr.pointer"
-    title="getEventFilter*(filter: ptr EventFilter; userdata: ptr pointer): bool"><wbr />get<wbr />Event<wbr />Filter</a></li>
+    title="getEventFilter(filter: ptr EventFilter; userdata: ptr pointer): bool"><wbr />get<wbr />Event<wbr />Filter</a></li>
   <li><a class="reference" href="#addEventWatch,EventFilter,pointer"
-    title="addEventWatch*(filter: EventFilter; userdata: pointer)"><wbr />add<wbr />Event<wbr />Watch</a></li>
+    title="addEventWatch(filter: EventFilter; userdata: pointer)"><wbr />add<wbr />Event<wbr />Watch</a></li>
   <li><a class="reference" href="#delEventWatch,EventFilter,pointer"
-    title="delEventWatch*(filter: EventFilter; userdata: pointer)"><wbr />del<wbr />Event<wbr />Watch</a></li>
+    title="delEventWatch(filter: EventFilter; userdata: pointer)"><wbr />del<wbr />Event<wbr />Watch</a></li>
   <li><a class="reference" href="#filterEvents,EventFilter,pointer"
-    title="filterEvents*(filter: EventFilter; userdata: pointer)"><wbr />filter<wbr />Events</a></li>
+    title="filterEvents(filter: EventFilter; userdata: pointer)"><wbr />filter<wbr />Events</a></li>
   <li><a class="reference" href="#eventState,EventKind,cint"
-    title="eventState*(kind: EventKind; state: cint): uint8"><wbr />event<wbr />State</a></li>
+    title="eventState(kind: EventKind; state: cint): uint8"><wbr />event<wbr />State</a></li>
   <li><a class="reference" href="#registerEvents,cint"
-    title="registerEvents*(numevents: cint): uint32"><wbr />register<wbr />Events</a></li>
+    title="registerEvents(numevents: cint): uint32"><wbr />register<wbr />Events</a></li>
 
   </ul>
 </li>
@@ -1584,7 +1620,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <a class="reference reference-toplevel" href="#17" id="67">Templates</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#getEventState.t,expr"
-    title="getEventState*(kind: expr): expr"><wbr />get<wbr />Event<wbr />State</a></li>
+    title="getEventState(kind: expr): expr"><wbr />get<wbr />Event<wbr />State</a></li>
 
   </ul>
 </li>
@@ -1599,7 +1635,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="EventKind"><a name="EventKind"></a><pre><span class="Identifier">EventKind</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt id="EventKind"><a name="EventKind"></a><pre><span class="Identifier">EventKind</span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">FIRSTEVENT</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span>               <span class="Comment">## Unused (do not remove)</span>
   <span class="Identifier">QUIT</span> <span class="Other">=</span> <span class="DecNumber">0x00000100</span><span class="Other">,</span>            <span class="Comment">## User-requested quit</span>
   <span class="Identifier">APP_TERMINATING</span><span class="Other">,</span>            <span class="Comment">## \</span>
@@ -1684,7 +1720,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 The types of events that can be delivered.
 
 </dd>
-<dt id="CommonEventObj"><a name="CommonEventObj"></a><pre><span class="Identifier">CommonEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="CommonEventObj"><a name="CommonEventObj"></a><pre><span class="Identifier">CommonEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
 </pre></dt>
@@ -1693,7 +1729,7 @@ The types of events that can be delivered.
 Fields shared by every event
 
 </dd>
-<dt id="WindowEventObj"><a name="WindowEventObj"></a><pre><span class="Identifier">WindowEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="WindowEventObj"><a name="WindowEventObj"></a><pre><span class="Identifier">WindowEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `WINDOWEVENT`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The associated window</span>
@@ -1709,7 +1745,7 @@ Fields shared by every event
 Window state change event data (<cite>event.window.*</cite>)
 
 </dd>
-<dt id="KeyboardEventObj"><a name="KeyboardEventObj"></a><pre><span class="Identifier">KeyboardEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="KeyboardEventObj"><a name="KeyboardEventObj"></a><pre><span class="Identifier">KeyboardEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `KEYDOWN` or `KEYUP`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with keyboard focus, if any</span>
@@ -1724,7 +1760,7 @@ Window state change event data (<cite>event.window.*</cite>)
 Keyboard button event structure (<cite>event.key.*</cite>)
 
 </dd>
-<dt id="TextEditingEventObj"><a name="TextEditingEventObj"></a><pre><span class="Identifier">TextEditingEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="TextEditingEventObj"><a name="TextEditingEventObj"></a><pre><span class="Identifier">TextEditingEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `TEXTEDITING`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with keyboard focus, if any</span>
@@ -1737,7 +1773,7 @@ Keyboard button event structure (<cite>event.key.*</cite>)
 Keyboard text editing event structure (<cite>event.edit.*</cite>)
 
 </dd>
-<dt id="TextInputEventObj"><a name="TextInputEventObj"></a><pre><span class="Identifier">TextInputEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="TextInputEventObj"><a name="TextInputEventObj"></a><pre><span class="Identifier">TextInputEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `TEXTINPUT`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with keyboard focus, if any</span>
@@ -1748,7 +1784,7 @@ Keyboard text editing event structure (<cite>event.edit.*</cite>)
 Keyboard text input event structure (<cite>event.text.*</cite>)
 
 </dd>
-<dt id="MouseMotionEventObj"><a name="MouseMotionEventObj"></a><pre><span class="Identifier">MouseMotionEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="MouseMotionEventObj"><a name="MouseMotionEventObj"></a><pre><span class="Identifier">MouseMotionEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `MOUSEMOTION`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with mouse focus, if any</span>
@@ -1764,7 +1800,7 @@ Keyboard text input event structure (<cite>event.text.*</cite>)
 Mouse motion event structure (<cite>event.motion.*</cite>)
 
 </dd>
-<dt id="MouseButtonEventObj"><a name="MouseButtonEventObj"></a><pre><span class="Identifier">MouseButtonEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="MouseButtonEventObj"><a name="MouseButtonEventObj"></a><pre><span class="Identifier">MouseButtonEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `MOUSEBUTTONDOWN` or `MOUSEBUTTONUP`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with mouse focus, if any</span>
@@ -1781,7 +1817,7 @@ Mouse motion event structure (<cite>event.motion.*</cite>)
 Mouse button event structure (<cite>event.button.*</cite>)
 
 </dd>
-<dt id="MouseWheelEventObj"><a name="MouseWheelEventObj"></a><pre><span class="Identifier">MouseWheelEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="MouseWheelEventObj"><a name="MouseWheelEventObj"></a><pre><span class="Identifier">MouseWheelEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `MOUSEWHEEL`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with mouse focus, if any</span>
@@ -1792,17 +1828,17 @@ Mouse button event structure (<cite>event.button.*</cite>)
   <span class="Identifier">y</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                    <span class="Comment">## \</span>
           <span class="Comment">## The amount scrolled vertically,</span>
           <span class="Comment">## positive away from the user and negative toward the user</span>
-  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Comment">## \</span>
-                   <span class="Comment">## Set to one of the `MOUSEWHEEL_*`.</span>
-                   <span class="Comment">## When `MOUSEWHEEL_FLIPPED` the values in X and Y will be opposite.</span>
-                   <span class="Comment">## Multiply by `-1` to change them back.</span>
+  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">MouseWheelDirection</span> <span class="Comment">## \</span>
+                                <span class="Comment">## Set to one of the `MOUSEWHEEL_*`.</span>
+                                <span class="Comment">## When `MOUSEWHEEL_FLIPPED` the values in X and Y will be opposite.</span>
+                                <span class="Comment">## Multiply by `-1` to change them back.</span>
   </pre></dt>
 <dd>
 
 Mouse wheel event structure (<cite>event.wheel.*</cite>)
 
 </dd>
-<dt id="JoyAxisEventObj"><a name="JoyAxisEventObj"></a><pre><span class="Identifier">JoyAxisEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="JoyAxisEventObj"><a name="JoyAxisEventObj"></a><pre><span class="Identifier">JoyAxisEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `JOYAXISMOTION`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
@@ -1818,7 +1854,7 @@ Mouse wheel event structure (<cite>event.wheel.*</cite>)
 Joystick axis motion event structure (<cite>event.jaxis.*</cite>)
 
 </dd>
-<dt id="JoyBallEventObj"><a name="JoyBallEventObj"></a><pre><span class="Identifier">JoyBallEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="JoyBallEventObj"><a name="JoyBallEventObj"></a><pre><span class="Identifier">JoyBallEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `JOYBALLMOTION`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
@@ -1834,7 +1870,7 @@ Joystick axis motion event structure (<cite>event.jaxis.*</cite>)
 Joystick trackball motion event structure (<cite>event.jball.*</cite>)
 
 </dd>
-<dt id="JoyHatEventObj"><a name="JoyHatEventObj"></a><pre><span class="Identifier">JoyHatEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="JoyHatEventObj"><a name="JoyHatEventObj"></a><pre><span class="Identifier">JoyHatEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `JOYHATMOTION`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
@@ -1856,7 +1892,7 @@ Joystick trackball motion event structure (<cite>event.jball.*</cite>)
 Joystick hat position change event structure (<cite>event.jhat.*</cite>)
 
 </dd>
-<dt id="JoyButtonEventObj"><a name="JoyButtonEventObj"></a><pre><span class="Identifier">JoyButtonEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="JoyButtonEventObj"><a name="JoyButtonEventObj"></a><pre><span class="Identifier">JoyButtonEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `JOYBUTTONDOWN` or `JOYBUTTONUP`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
@@ -1870,7 +1906,7 @@ Joystick hat position change event structure (<cite>event.jhat.*</cite>)
 Joystick button event structure (<cite>event.jbutton.*</cite>)
 
 </dd>
-<dt id="JoyDeviceEventObj"><a name="JoyDeviceEventObj"></a><pre><span class="Identifier">JoyDeviceEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="JoyDeviceEventObj"><a name="JoyDeviceEventObj"></a><pre><span class="Identifier">JoyDeviceEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `JOYDEVICEADDED` or `JOYDEVICEREMOVED`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                <span class="Comment">## \</span>
@@ -1882,11 +1918,11 @@ Joystick button event structure (<cite>event.jbutton.*</cite>)
 Joystick device event structure (<cite>event.jdevice.*</cite>)
 
 </dd>
-<dt id="ControllerAxisEventObj"><a name="ControllerAxisEventObj"></a><pre><span class="Identifier">ControllerAxisEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="ControllerAxisEventObj"><a name="ControllerAxisEventObj"></a><pre><span class="Identifier">ControllerAxisEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `CONTROLLERAXISMOTION`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
-  <span class="Identifier">axis</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                 <span class="Comment">## The controller axis (``GameControllerAxis``)</span>
+  <span class="Identifier">axis</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">GameControllerAxis</span>    <span class="Comment">## The controller axis (``GameControllerAxis``)</span>
   <span class="Identifier">padding1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding3</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
@@ -1898,11 +1934,11 @@ Joystick device event structure (<cite>event.jdevice.*</cite>)
 Game controller axis motion event structure (<cite>event.caxis.*</cite>)
 
 </dd>
-<dt id="ControllerButtonEventObj"><a name="ControllerButtonEventObj"></a><pre><span class="Identifier">ControllerButtonEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="ControllerButtonEventObj"><a name="ControllerButtonEventObj"></a><pre><span class="Identifier">ControllerButtonEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `CONTROLLERBUTTONDOWN` or `CONTROLLERBUTTONUP`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
-  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>               <span class="Comment">## The controller button (``GameControllerButton``)</span>
+  <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">GameControllerButton</span> <span class="Comment">## The controller button (``GameControllerButton``)</span>
   <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                <span class="Comment">## `PRESSED` or `RELEASED`</span>
   <span class="Identifier">padding1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
@@ -1912,7 +1948,7 @@ Game controller axis motion event structure (<cite>event.caxis.*</cite>)
 Game controller button event structure (<cite>event.cbutton.*</cite>)
 
 </dd>
-<dt id="ControllerDeviceEventObj"><a name="ControllerDeviceEventObj"></a><pre><span class="Identifier">ControllerDeviceEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="ControllerDeviceEventObj"><a name="ControllerDeviceEventObj"></a><pre><span class="Identifier">ControllerDeviceEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## \</span>
                  <span class="Comment">## `CONTROLLERDEVICEADDED`,</span>
                  <span class="Comment">## `CONTROLLERDEVICEREMOVED, or</span>
@@ -1927,7 +1963,7 @@ Game controller button event structure (<cite>event.cbutton.*</cite>)
 Controller device event structure (<cite>event.cdevice.*</cite>)
 
 </dd>
-<dt id="AudioDeviceEventObj"><a name="AudioDeviceEventObj"></a><pre><span class="Identifier">AudioDeviceEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="AudioDeviceEventObj"><a name="AudioDeviceEventObj"></a><pre><span class="Identifier">AudioDeviceEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `AUDIODEVICEADDED`, or `AUDIODEVICEREMOVED`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Comment">## \</span>
@@ -1946,7 +1982,7 @@ Controller device event structure (<cite>event.cdevice.*</cite>)
 Audio device event structure (<cite>event.adevice.*</cite>)
 
 </dd>
-<dt id="TouchFingerEventObj"><a name="TouchFingerEventObj"></a><pre><span class="Identifier">TouchFingerEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="TouchFingerEventObj"><a name="TouchFingerEventObj"></a><pre><span class="Identifier">TouchFingerEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `FINGERMOTION` or `FINGERDOWN` or `FINGERUP`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">touchId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchID</span>            <span class="Comment">## The touch device id</span>
@@ -1962,7 +1998,7 @@ Audio device event structure (<cite>event.adevice.*</cite>)
 Touch finger event structure (<cite>event.tfinger.*</cite>)
 
 </dd>
-<dt id="MultiGestureEventObj"><a name="MultiGestureEventObj"></a><pre><span class="Identifier">MultiGestureEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="MultiGestureEventObj"><a name="MultiGestureEventObj"></a><pre><span class="Identifier">MultiGestureEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `MULTIGESTURE`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">touchId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchID</span>            <span class="Comment">## The touch device index</span>
@@ -1977,7 +2013,7 @@ Touch finger event structure (<cite>event.tfinger.*</cite>)
 Multiple Finger Gesture Event (<cite>event.mgesture.*</cite>)
 
 </dd>
-<dt id="DollarGestureEventObj"><a name="DollarGestureEventObj"></a><pre><span class="Identifier">DollarGestureEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="DollarGestureEventObj"><a name="DollarGestureEventObj"></a><pre><span class="Identifier">DollarGestureEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `DOLLARGESTURE` or `DOLLARRECORD`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">touchId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchID</span>            <span class="Comment">## The touch device id</span>
@@ -1991,7 +2027,7 @@ Multiple Finger Gesture Event (<cite>event.mgesture.*</cite>)
 Dollar Gesture Event (<cite>event.dgesture.*</cite>)
 
 </dd>
-<dt id="DropEventObj"><a name="DropEventObj"></a><pre><span class="Identifier">DropEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="DropEventObj"><a name="DropEventObj"></a><pre><span class="Identifier">DropEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `DROPFILE`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">file</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cstring</span>               <span class="Comment">## The file name, which should be freed with ``free()`</span>
@@ -2004,7 +2040,7 @@ An event used to request a file open by the system (<cite>event.drop.*</cite>)</
 
 
 </dd>
-<dt id="QuitEventObj"><a name="QuitEventObj"></a><pre><span class="Identifier">QuitEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="QuitEventObj"><a name="QuitEventObj"></a><pre><span class="Identifier">QuitEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `QUIT`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
 </pre></dt>
@@ -2013,7 +2049,7 @@ An event used to request a file open by the system (<cite>event.drop.*</cite>)</
 The &quot;quit requested&quot; event
 
 </dd>
-<dt id="OSEventObj"><a name="OSEventObj"></a><pre><span class="Identifier">OSEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="OSEventObj"><a name="OSEventObj"></a><pre><span class="Identifier">OSEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `QUIT`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
 </pre></dt>
@@ -2022,7 +2058,7 @@ The &quot;quit requested&quot; event
 OS Specific event
 
 </dd>
-<dt id="UserEventObj"><a name="UserEventObj"></a><pre><span class="Identifier">UserEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="UserEventObj"><a name="UserEventObj"></a><pre><span class="Identifier">UserEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `USEREVENT` through `LASTEVENT-1`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The associated window if any</span>
@@ -2035,12 +2071,12 @@ OS Specific event
 A user-defined event type (<cite>event.user.*</cite>)
 
 </dd>
-<dt id="SysWMmsg"><a name="SysWMmsg"></a><pre><span class="Identifier">SysWMmsg</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
+<dt id="SysWMmsg"><a name="SysWMmsg"></a><pre><span class="Identifier">SysWMmsg</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 declared in sdl_syswm.nim
 
 </dd>
-<dt id="SysWMEventObj"><a name="SysWMEventObj"></a><pre><span class="Identifier">SysWMEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="SysWMEventObj"><a name="SysWMEventObj"></a><pre><span class="Identifier">SysWMEventObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `SYSWMEVENT`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">msg</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMmsg</span>               <span class="Comment">## driver dependent data, defined in ``syswm.nim``</span>
@@ -2053,7 +2089,7 @@ A video driver dependent system event (<cite>event.syswm.*</cite>)</p>
 
 
 </dd>
-<dt id="Event"><a name="Event"></a><pre><span class="Identifier">Event</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other">{.</span><span class="Identifier">union</span><span class="Other">.}</span>
+<dt id="Event"><a name="Event"></a><pre><span class="Identifier">Event</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">union</span></div><span class="Other pragmaend">.}</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## Event type, shared with all events</span>
   <span class="Identifier">common</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">CommonEventObj</span>      <span class="Comment">## Common event data</span>
   <span class="Identifier">window</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">WindowEventObj</span>      <span class="Comment">## Window event data</span>
@@ -2092,13 +2128,13 @@ A video driver dependent system event (<cite>event.syswm.*</cite>)</p>
 General event structure
 
 </dd>
-<dt id="EventAction"><a name="EventAction"></a><pre><span class="Identifier">EventAction</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt id="EventAction"><a name="EventAction"></a><pre><span class="Identifier">EventAction</span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">ADDEVENT</span><span class="Other">,</span> <span class="Identifier">PEEKEVENT</span><span class="Other">,</span> <span class="Identifier">GETEVENT</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="EventFilter"><a name="EventFilter"></a><pre><span class="Identifier">EventFilter</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span></pre></dt>
+<dt id="EventFilter"><a name="EventFilter"></a><pre><span class="Identifier">EventFilter</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
@@ -2108,42 +2144,42 @@ General event structure
 <div class="section" id="10">
 <h1><a class="toc-backref" href="#10">Consts</a></h1>
 <dl class="item">
-<dt id="RELEASED"><a name="RELEASED"></a><pre><span class="Identifier">RELEASED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
+<dt id="RELEASED"><a name="RELEASED"></a><pre><span class="Identifier">RELEASED</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PRESSED"><a name="PRESSED"></a><pre><span class="Identifier">PRESSED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
+<dt id="PRESSED"><a name="PRESSED"></a><pre><span class="Identifier">PRESSED</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="TEXTEDITINGEVENT_TEXT_SIZE"><a name="TEXTEDITINGEVENT_TEXT_SIZE"></a><pre><span class="Identifier">TEXTEDITINGEVENT_TEXT_SIZE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">32</span></pre></dt>
+<dt id="TEXTEDITINGEVENT_TEXT_SIZE"><a name="TEXTEDITINGEVENT_TEXT_SIZE"></a><pre><span class="Identifier">TEXTEDITINGEVENT_TEXT_SIZE</span> <span class="Other">=</span> <span class="DecNumber">32</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="TEXTINPUTEVENT_TEXT_SIZE"><a name="TEXTINPUTEVENT_TEXT_SIZE"></a><pre><span class="Identifier">TEXTINPUTEVENT_TEXT_SIZE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">32</span></pre></dt>
+<dt id="TEXTINPUTEVENT_TEXT_SIZE"><a name="TEXTINPUTEVENT_TEXT_SIZE"></a><pre><span class="Identifier">TEXTINPUTEVENT_TEXT_SIZE</span> <span class="Other">=</span> <span class="DecNumber">32</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="QUERY"><a name="QUERY"></a><pre><span class="Identifier">QUERY</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Operator">-</span> <span class="DecNumber">1</span></pre></dt>
+<dt id="QUERY"><a name="QUERY"></a><pre><span class="Identifier">QUERY</span> <span class="Other">=</span> <span class="DecNumber">-1</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="IGNORE"><a name="IGNORE"></a><pre><span class="Identifier">IGNORE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
+<dt id="IGNORE"><a name="IGNORE"></a><pre><span class="Identifier">IGNORE</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="DISABLE"><a name="DISABLE"></a><pre><span class="Identifier">DISABLE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
+<dt id="DISABLE"><a name="DISABLE"></a><pre><span class="Identifier">DISABLE</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="ENABLE"><a name="ENABLE"></a><pre><span class="Identifier">ENABLE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
+<dt id="ENABLE"><a name="ENABLE"></a><pre><span class="Identifier">ENABLE</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
 
 
@@ -2153,7 +2189,7 @@ General event structure
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="pumpEvents"><a name="pumpEvents,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pumpEvents</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PumpEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="pumpEvents"><a name="pumpEvents,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pumpEvents</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PumpEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Pumps the event loop, gathering events from the input devices.</p>
 <p>This procedure updates the event queue and internal input device state.</p>
@@ -2161,9 +2197,9 @@ General event structure
 
 
 </dd>
-<dt id="peepEvents"><a name="peepEvents,ptr.Event,cint,EventAction,EventKind,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">peepEvents</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">events</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">;</span> <span class="Identifier">numevents</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">action</span><span class="Other">:</span> <span class="Identifier">EventAction</span><span class="Other">;</span>
-                <span class="Identifier">minKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">;</span> <span class="Identifier">maxKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PeepEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="peepEvents"><a name="peepEvents,ptr.Event,cint,EventAction,EventKind,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">peepEvents</span><span class="Other">(</span><span class="Identifier">events</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">;</span> <span class="Identifier">numevents</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">action</span><span class="Other">:</span> <span class="Identifier">EventAction</span><span class="Other">;</span>
+               <span class="Identifier">minKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">;</span> <span class="Identifier">maxKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PeepEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Event</span></pre></dt>
 <dd>
 <p>Checks the event queue for messages and optionally returns them.</p>
 <p>If <tt class="docutils literal"><span class="pre">action</span></tt> is <cite>ADDEVENT</cite>, up to <tt class="docutils literal"><span class="pre">numevents</span></tt> events will be added to the back of the event queue.</p>
@@ -2174,33 +2210,32 @@ General event structure
 
 
 </dd>
-<dt id="hasEvent"><a name="hasEvent,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasEvent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasEvent&quot;</span><span class="Other">,</span>
-                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="hasEvent"><a name="hasEvent,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasEvent</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasEvent&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">EventKind</span></pre></dt>
 <dd>
 Checks to see if certain event types are in the event queue.
 
 </dd>
-<dt id="hasEvents"><a name="hasEvents,EventKind,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasEvents</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">minKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">;</span> <span class="Identifier">maxKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="hasEvents"><a name="hasEvents,EventKind,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasEvents</span><span class="Other">(</span><span class="Identifier">minKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">;</span> <span class="Identifier">maxKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">EventKind</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="flushEvent"><a name="flushEvent,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">flushEvent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FlushEvent&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="flushEvent"><a name="flushEvent,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">flushEvent</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FlushEvent&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">EventKind</span></pre></dt>
 <dd>
 <p>This procedure clears events from the event queue.</p>
 <p>This procedure only affects currently queued events. If you want to make sure that all pending OS events are flushed, you can call <tt class="docutils literal"><span class="pre">pumpEvents()</span></tt> on the main thread immediately before flush call.</p>
 
 
 </dd>
-<dt id="flushEvents"><a name="flushEvents,EventKind,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">flushEvents</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">minKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">;</span> <span class="Identifier">maxKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FlushEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="flushEvents"><a name="flushEvents,EventKind,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">flushEvents</span><span class="Other">(</span><span class="Identifier">minKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">;</span> <span class="Identifier">maxKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FlushEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">EventKind</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="pollEvent"><a name="pollEvent,ptr.Event"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pollEvent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PollEvent&quot;</span><span class="Other">,</span>
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="pollEvent"><a name="pollEvent,ptr.Event"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pollEvent</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PollEvent&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Event</span></pre></dt>
 <dd>
 <p>Polls for currently pending events.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite> if there are any pending events, or <cite>0</cite> if there are none available.</p>
@@ -2208,8 +2243,8 @@ Checks to see if certain event types are in the event queue.
 
 
 </dd>
-<dt id="waitEvent"><a name="waitEvent,ptr.Event"></a><pre><span class="Keyword">proc</span> <span class="Identifier">waitEvent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WaitEvent&quot;</span><span class="Other">,</span>
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="waitEvent"><a name="waitEvent,ptr.Event"></a><pre><span class="Keyword">proc</span> <span class="Identifier">waitEvent</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WaitEvent&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Event</span></pre></dt>
 <dd>
 <p>Waits indefinitely for the next available event.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite>, or <cite>0</cite> if there was an error while waiting for events.</p>
@@ -2217,8 +2252,8 @@ Checks to see if certain event types are in the event queue.
 
 
 </dd>
-<dt id="waitEventTimeout"><a name="waitEventTimeout,ptr.Event,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">waitEventTimeout</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">;</span> <span class="Identifier">timeout</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WaitEventTimeout&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="waitEventTimeout"><a name="waitEventTimeout,ptr.Event,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">waitEventTimeout</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">;</span> <span class="Identifier">timeout</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WaitEventTimeout&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Event</span></pre></dt>
 <dd>
 <p>Waits until the specified timeout (in milliseconds) for the next available event.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite>, or <cite>0</cite> if there was an error while waiting for events.</p>
@@ -2227,16 +2262,16 @@ Checks to see if certain event types are in the event queue.
 
 
 </dd>
-<dt id="pushEvent"><a name="pushEvent,ptr.Event"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pushEvent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PushEvent&quot;</span><span class="Other">,</span>
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="pushEvent"><a name="pushEvent,ptr.Event"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pushEvent</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PushEvent&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Event</span></pre></dt>
 <dd>
 <p>Add an event to the event queue.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite> on success, <cite>0</cite> if the event was filtered, or <cite>-1</cite> if the event queue was full or there was some other error.</p>
 
 
 </dd>
-<dt id="setEventFilter"><a name="setEventFilter,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setEventFilter</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetEventFilter&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="setEventFilter"><a name="setEventFilter,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setEventFilter</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetEventFilter&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">EventFilter</span></pre></dt>
 <dd>
 <p>Sets up a filter to process all events before they change internal state and are posted to the internal event queue.</p>
 <p>The filter is prototyped as:</p>
@@ -2248,32 +2283,32 @@ Checks to see if certain event types are in the event queue.
 
 
 </dd>
-<dt id="getEventFilter"><a name="getEventFilter,ptr.EventFilter,ptr.pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getEventFilter</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetEventFilter&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getEventFilter"><a name="getEventFilter,ptr.EventFilter,ptr.pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getEventFilter</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetEventFilter&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">EventFilter</span></pre></dt>
 <dd>
 Return the current event filter - can be used to &quot;chain&quot; filters. If there is no event filter set, this procedure returns <cite>false</cite>.
 
 </dd>
-<dt id="addEventWatch"><a name="addEventWatch,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">addEventWatch</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AddEventWatch&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="addEventWatch"><a name="addEventWatch,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">addEventWatch</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AddEventWatch&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">EventFilter</span></pre></dt>
 <dd>
 Add a procedure which is called when an event is added to the queue.
 
 </dd>
-<dt id="delEventWatch"><a name="delEventWatch,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">delEventWatch</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DelEventWatch&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="delEventWatch"><a name="delEventWatch,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">delEventWatch</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DelEventWatch&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">EventFilter</span></pre></dt>
 <dd>
 Remove an event watch procedure added with <tt class="docutils literal"><span class="pre">addEventWatch()</span></tt>
 
 </dd>
-<dt id="filterEvents"><a name="filterEvents,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">filterEvents</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FilterEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="filterEvents"><a name="filterEvents,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">filterEvents</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FilterEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">EventFilter</span></pre></dt>
 <dd>
 Run the filter procedure on the current event queue, removing any events for which the filter returns <cite>0</cite>.
 
 </dd>
-<dt id="eventState"><a name="eventState,EventKind,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">eventState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">;</span> <span class="Identifier">state</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_EventState&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="eventState"><a name="eventState,EventKind,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">eventState</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">;</span> <span class="Identifier">state</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_EventState&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">EventKind</span></pre></dt>
 <dd>
 This procedure allows you to set the state of processing certain events.<ul class="simple"><li>If <tt class="docutils literal"><span class="pre">state</span></tt> is set to <cite>IGNORE</cite>, that event will be automatically 
 dropped from the event queue and will not event be filtered.</li>
@@ -2284,8 +2319,8 @@ current processing state of the specified event.</li>
 
 
 </dd>
-<dt id="registerEvents"><a name="registerEvents,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">registerEvents</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">numevents</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RegisterEvents&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="registerEvents"><a name="registerEvents,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">registerEvents</span><span class="Other">(</span><span class="Identifier">numevents</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RegisterEvents&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>This procedure allocates a set of user-defined events, and returns the beginning event number for that set of events.</p>
 <p>If there aren't enough user-defined events left, this procedure returns <cite>-1'u32</cite>.</p>
@@ -2297,7 +2332,7 @@ current processing state of the specified event.</li>
 <div class="section" id="17">
 <h1><a class="toc-backref" href="#17">Templates</a></h1>
 <dl class="item">
-<dt id="getEventState"><a name="getEventState.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">getEventState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
+<dt id="getEventState"><a name="getEventState.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">getEventState</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
 <dd>
 
 
@@ -2312,7 +2347,7 @@ current processing state of the specified event.</li>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2016-04-01 21:48:00 UTC</small>
+        <small>Made with Nim. Generated: 2016-08-07 14:14:03 UTC</small>
       </div>
     </div>
   </div>
