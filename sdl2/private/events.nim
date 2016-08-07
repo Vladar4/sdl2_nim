@@ -331,7 +331,7 @@ type
     kind*: EventKind        ##  `CONTROLLERAXISMOTION`
     timestamp*: uint32
     which*: JoystickID      ##  The joystick instance id
-    axis*: uint8            ##  The controller axis (``GameControllerAxis``)
+    axis*: GameControllerAxis ##  The controller axis (``GameControllerAxis``)
     padding1*: uint8
     padding2*: uint8
     padding3*: uint8
