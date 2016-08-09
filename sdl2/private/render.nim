@@ -106,7 +106,8 @@ type
     ##  Flip constants for ``renderCopyEx()``
     FLIP_NONE       = 0x00000000, ## Do not flip
     FLIP_HORIZONTAL = 0x00000001, ## flip horizontally
-    FLIP_VERTICAL   = 0x00000002  ## flip vertically
+    FLIP_VERTICAL   = 0x00000002, ## flip vertically
+    FLIP_BOTH       = 0x00000003  ## flip horizontally and vertically
 
 type
   Renderer* = pointer ##  \
