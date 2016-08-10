@@ -1780,6 +1780,7 @@ Get the output size in pixels of a rendering context.
 <p>This procedure uses the viewport and scaling functionality to allow a fixed logical resolution for rendering, regardless of the actual output resolution. If the actual  output resolution doesn't have the same aspect ratio the output rendering will be centered within the output display.</p>
 <p>If the output display is a window, mouse events in the window will be filtered and scaled so they seem to arrive within the logical resolution.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> If this procedure results in scaling or subpixel drawing by the rendering backend, it will be handled using the appropriate quality hints.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success or a negative error code on failure.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">renderGetLogicalSize()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">renderSetScale()</span></tt></p>
@@ -2157,7 +2158,7 @@ Update the screen with rendering performed.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2016-08-09 23:00:11 UTC</small>
+        <small>Made with Nim. Generated: 2016-08-10 13:09:35 UTC</small>
       </div>
     </div>
   </div>

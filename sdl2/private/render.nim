@@ -524,6 +524,8 @@ proc renderSetLogicalSize*(renderer: Renderer; w: cint; h: cint): cint {.
   ##  ``Note:`` If this procedure results in scaling or subpixel drawing by the
   ##  rendering backend, it will be handled using the appropriate quality hints.
   ##
+  ##  ``Return`` `0` on success or a negative error code on failure.
+  ##
   ##  See also:
   ##
   ##  ``renderGetLogicalSize()``
