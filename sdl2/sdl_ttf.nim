@@ -339,13 +339,13 @@ proc renderGlyph_Blended*(
 
 # For compatibility with previous versions, here are the old procedures
 
-template renderText*(font, text, fg, bg: expr): expr =
+template renderText*(font, text, fg, bg: untyped): untyped =
   renderText_Shaded(font, text, fg, bg)
 
-template renderUTF8*(font, text, fg, bg: expr): expr =
+template renderUTF8*(font, text, fg, bg: untyped): untyped =
   renderUTF8_Shaded(font, text, fg, bg)
 
-template renderUNICODE*(font, text, fg, bg: expr): expr =
+template renderUNICODE*(font, text, fg, bg: untyped): untyped =
   renderUNICODE_Shaded(font, text, fg, bg)
 
 
@@ -376,7 +376,7 @@ proc getFontKerningSizeGlyphs*(
       cdecl, importc: "TTF_GetFontKerningSizeGlyphs", dynlib: SDL2_TTF_LIB.}
   ##  Get the kerning size of two glyphs.
 
-template setError*(fmt: expr): cint =
+template setError*(fmt: untyped): cint =
   sdl.setError(fmt)
 
 template getError*(): cstring =

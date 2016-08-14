@@ -300,7 +300,7 @@ proc setTextureColorMod*(
   ##
   ##  ``getTextureColorMod()``
 
-template setTextureColorMod*(texture: Texture; color: Color): expr =
+template setTextureColorMod*(texture: Texture; color: Color): untyped =
   setTextureColorMod(texture, color.r, color.g, color.b)
 
 proc getTextureColorMod*(
@@ -322,7 +322,7 @@ proc getTextureColorMod*(
   ##
   ##  ``setTextureColorMod()``
 
-template getTextureColorMod*(texture: Texture, color: Color): expr =
+template getTextureColorMod*(texture: Texture, color: Color): untyped =
   getTextureColorMod(texture,
     addr(color.r), addr(color.g), addr(color.b))
 
@@ -674,7 +674,7 @@ proc setRenderDrawColor*(renderer: Renderer;
   ##
   ##  ``Return`` `0` on success, or `-1` on error.
 
-template setRenderDrawColor*(renderer: Renderer; color: Color): expr =
+template setRenderDrawColor*(renderer: Renderer; color: Color): untyped =
   setRenderDrawColor(renderer, color.r, color.g, color.b, color.a)
 
 proc getRenderDrawColor*(renderer: Renderer;
@@ -695,7 +695,7 @@ proc getRenderDrawColor*(renderer: Renderer;
   ##
   ##  ``Return`` `0` on success, or `-1` on error.
 
-template getRenderDrawColor*(renderer: Renderer; color: Color): expr =
+template getRenderDrawColor*(renderer: Renderer; color: Color): untyped =
   getRenderDrawColor(renderer,
     addr(color.r), addr(color.g), addr(color.b), addr(color.a))
 

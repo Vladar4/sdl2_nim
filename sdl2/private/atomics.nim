@@ -132,12 +132,12 @@ proc atomicAdd*(a: ptr Atomic_t; v: cint): cint {.
   ##  ``Note`` This same style can be used for any number operation.
 
 when not declared(atomicIncRef):
-  template atomicIncRef*(a: expr): expr = ##  \
+  template atomicIncRef*(a: untyped): untyped = ##  \
     ##  Increment an atomic variable used as a reference count.
     atomicAdd(a, 1)
 
 when not declared(atomicDecRef):
-  template atomicDecRef*(a: expr): expr = ##  \
+  template atomicDecRef*(a: untyped): untyped = ##  \
     ##  Decrement an atomic variable used as a reference count.
     ##
     ##  ``Return`` `true` if the variable reached zero after decrementing,

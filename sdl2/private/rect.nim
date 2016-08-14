@@ -58,16 +58,16 @@ type
     w*: cint
     h*: cint
 
-template pointInRect*(p: expr, r: expr): bool = ##  \
+template pointInRect*(p, r: untyped): bool = ##  \
   ##  ``Return`` `true` if point resides inside a rectangle.
   ((p.x >= r.x) and (p.x < (r.x + r.w)) and
    (p.y >= r.y) and (p.y < (r.y + r.h)))
 
-template rectEmpty*(r: expr): bool = ##  \
+template rectEmpty*(r: untyped): bool = ##  \
   ##  ``Return`` `true` if the rectangle has no area.
   ((not r) or (r.w <= 0) or (r.h <= 0))
 
-template rectEquals*(a: expr; b: expr): bool = ##  \
+template rectEquals*(a, b: untyped): bool = ##  \
   ##  ``Return`` `true` if the two rectangles are equal.
   (a and b and
     (a.x == b.x) and (a.y == b.y) and

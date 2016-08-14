@@ -324,7 +324,7 @@ proc loadWAV_RW*(src: ptr RWops; freesrc: cint): Chunk {.
   ##  ``Return`` a pointer to the sample as a ``sdl_mixer.chunk()``.
   ##  `nil` is returned on errors.
 
-template loadWAV*(file: expr): expr = ##  \
+template loadWAV*(file: untyped): untyped = ##  \
   ##   Load file for use as a sample. This is actually
   ##   ``sdl_mixer.loadWAV_RW(sdl.rwFromFile(file, "rb"), 1)``.
   ##   This can load WAVE, AIFF, RIFF, OGG, and VOC files.
@@ -1104,7 +1104,7 @@ proc groupNewer*(tag: cint): cint {.
   ##  `-1` is returned when no channels in the group are playing
   ##  or the group is empty.
 
-template playChannel*(channel, chunk, loops: expr): expr =  ##  \
+template playChannel*(channel, chunk, loops: untyped): untyped =  ##  \
   ##  Play chunk on channel, or if channel is `-1`,
   ##  pick the first free unreserved channel.
   ##
@@ -1219,7 +1219,7 @@ proc fadeInMusicPos*(
   ##
   ##  ``Return`` `0` on success, or `-1` on errors.
 
-template fadeInChannel*(channel, chunk, loops, ms: expr): expr =  ##  \
+template fadeInChannel*(channel, chunk, loops, ms: untyped): untyped =  ##  \
   ##  Play ``chunk`` on ``channel``, or if ``channel`` is `-1`,
   ##  pick the first free unreserved channel.
   ##
@@ -1669,7 +1669,7 @@ proc closeAudio*() {.
   ##  ``sdl_mixer.closeAudio()`` needs to be called before the device
   ##  is actually closed.
 
-template setError*(fmt: expr): cint =
+template setError*(fmt: untyped): cint =
   sdl.setError(fmt)
 
 template getError*(): cstring =

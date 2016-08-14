@@ -205,7 +205,7 @@ proc savePNG*(surface: Surface; file: cstring): cint {.
 proc savePNG_RW*(surface: Surface; dst: ptr RWops; freedst: cint): cint {.
     cdecl, importc: "IMG_SavePNG_RW", dynlib: SDL2_IMG_LIB.}
 
-template setError*(fmt: expr): cint =
+template setError*(fmt: untyped): cint =
   sdl.setError(fmt)
 
 template getError*(): cstring =

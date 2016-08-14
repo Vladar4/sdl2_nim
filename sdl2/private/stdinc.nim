@@ -61,7 +61,7 @@ template ptrMath*(body: untyped) =  ##  \
 
   body
 
-template fourCC*(a, b, c, d: expr): uint32 = ##  \
+template fourCC*(a, b, c, d: untyped): uint32 = ##  \
   ##  Define a four character code as a uint32.
   ((uint32(uint8(a)) shl 0) or
    (uint32(uint8(b)) shl 8) or

@@ -32,7 +32,7 @@
 const
   K_SCANCODE_MASK* = (1 shl 30)
 
-template scancodeToKeycode*(x: expr): cint =
+template scancodeToKeycode*(x: untyped): cint =
   (cint(x) or K_SCANCODE_MASK)
 
 type

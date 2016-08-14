@@ -29,7 +29,7 @@ proc getTicks*(): uint32 {.
   ##
   ##  This value wraps if the program runs for more than ~49 days.
 
-template ticksPassed*(a, b: expr): bool = ##  \
+template ticksPassed*(a, b: untyped): bool = ##  \
   ##  Compare SDL ticks values, and return true if ``a`` has passed ``b``.
   ##
   ##  e.g. if you want to wait 100 ms, you could do this:

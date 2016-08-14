@@ -34,7 +34,7 @@ const
   RLEACCEL* = 0x00000002
   DONTFREE* = 0x00000004
 
-template mustLock*(s: expr): expr = ##  \
+template mustLock*(s: untyped): untyped = ##  \
   ##  Evaluates to `true` if the surface needs t o be locked before access.
   (((s).flags and RLEACCEL) != 0)
 
@@ -153,7 +153,7 @@ proc loadBMP_RW*(src: ptr RWops; freesrc: cint): Surface {.
   ##
   ##  ``Return`` the new surface, or `nil` if there was an error.
 
-template loadBMP*(file: expr): expr = ##  \
+template loadBMP*(file: untyped): untyped = ##  \
   ##  Load a surface from a file.
   ##
   ##  Convenience macro.
@@ -167,7 +167,7 @@ proc saveBMP_RW*(surface: Surface; dst: ptr RWops; freedst: cint): cint {.
   ##
   ##  ``Return`` `0` if successful or `-1` if there was an error.
 
-template saveBMP*(surface, file: expr): expr = ##  \
+template saveBMP*(surface, file: untyped): untyped = ##  \
   ##  Save a surface to a file.
   ##
   ##  Convenience macro.

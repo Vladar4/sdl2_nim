@@ -90,7 +90,7 @@ type
     ShapeModeColorKey ##  \
       ## A color key is applied.
 
-template shapeModeAlpha*(mode: expr): expr =
+template shapeModeAlpha*(mode: untyped): untyped =
   ( mode == ShapeModeDefault or
     mode == ShapeModeBinarizeAlpha or
     mode == ShapeModeReverseBinarizeAlpha)

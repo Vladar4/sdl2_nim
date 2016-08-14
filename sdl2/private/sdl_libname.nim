@@ -1,6 +1,6 @@
 {.deadCodeElim: on.}
 
-template decl(libname: expr, filename: string) {.immediate.} =
+template decl(libname, filename: untyped) =
   when not declared `libname`:
       const `libname`* {.inject.} = filename
 

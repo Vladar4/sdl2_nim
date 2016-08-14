@@ -49,7 +49,7 @@ const
   MINOR_VERSION* = 0
   PATCHLEVEL* = 4
 
-template version*(x: expr) = ##  \
+template version*(x: untyped) = ##  \
   ##  Template to determine SDL version program was compiled against.
   ##
   ##  This template fills in a Version object with the version of the
@@ -70,7 +70,7 @@ template version*(x: expr) = ##  \
   (x).minor = MINOR_VERSION
   (x).patch = PATCHLEVEL
 
-template versionNum*(x, y, z: expr): expr = ##  \
+template versionNum*(x, y, z: untyped): untyped = ##  \
   ##  This template turns the version numbers into a numeric value:
   ##
   ##   `(1,2,3) -> (1203)`
@@ -82,7 +82,7 @@ const
   COMPILEDVERSION* = versionNum(MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL) ##  \
     ##  This is the version number const for the current SDL version.
 
-template versionAtLeast*(x, y, z: expr): bool = ##  \
+template versionAtLeast*(x, y, z: untyped): bool = ##  \
   ##  This templaye will evaluate to true if compiled with SDL
   ##  at least ``x``.``y``.``z``.
   (COMPILEDVERSION >= versionNum(x, y, z))

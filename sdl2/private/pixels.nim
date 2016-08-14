@@ -88,29 +88,29 @@ const
   PACKEDLAYOUT_2101010* = 7
   PACKEDLAYOUT_1010102* = 8
 
-template definePixelFourCC*(a, b, c, d: expr): expr =
+template definePixelFourCC*(a, b, c, d: untyped): untyped =
   fourCC(ord(a), ord(b), ord(c), ord(d))
 
-template definePixelFormat*(kind, order, layout, bits, bytes: expr): expr =
+template definePixelFormat*(kind, order, layout, bits, bytes: untyped): untyped =
   ((1 shl 28) or ((kind) shl 24) or ((order) shl 20) or
     ((layout) shl 16) or ((bits) shl 8) or ((bytes) shl 0))
 
-template pixelFlag*(x: expr): expr =
+template pixelFlag*(x: untyped): untyped =
   (((x) shr 28) and 0x0000000F)
 
-template pixelType*(x: expr): expr =
+template pixelType*(x: untyped): untyped =
   (((x) shr 24) and 0x0000000F)
 
-template pixelOrder*(x: expr): expr =
+template pixelOrder*(x: untyped): untyped =
   (((x) shr 20) and 0x0000000F)
 
-template pixelLayout*(x: expr): expr =
+template pixelLayout*(x: untyped): untyped =
   (((x) shr 16) and 0x0000000F)
 
-template bitsPerPixel*(x: expr): expr =
+template bitsPerPixel*(x: untyped): untyped =
   (((x) shr 8) and 0x000000FF)
 
-template bytesPerPixel*(x: expr): expr =
+template bytesPerPixel*(x: untyped): untyped =
   if isPixelFormatFourCC(x):
     if (((x) == PIXELFORMAT_YUY2) or
         ((x) == PIXELFORMAT_UYVY) or
@@ -121,19 +121,19 @@ template bytesPerPixel*(x: expr): expr =
   else:
     (((x) shr 0) and 0x000000FF)
 
-template isPixelFormatIndexed*(format: expr): expr =
+template isPixelFormatIndexed*(format: untyped): untyped =
   (not isPixelFormatFourCC(format) and
     ((pixelType(format) == PIXELTYPE_INDEX1) or
      (pixelType(format) == PIXELTYPE_INDEX4) or
      (pixelType(format) == PIXELTYPE_INDEX8)))
 
-template isPixelFormatPacked*(format: expr): expr =
+template isPixelFormatPacked*(format: untyped): untyped =
   (not isPixelFormatFourCC(format) and
     ((pixelType(format) == PIXELTYPE_PACKED8) or
      (pixelType(format) == PIXELTYPE_PACKED16) or
      (pixelType(format) == PIXELTYPE_PACKED32)))
 
-template isPixelFormatArray*(format: expr): expr =
+template isPixelFormatArray*(format: untyped): untyped =
   (not isPixelFormatFourCC(format) and
     ((pixelType(format) == PIXELTYPE_ARRAYU8) or
      (pixelType(format) == PIXELTYPE_ARRAYU16) or
@@ -141,7 +141,7 @@ template isPixelFormatArray*(format: expr): expr =
      (pixelType(format) == PIXELTYPE_ARRAYF16) or
      (pixelType(format) == PIXELTYPE_ARRAYF32)))
 
-template isPixelFormatAlpha*(format: expr): expr =
+template isPixelFormatAlpha*(format: untyped): untyped =
   ((isPixelFormatPacked(format) and
     ((pixelOrder(format) == PACKEDORDER_ARGB) or
      (pixelOrder(format) == PACKEDORDER_RGBA) or
@@ -153,7 +153,7 @@ template isPixelFormatAlpha*(format: expr): expr =
        (pixelOrder(format) == ARRAYORDER_ABGR) or
        (pixelOrder(format) == ARRAYORDER_BGRA))))
 
-template isPixelFormatFourCC*(format: expr): expr = ##  \
+template isPixelFormatFourCC*(format: untyped): untyped = ##  \
   ##  The flag is set to `1` because 0x1? is not in the printable ASCII range.
   ((format) and (pixelFlag(format) != 1))
 

@@ -51,25 +51,25 @@ const
   AUDIO_MASK_ENDIAN* = (1 shl 12)
   AUDIO_MASK_SIGNED* = (1 shl 15)
 
-template audioBitSize*(x: expr): expr =
+template audioBitSize*(x: untyped): untyped =
   (x and AUDIO_MASK_BITSIZE)
 
-template audioIsFloat*(x: expr): expr =
+template audioIsFloat*(x: untyped): untyped =
   (x and AUDIO_MASK_DATATYPE)
 
-template audioIsBigEndian*(x: expr): expr =
+template audioIsBigEndian*(x: untyped): untyped =
   (x and AUDIO_MASK_ENDIAN)
 
-template audioIsSigned*(x: expr): expr =
+template audioIsSigned*(x: untyped): untyped =
   (x and AUDIO_MASK_SIGNED)
 
-template audioIsInt*(x: expr): expr =
+template audioIsInt*(x: untyped): untyped =
   (not audioIsFloat(x))
 
-template audioIsLittleEndian*(x: expr): expr =
+template audioIsLittleEndian*(x: untyped): untyped =
   (not audioIsBigEndian(x))
 
-template audioIsUnsigned*(x: expr): expr =
+template audioIsUnsigned*(x: untyped): untyped =
   (not audioIsSigned(x))
 
 # Audio format flags
@@ -380,7 +380,7 @@ proc loadWAV_RW*(
   ##  wave file cannot be opened, uses an unknown data format, or is
   ##  corrupt.  Currently raw and MS-ADPCM WAVE files are supported.
 
-template loadWAV*(file, spec, audio_buf, audio_len: expr): expr = ##  \
+template loadWAV*(file, spec, audio_buf, audio_len: untyped): untyped = ##  \
   ##  Loads a WAV from a file.
   ##
   ##  Compatibility convenience template.

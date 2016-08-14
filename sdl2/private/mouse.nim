@@ -253,7 +253,7 @@ proc showCursor*(toggle: cint): cint {.
   ##
   ##  ``Return`` `1` if the cursor is shown, or `0` if the cursor is hidden.
 
-template button*(x: expr): expr = ##  \
+template button*(x: untyped): untyped = ##  \
   ##  Used as a mask when testing buttons in buttonstate.
   ##
   ##  * Button 1:  Left mouse button

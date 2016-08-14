@@ -156,22 +156,22 @@ const
 #
 #   Macros to easily read and write from an RWopsObj object.
 
-template rwSize*(ctx: expr): expr =
+template rwSize*(ctx: untyped): untyped =
   (ctx).size(ctx)
 
-template rwSeek*(ctx, offset, whence: expr): expr =
+template rwSeek*(ctx, offset, whence: untyped): untyped =
   (ctx).seek(ctx, offset, whence)
 
-template rwTell*(ctx: expr): expr =
+template rwTell*(ctx: untyped): untyped =
   (ctx).seek(ctx, 0, RW_SEEK_CUR)
 
-template rwRead*(ctx, p, size, n: expr): expr =
+template rwRead*(ctx, p, size, n: untyped): untyped =
   (ctx).read(ctx, p, size, n)
 
-template rwWrite*(ctx, p, size, n: expr): expr =
+template rwWrite*(ctx, p, size, n: untyped): untyped =
   (ctx).write(ctx, p, size, n)
 
-template rwClose*(ctx: expr): expr =
+template rwClose*(ctx: untyped): untyped =
   (ctx).close(ctx)
 
 

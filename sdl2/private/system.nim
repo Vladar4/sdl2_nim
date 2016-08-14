@@ -66,7 +66,7 @@ when false:
   # Platform specific procedures for iOS
   when defined iphoneos:
     template iOSSetAnimationCallback*(
-        window, interval, callback, callbackParam: expr): expr =
+        window, interval, callback, callbackParam: untyped): untyped =
       iPhoneSetAnimationCallback(window, interval, callback, callbackParam)
 
     proc iPhoneSetAnimationCallback*(
@@ -75,7 +75,7 @@ when false:
         callbackParam: pointer): cint {.
           cdecl, importc: "SDL_iPhoneSetAnimationCallback", dynlib: SDL2_LIB.}
 
-    template iOSSetEventPump*(enabled: expr): expr =
+    template iOSSetEventPump*(enabled: untyped): untyped =
       iPhoneSetEventPump(enabled)
 
     proc iPhoneSetEventPump*(enabled: bool) {.

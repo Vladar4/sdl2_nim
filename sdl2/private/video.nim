@@ -146,28 +146,28 @@ const
 const
   WINDOWPOS_UNDEFINED_MASK* = 0x1FFF0000
 
-template windowPosUndefinedDisplay*(x: expr): expr = ##  \
+template windowPosUndefinedDisplay*(x: untyped): untyped = ##  \
   ##  Used to indicate that you don't care what the window position is.
   (WINDOWPOS_UNDEFINED_MASK or (x))
 
 const
   WINDOWPOS_UNDEFINED* = windowPosUndefinedDisplay(0)
 
-template windowPosIsUndefined*(x: expr): expr =
+template windowPosIsUndefined*(x: untyped): untyped =
   (((x) and 0xFFFF0000) == WINDOWPOS_UNDEFINED_MASK)
 
 
 const
   WINDOWPOS_CENTERED_MASK* = 0x2FFF0000
 
-template windowPosCenteredDisplay*(x: expr): expr = ##  \
+template windowPosCenteredDisplay*(x: untyped): untyped = ##  \
   ##  Used to indicate that the window position should be centered.
   (WINDOWPOS_CENTERED_MASK or (x))
 
 const
   WINDOWPOS_CENTERED* = windowPosCenteredDisplay(0)
 
-template windowPosIsCentered*(x: expr): expr =
+template windowPosIsCentered*(x: untyped): untyped =
   (((x) and 0xFFFF0000) == WINDOWPOS_CENTERED_MASK)
 
 

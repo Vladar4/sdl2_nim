@@ -109,7 +109,7 @@ proc gameControllerAddMappingsFromRW*(rw: ptr RWops; freerw: cint): cint {.
   ##
   ##  ``Return`` number of mappings added, `-1` on error
 
-template gameControllerAddMappingsFromFile*(file: expr): expr = ##  \
+template gameControllerAddMappingsFromFile*(file: untyped): untyped = ##  \
   ##  Load a set of mappings from a file, \
   ##  filtered by the current ``getPlatform()``.
   gameControllerAddMappingsFromRW(rwFromFile(file, "rb"), 1)

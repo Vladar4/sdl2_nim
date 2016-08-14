@@ -660,7 +660,7 @@ proc eventState*(kind: EventKind; state: cint): uint8 {.
   ##  * If ``state`` is set to `QUERY`, ``eventState()`` will return the \
   ##  current processing state of the specified event.
 
-template getEventState*(kind: expr): expr =
+template getEventState*(kind: untyped): untyped =
   eventState(kind, QUERY)
 
 proc registerEvents*(numevents: cint): uint32 {.
