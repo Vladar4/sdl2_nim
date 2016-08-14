@@ -1143,10 +1143,46 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
+  div.pragma {
+    display: none;
+  }
+  span.pragmabegin {
+    cursor: pointer;
+  }
+  span.pragmaend {
+    cursor: pointer;
+  }
 </style>
 
+
+<script type="text/javascript">
+function togglepragma(d) {
+  if (d.style.display != 'inline')
+    d.style.display = 'inline';
+  else
+    d.style.display = 'none';
+}
+
+function main() {
+  var elements = document.getElementsByClassName("pragmabegin");
+  for (var i = 0; i < elements.length; ++i) {
+    var e = elements[i];
+    e.onclick = function(event) {
+      togglepragma(event.target.nextSibling);
+    };
+  }
+  var elements = document.getElementsByClassName("pragmaend");
+  for (var i = 0; i < elements.length; ++i) {
+    var e = elements[i];
+    e.onclick = function(event) {
+      togglepragma(event.target.previousSibling);
+    };
+  }
+}
+</script>
+
 </head>
-<body>
+<body onload="main()">
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Module sdl_init</h1>
@@ -1265,15 +1301,15 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="init"><a name="init,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">init</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Init&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="init"><a name="init,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">init</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Init&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>This procedure initializes the subsystems specified by <tt class="docutils literal"><span class="pre">flags</span></tt> Unless the <cite>INIT_NOPARACHUTE</cite> flag is set, it will install cleanup signal handlers for some commonly ignored fatal signals (like SIGSEGV).</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success or a negative error code on failure.</p>
 
 
 </dd>
-<dt id="initSubSystem"><a name="initSubSystem,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">initSubSystem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_InitSubSystem&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="initSubSystem"><a name="initSubSystem,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">initSubSystem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_InitSubSystem&quot;</span><span class="Other">,</span>
+                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>This procedure initializes specific SDL subsystems.</p>
 <p>Subsystem initialization is ref-counted, you must call <tt class="docutils literal"><span class="pre">sdl.quitSubSystem()</span></tt> for each <tt class="docutils literal"><span class="pre">sdl.initSubSystem()</span></tt> to correctly shutdown a subsystem manually (or call <tt class="docutils literal"><span class="pre">sdl.quit()</span></tt> to force shutdown).</p>
@@ -1281,20 +1317,20 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 
 
 </dd>
-<dt id="quitSubSystem"><a name="quitSubSystem,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">quitSubSystem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_QuitSubSystem&quot;</span><span class="Other">,</span>
-                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="quitSubSystem"><a name="quitSubSystem,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">quitSubSystem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_QuitSubSystem&quot;</span><span class="Other">,</span>
+                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This procedure cleans up specific SDL subsystems.
 
 </dd>
-<dt id="wasInit"><a name="wasInit,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">wasInit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WasInit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="wasInit"><a name="wasInit,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">wasInit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WasInit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>This procedure returns a mask of the specified subsystems which have previously been initialized.</p>
 <p>If <tt class="docutils literal"><span class="pre">flags</span></tt> is <cite>0</cite>, it returns a mask of all initialized subsystems.</p>
 
 
 </dd>
-<dt id="quit"><a name="quit,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">quit</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Quit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="quit"><a name="quit,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">quit</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Quit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This procedure cleans up all initialized subsystems. You should call it upon all exit conditions.
 
@@ -1309,7 +1345,7 @@ This procedure cleans up all initialized subsystems. You should call it upon all
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2016-04-01 21:48:01 UTC</small>
+        <small>Made with Nim. Generated: 2016-08-14 19:22:04 UTC</small>
       </div>
     </div>
   </div>

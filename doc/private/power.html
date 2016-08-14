@@ -1143,10 +1143,46 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
+  div.pragma {
+    display: none;
+  }
+  span.pragmabegin {
+    cursor: pointer;
+  }
+  span.pragmaend {
+    cursor: pointer;
+  }
 </style>
 
+
+<script type="text/javascript">
+function togglepragma(d) {
+  if (d.style.display != 'inline')
+    d.style.display = 'inline';
+  else
+    d.style.display = 'none';
+}
+
+function main() {
+  var elements = document.getElementsByClassName("pragmabegin");
+  for (var i = 0; i < elements.length; ++i) {
+    var e = elements[i];
+    e.onclick = function(event) {
+      togglepragma(event.target.nextSibling);
+    };
+  }
+  var elements = document.getElementsByClassName("pragmaend");
+  for (var i = 0; i < elements.length; ++i) {
+    var e = elements[i];
+    e.onclick = function(event) {
+      togglepragma(event.target.previousSibling);
+    };
+  }
+}
+</script>
+
 </head>
-<body>
+<body onload="main()">
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Module power</h1>
@@ -1185,7 +1221,7 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="PowerState"><a name="PowerState"></a><pre><span class="Identifier">PowerState</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt id="PowerState"><a name="PowerState"></a><pre><span class="Identifier">PowerState</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">POWERSTATE_UNKNOWN</span><span class="Other">,</span>         <span class="Comment">## cannot determine power status</span>
   <span class="Identifier">POWERSTATE_ON_BATTERY</span><span class="Other">,</span>      <span class="Comment">## Not plugged in, running on the battery</span>
   <span class="Identifier">POWERSTATE_NO_BATTERY</span><span class="Other">,</span>      <span class="Comment">## Plugged in, no battery available</span>
@@ -1201,8 +1237,8 @@ The basic state for the system's power supply.
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="getPowerInfo"><a name="getPowerInfo,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getPowerInfo</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">secs</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">pct</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">PowerState</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetPowerInfo&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getPowerInfo"><a name="getPowerInfo,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getPowerInfo</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">secs</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">pct</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">PowerState</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetPowerInfo&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the current power supply details.</p>
 <p><tt class="docutils literal"><span class="pre">secs</span></tt> Seconds of battery life left. You can pass a <cite>nil</cite> here if you don't care. Will return <cite>-1</cite> if we can't determine a value, or we're not running on a battery.</p>
@@ -1221,7 +1257,7 @@ The basic state for the system's power supply.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2016-04-01 21:48:01 UTC</small>
+        <small>Made with Nim. Generated: 2016-08-14 19:22:03 UTC</small>
       </div>
     </div>
   </div>

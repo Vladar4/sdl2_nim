@@ -1143,10 +1143,46 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
+  div.pragma {
+    display: none;
+  }
+  span.pragmabegin {
+    cursor: pointer;
+  }
+  span.pragmaend {
+    cursor: pointer;
+  }
 </style>
 
+
+<script type="text/javascript">
+function togglepragma(d) {
+  if (d.style.display != 'inline')
+    d.style.display = 'inline';
+  else
+    d.style.display = 'none';
+}
+
+function main() {
+  var elements = document.getElementsByClassName("pragmabegin");
+  for (var i = 0; i < elements.length; ++i) {
+    var e = elements[i];
+    e.onclick = function(event) {
+      togglepragma(event.target.nextSibling);
+    };
+  }
+  var elements = document.getElementsByClassName("pragmaend");
+  for (var i = 0; i < elements.length; ++i) {
+    var e = elements[i];
+    e.onclick = function(event) {
+      togglepragma(event.target.previousSibling);
+    };
+  }
+}
+</script>
+
 </head>
-<body>
+<body onload="main()">
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Module audio</h1>
@@ -1328,22 +1364,22 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 <li>
   <a class="reference reference-toplevel" href="#17" id="67">Templates</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#audioBitSize.t,expr"
-    title="audioBitSize*(x: expr): expr"><wbr />audio<wbr />Bit<wbr />Size</a></li>
-  <li><a class="reference" href="#audioIsFloat.t,expr"
-    title="audioIsFloat*(x: expr): expr"><wbr />audio<wbr />Is<wbr />Float</a></li>
-  <li><a class="reference" href="#audioIsBigEndian.t,expr"
-    title="audioIsBigEndian*(x: expr): expr"><wbr />audio<wbr />Is<wbr />Big<wbr />Endian</a></li>
-  <li><a class="reference" href="#audioIsSigned.t,expr"
-    title="audioIsSigned*(x: expr): expr"><wbr />audio<wbr />Is<wbr />Signed</a></li>
-  <li><a class="reference" href="#audioIsInt.t,expr"
-    title="audioIsInt*(x: expr): expr"><wbr />audio<wbr />Is<wbr />Int</a></li>
-  <li><a class="reference" href="#audioIsLittleEndian.t,expr"
-    title="audioIsLittleEndian*(x: expr): expr"><wbr />audio<wbr />Is<wbr />Little<wbr />Endian</a></li>
-  <li><a class="reference" href="#audioIsUnsigned.t,expr"
-    title="audioIsUnsigned*(x: expr): expr"><wbr />audio<wbr />Is<wbr />Unsigned</a></li>
-  <li><a class="reference" href="#loadWAV.t,expr,expr,expr,expr"
-    title="loadWAV*(file, spec, audio_buf, audio_len: expr): expr"><wbr />load<wbr />WAV</a></li>
+      <li><a class="reference" href="#audioBitSize.t,untyped"
+    title="audioBitSize*(x: untyped): untyped"><wbr />audio<wbr />Bit<wbr />Size</a></li>
+  <li><a class="reference" href="#audioIsFloat.t,untyped"
+    title="audioIsFloat*(x: untyped): untyped"><wbr />audio<wbr />Is<wbr />Float</a></li>
+  <li><a class="reference" href="#audioIsBigEndian.t,untyped"
+    title="audioIsBigEndian*(x: untyped): untyped"><wbr />audio<wbr />Is<wbr />Big<wbr />Endian</a></li>
+  <li><a class="reference" href="#audioIsSigned.t,untyped"
+    title="audioIsSigned*(x: untyped): untyped"><wbr />audio<wbr />Is<wbr />Signed</a></li>
+  <li><a class="reference" href="#audioIsInt.t,untyped"
+    title="audioIsInt*(x: untyped): untyped"><wbr />audio<wbr />Is<wbr />Int</a></li>
+  <li><a class="reference" href="#audioIsLittleEndian.t,untyped"
+    title="audioIsLittleEndian*(x: untyped): untyped"><wbr />audio<wbr />Is<wbr />Little<wbr />Endian</a></li>
+  <li><a class="reference" href="#audioIsUnsigned.t,untyped"
+    title="audioIsUnsigned*(x: untyped): untyped"><wbr />audio<wbr />Is<wbr />Unsigned</a></li>
+  <li><a class="reference" href="#loadWAV.t,untyped,untyped,untyped,untyped"
+    title="loadWAV*(file, spec, audio_buf, audio_len: untyped): untyped"><wbr />load<wbr />WAV</a></li>
 
   </ul>
 </li>
@@ -1376,7 +1412,7 @@ Audio format flags.</p>
 
 
 </dd>
-<dt id="AudioCallback"><a name="AudioCallback"></a><pre><span class="Identifier">AudioCallback</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">stream</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span></pre></dt>
+<dt id="AudioCallback"><a name="AudioCallback"></a><pre><span class="Identifier">AudioCallback</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">stream</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>
 This procedure is called when the audio device needs more data.</p>
@@ -1406,12 +1442,12 @@ This procedure is called when the audio device needs more data.</p>
 The calculated values in this object are calculated by <tt class="docutils literal"><span class="pre">OpenAudio()</span></tt>.
 
 </dd>
-<dt id="AudioFilter"><a name="AudioFilter"></a><pre><span class="Identifier">AudioFilter</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">cvt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioCVT</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">.}</span></pre></dt>
+<dt id="AudioFilter"><a name="AudioFilter"></a><pre><span class="Identifier">AudioFilter</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">cvt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioCVT</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="AudioCVT"><a name="AudioCVT"></a><pre><span class="Identifier">AudioCVT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other">{.</span><span class="Identifier">packed</span><span class="Other">.}</span>
+<dt id="AudioCVT"><a name="AudioCVT"></a><pre><span class="Identifier">AudioCVT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">packed</span></div><span class="Other pragmaend">.}</span>
   <span class="Identifier">needed</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                <span class="Comment">## Set to `1` if conversion possible</span>
   <span class="Identifier">src_format</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span>     <span class="Comment">## Source audio format</span>
   <span class="Identifier">dst_format</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span>     <span class="Comment">## Target audio format</span>
@@ -1439,7 +1475,7 @@ SDL Audio Device IDs.</p>
 
 
 </dd>
-<dt id="AudioStatus"><a name="AudioStatus"></a><pre><span class="Identifier">AudioStatus</span><span class="Operator">*</span> <span class="Other">{.</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span><span class="Other">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt id="AudioStatus"><a name="AudioStatus"></a><pre><span class="Identifier">AudioStatus</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">AUDIO_STOPPED</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">AUDIO_PLAYING</span><span class="Other">,</span> <span class="Identifier">AUDIO_PAUSED</span></pre></dt>
 <dd>
 
@@ -1591,46 +1627,46 @@ As above, but big-endian byte order
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="getNumAudioDrivers"><a name="getNumAudioDrivers,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getNumAudioDrivers</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetNumAudioDrivers&quot;</span><span class="Other">,</span>
-                                <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getNumAudioDrivers"><a name="getNumAudioDrivers,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getNumAudioDrivers</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetNumAudioDrivers&quot;</span><span class="Other">,</span>
+                                <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Driver discovery procedures.</p>
 <p>These procedures return the list of built in audio drivers, in the order that they are normally initialized by default.</p>
 
 
 </dd>
-<dt id="getAudioDriver"><a name="getAudioDriver,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getAudioDriver</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetAudioDriver&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getAudioDriver"><a name="getAudioDriver,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getAudioDriver</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetAudioDriver&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Driver discovery procedures.</p>
 <p>These procedures return the list of built in audio drivers, in the order that they are normally initialized by default.</p>
 
 
 </dd>
-<dt id="audioInit"><a name="audioInit,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">audioInit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">driver_name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AudioInit&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="audioInit"><a name="audioInit,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">audioInit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">driver_name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AudioInit&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Initialization.</p>
 <p><tt class="docutils literal"><span class="pre">Internal:</span></tt> These procedures are used internally, and should not be used unless you have a specific need to specify the audio driver you want to use.  You should normally use <tt class="docutils literal"><span class="pre">init()</span></tt> or <tt class="docutils literal"><span class="pre">initSubSystem()</span></tt>.</p>
 
 
 </dd>
-<dt id="audioQuit"><a name="audioQuit,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">audioQuit</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AudioQuit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="audioQuit"><a name="audioQuit,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">audioQuit</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AudioQuit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Cleanup.</p>
 <p><tt class="docutils literal"><span class="pre">Internal</span></tt>: These procedures are used internally, and should not be used unless you have a specific need to specify the audio driver you want to use.  You should normally use <tt class="docutils literal"><span class="pre">init()</span></tt> or <tt class="docutils literal"><span class="pre">initSubSystem()</span></tt>.</p>
 
 
 </dd>
-<dt id="getCurrentAudioDriver"><a name="getCurrentAudioDriver,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCurrentAudioDriver</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="getCurrentAudioDriver"><a name="getCurrentAudioDriver,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCurrentAudioDriver</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
                                       <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetCurrentAudioDriver&quot;</span><span class="Other">,</span>
-                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This procedure returns the name of the current audio driver, or <cite>nil</cite> if no driver has been initialized.
 
 </dd>
-<dt id="openAudio"><a name="openAudio,ptr.AudioSpec,ptr.AudioSpec"></a><pre><span class="Keyword">proc</span> <span class="Identifier">openAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">desired</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioSpec</span><span class="Other">;</span> <span class="Identifier">obtained</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioSpec</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_OpenAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="openAudio"><a name="openAudio,ptr.AudioSpec,ptr.AudioSpec"></a><pre><span class="Keyword">proc</span> <span class="Identifier">openAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">desired</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioSpec</span><span class="Other">;</span> <span class="Identifier">obtained</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioSpec</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_OpenAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>This procedure opens the audio device with the desired parameters, and returns <cite>0</cite> if successful, placing the actual hardware parameters in the object pointed to by <tt class="docutils literal"><span class="pre">obtained</span></tt>.  If <tt class="docutils literal"><span class="pre">obtained</span></tt> is <cite>nil</cite>, the audio data passed to the callback procedure will be guaranteed to be in the requested format, and will be automatically converted to the hardware audio format if necessary.  This procedure returns <cite>-1</cite> if it failed to open the audio device, or couldn't set up the audio thread.</p>
 <p>When filling in the <tt class="docutils literal"><span class="pre">desired</span></tt> audio spec object,</p>
@@ -1649,8 +1685,8 @@ This procedure returns the name of the current audio driver, or <cite>nil</cite>
 
 
 </dd>
-<dt id="getNumAudioDevices"><a name="getNumAudioDevices,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getNumAudioDevices</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">iscapture</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetNumAudioDevices&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getNumAudioDevices"><a name="getNumAudioDevices,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getNumAudioDevices</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">iscapture</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetNumAudioDevices&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the number of available devices exposed by the current driver.</p>
 <p>Only valid after a successfully initializing the audio subsystem. Returns <cite>-1</cite> if an explicit list of devices can't be determined; this is not an error. For example, if SDL is set up to talk to a remote audio server, it can't list every one available on the Internet, but it will still allow a specific host to be specified to <tt class="docutils literal"><span class="pre">openAudioDevice()</span></tt>.</p>
@@ -1658,8 +1694,8 @@ This procedure returns the name of the current audio driver, or <cite>nil</cite>
 
 
 </dd>
-<dt id="getAudioDeviceName"><a name="getAudioDeviceName,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getAudioDeviceName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">iscapture</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetAudioDeviceName&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getAudioDeviceName"><a name="getAudioDeviceName,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getAudioDeviceName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">iscapture</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetAudioDeviceName&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the human-readable name of a specific audio device.</p>
 <p>Must be a value between <cite>0</cite> and <cite>(number of audio devices-1)</cite>. Only valid after a successfully initializing the audio subsystem. The values returned by this procedure reflect the latest call to <tt class="docutils literal"><span class="pre">getNumAudioDevices()</span></tt>; recall that procedure to redetect available hardware.</p>
@@ -1668,8 +1704,8 @@ This procedure returns the name of the current audio driver, or <cite>nil</cite>
 
 </dd>
 <dt id="openAudioDevice"><a name="openAudioDevice,cstring,cint,ptr.AudioSpec,ptr.AudioSpec,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">openAudioDevice</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">device</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">iscapture</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">desired</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioSpec</span><span class="Other">;</span>
-                     <span class="Identifier">obtained</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioSpec</span><span class="Other">;</span> <span class="Identifier">allowed_changes</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span> <span class="Other">{.</span>
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_OpenAudioDevice&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+                     <span class="Identifier">obtained</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioSpec</span><span class="Other">;</span> <span class="Identifier">allowed_changes</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_OpenAudioDevice&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Open a specific audio device.</p>
 <p>Passing in a device name of <cite>nil</cite> requests the most reasonable default (and is equivalent to calling <tt class="docutils literal"><span class="pre">openAudio()</span></tt>).</p>
@@ -1679,27 +1715,27 @@ This procedure returns the name of the current audio driver, or <cite>nil</cite>
 
 
 </dd>
-<dt id="GetAudioStatus"><a name="GetAudioStatus,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">GetAudioStatus</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">AudioStatus</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetAudioStatus&quot;</span><span class="Other">,</span>
-                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="GetAudioStatus"><a name="GetAudioStatus,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">GetAudioStatus</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">AudioStatus</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetAudioStatus&quot;</span><span class="Other">,</span>
+                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the current audio state.
 
 </dd>
-<dt id="GetAudioDeviceStatus"><a name="GetAudioDeviceStatus,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">GetAudioDeviceStatus</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">AudioStatus</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetAudioDeviceStatus&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="GetAudioDeviceStatus"><a name="GetAudioDeviceStatus,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">GetAudioDeviceStatus</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">AudioStatus</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetAudioDeviceStatus&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the current audio state.
 
 </dd>
-<dt id="pauseAudio"><a name="pauseAudio,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pauseAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">pause_on</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PauseAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="pauseAudio"><a name="pauseAudio,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pauseAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">pause_on</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PauseAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Pause audio procedures.</p>
 <p>These procedures pause and unpause the audio callback processing. They should be called with a parameter of <cite>0</cite> after opening the audio device to start playing sound.  This is so you can safely initialize data for your callback procedure after opening the audio device. Silence will be written to the audio device during the pause.</p>
 
 
 </dd>
-<dt id="pauseAudioDevice"><a name="pauseAudioDevice,AudioDeviceID,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pauseAudioDevice</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">;</span> <span class="Identifier">pause_on</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PauseAudioDevice&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="pauseAudioDevice"><a name="pauseAudioDevice,AudioDeviceID,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pauseAudioDevice</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">;</span> <span class="Identifier">pause_on</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PauseAudioDevice&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Pause audio procedures.</p>
 <p>These procedures pause and unpause the audio callback processing. They should be called with a parameter of <cite>0</cite> after opening the audio device to start playing sound.  This is so you can safely initialize data for your callback procedure after opening the audio device. Silence will be written to the audio device during the pause.</p>
@@ -1707,8 +1743,8 @@ Get the current audio state.
 
 </dd>
 <dt id="loadWAV_RW"><a name="loadWAV_RW,ptr.RWops,cint,ptr.AudioSpec,ptr.ptr.uint8,ptr.uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadWAV_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">spec</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioSpec</span><span class="Other">;</span>
-                <span class="Identifier">audio_buf</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">audio_len</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioSpec</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LoadWAV_RW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+                <span class="Identifier">audio_buf</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">audio_len</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioSpec</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LoadWAV_RW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This procedure loads a WAVE from the data source, automatically freeing that source if <tt class="docutils literal"><span class="pre">freesrc</span></tt> is non-zero.  For example, to load a WAVE file, you could do:<blockquote><p>loadWAV_RW(rwFromFile(&quot;sample.wav&quot;, &quot;rb&quot;), 1, ...)</p></blockquote>
 <p>If this procedure succeeds, it returns the given AudioSpec, filled with the audio data format of the wave data, and sets <tt class="docutils literal"><span class="pre">audio_buf[]</span></tt> to a malloc()'d buffer containing the audio data, and sets <tt class="docutils literal"><span class="pre">audio_len[]</span></tt> to the length of that audio buffer, in bytes. You need to free the audio buffer with <tt class="docutils literal"><span class="pre">freeWAV()</span></tt> when you are done with it.</p>
@@ -1716,44 +1752,44 @@ This procedure loads a WAVE from the data source, automatically freeing that sou
 
 
 </dd>
-<dt id="freeWAV"><a name="freeWAV,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freeWAV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">audio_buf</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FreeWAV&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="freeWAV"><a name="freeWAV,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freeWAV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">audio_buf</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FreeWAV&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This procedure frees data previously allocated with <tt class="docutils literal"><span class="pre">loadWAV_RW()</span></tt>
 
 </dd>
 <dt id="buildAudioCVT"><a name="buildAudioCVT,ptr.AudioCVT,AudioFormat,uint8,cint,AudioFormat,uint8,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">buildAudioCVT</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cvt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioCVT</span><span class="Other">;</span> <span class="Identifier">src_format</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span><span class="Other">;</span> <span class="Identifier">src_channels</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span>
                    <span class="Identifier">src_rate</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dst_format</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span><span class="Other">;</span> <span class="Identifier">dst_channels</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span>
-                   <span class="Identifier">dst_rate</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_BuildAudioCVT&quot;</span><span class="Other">,</span>
-                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+                   <span class="Identifier">dst_rate</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_BuildAudioCVT&quot;</span><span class="Other">,</span>
+                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>This procedure takes a source format and rate and a destination format and rate, and initializes the <tt class="docutils literal"><span class="pre">cvt</span></tt> object with information needed by <tt class="docutils literal"><span class="pre">convertAudio()</span></tt> to convert a buffer of audio data from one format to the other.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>-1</cite> if the format conversion is not supported, <cite>0</cite> if there's no conversion needed, or 1 if the audio filter is set up.</p>
 
 
 </dd>
-<dt id="convertAudio"><a name="convertAudio,ptr.AudioCVT"></a><pre><span class="Keyword">proc</span> <span class="Identifier">convertAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cvt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioCVT</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ConvertAudio&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="convertAudio"><a name="convertAudio,ptr.AudioCVT"></a><pre><span class="Keyword">proc</span> <span class="Identifier">convertAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cvt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioCVT</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ConvertAudio&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Once you have initialized the <tt class="docutils literal"><span class="pre">cvt</span></tt> object using <tt class="docutils literal"><span class="pre">buildAudioCVT()</span></tt>, created an audio buffer <tt class="docutils literal"><span class="pre">cvt.buf</span></tt>, and filled it with <tt class="docutils literal"><span class="pre">cvt.len</span></tt> bytes of audio data in the source format, this procedure will convert it in-place to the desired format.</p>
 <p>The data conversion may expand the size of the audio data, so the buffer <tt class="docutils literal"><span class="pre">cvt.buf</span></tt> should be allocated after the <tt class="docutils literal"><span class="pre">cvt</span></tt> object is initialized by <tt class="docutils literal"><span class="pre">buildAudioCVT()</span></tt>, and should be <cite>cvt.len*cvt.len_mult</cite> bytes long.</p>
 
 
 </dd>
-<dt id="mixAudio"><a name="mixAudio,ptr.uint8,ptr.uint8,uint32,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">mixAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">volume</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MixAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="mixAudio"><a name="mixAudio,ptr.uint8,ptr.uint8,uint32,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">mixAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">volume</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MixAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This takes two audio buffers of the playing audio format and mixes them, performing addition, volume adjustment, and overflow clipping. The volume ranges from <cite>0 - 128</cite>, and should be set to <cite>MIX_MAXVOLUME</cite> for full audio volume.  Note this does not change hardware volume. This is provided for convenience -- you can mix your own audio data.
 
 </dd>
 <dt id="mixAudioFormat"><a name="mixAudioFormat,ptr.uint8,ptr.uint8,AudioFormat,uint32,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">mixAudioFormat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span>
-                    <span class="Identifier">volume</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MixAudioFormat&quot;</span><span class="Other">,</span>
-                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+                    <span class="Identifier">volume</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MixAudioFormat&quot;</span><span class="Other">,</span>
+                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This works like <tt class="docutils literal"><span class="pre">mixAudio()</span></tt>, but you specify the audio format instead of using the format of audio device <cite>1</cite>. Thus it can be used when no audio device is open at all.
 
 </dd>
-<dt id="queueAudio"><a name="queueAudio,AudioDeviceID,pointer,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">queueAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_QueueAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="queueAudio"><a name="queueAudio,AudioDeviceID,pointer,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">queueAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_QueueAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Queue more audio on non-callback devices.</p>
 <p>SDL offers two ways to feed audio to the device: you can either supply a callback that SDL triggers with some frequency to obtain more audio (pull method), or you can supply no callback, and then SDL will expect you to supply data at regular intervals (push method) with this procedure.</p>
@@ -1771,8 +1807,8 @@ This works like <tt class="docutils literal"><span class="pre">mixAudio()</span>
 
 
 </dd>
-<dt id="getQueuedAudioSize"><a name="getQueuedAudioSize,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getQueuedAudioSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetQueuedAudioSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="getQueuedAudioSize"><a name="getQueuedAudioSize,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getQueuedAudioSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetQueuedAudioSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the number of bytes of still-queued audio.</p>
 <p>This is the number of bytes that have been queued for playback with <tt class="docutils literal"><span class="pre">queueAudio()</span></tt>, but have not yet been sent to the hardware.</p>
@@ -1787,8 +1823,8 @@ This works like <tt class="docutils literal"><span class="pre">mixAudio()</span>
 
 
 </dd>
-<dt id="clearQueuedAudio"><a name="clearQueuedAudio,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">clearQueuedAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ClearQueuedAudio&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="clearQueuedAudio"><a name="clearQueuedAudio,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">clearQueuedAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ClearQueuedAudio&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Drop any queued audio data waiting to be sent to the hardware.</p>
 <p>Immediately after this call, <tt class="docutils literal"><span class="pre">getQueuedAudioSize()</span></tt> will return <cite>0</cite> and the hardware will start playing silence if more audio isn't queued.</p>
@@ -1803,43 +1839,43 @@ This works like <tt class="docutils literal"><span class="pre">mixAudio()</span>
 
 
 </dd>
-<dt id="lockAudio"><a name="lockAudio,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="lockAudio"><a name="lockAudio,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Audio lock procedure.</p>
 <p>The lock manipulated by these procedures protects the callback procedure. During a <tt class="docutils literal"><span class="pre">lockAudio()</span></tt>/<tt class="docutils literal"><span class="pre">unlockAudio()</span></tt> pair, you can be guaranteed that the callback procedure is not running.  Do not call these from the callback procedure or you will cause deadlock.</p>
 
 
 </dd>
-<dt id="lockAudioDevice"><a name="lockAudioDevice,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockAudioDevice</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockAudioDevice&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="lockAudioDevice"><a name="lockAudioDevice,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockAudioDevice</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockAudioDevice&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Audio lock procedure.</p>
 <p>The lock manipulated by these procedures protects the callback procedure. During a <tt class="docutils literal"><span class="pre">lockAudio()</span></tt>/<tt class="docutils literal"><span class="pre">unlockAudio()</span></tt> pair, you can be guaranteed that the callback procedure is not running.  Do not call these from the callback procedure or you will cause deadlock.</p>
 
 
 </dd>
-<dt id="unlockAudio"><a name="unlockAudio,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="unlockAudio"><a name="unlockAudio,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Audio unlock procedure.</p>
 <p>The lock manipulated by these procedures protects the callback procedure. During a <tt class="docutils literal"><span class="pre">lockAudio()</span></tt>/<tt class="docutils literal"><span class="pre">unlockAudio()</span></tt> pair, you can be guaranteed that the callback procedure is not running.  Do not call these from the callback procedure or you will cause deadlock.</p>
 
 
 </dd>
-<dt id="unlockAudioDevice"><a name="unlockAudioDevice,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockAudioDevice</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockAudioDevice&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="unlockAudioDevice"><a name="unlockAudioDevice,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockAudioDevice</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockAudioDevice&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Audio unlock procedure.</p>
 <p>The lock manipulated by these procedures protects the callback procedure. During a <tt class="docutils literal"><span class="pre">lockAudio()</span></tt>/<tt class="docutils literal"><span class="pre">unlockAudio()</span></tt> pair, you can be guaranteed that the callback procedure is not running.  Do not call these from the callback procedure or you will cause deadlock.</p>
 
 
 </dd>
-<dt id="closeAudio"><a name="closeAudio,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">closeAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CloseAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="closeAudio"><a name="closeAudio,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">closeAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CloseAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This procedure shuts down audio processing and closes the audio device.
 
 </dd>
-<dt id="closeAudioDevice"><a name="closeAudioDevice,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">closeAudioDevice</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span> <span class="Other">{.</span><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CloseAudioDevice&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span><span class="Other">.}</span></pre></dt>
+<dt id="closeAudioDevice"><a name="closeAudioDevice,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">closeAudioDevice</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CloseAudioDevice&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This procedure shuts down audio processing and closes the audio device.
 
@@ -1849,42 +1885,42 @@ This procedure shuts down audio processing and closes the audio device.
 <div class="section" id="17">
 <h1><a class="toc-backref" href="#17">Templates</a></h1>
 <dl class="item">
-<dt id="audioBitSize"><a name="audioBitSize.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioBitSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
+<dt id="audioBitSize"><a name="audioBitSize.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioBitSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="audioIsFloat"><a name="audioIsFloat.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsFloat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
+<dt id="audioIsFloat"><a name="audioIsFloat.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsFloat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="audioIsBigEndian"><a name="audioIsBigEndian.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsBigEndian</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
+<dt id="audioIsBigEndian"><a name="audioIsBigEndian.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsBigEndian</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="audioIsSigned"><a name="audioIsSigned.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsSigned</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
+<dt id="audioIsSigned"><a name="audioIsSigned.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsSigned</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="audioIsInt"><a name="audioIsInt.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsInt</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
+<dt id="audioIsInt"><a name="audioIsInt.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsInt</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="audioIsLittleEndian"><a name="audioIsLittleEndian.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsLittleEndian</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
+<dt id="audioIsLittleEndian"><a name="audioIsLittleEndian.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsLittleEndian</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="audioIsUnsigned"><a name="audioIsUnsigned.t,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsUnsigned</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
+<dt id="audioIsUnsigned"><a name="audioIsUnsigned.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsUnsigned</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="loadWAV"><a name="loadWAV.t,expr,expr,expr,expr"></a><pre><span class="Keyword">template</span> <span class="Identifier">loadWAV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">,</span> <span class="Identifier">spec</span><span class="Other">,</span> <span class="Identifier">audio_buf</span><span class="Other">,</span> <span class="Identifier">audio_len</span><span class="Other">:</span> <span class="Identifier">expr</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">expr</span></pre></dt>
+<dt id="loadWAV"><a name="loadWAV.t,untyped,untyped,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">loadWAV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">,</span> <span class="Identifier">spec</span><span class="Other">,</span> <span class="Identifier">audio_buf</span><span class="Other">,</span> <span class="Identifier">audio_len</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 <p>
 Loads a WAV from a file.</p>
@@ -1902,7 +1938,7 @@ Loads a WAV from a file.</p>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2016-04-01 21:48:00 UTC</small>
+        <small>Made with Nim. Generated: 2016-08-14 19:22:03 UTC</small>
       </div>
     </div>
   </div>
