@@ -554,7 +554,7 @@ proc renderSetIntegerScale*(renderer: Renderer; enable: bool): cint {.
   ##
   ##  ``renderer`` The renderer for which integer scaling should be set.
   ##
-  ##  ``enable` Enable or disable integer scaling
+  ##  ``enable`` Enable or disable integer scaling
   ##
   ##  This function restricts the logical viewport to integer values -
   ##  that is, when a resolution is between two multiples of a logical size,

@@ -1194,9 +1194,9 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Surface"
-    title="Surface* = ptr SurfaceObj"><wbr />Surface</a></li>
+    title="Surface = ptr SurfaceObj"><wbr />Surface</a></li>
   <li><a class="reference" href="#SurfaceObj"
-    title="SurfaceObj* = object
+    title="SurfaceObj = object
   flags*: uint32               ## Read-only 
   format*: ptr PixelFormat      ## Read-only 
   w*: cint
@@ -1215,7 +1215,7 @@ function main() {
               ## Reference count -- used when freeing surface
   refcount*: cint              ## Read-mostly"><wbr />Surface<wbr />Obj</a></li>
   <li><a class="reference" href="#blit"
-    title="blit* = proc (src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />blit</a></li>
+    title="blit = proc (src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />blit</a></li>
 
   </ul>
 </li>
@@ -1223,13 +1223,13 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#SWSURFACE"
-    title="SWSURFACE* = 0"><wbr />SWSURFACE</a></li>
+    title="SWSURFACE = 0"><wbr />SWSURFACE</a></li>
   <li><a class="reference" href="#PREALLOC"
-    title="PREALLOC* = 0x00000001"><wbr />PREALLOC</a></li>
+    title="PREALLOC = 0x00000001"><wbr />PREALLOC</a></li>
   <li><a class="reference" href="#RLEACCEL"
-    title="RLEACCEL* = 0x00000002"><wbr />RLEACCEL</a></li>
+    title="RLEACCEL = 0x00000002"><wbr />RLEACCEL</a></li>
   <li><a class="reference" href="#DONTFREE"
-    title="DONTFREE* = 0x00000004"><wbr />DONTFREE</a></li>
+    title="DONTFREE = 0x00000004"><wbr />DONTFREE</a></li>
 
   </ul>
 </li>
@@ -1237,67 +1237,73 @@ function main() {
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#createRGBSurface,uint32,cint,cint,cint,uint32,uint32,uint32,uint32"
-    title="createRGBSurface*(flags: uint32; width: cint; height: cint; depth: cint; rMask: uint32;
-                  gMask: uint32; bMask: uint32; aMask: uint32): Surface"><wbr />create<wbr />RGBSurface</a></li>
+    title="createRGBSurface(flags: uint32; width: cint; height: cint; depth: cint; rMask: uint32;
+                 gMask: uint32; bMask: uint32; aMask: uint32): Surface"><wbr />create<wbr />RGBSurface</a></li>
+  <li><a class="reference" href="#createRGBSurfaceWithFormat,uint32,cint,cint,cint,uint32"
+    title="createRGBSurfaceWithFormat(flags: uint32; width: cint; height: cint; depth: cint;
+                           format: uint32): Surface"><wbr />create<wbr />RGBSurface<wbr />With<wbr />Format</a></li>
   <li><a class="reference" href="#createRGBSurfaceFrom,pointer,cint,cint,cint,cint,uint32,uint32,uint32,uint32"
-    title="createRGBSurfaceFrom*(pixels: pointer; width: cint; height: cint; depth: cint;
-                      pitch: cint; rMask: uint32; gMask: uint32; bMask: uint32;
-                      aMask: uint32): Surface"><wbr />create<wbr />RGBSurface<wbr />From</a></li>
+    title="createRGBSurfaceFrom(pixels: pointer; width: cint; height: cint; depth: cint;
+                     pitch: cint; rMask: uint32; gMask: uint32; bMask: uint32;
+                     aMask: uint32): Surface"><wbr />create<wbr />RGBSurface<wbr />From</a></li>
+  <li><a class="reference" href="#createRGBSurfaceWithFormatFrom,pointer,cint,cint,cint,cint,uint32"
+    title="createRGBSurfaceWithFormatFrom(pixels: pointer; width: cint; height: cint;
+                               depth: cint; pitch: cint; format: uint32): Surface"><wbr />create<wbr />RGBSurface<wbr />With<wbr />Format<wbr />From</a></li>
   <li><a class="reference" href="#freeSurface,Surface"
-    title="freeSurface*(surface: Surface)"><wbr />free<wbr />Surface</a></li>
+    title="freeSurface(surface: Surface)"><wbr />free<wbr />Surface</a></li>
   <li><a class="reference" href="#setSurfacePalette,Surface,ptr.Palette"
-    title="setSurfacePalette*(surface: Surface; palette: ptr Palette): cint"><wbr />set<wbr />Surface<wbr />Palette</a></li>
+    title="setSurfacePalette(surface: Surface; palette: ptr Palette): cint"><wbr />set<wbr />Surface<wbr />Palette</a></li>
   <li><a class="reference" href="#lockSurface,Surface"
-    title="lockSurface*(surface: Surface): cint"><wbr />lock<wbr />Surface</a></li>
+    title="lockSurface(surface: Surface): cint"><wbr />lock<wbr />Surface</a></li>
   <li><a class="reference" href="#unlockSurface,Surface"
-    title="unlockSurface*(surface: Surface)"><wbr />unlock<wbr />Surface</a></li>
+    title="unlockSurface(surface: Surface)"><wbr />unlock<wbr />Surface</a></li>
   <li><a class="reference" href="#loadBMP_RW,ptr.RWops,cint"
-    title="loadBMP_RW*(src: ptr RWops; freesrc: cint): Surface"><wbr />load<wbr />BMP_<wbr />RW</a></li>
+    title="loadBMP_RW(src: ptr RWops; freesrc: cint): Surface"><wbr />load<wbr />BMP_<wbr />RW</a></li>
   <li><a class="reference" href="#saveBMP_RW,Surface,ptr.RWops,cint"
-    title="saveBMP_RW*(surface: Surface; dst: ptr RWops; freedst: cint): cint"><wbr />save<wbr />BMP_<wbr />RW</a></li>
+    title="saveBMP_RW(surface: Surface; dst: ptr RWops; freedst: cint): cint"><wbr />save<wbr />BMP_<wbr />RW</a></li>
   <li><a class="reference" href="#setSurfaceRLE,Surface,cint"
-    title="setSurfaceRLE*(surface: Surface; flag: cint): cint"><wbr />set<wbr />Surface<wbr />RLE</a></li>
+    title="setSurfaceRLE(surface: Surface; flag: cint): cint"><wbr />set<wbr />Surface<wbr />RLE</a></li>
   <li><a class="reference" href="#setColorKey,Surface,cint,uint32"
-    title="setColorKey*(surface: Surface; flag: cint; key: uint32): cint"><wbr />set<wbr />Color<wbr />Key</a></li>
+    title="setColorKey(surface: Surface; flag: cint; key: uint32): cint"><wbr />set<wbr />Color<wbr />Key</a></li>
   <li><a class="reference" href="#getColorKey,Surface,ptr.uint32"
-    title="getColorKey*(surface: Surface; key: ptr uint32): cint"><wbr />get<wbr />Color<wbr />Key</a></li>
+    title="getColorKey(surface: Surface; key: ptr uint32): cint"><wbr />get<wbr />Color<wbr />Key</a></li>
   <li><a class="reference" href="#setSurfaceColorMod,Surface,uint8,uint8,uint8"
-    title="setSurfaceColorMod*(surface: Surface; r: uint8; g: uint8; b: uint8): cint"><wbr />set<wbr />Surface<wbr />Color<wbr />Mod</a></li>
+    title="setSurfaceColorMod(surface: Surface; r: uint8; g: uint8; b: uint8): cint"><wbr />set<wbr />Surface<wbr />Color<wbr />Mod</a></li>
   <li><a class="reference" href="#getSurfaceColorMod,Surface,ptr.uint8,ptr.uint8,ptr.uint8"
-    title="getSurfaceColorMod*(surface: Surface; r: ptr uint8; g: ptr uint8; b: ptr uint8): cint"><wbr />get<wbr />Surface<wbr />Color<wbr />Mod</a></li>
+    title="getSurfaceColorMod(surface: Surface; r: ptr uint8; g: ptr uint8; b: ptr uint8): cint"><wbr />get<wbr />Surface<wbr />Color<wbr />Mod</a></li>
   <li><a class="reference" href="#setSurfaceAlphaMod,Surface,uint8"
-    title="setSurfaceAlphaMod*(surface: Surface; alpha: uint8): cint"><wbr />set<wbr />Surface<wbr />Alpha<wbr />Mod</a></li>
+    title="setSurfaceAlphaMod(surface: Surface; alpha: uint8): cint"><wbr />set<wbr />Surface<wbr />Alpha<wbr />Mod</a></li>
   <li><a class="reference" href="#getSurfaceAlphaMod,Surface,ptr.uint8"
-    title="getSurfaceAlphaMod*(surface: Surface; alpha: ptr uint8): cint"><wbr />get<wbr />Surface<wbr />Alpha<wbr />Mod</a></li>
+    title="getSurfaceAlphaMod(surface: Surface; alpha: ptr uint8): cint"><wbr />get<wbr />Surface<wbr />Alpha<wbr />Mod</a></li>
   <li><a class="reference" href="#setSurfaceBlendMode,Surface,BlendMode"
-    title="setSurfaceBlendMode*(surface: Surface; blendMode: BlendMode): cint"><wbr />set<wbr />Surface<wbr />Blend<wbr />Mode</a></li>
+    title="setSurfaceBlendMode(surface: Surface; blendMode: BlendMode): cint"><wbr />set<wbr />Surface<wbr />Blend<wbr />Mode</a></li>
   <li><a class="reference" href="#getSurfaceBlendMode,Surface,ptr.BlendMode"
-    title="getSurfaceBlendMode*(surface: Surface; blendMode: ptr BlendMode): cint"><wbr />get<wbr />Surface<wbr />Blend<wbr />Mode</a></li>
+    title="getSurfaceBlendMode(surface: Surface; blendMode: ptr BlendMode): cint"><wbr />get<wbr />Surface<wbr />Blend<wbr />Mode</a></li>
   <li><a class="reference" href="#setClipRect,Surface,ptr.Rect"
-    title="setClipRect*(surface: Surface; rect: ptr Rect): bool"><wbr />set<wbr />Clip<wbr />Rect</a></li>
+    title="setClipRect(surface: Surface; rect: ptr Rect): bool"><wbr />set<wbr />Clip<wbr />Rect</a></li>
   <li><a class="reference" href="#getClipRect,Surface,ptr.Rect"
-    title="getClipRect*(surface: Surface; rect: ptr Rect)"><wbr />get<wbr />Clip<wbr />Rect</a></li>
+    title="getClipRect(surface: Surface; rect: ptr Rect)"><wbr />get<wbr />Clip<wbr />Rect</a></li>
   <li><a class="reference" href="#convertSurface,Surface,ptr.PixelFormat,uint32"
-    title="convertSurface*(src: Surface; fmt: ptr PixelFormat; flags: uint32): Surface"><wbr />convert<wbr />Surface</a></li>
+    title="convertSurface(src: Surface; fmt: ptr PixelFormat; flags: uint32): Surface"><wbr />convert<wbr />Surface</a></li>
   <li><a class="reference" href="#convertSurfaceFormat,Surface,uint32,uint32"
-    title="convertSurfaceFormat*(src: Surface; pixel_format: uint32; flags: uint32): Surface"><wbr />convert<wbr />Surface<wbr />Format</a></li>
+    title="convertSurfaceFormat(src: Surface; pixel_format: uint32; flags: uint32): Surface"><wbr />convert<wbr />Surface<wbr />Format</a></li>
   <li><a class="reference" href="#convertPixels,cint,cint,uint32,pointer,cint,uint32,pointer,cint"
-    title="convertPixels*(width: cint; height: cint; src_format: uint32; src: pointer;
-               src_pitch: cint; dst_format: uint32; dst: pointer; dst_pitch: cint): cint"><wbr />convert<wbr />Pixels</a></li>
+    title="convertPixels(width: cint; height: cint; src_format: uint32; src: pointer;
+              src_pitch: cint; dst_format: uint32; dst: pointer; dst_pitch: cint): cint"><wbr />convert<wbr />Pixels</a></li>
   <li><a class="reference" href="#fillRect,Surface,ptr.Rect,uint32"
-    title="fillRect*(dst: Surface; rect: ptr Rect; color: uint32): cint"><wbr />fill<wbr />Rect</a></li>
+    title="fillRect(dst: Surface; rect: ptr Rect; color: uint32): cint"><wbr />fill<wbr />Rect</a></li>
   <li><a class="reference" href="#fillRects,Surface,ptr.Rect,cint,uint32"
-    title="fillRects*(dst: Surface; rects: ptr Rect; count: cint; color: uint32): cint"><wbr />fill<wbr />Rects</a></li>
+    title="fillRects(dst: Surface; rects: ptr Rect; count: cint; color: uint32): cint"><wbr />fill<wbr />Rects</a></li>
   <li><a class="reference" href="#upperBlit,Surface,ptr.Rect,Surface,ptr.Rect"
-    title="upperBlit*(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />upper<wbr />Blit</a></li>
+    title="upperBlit(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />upper<wbr />Blit</a></li>
   <li><a class="reference" href="#lowerBlit,Surface,ptr.Rect,Surface,ptr.Rect"
-    title="lowerBlit*(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />lower<wbr />Blit</a></li>
+    title="lowerBlit(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />lower<wbr />Blit</a></li>
   <li><a class="reference" href="#softStretch,Surface,ptr.Rect,Surface,ptr.Rect"
-    title="softStretch*(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />soft<wbr />Stretch</a></li>
+    title="softStretch(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />soft<wbr />Stretch</a></li>
   <li><a class="reference" href="#upperBlitScaled,Surface,ptr.Rect,Surface,ptr.Rect"
-    title="upperBlitScaled*(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />upper<wbr />Blit<wbr />Scaled</a></li>
+    title="upperBlitScaled(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />upper<wbr />Blit<wbr />Scaled</a></li>
   <li><a class="reference" href="#lowerBlitScaled,Surface,ptr.Rect,Surface,ptr.Rect"
-    title="lowerBlitScaled*(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />lower<wbr />Blit<wbr />Scaled</a></li>
+    title="lowerBlitScaled(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />lower<wbr />Blit<wbr />Scaled</a></li>
 
   </ul>
 </li>
@@ -1305,15 +1311,15 @@ function main() {
   <a class="reference reference-toplevel" href="#17" id="67">Templates</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#mustLock.t,untyped"
-    title="mustLock*(s: untyped): untyped"><wbr />must<wbr />Lock</a></li>
+    title="mustLock(s: untyped): untyped"><wbr />must<wbr />Lock</a></li>
   <li><a class="reference" href="#loadBMP.t,untyped"
-    title="loadBMP*(file: untyped): untyped"><wbr />load<wbr />BMP</a></li>
+    title="loadBMP(file: untyped): untyped"><wbr />load<wbr />BMP</a></li>
   <li><a class="reference" href="#saveBMP.t,untyped,untyped"
-    title="saveBMP*(surface, file: untyped): untyped"><wbr />save<wbr />BMP</a></li>
+    title="saveBMP(surface, file: untyped): untyped"><wbr />save<wbr />BMP</a></li>
   <li><a class="reference" href="#blitSurface.t,Surface,ptr.Rect,Surface,ptr.Rect"
-    title="blitSurface*(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />blit<wbr />Surface</a></li>
+    title="blitSurface(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />blit<wbr />Surface</a></li>
   <li><a class="reference" href="#blitScaled.t,Surface,ptr.Rect,Surface,ptr.Rect"
-    title="blitScaled*(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />blit<wbr />Scaled</a></li>
+    title="blitScaled(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />blit<wbr />Scaled</a></li>
 
   </ul>
 </li>
@@ -1328,12 +1334,12 @@ function main() {
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="Surface"><a name="Surface"></a><pre><span class="Identifier">Surface</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Identifier">SurfaceObj</span></pre></dt>
+<dt id="Surface"><a name="Surface"></a><pre><span class="Identifier">Surface</span> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Identifier">SurfaceObj</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="SurfaceObj"><a name="SurfaceObj"></a><pre><span class="Identifier">SurfaceObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="SurfaceObj"><a name="SurfaceObj"></a><pre><span class="Identifier">SurfaceObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">flags</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>               <span class="Comment">## Read-only </span>
   <span class="Identifier">format</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span>      <span class="Comment">## Read-only </span>
   <span class="Identifier">w</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
@@ -1359,7 +1365,7 @@ A collection of pixels used in software blitting.</p>
 
 
 </dd>
-<dt id="blit"><a name="blit"></a><pre><span class="Identifier">blit</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="blit"><a name="blit"></a><pre><span class="Identifier">blit</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 The type of procedure used for surface blitting procedures.
@@ -1370,22 +1376,22 @@ The type of procedure used for surface blitting procedures.
 <div class="section" id="10">
 <h1><a class="toc-backref" href="#10">Consts</a></h1>
 <dl class="item">
-<dt id="SWSURFACE"><a name="SWSURFACE"></a><pre><span class="Identifier">SWSURFACE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
+<dt id="SWSURFACE"><a name="SWSURFACE"></a><pre><span class="Identifier">SWSURFACE</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PREALLOC"><a name="PREALLOC"></a><pre><span class="Identifier">PREALLOC</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span></pre></dt>
+<dt id="PREALLOC"><a name="PREALLOC"></a><pre><span class="Identifier">PREALLOC</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="RLEACCEL"><a name="RLEACCEL"></a><pre><span class="Identifier">RLEACCEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span></pre></dt>
+<dt id="RLEACCEL"><a name="RLEACCEL"></a><pre><span class="Identifier">RLEACCEL</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="DONTFREE"><a name="DONTFREE"></a><pre><span class="Identifier">DONTFREE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
+<dt id="DONTFREE"><a name="DONTFREE"></a><pre><span class="Identifier">DONTFREE</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
 <dd>
 
 
@@ -1395,9 +1401,9 @@ The type of procedure used for surface blitting procedures.
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="createRGBSurface"><a name="createRGBSurface,uint32,cint,cint,cint,uint32,uint32,uint32,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createRGBSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">depth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
-                      <span class="Identifier">rMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">gMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">bMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">aMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateRGBSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="createRGBSurface"><a name="createRGBSurface,uint32,cint,cint,cint,uint32,uint32,uint32,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createRGBSurface</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">depth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
+                     <span class="Identifier">rMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">gMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">bMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">aMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateRGBSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Allocate and free an RGB surface.</p>
 <p>If the depth is 4 or 8 bits, an empty palette is allocated for the surface. If the depth is greater than 8 bits, the pixel format is set using the flags <tt class="docutils literal"><span class="pre">[rgb]Mask</span></tt>.</p>
@@ -1413,22 +1419,36 @@ The type of procedure used for surface blitting procedures.
 
 
 </dd>
-<dt id="createRGBSurfaceFrom"><a name="createRGBSurfaceFrom,pointer,cint,cint,cint,cint,uint32,uint32,uint32,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createRGBSurfaceFrom</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">pixels</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">depth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
-                          <span class="Identifier">pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">rMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">gMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">bMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span>
-                          <span class="Identifier">aMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateRGBSurfaceFrom&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="createRGBSurfaceWithFormat"><a name="createRGBSurfaceWithFormat,uint32,cint,cint,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createRGBSurfaceWithFormat</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">depth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
+                               <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateRGBSurfaceWithFormat&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="freeSurface"><a name="freeSurface,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freeSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FreeSurface&quot;</span><span class="Other">,</span>
-                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="createRGBSurfaceFrom"><a name="createRGBSurfaceFrom,pointer,cint,cint,cint,cint,uint32,uint32,uint32,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createRGBSurfaceFrom</span><span class="Other">(</span><span class="Identifier">pixels</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">depth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
+                         <span class="Identifier">pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">rMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">gMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">bMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span>
+                         <span class="Identifier">aMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateRGBSurfaceFrom&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="setSurfacePalette"><a name="setSurfacePalette,Surface,ptr.Palette"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfacePalette</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">palette</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Palette</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetSurfacePalette&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="createRGBSurfaceWithFormatFrom"><a name="createRGBSurfaceWithFormatFrom,pointer,cint,cint,cint,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createRGBSurfaceWithFormatFrom</span><span class="Other">(</span><span class="Identifier">pixels</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
+                                   <span class="Identifier">depth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateRGBSurfaceWithFormatFrom&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="freeSurface"><a name="freeSurface,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freeSurface</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FreeSurface&quot;</span><span class="Other">,</span>
+                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="setSurfacePalette"><a name="setSurfacePalette,Surface,ptr.Palette"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfacePalette</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">palette</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Palette</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetSurfacePalette&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Set the palette used by a surface.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite>, or <cite>-1</cite> if the surface format doesn't use a palette.</p>
@@ -1436,8 +1456,8 @@ The type of procedure used for surface blitting procedures.
 
 
 </dd>
-<dt id="lockSurface"><a name="lockSurface,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockSurface&quot;</span><span class="Other">,</span>
-                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="lockSurface"><a name="lockSurface,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockSurface</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockSurface&quot;</span><span class="Other">,</span>
+                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Sets up a surface for directly accessing the pixels.</p>
 <p>Between calls to <tt class="docutils literal"><span class="pre">lockSurface()</span></tt> / <tt class="docutils literal"><span class="pre">unlockSurface()</span></tt>, you can write to and read from <tt class="docutils literal"><span class="pre">surface-&gt;pixels</span></tt>, using the pixel format stored in <tt class="docutils literal"><span class="pre">surface-&gt;format</span></tt>.  Once you are done accessing the surface, you should use <tt class="docutils literal"><span class="pre">unlockSurface()</span></tt> to release it.</p>
@@ -1449,16 +1469,16 @@ The type of procedure used for surface blitting procedures.
 
 
 </dd>
-<dt id="unlockSurface"><a name="unlockSurface,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockSurface&quot;</span><span class="Other">,</span>
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="unlockSurface"><a name="unlockSurface,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockSurface</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockSurface&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">lockSurface()</span></tt></p>
 
 
 </dd>
-<dt id="loadBMP_RW"><a name="loadBMP_RW,ptr.RWops,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadBMP_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LoadBMP_RW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="loadBMP_RW"><a name="loadBMP_RW,ptr.RWops,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadBMP_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LoadBMP_RW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Load a surface from a seekable SDL data stream (memory or file).</p>
 <p>If <tt class="docutils literal"><span class="pre">freesrc</span></tt> is non-zero, the stream will be closed after being read.</p>
@@ -1467,17 +1487,18 @@ The type of procedure used for surface blitting procedures.
 
 
 </dd>
-<dt id="saveBMP_RW"><a name="saveBMP_RW,Surface,ptr.RWops,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">saveBMP_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freedst</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SaveBMP_RW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="saveBMP_RW"><a name="saveBMP_RW,Surface,ptr.RWops,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">saveBMP_RW</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freedst</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SaveBMP_RW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Save a surface to a seekable SDL data stream (memory or file).</p>
+<p>Surfaces with a 24-bit, 32-bit and paletted 8-bit format get saved in the BMP directly. Other RGB formats with 8-bit or higher get converted to a 24-bit surface or, if they have an alpha mask or a colorkey, to a 32-bit surface before they are saved. YUV and paletted 1-bit and 4-bit formats are not supported.</p>
 <p>If <tt class="docutils literal"><span class="pre">freedst</span></tt> is non-zero, the stream will be closed after being written.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> if successful or <cite>-1</cite> if there was an error.</p>
 
 
 </dd>
-<dt id="setSurfaceRLE"><a name="setSurfaceRLE,Surface,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfaceRLE</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">flag</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetSurfaceRLE&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="setSurfaceRLE"><a name="setSurfaceRLE,Surface,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfaceRLE</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">flag</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetSurfaceRLE&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Sets the RLE acceleration hint for a surface.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the surface is not valid.</p>
@@ -1485,8 +1506,8 @@ The type of procedure used for surface blitting procedures.
 
 
 </dd>
-<dt id="setColorKey"><a name="setColorKey,Surface,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setColorKey</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">flag</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetColorKey&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="setColorKey"><a name="setColorKey,Surface,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setColorKey</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">flag</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetColorKey&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Sets the color key (transparent pixel) in a blittable surface.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt> The surface to update.</p>
@@ -1497,8 +1518,8 @@ The type of procedure used for surface blitting procedures.
 
 
 </dd>
-<dt id="getColorKey"><a name="getColorKey,Surface,ptr.uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getColorKey</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetColorKey&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="getColorKey"><a name="getColorKey,Surface,ptr.uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getColorKey</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetColorKey&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Gets the color key (transparent pixel) in a blittable surface.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt> The surface to update.</p>
@@ -1507,8 +1528,8 @@ The type of procedure used for surface blitting procedures.
 
 
 </dd>
-<dt id="setSurfaceColorMod"><a name="setSurfaceColorMod,Surface,uint8,uint8,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfaceColorMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetSurfaceColorMod&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="setSurfaceColorMod"><a name="setSurfaceColorMod,Surface,uint8,uint8,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfaceColorMod</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetSurfaceColorMod&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Set an additional color value used in blit operations.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt> The surface to update.</p>
@@ -1521,8 +1542,8 @@ The type of procedure used for surface blitting procedures.
 
 
 </dd>
-<dt id="getSurfaceColorMod"><a name="getSurfaceColorMod,Surface,ptr.uint8,ptr.uint8,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getSurfaceColorMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetSurfaceColorMod&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="getSurfaceColorMod"><a name="getSurfaceColorMod,Surface,ptr.uint8,ptr.uint8,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getSurfaceColorMod</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetSurfaceColorMod&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Get the additional color value used in blit operations.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt> The surface to query.</p>
@@ -1535,8 +1556,8 @@ The type of procedure used for surface blitting procedures.
 
 
 </dd>
-<dt id="setSurfaceAlphaMod"><a name="setSurfaceAlphaMod,Surface,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfaceAlphaMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetSurfaceAlphaMod&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="setSurfaceAlphaMod"><a name="setSurfaceAlphaMod,Surface,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfaceAlphaMod</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetSurfaceAlphaMod&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Set an additional alpha value used in blit operations.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt> The surface to update.</p>
@@ -1547,8 +1568,8 @@ The type of procedure used for surface blitting procedures.
 
 
 </dd>
-<dt id="getSurfaceAlphaMod"><a name="getSurfaceAlphaMod,Surface,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getSurfaceAlphaMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetSurfaceAlphaMod&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="getSurfaceAlphaMod"><a name="getSurfaceAlphaMod,Surface,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getSurfaceAlphaMod</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetSurfaceAlphaMod&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Get the additional alpha value used in blit operations.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt> The surface to query.</p>
@@ -1559,8 +1580,8 @@ The type of procedure used for surface blitting procedures.
 
 
 </dd>
-<dt id="setSurfaceBlendMode"><a name="setSurfaceBlendMode,Surface,BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfaceBlendMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetSurfaceBlendMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="setSurfaceBlendMode"><a name="setSurfaceBlendMode,Surface,BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfaceBlendMode</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetSurfaceBlendMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Set the blend mode used for blit operations.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt> The surface to update.</p>
@@ -1571,8 +1592,8 @@ The type of procedure used for surface blitting procedures.
 
 
 </dd>
-<dt id="getSurfaceBlendMode"><a name="getSurfaceBlendMode,Surface,ptr.BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getSurfaceBlendMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetSurfaceBlendMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="getSurfaceBlendMode"><a name="getSurfaceBlendMode,Surface,ptr.BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getSurfaceBlendMode</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetSurfaceBlendMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Get the blend mode used for blit operations.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt>   The surface to query.</p>
@@ -1583,8 +1604,8 @@ The type of procedure used for surface blitting procedures.
 
 
 </dd>
-<dt id="setClipRect"><a name="setClipRect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setClipRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetClipRect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="setClipRect"><a name="setClipRect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setClipRect</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetClipRect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Sets the clipping rectangle for the destination surface in a blit.</p>
 <p>If the clip rectangle is <cite>nil</cite>, clipping will be disabled.</p>
@@ -1593,30 +1614,30 @@ The type of procedure used for surface blitting procedures.
 
 
 </dd>
-<dt id="getClipRect"><a name="getClipRect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getClipRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetClipRect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="getClipRect"><a name="getClipRect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getClipRect</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetClipRect&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Gets the clipping rectangle for the destination surface in a blit.</p>
 <p><tt class="docutils literal"><span class="pre">rect</span></tt> must be a pointer to a valid rectangle which will be filled with the correct values.</p>
 
 
 </dd>
-<dt id="convertSurface"><a name="convertSurface,Surface,ptr.PixelFormat,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">convertSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ConvertSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="convertSurface"><a name="convertSurface,Surface,ptr.PixelFormat,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">convertSurface</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ConvertSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Creates a new surface of the specified format, and then copies and maps the given surface to it so the blit of the converted surface will be as fast as possible.  If this procedure fails, it returns <cite>nil</cite>.</p>
 <p>The <cite>flags</cite> parameter is passed to <tt class="docutils literal"><span class="pre">createRGBSurface()</span></tt> and has those semantics.  You can also pass <cite>RLEACCEL</cite> in the flags parameter and SDL will try to RLE accelerate colorkey and alpha blits in the resulting surface.</p>
 
 
 </dd>
-<dt id="convertSurfaceFormat"><a name="convertSurfaceFormat,Surface,uint32,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">convertSurfaceFormat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">pixel_format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ConvertSurfaceFormat&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="convertSurfaceFormat"><a name="convertSurfaceFormat,Surface,uint32,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">convertSurfaceFormat</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">pixel_format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ConvertSurfaceFormat&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="convertPixels"><a name="convertPixels,cint,cint,uint32,pointer,cint,uint32,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">convertPixels</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">src_format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span>
-                   <span class="Identifier">src_pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dst_format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">dst_pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+<dt id="convertPixels"><a name="convertPixels,cint,cint,uint32,pointer,cint,uint32,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">convertPixels</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">src_format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span>
+                  <span class="Identifier">src_pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dst_format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">dst_pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ConvertPixels&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Copy a block of pixels of one format to another format.</p>
@@ -1624,8 +1645,8 @@ The type of procedure used for surface blitting procedures.
 
 
 </dd>
-<dt id="fillRect"><a name="fillRect,Surface,ptr.Rect,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fillRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FillRect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="fillRect"><a name="fillRect,Surface,ptr.Rect,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fillRect</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FillRect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Performs a fast fill of the given rectangle with <tt class="docutils literal"><span class="pre">color</span></tt>.</p>
 <p>If <tt class="docutils literal"><span class="pre">rect</span></tt> is <cite>nil</cite>, the whole surface will be filled with <tt class="docutils literal"><span class="pre">color</span></tt>.</p>
@@ -1634,40 +1655,40 @@ The type of procedure used for surface blitting procedures.
 
 
 </dd>
-<dt id="fillRects"><a name="fillRects,Surface,ptr.Rect,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fillRects</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">rects</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FillRects&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="fillRects"><a name="fillRects,Surface,ptr.Rect,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fillRects</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">rects</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FillRects&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="upperBlit"><a name="upperBlit,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">upperBlit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UpperBlit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="upperBlit"><a name="upperBlit,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">upperBlit</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UpperBlit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 This is the public blit procedure, <tt class="docutils literal"><span class="pre">blitSurface()</span></tt>, and it performs rectangle validation and clipping before passing it to <tt class="docutils literal"><span class="pre">lowerBlit()</span></tt>.
 
 </dd>
-<dt id="lowerBlit"><a name="lowerBlit,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lowerBlit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LowerBlit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="lowerBlit"><a name="lowerBlit,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lowerBlit</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LowerBlit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 This is a semi-private blit procedure and it performs low-level surface blitting only.
 
 </dd>
-<dt id="softStretch"><a name="softStretch,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">softStretch</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SoftStretch&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="softStretch"><a name="softStretch,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">softStretch</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SoftStretch&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>Perform a fast, low quality, stretch blit between two surfaces of the same pixel format.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> This procedure uses a static buffer, and is not thread-safe.</p>
 
 
 </dd>
-<dt id="upperBlitScaled"><a name="upperBlitScaled,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">upperBlitScaled</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UpperBlitScaled&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="upperBlitScaled"><a name="upperBlitScaled,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">upperBlitScaled</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UpperBlitScaled&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 This is the public scaled blit procedure, <tt class="docutils literal"><span class="pre">blitScaled()</span></tt>, and it performs rectangle validation and clipping before passing it to <tt class="docutils literal"><span class="pre">lowerBlitScaled()</span></tt>.
 
 </dd>
-<dt id="lowerBlitScaled"><a name="lowerBlitScaled,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lowerBlitScaled</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LowerBlitScaled&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="lowerBlitScaled"><a name="lowerBlitScaled,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lowerBlitScaled</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LowerBlitScaled&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 This is a semi-private blit procedure and it performs low-level surface scaled blitting only.
 
@@ -1677,13 +1698,13 @@ This is a semi-private blit procedure and it performs low-level surface scaled b
 <div class="section" id="17">
 <h1><a class="toc-backref" href="#17">Templates</a></h1>
 <dl class="item">
-<dt id="mustLock"><a name="mustLock.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">mustLock</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">s</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dt id="mustLock"><a name="mustLock.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">mustLock</span><span class="Other">(</span><span class="Identifier">s</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 Evaluates to <cite>true</cite> if the surface needs t o be locked before access.
 
 </dd>
-<dt id="loadBMP"><a name="loadBMP.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">loadBMP</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dt id="loadBMP"><a name="loadBMP.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">loadBMP</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 <p>
 Load a surface from a file.</p>
@@ -1691,7 +1712,7 @@ Load a surface from a file.</p>
 
 
 </dd>
-<dt id="saveBMP"><a name="saveBMP.t,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">saveBMP</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">,</span> <span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dt id="saveBMP"><a name="saveBMP.t,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">saveBMP</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">,</span> <span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 <p>
 Save a surface to a file.</p>
@@ -1699,7 +1720,7 @@ Save a surface to a file.</p>
 
 
 </dd>
-<dt id="blitSurface"><a name="blitSurface.t,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">template</span> <span class="Identifier">blitSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<dt id="blitSurface"><a name="blitSurface.t,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">template</span> <span class="Identifier">blitSurface</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 <p>
 Performs a fast blit from the source surface to the destination surface.</p>
@@ -1739,7 +1760,7 @@ Performs a fast blit from the source surface to the destination surface.</p>
 
 
 </dd>
-<dt id="blitScaled"><a name="blitScaled.t,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">template</span> <span class="Identifier">blitScaled</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<dt id="blitScaled"><a name="blitScaled.t,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">template</span> <span class="Identifier">blitScaled</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="attachedType" style="visibility:hidden">Surface</span></pre></dt>
 <dd>
 
 
@@ -1754,7 +1775,7 @@ Performs a fast blit from the source surface to the destination surface.</p>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2016-08-14 19:22:04 UTC</small>
+        <small>Made with Nim. Generated: 2016-10-20 14:55:54 UTC</small>
       </div>
     </div>
   </div>
