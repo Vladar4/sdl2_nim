@@ -24,7 +24,7 @@ elif defined macosx:
 
 else:
 
-  decl(SDL2_LIB, "libSDL2-2.0.so(|.0.4.0|.0)")
+  decl(SDL2_LIB, "libSDL2-2.0.so(|.0.5.0|.0)")
   decl(SDL2_GFX_LIB, "libSDL2_gfx(|-1.0).so(|.0.0.1|.0)")
   decl(SDL2_IMG_LIB, "libSDL2_image(|-2.0).so(|.0.0.1|.0)")
   decl(SDL2_MIX_LIB, "libSDL2_mixer(|-2.0).so(|.0.0.1|.0)")

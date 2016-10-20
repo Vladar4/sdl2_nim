@@ -97,6 +97,8 @@ type
     ##
     ##  ``setWindowBordered()``
     ##
+    ##  ``setWindowResizable()``
+    ##
     ##  ``setWindowTitle()``
     ##
     ##  ``showWindow()``
@@ -136,12 +138,21 @@ const
   WINDOW_INPUT_GRABBED* = 0x00000100  ##  window has grabbed input focus
   WINDOW_INPUT_FOCUS*   = 0x00000200  ##  window has input focus
   WINDOW_MOUSE_FOCUS*   = 0x00000400  ##  window has mouse focus
-  WINDOW_FOREIGN*       = 0x00000800  ##  window not created by SDL
   WINDOW_FULLSCREEN_DESKTOP* = (WINDOW_FULLSCREEN or 0x00001000)
+  WINDOW_FOREIGN*       = 0x00000800  ##  window not created by SDL
   WINDOW_ALLOW_HIGHDPI* = 0x00002000  ##  window should be created  \
     ##  in high-DPI mode if supported
   WINDOW_MOUSE_CAPTURE* = 0x00004000  ##  window has mouse captured \
     ##  (unrelated to `INPUT_GRABBED`)
+  WINDOW_ALWAYS_ON_TOP* = 0x00008000  ##  window should always be above others
+  WINDOW_SKIP_TASKBAR*  = 0x00010000  ## window should not be added \
+    ##  to the taskbar
+  WINDOW_UTILITY*       = 0x00020000  ## window should be treated as \
+    ##  a utility window
+  WINDOW_TOOLTIP*       = 0x00040000  ##  window should be treated as \
+    ##  a tooltip
+  WINDOW_POPUP_MENU*    = 0x00080000  ##  window should be treated as \
+    ##  a popup menu
 
 const
   WINDOWPOS_UNDEFINED_MASK* = 0x1FFF0000
@@ -191,8 +202,13 @@ type
     WINDOWEVENT_LEAVE,        ## Window has lost mouse focus
     WINDOWEVENT_FOCUS_GAINED, ## Window has gained keyboard focus
     WINDOWEVENT_FOCUS_LOST,   ## Window has lost keyboard focus
-    WINDOWEVENT_CLOSE         ##  \
+    WINDOWEVENT_CLOSE,        ##  \
       ##  The window manager requests that the window be closed
+    WINDOWEVENT_TAKE_FOCUS,   ##  Window is being offered a focus \
+      ##  (should ``setWindowInputFocus()`` on itself or a subwindow, or ignore)
+    WINDOWEVENT_HIT_TEST      ##  Window had a hit test that wasn't \
+      ##  `SDL_HITTEST_NORMAL`.
+
 
 type
   GLContext* = pointer ##  An opaque handle to an OpenGL context.
@@ -329,6 +345,27 @@ proc getDisplayDPI*(displayIndex: cint;
   ##
   ##  ``getNumVideoDisplays()``
 
+proc getDisplayUsableBounds*(displayIndex: cint; rect: ptr Rect): cint {.
+    cdecl, importc: "SDL_GetDisplayUsableBounds", dynlib: SDL2_LIB.}
+  ##  Get the usable desktop area represented by a display, with the
+  ##  primary display located at 0,0
+  ##
+  ##  This is the same area as ``sdl.getDisplayBounds()`` reports, but with
+  ##  portions reserved by the system removed. For example, on Mac OS X, this
+  ##  subtracts the area occupied by the menu bar and dock.
+  ##
+  ##  Setting a window to be fullscreen generally bypasses these unusable areas,
+  ##  so these are good guidelines for the maximum space available to a
+  ##  non-fullscreen window.
+  ##
+  ##  ``Return`` `0` on success, or `-1` if the index is out of range.
+  ##
+  ##  See also:
+  ##
+  ##  ``sdl.getDisplayBounds()``
+  ##
+  ##  ``sdl.getNumVideoDisplays()``
+
 proc getNumDisplayModes*(displayIndex: cint): cint {.
     cdecl, importc: "SDL_GetNumDisplayModes", dynlib: SDL2_LIB.}
   ##  Returns the number of available display modes.
@@ -460,7 +497,7 @@ proc createWindow*(title: cstring;
   ##  `WINDOW_ALLOW_HIGHDPI`.
   ##
   ##  ``Return`` the id of the window created,
-  ##  or zero if window creation failed.
+  ##  or ``nil`` if window creation failed.
   ##
   ##  If the window is created with the `WINDOW_ALLOW_HIGHDPI` flag, its size
   ##  in pixels may differ from its size in screen coordinates on platforms with
@@ -479,7 +516,7 @@ proc createWindowFrom*(data: pointer): Window {.
   ##  ``data`` A pointer to driver-dependent window creation data.
   ##
   ##  ``Return`` the id of the window created,
-  ##  or zero if window creation failed.
+  ##  or ``nil`` if window creation failed.
   ##
   ##  See also:
   ##
@@ -631,6 +668,32 @@ proc getWindowSize*(window: Window; w: ptr cint; h: ptr cint) {.
   ##
   ##  ``setWindowSize()``
 
+proc getWindowBordersSize*(window: Window;
+  top: ptr cint; left: ptr cint; bottom: ptr cint; right: ptr cint): int {.
+    cdecl, importc: "SDL_GetWindowBordersSize", dynlib: SDL2_LIB.}
+  ##  Get the size of a window's borders (decorations) around the client area.
+  ##
+  ##  ``window`` The window to query.
+  ##
+  ##  ``top`` Pointer to variable for storing the size of the top border.
+  ##    ``nil`` is permitted.
+  ##
+  ##  ``left`` Pointer to variable for storing the size of the left border.
+  ##    ``nil`` is permitted.
+  ##
+  ##  ``bottom`` Pointer to variable for storing the size of the bottom border.
+  ##    ``nil`` is permitted.
+  ##
+  ##  ``right`` Pointer to variable for storing the size of the right border.
+  ##    ``nil`` is permitted.
+  ##
+  ##  ``Return`` `0` on success,
+  ##  or `-1` if getting this information is not supported.
+  ##
+  ##  ``Note:`` If this function fails (returns `-1`), the size values will be
+  ##  initialized to `0`, `0`, `0`, `0` (if a non-nil pointer is provided), as
+  ##  if the window in question was borderless.
+
 proc setWindowMinimumSize*(window: Window; min_w: cint; min_h: cint) {.
     cdecl, importc: "SDL_SetWindowMinimumSize", dynlib: SDL2_LIB.}
   ##  Set the minimum size of a window's client area.
@@ -714,6 +777,25 @@ proc setWindowBordered*(window: Window; bordered: bool) {.
   ##  ``bordered`` `false` to remove border, `true` to add border.
   ##
   ##  ``Note:`` You can't change the border state of a fullscreen window.
+  ##
+  ##  See also:
+  ##
+  ##  ``getWindowFlags()``
+
+
+proc setWindowResizable*(window: Window; resizable: bool) {.
+    cdecl, importc: "SDL_SetWindowResizable", dynlib: SDL2_LIB.}
+  ##  Set the user-resizable state of a window.
+  ##
+  ##  This will add or remove the window's `WINDOW_RESIZABLE` flag and
+  ##  allow/disallow user resizing of the window. This is a no-op if the
+  ##  window's resizable state already matches the requested state.
+  ##
+  ##  ``window`` The window of which to change the resizable state.
+  ##
+  ##  ``resizable`` `true` to allow resizing, `false` to disallow.
+  ##
+  ##  ``Note:`` You can't change the resizable state of a fullscreen window.
   ##
   ##  See also:
   ##
@@ -818,7 +900,7 @@ proc updateWindowSurfaceRects*(
   ##
   ##  ``getWindowSurface()``
   ##
-  ##  ``updateWindowSurfaceRect()``
+  ##  ``updateWindowSurface()``
 
 proc setWindowGrab*(window: Window; grabbed: bool) {.
     cdecl, importc: "SDL_SetWindowGrab", dynlib: SDL2_LIB.}
@@ -876,6 +958,64 @@ proc getWindowBrightness*(window: Window): cfloat {.
   ##  See also:
   ##
   ##  ``setWindowBrightness()``
+
+proc setWindowOpacity*(window: Window; opacity: cfloat): cint {.
+    cdecl, importc: "SDL_SetWindowOpacity", dynlib: SDL2_LIB.}
+  ##  Set the opacity for a window.
+  ##
+  ##  ``window`` The window which will be made transparent or opaque.
+  ##
+  ##  ``opacity`` Opacity (`0.0f` - transparent, `1.0f` - opaque).
+  ##    This will be clamped internally between `0.0f` and `1.0f`.
+  ##
+  ##  ``Return`` `0` on success, or `-1` if setting the opacity isn't supported.
+  ##
+  ##  See also:
+  ##
+  ##  ``getWindowOpacity()``
+
+proc getWindowOpacity*(window: Window; out_opacity: ptr cfloat): cint {.
+    cdecl, importc: "SDL_GetWindowOpacity", dynlib: SDL2_LIB.}
+  ##  Get the opacity of a window.
+  ##
+  ##  If transparency isn't supported on this platform, opacity will be reported
+  ##  as `1.0f` without error.
+  ##
+  ##  ``window`` The window in question.
+  ##  ``out_opacity`` Opacity (`0.0f` - transparent, `1.0f` - opaque).
+  ##
+  ##  ``Return`` `0` on success, or `-1` on error (invalid window, etc).
+  ##
+  ##  See also:
+  ##
+  ##  ``setWindowOpacity()``
+
+proc setWindowModalFor*(modal_window: Window; parent_window: Window): cint {.
+    cdecl, importc: "SDL_SetWindowModalFor", dynlib: SDL2_LIB.}
+  ##  Sets the window as a modal for another window.
+  ##  (TODO: reconsider this function and/or its name)
+  ##
+  ##  ``modal_window`` The window that should be modal.
+  ##
+  ##  ``parent_window`` The parent window.
+  ##
+  ##  ``Return`` `0` on success, or `-1` otherwise.
+
+proc setWindowInputFocus*(window: Window): cint {.
+    cdecl, importc: "SDL_SetWindowInputFocus", dynlib: SDL2_LIB.}
+  ##  Explicitly sets input focus to the window.
+  ##
+  ##  You almost certainly want ``sdl.raiseWindow()`` instead of this function.
+  ##  Use this with caution, as you might give focus to a window that's
+  ##  completely obscured by other windows.
+  ##
+  ##  ``window`` The window that should get the input focus
+  ##
+  ##  ``Return`` `0` on success, or `-1` otherwise.
+  ##
+  ##  See also:
+  ##
+  ##  ``raiseWindow()``
 
 proc setWindowGammaRamp*(window: Window;
     red: ptr uint16; green: ptr uint16; blue: ptr uint16): cint {.
@@ -996,7 +1136,7 @@ proc destroyWindow*(window: Window) {.
 
 proc isScreenSaverEnabled*(): bool {.
     cdecl, importc: "SDL_IsScreenSaverEnabled", dynlib: SDL2_LIB.}
-  ##  Returns whether the screensaver is currently enabled (default on).
+  ##  Returns whether the screensaver is currently enabled (default off).
   ##
   ##  See also:
   ##

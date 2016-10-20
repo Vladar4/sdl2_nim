@@ -69,7 +69,8 @@ else:
       SYSWM_WAYLAND,
       SYSWM_MIR,
       SYSWM_WINRT,
-      SYSWM_ANDROID
+      SYSWM_ANDROID,
+      SYSWM_VIVANTE
 
   when defined(SDL_VIDEO_DRIVER_UIKIT):
     type GLuint* = uint32
@@ -133,6 +134,14 @@ else:
 
       SysWMmsgKindObj* = object
         uikit*: SysWMmsgUIKitObj
+
+  elif defined(SDL_VIDEO_DRIVER_VIVANTE):
+    type
+      SysWMmsgVivanteObj* = object
+        dummy*: cint  ##  No Vivante window events yet
+
+      SysWMmsgKindObj* = object
+        vivante*: SysWMmsgVivanteObj
 
   else:
     type SysWMmsgKindObj* = object
@@ -252,6 +261,15 @@ else:
 
       SysWMinfoKindObj* = object
         android*: SysWMinfoAndroidObj
+
+  elif defined(SDL_VIDEO_DRIVER_VIVANTE):
+    type
+      SysWMinfoVivanteObj* = object
+        display*: EGLNativeDisplayType
+        window*: EGLNativeWindowType
+
+      SysWMinfoKindObj* = object
+        vivante*: SysWMinfoVivanteObj
 
   else:
     type

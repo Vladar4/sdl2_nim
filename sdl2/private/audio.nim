@@ -256,7 +256,8 @@ proc openAudio*(desired: ptr AudioSpec; obtained: ptr AudioSpec): cint {.
   ##    protect data structures that it accesses by calling ``lockAudio()``
   ##    and ``unlockAudio()`` in your code. Alternately, you may pass a `nil`
   ##    pointer here, and call ``queueAudio()`` with some frequency, to queue
-  ##    more audio samples to be played.
+  ##    more audio samples to be played (or for capture devices, call
+  ##    ``sdl.dequeueAudio()`` with some frequency, to obtain audio samples).
   ##  * ``desired.userdata`` is passed as the first parameter to your callback
   ##    procedure. If you passed a `nil` callback, this value is ignored.
   ##
@@ -437,6 +438,10 @@ proc queueAudio*(dev: AudioDeviceID; data: pointer; len: uint32): cint {.
       cdecl, importc: "SDL_QueueAudio", dynlib: SDL2_LIB.}
   ##  Queue more audio on non-callback devices.
   ##
+  ##  (If you are looking to retrieve queued audio from a non-callback capture
+  ##  device, you want ``sdl.dequeueAudio()`` instead. This will return `-1`
+  ##  to signify an error if you use it with capture devices.)
+  ##
   ##  SDL offers two ways to feed audio to the device: you can either supply a
   ##  callback that SDL triggers with some frequency to obtain more audio
   ##  (pull method), or you can supply no callback, and then SDL will expect
@@ -475,22 +480,78 @@ proc queueAudio*(dev: AudioDeviceID; data: pointer; len: uint32): cint {.
   ##
   ##  ``clearQueuedAudio()``
 
+proc dequeueAudio*(dev: AudioDeviceID; data: pointer; len: uint32): cint {.
+      cdecl, importc: "SDL_DequeueAudio", dynlib: SDL2_LIB.}
+  ##  Dequeue more audio on non-callback devices.
+  ##
+  ##  (If you are looking to queue audio for output on a non-callback playback
+  ##  device, you want ``sdl.queueAudio()`` instead. This will always return
+  ##  `0` if you use it with playback devices.)
+  ##
+  ##  SDL offers two ways to retrieve audio from a capture device: you can
+  ##  either supply a callback that SDL triggers with some frequency as the
+  ##  device records more audio data, (push method), or you can supply no
+  ##  callback, and then SDL will expect you to retrieve data at regular
+  ##  intervals (pull method) with this procedure.
+  ##
+  ##  There are no limits on the amount of data you can queue, short of
+  ##  exhaustion of address space. Data from the device will keep queuing as
+  ##  necessary without further intervention from you. This means you will
+  ##  eventually run out of memory if you aren't routinely dequeueing data.
+  ##
+  ##  Capture devices will not queue data when paused; if you are expecting
+  ##  to not need captured audio for some length of time, use
+  ##  ``sdl.pauseAudioDevice()`` to stop the capture device from queueing more
+  ##  data. This can be useful during, say, level loading times. When
+  ##  unpaused, capture devices will start queueing data from that point,
+  ##  having flushed any capturable data available while paused.
+  ##
+  ##  This procedure is thread-safe, but dequeueing from the same device from
+  ##  two threads at once does not promise which thread will dequeued data
+  ##  first.
+  ##
+  ##  You may not dequeue audio from a device that is using an
+  ##  application-supplied callback; doing so returns an error. You have to use
+  ##  the audio callback, or dequeue audio with this procedure, but not both.
+  ##
+  ##  You should not call ``sdl.lockAudio()`` on the device before queueing;
+  ##  SDL handles locking internally for this function.
+  ##
+  ##  ``dev`` The device ID from which we will dequeue audio.
+  ##  ``data`` A pointer into where audio data should be copied.
+  ##  ``len`` The number of bytes (not samples!) to which (data) points.
+  ##  ``Return`` number of bytes dequeued, which could be less than requested.
+  ##
+  ##  See also:
+  ##
+  ##  ``getQueuedAudioSize``
+  ##  ``clearQueuedAudio``
+
 proc getQueuedAudioSize*(dev: AudioDeviceID): uint32 {.
     cdecl, importc: "SDL_GetQueuedAudioSize", dynlib: SDL2_LIB.}
   ##  Get the number of bytes of still-queued audio.
   ##
-  ##  This is the number of bytes that have been queued for playback with
-  ##  ``queueAudio()``, but have not yet been sent to the hardware.
+  ##  For playback device:
   ##
-  ##  Once we've sent it to the hardware, this procedure can not decide the
-  ##  exact byte boundary of what has been played. It's possible that we just
-  ##  gave the hardware several kilobytes right before you called this
-  ##  procedure, but it hasn't played any of it yet, or maybe half of it, etc.
+  ##    This is the number of bytes that have been queued for playback with
+  ##    ``sdl.queueAudio()``, but have not yet been sent to the hardware. This
+  ##    number may shrink at any time, so this only informs of pending data.
+  ##
+  ##    Once we've sent it to the hardware, this procedure can not decide the
+  ##    exact byte boundary of what has been played. It's possible that we just
+  ##    gave the hardware several kilobytes right before you called this
+  ##    procedure, but it hasn't played any of it yet, or maybe half of it, etc.
+  ##
+  ##  For capture device:
+  ##
+  ##    This is the number of bytes that have been captured by the device and
+  ##    are waiting for you to dequeue. This number may grow at any time, so
+  ##    this only informs of the lower-bound of available data.
   ##
   ##  You may not queue audio on a device that is using an application-supplied
   ##  callback; calling this procedure on such a device always returns `0`.
-  ##  You have to use the audio callback or queue audio with ``queueAudio()``,
-  ##  but not both.
+  ##  You have to queue audio with ``sdl.queueAudio()`` /
+  ##  ``sdl.dequeueAudio()``, or use the audio callback,  but not both.
   ##
   ##  You should not call ``lockAudio()`` on the device before querying; SDL
   ##  handles locking internally for this procedure.
@@ -507,10 +568,17 @@ proc getQueuedAudioSize*(dev: AudioDeviceID): uint32 {.
 
 proc clearQueuedAudio*(dev: AudioDeviceID) {.
     cdecl, importc: "SDL_ClearQueuedAudio", dynlib: SDL2_LIB.}
-  ##  Drop any queued audio data waiting to be sent to the hardware.
+  ##  Drop any queued audio data. For playback devices, this is any queued data
+  ##  still waiting to be submitted to the hardware. For capture devices, this
+  ##  is any data that was queued by the device that hasn't yet been dequeued
+  ##  by the application.
   ##
-  ##  Immediately after this call, ``getQueuedAudioSize()`` will return `0` and
-  ##  the hardware will start playing silence if more audio isn't queued.
+  ##  Immediately after this call, ``sdl.getQueuedAudioSize()`` will return `0`.
+  ##  For playback devices, the hardware will start playing silence if more
+  ##  audio isn't queued. Unpaused capture devices will start filling the queue
+  ##  again as soon as they have more data available (which, depending on the
+  ##  state of the hardware and the thread, could be before this function call
+  ##  returns!).
   ##
   ##  This will not prevent playback of queued audio that's already been sent
   ##  to the hardware, as we can not undo that, so expect there to be some
@@ -520,8 +588,8 @@ proc clearQueuedAudio*(dev: AudioDeviceID) {.
   ##
   ##  You may not queue audio on a device that is using an application-supplied
   ##  callback; calling this procedure on such a device is always a no-op.
-  ##  You have to use the audio callback or queue audio with ``queueAudio()``,
-  ##  but not both.
+  ##  You have to queue audio with ``sdl.queueAudio()`` /
+  ##  ``sdl.dequeueAudio()``, or use the audio callback, but not both.
   ##
   ##  You should not call ``lockAudio()`` on the device before clearing the
   ##  queue; SDL handles locking internally for this procedure.

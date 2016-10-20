@@ -548,6 +548,33 @@ proc renderGetLogicalSize*(renderer: Renderer; w: ptr cint; h: ptr cint) {.
   ##
   ##  ``renderSetLogicalSize()``
 
+proc renderSetIntegerScale*(renderer: Renderer; enable: bool): cint {.
+    cdecl, importc: "SDL_RenderSetIntegerScale", dynlib: SDL2_LIB.}
+  ##  Set whether to force integer scales for resolution-independent rendering.
+  ##
+  ##  ``renderer`` The renderer for which integer scaling should be set.
+  ##
+  ##  ``enable` Enable or disable integer scaling
+  ##
+  ##  This function restricts the logical viewport to integer values -
+  ##  that is, when a resolution is between two multiples of a logical size,
+  ##  the viewport size is rounded down to the lower multiple.
+  ##
+  ##  See also:
+  ##
+  ##  ``renderSetLogicalSize()``
+
+proc renderGetIntegerScale*(renderer: Renderer): bool {.
+    cdecl, importc: "SDL_RenderGetIntegerScale", dynlib: SDL2_LIB.}
+  ##  Get whether integer scales are forced for
+  ##  resolution-independent rendering.
+  ##
+  ##  ``renderer`` The renderer from which integer scaling should be queried.
+  ##
+  ##  See also:
+  ##
+  ##  ``renderSetIntegerScale()``
+
 proc renderSetViewport*(renderer: Renderer; rect: ptr Rect): cint {.
     cdecl, importc: "SDL_RenderSetViewport", dynlib: SDL2_LIB.}
   ##  Set the drawing area for rendering on the current target.
@@ -735,7 +762,8 @@ proc renderClear*(renderer: Renderer): cint {.
     cdecl, importc: "SDL_RenderClear", dynlib: SDL2_LIB.}
   ##  Clear the current rendering target with the drawing color.
   ##
-  ##  This procedure clears the entire rendering target, ignoring the viewport.
+  ##  This procedure clears the entire rendering target, ignoring the viewport,
+  ##  and the clip rectangle.
   ##
   ##  ``Return`` `0` on success, or `-1` on error.
 

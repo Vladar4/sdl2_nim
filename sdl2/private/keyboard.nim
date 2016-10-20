@@ -125,7 +125,7 @@ proc getKeyName*(key: Keycode): cstring {.
   ##
   ##  See also:
   ##
-  ##  ``Key``
+  ##  ``Keycode``
 
 proc getKeyFromName*(name: cstring): Keycode {.
     cdecl, importc: "SDL_GetKeyFromName", dynlib: SDL2_LIB.}

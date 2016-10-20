@@ -140,6 +140,9 @@ type
     # Drag and drop events
 
     DROPFILE = 0x00001000,  ##  The system requests a file open
+    DROPTEXT,       ##  Text/plain drag-and-drop event
+    DROPBEGIN,      ##  A new set of drops is beginning (``nil`` filename)
+    DROPCOMPLETE,   ##  Current set of drops is now complete (``nil`` filename)
 
     # Audio hotplug events
 
@@ -424,9 +427,12 @@ type
     ##
     ##  ``Note:`` If this event is enabled,
     ##  you must free the filename in the event.
-    kind*: EventKind    ##  `DROPFILE`
+    kind*: EventKind  ##  `DROPBEGIN` or `DROPFILE`
+                      ##  or `DROPTEXT` or `DROPCOMPLETE`
     timestamp*: uint32
-    file*: cstring      ##  The file name, which should be freed with ``free()`
+    file*: cstring    ##  The file name, which should be freed with ``free()``,
+                      ##  is ``nil`` on begin/complete
+    windowID: uint32  ##  The window that was dropped on, if any
 
 type
   QuitEventObj* = object ##  \

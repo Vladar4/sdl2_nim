@@ -28,7 +28,7 @@ type
   Cursor* = pointer ##  Implementation dependent
 
   SystemCursor* {.size: sizeof(cint).} = enum ##  \
-    ##  Cursor types for ``createSystemCursor()``.
+    ##  Cursor types for ``sdl.createSystemCursor()``.
     SYSTEM_CURSOR_ARROW,      ##  Arrow
     SYSTEM_CURSOR_IBEAM,      ##  I-beam
     SYSTEM_CURSOR_WAIT,       ##  Wait
@@ -238,11 +238,13 @@ proc getDefaultCursor*(): Cursor {.
 
 proc freeCursor*(cursor: Cursor) {.
     cdecl, importc: "SDL_FreeCursor", dynlib: SDL2_LIB.}
-  ##  Frees a cursor created with ``createCursor()``.
+  ##  Frees a cursor created with ``sdl.createCursor()`` or similar functions.
   ##
   ##  See also:
   ##
   ##  ``createCursor()``
+  ##  ``createColorCursor()``
+  ##  ``createSystemCursor()``
 
 proc showCursor*(toggle: cint): cint {.
   cdecl, importc: "SDL_ShowCursor", dynlib: SDL2_LIB.}

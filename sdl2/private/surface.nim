@@ -99,10 +99,20 @@ proc createRGBSurface*(
   ##
   ##  ``aMask`` The alpha mask of the surface to create.
 
+proc createRGBSurfaceWithFormat*(
+    flags: uint32; width: cint; height: cint; depth: cint;
+    format: uint32): Surface {.
+      cdecl, importc: "SDL_CreateRGBSurfaceWithFormat", dynlib: SDL2_LIB.}
+
 proc createRGBSurfaceFrom*(
     pixels: pointer; width: cint; height: cint; depth: cint; pitch: cint;
     rMask: uint32; gMask: uint32; bMask: uint32; aMask: uint32): Surface {.
       cdecl, importc: "SDL_CreateRGBSurfaceFrom", dynlib: SDL2_LIB.}
+
+proc createRGBSurfaceWithFormatFrom*(
+    pixels: pointer; width: cint; height: cint; depth: cint; pitch: cint;
+    format: uint32): Surface {.
+      cdecl, importc: "SDL_CreateRGBSurfaceWithFormatFrom", dynlib: SDL2_LIB.}
 
 proc freeSurface*(surface: Surface) {.
     cdecl, importc: "SDL_FreeSurface", dynlib: SDL2_LIB.}
@@ -162,6 +172,12 @@ template loadBMP*(file: untyped): untyped = ##  \
 proc saveBMP_RW*(surface: Surface; dst: ptr RWops; freedst: cint): cint {.
     cdecl, importc: "SDL_SaveBMP_RW", dynlib: SDL2_LIB.}
   ##  Save a surface to a seekable SDL data stream (memory or file).
+  ##
+  ##  Surfaces with a 24-bit, 32-bit and paletted 8-bit format get saved in the
+  ##  BMP directly. Other RGB formats with 8-bit or higher get converted to a
+  ##  24-bit surface or, if they have an alpha mask or a colorkey, to a 32-bit
+  ##  surface before they are saved. YUV and paletted 1-bit and 4-bit formats
+  ##  are not supported.
   ##
   ##  If ``freedst`` is non-zero, the stream will be closed after being written.
   ##

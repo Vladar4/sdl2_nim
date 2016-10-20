@@ -25,7 +25,7 @@
 ##  Include file for SDL joystick event handling.
 
 ##  The term "device_index" identifies currently plugged in joystick devices
-##  between `0` and ``NumJoysticks``, with the exact joystick behind a
+##  between `0` and ``numJoysticks()``, with the exact joystick behind a
 ##  device_index changing as joysticks are plugged and unplugged.
 ##
 ##  The term "instance_id" is the current instantiation of a joystick device

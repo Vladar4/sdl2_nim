@@ -51,6 +51,7 @@ CHANGELOG:
 * updated SDL2_ttf to v2.0.14
 * added more SDL2 examples
 * Nim 0.14.0 adaptation
+* updated to SDL2-2.0.5
 * ***WIP***
 
 **v0.95 beta**

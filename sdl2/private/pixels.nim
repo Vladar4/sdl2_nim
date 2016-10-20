@@ -235,6 +235,20 @@ const
   PIXELFORMAT_NV21* = definePixelFourCC('N', 'V', '2', '1') ##  \
     ##  Planar mode: Y + V/U interleaved (2 planes)
 
+# Aliases for RGBA byte arrays of color data, for the current platform.
+when cpuEndian == bigEndian:
+  const
+    PIXELFORMAT_RGBA32* = PIXELFORMAT_RGBA8888
+    PIXELFORMAT_ARGB32* = PIXELFORMAT_ARGB8888
+    PIXELFORMAT_BGRA32* = PIXELFORMAT_BGRA8888
+    PIXELFORMAT_ABGR32* = PIXELFORMAT_ABGR8888
+else:
+  const
+    PIXELFORMAT_RGBA32* = PIXELFORMAT_ABGR8888
+    PIXELFORMAT_ARGB32* = PIXELFORMAT_BGRA8888
+    PIXELFORMAT_BGRA32* = PIXELFORMAT_ARGB8888
+    PIXELFORMAT_ABGR32* = PIXELFORMAT_RGBA8888
+
 type
   Color* = object
     r*: uint8

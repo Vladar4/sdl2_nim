@@ -65,8 +65,8 @@ type
 ##      if isGameController(i):
 ##        inc(nGameControllers)
 ##
-##  Using the `HINT_GAMECONTROLLERCONFIG` hint or
-##  the ``gameControllerAddMapping`` you can add support for controllers SDL
+##  Using the `HINT_GAMECONTROLLERCONFIG` hint or the
+##  ``sdl.gameControllerAddMapping()`` you can add support for controllers SDL
 ##  is unaware of or cause an existing controller to have a different binding.
 ##
 ##  The format is:
@@ -124,14 +124,14 @@ proc gameControllerMappingForGUID*(guid: JoystickGUID): cstring {.
     cdecl, importc: "SDL_GameControllerMappingForGUID", dynlib: SDL2_LIB.}
   ##  Get a mapping string for a GUID.
   ##
-  ##  ``Return`` the mapping string.  Must be freed with ``free()``.
+  ##  ``Return`` the mapping string.  Must be freed with ``sdl.free()``.
   ##  Returns `nil` if no mapping is available
 
 proc gameControllerMapping*(gamecontroller: GameController): cstring {.
     cdecl, importc: "SDL_GameControllerMapping", dynlib: SDL2_LIB.}
   ##  Get a mapping string for an open GameController.
   ##
-  ##  ``Return`` the mapping string.  Must be freed with ``free()``.
+  ##  ``Return`` the mapping string.  Must be freed with ``sdl.free()``.
   ##  Returns `nil` if no mapping is available
 
 proc isGameController*(joystick_index: cint): bool {.
