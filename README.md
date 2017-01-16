@@ -1,7 +1,7 @@
-sdl2-nim 0.96 beta
+sdl2_nim 0.96 beta
 ==================
 
-sdl2-nim is a wrapper of the SDL 2 library for the Nim language.
+sdl2_nim is a wrapper of the SDL 2 library for the Nim language.
 
 * SDL homepage: http://www.libsdl.org/
 * Nim homepage: http://nim-lang.org/
