@@ -3,7 +3,7 @@ sdl2_nim 0.96 beta
 
 sdl2_nim is a wrapper of the SDL 2 library for the Nim language.
 
-* sdl2_nim docs online: https://github.com/Vladar4/sdl2_nim/
+* sdl2_nim docs online: https://vladar4.github.io/sdl2_nim/
 * SDL homepage: http://www.libsdl.org/
 * Nim homepage: http://nim-lang.org/
 
