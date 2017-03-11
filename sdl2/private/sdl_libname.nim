@@ -29,4 +29,4 @@ else:
   decl(SDL2_IMG_LIB, "libSDL2_image(|-2.0).so(|.0.0.1|.0)")
   decl(SDL2_MIX_LIB, "libSDL2_mixer(|-2.0).so(|.0.0.1|.0)")
   decl(SDL2_NET_LIB, "libSDL2_net(|-2.0).so(|.0.0.1|.0)")
-  decl(SDL2_TTF_LIB, "libSDL2_ttf(|-2.0).so(|.0.10.3|.0)")
+  decl(SDL2_TTF_LIB, "libSDL2_ttf(|-2.0).so(|.0.14.0|.0)")
