@@ -195,11 +195,11 @@ proc gameControllerUpdate*() {.
 type
   GameControllerAxis* {.size: sizeof(uint8).} = enum ##  \
     ##  The list of axes available from a controller
-    CONTROLLER_AXIS_INVALID = - 1,
     CONTROLLER_AXIS_LEFTX,  CONTROLLER_AXIS_LEFTY,
     CONTROLLER_AXIS_RIGHTX, CONTROLLER_AXIS_RIGHTY,
     CONTROLLER_AXIS_TRIGGERLEFT, CONTROLLER_AXIS_TRIGGERRIGHT,
-    CONTROLLER_AXIS_MAX
+    CONTROLLER_AXIS_MAX,
+    CONTROLLER_AXIS_INVALID = uint8.high
 
 proc gameControllerGetAxisFromString*(pchString: cstring): GameControllerAxis {.
     cdecl, importc: "SDL_GameControllerGetAxisFromString", dynlib: SDL2_LIB.}
@@ -228,7 +228,6 @@ proc gameControllerGetAxis*(gamecontroller: GameController;
 type
   GameControllerButton* {.size: sizeof(uint8).} = enum ##  \
     ##  The list of buttons available from a controller
-    CONTROLLER_BUTTON_INVALID = - 1,
     CONTROLLER_BUTTON_A, CONTROLLER_BUTTON_B,
     CONTROLLER_BUTTON_X, CONTROLLER_BUTTON_Y,
     CONTROLLER_BUTTON_BACK,
@@ -238,7 +237,8 @@ type
     CONTROLLER_BUTTON_LEFTSHOULDER, CONTROLLER_BUTTON_RIGHTSHOULDER,
     CONTROLLER_BUTTON_DPAD_UP,      CONTROLLER_BUTTON_DPAD_DOWN,
     CONTROLLER_BUTTON_DPAD_LEFT,    CONTROLLER_BUTTON_DPAD_RIGHT,
-    CONTROLLER_BUTTON_MAX
+    CONTROLLER_BUTTON_MAX,
+    CONTROLLER_BUTTON_INVALID = uint8.high
 
 proc gameControllerGetButtonFromString*(
     pchString: cstring): GameControllerButton {.
