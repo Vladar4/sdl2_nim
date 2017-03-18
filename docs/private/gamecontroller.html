@@ -1233,18 +1233,20 @@ function main() {
   value*: GameControllerButtonBindValue"><wbr />Game<wbr />Controller<wbr />Button<wbr />Bind<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#GameControllerAxis"
     title="GameControllerAxis* = enum
-  CONTROLLER_AXIS_INVALID = - 1, CONTROLLER_AXIS_LEFTX, CONTROLLER_AXIS_LEFTY,
-  CONTROLLER_AXIS_RIGHTX, CONTROLLER_AXIS_RIGHTY, CONTROLLER_AXIS_TRIGGERLEFT,
-  CONTROLLER_AXIS_TRIGGERRIGHT, CONTROLLER_AXIS_MAX"><wbr />Game<wbr />Controller<wbr />Axis<span class="attachedType" style="visibility:hidden"></span></a></li>
+  CONTROLLER_AXIS_LEFTX, CONTROLLER_AXIS_LEFTY, CONTROLLER_AXIS_RIGHTX,
+  CONTROLLER_AXIS_RIGHTY, CONTROLLER_AXIS_TRIGGERLEFT,
+  CONTROLLER_AXIS_TRIGGERRIGHT, CONTROLLER_AXIS_MAX,
+  CONTROLLER_AXIS_INVALID = uint8.high"><wbr />Game<wbr />Controller<wbr />Axis<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#GameControllerButton"
     title="GameControllerButton* = enum
-  CONTROLLER_BUTTON_INVALID = - 1, CONTROLLER_BUTTON_A, CONTROLLER_BUTTON_B,
-  CONTROLLER_BUTTON_X, CONTROLLER_BUTTON_Y, CONTROLLER_BUTTON_BACK,
-  CONTROLLER_BUTTON_GUIDE, CONTROLLER_BUTTON_START, CONTROLLER_BUTTON_LEFTSTICK,
+  CONTROLLER_BUTTON_A, CONTROLLER_BUTTON_B, CONTROLLER_BUTTON_X,
+  CONTROLLER_BUTTON_Y, CONTROLLER_BUTTON_BACK, CONTROLLER_BUTTON_GUIDE,
+  CONTROLLER_BUTTON_START, CONTROLLER_BUTTON_LEFTSTICK,
   CONTROLLER_BUTTON_RIGHTSTICK, CONTROLLER_BUTTON_LEFTSHOULDER,
   CONTROLLER_BUTTON_RIGHTSHOULDER, CONTROLLER_BUTTON_DPAD_UP,
   CONTROLLER_BUTTON_DPAD_DOWN, CONTROLLER_BUTTON_DPAD_LEFT,
-  CONTROLLER_BUTTON_DPAD_RIGHT, CONTROLLER_BUTTON_MAX"><wbr />Game<wbr />Controller<wbr />Button<span class="attachedType" style="visibility:hidden"></span></a></li>
+  CONTROLLER_BUTTON_DPAD_RIGHT, CONTROLLER_BUTTON_MAX,
+  CONTROLLER_BUTTON_INVALID = uint8.high"><wbr />Game<wbr />Controller<wbr />Button<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1400,9 +1402,10 @@ class="link-seesrc" target="_blank">Source</a>
 
 </dd>
 <dt id="GameControllerAxis"><a name="GameControllerAxis"></a><pre><span class="Identifier">GameControllerAxis</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">uint8</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">CONTROLLER_AXIS_INVALID</span> <span class="Other">=</span> <span class="Operator">-</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_LEFTX</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_LEFTY</span><span class="Other">,</span>
-  <span class="Identifier">CONTROLLER_AXIS_RIGHTX</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_RIGHTY</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_TRIGGERLEFT</span><span class="Other">,</span>
-  <span class="Identifier">CONTROLLER_AXIS_TRIGGERRIGHT</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_MAX</span></pre></dt>
+  <span class="Identifier">CONTROLLER_AXIS_LEFTX</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_LEFTY</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_RIGHTX</span><span class="Other">,</span>
+  <span class="Identifier">CONTROLLER_AXIS_RIGHTY</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_TRIGGERLEFT</span><span class="Other">,</span>
+  <span class="Identifier">CONTROLLER_AXIS_TRIGGERRIGHT</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_MAX</span><span class="Other">,</span>
+  <span class="Identifier">CONTROLLER_AXIS_INVALID</span> <span class="Other">=</span> <span class="Identifier">uint8</span><span class="Other">.</span><span class="Identifier">high</span></pre></dt>
 <dd>
 
 The list of axes available from a controller
@@ -1413,13 +1416,14 @@ class="link-seesrc" target="_blank">Source</a>
 
 </dd>
 <dt id="GameControllerButton"><a name="GameControllerButton"></a><pre><span class="Identifier">GameControllerButton</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">uint8</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">CONTROLLER_BUTTON_INVALID</span> <span class="Other">=</span> <span class="Operator">-</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_A</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_B</span><span class="Other">,</span>
-  <span class="Identifier">CONTROLLER_BUTTON_X</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_Y</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_BACK</span><span class="Other">,</span>
-  <span class="Identifier">CONTROLLER_BUTTON_GUIDE</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_START</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_LEFTSTICK</span><span class="Other">,</span>
+  <span class="Identifier">CONTROLLER_BUTTON_A</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_B</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_X</span><span class="Other">,</span>
+  <span class="Identifier">CONTROLLER_BUTTON_Y</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_BACK</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_GUIDE</span><span class="Other">,</span>
+  <span class="Identifier">CONTROLLER_BUTTON_START</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_LEFTSTICK</span><span class="Other">,</span>
   <span class="Identifier">CONTROLLER_BUTTON_RIGHTSTICK</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_LEFTSHOULDER</span><span class="Other">,</span>
   <span class="Identifier">CONTROLLER_BUTTON_RIGHTSHOULDER</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_DPAD_UP</span><span class="Other">,</span>
   <span class="Identifier">CONTROLLER_BUTTON_DPAD_DOWN</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_DPAD_LEFT</span><span class="Other">,</span>
-  <span class="Identifier">CONTROLLER_BUTTON_DPAD_RIGHT</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_MAX</span></pre></dt>
+  <span class="Identifier">CONTROLLER_BUTTON_DPAD_RIGHT</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_MAX</span><span class="Other">,</span>
+  <span class="Identifier">CONTROLLER_BUTTON_INVALID</span> <span class="Other">=</span> <span class="Identifier">uint8</span><span class="Other">.</span><span class="Identifier">high</span></pre></dt>
 <dd>
 
 The list of buttons available from a controller
@@ -1710,7 +1714,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-03-18 21:28:16 UTC</small>
       </div>
     </div>
   </div>
