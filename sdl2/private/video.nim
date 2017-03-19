@@ -183,7 +183,7 @@ template windowPosIsCentered*(x: untyped): untyped =
 
 
 type
-  WindowEventID* {.size: sizeof(cint).} = enum ##  \
+  WindowEventID* {.size: sizeof(uint8).} = enum ##  \
     ##  Event subtype for window events
     WINDOWEVENT_NONE,         ## Never used
     WINDOWEVENT_SHOWN,        ## Window has been shown
