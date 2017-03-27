@@ -88,6 +88,21 @@ const
   PACKEDLAYOUT_2101010* = 7
   PACKEDLAYOUT_1010102* = 8
 
+template `&==`(a, b: untyped): uint32 =
+  (if a == b: 1 else: 0)
+
+template `&!=`(a, b: untyped): uint32 =
+  (if a == b: 0 else: 1)
+
+proc `istrue`(a: uint32): bool =
+  (if a == 0: false else: true)
+
+proc `isfalse`(a: uint32): bool =
+  (if a == 0: true else: false)
+
+template toInt(a: bool): uint32 =
+  (if a: 1 else: 0)
+
 template definePixelFourCC*(a, b, c, d: untyped): untyped =
   fourCC(ord(a), ord(b), ord(c), ord(d))
 
@@ -121,41 +136,41 @@ template bytesPerPixel*(x: untyped): untyped =
   else:
     (((x) shr 0) and 0x000000FF)
 
-template isPixelFormatIndexed*(format: untyped): untyped =
-  (not isPixelFormatFourCC(format) and
-    ((pixelType(format) == PIXELTYPE_INDEX1) or
-     (pixelType(format) == PIXELTYPE_INDEX4) or
-     (pixelType(format) == PIXELTYPE_INDEX8)))
+template isPixelFormatIndexed*(format: untyped): bool =
+  isfalse(isPixelFormatFourCC(format).toInt and
+    ((pixelType(format) &== PIXELTYPE_INDEX1) or
+     (pixelType(format) &== PIXELTYPE_INDEX4) or
+     (pixelType(format) &== PIXELTYPE_INDEX8)))
 
-template isPixelFormatPacked*(format: untyped): untyped =
-  (not isPixelFormatFourCC(format) and
-    ((pixelType(format) == PIXELTYPE_PACKED8) or
-     (pixelType(format) == PIXELTYPE_PACKED16) or
-     (pixelType(format) == PIXELTYPE_PACKED32)))
+template isPixelFormatPacked*(format: untyped): bool =
+  isfalse(isPixelFormatFourCC(format).toInt and
+    ((pixelType(format) &== PIXELTYPE_PACKED8) or
+     (pixelType(format) &== PIXELTYPE_PACKED16) or
+     (pixelType(format) &== PIXELTYPE_PACKED32)))
 
-template isPixelFormatArray*(format: untyped): untyped =
-  (not isPixelFormatFourCC(format) and
-    ((pixelType(format) == PIXELTYPE_ARRAYU8) or
-     (pixelType(format) == PIXELTYPE_ARRAYU16) or
-     (pixelType(format) == PIXELTYPE_ARRAYU32) or
-     (pixelType(format) == PIXELTYPE_ARRAYF16) or
-     (pixelType(format) == PIXELTYPE_ARRAYF32)))
+template isPixelFormatArray*(format: untyped): bool =
+  isfalse(isPixelFormatFourCC(format).toInt and
+    ((pixelType(format) &== PIXELTYPE_ARRAYU8) or
+     (pixelType(format) &== PIXELTYPE_ARRAYU16) or
+     (pixelType(format) &== PIXELTYPE_ARRAYU32) or
+     (pixelType(format) &== PIXELTYPE_ARRAYF16) or
+     (pixelType(format) &== PIXELTYPE_ARRAYF32)))
 
-template isPixelFormatAlpha*(format: untyped): untyped =
-  ((isPixelFormatPacked(format) and
-    ((pixelOrder(format) == PACKEDORDER_ARGB) or
-     (pixelOrder(format) == PACKEDORDER_RGBA) or
-     (pixelOrder(format) == PACKEDORDER_ABGR) or
-     (pixelOrder(format) == PACKEDORDER_BGRA))) or
-    (isPixelFormatArray(format) and
-      ((pixelOrder(format) == ARRAYORDER_ARGB) or
-       (pixelOrder(format) == ARRAYORDER_RGBA) or
-       (pixelOrder(format) == ARRAYORDER_ABGR) or
-       (pixelOrder(format) == ARRAYORDER_BGRA))))
+template isPixelFormatAlpha*(format: untyped): bool =
+  istrue((isPixelFormatPacked(format).toInt and
+    ((pixelOrder(format) &== PACKEDORDER_ARGB) or
+     (pixelOrder(format) &== PACKEDORDER_RGBA) or
+     (pixelOrder(format) &== PACKEDORDER_ABGR) or
+     (pixelOrder(format) &== PACKEDORDER_BGRA))) or
+    (isPixelFormatArray(format).toInt and
+      ((pixelOrder(format) &== ARRAYORDER_ARGB) or
+       (pixelOrder(format) &== ARRAYORDER_RGBA) or
+       (pixelOrder(format) &== ARRAYORDER_ABGR) or
+       (pixelOrder(format) &== ARRAYORDER_BGRA))))
 
-template isPixelFormatFourCC*(format: untyped): untyped = ##  \
+template isPixelFormatFourCC*(format: untyped): bool = ##  \
   ##  The flag is set to `1` because 0x1? is not in the printable ASCII range.
-  ((format) and (pixelFlag(format) != 1))
+  istrue((format) and (pixelFlag(format) &!= 1))
 
 # Note: If you modify this list, update getPixelFormatName()
 const
