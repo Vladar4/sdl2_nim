@@ -48,25 +48,77 @@ type
     ##  It is passed a ``pointer`` user context parameter
     ##  and returns an ``int``.
 
-proc createThread*(
-    fn: ThreadFunction; name: cstring; data: pointer): Thread {.
-      cdecl, importc: "SDL_CreateThread", dynlib: SDL2_LIB.}
-  ##  Create a thread.
-  ##
-  ##  Thread naming is a little complicated: Most systems have very small
-  ##  limits for the string length (Haiku has 32 bytes, Linux currently has
-  ##  16, Visual C++ 6.0 has nine!), and possibly other arbitrary rules.
-  ##  You'll have to see what happens with your system's debugger.
-  ##  The name should be UTF-8 (but using the naming limits of C identifiers
-  ##  is a better bet). There are no requirements for thread naming
-  ##  conventions, so long as the string is null-terminated UTF-8, but these
-  ##  guidelines are helpful in choosing a name:
-  ##
-  ##  http://stackoverflow.com/questions/149932/naming-conventions-for-threads
-  ##
-  ##  If a system imposes requirements, SDL will try to munge the string for
-  ##  it (truncate, etc), but the original string contents will be available
-  ##  from ``getThreadName()``.
+when hostOS == "windows":
+  # We compile SDL into a DLL. This means, that it's the DLL which
+  # creates a new thread for the calling process with the ``sdl.createThread()``
+  # API. There is a problem with this, that only the RTL of the SDL.DLL will
+  # be initialized for those threads, and not the RTL of the calling
+  # application!
+  #
+  # To solve this, we make a little hack here.
+  #
+  # We'll always use the caller's ``_beginthread()`` and ``_endthread()`` APIs
+  # to start a new thread. This way, if it's the SDL.DLL which uses this API,
+  # then the RTL of SDL.DLL will be used to create the new thread, and if it's
+  # the application, then the RTL of the application will be used.
+  #
+  # So, in short:
+  # Always use the ``_beginthread()`` and ``_endthread()`` of the calling
+  # runtime library!
+
+  type
+    CurrentBeginThread = proc(
+      security: pointer,
+      stack_size: cuint,
+      start_address: proc(p: pointer): cuint {.stdcall.},
+      arglist: pointer,
+      initflag: cuint,
+      thrdaddr: cuint): pointer {.cdecl.}
+
+    CurrentEndThread =  proc(retval: cuint) {.cdecl.}
+
+  proc beginThreadEx(
+    security: pointer,
+    stack_size: cuint,
+    start_address: proc(p: pointer): cuint {.stdcall.},
+    arglist: pointer,
+    initflag: cuint,
+    thrdaddr: cuint): pointer {.
+      cdecl, importc: "_beginthreadex", dynlib: "msvcrt.dll".}
+
+  proc endThreadEx(retval: cuint) {.
+      cdecl, importc: "_endthreadex", dynlib: "msvcrt.dll".}
+
+  proc createThread_internal(
+      fn: ThreadFunction; name: cstring; data: pointer,
+      cbegin: CurrentBeginThread, cend: CurrentEndThread): Thread {.
+        cdecl, importc: "SDL_CreateThread", dynlib: SDL2_LIB.}
+
+  proc createThread*(
+      fn: ThreadFunction; name: cstring; data: pointer): Thread {.cdecl.} =
+    return createThread_internal(fn, name, data, beginThreadEx, endThreadEx)
+
+else:
+
+  proc createThread*(
+      fn: ThreadFunction; name: cstring; data: pointer): Thread {.
+        cdecl, importc: "SDL_CreateThread", dynlib: SDL2_LIB.}
+    ##  Create a thread.
+    ##
+    ##  Thread naming is a little complicated: Most systems have very small
+    ##  limits for the string length (Haiku has 32 bytes, Linux currently has
+    ##  16, Visual C++ 6.0 has nine!), and possibly other arbitrary rules.
+    ##  You'll have to see what happens with your system's debugger.
+    ##  The name should be UTF-8 (but using the naming limits of C identifiers
+    ##  is a better bet). There are no requirements for thread naming
+    ##  conventions, so long as the string is null-terminated UTF-8, but these
+    ##  guidelines are helpful in choosing a name:
+    ##
+    ##  http://stackoverflow.com/questions/149932/naming-conventions-for-threads
+    ##
+    ##  If a system imposes requirements, SDL will try to munge the string for
+    ##  it (truncate, etc), but the original string contents will be available
+    ##  from ``getThreadName()``.
 
 proc getThreadName*(thread: Thread): cstring {.
     cdecl, importc: "SDL_GetThreadName", dynlib: SDL2_LIB.}
