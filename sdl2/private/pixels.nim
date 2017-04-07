@@ -412,6 +412,7 @@ proc getRGB*(pixel: uint32; format: ptr PixelFormat;
   ##  ``getRGBA()``
 
 proc getRGB*(pixel: uint32, format: ptr PixelFormat): Color {.inline.} =
+  result = Color()
   getRGB(pixel, format,
     addr(result.r), addr(result.g), addr(result.b))
 
@@ -425,6 +426,7 @@ proc getRGBA*(pixel: uint32; format: ptr PixelFormat;
   ##  ``getRGB()``
 
 proc getRGBA*(pixel: uint32, format: ptr PixelFormat): Color {.inline.} =
+  result = Color()
   getRGBA(pixel, format,
     addr(result.r), addr(result.g), addr(result.b), addr(result.a))
 
