@@ -296,10 +296,12 @@ type
     timestamp*: uint32
     which*: JoystickID      ##  The joystick instance id
     hat*: uint8             ##  The joystick hat index
-    value*: uint8           ##  \
+    value*: HatPosition     ##  \
       ##  The hat position value.
       ##
       ##  See also:
+      ##
+      ##  ``HatPosition``:
       ##
       ##  `HAT_LEFTUP`, `HAT_UP`, `SDL_HAT_RIGHTUP`, `HAT_LEFT`, `HAT_CENTERED`,
       ##  `HAT_RIGHT`, `HAT_LEFTDOWN`, `HAT_DOWN`, `HAT_RIGHTDOWN`

@@ -172,6 +172,7 @@ proc joystickGetAxis*(joystick: Joystick; axis: cint): int16 {.
   ##  The axis indices start at index `0`.
 
 # Hat positions
+#[
 const
   HAT_CENTERED* = 0x00000000
   HAT_UP* = 0x00000001
@@ -182,8 +183,22 @@ const
   HAT_RIGHTDOWN* = (HAT_RIGHT or HAT_DOWN)
   HAT_LEFTUP* = (HAT_LEFT or HAT_UP)
   HAT_LEFTDOWN* = (HAT_LEFT or HAT_DOWN)
+]#
 
-proc joystickGetHat*(joystick: Joystick; hat: cint): uint8 {.
+type
+  HatPosition* {.size: sizeof(uint8).} = enum
+    HAT_CENTERED = 0x00000000,
+    HAT_UP = 0x00000001,
+    HAT_RIGHT = 0x00000002,
+    HAT_RIGHTUP = (HAT_RIGHT.uint8 or HAT_UP.uint8),
+    HAT_DOWN = 0x00000004,
+    HAT_RIGHTDOWN = (HAT_RIGHT.uint8 or HAT_DOWN.uint8),
+    HAT_LEFT = 0x00000008,
+    HAT_LEFTUP = (HAT_LEFT.uint8 or HAT_UP.uint8),
+    HAT_LEFTDOWN = (HAT_LEFT.uint8 or HAT_DOWN.uint8)
+
+
+proc joystickGetHat*(joystick: Joystick; hat: cint): HatPosition {.
     cdecl, importc: "SDL_JoystickGetHat", dynlib: SDL2_LIB.}
   ##  Get the current state of a POV hat on a joystick.
   ##
