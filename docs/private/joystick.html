@@ -1224,30 +1224,13 @@ function main() {
   JOYSTICK_POWER_UNKNOWN = - 1, JOYSTICK_POWER_EMPTY, JOYSTICK_POWER_LOW,
   JOYSTICK_POWER_MEDIUM, JOYSTICK_POWER_FULL, JOYSTICK_POWER_WIRED,
   JOYSTICK_POWER_MAX"><wbr />Joystick<wbr />Power<wbr />Level<span class="attachedType" style="visibility:hidden"></span></a></li>
-
-  </ul>
-</li>
-<li>
-  <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
-  <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#HAT_CENTERED"
-    title="HAT_CENTERED* = 0x00000000"><wbr />HAT_<wbr />CENTERED<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#HAT_UP"
-    title="HAT_UP* = 0x00000001"><wbr />HAT_<wbr />UP<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#HAT_RIGHT"
-    title="HAT_RIGHT* = 0x00000002"><wbr />HAT_<wbr />RIGHT<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#HAT_DOWN"
-    title="HAT_DOWN* = 0x00000004"><wbr />HAT_<wbr />DOWN<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#HAT_LEFT"
-    title="HAT_LEFT* = 0x00000008"><wbr />HAT_<wbr />LEFT<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#HAT_RIGHTUP"
-    title="HAT_RIGHTUP* = (HAT_RIGHT or HAT_UP)"><wbr />HAT_<wbr />RIGHTUP<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#HAT_RIGHTDOWN"
-    title="HAT_RIGHTDOWN* = (HAT_RIGHT or HAT_DOWN)"><wbr />HAT_<wbr />RIGHTDOWN<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#HAT_LEFTUP"
-    title="HAT_LEFTUP* = (HAT_LEFT or HAT_UP)"><wbr />HAT_<wbr />LEFTUP<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#HAT_LEFTDOWN"
-    title="HAT_LEFTDOWN* = (HAT_LEFT or HAT_DOWN)"><wbr />HAT_<wbr />LEFTDOWN<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#HatPosition"
+    title="HatPosition* = enum
+  HAT_CENTERED = 0x00000000, HAT_UP = 0x00000001, HAT_RIGHT = 0x00000002,
+  HAT_RIGHTUP = (HAT_RIGHT.uint8 or HAT_UP.uint8), HAT_DOWN = 0x00000004,
+  HAT_RIGHTDOWN = (HAT_RIGHT.uint8 or HAT_DOWN.uint8), HAT_LEFT = 0x00000008,
+  HAT_LEFTUP = (HAT_LEFT.uint8 or HAT_UP.uint8),
+  HAT_LEFTDOWN = (HAT_LEFT.uint8 or HAT_DOWN.uint8)"><wbr />Hat<wbr />Position<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1291,7 +1274,7 @@ function main() {
   <li><a class="reference" href="#joystickGetAxis,Joystick,cint"
     title="joystickGetAxis*(joystick: Joystick; axis: cint): int16"><wbr />joystick<wbr />Get<wbr />Axis<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#joystickGetHat,Joystick,cint"
-    title="joystickGetHat*(joystick: Joystick; hat: cint): uint8"><wbr />joystick<wbr />Get<wbr />Hat<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="joystickGetHat*(joystick: Joystick; hat: cint): HatPosition"><wbr />joystick<wbr />Get<wbr />Hat<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#joystickGetBall,Joystick,cint,ptr.cint,ptr.cint"
     title="joystickGetBall*(joystick: Joystick; ball: cint; dx: ptr cint; dy: ptr cint): cint"><wbr />joystick<wbr />Get<wbr />Ball<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#joystickGetButton,Joystick,cint"
@@ -1362,90 +1345,18 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="/edit/devel/joystick.nim#L58" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-
-</dl></div>
-<div class="section" id="10">
-<h1><a class="toc-backref" href="#10">Consts</a></h1>
-<dl class="item">
-<dt id="HAT_CENTERED"><a name="HAT_CENTERED"></a><pre><span class="Identifier">HAT_CENTERED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000000</span></pre></dt>
+<dt id="HatPosition"><a name="HatPosition"></a><pre><span class="Identifier">HatPosition</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">uint8</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">HAT_CENTERED</span> <span class="Other">=</span> <span class="DecNumber">0x00000000</span><span class="Other">,</span> <span class="Identifier">HAT_UP</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span><span class="Other">,</span> <span class="Identifier">HAT_RIGHT</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span><span class="Other">,</span>
+  <span class="Identifier">HAT_RIGHTUP</span> <span class="Other">=</span> <span class="Other">(</span><span class="Identifier">HAT_RIGHT</span><span class="Other">.</span><span class="Identifier">uint8</span> <span class="Keyword">or</span> <span class="Identifier">HAT_UP</span><span class="Other">.</span><span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">HAT_DOWN</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span><span class="Other">,</span>
+  <span class="Identifier">HAT_RIGHTDOWN</span> <span class="Other">=</span> <span class="Other">(</span><span class="Identifier">HAT_RIGHT</span><span class="Other">.</span><span class="Identifier">uint8</span> <span class="Keyword">or</span> <span class="Identifier">HAT_DOWN</span><span class="Other">.</span><span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">HAT_LEFT</span> <span class="Other">=</span> <span class="DecNumber">0x00000008</span><span class="Other">,</span>
+  <span class="Identifier">HAT_LEFTUP</span> <span class="Other">=</span> <span class="Other">(</span><span class="Identifier">HAT_LEFT</span><span class="Other">.</span><span class="Identifier">uint8</span> <span class="Keyword">or</span> <span class="Identifier">HAT_UP</span><span class="Other">.</span><span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">HAT_LEFTDOWN</span> <span class="Other">=</span> <span class="Other">(</span><span class="Identifier">HAT_LEFT</span><span class="Other">.</span><span class="Identifier">uint8</span> <span class="Keyword">or</span> <span class="Identifier">HAT_DOWN</span><span class="Other">.</span><span class="Identifier">uint8</span><span class="Other">)</span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
-href="/tree/master/joystick.nim#L176"
+href="/tree/master/joystick.nim#L189"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/joystick.nim#L176" class="link-seesrc" target="_blank" >Edit</a>
-
-</dd>
-<dt id="HAT_UP"><a name="HAT_UP"></a><pre><span class="Identifier">HAT_UP</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span></pre></dt>
-<dd>
-
-&nbsp;&nbsp;<a
-href="/tree/master/joystick.nim#L177"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/joystick.nim#L177" class="link-seesrc" target="_blank" >Edit</a>
-
-</dd>
-<dt id="HAT_RIGHT"><a name="HAT_RIGHT"></a><pre><span class="Identifier">HAT_RIGHT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span></pre></dt>
-<dd>
-
-&nbsp;&nbsp;<a
-href="/tree/master/joystick.nim#L178"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/joystick.nim#L178" class="link-seesrc" target="_blank" >Edit</a>
-
-</dd>
-<dt id="HAT_DOWN"><a name="HAT_DOWN"></a><pre><span class="Identifier">HAT_DOWN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
-<dd>
-
-&nbsp;&nbsp;<a
-href="/tree/master/joystick.nim#L179"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/joystick.nim#L179" class="link-seesrc" target="_blank" >Edit</a>
-
-</dd>
-<dt id="HAT_LEFT"><a name="HAT_LEFT"></a><pre><span class="Identifier">HAT_LEFT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000008</span></pre></dt>
-<dd>
-
-&nbsp;&nbsp;<a
-href="/tree/master/joystick.nim#L180"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/joystick.nim#L180" class="link-seesrc" target="_blank" >Edit</a>
-
-</dd>
-<dt id="HAT_RIGHTUP"><a name="HAT_RIGHTUP"></a><pre><span class="Identifier">HAT_RIGHTUP</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="Identifier">HAT_RIGHT</span> <span class="Keyword">or</span> <span class="Identifier">HAT_UP</span><span class="Other">)</span></pre></dt>
-<dd>
-
-&nbsp;&nbsp;<a
-href="/tree/master/joystick.nim#L181"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/joystick.nim#L181" class="link-seesrc" target="_blank" >Edit</a>
-
-</dd>
-<dt id="HAT_RIGHTDOWN"><a name="HAT_RIGHTDOWN"></a><pre><span class="Identifier">HAT_RIGHTDOWN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="Identifier">HAT_RIGHT</span> <span class="Keyword">or</span> <span class="Identifier">HAT_DOWN</span><span class="Other">)</span></pre></dt>
-<dd>
-
-&nbsp;&nbsp;<a
-href="/tree/master/joystick.nim#L182"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/joystick.nim#L182" class="link-seesrc" target="_blank" >Edit</a>
-
-</dd>
-<dt id="HAT_LEFTUP"><a name="HAT_LEFTUP"></a><pre><span class="Identifier">HAT_LEFTUP</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="Identifier">HAT_LEFT</span> <span class="Keyword">or</span> <span class="Identifier">HAT_UP</span><span class="Other">)</span></pre></dt>
-<dd>
-
-&nbsp;&nbsp;<a
-href="/tree/master/joystick.nim#L183"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/joystick.nim#L183" class="link-seesrc" target="_blank" >Edit</a>
-
-</dd>
-<dt id="HAT_LEFTDOWN"><a name="HAT_LEFTDOWN"></a><pre><span class="Identifier">HAT_LEFTDOWN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="Identifier">HAT_LEFT</span> <span class="Keyword">or</span> <span class="Identifier">HAT_DOWN</span><span class="Other">)</span></pre></dt>
-<dd>
-
-&nbsp;&nbsp;<a
-href="/tree/master/joystick.nim#L184"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/joystick.nim#L184" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/joystick.nim#L189" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1648,7 +1559,7 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="/edit/devel/joystick.nim#L166" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="joystickGetHat"><a name="joystickGetHat,Joystick,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetHat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <span class="Identifier">Joystick</span><span class="Other">;</span> <span class="Identifier">hat</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="joystickGetHat"><a name="joystickGetHat,Joystick,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetHat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <span class="Identifier">Joystick</span><span class="Other">;</span> <span class="Identifier">hat</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">HatPosition</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetHat&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the current state of a POV hat on a joystick.</p>
@@ -1666,9 +1577,9 @@ class="link-seesrc" target="_blank">Source</a>
 </ul>
 
 &nbsp;&nbsp;<a
-href="/tree/master/joystick.nim#L186"
+href="/tree/master/joystick.nim#L201"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/joystick.nim#L186" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/joystick.nim#L201" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="joystickGetBall"><a name="joystickGetBall,Joystick,cint,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetBall</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <span class="Identifier">Joystick</span><span class="Other">;</span> <span class="Identifier">ball</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dx</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dy</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -1679,9 +1590,9 @@ class="link-seesrc" target="_blank">Source</a>
 <p>The ball indices start at index <cite>0</cite>.</p>
 
 &nbsp;&nbsp;<a
-href="/tree/master/joystick.nim#L203"
+href="/tree/master/joystick.nim#L218"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/joystick.nim#L203" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/joystick.nim#L218" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="joystickGetButton"><a name="joystickGetButton,Joystick,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetButton</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <span class="Identifier">Joystick</span><span class="Other">;</span> <span class="Identifier">button</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1691,9 +1602,9 @@ class="link-seesrc" target="_blank">Source</a>
 <p>The button indices start at index <cite>0</cite>.</p>
 
 &nbsp;&nbsp;<a
-href="/tree/master/joystick.nim#L212"
+href="/tree/master/joystick.nim#L227"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/joystick.nim#L212" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/joystick.nim#L227" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="joystickClose"><a name="joystickClose,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickClose</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <span class="Identifier">Joystick</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickClose&quot;</span><span class="Other">,</span>
@@ -1701,9 +1612,9 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 Close a joystick previously opened with <tt class="docutils literal"><span class="pre">joystickOpen()</span></tt>.
 &nbsp;&nbsp;<a
-href="/tree/master/joystick.nim#L218"
+href="/tree/master/joystick.nim#L233"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/joystick.nim#L218" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/joystick.nim#L233" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="joystickCurrentPowerLevel"><a name="joystickCurrentPowerLevel,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickCurrentPowerLevel</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <span class="Identifier">Joystick</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">JoystickPowerLevel</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1711,9 +1622,9 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 Return the battery level of this <tt class="docutils literal"><span class="pre">joystick</span></tt>.
 &nbsp;&nbsp;<a
-href="/tree/master/joystick.nim#L222"
+href="/tree/master/joystick.nim#L237"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/joystick.nim#L222" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/joystick.nim#L237" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1726,7 +1637,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-04-07 09:21:11 UTC</small>
       </div>
     </div>
   </div>
