@@ -383,6 +383,20 @@ proc fillRects*(
     dst: Surface; rects: ptr Rect; count: cint; color: uint32): cint {.
       cdecl, importc: "SDL_FillRects", dynlib: SDL2_LIB.}
 
+proc upperBlit*(
+    src: Surface; srcrect: ptr Rect;
+    dst: Surface; dstrect: ptr Rect): cint {.
+      cdecl, importc: "SDL_UpperBlit", dynlib: SDL2_LIB.}
+  ##  This is the public blit procedure, ``blitSurface()``, and it performs
+  ##  rectangle validation and clipping before passing it to ``lowerBlit()``.
+
+proc lowerBlit*(
+    src: Surface; srcrect: ptr Rect;
+    dst: Surface; dstrect: ptr Rect): cint {.
+      cdecl, importc: "SDL_LowerBlit", dynlib: SDL2_LIB.}
+  ##  This is a semi-private blit procedure and it performs low-level surface
+  ##  blitting only.
+
 template blitSurface*(
     src: Surface; srcrect: ptr Rect;
     dst: Surface; dstrect: ptr Rect): cint = ##  \
@@ -463,20 +477,6 @@ template blitSurface*(
   ##  You should call ``blitSurface()`` unless you know exactly how SDL
   ##  blitting works internally and how to use the other blit procedures.
   upperBlit(src, srcrect, dst, dstrect)
-
-proc upperBlit*(
-    src: Surface; srcrect: ptr Rect;
-    dst: Surface; dstrect: ptr Rect): cint {.
-      cdecl, importc: "SDL_UpperBlit", dynlib: SDL2_LIB.}
-  ##  This is the public blit procedure, ``blitSurface()``, and it performs
-  ##  rectangle validation and clipping before passing it to ``lowerBlit()``.
-
-proc lowerBlit*(
-    src: Surface; srcrect: ptr Rect;
-    dst: Surface; dstrect: ptr Rect): cint {.
-      cdecl, importc: "SDL_LowerBlit", dynlib: SDL2_LIB.}
-  ##  This is a semi-private blit procedure and it performs low-level surface
-  ##  blitting only.
 
 proc softStretch*(
     src: Surface; srcrect: ptr Rect;
