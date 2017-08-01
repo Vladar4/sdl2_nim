@@ -1,5 +1,5 @@
-sdl2_nim 0.96 beta
-==================
+sdl2_nim 2.0.5.0
+================
 
 sdl2_nim is a wrapper of the SDL 2 library for the Nim language.
 
@@ -22,6 +22,15 @@ What does not implemented here:
 -------------------------------
 
 * OpenGL headers (use [opengl](https://github.com/nim-lang/opengl) lib instead)
+
+Versioning scheme:
+------------------
+```
+a.b.c.d
+
+a.b.c - underlying SDL2 version
+d     - sdl2_nim revision
+```
 
 ----------------------------------------
 
@@ -47,6 +56,15 @@ FAQ:
 
 CHANGELOG:
 ==========
+
+**v2.0.5.0**
+* changed versioning system to reflect the underlying SDL2 version
+* fixed uint8 emum bug
+* fixed pixels.nim templates
+* fixed windows threads
+* various minor improvements
+* documentation enhancement
+
 **v0.96 beta**
 * added sdl_syswm.nim
 * updated SDL2_ttf to v2.0.14
