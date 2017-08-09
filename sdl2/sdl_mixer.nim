@@ -1104,30 +1104,6 @@ proc groupNewer*(tag: cint): cint {.
   ##  `-1` is returned when no channels in the group are playing
   ##  or the group is empty.
 
-template playChannel*(channel, chunk, loops: untyped): untyped =  ##  \
-  ##  Play chunk on channel, or if channel is `-1`,
-  ##  pick the first free unreserved channel.
-  ##
-  ##  ``channel`` Channel to play on, or `-1`
-  ##  for the first free unreserved channel.
-  ##
-  ##  ``chunk`` Sample to play.
-  ##
-  ##  ``loops`` Number of loops, `-1` is infinite loops.
-  ##  Passing `1` here plays the sample twice (1 loop).
-  ##
-  ##  The sample will play for ``loops`` + 1 number of times,
-  ##  unless stopped by halt, or fade out, or setting a new expiration time
-  ##  of less time than it would have originally taken to play the loops,
-  ##  or closing the mixer.
-  ##
-  ##  ``Note:`` this just calls ``sdl_mixer.playChannelTimed()``
-  ##  with ticks set to `-1`.
-  ##
-  ##  ``Return`` the channel the sample is played on.
-  ##  On any errors, `-1` is returned.
-  playChannelTimed(channel, chunk, loops, - 1)
-
 proc playChannelTimed*(
     channel: cint; chunk: Chunk; loops: cint; ticks: cint): cint {.
       cdecl, importc: "Mix_PlayChannelTimed", dynlib: SDL2_MIX_LIB.}
@@ -1153,6 +1129,30 @@ proc playChannelTimed*(
   ##
   ##  ``Return`` the channel the sample is played on.
   ##  On any errors, `-1` is returned.
+
+template playChannel*(channel, chunk, loops: untyped): untyped =  ##  \
+  ##  Play chunk on channel, or if channel is `-1`,
+  ##  pick the first free unreserved channel.
+  ##
+  ##  ``channel`` Channel to play on, or `-1`
+  ##  for the first free unreserved channel.
+  ##
+  ##  ``chunk`` Sample to play.
+  ##
+  ##  ``loops`` Number of loops, `-1` is infinite loops.
+  ##  Passing `1` here plays the sample twice (1 loop).
+  ##
+  ##  The sample will play for ``loops`` + 1 number of times,
+  ##  unless stopped by halt, or fade out, or setting a new expiration time
+  ##  of less time than it would have originally taken to play the loops,
+  ##  or closing the mixer.
+  ##
+  ##  ``Note:`` this just calls ``sdl_mixer.playChannelTimed()``
+  ##  with ticks set to `-1`.
+  ##
+  ##  ``Return`` the channel the sample is played on.
+  ##  On any errors, `-1` is returned.
+  playChannelTimed(channel, chunk, loops, - 1)
 
 proc playMusic*(music: Music; loops: cint): cint {.
     cdecl, importc: "Mix_PlayMusic", dynlib: SDL2_MIX_LIB.}
