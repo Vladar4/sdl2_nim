@@ -1104,30 +1104,6 @@ proc groupNewer*(tag: cint): cint {.
   ##  `-1` is returned when no channels in the group are playing
   ##  or the group is empty.
 
-template playChannel*(channel, chunk, loops: untyped): untyped =  ##  \
-  ##  Play chunk on channel, or if channel is `-1`,
-  ##  pick the first free unreserved channel.
-  ##
-  ##  ``channel`` Channel to play on, or `-1`
-  ##  for the first free unreserved channel.
-  ##
-  ##  ``chunk`` Sample to play.
-  ##
-  ##  ``loops`` Number of loops, `-1` is infinite loops.
-  ##  Passing `1` here plays the sample twice (1 loop).
-  ##
-  ##  The sample will play for ``loops`` + 1 number of times,
-  ##  unless stopped by halt, or fade out, or setting a new expiration time
-  ##  of less time than it would have originally taken to play the loops,
-  ##  or closing the mixer.
-  ##
-  ##  ``Note:`` this just calls ``sdl_mixer.playChannelTimed()``
-  ##  with ticks set to `-1`.
-  ##
-  ##  ``Return`` the channel the sample is played on.
-  ##  On any errors, `-1` is returned.
-  playChannelTimed(channel, chunk, loops, - 1)
-
 proc playChannelTimed*(
     channel: cint; chunk: Chunk; loops: cint; ticks: cint): cint {.
       cdecl, importc: "Mix_PlayChannelTimed", dynlib: SDL2_MIX_LIB.}
@@ -1153,6 +1129,30 @@ proc playChannelTimed*(
   ##
   ##  ``Return`` the channel the sample is played on.
   ##  On any errors, `-1` is returned.
+
+template playChannel*(channel, chunk, loops: untyped): untyped =  ##  \
+  ##  Play chunk on channel, or if channel is `-1`,
+  ##  pick the first free unreserved channel.
+  ##
+  ##  ``channel`` Channel to play on, or `-1`
+  ##  for the first free unreserved channel.
+  ##
+  ##  ``chunk`` Sample to play.
+  ##
+  ##  ``loops`` Number of loops, `-1` is infinite loops.
+  ##  Passing `1` here plays the sample twice (1 loop).
+  ##
+  ##  The sample will play for ``loops`` + 1 number of times,
+  ##  unless stopped by halt, or fade out, or setting a new expiration time
+  ##  of less time than it would have originally taken to play the loops,
+  ##  or closing the mixer.
+  ##
+  ##  ``Note:`` this just calls ``sdl_mixer.playChannelTimed()``
+  ##  with ticks set to `-1`.
+  ##
+  ##  ``Return`` the channel the sample is played on.
+  ##  On any errors, `-1` is returned.
+  playChannelTimed(channel, chunk, loops, - 1)
 
 proc playMusic*(music: Music; loops: cint): cint {.
     cdecl, importc: "Mix_PlayMusic", dynlib: SDL2_MIX_LIB.}
@@ -1219,6 +1219,35 @@ proc fadeInMusicPos*(
   ##
   ##  ``Return`` `0` on success, or `-1` on errors.
 
+proc fadeInChannelTimed*(
+  channel: cint; chunk: Chunk; loops: cint; ms: cint; ticks: cint): cint {.
+    cdecl, importc: "Mix_FadeInChannelTimed", dynlib: SDL2_MIX_LIB.}
+  ##  The same as ``sdl_mixer.fadeInChannel()``,
+  ##  but the sound is played at most ``ticks`` milliseconds.
+  ##
+  ##  ``channel`` Channel to play on,
+  ##  or `-1` for the first free unreserved channel.
+  ##
+  ##  ``chunk`` Sample to play.
+  ##
+  ##  ``loops`` Number of loops, `-1` is infinite loops.
+  ##  Passing `1` here plays the sample twice (1 loop).
+  ##
+  ##  ``ms`` Milliseconds of time that the fade-in effect should take
+  ##  to go from silence to full volume.
+  ##
+  ##  ``ticks`` Millisecond limit to play sample, at most.
+  ##  If not enough loops or the sample chunk is not long enough,
+  ##  then the sample may stop before this timeout occurs.
+  ##  `-1` means play forever.
+  ##
+  ##  If the sample is long enough and has enough loops then the sample will
+  ##  stop after ``ticks`` milliseconds.
+  ##  Otherwise this procedures is the same as ``sdl_mixer.fadeInChannel()``.
+  ##
+  ##  ``Return`` the channel the sample is played on.
+  ##  On any errors, `-1` is returned.
+
 template fadeInChannel*(channel, chunk, loops, ms: untyped): untyped =  ##  \
   ##  Play ``chunk`` on ``channel``, or if ``channel`` is `-1`,
   ##  pick the first free unreserved channel.
@@ -1249,35 +1278,6 @@ template fadeInChannel*(channel, chunk, loops, ms: untyped): untyped =  ##  \
   ##  ``Return`` the channel the sample is played on.
   ##  On any errors, `-1` is returned.
   fadeInChannelTimed(channel, chunk, loops, ms, - 1)
-
-proc fadeInChannelTimed*(
-  channel: cint; chunk: Chunk; loops: cint; ms: cint; ticks: cint): cint {.
-    cdecl, importc: "Mix_FadeInChannelTimed", dynlib: SDL2_MIX_LIB.}
-  ##  The same as ``sdl_mixer.fadeInChannel()``,
-  ##  but the sound is played at most ``ticks`` milliseconds.
-  ##
-  ##  ``channel`` Channel to play on,
-  ##  or `-1` for the first free unreserved channel.
-  ##
-  ##  ``chunk`` Sample to play.
-  ##
-  ##  ``loops`` Number of loops, `-1` is infinite loops.
-  ##  Passing `1` here plays the sample twice (1 loop).
-  ##
-  ##  ``ms`` Milliseconds of time that the fade-in effect should take
-  ##  to go from silence to full volume.
-  ##
-  ##  ``ticks`` Millisecond limit to play sample, at most.
-  ##  If not enough loops or the sample chunk is not long enough,
-  ##  then the sample may stop before this timeout occurs.
-  ##  `-1` means play forever.
-  ##
-  ##  If the sample is long enough and has enough loops then the sample will
-  ##  stop after ``ticks`` milliseconds.
-  ##  Otherwise this procedures is the same as ``sdl_mixer.fadeInChannel()``.
-  ##
-  ##  ``Return`` the channel the sample is played on.
-  ##  On any errors, `-1` is returned.
 
 proc volume*(channel: cint; volume: cint): cint {.
     cdecl, importc: "Mix_Volume", dynlib: SDL2_MIX_LIB.}
