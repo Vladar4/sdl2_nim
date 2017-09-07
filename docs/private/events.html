@@ -1402,15 +1402,17 @@ function main() {
   timestamp*: uint32
   which*: JoystickID           ## The joystick instance id
   hat*: uint8                  ## The joystick hat index
-  value*: uint8 ## \
-              ## The hat position value.
-              ## 
-              ## See also:
-              ## 
-              ## `HAT_LEFTUP`, `HAT_UP`, `SDL_HAT_RIGHTUP`, `HAT_LEFT`, `HAT_CENTERED`,
-              ## `HAT_RIGHT`, `HAT_LEFTDOWN`, `HAT_DOWN`, `HAT_RIGHTDOWN`
-              ## 
-              ## Note that zero means the POV is centered.
+  value*: HatPosition ## \
+                    ## The hat position value.
+                    ## 
+                    ## See also:
+                    ## 
+                    ## ``HatPosition``:
+                    ## 
+                    ## `HAT_LEFTUP`, `HAT_UP`, `SDL_HAT_RIGHTUP`, `HAT_LEFT`, `HAT_CENTERED`,
+                    ## `HAT_RIGHT`, `HAT_LEFTDOWN`, `HAT_DOWN`, `HAT_RIGHTDOWN`
+                    ## 
+                    ## Note that zero means the POV is centered.
   padding1*: uint8
   padding2*: uint8"><wbr />Joy<wbr />Hat<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#JoyButtonEventObj"
@@ -1948,15 +1950,17 @@ class="link-seesrc" target="_blank">Source</a>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
   <span class="Identifier">hat</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                  <span class="Comment">## The joystick hat index</span>
-  <span class="Identifier">value</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span class="Comment">## \</span>
-              <span class="Comment">## The hat position value.</span>
-              <span class="Comment">## </span>
-              <span class="Comment">## See also:</span>
-              <span class="Comment">## </span>
-              <span class="Comment">## `HAT_LEFTUP`, `HAT_UP`, `SDL_HAT_RIGHTUP`, `HAT_LEFT`, `HAT_CENTERED`,</span>
-              <span class="Comment">## `HAT_RIGHT`, `HAT_LEFTDOWN`, `HAT_DOWN`, `HAT_RIGHTDOWN`</span>
-              <span class="Comment">## </span>
-              <span class="Comment">## Note that zero means the POV is centered.</span>
+  <span class="Identifier">value</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HatPosition</span> <span class="Comment">## \</span>
+                    <span class="Comment">## The hat position value.</span>
+                    <span class="Comment">## </span>
+                    <span class="Comment">## See also:</span>
+                    <span class="Comment">## </span>
+                    <span class="Comment">## ``HatPosition``:</span>
+                    <span class="Comment">## </span>
+                    <span class="Comment">## `HAT_LEFTUP`, `HAT_UP`, `SDL_HAT_RIGHTUP`, `HAT_LEFT`, `HAT_CENTERED`,</span>
+                    <span class="Comment">## `HAT_RIGHT`, `HAT_LEFTDOWN`, `HAT_DOWN`, `HAT_RIGHTDOWN`</span>
+                    <span class="Comment">## </span>
+                    <span class="Comment">## Note that zero means the POV is centered.</span>
   <span class="Identifier">padding1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">padding2</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
 </pre></dt>
@@ -1982,9 +1986,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Joystick button event structure (<cite>event.jbutton.*</cite>)
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L312"
+href="/tree/master/events.nim#L314"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L312" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L314" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="JoyDeviceEventObj"><a name="JoyDeviceEventObj"></a><pre><span class="Identifier">JoyDeviceEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1998,9 +2002,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Joystick device event structure (<cite>event.jdevice.*</cite>)
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L323"
+href="/tree/master/events.nim#L325"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L323" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L325" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="ControllerAxisEventObj"><a name="ControllerAxisEventObj"></a><pre><span class="Identifier">ControllerAxisEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -2018,9 +2022,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Game controller axis motion event structure (<cite>event.caxis.*</cite>)
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L332"
+href="/tree/master/events.nim#L334"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L332" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L334" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="ControllerButtonEventObj"><a name="ControllerButtonEventObj"></a><pre><span class="Identifier">ControllerButtonEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -2036,9 +2040,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Game controller button event structure (<cite>event.cbutton.*</cite>)
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L345"
+href="/tree/master/events.nim#L347"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L345" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L347" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="ControllerDeviceEventObj"><a name="ControllerDeviceEventObj"></a><pre><span class="Identifier">ControllerDeviceEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -2055,9 +2059,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Controller device event structure (<cite>event.cdevice.*</cite>)
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L356"
+href="/tree/master/events.nim#L358"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L356" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L358" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AudioDeviceEventObj"><a name="AudioDeviceEventObj"></a><pre><span class="Identifier">AudioDeviceEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -2078,9 +2082,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Audio device event structure (<cite>event.adevice.*</cite>)
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L368"
+href="/tree/master/events.nim#L370"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L368" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L370" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="TouchFingerEventObj"><a name="TouchFingerEventObj"></a><pre><span class="Identifier">TouchFingerEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -2098,9 +2102,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Touch finger event structure (<cite>event.tfinger.*</cite>)
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L384"
+href="/tree/master/events.nim#L386"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L384" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L386" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="MultiGestureEventObj"><a name="MultiGestureEventObj"></a><pre><span class="Identifier">MultiGestureEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -2117,9 +2121,9 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 Multiple Finger Gesture Event (<cite>event.mgesture.*</cite>)
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L397"
+href="/tree/master/events.nim#L399"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L397" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L399" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="DollarGestureEventObj"><a name="DollarGestureEventObj"></a><pre><span class="Identifier">DollarGestureEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -2135,9 +2139,9 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 Dollar Gesture Event (<cite>event.dgesture.*</cite>)
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L410"
+href="/tree/master/events.nim#L412"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L410" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L412" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="DropEventObj"><a name="DropEventObj"></a><pre><span class="Identifier">DropEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -2155,9 +2159,9 @@ An event used to request a file open by the system (<cite>event.drop.*</cite>)</
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> If this event is enabled, you must free the filename in the event.</p>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L422"
+href="/tree/master/events.nim#L424"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L422" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L424" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="QuitEventObj"><a name="QuitEventObj"></a><pre><span class="Identifier">QuitEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -2168,9 +2172,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 The &quot;quit requested&quot; event
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L438"
+href="/tree/master/events.nim#L440"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L438" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L440" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="OSEventObj"><a name="OSEventObj"></a><pre><span class="Identifier">OSEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -2181,9 +2185,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 OS Specific event
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L444"
+href="/tree/master/events.nim#L446"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L444" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L446" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="UserEventObj"><a name="UserEventObj"></a><pre><span class="Identifier">UserEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -2198,18 +2202,18 @@ class="link-seesrc" target="_blank">Source</a>
 
 A user-defined event type (<cite>event.user.*</cite>)
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L450"
+href="/tree/master/events.nim#L452"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L450" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L452" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="SysWMmsg"><a name="SysWMmsg"></a><pre><span class="Identifier">SysWMmsg</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 declared in sdl_syswm.nim
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L460"
+href="/tree/master/events.nim#L462"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L460" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L462" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="SysWMEventObj"><a name="SysWMEventObj"></a><pre><span class="Identifier">SysWMEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -2224,9 +2228,9 @@ A video driver dependent system event (<cite>event.syswm.*</cite>)</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> If you want to use this event, you should include <tt class="docutils literal"><span class="pre">syswm.nim</span></tt>.</p>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L463"
+href="/tree/master/events.nim#L465"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L463" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L465" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="Event"><a name="Event"></a><pre><span class="Identifier">Event</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">union</span></div><span class="Other pragmaend">.}</span>
@@ -2267,9 +2271,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 General event structure
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L476"
+href="/tree/master/events.nim#L478"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L476" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L478" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="EventAction"><a name="EventAction"></a><pre><span class="Identifier">EventAction</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
@@ -2277,18 +2281,18 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L523"
+href="/tree/master/events.nim#L525"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L523" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L525" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="EventFilter"><a name="EventFilter"></a><pre><span class="Identifier">EventFilter</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L607"
+href="/tree/master/events.nim#L609"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L607" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L609" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -2336,36 +2340,36 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L654"
+href="/tree/master/events.nim#L656"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L654" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L656" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="IGNORE"><a name="IGNORE"></a><pre><span class="Identifier">IGNORE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L655"
+href="/tree/master/events.nim#L657"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L655" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L657" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="DISABLE"><a name="DISABLE"></a><pre><span class="Identifier">DISABLE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L656"
+href="/tree/master/events.nim#L658"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L656" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L658" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="ENABLE"><a name="ENABLE"></a><pre><span class="Identifier">ENABLE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L657"
+href="/tree/master/events.nim#L659"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L657" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L659" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -2380,9 +2384,9 @@ class="link-seesrc" target="_blank">Source</a>
 <p>This should only be run in the thread that sets the video mode.</p>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L513"
+href="/tree/master/events.nim#L515"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L513" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L515" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="peepEvents"><a name="peepEvents,ptr.Event,cint,EventAction,EventKind,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">peepEvents</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">events</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">;</span> <span class="Identifier">numevents</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">action</span><span class="Other">:</span> <span class="Identifier">EventAction</span><span class="Other">;</span>
@@ -2397,9 +2401,9 @@ class="link-seesrc" target="_blank">Source</a>
 <p>This procedure is thread-safe.</p>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L526"
+href="/tree/master/events.nim#L528"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L526" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L528" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hasEvent"><a name="hasEvent,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasEvent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasEvent&quot;</span><span class="Other">,</span>
@@ -2407,9 +2411,9 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 Checks to see if certain event types are in the event queue.
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L548"
+href="/tree/master/events.nim#L550"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L548" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L550" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hasEvents"><a name="hasEvents,EventKind,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasEvents</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">minKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">;</span> <span class="Identifier">maxKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2417,9 +2421,9 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L552"
+href="/tree/master/events.nim#L554"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L552" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L554" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="flushEvent"><a name="flushEvent,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">flushEvent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FlushEvent&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -2428,9 +2432,9 @@ class="link-seesrc" target="_blank">Source</a>
 <p>This procedure only affects currently queued events. If you want to make sure that all pending OS events are flushed, you can call <tt class="docutils literal"><span class="pre">pumpEvents()</span></tt> on the main thread immediately before flush call.</p>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L555"
+href="/tree/master/events.nim#L557"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L555" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L557" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="flushEvents"><a name="flushEvents,EventKind,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">flushEvents</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">minKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">;</span> <span class="Identifier">maxKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2438,9 +2442,9 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L564"
+href="/tree/master/events.nim#L566"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L564" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L566" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="pollEvent"><a name="pollEvent,ptr.Event"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pollEvent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PollEvent&quot;</span><span class="Other">,</span>
@@ -2451,9 +2455,9 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">event</span></tt> If not <cite>nil</cite>, the next event is removed from the queue and stored in that area.</p>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L567"
+href="/tree/master/events.nim#L569"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L567" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L569" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="waitEvent"><a name="waitEvent,ptr.Event"></a><pre><span class="Keyword">proc</span> <span class="Identifier">waitEvent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WaitEvent&quot;</span><span class="Other">,</span>
@@ -2464,9 +2468,9 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">event</span></tt> If not <cite>nil</cite>, the next event is removed from the queue and stored in that area.</p>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L577"
+href="/tree/master/events.nim#L579"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L577" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L579" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="waitEventTimeout"><a name="waitEventTimeout,ptr.Event,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">waitEventTimeout</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">;</span> <span class="Identifier">timeout</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2478,9 +2482,9 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">timeout</span></tt> The timeout (in milliseconds) to wait for next event.</p>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L586"
+href="/tree/master/events.nim#L588"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L586" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L588" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="pushEvent"><a name="pushEvent,ptr.Event"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pushEvent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PushEvent&quot;</span><span class="Other">,</span>
@@ -2490,9 +2494,9 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite> on success, <cite>0</cite> if the event was filtered, or <cite>-1</cite> if the event queue was full or there was some other error.</p>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L599"
+href="/tree/master/events.nim#L601"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L599" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L601" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setEventFilter"><a name="setEventFilter,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setEventFilter</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2507,9 +2511,9 @@ class="link-seesrc" target="_blank">Source</a>
 <p>If the quit event is generated by an interrupt signal, it will bypass the internal queue and be delivered to the application at the next event poll.</p>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L609"
+href="/tree/master/events.nim#L611"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L609" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L611" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getEventFilter"><a name="getEventFilter,ptr.EventFilter,ptr.pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getEventFilter</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2517,9 +2521,9 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 Return the current event filter - can be used to &quot;chain&quot; filters. If there is no event filter set, this procedure returns <cite>false</cite>.
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L635"
+href="/tree/master/events.nim#L637"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L635" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L637" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="addEventWatch"><a name="addEventWatch,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">addEventWatch</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2527,9 +2531,9 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 Add a procedure which is called when an event is added to the queue.
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L640"
+href="/tree/master/events.nim#L642"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L640" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L642" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="delEventWatch"><a name="delEventWatch,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">delEventWatch</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2537,9 +2541,9 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 Remove an event watch procedure added with <tt class="docutils literal"><span class="pre">addEventWatch()</span></tt>
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L644"
+href="/tree/master/events.nim#L646"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L644" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L646" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="filterEvents"><a name="filterEvents,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">filterEvents</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2547,9 +2551,9 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 Run the filter procedure on the current event queue, removing any events for which the filter returns <cite>0</cite>.
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L648"
+href="/tree/master/events.nim#L650"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L648" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L650" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="eventState"><a name="eventState,EventKind,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">eventState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">;</span> <span class="Identifier">state</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2563,9 +2567,9 @@ current processing state of the specified event.</li>
 </ul>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L659"
+href="/tree/master/events.nim#L661"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L659" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L661" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="registerEvents"><a name="registerEvents,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">registerEvents</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">numevents</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RegisterEvents&quot;</span><span class="Other">,</span>
@@ -2575,9 +2579,9 @@ class="link-seesrc" target="_blank">Source</a>
 <p>If there aren't enough user-defined events left, this procedure returns <cite>-1'u32</cite>.</p>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L672"
+href="/tree/master/events.nim#L674"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L672" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L674" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -2589,9 +2593,9 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 &nbsp;&nbsp;<a
-href="/tree/master/events.nim#L669"
+href="/tree/master/events.nim#L671"
 class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L669" class="link-seesrc" target="_blank" >Edit</a>
+<a href="/edit/devel/events.nim#L671" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -2604,7 +2608,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-04-07 09:21:08 UTC</small>
       </div>
     </div>
   </div>
