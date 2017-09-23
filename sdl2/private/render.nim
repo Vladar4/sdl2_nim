@@ -234,6 +234,8 @@ proc createTexture*(renderer: Renderer;
   ##  context was active, the format was unsupported, or the width or height
   ##  were out of range.
   ##
+  ##  ``Note`` The contents of the texture are not defined at creation.
+  ##
   ##  See also:
   ##
   ##  ``queryTexture()``
@@ -397,10 +399,13 @@ proc updateTexture*(
   ##  ``rect`` A pointer to the rectangle of pixels to update, or `nil` to
   ##  update the entire texture.
   ##
-  ##  ``pixels`` The raw pixel data.
+  ##  ``pixels`` The raw pixel data in the format of the texture.
   ##
   ##  ``pitch`` The number of bytes in a row of pixel data,
   ##  including padding between lines.
+  ##
+  ##  The pixel data must be in the format of the texture.
+  ##  The pixel format can be queried with ``queryTexture()``.
   ##
   ##  ``Return`` `0` on success, or `-1` if the texture is not valid.
   ##
@@ -908,7 +913,7 @@ proc renderCopyEx*(
   ##  or `nil` for the entire rendering target.
   ##
   ##  ``angle`` An angle in degrees that indicates the rotation
-  ##  that will be applied to dstrect.
+  ##  that will be applied to dstrect, rotating it in a clockwise direction.
   ##
   ##  ``center`` A pointer to a point indicating the point
   ##  around which ``dstrect`` will be rotated
