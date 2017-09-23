@@ -150,7 +150,8 @@ type
     format*: AudioFormat      ##  Audio data format
     channels*: uint8          ##  Number of channels: `1` mono, `2` stereo
     silence*: uint8           ##  Audio buffer silence value (calculated)
-    samples*: uint16          ##  Audio buffer size in samples (power of 2)
+    samples*: uint16          ##  Audio buffer size in sample FRAMES \
+      ##  (total samples divided by channel count)
     padding*: uint16          ##  Necessary for some compile environments
     size*: uint32             ##  Audio buffer size in bytes (calculated)
     callback*: AudioCallback  ##  Callback that feeds the audio device  \
@@ -158,11 +159,24 @@ type
     userdata*: pointer        ##  Userdata passed to callback \
       ##  (ignored for `nil` callbacks).
 
+const
+  AudioCVTMaxFilters* = 9 ##  Upper limit of filters in ``AudioCVT``  \
+    ##  The maximum number of ``AudioFilter`` functions in ``AudioCVT`` is
+    ##  currently limited to `9`. The ``AudioCVT.filters`` array has
+    ##  10 pointers, one of which is the terminating ``nil`` pointer.
+
 type
   AudioFilter* = proc (cvt: ptr AudioCVT; format: AudioFormat) {.cdecl.}
 
   AudioCVT* = object {.packed.} ##  \
     ##  A structure to hold a set of audio conversion filters and buffers.
+    ##
+    ##  Note that various parts of the conversion pipeline can take advantage
+    ##  of SIMD operations (like SSE2, for example). ``AudioCVT`` doesn't
+    ##  require you to pass it aligned data, but can possibly run much faster
+    ##  if you set both its ``buf`` field to a pointer that is aligned to 16
+    ##  bytes, and its ``len`` field to something that's a multiple of 16,
+    ##  if possible.
     ##
     ##  This structure is 84 bytes on 32-bit architectures, make sure GCC
     ##  doesn't pad it out to 88 bytes to guarantee ABI compatibility between
@@ -176,8 +190,9 @@ type
     len*: cint                ##  Length of original audio buffer
     len_cvt*: cint            ##  Length of converted audio buffer
     len_mult*: cint           ##  buffer must be `len*len_mult` big
-    len_ratio*: cdouble       ##  Given len, final size is `len*len_ratio`
-    filters*: array[10, AudioFilter]  ##  Filter list
+    len_ratio*: cdouble       ##  Given len, final size is `len * len_ratio`
+    filters*: array[AudioCVTMaxFilters + 1, AudioFilter]  ##  \
+      ##  ``nil``-terminated list of filter functions
     filter_index*: cint       ##  Current audio conversion procedure
 
 # Procedures
@@ -399,10 +414,11 @@ proc buildAudioCVT*(cvt: ptr AudioCVT;
   ##  This procedure takes a source format and rate and a destination format
   ##  and rate, and initializes the ``cvt`` object with information needed
   ##  by ``convertAudio()`` to convert a buffer of audio data from one format
-  ##  to the other.
+  ##  to the other. An unsupported format causes an error and `-1` will be
+  ##  returned.
   ##
-  ##  ``Return`` `-1` if the format conversion is not supported,
-  ##  `0` if there's no conversion needed, or 1 if the audio filter is set up.
+  ##  ``Return`` `0` if no conversion is needed,
+  ##  `1` if the audio filter is set up, or `-1` on error.
 
 proc convertAudio*(cvt: ptr AudioCVT): cint {.
     cdecl, importc: "SDL_ConvertAudio", dynlib: SDL2_LIB.}
@@ -414,6 +430,8 @@ proc convertAudio*(cvt: ptr AudioCVT): cint {.
   ##  The data conversion may expand the size of the audio data, so the buffer
   ##  ``cvt.buf`` should be allocated after the ``cvt`` object is initialized
   ##  by ``buildAudioCVT()``, and should be `cvt.len*cvt.len_mult` bytes long.
+  ##
+  ##  ``Return`` `0` on success or `-1` if ``cvt.buf`` is ``nil``.
 
 const
   MIX_MAXVOLUME* = 128
