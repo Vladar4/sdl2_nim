@@ -122,7 +122,7 @@ proc setWindowShape*(
   ##
   ##  ``shape_mode`` The parameters to set for the shaped window.
   ##
-  ##  ``Return`` `0` on success, `INVALID_SHAPE_ARGUMENT` on invalid an invalid
+  ##  ``Return`` `0` on success, `INVALID_SHAPE_ARGUMENT` on an invalid
   ##  shape argument, or `NONSHAPEABLE_WINDOW` if the ``Window`` given does not
   ##  reference a valid shaped window.
   ##
