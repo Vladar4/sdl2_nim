@@ -167,13 +167,13 @@ type
   CommonEventObj* = object ##  \
     ##  Fields shared by every event
     kind*: EventKind
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
 
 type
   WindowEventObj* = object ##  \
     ##  Window state change event data (`event.window.*`)
     kind*: EventKind        ##  `WINDOWEVENT`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     windowID*: uint32       ##  The associated window
     event*: WindowEventID   ##  WindowEventID
     padding1*: uint8
@@ -186,7 +186,7 @@ type
   KeyboardEventObj* = object ##  \
     ##  Keyboard button event structure (`event.key.*`)
     kind*: EventKind        ##  `KEYDOWN` or `KEYUP`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     windowID*: uint32       ##  The window with keyboard focus, if any
     state*: uint8           ##  `PRESSED` or `RELEASED`
     repeat*: uint8          ##  Non-zero if this is a key repeat
@@ -201,7 +201,7 @@ type
   TextEditingEventObj* = object ##  \
     ##  Keyboard text editing event structure (`event.edit.*`)
     kind*: EventKind        ##  `TEXTEDITING`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     windowID*: uint32       ##  The window with keyboard focus, if any
     text*: array[TEXTEDITINGEVENT_TEXT_SIZE, char]  ##  The editing text
     start*: int32           ##  The start cursor of selected editing text
@@ -214,7 +214,7 @@ type
   TextInputEventObj* = object ##  \
     ##  Keyboard text input event structure (`event.text.*`)
     kind*: EventKind        ##  `TEXTINPUT`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     windowID*: uint32       ##  The window with keyboard focus, if any
     text*: array[TEXTINPUTEVENT_TEXT_SIZE, char]  ##  The input text
 
@@ -222,7 +222,7 @@ type
   MouseMotionEventObj* = object ##  \
     ##  Mouse motion event structure (`event.motion.*`)
     kind*: EventKind        ##  `MOUSEMOTION`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     windowID*: uint32       ##  The window with mouse focus, if any
     which*: uint32          ##  The mouse instance id, or `TOUCH_MOUSEID`
     state*: uint32          ##  The current button state
@@ -235,7 +235,7 @@ type
   MouseButtonEventObj* = object ##  \
     ##  Mouse button event structure (`event.button.*`)
     kind*: EventKind        ##  `MOUSEBUTTONDOWN` or `MOUSEBUTTONUP`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     windowID*: uint32       ##  The window with mouse focus, if any
     which*: uint32          ##  The mouse instance id, or `TOUCH_MOUSEID`
     button*: uint8          ##  The mouse button index
@@ -249,7 +249,7 @@ type
   MouseWheelEventObj* = object ##  \
     ##  Mouse wheel event structure (`event.wheel.*`)
     kind*: EventKind        ##  `MOUSEWHEEL`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     windowID*: uint32       ##  The window with mouse focus, if any
     which*: uint32          ##  The mouse instance id, or `TOUCH_MOUSEID`
     x*: int32               ##  \
@@ -267,7 +267,7 @@ type
   JoyAxisEventObj* = object ##  \
     ##  Joystick axis motion event structure (`event.jaxis.*`)
     kind*: EventKind        ##  `JOYAXISMOTION`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     which*: JoystickID      ##  The joystick instance id
     axis*: uint8            ##  The joystick axis index
     padding1*: uint8
@@ -280,7 +280,7 @@ type
   JoyBallEventObj* = object ##  \
     ##  Joystick trackball motion event structure (`event.jball.*`)
     kind*: EventKind        ##  `JOYBALLMOTION`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     which*: JoystickID      ##  The joystick instance id
     ball*: uint8            ##  The joystick trackball index
     padding1*: uint8
@@ -293,7 +293,7 @@ type
   JoyHatEventObj* = object ##  \
     ##  Joystick hat position change event structure (`event.jhat.*`)
     kind*: EventKind        ##  `JOYHATMOTION`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     which*: JoystickID      ##  The joystick instance id
     hat*: uint8             ##  The joystick hat index
     value*: HatPosition     ##  \
@@ -314,7 +314,7 @@ type
   JoyButtonEventObj* = object ##  \
     ##  Joystick button event structure (`event.jbutton.*`)
     kind*: EventKind        ##  `JOYBUTTONDOWN` or `JOYBUTTONUP`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     which*: JoystickID      ##  The joystick instance id
     button*: uint8          ##  The joystick button index
     state*: uint8           ##  `PRESSED` or `RELEASED`
@@ -325,7 +325,7 @@ type
   JoyDeviceEventObj* = object ##  \
     ##  Joystick device event structure (`event.jdevice.*`)
     kind*: EventKind        ##  `JOYDEVICEADDED` or `JOYDEVICEREMOVED`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     which*: int32           ##  \
       ##  The joystick device index for the `ADDED` event,
       ##  instance id for the `REMOVED` event
@@ -334,7 +334,7 @@ type
   ControllerAxisEventObj* = object ##  \
     ##  Game controller axis motion event structure (`event.caxis.*`)
     kind*: EventKind        ##  `CONTROLLERAXISMOTION`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     which*: JoystickID      ##  The joystick instance id
     axis*: GameControllerAxis ##  The controller axis (``GameControllerAxis``)
     padding1*: uint8
@@ -347,7 +347,7 @@ type
   ControllerButtonEventObj* = object ##  \
     ##  Game controller button event structure (`event.cbutton.*`)
     kind*: EventKind        ##  `CONTROLLERBUTTONDOWN` or `CONTROLLERBUTTONUP`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     which*: JoystickID      ##  The joystick instance id
     button*: GameControllerButton ##  The controller button (``GameControllerButton``)
     state*: uint8           ##  `PRESSED` or `RELEASED`
@@ -361,7 +361,7 @@ type
       ##  `CONTROLLERDEVICEADDED`,
       ##  `CONTROLLERDEVICEREMOVED, or
       ##  `CONTROLLERDEVICEREMAPPED`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     which*: int32           ##  \
       ##  The joystick device index for the `ADDED` event,
       ##  instance id for the `REMOVED` or `REMAPPED` event 
@@ -370,7 +370,7 @@ type
   AudioDeviceEventObj* = object ##  \
     ##  Audio device event structure (`event.adevice.*`)
     kind*: EventKind        ##  `AUDIODEVICEADDED`, or `AUDIODEVICEREMOVED`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     which*: uint32          ##  \
       ##  The audio device index for the `ADDED` event (valid until next
       ##  ``getNumAudioDevices()`` call),
@@ -386,7 +386,7 @@ type
   TouchFingerEventObj* = object ##  \
     ##  Touch finger event structure (`event.tfinger.*`)
     kind*: EventKind        ##  `FINGERMOTION` or `FINGERDOWN` or `FINGERUP`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     touchId*: TouchID       ##  The touch device id
     fingerId*: FingerID
     x*: cfloat              ##  Normalized in the range 0...1
@@ -399,7 +399,7 @@ type
   MultiGestureEventObj* = object
     ##  Multiple Finger Gesture Event (`event.mgesture.*`)
     kind*: EventKind        ##  `MULTIGESTURE`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     touchId*: TouchID       ##  The touch device index
     dTheta*: cfloat
     dDist*: cfloat
@@ -412,7 +412,7 @@ type
   DollarGestureEventObj* = object
     ##  Dollar Gesture Event (`event.dgesture.*`)
     kind*: EventKind        ##  `DOLLARGESTURE` or `DOLLARRECORD`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     touchId*: TouchID       ##  The touch device id
     gestureId*: GestureID
     numFingers*: uint32
@@ -431,7 +431,7 @@ type
     ##  you must free the filename in the event.
     kind*: EventKind  ##  `DROPBEGIN` or `DROPFILE`
                       ##  or `DROPTEXT` or `DROPCOMPLETE`
-    timestamp*: uint32
+    timestamp*: uint32##  In milliseconds, populated using ``getTicks()``
     file*: cstring    ##  The file name, which should be freed with ``free()``,
                       ##  is ``nil`` on begin/complete
     windowID: uint32  ##  The window that was dropped on, if any
@@ -440,19 +440,19 @@ type
   QuitEventObj* = object ##  \
     ##  The "quit requested" event
     kind*: EventKind        ## `QUIT`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
 
 type
   OSEventObj* = object ##  \
     ##  OS Specific event
     kind*: EventKind        ##  `QUIT`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
 
 type
   UserEventObj* = object ##  \
     ##  A user-defined event type (`event.user.*`)
     kind*: EventKind        ##  `USEREVENT` through `LASTEVENT-1`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     windowID*: uint32       ##  The associated window if any
     code*: int32            ##  User defined event code
     data1*: pointer         ##  User defined data pointer
@@ -471,7 +471,7 @@ type
     ##  ``Note:`` If you want to use this event,
     ##  you should include ``syswm.nim``.
     kind*: EventKind        ##  `SYSWMEVENT`
-    timestamp*: uint32
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     msg*: SysWMmsg          ##  driver dependent data, defined in ``syswm.nim``
 
 type
@@ -663,7 +663,7 @@ proc eventState*(kind: EventKind; state: cint): uint8 {.
   ##  This procedure allows you to set the state of processing certain events.
   ##
   ##  * If ``state`` is set to `IGNORE`, that event will be automatically \
-  ##  dropped from the event queue and will not event be filtered.
+  ##  dropped from the event queue and will not be filtered.
   ##  * If ``state`` is set to `ENABLE`, that event will be processed normally.
   ##  * If ``state`` is set to `QUERY`, ``eventState()`` will return the \
   ##  current processing state of the specified event.
