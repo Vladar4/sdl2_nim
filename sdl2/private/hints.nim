@@ -108,6 +108,18 @@ const
     ##  By default, SDL does not use Direct3D Debug Layer.
 
 const
+  HINT_RENDER_LOGICAL_SIZE_MODE* = "SDL_RENDER_LOGICAL_SIZE_MODE" ##  \
+    ##  A variable controlling the scaling policy for ``renderSetLogicalSize``.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0" or "letterbox" - Uses letterbox/sidebars
+    ##    to fit the entire rendering on screen
+    ##  * "1" or "overscan"  - Will zoom the rendering
+    ##    so it fills the entire screen, allowing edges to be drawn offscreen
+    ##
+    ##  By default letterbox is used.
+
+const
   HINT_RENDER_SCALE_QUALITY* = "SDL_RENDER_SCALE_QUALITY" ##  \
     ##  A variable controlling the scaling quality
     ##
@@ -190,7 +202,8 @@ const
     ##  The hint is checked in ``createWindow()``.
 
 const
-  HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN* = "SDL_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN" ##  \
+  HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN* =
+    "SDL_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN" ##  \
     ##  A variable controlling whether the window frame and title bar are
     ##  interactive when the cursor is hidden.
     ##
@@ -203,6 +216,12 @@ const
     ##  when the cursor is hidden.
 
 const
+  HINT_WINDOWS_INTRESOURCE_ICON* = "SDL_WINDOWS_INTRESOURCE_ICON" ##  \
+    ##  A variable to specify custom icon resource id
+    ##  from RC file on Windows platform.
+  HINT_WINDOWS_INTRESOURCE_ICON_SMALL* = "SDL_WINDOWS_INTRESOURCE_ICON_SMALL"
+
+const
   HINT_WINDOWS_ENABLE_MESSAGELOOP* = "SDL_WINDOWS_ENABLE_MESSAGELOOP" ##  \
     ##  A variable controlling whether the windows message loop is processed
     ##  by SDL
@@ -212,7 +231,6 @@ const
     ##  * "1"       - The window message loop is processed in ``pumpEvents()``
     ##
     ##  By default SDL will process the windows message loop.
-
 
 const
   HINT_GRAB_KEYBOARD* = "SDL_GRAB_KEYBOARD" ##  \
@@ -224,6 +242,16 @@ const
     ##
     ##  By default SDL will not grab the keyboard
     ##  so system shortcuts still work.
+
+const
+  HINT_MOUSE_NORMAL_SPEED_SCALE* = "SDL_MOUSE_NORMAL_SPEED_SCALE" ##  \
+    ##  A variable setting the speed scale for mouse motion, in floating point,
+    ##  when the mouse is not in relative mode.
+
+const
+  HINT_MOUSE_RELATIVE_SPEED_SCALE* = "SDL_MOUSE_RELATIVE_SPEED_SCALE" ##  \
+    ##  A variable setting the scale for mouse motion, in floating point,
+    ##  when the mouse is in relative mode.
 
 const
   HINT_MOUSE_RELATIVE_MODE_WARP* = "SDL_MOUSE_RELATIVE_MODE_WARP" ##  \
@@ -245,6 +273,17 @@ const
     ##  * "1"       - Generate events for mouse clicks that activate a window
     ##
     ##  By default SDL will ignore mouse clicks that activate a window.
+
+const
+  HINT_TOUCH_MOUSE_EVENTS* = "SDL_TOUCH_MOUSE_EVENTS" ##  \
+    ##  A variable controlling whether touch events
+    ##  should generate synthetic mouse events.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - Touch events will not generate mouse events
+    ##  * "1"       - Touch events will generate mouse events
+    ##
+    ##  By default SDL will generate mouse events for touch events.
 
 const
   HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS* = "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS" ##  \
@@ -282,7 +321,8 @@ const
     ##  * "PortraitUpsideDown"
 
 const
-  HINT_APPLE_TV_CONTROLLER_UI_EVENTS* = "SDL_APPLE_TV_CONTROLLER_UI_EVENTS" ##  \
+  HINT_APPLE_TV_CONTROLLER_UI_EVENTS* =
+    "SDL_APPLE_TV_CONTROLLER_UI_EVENTS" ##  \
     ##  A variable controlling whether controllers used with the Apple TV
     ##  generate UI events.
     ##
@@ -299,7 +339,8 @@ const
     ##  * "1"     - Controller input generates UI events.
 
 const
-  HINT_APPLE_TV_REMOTE_ALLOW_ROTATION* = "SDL_APPLE_TV_REMOTE_ALLOW_ROTATION" ##  \
+  HINT_APPLE_TV_REMOTE_ALLOW_ROTATION* =
+    "SDL_APPLE_TV_REMOTE_ALLOW_ROTATION" ##  \
     ##  A variable controlling whether the Apple TV remote's joystick axes
     ##  will automatically match the rotation of the remote.
     ##
@@ -339,7 +380,7 @@ const
 
 const
   HINT_GAMECONTROLLERCONFIG* = "SDL_GAMECONTROLLERCONFIG" ##  \
-    ##  A variable that lets you manually hint extra gamecontroller db entries
+    ##  A variable that lets you manually hint extra gamecontroller db entries.
     ##
     ##  The variable should be newline delimited rows of gamecontroller config
     ##  data, see `gamecontroller.nim`
@@ -347,6 +388,34 @@ const
     ##  This hint must be set before calling ``init(INIT_GAMECONTROLLER)``
     ##  You can update mappings after the system is initialized with
     ##  ``gameControllerMappingForGUID()`` and ``gameControllerAddMapping()``
+
+const
+  HINT_GAMECONTROLLER_IGNORE_DEVICES* =
+    "SDL_GAMECONTROLLER_IGNORE_DEVICES" ##  \
+    ##  A variable containing a list of devices to skip
+    ##  when scanning for game controllers.
+    ##
+    ##  The format of the string is a comma separated list of USB VID/PID pairs
+    ##  in hexadecimal form, e.g.
+    ##
+    ##  0xAAAA/0xBBBB,0xCCCC/0xDDDD
+    ##
+    ##  The variable can also take the form of @file, in which case the named
+    ##  file will be loaded and interpreted as the value of the variable.
+
+const
+  HINT_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT* =
+    "SDL_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT"  ##  \
+    ##  If set, all devices will be skipped when scanning for game controllers
+    ##  except for the ones listed in this variable.
+    ##
+    ##  The format of the string is a comma separated list of USB VID/PID pairs
+    ##  in hexadecimal form, e.g.
+    ##
+    ##  0xAAAA/0xBBBB,0xCCCC/0xDDDD
+    ##
+    ##  The variable can also take the form of @file, in which case the named
+    ##  file will be loaded and interpreted as the value of the variable.
 
 const
   HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS* =
@@ -388,6 +457,41 @@ const
     ##  If this variable is set to "0", the system timer resolution is not set.
     ##
     ##  The default value is "1". This hint may be set at any time.
+
+const
+  HINT_QTWAYLAND_CONTENT_ORIENTATION* =
+    "SDL_QTWAYLAND_CONTENT_ORIENTATION" ##  \
+    ##  A variable describing the content orientation
+    ##  on QtWayland-based platforms.
+    ##
+    ##  On QtWayland platforms, windows are rotated client-side to allow for
+    ##  custom transitions. In order to correctly position overlays
+    ##  (e.g. volume bar) and gestures (e.g. events view, close/minimize
+    ##  gestures), the system needs to know in which orientation the
+    ##  application is currently drawing its contents.
+    ##
+    ##  This does not cause the window to be rotated or resized, the application
+    ##  needs to take care of drawing the content in the right orientation (the
+    ##  framebuffer is always in portrait mode).
+    ##
+    ##  This variable can be one of the following values:
+    ##
+    ##  "primary" (default), "portrait", "landscape",
+    ##  "inverted-portrait", "inverted-landscape"
+
+const
+  HINT_QTWAYLAND_WINDOW_FLAGS* = "SDL_QTWAYLAND_WINDOW_FLAGS" ##  \
+    ##  Flags to set on QtWayland windows
+    ##  to integrate with the native window manager.
+    ##
+    ##  On QtWayland platforms, this hint controls the flags
+    ##  to set on the windows. For example, on Sailfish OS
+    ##  "OverridesSystemGestures" disables swipe gestures.
+    ##
+    ##  This variable is a space-separated list of the following values
+    ##  (empty = no flags):
+    ##
+    ##  "OverridesSystemGestures", "StaysOnTop", "BypassWindowManager"
 
 const
   HINT_THREAD_STACK_SIZE* = "SDL_THREAD_STACK_SIZE" ##  \
@@ -608,7 +712,8 @@ const
     ##  searched.
 
 const
-  HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION* = "SDL_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION"  ##  \
+  HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION* =
+    "SDL_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION"  ##  \
     ##  Android APK expansion patch file version.
     ##  Should be a string number like "1", "2" etc.
     ##
@@ -636,7 +741,8 @@ const
     ##    will be rendered in its own UI.
 
 const
-  HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH* = "SDL_ANDROID_SEPARATE_MOUSE_AND_TOUCH"  ##  \
+  HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH* =
+    "SDL_ANDROID_SEPARATE_MOUSE_AND_TOUCH"  ##  \
     ##  A variable to control whether mouse and touch events are to be treated
     ##  together or separately.
     ##
@@ -703,22 +809,98 @@ const
     ##  The default value is "0".
 
 const
-  HINT_WINDOWS_DISABLE_THREAD_NAMING* = "SDL_WINDOWS_DISABLE_THREAD_NAMING" ##  \
-    ##  Tell SDL not to name threads on Windows.
+  HINT_WINDOWS_DISABLE_THREAD_NAMING* =
+    "SDL_WINDOWS_DISABLE_THREAD_NAMING" ##  \
+    ##  Tell SDL not to name threads on Windows with the 0x406D1388 Exception.
+    ##  The 0x406D1388 Exception is a trick used to inform Visual Studio of a
+    ##  thread's name, but it tends to cause problems with other debuggers,
+    ##  and the .NET runtime. Note that SDL 2.0.6 and later will still use
+    ##  the (safer) SetThreadDescription API, introduced in the Windows 10
+    ##  Creators Update, if available.
     ##
     ##  The variable can be set to the following values:
     ##  * "0" - SDL will raise the 0x406D1388 Exception to name threads.
-    ##    This is the default behavior of SDL <= 2.0.4. (default)
+    ##    This is the default behavior of SDL <= 2.0.4.
     ##  * "1" - SDL will not raise this exception, and threads will be unnamed.
-    ##    For .NET languages this is required when running under a debugger.
+    ##    (default) This is necessary with .NET languages or debuggers
+    ##    that aren't Visual Studio.
 
 const
-  HINT_RPI_VIDEO_LAYER* = "SDL_RPI_VIDEO_LAYER"
+  HINT_RPI_VIDEO_LAYER* = "SDL_RPI_VIDEO_LAYER" ##  \
     ##  Tell SDL which Dispmanx layer to use on a Raspberry PI
     ##
     ##  Also known as Z-order.
     ##  The variable can take a negative or positive value.
     ##  The default is `10000`.
+
+const
+  HINT_OPENGL_ES_DRIVER* = "SDL_OPENGL_ES_DRIVER" ##  \
+    ##  A variable controlling what driver to use for OpenGL ES contexts.
+    ##
+    ##  On some platforms, currently Windows and X11, OpenGL drivers may support
+    ##  creating contexts with an OpenGL ES profile. By default SDL uses these
+    ##  profiles, when available, otherwise it attempts to load an OpenGL ES
+    ##  library, e.g. that provided by the ANGLE project. This variable controls
+    ##  whether SDL follows this default behaviour or will always load an
+    ##  OpenGL ES library.
+    ##
+    ##  Circumstances where this is useful include:
+    ##  * Testing an app with a particular OpenGL ES implementation, e.g ANGLE,
+    ##    or emulator, e.g. those from ARM, Imagination or Qualcomm.
+    ##  * Resolving OpenGL ES function addresses at link time by linking with
+    ##    the OpenGL ES library instead of querying them at run time with
+    ##    ``glGetProcAddress()``.
+    ##
+    ##  ``Caution:`` for an application to work with the default behaviour
+    ##  across different OpenGL drivers it must query the OpenGL ES function
+    ##  addresses at run time using ``glGetProcAddress()``.
+    ##
+    ##  This variable is ignored on most platforms because OpenGL ES is native
+    ##  or not supported.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0" - Use ES profile of OpenGL, if available. (Default when not set.)
+    ##  * "1" - Load OpenGL ES library using the default library names.
+
+const
+  HINT_AUDIO_RESAMPLING_MODE* = "SDL_AUDIO_RESAMPLING_MODE" ##  \
+    ##  A variable controlling speed/quality tradeoff of audio resampling.
+    ##
+    ##  If available, SDL can use libsamplerate
+    ##  ( http://www.mega-nerd.com/SRC/ ) to handle audio resampling.
+    ##  There are different resampling modes available that produce different
+    ##  levels of quality, using more CPU.
+    ##
+    ##  If this hint isn't specified to a valid setting, or libsamplerate isn't
+    ##  available, SDL will use the default, internal resampling algorithm.
+    ##
+    ##  Note that this is currently only applicable to resampling audio that is
+    ##  being written to a device for playback or audio being read from a device
+    ##  for capture. ``AudioCVT`` always uses the default resampler
+    ##  (although this might change for SDL 2.1).
+    ##
+    ##  This hint is currently only checked at audio subsystem initialization.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0" or "default" - Use SDL's internal resampling
+    ##    (Default when not set - low quality, fast)
+    ##  * "1" or "fast"    - Use fast, slightly higher quality resampling,
+    ##    if available
+    ##  * "2" or "medium"  - Use medium quality resampling, if available
+    ##  * "3" or "best"    - Use high quality resampling, if available
+
+const
+  HINT_AUDIO_CATEGORY* = "SDL_AUDIO_CATEGORY" ##  \
+    ##  A variable controlling the audio category on iOS and Mac OS X
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "ambient"     - Use the AVAudioSessionCategoryAmbient audio category,
+    ##    will be muted by the phone mute switch (default)
+    ##  * "playback"    - Use the AVAudioSessionCategoryPlayback category
+    ##
+    ##  For more information, see Apple's documentation:
+    ##
+    ##  https://developer.apple.com/library/content/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioSessionCategoriesandModes/AudioSessionCategoriesandModes.html
 
 type
   HintPriority* {.size: sizeof(cint).} = enum ##  \
@@ -757,7 +939,8 @@ proc getHintBoolean*(name: cstring; default_value: bool): bool {.
 type
   HintCallback* = proc (
       userdata: pointer; name: cstring;
-      oldValue: cstring; newValue: cstring) {.cdecl.}
+      oldValue: cstring; newValue: cstring) {.cdecl.} ##  \
+    ##  Type definition of the hint callback function.
 
 proc addHintCallback*(
     name: cstring; callback: HintCallback; userdata: pointer) {.
