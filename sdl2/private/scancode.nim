@@ -32,7 +32,7 @@ type
     ##  places in the ``key.keysym.scancode`` field of the Event structure.
     ##
     ##  The values in this enumeration are based on the USB usage page standard:
-    ##  http://www.usb.org/developers/devclass_docs/Hut1_12v2.pdf
+    ##  http://www.usb.org/developers/hidpage/Hut1_12v2.pdf
     SCANCODE_UNKNOWN = 0,
 
     # Usage page 0x07
@@ -209,6 +209,13 @@ type
     SCANCODE_KBDILLUMDOWN = 279,  SCANCODE_KBDILLUMUP = 280,
     SCANCODE_EJECT = 281,         SCANCODE_SLEEP = 282,
     SCANCODE_APP1 = 283,          SCANCODE_APP2 = 284,
+
+    # Usage page 0x0C (additional media keys)
+    #
+    # These values are mapped from usage page 0x0C (USB consumer page).
+
+    SCANCODE_AUDIOREWIND = 285,
+    SCANCODE_AUDIOFASTFORWARD = 286,
 
     # Add any other keys here.
 
