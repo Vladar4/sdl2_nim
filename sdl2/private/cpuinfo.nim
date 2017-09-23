@@ -86,6 +86,10 @@ proc hasAVX2*(): bool {.
     cdecl, importc: "SDL_HasAVX2", dynlib: SDL2_LIB.}
   ##  This procedure returns true if the CPU has AVX2 features.
 
+proc hasNEON*(): bool {.
+    cdecl, importc: "SDL_HasNEON", dynlib: SDL2_LIB.}
+  ##  This function returns true if the CPU has NEON (ARM SIMD) features.
+
 proc getSystemRAM*(): cint {.
     cdecl, importc: "SDL_GetSystemRAM", dynlib: SDL2_LIB.}
   ##  This procedure returns the amount of RAM configured in the system, in MB.
