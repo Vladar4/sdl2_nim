@@ -153,6 +153,7 @@ const
     ##  a tooltip
   WINDOW_POPUP_MENU*    = 0x00080000  ##  window should be treated as \
     ##  a popup menu
+  WINDOW_VULKAN*        = 0x10000000  ##  window usable for Vulkan surface
 
 const
   WINDOWPOS_UNDEFINED_MASK* = 0x1FFF0000
@@ -223,7 +224,8 @@ type
     GL_RETAINED_BACKING, GL_CONTEXT_MAJOR_VERSION, GL_CONTEXT_MINOR_VERSION,
     GL_CONTEXT_EGL, GL_CONTEXT_FLAGS, GL_CONTEXT_PROFILE_MASK,
     GL_SHARE_WITH_CURRENT_CONTEXT, GL_FRAMEBUFFER_SRGB_CAPABLE,
-    GL_CONTEXT_RELEASE_BEHAVIOR
+    GL_CONTEXT_RELEASE_BEHAVIOR,
+    SDL_GL_CONTEXT_RESET_NOTIFICATION, SDL_GL_CONTEXT_NO_ERROR
 
   GLprofile* {.size: sizeof(cint).} = enum
     GL_CONTEXT_PROFILE_CORE = 0x00000001,
@@ -239,6 +241,11 @@ type
   GLcontextReleaseFlag* {.size: sizeof(cint).} = enum
     GL_CONTEXT_RELEASE_BEHAVIOR_NONE = 0x0000,
     GL_CONTEXT_RELEASE_BEHAVIOUR_FLUSH = 0x0001
+
+  GLcontextResetNotification* {.size: sizeof(cint).} = enum
+    GL_CONTEXT_RESET_NO_NOTIFICATION = 0x0000,
+    GL_CONTEXT_RESET_LOSE_CONTEXT    = 0x0001
+
 
 # Procedure prototypes
 
@@ -494,7 +501,8 @@ proc createWindow*(title: cstring;
   ##  `WINDOW_MAXIMIZED`,
   ##  `WINDOW_MINIMIZED`,
   ##  `WINDOW_INPUT_GRABBED`,
-  ##  `WINDOW_ALLOW_HIGHDPI`.
+  ##  `WINDOW_ALLOW_HIGHDPI`,
+  ##  `WINDOW_VULKAN`.
   ##
   ##  ``Return`` the id of the window created,
   ##  or ``nil`` if window creation failed.
@@ -502,12 +510,30 @@ proc createWindow*(title: cstring;
   ##  If the window is created with the `WINDOW_ALLOW_HIGHDPI` flag, its size
   ##  in pixels may differ from its size in screen coordinates on platforms with
   ##  high-DPI support (e.g. iOS and Mac OS X). Use ``getWindowSize()`` to query
-  ##  the client area's size in screen coordinates, and ``glGetDrawableSize()``
-  ##  or ``getRendererOutputSize()`` to query the drawable size in pixels.
+  ##  the client area's size in screen coordinates, and ``glGetDrawableSize()``,
+  ##  ``vulkanGetDrawableSize()``, or ``getRendererOutputSize()``
+  ##  to query the drawable size in pixels.
+  ##
+  ##  If the window is created with any of the `WINDOW_OPENGL` or
+  ##  `WINDOW_VULKAN` flags, then the corresponding ``LoadLibrary`` function
+  ##  (``glLoadLibrary`` or ``vulkanLoadLibrary``) is called and the
+  ##  corrensponding ``UnloadLibrary`` function is called by
+  ##  ``destroyWindow()``.
+  ##
+  ##  If `WINDOW_VULKAN` is specified and there isn't a working Vulkan driver,
+  ##  ``createWindow()`` will fail because ``vulkanLoadLibrary()`` will fail.
+  ##
+  ##  ``Note:`` On non-Apple devices, SDL requires you to either not link to the
+  ##  Vulkan loader or link to a dynamic library version. This limitation
+  ##  may be removed in a future version of SDL.
   ##
   ##  See also:
   ##
   ##  ``destroyWindow()``
+  ##
+  ##  ``glLoadLibrary()``
+  ##
+  ##  ``vulkanLoadLibrary()``
 
 proc createWindowFrom*(data: pointer): Window {.
     cdecl, importc: "SDL_CreateWindowFrom", dynlib: SDL2_LIB.}
@@ -635,8 +661,8 @@ proc setWindowSize*(window: Window; w: cint; h: cint) {.
   ##
   ##  ``h`` The height of the window, in screen coordinates. Must be `>0`.
   ##
-  ##  ``Note:`` You can't change the size of a fullscreen window,
-  ##  it automatically matches the size of the display mode.
+  ##  ``Note:`` Fullscreen windows automatically match the size of the display
+  ##  mode, and you should use ``setWindowDisplayMode()`` to change their size.
   ##
   ##  The window size in screen coordinates may differ from the size in pixels,
   ##  if the window was created with `WINDOW_ALLOW_HIGHDPI` on a platform with
@@ -646,6 +672,8 @@ proc setWindowSize*(window: Window; w: cint; h: cint) {.
   ##  See also:
   ##
   ##  ``getWindowSize()``
+  ##
+  ##  ``setWindowDisplayMode()``
 
 proc getWindowSize*(window: Window; w: ptr cint; h: ptr cint) {.
     cdecl, importc: "SDL_GetWindowSize", dynlib: SDL2_LIB.}
@@ -1214,10 +1242,16 @@ proc glResetAttributes*() {.
 proc glSetAttribute*(attr: GLattr; value: cint): cint {.
     cdecl, importc: "SDL_GL_SetAttribute", dynlib: SDL2_LIB.}
   ##  Set an OpenGL window attribute before window creation.
+  ##
+  ##  ``Return`` `0` on success, or `-1` if the attribute could not be set.
 
 proc glGetAttribute*(attr: GLattr; value: ptr cint): cint {.
     cdecl, importc: "SDL_GL_GetAttribute", dynlib: SDL2_LIB.}
   ##  Get the actual value for an attribute from the current context.
+  ##
+  ##  ``Return`` `0` on success,
+  ##  or `-1` if the attribute could not be retrieved.
+  ##  The integer at ``value`` will be modified in either case.
 
 proc glCreateContext*(window: Window): GLContext {.
     cdecl, importc: "SDL_GL_CreateContext", dynlib: SDL2_LIB.}
