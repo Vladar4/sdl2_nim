@@ -289,7 +289,7 @@ type
     K_SLEEP = scancodeToKeycode(SCANCODE_SLEEP)
     K_APP1 = scancodeToKeycode(SCANCODE_APP1)
     K_APP2 = scancodeToKeycode(SCANCODE_APP2)
-    K_AUTOREWIND = scancodeToKeycode(SCANCODE_AUTOREWIND)
+    K_AUDIOREWIND = scancodeToKeycode(SCANCODE_AUDIOREWIND)
     K_AUDIOFASTFORWARD = scancodeToKeycode(SCANCODE_AUDIOFASTFORWARD)
 
 type
