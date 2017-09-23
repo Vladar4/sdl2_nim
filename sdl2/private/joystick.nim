@@ -53,7 +53,25 @@ type
   JoystickGUID* = object
     data*: array[16, uint8]
 
-  JoystickID* = int32
+  JoystickID* = int32 ##  \
+    ##  This is a unique ID for a joystick for the time it is connected to the
+    ##  system, and is never reused for the lifetime of the application. If the
+    ##  joystick is disconnected and reconnected, it will get a new ID.
+    ##
+    ##  The ID value starts at `0` and increments from there.
+    ##  The value `-1` is an invalid ID.
+
+  JoystickType* {.size: sizeof(cint).} = enum
+    JOYSTICK_TYPE_UNKNOWN,
+    JOYSTICK_TYPE_GAMECONTROLLER,
+    JOYSTICK_TYPE_WHEEL,
+    JOYSTICK_TYPE_ARCADE_STICK,
+    JOYSTICK_TYPE_FLIGHT_STICK,
+    JOYSTICK_TYPE_DANCE_PAD,
+    JOYSTICK_TYPE_GUITAR,
+    JOYSTICK_TYPE_DRUM_KIT,
+    JOYSTICK_TYPE_ARCADE_PAD,
+    JOYSTICK_TYPE_THROTTLE
 
   JoystickPowerLevel* {.size: sizeof(cint).} = enum
     JOYSTICK_POWER_UNKNOWN = - 1,
@@ -77,6 +95,46 @@ proc joystickNameForIndex*(device_index: cint): cstring {.
   ##  This can be called before any joysticks are opened.
   ##  If no name can be found, this procedure returns `nil`.
 
+proc joystickGetDeviceGUID*(device_index: cint): JoystickGUID {.
+    cdecl, importc: "SDL_JoystickGetDeviceGUID", dynlib: SDL2_LIB.}
+  ##  Return the GUID for the joystick at this index.
+  ##
+  ##  This can be called before any joysticks are opened.
+
+proc joystickGetDeviceVendor*(device_index: cint): uint16 {.
+    cdecl, importc: "SDL_JoystickGetDeviceVendor", dynlib: SDL2_LIB.}
+  ##  Get the USB vendor ID of a joystick, if available.
+  ##
+  ##  This can be called before any joysticks are opened.
+  ##  If the vendor ID isn't available this function returns `0`.
+
+proc joystickGetDeviceProduct*(device_index: cint): uint16 {.
+    cdecl, importc: "SDL_JoystickGetDeviceProduct", dynlib: SDL2_LIB.}
+  ##  Get the USB product ID of a joystick, if available.
+  ##
+  ##  This can be called before any joysticks are opened.
+  ##  If the product ID isn't available this function returns `0`.
+
+proc joystickGetDeviceProductVersion*(device_index: cint): uint16 {.
+    cdecl, importc: "SDL_JoystickGetDeviceProductVersion", dynlib: SDL2_LIB.}
+  ##  Get the product version of a joystick, if available.
+  ##
+  ##  This can be called before any joysticks are opened.
+  ##  If the product version isn't available this function returns `0`.
+
+proc joystickGetDeviceType*(device_index: cint): JoystickType {.
+    cdecl, importc: "SDL_JoystickGetDeviceType", dynlib: SDL2_LIB.}
+  ##  Get the type of a joystick, if available.
+  ##
+  ##  This can be called before any joysticks are opened.
+
+proc joystickGetDeviceInstanceID*(device_index: cint): JoystickID {.
+  cdecl, importc: "SDL_JoystickGetDeviceInstanceID", dynlib: SDL2_LIB.}
+  ##  Get the instance ID of a joystick.
+  ##
+  ##  This can be called before any joysticks are opened.
+  ##  If the index is out of range, this function will return `-1`.
+
 proc joystickOpen*(device_index: cint): Joystick {.
     cdecl, importc: "SDL_JoystickOpen", dynlib: SDL2_LIB.}
   ##  Open a joystick for use.
@@ -97,13 +155,28 @@ proc joystickName*(joystick: Joystick): cstring {.
   ##  ``Return`` the name for this currently opened joystick.
   ##  If no name can be found, this procedure returns `nil`.
 
-proc joystickGetDeviceGUID*(device_index: cint): JoystickGUID {.
-    cdecl, importc: "SDL_JoystickGetDeviceGUID", dynlib: SDL2_LIB.}
-  ##  ``Return`` the GUID for the joystick at this index.
-
 proc joystickGetGUID*(joystick: Joystick): JoystickGUID {.
     cdecl, importc: "SDL_JoystickGetGUID", dynlib: SDL2_LIB.}
   ##  ``Return`` the GUID for this opened joystick.
+
+proc joystickGetVendor*(joystick: Joystick): uint16 {.
+    cdecl, importc: "SDL_JoystickGetVendor", dynlib: SDL2_LIB.}
+  ##  ``Return`` the USB vendor ID of an opened joystick, if available.
+  ##  If the vendor ID isn't available this function returns `0`.
+
+proc joystickGetProduct*(joystick: Joystick): uint16 {.
+    cdecl, importc: "SDL_JoystickGetProduct", dynlib: SDL2_LIB.}
+  ##  ``Return` the USB product ID of an opened joystick, if available.
+  ##  If the product ID isn't available this function returns `0`.
+
+proc joystickGetProductVersion*(joystick: Joystick): uint16 {.
+    cdecl, importc: "SDL_JoystickGetProductVersion", dynlib: SDL2_LIB.}
+  ##  ``Return`` the product version of an opened joystick, if available.
+  ##  If the product version isn't available this function returns `0`.
+
+proc joystickGetType*(joystick: Joystick): JoystickType {.
+    cdecl, importc: "SDL_JoystickGetType", dynlib: SDL2_LIB.}
+  ##  ``Return`` the type of an opened joystick.
 
 proc joystickGetGUIDString*(
     guid: JoystickGUID; pszGUID: cstring; cbGUID: cint) {.
@@ -115,7 +188,7 @@ proc joystickGetGUIDString*(
 
 proc joystickGetGUIDFromString*(pchGUID: cstring): JoystickGUID {.
     cdecl, importc: "SDL_JoystickGetGUIDFromString", dynlib: SDL2_LIB.}
-  ##  Convert a string into a joystick formatted GUID.
+  ##  Convert a string into a joystick GUID.
 
 proc joystickGetAttached*(joystick: Joystick): bool {.
     cdecl, importc: "SDL_JoystickGetAttached", dynlib: SDL2_LIB.}
@@ -163,6 +236,10 @@ proc joystickEventState*(state: cint): cint {.
   ##
   ##  The ``state`` can be one of `QUERY`, `ENABLE` or `IGNORE`.
 
+const
+  JOYSTICK_AXIS_MAX* = 32767
+  JOYSTICK_AXIS_MIN* = -32768
+
 proc joystickGetAxis*(joystick: Joystick; axis: cint): int16 {.
     cdecl, importc: "SDL_JoystickGetAxis", dynlib: SDL2_LIB.}
   ##  Get the current state of an axis control on a joystick.
@@ -170,6 +247,17 @@ proc joystickGetAxis*(joystick: Joystick; axis: cint): int16 {.
   ##  The state is a value ranging from `-32768` to `32767`.
   ##
   ##  The axis indices start at index `0`.
+
+proc  joystickGetAxisInitialState(joystick: Joystick, axis: cint, state: ptr int16): cint {.
+    cdecl, importc: "SDL_JoystickGetAxisInitialState", dynlib: SDL2_LIB.}
+  ##  Get the initial state of an axis control on a joystick.
+  ##
+  ##  The state is a value ranging from `-32768` to `32767`.
+  ##
+  ##  The axis indices start at index `0`.
+  ##
+  ##  ``Return`` `1` if this axis has any initial value, or `0` if not.
+
 
 # Hat positions
 #[
