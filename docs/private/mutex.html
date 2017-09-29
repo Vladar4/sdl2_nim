@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module mutex</title>
@@ -1299,38 +1301,22 @@ function main() {
 <dt id="Mutex"><a name="Mutex"></a><pre><span class="Identifier">Mutex</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 The SDL mutex structure, defined in SDL_sysmutex.c
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L38"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L38" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="Semaphore"><a name="Semaphore"></a><pre><span class="Identifier">Semaphore</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 The SDL semaphore structure, defined in SDL_syssem.c
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L78"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L78" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="Sem"><a name="Sem"></a><pre><span class="Identifier">Sem</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">Semaphore</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L81"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L81" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="Cond"><a name="Cond"></a><pre><span class="Identifier">Cond</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 
 The SDL condition variable structure, defined in SDL_syscond.c
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L126"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L126" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1342,19 +1328,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Synchronization procedures which can time out return this value if they time out.
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L27"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L27" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="MUTEX_MAXWAIT"><a name="MUTEX_MAXWAIT"></a><pre><span class="Identifier">MUTEX_MAXWAIT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="Keyword">not</span> <span class="Identifier">uint32</span><span class="Other">(</span><span class="DecNumber">0</span><span class="Other">)</span><span class="Other">)</span></pre></dt>
 <dd>
 This is the timeout value which corresponds to never time out.
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L32"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L32" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1365,10 +1343,6 @@ class="link-seesrc" target="_blank">Source</a>
 <dt id="createMutex"><a name="createMutex,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createMutex</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Mutex</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateMutex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Create a mutex, initialized unlocked.
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L40"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L40" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="lockMutex"><a name="lockMutex,Mutex"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockMutex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockMutex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -1376,10 +1350,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Lock the mutex.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite>, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L47"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L47" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="tryLockMutex"><a name="tryLockMutex,Mutex"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tryLockMutex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_TryLockMutex&quot;</span><span class="Other">,</span>
@@ -1388,10 +1358,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Try to lock the mutex</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite>, <cite>MUTEX_TIMEDOUT</cite>, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L53"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L53" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="unlockMutex"><a name="unlockMutex,Mutex"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockMutex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockMutex&quot;</span><span class="Other">,</span>
@@ -1401,49 +1367,29 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite>, or <cite>-1</cite> on error.</p>
 <p><tt class="docutils literal"><span class="pre">Warning:</span></tt> It is an error to unlock a mutex that has not been locked by the current thread, and doing so results in undefined behavior.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L62"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L62" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="destroyMutex"><a name="destroyMutex,Mutex"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroyMutex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroyMutex&quot;</span><span class="Other">,</span>
                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Destroy a mutex.
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L71"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L71" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="createSemaphore"><a name="createSemaphore,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createSemaphore</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">initial_value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Sem</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateSemaphore&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Create a semaphore, initialized with value, returns <cite>nil</cite> on failure.
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L83"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L83" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="destroySemaphore"><a name="destroySemaphore,Sem"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroySemaphore</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sem</span><span class="Other">:</span> <span class="Identifier">Sem</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroySemaphore&quot;</span><span class="Other">,</span>
                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Destroy a semaphore.
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L87"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L87" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="semWait"><a name="semWait,Sem"></a><pre><span class="Keyword">proc</span> <span class="Identifier">semWait</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sem</span><span class="Other">:</span> <span class="Identifier">Sem</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SemWait&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This procedure suspends the calling thread until the semaphore pointed to by <tt class="docutils literal"><span class="pre">sem</span></tt> has a positive count. It then atomically decreases the semaphore count.
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L91"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L91" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="semTryWait"><a name="semTryWait,Sem"></a><pre><span class="Keyword">proc</span> <span class="Identifier">semTryWait</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sem</span><span class="Other">:</span> <span class="Identifier">Sem</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SemTryWait&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -1451,10 +1397,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Non-blocking variant of <tt class="docutils literal"><span class="pre">semWait()</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> if the wait succeeds, <cite>MUTEX_TIMEDOUT</cite> if the wait would block, and <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L97"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L97" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="semWaitTimeout"><a name="semWaitTimeout,Sem,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">semWaitTimeout</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sem</span><span class="Other">:</span> <span class="Identifier">Sem</span><span class="Other">;</span> <span class="Identifier">ms</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1464,10 +1406,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> if the wait succeeds, <cite>MUTEX_TIMEDOUT</cite> if the wait does not succeed in the allotted time, and <cite>-1</cite> on error.</p>
 <p><tt class="docutils literal"><span class="pre">Warning:</span></tt> On some platforms this procedure is implemented by looping with a delay of 1 ms, and so should be avoided if possible.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L104"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L104" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="semPost"><a name="semPost,Sem"></a><pre><span class="Keyword">proc</span> <span class="Identifier">semPost</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sem</span><span class="Other">:</span> <span class="Identifier">Sem</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SemPost&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -1475,19 +1413,11 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Atomically increases the semaphore's count (not blocking).</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite>, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L115"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L115" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="semValue"><a name="semValue,Sem"></a><pre><span class="Keyword">proc</span> <span class="Identifier">semValue</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sem</span><span class="Other">:</span> <span class="Identifier">Sem</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SemValue&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Returns the current count of the semaphore.
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L121"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L121" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="createCond"><a name="createCond,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createCond</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Cond</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateCond&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -1495,14 +1425,14 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Create a condition variable.</p>
 <p>Typical use of condition variables:</p>
 <p>Thread A:</p>
-<pre class = "listing"><span class="Identifier">lockMutex</span><span class="Punctuation">(</span><span class="Identifier">lock</span><span class="Punctuation">)</span>
+<pre class="listing"><span class="Identifier">lockMutex</span><span class="Punctuation">(</span><span class="Identifier">lock</span><span class="Punctuation">)</span>
 
 <span class="Keyword">while</span> <span class="Punctuation">(</span><span class="Keyword">not</span> <span class="Identifier">condition</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
   
   <span class="Identifier">condWait</span><span class="Punctuation">(</span><span class="Identifier">cond</span><span class="Punctuation">,</span> <span class="Identifier">lock</span><span class="Punctuation">)</span>
 
 <span class="Identifier">unlockMutex</span><span class="Punctuation">(</span><span class="Identifier">lock</span><span class="Punctuation">)</span></pre><p>Thread B:</p>
-<pre class = "listing"><span class="Identifier">lockMutex</span><span class="Punctuation">(</span><span class="Identifier">lock</span><span class="Punctuation">)</span>
+<pre class="listing"><span class="Identifier">lockMutex</span><span class="Punctuation">(</span><span class="Identifier">lock</span><span class="Punctuation">)</span>
 <span class="Operator">...</span>
 <span class="Identifier">condition</span> <span class="Operator">=</span> <span class="Identifier">true</span>
 <span class="Operator">...</span>
@@ -1510,19 +1440,11 @@ class="link-seesrc" target="_blank">Source</a>
 <span class="Identifier">unlockMutex</span><span class="Punctuation">(</span><span class="Identifier">lock</span><span class="Punctuation">)</span></pre><p>There is some discussion whether to signal the condition variable with the mutex locked or not. There is some potential performance benefit to unlocking first on some platforms, but there are some potential race conditions depending on how your code is structured.</p>
 <p>In general it's safer to signal the condition variable while the mutex is locked.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L129"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L129" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="destroyCond"><a name="destroyCond,Cond"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroyCond</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cond</span><span class="Other">:</span> <span class="Identifier">Cond</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroyCond&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Destroy a condition variable.
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L164"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L164" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="condSignal"><a name="condSignal,Cond"></a><pre><span class="Keyword">proc</span> <span class="Identifier">condSignal</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cond</span><span class="Other">:</span> <span class="Identifier">Cond</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CondSignal&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -1530,10 +1452,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Restart one of the threads that are waiting on the condition variable.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L168"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L168" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="condBroadcast"><a name="condBroadcast,Cond"></a><pre><span class="Keyword">proc</span> <span class="Identifier">condBroadcast</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cond</span><span class="Other">:</span> <span class="Identifier">Cond</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CondBroadcast&quot;</span><span class="Other">,</span>
@@ -1542,10 +1460,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Restart all threads that are waiting on the condition variable.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L174"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L174" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="condWait"><a name="condWait,Cond,Mutex"></a><pre><span class="Keyword">proc</span> <span class="Identifier">condWait</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cond</span><span class="Other">:</span> <span class="Identifier">Cond</span><span class="Other">;</span> <span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CondWait&quot;</span><span class="Other">,</span>
@@ -1556,10 +1470,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>The mutex is re-locked once the condition variable is signaled.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> when it is signaled, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L180"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L180" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="condWaitTimeout"><a name="condWaitTimeout,Cond,Mutex,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">condWaitTimeout</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cond</span><span class="Other">:</span> <span class="Identifier">Cond</span><span class="Other">;</span> <span class="Identifier">mutex</span><span class="Other">:</span> <span class="Identifier">Mutex</span><span class="Other">;</span> <span class="Identifier">ms</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1568,10 +1478,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Waits for at most <tt class="docutils literal"><span class="pre">ms</span></tt> milliseconds, and returns <cite>0</cite> if the condition variable is signaled, <cite>MUTEX_TIMEDOUT</cite> if the condition is not signaled in the allotted time, and <cite>-1</cite> on error.</p>
 <p><tt class="docutils literal"><span class="pre">Warning:</span></tt> On some platforms this procedure is implemented by looping with a delay of 1 ms, and so should be avoided if possible.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L190"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L190" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1582,19 +1488,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dt id="mutexP"><a name="mutexP.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">mutexP</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">m</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L44"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L44" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="mutexV"><a name="mutexV.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">mutexV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">m</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mutex.nim#L59"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mutex.nim#L59" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1607,7 +1505,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>

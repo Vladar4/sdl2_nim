@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module mouse</title>
@@ -1326,10 +1328,6 @@ function main() {
 <dt id="Cursor"><a name="Cursor"></a><pre><span class="Identifier">Cursor</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 Implementation dependent
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L28"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L28" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="SystemCursor"><a name="SystemCursor"></a><pre><span class="Identifier">SystemCursor</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
@@ -1350,10 +1348,6 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Cursor types for <tt class="docutils literal"><span class="pre">sdl.createSystemCursor()</span></tt>.
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L30"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L30" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="MouseWheelDirection"><a name="MouseWheelDirection"></a><pre><span class="Identifier">MouseWheelDirection</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">uint32</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
@@ -1362,10 +1356,6 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Scroll direction types for the Scroll event
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L47"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L47" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1376,91 +1366,51 @@ class="link-seesrc" target="_blank">Source</a>
 <dt id="BUTTON_LEFT"><a name="BUTTON_LEFT"></a><pre><span class="Identifier">BUTTON_LEFT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L275"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L275" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="BUTTON_MIDDLE"><a name="BUTTON_MIDDLE"></a><pre><span class="Identifier">BUTTON_MIDDLE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L276"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L276" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="BUTTON_RIGHT"><a name="BUTTON_RIGHT"></a><pre><span class="Identifier">BUTTON_RIGHT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">3</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L277"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L277" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="BUTTON_X1"><a name="BUTTON_X1"></a><pre><span class="Identifier">BUTTON_X1</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">4</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L278"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L278" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="BUTTON_X2"><a name="BUTTON_X2"></a><pre><span class="Identifier">BUTTON_X2</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">5</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L279"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L279" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="BUTTON_LMASK"><a name="BUTTON_LMASK"></a><pre><span class="Identifier">BUTTON_LMASK</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">button</span><span class="Other">(</span><span class="Identifier">BUTTON_LEFT</span><span class="Other">)</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L280"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L280" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="BUTTON_MMASK"><a name="BUTTON_MMASK"></a><pre><span class="Identifier">BUTTON_MMASK</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">button</span><span class="Other">(</span><span class="Identifier">BUTTON_MIDDLE</span><span class="Other">)</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L281"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L281" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="BUTTON_RMASK"><a name="BUTTON_RMASK"></a><pre><span class="Identifier">BUTTON_RMASK</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">button</span><span class="Other">(</span><span class="Identifier">BUTTON_RIGHT</span><span class="Other">)</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L282"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L282" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="BUTTON_X1MASK"><a name="BUTTON_X1MASK"></a><pre><span class="Identifier">BUTTON_X1MASK</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">button</span><span class="Other">(</span><span class="Identifier">BUTTON_X1</span><span class="Other">)</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L283"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L283" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="BUTTON_X2MASK"><a name="BUTTON_X2MASK"></a><pre><span class="Identifier">BUTTON_X2MASK</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">button</span><span class="Other">(</span><span class="Identifier">BUTTON_X2</span><span class="Other">)</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L284"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L284" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1472,10 +1422,6 @@ class="link-seesrc" target="_blank">Source</a>
                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the window which currently has mouse focus.
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L54"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L54" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getMouseState"><a name="getMouseState,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getMouseState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1484,10 +1430,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Retrieve the current state of the mouse.</p>
 <p>The current button state is returned as a button bitmask, which can be tested using the <tt class="docutils literal"><span class="pre">button()</span></tt> template, and x and y are set to the mouse cursor position relative to the focus window for the currently selected mouse.  You can pass <cite>nil</cite> for either x or y.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L58"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L58" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getGlobalMouseState"><a name="getGlobalMouseState,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getGlobalMouseState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1502,10 +1444,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getMouseState()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L67"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L67" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getRelativeMouseState"><a name="getRelativeMouseState,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRelativeMouseState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1514,10 +1452,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Retrieve the relative state of the mouse.</p>
 <p>The current button state is returned as a button bitmask, which can be tested using the <tt class="docutils literal"><span class="pre">button()</span></tt> template, and x and y are set to the mouse deltas since the last call to <tt class="docutils literal"><span class="pre">getRelativeMouseState()</span></tt>.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L96"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L96" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="warpMouseInWindow"><a name="warpMouseInWindow,ptr.Window,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">warpMouseInWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1529,10 +1463,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">y</span></tt> The y coordinate within the window</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> This procedure generates a mouse motion event.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L104"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L104" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="warpMouseGlobal"><a name="warpMouseGlobal,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">warpMouseGlobal</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WarpMouseGlobal&quot;</span><span class="Other">,</span>
@@ -1544,10 +1474,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, <cite>-1</cite> on error (usually: unsupported by a platform).</p>
 <p><tt class="docutils literal"><span class="pre">Note</span></tt> This procedure generates a mouse motion event.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L117"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L117" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setRelativeMouseMode"><a name="setRelativeMouseMode,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setRelativeMouseMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">enabled</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1561,10 +1487,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getRelativeMouseMode()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L130"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L130" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="captureMouse"><a name="captureMouse,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">captureMouse</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">enabled</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CaptureMouse&quot;</span><span class="Other">,</span>
@@ -1578,10 +1500,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>While capturing is enabled, the current window will have the <cite>WINDOW_MOUSE_CAPTURE</cite> flag set.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if not supported.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L149"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L149" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getRelativeMouseMode"><a name="getRelativeMouseMode,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRelativeMouseMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRelativeMouseMode&quot;</span><span class="Other">,</span>
@@ -1591,10 +1509,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setRelativeMouseMode()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L179"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L179" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="createCursor"><a name="createCursor,ptr.uint8,ptr.uint8,cint,cint,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createCursor</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">mask</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">hot_x</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
@@ -1613,10 +1527,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">freeCursor()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L187"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L187" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="createColorCursor"><a name="createColorCursor,Surface,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createColorCursor</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">hot_x</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">hot_y</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Cursor</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1626,10 +1536,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">freeCursor()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L210"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L210" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="createSystemCursor"><a name="createSystemCursor,SystemCursor"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createSystemCursor</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">id</span><span class="Other">:</span> <span class="Identifier">SystemCursor</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Cursor</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1639,38 +1545,22 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">freeCursor()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L219"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L219" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setCursor"><a name="setCursor,Cursor"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setCursor</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cursor</span><span class="Other">:</span> <span class="Identifier">Cursor</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetCursor&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Set the active cursor.
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L227"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L227" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getCursor"><a name="getCursor,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCursor</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Cursor</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetCursor&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Return the active cursor.
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L231"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L231" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getDefaultCursor"><a name="getDefaultCursor,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getDefaultCursor</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Cursor</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetDefaultCursor&quot;</span><span class="Other">,</span>
                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Return the default cursor.
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L235"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L235" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="freeCursor"><a name="freeCursor,Cursor"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freeCursor</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cursor</span><span class="Other">:</span> <span class="Identifier">Cursor</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FreeCursor&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -1679,10 +1569,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">createCursor()</span></tt> <tt class="docutils literal"><span class="pre">createColorCursor()</span></tt> <tt class="docutils literal"><span class="pre">createSystemCursor()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L239"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L239" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="showCursor"><a name="showCursor,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">showCursor</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">toggle</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ShowCursor&quot;</span><span class="Other">,</span>
@@ -1692,10 +1578,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">toggle</span></tt> <cite>1</cite> to show the cursor, <cite>0</cite> to hide it, <cite>-1</cite> to query the current state.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite> if the cursor is shown, or <cite>0</cite> if the cursor is hidden.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L249"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L249" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1711,13 +1593,9 @@ Used as a mask when testing buttons in buttonstate.<ul class="simple"><li>Button
 <li>Button 3:  Right mouse button</li>
 </ul>
 <p>Example:</p>
-<pre class = "listing"><span class="Keyword">let</span> <span class="Identifier">buttons</span> <span class="Operator">=</span> <span class="Identifier">int64</span><span class="Punctuation">(</span><span class="Identifier">getMouseState</span><span class="Punctuation">(</span><span class="Keyword">nil</span><span class="Punctuation">,</span> <span class="Keyword">nil</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
+<pre class="listing"><span class="Keyword">let</span> <span class="Identifier">buttons</span> <span class="Operator">=</span> <span class="Identifier">int64</span><span class="Punctuation">(</span><span class="Identifier">getMouseState</span><span class="Punctuation">(</span><span class="Keyword">nil</span><span class="Punctuation">,</span> <span class="Keyword">nil</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
 <span class="Keyword">if</span> <span class="Punctuation">(</span><span class="Identifier">button</span><span class="Punctuation">(</span><span class="Identifier">BUTTON_LEFT</span><span class="Punctuation">)</span> <span class="Keyword">and</span> <span class="Identifier">buttons</span><span class="Punctuation">)</span> <span class="Operator">&gt;</span> <span class="DecNumber">0</span><span class="Punctuation">:</span>
   <span class="Comment"># Left button pressed</span></pre>
-&nbsp;&nbsp;<a
-href="/tree/master/mouse.nim#L258"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/mouse.nim#L258" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1730,7 +1608,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>

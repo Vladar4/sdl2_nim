@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module atomics</title>
@@ -1293,10 +1295,6 @@ function main() {
 <dt id="SpinLock"><a name="SpinLock"></a><pre><span class="Identifier">SpinLock</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">cint</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/atomics.nim#L78"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/atomics.nim#L78" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="Atomic_t"><a name="Atomic_t"></a><pre><span class="Identifier">Atomic_t</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1305,10 +1303,6 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 A type representing an atomic integer value.  It is a object so people don't accidentally use numeric operations on it.
-&nbsp;&nbsp;<a
-href="/tree/master/atomics.nim#L102"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/atomics.nim#L102" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1323,10 +1317,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">lock</span></tt> Points to the lock.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if the lock succeeded, <cite>false</cite> if the lock is already held.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/atomics.nim#L80"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/atomics.nim#L80" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="atomicLock"><a name="atomicLock,ptr.SpinLock"></a><pre><span class="Keyword">proc</span> <span class="Identifier">atomicLock</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">lock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">SpinLock</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AtomicLock&quot;</span><span class="Other">,</span>
@@ -1335,10 +1325,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Lock a spin lock by setting it to a non-zero value.</p>
 <p><tt class="docutils literal"><span class="pre">lock</span></tt> Points to the lock.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/atomics.nim#L89"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/atomics.nim#L89" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="atomicUnlock"><a name="atomicUnlock,ptr.SpinLock"></a><pre><span class="Keyword">proc</span> <span class="Identifier">atomicUnlock</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">lock</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">SpinLock</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AtomicUnlock&quot;</span><span class="Other">,</span>
@@ -1347,10 +1333,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Unlock a spin lock by setting it to <cite>0</cite>. Always returns immediately.</p>
 <p><tt class="docutils literal"><span class="pre">lock</span></tt> Points to the lock.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/atomics.nim#L95"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/atomics.nim#L95" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="atomicCAS"><a name="atomicCAS,ptr.Atomic_t,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">atomicCAS</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Atomic_t</span><span class="Other">;</span> <span class="Identifier">oldval</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">newval</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1360,10 +1342,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if the atomic variable was set, <cite>false</cite> otherwise.</p>
 <p><tt class="docutils literal"><span class="pre">Note</span></tt> If you don't know what this procedure is for, you shouldn't use it!</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/atomics.nim#L107"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/atomics.nim#L107" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="atomicSet"><a name="atomicSet,ptr.Atomic_t,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">atomicSet</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Atomic_t</span><span class="Other">;</span> <span class="Identifier">v</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AtomicSet&quot;</span><span class="Other">,</span>
@@ -1372,20 +1350,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Set an atomic variable to a value.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> The previous value of the atomic variable.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/atomics.nim#L116"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/atomics.nim#L116" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="atomicGet"><a name="atomicGet,ptr.Atomic_t"></a><pre><span class="Keyword">proc</span> <span class="Identifier">atomicGet</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Atomic_t</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AtomicGet&quot;</span><span class="Other">,</span>
                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the value of an atomic variable
-&nbsp;&nbsp;<a
-href="/tree/master/atomics.nim#L122"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/atomics.nim#L122" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="atomicAdd"><a name="atomicAdd,ptr.Atomic_t,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">atomicAdd</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Atomic_t</span><span class="Other">;</span> <span class="Identifier">v</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AtomicAdd&quot;</span><span class="Other">,</span>
@@ -1395,10 +1365,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> The previous value of the atomic variable.</p>
 <p><tt class="docutils literal"><span class="pre">Note</span></tt> This same style can be used for any number operation.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/atomics.nim#L126"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/atomics.nim#L126" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="atomicCASPtr"><a name="atomicCASPtr,ptr.pointer,pointer,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">atomicCASPtr</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">oldval</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">newval</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1408,10 +1374,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if the pointer was set, <cite>false</cite> otherwise.</p>
 <p><tt class="docutils literal"><span class="pre">Note</span></tt> If you don't know what this procedure is for, you shouldn't use it!</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/atomics.nim#L147"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/atomics.nim#L147" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="atomicSetPtr"><a name="atomicSetPtr,ptr.pointer,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">atomicSetPtr</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">v</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1420,20 +1382,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Set a pointer to a value atomically.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> The previous value of the pointer.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/atomics.nim#L156"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/atomics.nim#L156" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="atomicGetPtr"><a name="atomicGetPtr,ptr.pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">atomicGetPtr</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AtomicGetPtr&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the value of a pointer atomically.
-&nbsp;&nbsp;<a
-href="/tree/master/atomics.nim#L162"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/atomics.nim#L162" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1445,10 +1399,6 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Increment an atomic variable used as a reference count.
-&nbsp;&nbsp;<a
-href="/tree/master/atomics.nim#L135"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/atomics.nim#L135" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="atomicDecRef"><a name="atomicDecRef.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">atomicDecRef</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
@@ -1457,10 +1407,6 @@ class="link-seesrc" target="_blank">Source</a>
 Decrement an atomic variable used as a reference count.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if the variable reached zero after decrementing, <tt class="docutils literal"><span class="pre">false</span></tt> otherwise.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/atomics.nim#L140"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/atomics.nim#L140" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1473,7 +1419,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>

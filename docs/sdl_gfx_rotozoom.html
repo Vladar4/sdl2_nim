@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module sdl_gfx_rotozoom</title>
@@ -1270,19 +1272,11 @@ function main() {
 <dt id="SMOOTHING_OFF"><a name="SMOOTHING_OFF"></a><pre><span class="Identifier">SMOOTHING_OFF</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 Disable anti-aliasing (no smoothing).
-&nbsp;&nbsp;<a
-href="/tree/master/sdl_gfx_rotozoom.nim#L40"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/sdl_gfx_rotozoom.nim#L40" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="SMOOTHING_ON"><a name="SMOOTHING_ON"></a><pre><span class="Identifier">SMOOTHING_ON</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
 Enable anti-aliasing (smoothing).
-&nbsp;&nbsp;<a
-href="/tree/master/sdl_gfx_rotozoom.nim#L43"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/sdl_gfx_rotozoom.nim#L43" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1300,10 +1294,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">smooth</span></tt>  Antialiasing flag. Set to <cite>SMOOTHING_ON</cite> to enable.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the new rotozoomed surface.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/sdl_gfx_rotozoom.nim#L49"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/sdl_gfx_rotozoom.nim#L49" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="rotozoomSurfaceXY"><a name="rotozoomSurfaceXY,Surface,cdouble,cdouble,cdouble,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rotozoomSurfaceXY</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">angle</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">zoomx</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">zoomy</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span>
@@ -1318,10 +1308,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">smooth</span></tt>  Antialiasing flag. Set to <cite>SMOOTHING_ON</cite> to enable.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the new rotozoomed surface.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/sdl_gfx_rotozoom.nim#L67"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/sdl_gfx_rotozoom.nim#L67" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="rotozoomSurfaceSize"><a name="rotozoomSurfaceSize,cint,cint,cdouble,cdouble,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rotozoomSurfaceSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">angle</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">zoom</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span>
@@ -1336,10 +1322,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">dstwidth</span></tt>  The calculated width of the rotozoomed destination surface.</p>
 <p><tt class="docutils literal"><span class="pre">dstheight</span></tt> The calculated height of the rotozoomed destination surface.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/sdl_gfx_rotozoom.nim#L88"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/sdl_gfx_rotozoom.nim#L88" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="rotozoomSurfaceSizeXY"><a name="rotozoomSurfaceSizeXY,cint,cint,cdouble,cdouble,cdouble,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rotozoomSurfaceSizeXY</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">angle</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">zoomx</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span>
@@ -1355,10 +1337,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">dstwidth</span></tt>  The calculated width of the rotozoomed destination surface.</p>
 <p><tt class="docutils literal"><span class="pre">dstheight</span></tt> The calculated height of the rotozoomed destination surface.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/sdl_gfx_rotozoom.nim#L107"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/sdl_gfx_rotozoom.nim#L107" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="zoomSurface"><a name="zoomSurface,Surface,cdouble,cdouble,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">zoomSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">zoomx</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">zoomy</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">smooth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -1370,10 +1348,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">smooth</span></tt> Antialiasing flag. Set to <cite>SMOOTHING_ON</cite> to enable.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the new, zoomed surface.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/sdl_gfx_rotozoom.nim#L130"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/sdl_gfx_rotozoom.nim#L130" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="zoomSurfaceSize"><a name="zoomSurfaceSize,cint,cint,cdouble,cdouble,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">zoomSurfaceSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">zoomx</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">zoomy</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span>
@@ -1389,10 +1363,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">dstwidth</span></tt>  Pointer to an integer to store the calculated width of the zoomed target surface.</p>
 <p><tt class="docutils literal"><span class="pre">dstheight</span></tt> Pointer to an integer to store the calculated height of the zoomed target surface.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/sdl_gfx_rotozoom.nim#L145"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/sdl_gfx_rotozoom.nim#L145" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="shrinkSurface"><a name="shrinkSurface,Surface,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">shrinkSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">factorx</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">factory</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1403,10 +1373,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">factory</span></tt> The vertical shrinking ratio.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the new, shrunken surface.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/sdl_gfx_rotozoom.nim#L170"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/sdl_gfx_rotozoom.nim#L170" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="rotateSurface90Degrees"><a name="rotateSurface90Degrees,Surface,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rotateSurface90Degrees</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">numClockwiseTurns</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1419,10 +1385,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">numClockwiseTurns</span></tt> Number of clockwise <cite>90</cite> degree turns to apply to the source.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the new, rotated surface, or <cite>nil</cite> for surfaces with incorrect input format.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/sdl_gfx_rotozoom.nim#L183"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/sdl_gfx_rotozoom.nim#L183" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1435,7 +1397,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-11 23:13:27 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 13:45:54 UTC</small>
       </div>
     </div>
   </div>

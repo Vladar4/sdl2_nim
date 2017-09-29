@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module version</title>
@@ -1228,7 +1230,7 @@ function main() {
   <li><a class="reference" href="#MINOR_VERSION"
     title="MINOR_VERSION* = 0"><wbr />MINOR_<wbr />VERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#PATCHLEVEL"
-    title="PATCHLEVEL* = 5"><wbr />PATCHLEVEL<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="PATCHLEVEL* = 6"><wbr />PATCHLEVEL<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#COMPILEDVERSION"
     title="COMPILEDVERSION* = versionNum(MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL)"><wbr />COMPILEDVERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
 
@@ -1283,10 +1285,6 @@ Information the version of SDL in use.</p>
 <p><tt class="docutils literal"><span class="pre">version</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">getVersion</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/version.nim#L28"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/version.nim#L28" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1297,38 +1295,22 @@ class="link-seesrc" target="_blank">Source</a>
 <dt id="MAJOR_VERSION"><a name="MAJOR_VERSION"></a><pre><span class="Identifier">MAJOR_VERSION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/version.nim#L48"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/version.nim#L48" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="MINOR_VERSION"><a name="MINOR_VERSION"></a><pre><span class="Identifier">MINOR_VERSION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/version.nim#L49"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/version.nim#L49" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">5</span></pre></dt>
+<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">6</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/version.nim#L50"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/version.nim#L50" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="COMPILEDVERSION"><a name="COMPILEDVERSION"></a><pre><span class="Identifier">COMPILEDVERSION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">versionNum</span><span class="Other">(</span><span class="Identifier">MAJOR_VERSION</span><span class="Other">,</span> <span class="Identifier">MINOR_VERSION</span><span class="Other">,</span> <span class="Identifier">PATCHLEVEL</span><span class="Other">)</span></pre></dt>
 <dd>
 
 This is the version number const for the current SDL version.
-&nbsp;&nbsp;<a
-href="/tree/master/version.nim#L82"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/version.nim#L82" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1340,7 +1322,7 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 <p>Get the version of SDL that is linked against your program.</p>
 <p>If you are linking to SDL dynamically, then it is possible that the current version will be different than the version you compiled against. This procedure returns the current version, while version() is a template that tells you what version you compiled with.</p>
-<pre class = "listing"><span class="Keyword">var</span> <span class="Identifier">compiled</span><span class="Punctuation">,</span> <span class="Identifier">linked</span><span class="Punctuation">:</span> <span class="Identifier">Version</span>
+<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">compiled</span><span class="Punctuation">,</span> <span class="Identifier">linked</span><span class="Punctuation">:</span> <span class="Identifier">Version</span>
 <span class="Identifier">version</span><span class="Punctuation">(</span><span class="Identifier">compiled</span><span class="Punctuation">)</span>
 <span class="Identifier">getVersion</span><span class="Punctuation">(</span><span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">linked</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
 <span class="Identifier">echo</span><span class="Punctuation">(</span><span class="StringLit">&quot;We compiled against SDL version $1.$2.$3 ...&quot;</span><span class="Punctuation">,</span> <span class="Punctuation">[</span><span class="Operator">$</span><span class="Identifier">compiled</span><span class="Operator">.</span><span class="Identifier">major</span><span class="Punctuation">,</span> <span class="Operator">$</span><span class="Identifier">compiled</span><span class="Operator">.</span><span class="Identifier">minor</span><span class="Punctuation">,</span> <span class="Operator">$</span><span class="Identifier">compiled</span><span class="Operator">.</span><span class="Identifier">patch</span><span class="Punctuation">]</span><span class="Punctuation">)</span>
@@ -1348,10 +1330,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">Version</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/version.nim#L90"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/version.nim#L90" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getRevision"><a name="getRevision,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRevision</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRevision&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -1359,10 +1337,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Get the code revision of SDL that is linked against your program.</p>
 <p>Returns an arbitrary string (a hash value) uniquely identifying the exact revision of the SDL library in use, and is only useful in comparing against other revisions. It is NOT an incrementing number.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/version.nim#L112"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/version.nim#L112" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getRevisionNumber"><a name="getRevisionNumber,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRevisionNumber</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRevisionNumber&quot;</span><span class="Other">,</span>
@@ -1371,10 +1345,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Get the revision number of SDL that is linked against your program.</p>
 <p>Returns a number uniquely identifying the exact revision of the SDL library in use. It is an incrementing number based on commits to hg.libsdl.org.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/version.nim#L120"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/version.nim#L120" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1392,10 +1362,6 @@ Template to determine SDL version program was compiled against.</p>
 <p><tt class="docutils literal"><span class="pre">Version</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">getVersion</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/version.nim#L52"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/version.nim#L52" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="versionNum"><a name="versionNum.t,untyped,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">versionNum</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
@@ -1404,20 +1370,12 @@ class="link-seesrc" target="_blank">Source</a>
 This template turns the version numbers into a numeric value:<blockquote><p><cite>(1,2,3) -&gt; (1203)</cite></p></blockquote>
 <p>This assumes that there will never be more than 100 patchlevels.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/version.nim#L73"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/version.nim#L73" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="versionAtLeast"><a name="versionAtLeast.t,untyped,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">versionAtLeast</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span></pre></dt>
 <dd>
 
 This templaye will evaluate to true if compiled with SDL at least <tt class="docutils literal"><span class="pre">x</span></tt>.``y``.``z``.
-&nbsp;&nbsp;<a
-href="/tree/master/version.nim#L85"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/version.nim#L85" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1430,7 +1388,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>

@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module hints</title>
@@ -1234,6 +1236,8 @@ function main() {
     title="HINT_RENDER_DIRECT3D_THREADSAFE* = &quot;SDL_RENDER_DIRECT3D_THREADSAFE&quot;"><wbr />HINT_<wbr />RENDER_<wbr />DIRECT3D_<wbr />THREADSAFE<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_RENDER_DIRECT3D11_DEBUG"
     title="HINT_RENDER_DIRECT3D11_DEBUG* = &quot;SDL_RENDER_DIRECT3D11_DEBUG&quot;"><wbr />HINT_<wbr />RENDER_<wbr />DIRECT3D11_<wbr />DEBUG<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#HINT_RENDER_LOGICAL_SIZE_MODE"
+    title="HINT_RENDER_LOGICAL_SIZE_MODE* = &quot;SDL_RENDER_LOGICAL_SIZE_MODE&quot;"><wbr />HINT_<wbr />RENDER_<wbr />LOGICAL_<wbr />SIZE_<wbr />MODE<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_RENDER_SCALE_QUALITY"
     title="HINT_RENDER_SCALE_QUALITY* = &quot;SDL_RENDER_SCALE_QUALITY&quot;"><wbr />HINT_<wbr />RENDER_<wbr />SCALE_<wbr />QUALITY<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_RENDER_VSYNC"
@@ -1250,14 +1254,24 @@ function main() {
     title="HINT_VIDEO_X11_NET_WM_PING* = &quot;SDL_VIDEO_X11_NET_WM_PING&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />X11_<wbr />NET_<wbr />WM_<wbr />PING<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN"
     title="HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN* = &quot;SDL_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN&quot;"><wbr />HINT_<wbr />WINDOW_<wbr />FRAME_<wbr />USABLE_<wbr />WHILE_<wbr />CURSOR_<wbr />HIDDEN<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#HINT_WINDOWS_INTRESOURCE_ICON"
+    title="HINT_WINDOWS_INTRESOURCE_ICON* = &quot;SDL_WINDOWS_INTRESOURCE_ICON&quot;"><wbr />HINT_<wbr />WINDOWS_<wbr />INTRESOURCE_<wbr />ICON<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#HINT_WINDOWS_INTRESOURCE_ICON_SMALL"
+    title="HINT_WINDOWS_INTRESOURCE_ICON_SMALL* = &quot;SDL_WINDOWS_INTRESOURCE_ICON_SMALL&quot;"><wbr />HINT_<wbr />WINDOWS_<wbr />INTRESOURCE_<wbr />ICON_<wbr />SMALL<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_WINDOWS_ENABLE_MESSAGELOOP"
     title="HINT_WINDOWS_ENABLE_MESSAGELOOP* = &quot;SDL_WINDOWS_ENABLE_MESSAGELOOP&quot;"><wbr />HINT_<wbr />WINDOWS_<wbr />ENABLE_<wbr />MESSAGELOOP<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_GRAB_KEYBOARD"
     title="HINT_GRAB_KEYBOARD* = &quot;SDL_GRAB_KEYBOARD&quot;"><wbr />HINT_<wbr />GRAB_<wbr />KEYBOARD<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#HINT_MOUSE_NORMAL_SPEED_SCALE"
+    title="HINT_MOUSE_NORMAL_SPEED_SCALE* = &quot;SDL_MOUSE_NORMAL_SPEED_SCALE&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />NORMAL_<wbr />SPEED_<wbr />SCALE<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#HINT_MOUSE_RELATIVE_SPEED_SCALE"
+    title="HINT_MOUSE_RELATIVE_SPEED_SCALE* = &quot;SDL_MOUSE_RELATIVE_SPEED_SCALE&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />RELATIVE_<wbr />SPEED_<wbr />SCALE<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_MOUSE_RELATIVE_MODE_WARP"
     title="HINT_MOUSE_RELATIVE_MODE_WARP* = &quot;SDL_MOUSE_RELATIVE_MODE_WARP&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />RELATIVE_<wbr />MODE_<wbr />WARP<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_MOUSE_FOCUS_CLICKTHROUGH"
     title="HINT_MOUSE_FOCUS_CLICKTHROUGH* = &quot;SDL_MOUSE_FOCUS_CLICKTHROUGH&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />FOCUS_<wbr />CLICKTHROUGH<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#HINT_TOUCH_MOUSE_EVENTS"
+    title="HINT_TOUCH_MOUSE_EVENTS* = &quot;SDL_TOUCH_MOUSE_EVENTS&quot;"><wbr />HINT_<wbr />TOUCH_<wbr />MOUSE_<wbr />EVENTS<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS"
     title="HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS* = &quot;SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />MINIMIZE_<wbr />ON_<wbr />FOCUS_<wbr />LOSS<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_IDLE_TIMER_DISABLED"
@@ -1276,12 +1290,20 @@ function main() {
     title="HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING* = &quot;SDL_XINPUT_USE_OLD_JOYSTICK_MAPPING&quot;"><wbr />HINT_<wbr />XINPUT_<wbr />USE_<wbr />OLD_<wbr />JOYSTICK_<wbr />MAPPING<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_GAMECONTROLLERCONFIG"
     title="HINT_GAMECONTROLLERCONFIG* = &quot;SDL_GAMECONTROLLERCONFIG&quot;"><wbr />HINT_<wbr />GAMECONTROLLERCONFIG<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#HINT_GAMECONTROLLER_IGNORE_DEVICES"
+    title="HINT_GAMECONTROLLER_IGNORE_DEVICES* = &quot;SDL_GAMECONTROLLER_IGNORE_DEVICES&quot;"><wbr />HINT_<wbr />GAMECONTROLLER_<wbr />IGNORE_<wbr />DEVICES<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#HINT_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT"
+    title="HINT_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT* = &quot;SDL_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT&quot;"><wbr />HINT_<wbr />GAMECONTROLLER_<wbr />IGNORE_<wbr />DEVICES_<wbr />EXCEPT<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS"
     title="HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS* = &quot;SDL_JOYSTICK_ALLOW_BACKGROUND_EVENTS&quot;"><wbr />HINT_<wbr />JOYSTICK_<wbr />ALLOW_<wbr />BACKGROUND_<wbr />EVENTS<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_ALLOW_TOPMOST"
     title="HINT_ALLOW_TOPMOST* = &quot;SDL_ALLOW_TOPMOST&quot;"><wbr />HINT_<wbr />ALLOW_<wbr />TOPMOST<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_TIMER_RESOLUTION"
     title="HINT_TIMER_RESOLUTION* = &quot;SDL_TIMER_RESOLUTION&quot;"><wbr />HINT_<wbr />TIMER_<wbr />RESOLUTION<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#HINT_QTWAYLAND_CONTENT_ORIENTATION"
+    title="HINT_QTWAYLAND_CONTENT_ORIENTATION* = &quot;SDL_QTWAYLAND_CONTENT_ORIENTATION&quot;"><wbr />HINT_<wbr />QTWAYLAND_<wbr />CONTENT_<wbr />ORIENTATION<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#HINT_QTWAYLAND_WINDOW_FLAGS"
+    title="HINT_QTWAYLAND_WINDOW_FLAGS* = &quot;SDL_QTWAYLAND_WINDOW_FLAGS&quot;"><wbr />HINT_<wbr />QTWAYLAND_<wbr />WINDOW_<wbr />FLAGS<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_THREAD_STACK_SIZE"
     title="HINT_THREAD_STACK_SIZE* = &quot;SDL_THREAD_STACK_SIZE&quot;"><wbr />HINT_<wbr />THREAD_<wbr />STACK_<wbr />SIZE<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_VIDEO_HIGHDPI_DISABLED"
@@ -1322,6 +1344,12 @@ function main() {
     title="HINT_WINDOWS_DISABLE_THREAD_NAMING* = &quot;SDL_WINDOWS_DISABLE_THREAD_NAMING&quot;"><wbr />HINT_<wbr />WINDOWS_<wbr />DISABLE_<wbr />THREAD_<wbr />NAMING<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HINT_RPI_VIDEO_LAYER"
     title="HINT_RPI_VIDEO_LAYER* = &quot;SDL_RPI_VIDEO_LAYER&quot;"><wbr />HINT_<wbr />RPI_<wbr />VIDEO_<wbr />LAYER<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#HINT_OPENGL_ES_DRIVER"
+    title="HINT_OPENGL_ES_DRIVER* = &quot;SDL_OPENGL_ES_DRIVER&quot;"><wbr />HINT_<wbr />OPENGL_<wbr />ES_<wbr />DRIVER<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#HINT_AUDIO_RESAMPLING_MODE"
+    title="HINT_AUDIO_RESAMPLING_MODE* = &quot;SDL_AUDIO_RESAMPLING_MODE&quot;"><wbr />HINT_<wbr />AUDIO_<wbr />RESAMPLING_<wbr />MODE<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#HINT_AUDIO_CATEGORY"
+    title="HINT_AUDIO_CATEGORY* = &quot;SDL_AUDIO_CATEGORY&quot;"><wbr />HINT_<wbr />AUDIO_<wbr />CATEGORY<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1365,20 +1393,13 @@ function main() {
 <dd>
 
 An enumeration of hint priorities
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L724"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L724" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HintCallback"><a name="HintCallback"></a><pre><span class="Identifier">HintCallback</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">oldValue</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span>
                    <span class="Identifier">newValue</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L758"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L758" class="link-seesrc" target="_blank" >Edit</a>
+Type definition of the hint callback function.
 
 </dd>
 
@@ -1399,10 +1420,6 @@ A variable controlling how 3D acceleration is used  to accelerate the SDL screen
 <p>rendering drivers.  (e.g. &quot;direct3d&quot;, &quot;opengl&quot;, etc.)</p>
 <p>By default SDL tries to make a best guess for each platform whether to use acceleration or not.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L39"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L39" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_RENDER_DRIVER"><a name="HINT_RENDER_DRIVER"></a><pre><span class="Identifier">HINT_RENDER_DRIVER</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_DRIVER&quot;</span></pre></dt>
@@ -1419,10 +1436,6 @@ A variable specifying which render driver to use.</p>
 </ul>
 <p>The default varies by platform, but it's the first one in the list that is available on the current platform.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L57"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L57" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_RENDER_OPENGL_SHADERS"><a name="HINT_RENDER_OPENGL_SHADERS"></a><pre><span class="Identifier">HINT_RENDER_OPENGL_SHADERS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_OPENGL_SHADERS&quot;</span></pre></dt>
@@ -1435,10 +1448,6 @@ A variable controlling whether the OpenGL render driver uses shaders if they are
 </ul>
 <p>By default shaders are used if OpenGL supports them.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L77"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L77" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_RENDER_DIRECT3D_THREADSAFE"><a name="HINT_RENDER_DIRECT3D_THREADSAFE"></a><pre><span class="Identifier">HINT_RENDER_DIRECT3D_THREADSAFE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_DIRECT3D_THREADSAFE&quot;</span></pre></dt>
@@ -1451,10 +1460,6 @@ A variable controlling whether the Direct3D device is initialized for thread-saf
 </ul>
 <p>By default the Direct3D device is created with thread-safety disabled.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L88"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L88" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_RENDER_DIRECT3D11_DEBUG"><a name="HINT_RENDER_DIRECT3D11_DEBUG"></a><pre><span class="Identifier">HINT_RENDER_DIRECT3D11_DEBUG</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_DIRECT3D11_DEBUG&quot;</span></pre></dt>
@@ -1468,10 +1473,18 @@ A variable controlling whether to enable Direct3D 11+'s Debug Layer.</p>
 </ul>
 <p>By default, SDL does not use Direct3D Debug Layer.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L99"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L99" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<dt id="HINT_RENDER_LOGICAL_SIZE_MODE"><a name="HINT_RENDER_LOGICAL_SIZE_MODE"></a><pre><span class="Identifier">HINT_RENDER_LOGICAL_SIZE_MODE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_LOGICAL_SIZE_MODE&quot;</span></pre></dt>
+<dd>
+<p>
+A variable controlling the scaling policy for <tt class="docutils literal"><span class="pre">renderSetLogicalSize</span></tt>.</p>
+<p>This variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;0&quot; or &quot;letterbox&quot; - Uses letterbox/sidebars to fit the entire rendering on screen</li>
+<li>&quot;1&quot; or &quot;overscan&quot;  - Will zoom the rendering so it fills the entire screen, allowing edges to be drawn offscreen</li>
+</ul>
+<p>By default letterbox is used.</p>
+
 
 </dd>
 <dt id="HINT_RENDER_SCALE_QUALITY"><a name="HINT_RENDER_SCALE_QUALITY"></a><pre><span class="Identifier">HINT_RENDER_SCALE_QUALITY</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_SCALE_QUALITY&quot;</span></pre></dt>
@@ -1485,10 +1498,6 @@ A variable controlling the scaling quality</p>
 </ul>
 <p>By default nearest pixel sampling is used.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L111"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L111" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_RENDER_VSYNC"><a name="HINT_RENDER_VSYNC"></a><pre><span class="Identifier">HINT_RENDER_VSYNC</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_VSYNC&quot;</span></pre></dt>
@@ -1501,10 +1510,6 @@ A variable controlling whether updates to the SDL screen surface should be synch
 </ul>
 <p>By default SDL does not sync screen surface updates with vertical refresh.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L122"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L122" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_VIDEO_ALLOW_SCREENSAVER"><a name="HINT_VIDEO_ALLOW_SCREENSAVER"></a><pre><span class="Identifier">HINT_VIDEO_ALLOW_SCREENSAVER</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_ALLOW_SCREENSAVER&quot;</span></pre></dt>
@@ -1517,10 +1522,6 @@ A variable controlling whether the screensaver is enabled.</p>
 </ul>
 <p>By default SDL will disable the screensaver.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L134"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L134" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_VIDEO_X11_XVIDMODE"><a name="HINT_VIDEO_X11_XVIDMODE"></a><pre><span class="Identifier">HINT_VIDEO_X11_XVIDMODE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_X11_XVIDMODE&quot;</span></pre></dt>
@@ -1533,10 +1534,6 @@ A variable controlling whether the X11 VidMode extension should be used.</p>
 </ul>
 <p>By default SDL will use XVidMode if it is available.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L144"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L144" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_VIDEO_X11_XINERAMA"><a name="HINT_VIDEO_X11_XINERAMA"></a><pre><span class="Identifier">HINT_VIDEO_X11_XINERAMA</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_X11_XINERAMA&quot;</span></pre></dt>
@@ -1549,10 +1546,6 @@ A variable controlling whether the X11 Xinerama extension should be used.</p>
 </ul>
 <p>By default SDL will use Xinerama if it is available.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L155"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L155" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_VIDEO_X11_XRANDR"><a name="HINT_VIDEO_X11_XRANDR"></a><pre><span class="Identifier">HINT_VIDEO_X11_XRANDR</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_X11_XRANDR&quot;</span></pre></dt>
@@ -1565,10 +1558,6 @@ A variable controlling whether the X11 XRandR extension should be used.</p>
 </ul>
 <p>By default SDL will not use XRandR because of window manager issues.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L166"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L166" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_VIDEO_X11_NET_WM_PING"><a name="HINT_VIDEO_X11_NET_WM_PING"></a><pre><span class="Identifier">HINT_VIDEO_X11_NET_WM_PING</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_X11_NET_WM_PING&quot;</span></pre></dt>
@@ -1582,10 +1571,6 @@ A variable controlling whether the X11 _NET_WM_PING protocol should be supported
 <p>By default SDL will use _NET_WM_PING, but for applications that know they will not always be able to respond to ping requests in a timely manner they can turn it off to avoid the window manager thinking the app is hung.</p>
 <p>The hint is checked in <tt class="docutils literal"><span class="pre">createWindow()</span></tt>.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L177"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L177" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN"><a name="HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN"></a><pre><span class="Identifier">HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN&quot;</span></pre></dt>
@@ -1598,10 +1583,17 @@ A variable controlling whether the window frame and title bar are interactive wh
 </ul>
 <p>By default SDL will allow interaction with the window frame when the cursor is hidden.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L193"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L193" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<dt id="HINT_WINDOWS_INTRESOURCE_ICON"><a name="HINT_WINDOWS_INTRESOURCE_ICON"></a><pre><span class="Identifier">HINT_WINDOWS_INTRESOURCE_ICON</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_INTRESOURCE_ICON&quot;</span></pre></dt>
+<dd>
+
+A variable to specify custom icon resource id from RC file on Windows platform.
+
+</dd>
+<dt id="HINT_WINDOWS_INTRESOURCE_ICON_SMALL"><a name="HINT_WINDOWS_INTRESOURCE_ICON_SMALL"></a><pre><span class="Identifier">HINT_WINDOWS_INTRESOURCE_ICON_SMALL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_INTRESOURCE_ICON_SMALL&quot;</span></pre></dt>
+<dd>
+
 
 </dd>
 <dt id="HINT_WINDOWS_ENABLE_MESSAGELOOP"><a name="HINT_WINDOWS_ENABLE_MESSAGELOOP"></a><pre><span class="Identifier">HINT_WINDOWS_ENABLE_MESSAGELOOP</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_ENABLE_MESSAGELOOP&quot;</span></pre></dt>
@@ -1614,10 +1606,6 @@ A variable controlling whether the windows message loop is processed by SDL</p>
 </ul>
 <p>By default SDL will process the windows message loop.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L206"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L206" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_GRAB_KEYBOARD"><a name="HINT_GRAB_KEYBOARD"></a><pre><span class="Identifier">HINT_GRAB_KEYBOARD</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_GRAB_KEYBOARD&quot;</span></pre></dt>
@@ -1630,10 +1618,18 @@ A variable controlling whether grabbing input grabs the keyboard</p>
 </ul>
 <p>By default SDL will not grab the keyboard so system shortcuts still work.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L218"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L218" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<dt id="HINT_MOUSE_NORMAL_SPEED_SCALE"><a name="HINT_MOUSE_NORMAL_SPEED_SCALE"></a><pre><span class="Identifier">HINT_MOUSE_NORMAL_SPEED_SCALE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_NORMAL_SPEED_SCALE&quot;</span></pre></dt>
+<dd>
+
+A variable setting the speed scale for mouse motion, in floating point, when the mouse is not in relative mode.
+
+</dd>
+<dt id="HINT_MOUSE_RELATIVE_SPEED_SCALE"><a name="HINT_MOUSE_RELATIVE_SPEED_SCALE"></a><pre><span class="Identifier">HINT_MOUSE_RELATIVE_SPEED_SCALE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_RELATIVE_SPEED_SCALE&quot;</span></pre></dt>
+<dd>
+
+A variable setting the scale for mouse motion, in floating point, when the mouse is in relative mode.
 
 </dd>
 <dt id="HINT_MOUSE_RELATIVE_MODE_WARP"><a name="HINT_MOUSE_RELATIVE_MODE_WARP"></a><pre><span class="Identifier">HINT_MOUSE_RELATIVE_MODE_WARP</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_RELATIVE_MODE_WARP&quot;</span></pre></dt>
@@ -1646,10 +1642,6 @@ A variable controlling whether relative mouse mode is implemented using mouse wa
 </ul>
 <p>By default SDL will use raw input for relative mouse mode.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L229"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L229" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_MOUSE_FOCUS_CLICKTHROUGH"><a name="HINT_MOUSE_FOCUS_CLICKTHROUGH"></a><pre><span class="Identifier">HINT_MOUSE_FOCUS_CLICKTHROUGH</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_FOCUS_CLICKTHROUGH&quot;</span></pre></dt>
@@ -1662,20 +1654,24 @@ Allow mouse click events when clicking to focus an SDL window</p>
 </ul>
 <p>By default SDL will ignore mouse clicks that activate a window.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L240"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L240" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<dt id="HINT_TOUCH_MOUSE_EVENTS"><a name="HINT_TOUCH_MOUSE_EVENTS"></a><pre><span class="Identifier">HINT_TOUCH_MOUSE_EVENTS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_TOUCH_MOUSE_EVENTS&quot;</span></pre></dt>
+<dd>
+<p>
+A variable controlling whether touch events should generate synthetic mouse events.</p>
+<p>This variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;0&quot;       - Touch events will not generate mouse events</li>
+<li>&quot;1&quot;       - Touch events will generate mouse events</li>
+</ul>
+<p>By default SDL will generate mouse events for touch events.</p>
+
 
 </dd>
 <dt id="HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS"><a name="HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS"></a><pre><span class="Identifier">HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS&quot;</span></pre></dt>
 <dd>
 
 Minimize your <tt class="docutils literal"><span class="pre">Window</span></tt> if it loses key focus when in fullscreen mode. Defaults to <cite>true</cite>.
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L250"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L250" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_IDLE_TIMER_DISABLED"><a name="HINT_IDLE_TIMER_DISABLED"></a><pre><span class="Identifier">HINT_IDLE_TIMER_DISABLED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_IOS_IDLE_TIMER_DISABLED&quot;</span></pre></dt>
@@ -1689,10 +1685,6 @@ A variable controlling whether the idle timer is disabled on iOS.</p>
 <li>&quot;1&quot;       - Disable idle timer</li>
 </ul>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L255"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L255" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_ORIENTATIONS"><a name="HINT_ORIENTATIONS"></a><pre><span class="Identifier">HINT_ORIENTATIONS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_IOS_ORIENTATIONS&quot;</span></pre></dt>
@@ -1707,10 +1699,6 @@ A variable controlling which orientations are allowed on iOS.</p>
 <li>&quot;PortraitUpsideDown&quot;</li>
 </ul>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L272"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L272" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_APPLE_TV_CONTROLLER_UI_EVENTS"><a name="HINT_APPLE_TV_CONTROLLER_UI_EVENTS"></a><pre><span class="Identifier">HINT_APPLE_TV_CONTROLLER_UI_EVENTS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_APPLE_TV_CONTROLLER_UI_EVENTS&quot;</span></pre></dt>
@@ -1724,10 +1712,6 @@ A variable controlling whether controllers used with the Apple TV generate UI ev
 <li>&quot;1&quot;     - Controller input generates UI events.</li>
 </ul>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L285"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L285" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_APPLE_TV_REMOTE_ALLOW_ROTATION"><a name="HINT_APPLE_TV_REMOTE_ALLOW_ROTATION"></a><pre><span class="Identifier">HINT_APPLE_TV_REMOTE_ALLOW_ROTATION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_APPLE_TV_REMOTE_ALLOW_ROTATION&quot;</span></pre></dt>
@@ -1739,10 +1723,6 @@ A variable controlling whether the Apple TV remote's joystick axes will automati
 <li>&quot;1&quot; - Joystick axes are based on the orientation of the remote.</li>
 </ul>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L302"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L302" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_ACCELEROMETER_AS_JOYSTICK"><a name="HINT_ACCELEROMETER_AS_JOYSTICK"></a><pre><span class="Identifier">HINT_ACCELEROMETER_AS_JOYSTICK</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ACCELEROMETER_AS_JOYSTICK&quot;</span></pre></dt>
@@ -1754,10 +1734,6 @@ A variable controlling whether an Android / iOS built-in accelerometer should be
 <li>&quot;1&quot;       - List real joysticks along with the accelerometer as if it were a 3 axis joystick (the default).</li>
 </ul>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L311"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L311" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_XINPUT_ENABLED"><a name="HINT_XINPUT_ENABLED"></a><pre><span class="Identifier">HINT_XINPUT_ENABLED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_XINPUT_ENABLED&quot;</span></pre></dt>
@@ -1769,10 +1745,6 @@ A variable that lets you disable the detection and use of Xinput gamepad devices
 <li>&quot;1&quot;       - Enable XInput detection (the default)</li>
 </ul>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L322"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L322" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING"><a name="HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING"></a><pre><span class="Identifier">HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_XINPUT_USE_OLD_JOYSTICK_MAPPING&quot;</span></pre></dt>
@@ -1782,23 +1754,35 @@ A variable that causes SDL to use the old axis and button mapping for XInput dev
 <p>This hint is for backwards compatibility only and will be removed in SDL 2.1.</p>
 <p>The default value is <cite>0</cite>.  This hint must be set before <tt class="docutils literal"><span class="pre">sdl.init()</span></tt>.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L331"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L331" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_GAMECONTROLLERCONFIG"><a name="HINT_GAMECONTROLLERCONFIG"></a><pre><span class="Identifier">HINT_GAMECONTROLLERCONFIG</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_GAMECONTROLLERCONFIG&quot;</span></pre></dt>
 <dd>
 <p>
-A variable that lets you manually hint extra gamecontroller db entries</p>
+A variable that lets you manually hint extra gamecontroller db entries.</p>
 <p>The variable should be newline delimited rows of gamecontroller config data, see <cite>gamecontroller.nim</cite></p>
 <p>This hint must be set before calling <tt class="docutils literal"><span class="pre">init(INIT_GAMECONTROLLER)</span></tt> You can update mappings after the system is initialized with <tt class="docutils literal"><span class="pre">gameControllerMappingForGUID()</span></tt> and <tt class="docutils literal"><span class="pre">gameControllerAddMapping()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L341"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L341" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<dt id="HINT_GAMECONTROLLER_IGNORE_DEVICES"><a name="HINT_GAMECONTROLLER_IGNORE_DEVICES"></a><pre><span class="Identifier">HINT_GAMECONTROLLER_IGNORE_DEVICES</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_GAMECONTROLLER_IGNORE_DEVICES&quot;</span></pre></dt>
+<dd>
+<p>
+A variable containing a list of devices to skip when scanning for game controllers.</p>
+<p>The format of the string is a comma separated list of USB VID/PID pairs in hexadecimal form, e.g.</p>
+<p>0xAAAA/0xBBBB,0xCCCC/0xDDDD</p>
+<p>The variable can also take the form of @file, in which case the named file will be loaded and interpreted as the value of the variable.</p>
+
+
+</dd>
+<dt id="HINT_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT"><a name="HINT_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT"></a><pre><span class="Identifier">HINT_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT&quot;</span></pre></dt>
+<dd>
+<p>
+If set, all devices will be skipped when scanning for game controllers except for the ones listed in this variable.</p>
+<p>The format of the string is a comma separated list of USB VID/PID pairs in hexadecimal form, e.g.</p>
+<p>0xAAAA/0xBBBB,0xCCCC/0xDDDD</p>
+<p>The variable can also take the form of @file, in which case the named file will be loaded and interpreted as the value of the variable.</p>
+
 
 </dd>
 <dt id="HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS"><a name="HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS"></a><pre><span class="Identifier">HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_JOYSTICK_ALLOW_BACKGROUND_EVENTS&quot;</span></pre></dt>
@@ -1811,10 +1795,6 @@ A variable that lets you enable joystick (and gamecontroller) events even when y
 </ul>
 <p>The default value is &quot;0&quot;.  This hint may be set at any time.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L352"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L352" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_ALLOW_TOPMOST"><a name="HINT_ALLOW_TOPMOST"></a><pre><span class="Identifier">HINT_ALLOW_TOPMOST</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ALLOW_TOPMOST&quot;</span></pre></dt>
@@ -1827,10 +1807,6 @@ If set to <cite>0</cite> then never set the top most bit on a <tt class="docutil
 <li>&quot;1&quot;       - allow topmost</li>
 </ul>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L366"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L366" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_TIMER_RESOLUTION"><a name="HINT_TIMER_RESOLUTION"></a><pre><span class="Identifier">HINT_TIMER_RESOLUTION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_TIMER_RESOLUTION&quot;</span></pre></dt>
@@ -1842,10 +1818,27 @@ A variable that controls the timer resolution, in milliseconds.</p>
 <p>If this variable is set to &quot;0&quot;, the system timer resolution is not set.</p>
 <p>The default value is &quot;1&quot;. This hint may be set at any time.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L378"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L378" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<dt id="HINT_QTWAYLAND_CONTENT_ORIENTATION"><a name="HINT_QTWAYLAND_CONTENT_ORIENTATION"></a><pre><span class="Identifier">HINT_QTWAYLAND_CONTENT_ORIENTATION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_QTWAYLAND_CONTENT_ORIENTATION&quot;</span></pre></dt>
+<dd>
+<p>
+A variable describing the content orientation on QtWayland-based platforms.</p>
+<p>On QtWayland platforms, windows are rotated client-side to allow for custom transitions. In order to correctly position overlays (e.g. volume bar) and gestures (e.g. events view, close/minimize gestures), the system needs to know in which orientation the application is currently drawing its contents.</p>
+<p>This does not cause the window to be rotated or resized, the application needs to take care of drawing the content in the right orientation (the framebuffer is always in portrait mode).</p>
+<p>This variable can be one of the following values:</p>
+<p>&quot;primary&quot; (default), &quot;portrait&quot;, &quot;landscape&quot;, &quot;inverted-portrait&quot;, &quot;inverted-landscape&quot;</p>
+
+
+</dd>
+<dt id="HINT_QTWAYLAND_WINDOW_FLAGS"><a name="HINT_QTWAYLAND_WINDOW_FLAGS"></a><pre><span class="Identifier">HINT_QTWAYLAND_WINDOW_FLAGS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_QTWAYLAND_WINDOW_FLAGS&quot;</span></pre></dt>
+<dd>
+<p>
+Flags to set on QtWayland windows to integrate with the native window manager.</p>
+<p>On QtWayland platforms, this hint controls the flags to set on the windows. For example, on Sailfish OS &quot;OverridesSystemGestures&quot; disables swipe gestures.</p>
+<p>This variable is a space-separated list of the following values (empty = no flags):</p>
+<p>&quot;OverridesSystemGestures&quot;, &quot;StaysOnTop&quot;, &quot;BypassWindowManager&quot;</p>
+
 
 </dd>
 <dt id="HINT_THREAD_STACK_SIZE"><a name="HINT_THREAD_STACK_SIZE"></a><pre><span class="Identifier">HINT_THREAD_STACK_SIZE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_THREAD_STACK_SIZE&quot;</span></pre></dt>
@@ -1856,20 +1849,12 @@ A string specifying SDL's threads stack size in bytes or <cite>0</cite> for the 
 <p>This is specially useful if you build SDL against a non glibc libc library (such as musl) which provides a relatively small default thread stack size (a few kilobytes versus the default 8MB glibc uses).</p>
 <p>Support for this hint is currently available only in the pthread, Windows, and PSP backend.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L393"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L393" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_VIDEO_HIGHDPI_DISABLED"><a name="HINT_VIDEO_HIGHDPI_DISABLED"></a><pre><span class="Identifier">HINT_VIDEO_HIGHDPI_DISABLED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_HIGHDPI_DISABLED&quot;</span></pre></dt>
 <dd>
 
 If set to 1, then do not allow high-DPI windows. (&quot;Retina&quot; on Mac and iOS)
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L408"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L408" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK"><a name="HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK"></a><pre><span class="Identifier">HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK&quot;</span></pre></dt>
@@ -1878,10 +1863,6 @@ class="link-seesrc" target="_blank">Source</a>
 A variable that determines whether ctrl+click should generate a right-click event on Mac</p>
 <p>If present, holding ctrl while left clicking will generate a right click event when on Mac.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L413"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L413" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_VIDEO_WIN_D3DCOMPILER"><a name="HINT_VIDEO_WIN_D3DCOMPILER"></a><pre><span class="Identifier">HINT_VIDEO_WIN_D3DCOMPILER</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_WIN_D3DCOMPILER&quot;</span></pre></dt>
@@ -1895,10 +1876,6 @@ A variable specifying which shader compiler to preload when using the Chrome ANG
 <li>&quot;none&quot; - do not load any library, useful if you compiled ANGLE from source and included the compiler in your binaries.</li>
 </ul>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L422"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L422" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT"><a name="HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT"></a><pre><span class="Identifier">HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_WINDOW_SHARE_PIXEL_FORMAT&quot;</span></pre></dt>
@@ -1911,10 +1888,6 @@ A variable that is the address of another <tt class="docutils literal"><span cla
 <p>This variable can be set to the following values:</p>
 <p>The address (as a string &quot;%p&quot;) of the <tt class="docutils literal"><span class="pre">Window</span></tt> that new windows created with <tt class="docutils literal"><span class="pre">createWindowFrom()</span></tt> should share a pixel format with.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L439"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L439" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_WINRT_PRIVACY_POLICY_URL"><a name="HINT_WINRT_PRIVACY_POLICY_URL"></a><pre><span class="Identifier">HINT_WINRT_PRIVACY_POLICY_URL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINRT_PRIVACY_POLICY_URL&quot;</span></pre></dt>
@@ -1927,10 +1900,6 @@ A URL to a WinRT app's privacy policy</p>
 <p>The label text of an app's &quot;Privacy Policy&quot; link may be customized via another hint, <cite>HINT_WINRT_PRIVACY_POLICY_LABEL</cite>.</p>
 <p>Please note that on Windows Phone, Microsoft does not provide standard UI for displaying a privacy policy link, and as such, <cite>HINT_WINRT_PRIVACY_POLICY_URL</cite> will not get used on that platform. Network-enabled phone apps should display their privacy policy through some other, in-app means.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L461"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L461" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_WINRT_PRIVACY_POLICY_LABEL"><a name="HINT_WINRT_PRIVACY_POLICY_LABEL"></a><pre><span class="Identifier">HINT_WINRT_PRIVACY_POLICY_LABEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINRT_PRIVACY_POLICY_LABEL&quot;</span></pre></dt>
@@ -1943,10 +1912,6 @@ Label text for a WinRT app's privacy policy link</p>
 <p>The default value is &quot;Privacy Policy&quot;.  This hint should only be set during app initialization, preferably before any calls to <tt class="docutils literal"><span class="pre">sdl.init()</span></tt>.</p>
 <p>For additional information on linking to a privacy policy, see the documentation for <cite>HINT_WINRT_PRIVACY_POLICY_URL</cite>.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L490"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L490" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_WINRT_HANDLE_BACK_BUTTON"><a name="HINT_WINRT_HANDLE_BACK_BUTTON"></a><pre><span class="Identifier">HINT_WINRT_HANDLE_BACK_BUTTON</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINRT_HANDLE_BACK_BUTTON&quot;</span></pre></dt>
@@ -1964,10 +1929,6 @@ Allows back-button-press events on Windows Phone to be marked as handled.</p>
 <p>More details on back button behavior in Windows Phone apps can be found at the following page, on Microsoft's developer site:</p>
 <p><a class="reference external" href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj247550(v=vs.105).aspx">http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj247550(v=vs.105).aspx</a></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L513"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L513" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_VIDEO_MAC_FULLSCREEN_SPACES"><a name="HINT_VIDEO_MAC_FULLSCREEN_SPACES"></a><pre><span class="Identifier">HINT_VIDEO_MAC_FULLSCREEN_SPACES</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_MAC_FULLSCREEN_SPACES&quot;</span></pre></dt>
@@ -1981,10 +1942,6 @@ A variable that dictates policy for fullscreen Spaces on Mac OS X.</p>
 </ul>
 <p>The default value is &quot;1&quot;. Spaces are disabled regardless of this hint if the OS isn't at least Mac OS X Lion (10.7). This hint must be set before any windows are created.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L572"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L572" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_MAC_BACKGROUND_APP"><a name="HINT_MAC_BACKGROUND_APP"></a><pre><span class="Identifier">HINT_MAC_BACKGROUND_APP</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MAC_BACKGROUND_APP&quot;</span></pre></dt>
@@ -1993,10 +1950,6 @@ class="link-seesrc" target="_blank">Source</a>
 When set don't force the SDL app to become a foreground process</p>
 <p>This hint only applies to Mac OS X.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L590"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L590" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION"><a name="HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION"></a><pre><span class="Identifier">HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION&quot;</span></pre></dt>
@@ -2007,10 +1960,6 @@ Android APK expansion main file version. Should be a string number like &quot;1&
 <p>If both hints were set then <tt class="docutils literal"><span class="pre">rwFromFile()</span></tt> will look into expansion files after a given relative path was not found in the internal storage and assets.</p>
 <p>By default this hint is not set and the APK expansion files are not searched.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L596"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L596" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION"><a name="HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION"></a><pre><span class="Identifier">HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION&quot;</span></pre></dt>
@@ -2021,10 +1970,6 @@ Android APK expansion patch file version. Should be a string number like &quot;1
 <p>If both hints were set then <tt class="docutils literal"><span class="pre">rwFromFile()</span></tt> will look into expansion files after a given relative path was not found in the internal storage and assets.</p>
 <p>By default this hint is not set and the APK expansion files are not searched.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L611"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L611" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HIND_IME_INTERNAL_EDITING"><a name="HIND_IME_INTERNAL_EDITING"></a><pre><span class="Identifier">HIND_IME_INTERNAL_EDITING</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_IME_INTERNAL_EDITING&quot;</span></pre></dt>
@@ -2036,10 +1981,6 @@ A variable to control whether certain IMEs should handle text editing internally
 <li>&quot;1&quot;       - If supported by the IME then <cite>sdl.TEXTEDITING</cite> events are not sent, and text that is being composed will be rendered in its own UI.</li>
 </ul>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L626"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L626" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH"><a name="HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH"></a><pre><span class="Identifier">HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ANDROID_SEPARATE_MOUSE_AND_TOUCH&quot;</span></pre></dt>
@@ -2052,10 +1993,6 @@ A variable to control whether mouse and touch events are to be treated together 
 </ul>
 <p>The value of this hint is used at runtime, so it can be changed at any time.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L639"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L639" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_EMSCRIPTEN_KEYBOARD_ELEMENT"><a name="HINT_EMSCRIPTEN_KEYBOARD_ELEMENT"></a><pre><span class="Identifier">HINT_EMSCRIPTEN_KEYBOARD_ELEMENT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_EMSCRIPTEN_KEYBOARD_ELEMENT&quot;</span></pre></dt>
@@ -2071,10 +2008,6 @@ Override the binding element for keyboard inputs for Emscripten builds.</p>
 <li>any other string without a leading <cite>#</cite> sign applies to the element on the page with that ID.</li>
 </ul>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L654"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L654" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_NO_SIGNAL_HANDLERS"><a name="HINT_NO_SIGNAL_HANDLERS"></a><pre><span class="Identifier">HINT_NO_SIGNAL_HANDLERS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_NO_SIGNAL_HANDLERS&quot;</span></pre></dt>
@@ -2087,10 +2020,6 @@ Tell SDL not to catch the SIGINT or SIGTERM signals.</p>
 <li>&quot;1&quot;       - SDL will not install a signal handler at all.</li>
 </ul>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L668"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L668" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_WINDOWS_NO_CLOSE_ON_ALT_F4"><a name="HINT_WINDOWS_NO_CLOSE_ON_ALT_F4"></a><pre><span class="Identifier">HINT_WINDOWS_NO_CLOSE_ON_ALT_F4</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_NO_CLOSE_ON_ALT_F4&quot;</span></pre></dt>
@@ -2102,10 +2031,6 @@ Tell SDL not to generate window-close events for Alt+F4 on Windows.</p>
 <li>&quot;1&quot;   - SDL will only do normal key handling for Alt+F4.</li>
 </ul>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L679"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L679" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_BMP_SAVE_LEGACY_FORMAT"><a name="HINT_BMP_SAVE_LEGACY_FORMAT"></a><pre><span class="Identifier">HINT_BMP_SAVE_LEGACY_FORMAT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_BMP_SAVE_LEGACY_FORMAT&quot;</span></pre></dt>
@@ -2119,36 +2044,73 @@ Prevent SDL from using version 4 of the bitmap header when saving BMPs.</p>
 </ul>
 <p>The default value is &quot;0&quot;.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L687"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L687" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_WINDOWS_DISABLE_THREAD_NAMING"><a name="HINT_WINDOWS_DISABLE_THREAD_NAMING"></a><pre><span class="Identifier">HINT_WINDOWS_DISABLE_THREAD_NAMING</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_DISABLE_THREAD_NAMING&quot;</span></pre></dt>
 <dd>
 <p>
-Tell SDL not to name threads on Windows.</p>
+Tell SDL not to name threads on Windows with the 0x406D1388 Exception. The 0x406D1388 Exception is a trick used to inform Visual Studio of a thread's name, but it tends to cause problems with other debuggers, and the .NET runtime. Note that SDL 2.0.6 and later will still use the (safer) SetThreadDescription API, introduced in the Windows 10 Creators Update, if available.</p>
 <p>The variable can be set to the following values:</p>
-<ul class="simple"><li>&quot;0&quot; - SDL will raise the 0x406D1388 Exception to name threads. This is the default behavior of SDL &lt;= 2.0.4. (default)</li>
-<li>&quot;1&quot; - SDL will not raise this exception, and threads will be unnamed. For .NET languages this is required when running under a debugger.</li>
+<ul class="simple"><li>&quot;0&quot; - SDL will raise the 0x406D1388 Exception to name threads. This is the default behavior of SDL &lt;= 2.0.4.</li>
+<li>&quot;1&quot; - SDL will not raise this exception, and threads will be unnamed. (default) This is necessary with .NET languages or debuggers that aren't Visual Studio.</li>
 </ul>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L706"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L706" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HINT_RPI_VIDEO_LAYER"><a name="HINT_RPI_VIDEO_LAYER"></a><pre><span class="Identifier">HINT_RPI_VIDEO_LAYER</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RPI_VIDEO_LAYER&quot;</span></pre></dt>
 <dd>
-<p>Tell SDL which Dispmanx layer to use on a Raspberry PI</p>
+<p>
+Tell SDL which Dispmanx layer to use on a Raspberry PI</p>
 <p>Also known as Z-order. The variable can take a negative or positive value. The default is <cite>10000</cite>.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L716"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L716" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<dt id="HINT_OPENGL_ES_DRIVER"><a name="HINT_OPENGL_ES_DRIVER"></a><pre><span class="Identifier">HINT_OPENGL_ES_DRIVER</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_OPENGL_ES_DRIVER&quot;</span></pre></dt>
+<dd>
+<p>
+A variable controlling what driver to use for OpenGL ES contexts.</p>
+<p>On some platforms, currently Windows and X11, OpenGL drivers may support creating contexts with an OpenGL ES profile. By default SDL uses these profiles, when available, otherwise it attempts to load an OpenGL ES library, e.g. that provided by the ANGLE project. This variable controls whether SDL follows this default behaviour or will always load an OpenGL ES library.</p>
+<p>Circumstances where this is useful include:</p>
+<ul class="simple"><li>Testing an app with a particular OpenGL ES implementation, e.g ANGLE, or emulator, e.g. those from ARM, Imagination or Qualcomm.</li>
+<li>Resolving OpenGL ES function addresses at link time by linking with the OpenGL ES library instead of querying them at run time with <tt class="docutils literal"><span class="pre">glGetProcAddress()</span></tt>.</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">Caution:</span></tt> for an application to work with the default behaviour across different OpenGL drivers it must query the OpenGL ES function addresses at run time using <tt class="docutils literal"><span class="pre">glGetProcAddress()</span></tt>.</p>
+<p>This variable is ignored on most platforms because OpenGL ES is native or not supported.</p>
+<p>This variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;0&quot; - Use ES profile of OpenGL, if available. (Default when not set.)</li>
+<li>&quot;1&quot; - Load OpenGL ES library using the default library names.</li>
+</ul>
+
+
+</dd>
+<dt id="HINT_AUDIO_RESAMPLING_MODE"><a name="HINT_AUDIO_RESAMPLING_MODE"></a><pre><span class="Identifier">HINT_AUDIO_RESAMPLING_MODE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_AUDIO_RESAMPLING_MODE&quot;</span></pre></dt>
+<dd>
+<p>
+A variable controlling speed/quality tradeoff of audio resampling.</p>
+<p>If available, SDL can use libsamplerate ( <a class="reference external" href="http://www.mega-nerd.com/SRC">http://www.mega-nerd.com/SRC</a>/ ) to handle audio resampling. There are different resampling modes available that produce different levels of quality, using more CPU.</p>
+<p>If this hint isn't specified to a valid setting, or libsamplerate isn't available, SDL will use the default, internal resampling algorithm.</p>
+<p>Note that this is currently only applicable to resampling audio that is being written to a device for playback or audio being read from a device for capture. <tt class="docutils literal"><span class="pre">AudioCVT</span></tt> always uses the default resampler (although this might change for SDL 2.1).</p>
+<p>This hint is currently only checked at audio subsystem initialization.</p>
+<p>This variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;0&quot; or &quot;default&quot; - Use SDL's internal resampling (Default when not set - low quality, fast)</li>
+<li>&quot;1&quot; or &quot;fast&quot;    - Use fast, slightly higher quality resampling, if available</li>
+<li>&quot;2&quot; or &quot;medium&quot;  - Use medium quality resampling, if available</li>
+<li>&quot;3&quot; or &quot;best&quot;    - Use high quality resampling, if available</li>
+</ul>
+
+
+</dd>
+<dt id="HINT_AUDIO_CATEGORY"><a name="HINT_AUDIO_CATEGORY"></a><pre><span class="Identifier">HINT_AUDIO_CATEGORY</span><span class="Operator">*</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_AUDIO_CATEGORY&quot;</span></pre></dt>
+<dd>
+<p>
+A variable controlling the audio category on iOS and Mac OS X</p>
+<p>This variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;ambient&quot;     - Use the AVAudioSessionCategoryAmbient audio category, will be muted by the phone mute switch (default)</li>
+<li>&quot;playback&quot;    - Use the AVAudioSessionCategoryPlayback category</li>
+</ul>
+<p>For more information, see Apple's documentation:</p>
+<p><a class="reference external" href="https://developer.apple.com/library/content/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioSessionCategoriesandModes/AudioSessionCategoriesandModes.html">https://developer.apple.com/library/content/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioSessionCategoriesandModes/AudioSessionCategoriesandModes.html</a></p>
+
 
 </dd>
 
@@ -2163,10 +2125,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>The priority controls the behavior when setting a hint that already has a value.  Hints will replace existing hints of their priority and lower.  Environment variables are considered to have override priority.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if the hint was set, <cite>false</cite> otherwise.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L728"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L728" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setHint"><a name="setHint,cstring,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setHint</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetHint&quot;</span><span class="Other">,</span>
@@ -2175,10 +2133,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Set a hint with normal priority.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if the hint was set, <cite>false</cite> otherwise.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L739"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L739" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getHint"><a name="getHint,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getHint</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetHint&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -2186,10 +2140,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Get a hint.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the string value of a hint variable.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L745"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L745" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getHintBoolean"><a name="getHintBoolean,cstring,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getHintBoolean</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">default_value</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2198,10 +2148,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Get a hint.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the boolean value of a hint variable.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L751"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L751" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="addHintCallback"><a name="addHintCallback,cstring,HintCallback,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">addHintCallback</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">callback</span><span class="Other">:</span> <span class="Identifier">HintCallback</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -2212,10 +2158,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">callback</span></tt> The procedure to call when the hint value changes.</p>
 <p><tt class="docutils literal"><span class="pre">userdata</span></tt> A pointer to pass to the callback procedure.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L762"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L762" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="delHintCallback"><a name="delHintCallback,cstring,HintCallback,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">delHintCallback</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">callback</span><span class="Other">:</span> <span class="Identifier">HintCallback</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -2226,10 +2168,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">callback</span></tt> The procedure being called when the hint value changes.</p>
 <p><tt class="docutils literal"><span class="pre">userdata</span></tt> A pointer being passed to the callback procedure.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L773"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L773" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="clearHints"><a name="clearHints,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">clearHints</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ClearHints&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -2237,10 +2175,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Clear all hints.</p>
 <p>This procedure is called during <tt class="docutils literal"><span class="pre">quit()</span></tt> to free stored hints.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/hints.nim#L784"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/hints.nim#L784" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -2253,7 +2187,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>

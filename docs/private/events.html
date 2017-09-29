@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module events</title>
@@ -1299,11 +1301,11 @@ function main() {
   <li><a class="reference" href="#CommonEventObj"
     title="CommonEventObj* = object
   kind*: EventKind
-  timestamp*: uint32"><wbr />Common<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``"><wbr />Common<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#WindowEventObj"
     title="WindowEventObj* = object
   kind*: EventKind             ## `WINDOWEVENT`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   windowID*: uint32            ## The associated window
   event*: WindowEventID        ## WindowEventID
   padding1*: uint8
@@ -1314,7 +1316,7 @@ function main() {
   <li><a class="reference" href="#KeyboardEventObj"
     title="KeyboardEventObj* = object
   kind*: EventKind             ## `KEYDOWN` or `KEYUP`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   windowID*: uint32            ## The window with keyboard focus, if any
   state*: uint8                ## `PRESSED` or `RELEASED`
   repeat*: uint8               ## Non-zero if this is a key repeat
@@ -1324,7 +1326,7 @@ function main() {
   <li><a class="reference" href="#TextEditingEventObj"
     title="TextEditingEventObj* = object
   kind*: EventKind             ## `TEXTEDITING`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   windowID*: uint32            ## The window with keyboard focus, if any
   text*: array[TEXTEDITINGEVENT_TEXT_SIZE, char] ## The editing text
   start*: int32                ## The start cursor of selected editing text
@@ -1332,13 +1334,13 @@ function main() {
   <li><a class="reference" href="#TextInputEventObj"
     title="TextInputEventObj* = object
   kind*: EventKind             ## `TEXTINPUT`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   windowID*: uint32            ## The window with keyboard focus, if any
   text*: array[TEXTINPUTEVENT_TEXT_SIZE, char] ## The input text"><wbr />Text<wbr />Input<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#MouseMotionEventObj"
     title="MouseMotionEventObj* = object
   kind*: EventKind             ## `MOUSEMOTION`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   windowID*: uint32            ## The window with mouse focus, if any
   which*: uint32               ## The mouse instance id, or `TOUCH_MOUSEID`
   state*: uint32               ## The current button state
@@ -1349,7 +1351,7 @@ function main() {
   <li><a class="reference" href="#MouseButtonEventObj"
     title="MouseButtonEventObj* = object
   kind*: EventKind             ## `MOUSEBUTTONDOWN` or `MOUSEBUTTONUP`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   windowID*: uint32            ## The window with mouse focus, if any
   which*: uint32               ## The mouse instance id, or `TOUCH_MOUSEID`
   button*: uint8               ## The mouse button index
@@ -1361,7 +1363,7 @@ function main() {
   <li><a class="reference" href="#MouseWheelEventObj"
     title="MouseWheelEventObj* = object
   kind*: EventKind             ## `MOUSEWHEEL`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   windowID*: uint32            ## The window with mouse focus, if any
   which*: uint32               ## The mouse instance id, or `TOUCH_MOUSEID`
   x*: int32                    ## \
@@ -1377,7 +1379,7 @@ function main() {
   <li><a class="reference" href="#JoyAxisEventObj"
     title="JoyAxisEventObj* = object
   kind*: EventKind             ## `JOYAXISMOTION`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   which*: JoystickID           ## The joystick instance id
   axis*: uint8                 ## The joystick axis index
   padding1*: uint8
@@ -1388,7 +1390,7 @@ function main() {
   <li><a class="reference" href="#JoyBallEventObj"
     title="JoyBallEventObj* = object
   kind*: EventKind             ## `JOYBALLMOTION`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   which*: JoystickID           ## The joystick instance id
   ball*: uint8                 ## The joystick trackball index
   padding1*: uint8
@@ -1399,7 +1401,7 @@ function main() {
   <li><a class="reference" href="#JoyHatEventObj"
     title="JoyHatEventObj* = object
   kind*: EventKind             ## `JOYHATMOTION`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   which*: JoystickID           ## The joystick instance id
   hat*: uint8                  ## The joystick hat index
   value*: HatPosition ## \
@@ -1418,7 +1420,7 @@ function main() {
   <li><a class="reference" href="#JoyButtonEventObj"
     title="JoyButtonEventObj* = object
   kind*: EventKind             ## `JOYBUTTONDOWN` or `JOYBUTTONUP`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   which*: JoystickID           ## The joystick instance id
   button*: uint8               ## The joystick button index
   state*: uint8                ## `PRESSED` or `RELEASED`
@@ -1427,14 +1429,14 @@ function main() {
   <li><a class="reference" href="#JoyDeviceEventObj"
     title="JoyDeviceEventObj* = object
   kind*: EventKind             ## `JOYDEVICEADDED` or `JOYDEVICEREMOVED`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   which*: int32                ## \
               ## The joystick device index for the `ADDED` event,
               ## instance id for the `REMOVED` event"><wbr />Joy<wbr />Device<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#ControllerAxisEventObj"
     title="ControllerAxisEventObj* = object
   kind*: EventKind             ## `CONTROLLERAXISMOTION`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   which*: JoystickID           ## The joystick instance id
   axis*: GameControllerAxis    ## The controller axis (``GameControllerAxis``)
   padding1*: uint8
@@ -1445,7 +1447,7 @@ function main() {
   <li><a class="reference" href="#ControllerButtonEventObj"
     title="ControllerButtonEventObj* = object
   kind*: EventKind             ## `CONTROLLERBUTTONDOWN` or `CONTROLLERBUTTONUP`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   which*: JoystickID           ## The joystick instance id
   button*: GameControllerButton ## The controller button (``GameControllerButton``)
   state*: uint8                ## `PRESSED` or `RELEASED`
@@ -1457,14 +1459,14 @@ function main() {
                  ## `CONTROLLERDEVICEADDED`,
                  ## `CONTROLLERDEVICEREMOVED, or
                  ## `CONTROLLERDEVICEREMAPPED`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   which*: int32                ## \
               ## The joystick device index for the `ADDED` event,
               ## instance id for the `REMOVED` or `REMAPPED` event"><wbr />Controller<wbr />Device<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#AudioDeviceEventObj"
     title="AudioDeviceEventObj* = object
   kind*: EventKind             ## `AUDIODEVICEADDED`, or `AUDIODEVICEREMOVED`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   which*: uint32 ## \
                ## The audio device index for the `ADDED` event (valid until next
                ## ``getNumAudioDevices()`` call),
@@ -1478,7 +1480,7 @@ function main() {
   <li><a class="reference" href="#TouchFingerEventObj"
     title="TouchFingerEventObj* = object
   kind*: EventKind             ## `FINGERMOTION` or `FINGERDOWN` or `FINGERUP`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   touchId*: TouchID            ## The touch device id
   fingerId*: FingerID
   x*: cfloat                   ## Normalized in the range 0...1
@@ -1489,7 +1491,7 @@ function main() {
   <li><a class="reference" href="#MultiGestureEventObj"
     title="MultiGestureEventObj* = object
   kind*: EventKind             ## `MULTIGESTURE`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   touchId*: TouchID            ## The touch device index
   dTheta*: cfloat
   dDist*: cfloat
@@ -1500,7 +1502,7 @@ function main() {
   <li><a class="reference" href="#DollarGestureEventObj"
     title="DollarGestureEventObj* = object
   kind*: EventKind             ## `DOLLARGESTURE` or `DOLLARRECORD`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   touchId*: TouchID            ## The touch device id
   gestureId*: GestureID
   numFingers*: uint32
@@ -1511,22 +1513,22 @@ function main() {
     title="DropEventObj* = object
   kind*: EventKind             ## `DROPBEGIN` or `DROPFILE`
                  ## or `DROPTEXT` or `DROPCOMPLETE`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   file*: cstring ## The file name, which should be freed with ``free()``,
                ## is ``nil`` on begin&#x2F;complete
   windowID: uint32             ## The window that was dropped on, if any"><wbr />Drop<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#QuitEventObj"
     title="QuitEventObj* = object
   kind*: EventKind             ## `QUIT`
-  timestamp*: uint32"><wbr />Quit<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``"><wbr />Quit<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#OSEventObj"
     title="OSEventObj* = object
   kind*: EventKind             ## `QUIT`
-  timestamp*: uint32"><wbr />OSEvent<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``"><wbr />OSEvent<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#UserEventObj"
     title="UserEventObj* = object
   kind*: EventKind             ## `USEREVENT` through `LASTEVENT-1`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   windowID*: uint32            ## The associated window if any
   code*: int32                 ## User defined event code
   data1*: pointer              ## User defined data pointer
@@ -1536,7 +1538,7 @@ function main() {
   <li><a class="reference" href="#SysWMEventObj"
     title="SysWMEventObj* = object
   kind*: EventKind             ## `SYSWMEVENT`
-  timestamp*: uint32
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   msg*: SysWMmsg               ## driver dependent data, defined in ``syswm.nim``"><wbr />Sys<wbr />WMEvent<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#Event"
     title="Event* = object
@@ -1749,28 +1751,20 @@ function main() {
 <dd>
 
 The types of events that can be delivered.
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L33"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L33" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="CommonEventObj"><a name="CommonEventObj"></a><pre><span class="Identifier">CommonEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-</pre></dt>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
+  </pre></dt>
 <dd>
 
 Fields shared by every event
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L167"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L167" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WindowEventObj"><a name="WindowEventObj"></a><pre><span class="Identifier">WindowEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `WINDOWEVENT`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The associated window</span>
   <span class="Identifier">event</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">WindowEventID</span>        <span class="Comment">## WindowEventID</span>
   <span class="Identifier">padding1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
@@ -1782,15 +1776,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Window state change event data (<cite>event.window.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L173"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L173" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="KeyboardEventObj"><a name="KeyboardEventObj"></a><pre><span class="Identifier">KeyboardEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `KEYDOWN` or `KEYUP`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with keyboard focus, if any</span>
   <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                <span class="Comment">## `PRESSED` or `RELEASED`</span>
   <span class="Identifier">repeat</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>               <span class="Comment">## Non-zero if this is a key repeat</span>
@@ -1801,15 +1791,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Keyboard button event structure (<cite>event.key.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L186"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L186" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="TextEditingEventObj"><a name="TextEditingEventObj"></a><pre><span class="Identifier">TextEditingEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `TEXTEDITING`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with keyboard focus, if any</span>
   <span class="Identifier">text</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">TEXTEDITINGEVENT_TEXT_SIZE</span><span class="Other">,</span> <span class="Identifier">char</span><span class="Other">]</span> <span class="Comment">## The editing text</span>
   <span class="Identifier">start</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                <span class="Comment">## The start cursor of selected editing text</span>
@@ -1818,30 +1804,22 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Keyboard text editing event structure (<cite>event.edit.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L201"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L201" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="TextInputEventObj"><a name="TextInputEventObj"></a><pre><span class="Identifier">TextInputEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `TEXTINPUT`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with keyboard focus, if any</span>
   <span class="Identifier">text</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">TEXTINPUTEVENT_TEXT_SIZE</span><span class="Other">,</span> <span class="Identifier">char</span><span class="Other">]</span> <span class="Comment">## The input text</span>
   </pre></dt>
 <dd>
 
 Keyboard text input event structure (<cite>event.text.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L214"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L214" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="MouseMotionEventObj"><a name="MouseMotionEventObj"></a><pre><span class="Identifier">MouseMotionEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `MOUSEMOTION`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with mouse focus, if any</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>               <span class="Comment">## The mouse instance id, or `TOUCH_MOUSEID`</span>
   <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>               <span class="Comment">## The current button state</span>
@@ -1853,15 +1831,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Mouse motion event structure (<cite>event.motion.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L222"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L222" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="MouseButtonEventObj"><a name="MouseButtonEventObj"></a><pre><span class="Identifier">MouseButtonEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `MOUSEBUTTONDOWN` or `MOUSEBUTTONUP`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with mouse focus, if any</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>               <span class="Comment">## The mouse instance id, or `TOUCH_MOUSEID`</span>
   <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>               <span class="Comment">## The mouse button index</span>
@@ -1874,15 +1848,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Mouse button event structure (<cite>event.button.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L235"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L235" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="MouseWheelEventObj"><a name="MouseWheelEventObj"></a><pre><span class="Identifier">MouseWheelEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `MOUSEWHEEL`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with mouse focus, if any</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>               <span class="Comment">## The mouse instance id, or `TOUCH_MOUSEID`</span>
   <span class="Identifier">x</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                    <span class="Comment">## \</span>
@@ -1899,15 +1869,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Mouse wheel event structure (<cite>event.wheel.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L249"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L249" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="JoyAxisEventObj"><a name="JoyAxisEventObj"></a><pre><span class="Identifier">JoyAxisEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `JOYAXISMOTION`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
   <span class="Identifier">axis</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                 <span class="Comment">## The joystick axis index</span>
   <span class="Identifier">padding1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
@@ -1919,15 +1885,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Joystick axis motion event structure (<cite>event.jaxis.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L267"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L267" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="JoyBallEventObj"><a name="JoyBallEventObj"></a><pre><span class="Identifier">JoyBallEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `JOYBALLMOTION`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
   <span class="Identifier">ball</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                 <span class="Comment">## The joystick trackball index</span>
   <span class="Identifier">padding1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
@@ -1939,15 +1901,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Joystick trackball motion event structure (<cite>event.jball.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L280"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L280" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="JoyHatEventObj"><a name="JoyHatEventObj"></a><pre><span class="Identifier">JoyHatEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `JOYHATMOTION`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
   <span class="Identifier">hat</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                  <span class="Comment">## The joystick hat index</span>
   <span class="Identifier">value</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HatPosition</span> <span class="Comment">## \</span>
@@ -1967,15 +1925,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Joystick hat position change event structure (<cite>event.jhat.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L293"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L293" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="JoyButtonEventObj"><a name="JoyButtonEventObj"></a><pre><span class="Identifier">JoyButtonEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `JOYBUTTONDOWN` or `JOYBUTTONUP`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
   <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>               <span class="Comment">## The joystick button index</span>
   <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                <span class="Comment">## `PRESSED` or `RELEASED`</span>
@@ -1985,15 +1939,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Joystick button event structure (<cite>event.jbutton.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L314"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L314" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="JoyDeviceEventObj"><a name="JoyDeviceEventObj"></a><pre><span class="Identifier">JoyDeviceEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `JOYDEVICEADDED` or `JOYDEVICEREMOVED`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                <span class="Comment">## \</span>
               <span class="Comment">## The joystick device index for the `ADDED` event,</span>
               <span class="Comment">## instance id for the `REMOVED` event</span>
@@ -2001,15 +1951,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Joystick device event structure (<cite>event.jdevice.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L325"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L325" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="ControllerAxisEventObj"><a name="ControllerAxisEventObj"></a><pre><span class="Identifier">ControllerAxisEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `CONTROLLERAXISMOTION`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
   <span class="Identifier">axis</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">GameControllerAxis</span>    <span class="Comment">## The controller axis (``GameControllerAxis``)</span>
   <span class="Identifier">padding1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
@@ -2021,15 +1967,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Game controller axis motion event structure (<cite>event.caxis.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L334"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L334" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="ControllerButtonEventObj"><a name="ControllerButtonEventObj"></a><pre><span class="Identifier">ControllerButtonEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `CONTROLLERBUTTONDOWN` or `CONTROLLERBUTTONUP`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
   <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">GameControllerButton</span> <span class="Comment">## The controller button (``GameControllerButton``)</span>
   <span class="Identifier">state</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                <span class="Comment">## `PRESSED` or `RELEASED`</span>
@@ -2039,10 +1981,6 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Game controller button event structure (<cite>event.cbutton.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L347"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L347" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="ControllerDeviceEventObj"><a name="ControllerDeviceEventObj"></a><pre><span class="Identifier">ControllerDeviceEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -2050,7 +1988,7 @@ class="link-seesrc" target="_blank">Source</a>
                  <span class="Comment">## `CONTROLLERDEVICEADDED`,</span>
                  <span class="Comment">## `CONTROLLERDEVICEREMOVED, or</span>
                  <span class="Comment">## `CONTROLLERDEVICEREMAPPED`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                <span class="Comment">## \</span>
               <span class="Comment">## The joystick device index for the `ADDED` event,</span>
               <span class="Comment">## instance id for the `REMOVED` or `REMAPPED` event </span>
@@ -2058,15 +1996,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Controller device event structure (<cite>event.cdevice.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L358"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L358" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AudioDeviceEventObj"><a name="AudioDeviceEventObj"></a><pre><span class="Identifier">AudioDeviceEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `AUDIODEVICEADDED`, or `AUDIODEVICEREMOVED`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Comment">## \</span>
                <span class="Comment">## The audio device index for the `ADDED` event (valid until next</span>
                <span class="Comment">## ``getNumAudioDevices()`` call),</span>
@@ -2081,15 +2015,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Audio device event structure (<cite>event.adevice.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L370"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L370" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="TouchFingerEventObj"><a name="TouchFingerEventObj"></a><pre><span class="Identifier">TouchFingerEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `FINGERMOTION` or `FINGERDOWN` or `FINGERUP`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">touchId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchID</span>            <span class="Comment">## The touch device id</span>
   <span class="Identifier">fingerId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">FingerID</span>
   <span class="Identifier">x</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>                   <span class="Comment">## Normalized in the range 0...1</span>
@@ -2101,15 +2031,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Touch finger event structure (<cite>event.tfinger.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L386"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L386" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="MultiGestureEventObj"><a name="MultiGestureEventObj"></a><pre><span class="Identifier">MultiGestureEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `MULTIGESTURE`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">touchId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchID</span>            <span class="Comment">## The touch device index</span>
   <span class="Identifier">dTheta</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>
   <span class="Identifier">dDist</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>
@@ -2120,15 +2046,11 @@ class="link-seesrc" target="_blank">Source</a>
 </pre></dt>
 <dd>
 Multiple Finger Gesture Event (<cite>event.mgesture.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L399"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L399" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="DollarGestureEventObj"><a name="DollarGestureEventObj"></a><pre><span class="Identifier">DollarGestureEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `DOLLARGESTURE` or `DOLLARRECORD`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">touchId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchID</span>            <span class="Comment">## The touch device id</span>
   <span class="Identifier">gestureId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">GestureID</span>
   <span class="Identifier">numFingers</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
@@ -2138,16 +2060,12 @@ class="link-seesrc" target="_blank">Source</a>
   </pre></dt>
 <dd>
 Dollar Gesture Event (<cite>event.dgesture.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L412"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L412" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="DropEventObj"><a name="DropEventObj"></a><pre><span class="Identifier">DropEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `DROPBEGIN` or `DROPFILE`</span>
                  <span class="Comment">## or `DROPTEXT` or `DROPCOMPLETE`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">file</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Comment">## The file name, which should be freed with ``free()``,</span>
                <span class="Comment">## is ``nil`` on begin/complete</span>
   <span class="Identifier">windowID</span><span class="Other">:</span> <span class="Identifier">uint32</span>             <span class="Comment">## The window that was dropped on, if any</span>
@@ -2158,41 +2076,29 @@ An event used to request a file open by the system (<cite>event.drop.*</cite>)</
 <p>This event is enabled by default, you can disable it with <tt class="docutils literal"><span class="pre">eventState()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> If this event is enabled, you must free the filename in the event.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L424"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L424" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="QuitEventObj"><a name="QuitEventObj"></a><pre><span class="Identifier">QuitEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `QUIT`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-</pre></dt>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
+  </pre></dt>
 <dd>
 
 The &quot;quit requested&quot; event
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L440"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L440" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="OSEventObj"><a name="OSEventObj"></a><pre><span class="Identifier">OSEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `QUIT`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
-</pre></dt>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
+  </pre></dt>
 <dd>
 
 OS Specific event
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L446"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L446" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="UserEventObj"><a name="UserEventObj"></a><pre><span class="Identifier">UserEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `USEREVENT` through `LASTEVENT-1`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The associated window if any</span>
   <span class="Identifier">code</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                 <span class="Comment">## User defined event code</span>
   <span class="Identifier">data1</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>              <span class="Comment">## User defined data pointer</span>
@@ -2201,24 +2107,16 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 A user-defined event type (<cite>event.user.*</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L452"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L452" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="SysWMmsg"><a name="SysWMmsg"></a><pre><span class="Identifier">SysWMmsg</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 declared in sdl_syswm.nim
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L462"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L462" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="SysWMEventObj"><a name="SysWMEventObj"></a><pre><span class="Identifier">SysWMEventObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">EventKind</span>             <span class="Comment">## `SYSWMEVENT`</span>
-  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>
+  <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">msg</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMmsg</span>               <span class="Comment">## driver dependent data, defined in ``syswm.nim``</span>
   </pre></dt>
 <dd>
@@ -2227,10 +2125,6 @@ A video driver dependent system event (<cite>event.syswm.*</cite>)</p>
 <p>This event is disabled by default, you can enable it with <cite>eventState()</cite></p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> If you want to use this event, you should include <tt class="docutils literal"><span class="pre">syswm.nim</span></tt>.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L465"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L465" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="Event"><a name="Event"></a><pre><span class="Identifier">Event</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">union</span></div><span class="Other pragmaend">.}</span>
@@ -2270,29 +2164,17 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 General event structure
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L478"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L478" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="EventAction"><a name="EventAction"></a><pre><span class="Identifier">EventAction</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">ADDEVENT</span><span class="Other">,</span> <span class="Identifier">PEEKEVENT</span><span class="Other">,</span> <span class="Identifier">GETEVENT</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L525"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L525" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="EventFilter"><a name="EventFilter"></a><pre><span class="Identifier">EventFilter</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L609"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L609" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -2303,73 +2185,41 @@ class="link-seesrc" target="_blank">Source</a>
 <dt id="RELEASED"><a name="RELEASED"></a><pre><span class="Identifier">RELEASED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L29"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L29" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="PRESSED"><a name="PRESSED"></a><pre><span class="Identifier">PRESSED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L30"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L30" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="TEXTEDITINGEVENT_TEXT_SIZE"><a name="TEXTEDITINGEVENT_TEXT_SIZE"></a><pre><span class="Identifier">TEXTEDITINGEVENT_TEXT_SIZE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">32</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L198"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L198" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="TEXTINPUTEVENT_TEXT_SIZE"><a name="TEXTINPUTEVENT_TEXT_SIZE"></a><pre><span class="Identifier">TEXTINPUTEVENT_TEXT_SIZE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">32</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L211"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L211" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="QUERY"><a name="QUERY"></a><pre><span class="Identifier">QUERY</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Operator">-</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L656"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L656" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="IGNORE"><a name="IGNORE"></a><pre><span class="Identifier">IGNORE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L657"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L657" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="DISABLE"><a name="DISABLE"></a><pre><span class="Identifier">DISABLE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L658"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L658" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="ENABLE"><a name="ENABLE"></a><pre><span class="Identifier">ENABLE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L659"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L659" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -2383,10 +2233,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>This procedure updates the event queue and internal input device state.</p>
 <p>This should only be run in the thread that sets the video mode.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L515"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L515" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="peepEvents"><a name="peepEvents,ptr.Event,cint,EventAction,EventKind,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">peepEvents</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">events</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">;</span> <span class="Identifier">numevents</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">action</span><span class="Other">:</span> <span class="Identifier">EventAction</span><span class="Other">;</span>
@@ -2400,30 +2246,18 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of events actually stored, or <cite>-1</cite> if there was an error.</p>
 <p>This procedure is thread-safe.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L528"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L528" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hasEvent"><a name="hasEvent,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasEvent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasEvent&quot;</span><span class="Other">,</span>
                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Checks to see if certain event types are in the event queue.
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L550"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L550" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hasEvents"><a name="hasEvents,EventKind,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasEvents</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">minKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">;</span> <span class="Identifier">maxKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L554"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L554" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="flushEvent"><a name="flushEvent,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">flushEvent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FlushEvent&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -2431,20 +2265,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p>This procedure clears events from the event queue.</p>
 <p>This procedure only affects currently queued events. If you want to make sure that all pending OS events are flushed, you can call <tt class="docutils literal"><span class="pre">pumpEvents()</span></tt> on the main thread immediately before flush call.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L557"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L557" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="flushEvents"><a name="flushEvents,EventKind,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">flushEvents</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">minKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">;</span> <span class="Identifier">maxKind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FlushEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L566"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L566" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="pollEvent"><a name="pollEvent,ptr.Event"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pollEvent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PollEvent&quot;</span><span class="Other">,</span>
@@ -2454,10 +2280,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite> if there are any pending events, or <cite>0</cite> if there are none available.</p>
 <p><tt class="docutils literal"><span class="pre">event</span></tt> If not <cite>nil</cite>, the next event is removed from the queue and stored in that area.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L569"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L569" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="waitEvent"><a name="waitEvent,ptr.Event"></a><pre><span class="Keyword">proc</span> <span class="Identifier">waitEvent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WaitEvent&quot;</span><span class="Other">,</span>
@@ -2467,10 +2289,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite>, or <cite>0</cite> if there was an error while waiting for events.</p>
 <p><tt class="docutils literal"><span class="pre">event</span></tt> If not <cite>nil</cite>, the next event is removed from the queue and stored in that area.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L579"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L579" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="waitEventTimeout"><a name="waitEventTimeout,ptr.Event,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">waitEventTimeout</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">;</span> <span class="Identifier">timeout</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2481,10 +2299,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">event</span></tt> If not <cite>nil</cite>, the next event is removed from the queue and stored in that area.</p>
 <p><tt class="docutils literal"><span class="pre">timeout</span></tt> The timeout (in milliseconds) to wait for next event.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L588"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L588" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="pushEvent"><a name="pushEvent,ptr.Event"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pushEvent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Event</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PushEvent&quot;</span><span class="Other">,</span>
@@ -2493,10 +2307,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Add an event to the event queue.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite> on success, <cite>0</cite> if the event was filtered, or <cite>-1</cite> if the event queue was full or there was some other error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L601"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L601" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setEventFilter"><a name="setEventFilter,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setEventFilter</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2510,66 +2320,42 @@ class="link-seesrc" target="_blank">Source</a>
 <p>There is one caveat when dealing with the <tt class="docutils literal"><span class="pre">QuitEvent</span></tt> event type.  The event filter is only called when the window manager desires to close the application window.  If the event filter returns <cite>1</cite>, then the window will be closed, otherwise the window will remain open if possible.</p>
 <p>If the quit event is generated by an interrupt signal, it will bypass the internal queue and be delivered to the application at the next event poll.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L611"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L611" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getEventFilter"><a name="getEventFilter,ptr.EventFilter,ptr.pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getEventFilter</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetEventFilter&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Return the current event filter - can be used to &quot;chain&quot; filters. If there is no event filter set, this procedure returns <cite>false</cite>.
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L637"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L637" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="addEventWatch"><a name="addEventWatch,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">addEventWatch</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AddEventWatch&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Add a procedure which is called when an event is added to the queue.
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L642"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L642" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="delEventWatch"><a name="delEventWatch,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">delEventWatch</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DelEventWatch&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Remove an event watch procedure added with <tt class="docutils literal"><span class="pre">addEventWatch()</span></tt>
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L646"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L646" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="filterEvents"><a name="filterEvents,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">filterEvents</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Identifier">EventFilter</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FilterEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Run the filter procedure on the current event queue, removing any events for which the filter returns <cite>0</cite>.
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L650"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L650" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="eventState"><a name="eventState,EventKind,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">eventState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">EventKind</span><span class="Other">;</span> <span class="Identifier">state</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_EventState&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This procedure allows you to set the state of processing certain events.<ul class="simple"><li>If <tt class="docutils literal"><span class="pre">state</span></tt> is set to <cite>IGNORE</cite>, that event will be automatically 
-dropped from the event queue and will not event be filtered.</li>
+dropped from the event queue and will not be filtered.</li>
 <li>If <tt class="docutils literal"><span class="pre">state</span></tt> is set to <cite>ENABLE</cite>, that event will be processed normally.</li>
 <li>If <tt class="docutils literal"><span class="pre">state</span></tt> is set to <cite>QUERY</cite>, <tt class="docutils literal"><span class="pre">eventState()</span></tt> will return the 
 current processing state of the specified event.</li>
 </ul>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L661"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L661" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="registerEvents"><a name="registerEvents,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">registerEvents</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">numevents</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RegisterEvents&quot;</span><span class="Other">,</span>
@@ -2578,10 +2364,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>This procedure allocates a set of user-defined events, and returns the beginning event number for that set of events.</p>
 <p>If there aren't enough user-defined events left, this procedure returns <cite>-1'u32</cite>.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L674"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L674" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -2592,10 +2374,6 @@ class="link-seesrc" target="_blank">Source</a>
 <dt id="getEventState"><a name="getEventState.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">getEventState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/events.nim#L671"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/events.nim#L671" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -2608,7 +2386,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-04-07 09:21:08 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>

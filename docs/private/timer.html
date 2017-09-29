@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module timer</title>
@@ -1262,19 +1264,11 @@ function main() {
 Procedure prototype for the timer callback procedure.</p>
 <p>The callback procedure is passed the current timer interval and returns the next timer interval.  If the returned value is the same as the one passed in, the periodic alarm continues, otherwise a new alarm is scheduled.  If the callback returns <cite>0</cite>, the periodic alarm is cancelled.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/timer.nim#L56"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/timer.nim#L56" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="TimerID"><a name="TimerID"></a><pre><span class="Identifier">TimerID</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">cint</span></pre></dt>
 <dd>
 Definition of the timer ID type.
-&nbsp;&nbsp;<a
-href="/tree/master/timer.nim#L66"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/timer.nim#L66" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1287,20 +1281,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Get the number of milliseconds since the SDL library initialization.</p>
 <p>This value wraps if the program runs for more than ~49 days.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/timer.nim#L26"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/timer.nim#L26" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getPerformanceCounter"><a name="getPerformanceCounter,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getPerformanceCounter</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint64</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetPerformanceCounter&quot;</span><span class="Other">,</span>
                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the current value of the high resolution counter.
-&nbsp;&nbsp;<a
-href="/tree/master/timer.nim#L43"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/timer.nim#L43" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getPerformanceFrequency"><a name="getPerformanceFrequency,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getPerformanceFrequency</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint64</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1308,19 +1294,11 @@ class="link-seesrc" target="_blank">Source</a>
                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the count per second of the high resolution counter.
-&nbsp;&nbsp;<a
-href="/tree/master/timer.nim#L47"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/timer.nim#L47" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="delay"><a name="delay,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">ms</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Delay&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Wait a specified number of milliseconds before returning.
-&nbsp;&nbsp;<a
-href="/tree/master/timer.nim#L51"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/timer.nim#L51" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="addTimer"><a name="addTimer,uint32,TimerCallback,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">addTimer</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">interval</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">callback</span><span class="Other">:</span> <span class="Identifier">TimerCallback</span><span class="Other">;</span> <span class="Identifier">param</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">TimerID</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -1329,10 +1307,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Add a new timer to the pool of timers already running.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> a timer ID, or <cite>0</cite> when an error occurs.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/timer.nim#L68"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/timer.nim#L68" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="removeTimer"><a name="removeTimer,TimerID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">removeTimer</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">id</span><span class="Other">:</span> <span class="Identifier">TimerID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RemoveTimer&quot;</span><span class="Other">,</span>
@@ -1342,10 +1316,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> a boolean value indicating success or failure.</p>
 <p><tt class="docutils literal"><span class="pre">Warning:</span></tt> It is not safe to remove a timer multiple times.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/timer.nim#L75"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/timer.nim#L75" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1358,13 +1328,9 @@ class="link-seesrc" target="_blank">Source</a>
 <p>
 Compare SDL ticks values, and return true if <tt class="docutils literal"><span class="pre">a</span></tt> has passed <tt class="docutils literal"><span class="pre">b</span></tt>.</p>
 <p>e.g. if you want to wait 100 ms, you could do this:</p>
-<pre class = "listing"><span class="Keyword">var</span> <span class="Identifier">timeout</span><span class="Punctuation">:</span> <span class="Identifier">uint32</span> <span class="Operator">=</span> <span class="Identifier">getTicks</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Operator">+</span> <span class="DecNumber">100</span>
+<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">timeout</span><span class="Punctuation">:</span> <span class="Identifier">uint32</span> <span class="Operator">=</span> <span class="Identifier">getTicks</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Operator">+</span> <span class="DecNumber">100</span>
 <span class="Keyword">while</span> <span class="Punctuation">(</span><span class="Keyword">not</span> <span class="Identifier">ticksPassed</span><span class="Punctuation">(</span><span class="Identifier">getTicks</span><span class="Punctuation">(</span><span class="Punctuation">)</span><span class="Punctuation">,</span> <span class="Identifier">timeout</span><span class="Punctuation">)</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
   <span class="Keyword">do</span> <span class="Identifier">work</span> <span class="Identifier">until</span> <span class="Identifier">timeout</span> <span class="Identifier">has</span> <span class="Identifier">elapsed</span></pre>
-&nbsp;&nbsp;<a
-href="/tree/master/timer.nim#L32"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/timer.nim#L32" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1377,7 +1343,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>

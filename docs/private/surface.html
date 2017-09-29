@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module surface</title>
@@ -1302,6 +1304,8 @@ function main() {
     title="setClipRect*(surface: Surface; rect: ptr Rect): bool"><wbr />set<wbr />Clip<wbr />Rect<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#getClipRect,Surface,ptr.Rect"
     title="getClipRect*(surface: Surface; rect: ptr Rect)"><wbr />get<wbr />Clip<wbr />Rect<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#duplicateSurface,Surface"
+    title="duplicateSurface*(surface: Surface): Surface"><wbr />duplicate<wbr />Surface<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#convertSurface,Surface,ptr.PixelFormat,uint32"
     title="convertSurface*(src: Surface; fmt: ptr PixelFormat; flags: uint32): Surface"><wbr />convert<wbr />Surface<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#convertSurfaceFormat,Surface,uint32,uint32"
@@ -1357,10 +1361,6 @@ function main() {
 <dt id="Surface"><a name="Surface"></a><pre><span class="Identifier">Surface</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Identifier">SurfaceObj</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L43"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L43" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="SurfaceObj"><a name="SurfaceObj"></a><pre><span class="Identifier">SurfaceObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1387,20 +1387,12 @@ class="link-seesrc" target="_blank">Source</a>
 A collection of pixels used in software blitting.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> This object should be treated as read-only, except for <tt class="docutils literal"><span class="pre">pixels</span></tt>, which, if not <cite>nil</cite>, contains the raw pixel data for the surface.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L44"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L44" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="blit"><a name="blit"></a><pre><span class="Identifier">blit</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 The type of procedure used for surface blitting procedures.
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L69"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L69" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1411,37 +1403,21 @@ class="link-seesrc" target="_blank">Source</a>
 <dt id="SWSURFACE"><a name="SWSURFACE"></a><pre><span class="Identifier">SWSURFACE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L32"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L32" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="PREALLOC"><a name="PREALLOC"></a><pre><span class="Identifier">PREALLOC</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L33"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L33" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RLEACCEL"><a name="RLEACCEL"></a><pre><span class="Identifier">RLEACCEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L34"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L34" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="DONTFREE"><a name="DONTFREE"></a><pre><span class="Identifier">DONTFREE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L35"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L35" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1465,10 +1441,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">bMask</span></tt> The blue mask of the surface to create.</p>
 <p><tt class="docutils literal"><span class="pre">aMask</span></tt> The alpha mask of the surface to create.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L74"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L74" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="createRGBSurfaceWithFormat"><a name="createRGBSurfaceWithFormat,uint32,cint,cint,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createRGBSurfaceWithFormat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">depth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
@@ -1476,10 +1448,6 @@ class="link-seesrc" target="_blank">Source</a>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateRGBSurfaceWithFormat&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L102"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L102" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="createRGBSurfaceFrom"><a name="createRGBSurfaceFrom,pointer,cint,cint,cint,cint,uint32,uint32,uint32,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createRGBSurfaceFrom</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">pixels</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">depth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
@@ -1488,10 +1456,6 @@ class="link-seesrc" target="_blank">Source</a>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateRGBSurfaceFrom&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L107"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L107" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="createRGBSurfaceWithFormatFrom"><a name="createRGBSurfaceWithFormatFrom,pointer,cint,cint,cint,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createRGBSurfaceWithFormatFrom</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">pixels</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
@@ -1499,20 +1463,12 @@ class="link-seesrc" target="_blank">Source</a>
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateRGBSurfaceWithFormatFrom&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L112"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L112" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="freeSurface"><a name="freeSurface,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freeSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FreeSurface&quot;</span><span class="Other">,</span>
                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L117"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L117" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setSurfacePalette"><a name="setSurfacePalette,Surface,ptr.Palette"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfacePalette</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">palette</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Palette</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1522,10 +1478,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite>, or <cite>-1</cite> if the surface format doesn't use a palette.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> A single palette can be shared with many surfaces.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L120"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L120" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="lockSurface"><a name="lockSurface,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockSurface&quot;</span><span class="Other">,</span>
@@ -1539,10 +1491,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">unlockSurface()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L128"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L128" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="unlockSurface"><a name="unlockSurface,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockSurface&quot;</span><span class="Other">,</span>
@@ -1551,10 +1499,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">lockSurface()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L150"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L150" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="loadBMP_RW"><a name="loadBMP_RW,ptr.RWops,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadBMP_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1565,10 +1509,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>The new surface should be freed with <tt class="docutils literal"><span class="pre">freeSurface()</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the new surface, or <cite>nil</cite> if there was an error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L156"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L156" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="saveBMP_RW"><a name="saveBMP_RW,Surface,ptr.RWops,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">saveBMP_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freedst</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1579,10 +1519,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>If <tt class="docutils literal"><span class="pre">freedst</span></tt> is non-zero, the stream will be closed after being written.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> if successful or <cite>-1</cite> if there was an error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L172"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L172" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setSurfaceRLE"><a name="setSurfaceRLE,Surface,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfaceRLE</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">flag</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1592,10 +1528,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the surface is not valid.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> If RLE is enabled, colorkey and alpha blending blits are much faster, but the surface must be locked before directly accessing the pixels.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L192"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L192" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setColorKey"><a name="setColorKey,Surface,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setColorKey</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">flag</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1608,10 +1540,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the surface is not valid.</p>
 <p>You can pass <cite>RLEACCEL</cite> to enable RLE accelerated blits.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L202"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L202" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getColorKey"><a name="getColorKey,Surface,ptr.uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getColorKey</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1622,10 +1550,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">key</span></tt> A pointer filled in with the transparent pixel in the native surface format.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the surface is not valid or colorkey is not enabled.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L216"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L216" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setSurfaceColorMod"><a name="setSurfaceColorMod,Surface,uint8,uint8,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfaceColorMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1640,10 +1564,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getSurfaceColorMod()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L228"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L228" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getSurfaceColorMod"><a name="getSurfaceColorMod,Surface,ptr.uint8,ptr.uint8,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getSurfaceColorMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -1658,10 +1578,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setSurfaceColorMod()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L247"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L247" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setSurfaceAlphaMod"><a name="setSurfaceAlphaMod,Surface,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfaceAlphaMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1674,10 +1590,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getSurfaceAlphaMod()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L266"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L266" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getSurfaceAlphaMod"><a name="getSurfaceAlphaMod,Surface,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getSurfaceAlphaMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1690,10 +1602,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setSurfaceAlphaMod()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L280"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L280" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setSurfaceBlendMode"><a name="setSurfaceBlendMode,Surface,BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfaceBlendMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1706,10 +1614,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getSurfaceBlendMode()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L294"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L294" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getSurfaceBlendMode"><a name="getSurfaceBlendMode,Surface,ptr.BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getSurfaceBlendMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1722,10 +1626,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setSurfaceBlendMode()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L309"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L309" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setClipRect"><a name="setClipRect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setClipRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1736,10 +1636,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>If the clip rectangle doesn't intersect the surface, the procedure will return <cite>false</cite> and blits will be completely clipped.  Otherwise the procedure returns <cite>true</cite> and blits to the surface will be clipped to the intersection of the surface area and the clipping rectangle.</p>
 <p>Note that blits are automatically clipped to the edges of the source and destination surfaces.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L324"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L324" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getClipRect"><a name="getClipRect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getClipRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1748,10 +1644,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Gets the clipping rectangle for the destination surface in a blit.</p>
 <p><tt class="docutils literal"><span class="pre">rect</span></tt> must be a pointer to a valid rectangle which will be filled with the correct values.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L338"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L338" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<dt id="duplicateSurface"><a name="duplicateSurface,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">duplicateSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DuplicateSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+Creates a new surface identical to the existing surface.
 
 </dd>
 <dt id="convertSurface"><a name="convertSurface,Surface,ptr.PixelFormat,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">convertSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1760,20 +1658,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Creates a new surface of the specified format, and then copies and maps the given surface to it so the blit of the converted surface will be as fast as possible.  If this procedure fails, it returns <cite>nil</cite>.</p>
 <p>The <cite>flags</cite> parameter is passed to <tt class="docutils literal"><span class="pre">createRGBSurface()</span></tt> and has those semantics.  You can also pass <cite>RLEACCEL</cite> in the flags parameter and SDL will try to RLE accelerate colorkey and alpha blits in the resulting surface.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L345"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L345" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="convertSurfaceFormat"><a name="convertSurfaceFormat,Surface,uint32,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">convertSurfaceFormat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">pixel_format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ConvertSurfaceFormat&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L357"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L357" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="convertPixels"><a name="convertPixels,cint,cint,uint32,pointer,cint,uint32,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">convertPixels</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">src_format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span>
@@ -1783,10 +1673,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Copy a block of pixels of one format to another format.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if there was an error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L361"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L361" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="fillRect"><a name="fillRect,Surface,ptr.Rect,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fillRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1797,40 +1683,24 @@ class="link-seesrc" target="_blank">Source</a>
 <p>The color should be a pixel of the format used by the surface, and can be generated by the <tt class="docutils literal"><span class="pre">mapRGB()</span></tt> procedure.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L370"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L370" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="fillRects"><a name="fillRects,Surface,ptr.Rect,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fillRects</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">rects</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FillRects&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L382"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L382" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="upperBlit"><a name="upperBlit,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">upperBlit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UpperBlit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This is the public blit procedure, <tt class="docutils literal"><span class="pre">blitSurface()</span></tt>, and it performs rectangle validation and clipping before passing it to <tt class="docutils literal"><span class="pre">lowerBlit()</span></tt>.
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L467"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L467" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="lowerBlit"><a name="lowerBlit,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lowerBlit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LowerBlit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This is a semi-private blit procedure and it performs low-level surface blitting only.
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L474"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L474" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="softStretch"><a name="softStretch,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">softStretch</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -1839,30 +1709,18 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Perform a fast, low quality, stretch blit between two surfaces of the same pixel format.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> This procedure uses a static buffer, and is not thread-safe.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L481"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L481" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="upperBlitScaled"><a name="upperBlitScaled,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">upperBlitScaled</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UpperBlitScaled&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This is the public scaled blit procedure, <tt class="docutils literal"><span class="pre">blitScaled()</span></tt>, and it performs rectangle validation and clipping before passing it to <tt class="docutils literal"><span class="pre">lowerBlitScaled()</span></tt>.
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L495"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L495" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="lowerBlitScaled"><a name="lowerBlitScaled,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lowerBlitScaled</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LowerBlitScaled&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This is a semi-private blit procedure and it performs low-level surface scaled blitting only.
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L503"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L503" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1874,10 +1732,6 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Evaluates to <cite>true</cite> if the surface needs t o be locked before access.
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L37"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L37" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="loadBMP"><a name="loadBMP.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">loadBMP</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
@@ -1886,10 +1740,6 @@ class="link-seesrc" target="_blank">Source</a>
 Load a surface from a file.</p>
 <p>Convenience macro.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L166"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L166" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="saveBMP"><a name="saveBMP.t,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">saveBMP</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">,</span> <span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
@@ -1898,10 +1748,6 @@ class="link-seesrc" target="_blank">Source</a>
 Save a surface to a file.</p>
 <p>Convenience macro.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L186"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L186" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="blitSurface"><a name="blitSurface.t,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">template</span> <span class="Identifier">blitSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
@@ -1942,19 +1788,11 @@ Performs a fast blit from the source surface to the destination surface.</p>
 </p></blockquote>
 <p>You should call <tt class="docutils literal"><span class="pre">blitSurface()</span></tt> unless you know exactly how SDL blitting works internally and how to use the other blit procedures.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L386"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L386" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="blitScaled"><a name="blitScaled.t,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">template</span> <span class="Identifier">blitScaled</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/surface.nim#L490"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/surface.nim#L490" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1967,7 +1805,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>

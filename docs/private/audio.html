@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module audio</title>
@@ -1222,7 +1224,8 @@ function main() {
   format*: AudioFormat         ## Audio data format
   channels*: uint8             ## Number of channels: `1` mono, `2` stereo
   silence*: uint8              ## Audio buffer silence value (calculated)
-  samples*: uint16             ## Audio buffer size in samples (power of 2)
+  samples*: uint16             ## Audio buffer size in sample FRAMES \
+                 ## (total samples divided by channel count)
   padding*: uint16             ## Necessary for some compile environments
   size*: uint32                ## Audio buffer size in bytes (calculated)
   callback*: AudioCallback     ## Callback that feeds the audio device  \
@@ -1241,8 +1244,9 @@ function main() {
   len*: cint                   ## Length of original audio buffer
   len_cvt*: cint               ## Length of converted audio buffer
   len_mult*: cint              ## buffer must be `len*len_mult` big
-  len_ratio*: cdouble          ## Given len, final size is `len*len_ratio`
-  filters*: array[10, AudioFilter] ## Filter list
+  len_ratio*: cdouble          ## Given len, final size is `len * len_ratio`
+  filters*: array[AudioCVTMaxFilters + 1, AudioFilter] ## \
+                                                  ## ``nil``-terminated list of filter functions
   filter_index*: cint          ## Current audio conversion procedure"><wbr />Audio<wbr />CVT<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#AudioDeviceID"
     title="AudioDeviceID* = uint32"><wbr />Audio<wbr />Device<wbr />ID<span class="attachedType" style="visibility:hidden"></span></a></li>
@@ -1308,6 +1312,8 @@ function main() {
   <li><a class="reference" href="#AUDIO_ALLOW_ANY_CHANGE"
     title="AUDIO_ALLOW_ANY_CHANGE* = (AUDIO_ALLOW_FREQUENCY_CHANGE or
     AUDIO_ALLOW_FORMAT_CHANGE or AUDIO_ALLOW_CHANNELS_CHANGE)"><wbr />AUDIO_<wbr />ALLOW_<wbr />ANY_<wbr />CHANGE<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#AudioCVTMaxFilters"
+    title="AudioCVTMaxFilters* = 9"><wbr />Audio<wbr />CVTMax<wbr />Filters<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#MIX_MAXVOLUME"
     title="MIX_MAXVOLUME* = 128"><wbr />MIX_<wbr />MAXVOLUME<span class="attachedType" style="visibility:hidden"></span></a></li>
 
@@ -1432,10 +1438,6 @@ Audio format flags.</p>
 15 14 13 12 11 10 09 08 07 06 05 04 03 02 01 00</pre>
 <p>There are templates in SDL 2.0 and later to query these bits.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L28"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L28" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AudioCallback"><a name="AudioCallback"></a><pre><span class="Identifier">AudioCallback</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">stream</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -1448,10 +1450,6 @@ This procedure is called when the audio device needs more data.</p>
 <p>Once the callback returns, the buffer will no longer be valid. Stereo samples are stored in a LRLRLR ordering.</p>
 <p>You can choose to avoid callbacks and use <tt class="docutils literal"><span class="pre">queueAudio()</span></tt> instead, if you like. Just open your audio device with a <cite>nil</cite> callback.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L128"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L128" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AudioSpec"><a name="AudioSpec"></a><pre><span class="Identifier">AudioSpec</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1459,7 +1457,8 @@ class="link-seesrc" target="_blank">Source</a>
   <span class="Identifier">format</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span>         <span class="Comment">## Audio data format</span>
   <span class="Identifier">channels</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>             <span class="Comment">## Number of channels: `1` mono, `2` stereo</span>
   <span class="Identifier">silence</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>              <span class="Comment">## Audio buffer silence value (calculated)</span>
-  <span class="Identifier">samples</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>             <span class="Comment">## Audio buffer size in samples (power of 2)</span>
+  <span class="Identifier">samples</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>             <span class="Comment">## Audio buffer size in sample FRAMES \</span>
+                 <span class="Comment">## (total samples divided by channel count)</span>
   <span class="Identifier">padding</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>             <span class="Comment">## Necessary for some compile environments</span>
   <span class="Identifier">size</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>                <span class="Comment">## Audio buffer size in bytes (calculated)</span>
   <span class="Identifier">callback</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">AudioCallback</span>     <span class="Comment">## Callback that feeds the audio device  \</span>
@@ -1470,19 +1469,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 The calculated values in this object are calculated by <tt class="docutils literal"><span class="pre">OpenAudio()</span></tt>.
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L147"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L147" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AudioFilter"><a name="AudioFilter"></a><pre><span class="Identifier">AudioFilter</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">cvt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioCVT</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L162"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L162" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AudioCVT"><a name="AudioCVT"></a><pre><span class="Identifier">AudioCVT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">packed</span></div><span class="Other pragmaend">.}</span>
@@ -1494,19 +1485,17 @@ class="link-seesrc" target="_blank">Source</a>
   <span class="Identifier">len</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                   <span class="Comment">## Length of original audio buffer</span>
   <span class="Identifier">len_cvt</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>               <span class="Comment">## Length of converted audio buffer</span>
   <span class="Identifier">len_mult</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>              <span class="Comment">## buffer must be `len*len_mult` big</span>
-  <span class="Identifier">len_ratio</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cdouble</span>          <span class="Comment">## Given len, final size is `len*len_ratio`</span>
-  <span class="Identifier">filters</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">10</span><span class="Other">,</span> <span class="Identifier">AudioFilter</span><span class="Other">]</span> <span class="Comment">## Filter list</span>
+  <span class="Identifier">len_ratio</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cdouble</span>          <span class="Comment">## Given len, final size is `len * len_ratio`</span>
+  <span class="Identifier">filters</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">AudioCVTMaxFilters</span> <span class="Operator">+</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">AudioFilter</span><span class="Other">]</span> <span class="Comment">## \</span>
+                                                  <span class="Comment">## ``nil``-terminated list of filter functions</span>
   <span class="Identifier">filter_index</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>          <span class="Comment">## Current audio conversion procedure</span>
   </pre></dt>
 <dd>
 <p>
 A structure to hold a set of audio conversion filters and buffers.</p>
+<p>Note that various parts of the conversion pipeline can take advantage of SIMD operations (like SSE2, for example). <tt class="docutils literal"><span class="pre">AudioCVT</span></tt> doesn't require you to pass it aligned data, but can possibly run much faster if you set both its <tt class="docutils literal"><span class="pre">buf</span></tt> field to a pointer that is aligned to 16 bytes, and its <tt class="docutils literal"><span class="pre">len</span></tt> field to something that's a multiple of 16, if possible.</p>
 <p>This structure is 84 bytes on 32-bit architectures, make sure GCC doesn't pad it out to 88 bytes to guarantee ABI compatibility between compilers. The next time we rev the ABI, make sure to size the ints and add padding.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L164"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L164" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AudioDeviceID"><a name="AudioDeviceID"></a><pre><span class="Identifier">AudioDeviceID</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">uint32</span></pre></dt>
@@ -1515,20 +1504,12 @@ class="link-seesrc" target="_blank">Source</a>
 SDL Audio Device IDs.</p>
 <p>A successful call to <tt class="docutils literal"><span class="pre">openAudio()</span></tt> is always device id <cite>1</cite>, and legacy SDL audio APIs assume you want this device ID. <tt class="docutils literal"><span class="pre">openAudioDevice()</span></tt> calls always returns devices &gt;= <cite>2</cite> on success. The legacy calls are good both for backwards compatibility and when you don't care about multiple, specific, or capture devices.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L271"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L271" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AudioStatus"><a name="AudioStatus"></a><pre><span class="Identifier">AudioStatus</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">AUDIO_STOPPED</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">AUDIO_PLAYING</span><span class="Other">,</span> <span class="Identifier">AUDIO_PAUSED</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L329"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L329" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1539,245 +1520,143 @@ class="link-seesrc" target="_blank">Source</a>
 <dt id="AUDIO_MASK_BITSIZE"><a name="AUDIO_MASK_BITSIZE"></a><pre><span class="Identifier">AUDIO_MASK_BITSIZE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x000000FF</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L49"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L49" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_MASK_DATATYPE"><a name="AUDIO_MASK_DATATYPE"></a><pre><span class="Identifier">AUDIO_MASK_DATATYPE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">8</span><span class="Other">)</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L50"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L50" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_MASK_ENDIAN"><a name="AUDIO_MASK_ENDIAN"></a><pre><span class="Identifier">AUDIO_MASK_ENDIAN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">12</span><span class="Other">)</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L51"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L51" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_MASK_SIGNED"><a name="AUDIO_MASK_SIGNED"></a><pre><span class="Identifier">AUDIO_MASK_SIGNED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">15</span><span class="Other">)</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L52"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L52" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_U8"><a name="AUDIO_U8"></a><pre><span class="Identifier">AUDIO_U8</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000008</span></pre></dt>
 <dd>
 Unsigned 8-bit samples
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L79"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L79" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_S8"><a name="AUDIO_S8"></a><pre><span class="Identifier">AUDIO_S8</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00008008</span></pre></dt>
 <dd>
 Signed 8-bit samples
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L80"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L80" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_U16LSB"><a name="AUDIO_U16LSB"></a><pre><span class="Identifier">AUDIO_U16LSB</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000010</span></pre></dt>
 <dd>
 Unsigned 16-bit samples
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L81"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L81" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_S16LSB"><a name="AUDIO_S16LSB"></a><pre><span class="Identifier">AUDIO_S16LSB</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00008010</span></pre></dt>
 <dd>
 Signed 16-bit samples
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L82"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L82" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_U16MSB"><a name="AUDIO_U16MSB"></a><pre><span class="Identifier">AUDIO_U16MSB</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00001010</span></pre></dt>
 <dd>
 As above, but big-endian byte order
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L83"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L83" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_S16MSB"><a name="AUDIO_S16MSB"></a><pre><span class="Identifier">AUDIO_S16MSB</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00009010</span></pre></dt>
 <dd>
 As above, but big-endian byte order
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L84"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L84" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_U16"><a name="AUDIO_U16"></a><pre><span class="Identifier">AUDIO_U16</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">AUDIO_U16LSB</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L85"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L85" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_S16"><a name="AUDIO_S16"></a><pre><span class="Identifier">AUDIO_S16</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">AUDIO_S16LSB</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L86"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L86" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_S32LSB"><a name="AUDIO_S32LSB"></a><pre><span class="Identifier">AUDIO_S32LSB</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00008020</span></pre></dt>
 <dd>
 32-bit integer samples
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L90"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L90" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_S32MSB"><a name="AUDIO_S32MSB"></a><pre><span class="Identifier">AUDIO_S32MSB</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00009020</span></pre></dt>
 <dd>
 As above, but big-endian byte order
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L91"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L91" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_S32"><a name="AUDIO_S32"></a><pre><span class="Identifier">AUDIO_S32</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">AUDIO_S32LSB</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L92"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L92" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_F32LSB"><a name="AUDIO_F32LSB"></a><pre><span class="Identifier">AUDIO_F32LSB</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00008120</span></pre></dt>
 <dd>
 32-bit floating point samples
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L96"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L96" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_F32MSB"><a name="AUDIO_F32MSB"></a><pre><span class="Identifier">AUDIO_F32MSB</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00009120</span></pre></dt>
 <dd>
 As above, but big-endian byte order
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L97"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L97" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_F32"><a name="AUDIO_F32"></a><pre><span class="Identifier">AUDIO_F32</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">AUDIO_F32LSB</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L98"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L98" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_U16SYS"><a name="AUDIO_U16SYS"></a><pre><span class="Identifier">AUDIO_U16SYS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">AUDIO_U16LSB</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L103"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L103" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_S16SYS"><a name="AUDIO_S16SYS"></a><pre><span class="Identifier">AUDIO_S16SYS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">AUDIO_S16LSB</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L104"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L104" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_S32SYS"><a name="AUDIO_S32SYS"></a><pre><span class="Identifier">AUDIO_S32SYS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">AUDIO_S32LSB</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L105"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L105" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_F32SYS"><a name="AUDIO_F32SYS"></a><pre><span class="Identifier">AUDIO_F32SYS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">AUDIO_F32LSB</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L106"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L106" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_ALLOW_FREQUENCY_CHANGE"><a name="AUDIO_ALLOW_FREQUENCY_CHANGE"></a><pre><span class="Identifier">AUDIO_ALLOW_FREQUENCY_CHANGE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L118"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L118" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_ALLOW_FORMAT_CHANGE"><a name="AUDIO_ALLOW_FORMAT_CHANGE"></a><pre><span class="Identifier">AUDIO_ALLOW_FORMAT_CHANGE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L119"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L119" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_ALLOW_CHANNELS_CHANGE"><a name="AUDIO_ALLOW_CHANNELS_CHANGE"></a><pre><span class="Identifier">AUDIO_ALLOW_CHANNELS_CHANGE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L120"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L120" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="AUDIO_ALLOW_ANY_CHANGE"><a name="AUDIO_ALLOW_ANY_CHANGE"></a><pre><span class="Identifier">AUDIO_ALLOW_ANY_CHANGE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="Identifier">AUDIO_ALLOW_FREQUENCY_CHANGE</span> <span class="Keyword">or</span>
     <span class="Identifier">AUDIO_ALLOW_FORMAT_CHANGE</span> <span class="Keyword">or</span> <span class="Identifier">AUDIO_ALLOW_CHANNELS_CHANGE</span><span class="Other">)</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L121"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L121" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<dt id="AudioCVTMaxFilters"><a name="AudioCVTMaxFilters"></a><pre><span class="Identifier">AudioCVTMaxFilters</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">9</span></pre></dt>
+<dd>
+Upper limit of filters in <tt class="docutils literal"><span class="pre">AudioCVT</span></tt>  
+The maximum number of <tt class="docutils literal"><span class="pre">AudioFilter</span></tt> functions in <tt class="docutils literal"><span class="pre">AudioCVT</span></tt> is currently limited to <cite>9</cite>. The <tt class="docutils literal"><span class="pre">AudioCVT.filters</span></tt> array has 10 pointers, one of which is the terminating <tt class="docutils literal"><span class="pre">nil</span></tt> pointer.
 
 </dd>
 <dt id="MIX_MAXVOLUME"><a name="MIX_MAXVOLUME"></a><pre><span class="Identifier">MIX_MAXVOLUME</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">128</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L419"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L419" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1791,10 +1670,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Driver discovery procedures.</p>
 <p>These procedures return the list of built in audio drivers, in the order that they are normally initialized by default.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L185"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L185" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getAudioDriver"><a name="getAudioDriver,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getAudioDriver</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetAudioDriver&quot;</span><span class="Other">,</span>
@@ -1803,10 +1678,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Driver discovery procedures.</p>
 <p>These procedures return the list of built in audio drivers, in the order that they are normally initialized by default.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L192"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L192" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="audioInit"><a name="audioInit,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">audioInit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">driver_name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AudioInit&quot;</span><span class="Other">,</span>
@@ -1815,10 +1686,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Initialization.</p>
 <p><tt class="docutils literal"><span class="pre">Internal:</span></tt> These procedures are used internally, and should not be used unless you have a specific need to specify the audio driver you want to use.  You should normally use <tt class="docutils literal"><span class="pre">init()</span></tt> or <tt class="docutils literal"><span class="pre">initSubSystem()</span></tt>.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L199"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L199" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="audioQuit"><a name="audioQuit,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">audioQuit</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AudioQuit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -1826,10 +1693,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Cleanup.</p>
 <p><tt class="docutils literal"><span class="pre">Internal</span></tt>: These procedures are used internally, and should not be used unless you have a specific need to specify the audio driver you want to use.  You should normally use <tt class="docutils literal"><span class="pre">init()</span></tt> or <tt class="docutils literal"><span class="pre">initSubSystem()</span></tt>.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L207"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L207" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getCurrentAudioDriver"><a name="getCurrentAudioDriver,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCurrentAudioDriver</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1837,10 +1700,6 @@ class="link-seesrc" target="_blank">Source</a>
                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This procedure returns the name of the current audio driver, or <cite>nil</cite> if no driver has been initialized.
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L215"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L215" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="openAudio"><a name="openAudio,ptr.AudioSpec,ptr.AudioSpec"></a><pre><span class="Keyword">proc</span> <span class="Identifier">openAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">desired</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioSpec</span><span class="Other">;</span> <span class="Identifier">obtained</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioSpec</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1861,10 +1720,6 @@ class="link-seesrc" target="_blank">Source</a>
 </ul>
 <p>The audio device starts out playing silence when it's opened, and should be enabled for playing by calling <tt class="docutils literal"><span class="pre">pauseAudio(0)</span></tt> when you are ready for your audio callback procedure to be called.  Since the audio driver may modify the requested size of the audio buffer, you should allocate any local mixing buffers after you open the audio device.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L220"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L220" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getNumAudioDevices"><a name="getNumAudioDevices,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getNumAudioDevices</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">iscapture</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1874,10 +1729,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Only valid after a successfully initializing the audio subsystem. Returns <cite>-1</cite> if an explicit list of devices can't be determined; this is not an error. For example, if SDL is set up to talk to a remote audio server, it can't list every one available on the Internet, but it will still allow a specific host to be specified to <tt class="docutils literal"><span class="pre">openAudioDevice()</span></tt>.</p>
 <p>In many common cases, when this procedure returns a value &lt;= <cite>0</cite>, it can still  successfully open the default device (<cite>nil</cite> for first argument of <tt class="docutils literal"><span class="pre">openAudioDevice()</span></tt>).</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L280"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L280" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getAudioDeviceName"><a name="getAudioDeviceName,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getAudioDeviceName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">iscapture</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1887,10 +1738,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Must be a value between <cite>0</cite> and <cite>(number of audio devices-1)</cite>. Only valid after a successfully initializing the audio subsystem. The values returned by this procedure reflect the latest call to <tt class="docutils literal"><span class="pre">getNumAudioDevices()</span></tt>; recall that procedure to redetect available hardware.</p>
 <p>The string returned by this procedure is UTF-8 encoded, read-only, and managed internally. You are not to free it. If you need to keep the string for any length of time, you should make your own copy of it, as it will be invalid next time any of several other SDL prodedures is called.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L294"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L294" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="openAudioDevice"><a name="openAudioDevice,cstring,cint,ptr.AudioSpec,ptr.AudioSpec,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">openAudioDevice</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">device</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">iscapture</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">desired</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioSpec</span><span class="Other">;</span>
@@ -1903,30 +1750,18 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on error, a valid device ID that is &gt;= <cite>2</cite> on success.</p>
 <p><tt class="docutils literal"><span class="pre">openAudio()</span></tt>, unlike this procedure, always acts on device ID <cite>1</cite>.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L309"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L309" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="GetAudioStatus"><a name="GetAudioStatus,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">GetAudioStatus</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">AudioStatus</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetAudioStatus&quot;</span><span class="Other">,</span>
                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the current audio state.
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L334"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L334" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="GetAudioDeviceStatus"><a name="GetAudioDeviceStatus,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">GetAudioDeviceStatus</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">AudioStatus</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetAudioDeviceStatus&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the current audio state.
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L338"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L338" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="pauseAudio"><a name="pauseAudio,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pauseAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">pause_on</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PauseAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -1934,10 +1769,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Pause audio procedures.</p>
 <p>These procedures pause and unpause the audio callback processing. They should be called with a parameter of <cite>0</cite> after opening the audio device to start playing sound.  This is so you can safely initialize data for your callback procedure after opening the audio device. Silence will be written to the audio device during the pause.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L342"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L342" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="pauseAudioDevice"><a name="pauseAudioDevice,AudioDeviceID,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pauseAudioDevice</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">;</span> <span class="Identifier">pause_on</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1946,10 +1777,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Pause audio procedures.</p>
 <p>These procedures pause and unpause the audio callback processing. They should be called with a parameter of <cite>0</cite> after opening the audio device to start playing sound.  This is so you can safely initialize data for your callback procedure after opening the audio device. Silence will be written to the audio device during the pause.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L352"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L352" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="loadWAV_RW"><a name="loadWAV_RW,ptr.RWops,cint,ptr.AudioSpec,ptr.ptr.uint8,ptr.uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadWAV_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">spec</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioSpec</span><span class="Other">;</span>
@@ -1960,19 +1787,11 @@ This procedure loads a WAVE from the data source, automatically freeing that sou
 <p>If this procedure succeeds, it returns the given AudioSpec, filled with the audio data format of the wave data, and sets <tt class="docutils literal"><span class="pre">audio_buf[]</span></tt> to a malloc()'d buffer containing the audio data, and sets <tt class="docutils literal"><span class="pre">audio_len[]</span></tt> to the length of that audio buffer, in bytes. You need to free the audio buffer with <tt class="docutils literal"><span class="pre">freeWAV()</span></tt> when you are done with it.</p>
 <p>This procedure returns <cite>nil</cite> and sets the SDL error message if the wave file cannot be opened, uses an unknown data format, or is corrupt.  Currently raw and MS-ADPCM WAVE files are supported.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L362"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L362" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="freeWAV"><a name="freeWAV,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freeWAV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">audio_buf</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FreeWAV&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This procedure frees data previously allocated with <tt class="docutils literal"><span class="pre">loadWAV_RW()</span></tt>
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L391"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L391" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="buildAudioCVT"><a name="buildAudioCVT,ptr.AudioCVT,AudioFormat,uint8,cint,AudioFormat,uint8,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">buildAudioCVT</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cvt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioCVT</span><span class="Other">;</span> <span class="Identifier">src_format</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span><span class="Other">;</span> <span class="Identifier">src_channels</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span>
@@ -1980,13 +1799,9 @@ class="link-seesrc" target="_blank">Source</a>
                    <span class="Identifier">dst_rate</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_BuildAudioCVT&quot;</span><span class="Other">,</span>
                                         <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
-<p>This procedure takes a source format and rate and a destination format and rate, and initializes the <tt class="docutils literal"><span class="pre">cvt</span></tt> object with information needed by <tt class="docutils literal"><span class="pre">convertAudio()</span></tt> to convert a buffer of audio data from one format to the other.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>-1</cite> if the format conversion is not supported, <cite>0</cite> if there's no conversion needed, or 1 if the audio filter is set up.</p>
+<p>This procedure takes a source format and rate and a destination format and rate, and initializes the <tt class="docutils literal"><span class="pre">cvt</span></tt> object with information needed by <tt class="docutils literal"><span class="pre">convertAudio()</span></tt> to convert a buffer of audio data from one format to the other. An unsupported format causes an error and <cite>-1</cite> will be returned.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> if no conversion is needed, <cite>1</cite> if the audio filter is set up, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L395"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L395" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="convertAudio"><a name="convertAudio,ptr.AudioCVT"></a><pre><span class="Keyword">proc</span> <span class="Identifier">convertAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">cvt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioCVT</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ConvertAudio&quot;</span><span class="Other">,</span>
@@ -1994,21 +1809,14 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 <p>Once you have initialized the <tt class="docutils literal"><span class="pre">cvt</span></tt> object using <tt class="docutils literal"><span class="pre">buildAudioCVT()</span></tt>, created an audio buffer <tt class="docutils literal"><span class="pre">cvt.buf</span></tt>, and filled it with <tt class="docutils literal"><span class="pre">cvt.len</span></tt> bytes of audio data in the source format, this procedure will convert it in-place to the desired format.</p>
 <p>The data conversion may expand the size of the audio data, so the buffer <tt class="docutils literal"><span class="pre">cvt.buf</span></tt> should be allocated after the <tt class="docutils literal"><span class="pre">cvt</span></tt> object is initialized by <tt class="docutils literal"><span class="pre">buildAudioCVT()</span></tt>, and should be <cite>cvt.len*cvt.len_mult</cite> bytes long.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success or <cite>-1</cite> if <tt class="docutils literal"><span class="pre">cvt.buf</span></tt> is <tt class="docutils literal"><span class="pre">nil</span></tt>.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L407"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L407" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="mixAudio"><a name="mixAudio,ptr.uint8,ptr.uint8,uint32,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">mixAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">volume</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MixAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This takes two audio buffers of the playing audio format and mixes them, performing addition, volume adjustment, and overflow clipping. The volume ranges from <cite>0 - 128</cite>, and should be set to <cite>MIX_MAXVOLUME</cite> for full audio volume.  Note this does not change hardware volume. This is provided for convenience -- you can mix your own audio data.
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L421"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L421" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="mixAudioFormat"><a name="mixAudioFormat,ptr.uint8,ptr.uint8,AudioFormat,uint32,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">mixAudioFormat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span>
@@ -2016,10 +1824,6 @@ class="link-seesrc" target="_blank">Source</a>
                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This works like <tt class="docutils literal"><span class="pre">mixAudio()</span></tt>, but you specify the audio format instead of using the format of audio device <cite>1</cite>. Thus it can be used when no audio device is open at all.
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L429"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L429" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="queueAudio"><a name="queueAudio,AudioDeviceID,pointer,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">queueAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2040,10 +1844,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">getQueuedAudioSize()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">clearQueuedAudio()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L437"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L437" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="dequeueAudio"><a name="dequeueAudio,AudioDeviceID,pointer,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">dequeueAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2061,10 +1861,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getQueuedAudioSize</span></tt> <tt class="docutils literal"><span class="pre">clearQueuedAudio</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L483"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L483" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getQueuedAudioSize"><a name="getQueuedAudioSize,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getQueuedAudioSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2085,10 +1881,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">queueAudio()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">clearQueuedAudio()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L530"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L530" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="clearQueuedAudio"><a name="clearQueuedAudio,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">clearQueuedAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ClearQueuedAudio&quot;</span><span class="Other">,</span>
@@ -2105,10 +1897,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">queueAudio()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">getQueuedAudioSize()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L569"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L569" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="lockAudio"><a name="lockAudio,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -2116,10 +1904,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Audio lock procedure.</p>
 <p>The lock manipulated by these procedures protects the callback procedure. During a <tt class="docutils literal"><span class="pre">lockAudio()</span></tt>/<tt class="docutils literal"><span class="pre">unlockAudio()</span></tt> pair, you can be guaranteed that the callback procedure is not running.  Do not call these from the callback procedure or you will cause deadlock.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L607"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L607" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="lockAudioDevice"><a name="lockAudioDevice,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockAudioDevice</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockAudioDevice&quot;</span><span class="Other">,</span>
@@ -2128,10 +1912,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Audio lock procedure.</p>
 <p>The lock manipulated by these procedures protects the callback procedure. During a <tt class="docutils literal"><span class="pre">lockAudio()</span></tt>/<tt class="docutils literal"><span class="pre">unlockAudio()</span></tt> pair, you can be guaranteed that the callback procedure is not running.  Do not call these from the callback procedure or you will cause deadlock.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L616"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L616" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="unlockAudio"><a name="unlockAudio,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -2139,10 +1919,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Audio unlock procedure.</p>
 <p>The lock manipulated by these procedures protects the callback procedure. During a <tt class="docutils literal"><span class="pre">lockAudio()</span></tt>/<tt class="docutils literal"><span class="pre">unlockAudio()</span></tt> pair, you can be guaranteed that the callback procedure is not running.  Do not call these from the callback procedure or you will cause deadlock.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L625"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L625" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="unlockAudioDevice"><a name="unlockAudioDevice,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockAudioDevice</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2151,29 +1927,17 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Audio unlock procedure.</p>
 <p>The lock manipulated by these procedures protects the callback procedure. During a <tt class="docutils literal"><span class="pre">lockAudio()</span></tt>/<tt class="docutils literal"><span class="pre">unlockAudio()</span></tt> pair, you can be guaranteed that the callback procedure is not running.  Do not call these from the callback procedure or you will cause deadlock.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L634"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L634" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="closeAudio"><a name="closeAudio,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">closeAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CloseAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This procedure shuts down audio processing and closes the audio device.
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L643"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L643" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="closeAudioDevice"><a name="closeAudioDevice,AudioDeviceID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">closeAudioDevice</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dev</span><span class="Other">:</span> <span class="Identifier">AudioDeviceID</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CloseAudioDevice&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This procedure shuts down audio processing and closes the audio device.
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L647"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L647" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -2184,64 +1948,36 @@ class="link-seesrc" target="_blank">Source</a>
 <dt id="audioBitSize"><a name="audioBitSize.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioBitSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L54"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L54" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="audioIsFloat"><a name="audioIsFloat.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsFloat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L57"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L57" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="audioIsBigEndian"><a name="audioIsBigEndian.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsBigEndian</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L60"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L60" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="audioIsSigned"><a name="audioIsSigned.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsSigned</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L63"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L63" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="audioIsInt"><a name="audioIsInt.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsInt</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L66"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L66" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="audioIsLittleEndian"><a name="audioIsLittleEndian.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsLittleEndian</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L69"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L69" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="audioIsUnsigned"><a name="audioIsUnsigned.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">audioIsUnsigned</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L72"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L72" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="loadWAV"><a name="loadWAV.t,untyped,untyped,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">loadWAV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">,</span> <span class="Identifier">spec</span><span class="Other">,</span> <span class="Identifier">audio_buf</span><span class="Other">,</span> <span class="Identifier">audio_len</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
@@ -2250,10 +1986,6 @@ class="link-seesrc" target="_blank">Source</a>
 Loads a WAV from a file.</p>
 <p>Compatibility convenience template.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/audio.nim#L384"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/audio.nim#L384" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -2266,7 +1998,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>

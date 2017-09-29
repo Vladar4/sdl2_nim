@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module keycode</title>
@@ -1380,7 +1382,11 @@ function main() {
   K_KBDILLUMDOWN = scancodeToKeycode(SCANCODE_KBDILLUMDOWN),
   K_KBDILLUMUP = scancodeToKeycode(SCANCODE_KBDILLUMUP),
   K_EJECT = scancodeToKeycode(SCANCODE_EJECT),
-  K_SLEEP = scancodeToKeycode(SCANCODE_SLEEP)"><wbr />Keycode<span class="attachedType" style="visibility:hidden"></span></a></li>
+  K_SLEEP = scancodeToKeycode(SCANCODE_SLEEP),
+  K_APP1 = scancodeToKeycode(SCANCODE_APP1),
+  K_APP2 = scancodeToKeycode(SCANCODE_APP2),
+  K_AUDIOREWIND = scancodeToKeycode(SCANCODE_AUDIOREWIND),
+  K_AUDIOFASTFORWARD = scancodeToKeycode(SCANCODE_AUDIOFASTFORWARD)"><wbr />Keycode<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#Keymod"
     title="Keymod* = enum
   KMOD_NONE = 0x00000000, KMOD_LSHIFT = 0x00000001, KMOD_RSHIFT = 0x00000002,
@@ -1593,16 +1599,17 @@ function main() {
   <span class="Identifier">K_KBDILLUMDOWN</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KBDILLUMDOWN</span><span class="Other">)</span><span class="Other">,</span>
   <span class="Identifier">K_KBDILLUMUP</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KBDILLUMUP</span><span class="Other">)</span><span class="Other">,</span>
   <span class="Identifier">K_EJECT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_EJECT</span><span class="Other">)</span><span class="Other">,</span>
-  <span class="Identifier">K_SLEEP</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_SLEEP</span><span class="Other">)</span></pre></dt>
+  <span class="Identifier">K_SLEEP</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_SLEEP</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_APP1</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_APP1</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_APP2</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_APP2</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AUDIOREWIND</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AUDIOREWIND</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AUDIOFASTFORWARD</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AUDIOFASTFORWARD</span><span class="Other">)</span></pre></dt>
 <dd>
 <p>
 The SDL virtual key representation.</p>
 <p>Values of this type are used to represent keyboard keys using the current layout of the keyboard.  These values include Unicode values representing  the unmodified character that would be generated by pressing the key, or an K_* constant for those keys that do not generate characters.</p>
+<p>A special exception is the number keys at the top of the keyboard which always map to K_0...K_9, regardless of layout.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keycode.nim#L39"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keycode.nim#L39" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="Keymod"><a name="Keymod"></a><pre><span class="Identifier">Keymod</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
@@ -1617,10 +1624,6 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Enumeration of valid key mods (possibly OR'd together).
-&nbsp;&nbsp;<a
-href="/tree/master/keycode.nim#L289"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keycode.nim#L289" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1631,10 +1634,6 @@ class="link-seesrc" target="_blank">Source</a>
 <dt id="K_SCANCODE_MASK"><a name="K_SCANCODE_MASK"></a><pre><span class="Identifier">K_SCANCODE_MASK</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">30</span><span class="Other">)</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keycode.nim#L33"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keycode.nim#L33" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1645,28 +1644,16 @@ class="link-seesrc" target="_blank">Source</a>
 <dt id="scancodeToKeycode"><a name="scancodeToKeycode.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">scancodeToKeycode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keycode.nim#L35"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keycode.nim#L35" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="or"><a name="or.t,Keymod,Keymod"></a><pre><span class="Keyword">template</span> <span class="Other">`</span><span class="Keyword">or</span><span class="Other">`</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Keymod</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Keymod</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keycode.nim#L309"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keycode.nim#L309" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="and"><a name="and.t,Keymod,Keymod"></a><pre><span class="Keyword">template</span> <span class="Other">`</span><span class="Keyword">and</span><span class="Other">`</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Keymod</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keycode.nim#L312"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keycode.nim#L312" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1679,7 +1666,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>

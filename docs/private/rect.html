@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module rect</title>
@@ -1276,10 +1278,6 @@ The object that defines a point</p>
 <p><tt class="docutils literal"><span class="pre">enclosePoints()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">pointInRect()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rect.nim#L28"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rect.nim#L28" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="Rect"><a name="Rect"></a><pre><span class="Identifier">Rect</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1299,10 +1297,6 @@ A rectangle, with the origin at the upper left.</p>
 <p><tt class="docutils literal"><span class="pre">unionRect()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">enclosePoints()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rect.nim#L40"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rect.nim#L40" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1316,10 +1310,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Determine whether two rectangles intersect.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if there is an intersection, <cite>false</cite> otherwise.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rect.nim#L76"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rect.nim#L76" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="intersectRect"><a name="intersectRect,ptr.Rect,ptr.Rect,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">intersectRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">result</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1328,20 +1318,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Calculate the intersection of two rectangles.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if there is an intersection, <cite>false</cite> otherwise.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rect.nim#L82"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rect.nim#L82" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="unionRect"><a name="unionRect,ptr.Rect,ptr.Rect,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unionRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">result</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnionRect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Calculate the union of two rectangles.
-&nbsp;&nbsp;<a
-href="/tree/master/rect.nim#L88"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rect.nim#L88" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="enclosePoints"><a name="enclosePoints,ptr.Point,cint,ptr.Rect,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">enclosePoints</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">points</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Point</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">clip</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">result</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -1350,10 +1332,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Calculate a minimal rectangle enclosing a set of points.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if any points were within the clipping rect.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rect.nim#L92"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rect.nim#L92" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="intersectRectAndLine"><a name="intersectRectAndLine,ptr.Rect,ptr.cint,ptr.cint,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">intersectRectAndLine</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y1</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">x2</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span>
@@ -1363,10 +1341,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Calculate the intersection of a rectangle and line segment.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if there is an intersection, <cite>false</cite> otherwise.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rect.nim#L99"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rect.nim#L99" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1378,30 +1352,18 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 <tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if point resides inside a rectangle.
-&nbsp;&nbsp;<a
-href="/tree/master/rect.nim#L61"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rect.nim#L61" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="rectEmpty"><a name="rectEmpty.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">rectEmpty</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span></pre></dt>
 <dd>
 
 <tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if the rectangle has no area.
-&nbsp;&nbsp;<a
-href="/tree/master/rect.nim#L66"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rect.nim#L66" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="rectEquals"><a name="rectEquals.t,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">rectEquals</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span></pre></dt>
 <dd>
 
 <tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if the two rectangles are equal.
-&nbsp;&nbsp;<a
-href="/tree/master/rect.nim#L70"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rect.nim#L70" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1414,7 +1376,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>

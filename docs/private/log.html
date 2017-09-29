@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module log</title>
@@ -1325,10 +1327,6 @@ function main() {
 The predefined log categories</p>
 <p>By default the application category is enabled at the <cite>INFO</cite> level, the assert category is enabled at the <cite>WARN</cite> level, test is enabled at the <cite>VERBOSE</cite> level and all other categories are enabled at the <cite>CRITICAL</cite> level.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L47"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L47" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="LogPriority"><a name="LogPriority"></a><pre><span class="Identifier">LogPriority</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
@@ -1337,20 +1335,12 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 The predefined log priorities
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L83"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L83" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="LogOutputFunction"><a name="LogOutputFunction"></a><pre><span class="Identifier">LogOutputFunction</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span>
                         <span class="Identifier">priority</span><span class="Other">:</span> <span class="Identifier">LogPriority</span><span class="Other">;</span> <span class="Identifier">message</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 The prototype for the log output procedure.
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L151"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L151" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1364,10 +1354,6 @@ class="link-seesrc" target="_blank">Source</a>
 The maximum size of a log message</p>
 <p>Messages longer than the maximum size will be truncated</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L40"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L40" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1379,30 +1365,18 @@ class="link-seesrc" target="_blank">Source</a>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogSetAllPriority&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Set the priority of all log categories.
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L93"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L93" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="logSetPriority"><a name="logSetPriority,LogCategory,LogPriority"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logSetPriority</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> <span class="Identifier">priority</span><span class="Other">:</span> <span class="Identifier">LogPriority</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogSetPriority&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Set the priority of a particular log category.
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L97"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L97" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="logGetPriority"><a name="logGetPriority,LogCategory"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logGetPriority</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">LogPriority</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogGetPriority&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the priority of a particular log category.
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L101"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L101" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="logResetPriorities"><a name="logResetPriorities,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logResetPriorities</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogResetPriorities&quot;</span><span class="Other">,</span>
@@ -1411,109 +1385,65 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Reset all priorities to default.</p>
 <p>This is called in <tt class="docutils literal"><span class="pre">quit()</span></tt>.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L105"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L105" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="log"><a name="log,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">log</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Log&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Log a message with <cite>LOG_CATEGORY_APPLICATION</cite> and <cite>LOG_PRIORITY_INFO</cite>.
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L111"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L111" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="logVerbose"><a name="logVerbose,LogCategory,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logVerbose</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogVerbose&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Log a message with <cite>LOG_PRIORITY_VERBOSE</cite>.
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L115"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L115" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="logDebug"><a name="logDebug,LogCategory,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logDebug</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogDebug&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Log a message with <cite>LOG_PRIORITY_DEBUG</cite>.
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L119"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L119" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="logInfo"><a name="logInfo,LogCategory,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logInfo</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogInfo&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Log a message with <cite>LOG_PRIORITY_INFO</cite>.
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L123"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L123" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="logWarn"><a name="logWarn,LogCategory,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logWarn</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogWarn&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Log a message with LOG_PRIORITY_WARN.
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L127"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L127" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="logError"><a name="logError,LogCategory,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logError</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogError&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Log a message with <cite>LOG_PRIORITY_ERROR</cite>.
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L131"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L131" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="logCritical"><a name="logCritical,LogCategory,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logCritical</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogCritical&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Log a message with <cite>LOG_PRIORITY_CRITICAL</cite>.
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L135"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L135" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="logMessage"><a name="logMessage,LogCategory,LogPriority,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logMessage</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">category</span><span class="Other">:</span> <span class="Identifier">LogCategory</span><span class="Other">;</span> <span class="Identifier">priority</span><span class="Other">:</span> <span class="Identifier">LogPriority</span><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">varargs</span><span class="Other">,</span>
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogMessage&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Log a message with the specified category and priority.
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L139"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L139" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="logGetOutputFunction"><a name="logGetOutputFunction,ptr.LogOutputFunction,ptr.pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logGetOutputFunction</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">callback</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">LogOutputFunction</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogGetOutputFunction&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the current log output procedure.
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L155"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L155" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="logSetOutputFunction"><a name="logSetOutputFunction,LogOutputFunction,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">logSetOutputFunction</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">callback</span><span class="Other">:</span> <span class="Identifier">LogOutputFunction</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LogSetOutputFunction&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This procedure allows you to replace the default log output procedure with one of your own.
-&nbsp;&nbsp;<a
-href="/tree/master/log.nim#L160"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/log.nim#L160" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1526,7 +1456,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>
