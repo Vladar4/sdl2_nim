@@ -13,6 +13,7 @@ include
   private/pixels,
   private/surface,
   private/video,
+  private/vulkan,
   private/scancode,
   private/keycode,
   private/keyboard,

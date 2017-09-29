@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2017 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -85,6 +85,10 @@ proc hasAVX*(): bool {.
 proc hasAVX2*(): bool {.
     cdecl, importc: "SDL_HasAVX2", dynlib: SDL2_LIB.}
   ##  This procedure returns true if the CPU has AVX2 features.
+
+proc hasNEON*(): bool {.
+    cdecl, importc: "SDL_HasNEON", dynlib: SDL2_LIB.}
+  ##  This function returns true if the CPU has NEON (ARM SIMD) features.
 
 proc getSystemRAM*(): cint {.
     cdecl, importc: "SDL_GetSystemRAM", dynlib: SDL2_LIB.}

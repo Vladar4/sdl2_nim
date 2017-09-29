@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2017 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -33,7 +33,8 @@
 ##  ``init()``: `HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS`
 
 type
-  GameController* = pointer
+  GameController* = pointer ##  \
+    ##  The gamecontroller structure used to identify an SDL game controller.
 
   GameControllerBindType* {.size: sizeof(cint).} = enum
     CONTROLLER_BINDTYPE_NONE = 0,
@@ -92,11 +93,10 @@ type
 ##
 ##  This string shows an example of a valid mapping for a controller
 ##
-##  "341a3608000000000000504944564944,Afterglow PS3 Controller,
-##  a:b1,b:b2,y:b3,x:b0,start:b9,guide:b12,back:b8,dpup:h0.1,
-##  dpleft:h0.8,dpdown:h0.4,dpright:h0.2,leftshoulder:b4,rightshoulder:b5,
-##  leftstick:b10,rightstick:b11,leftx:a0,lefty:a1,rightx:a2,righty:a3,
-##  lefttrigger:b6,righttrigger:b7"
+## "03000000341a00003608000000000000,PS3 Controller,a:b1,b:b2,y:b3,x:b0,
+## start:b9,guide:b12,back:b8,dpup:h0.1,dpleft:h0.8,dpdown:h0.4,dpright:h0.2,
+## leftshoulder:b4,rightshoulder:b5,leftstick:b10,rightstick:b11,leftx:a0,
+## lefty:a1,rightx:a2,righty:a3,lefttrigger:b6,righttrigger:b7"
 
 proc gameControllerAddMappingsFromRW*(rw: ptr RWops; freerw: cint): cint {.
     cdecl, importc: "SDL_GameControllerAddMappingsFromRW", dynlib: SDL2_LIB.}
@@ -119,6 +119,19 @@ proc gameControllerAddMapping*(mappingString: cstring): cint {.
   ##  Add or update an existing mapping configuration.
   ##
   ##  ``Return`` `1` if mapping is added, `0` if updated, `-1` on error.
+
+proc gameControllerNumMappings*(): cint {.
+    cdecl, importc: "SDL_GameControllerNumMappings", dynlib: SDL2_LIB.}
+  ##  Get the number of mappings installed.
+  ##
+  ##  ``Return`` the number of mappings.
+
+proc gameControllerMappingForIndex*(mapping_index: cint): cstring {.
+    cdecl, importc: "SDL_GameControllerMappingForIndex", dynlib: SDL2_LIB.}
+  ## Get the mapping at a particular index.
+  ##
+  ##  ``Return`` the mapping string. Must be freed with ``free()``.
+  ##  Returns ``nil`` if the index is out of range.
 
 proc gameControllerMappingForGUID*(guid: JoystickGUID): cstring {.
     cdecl, importc: "SDL_GameControllerMappingForGUID", dynlib: SDL2_LIB.}
@@ -166,6 +179,21 @@ proc gameControllerName*(gamecontroller: GameController): cstring {.
     cdecl, importc: "SDL_GameControllerName", dynlib: SDL2_LIB.}
   ##  ``Return`` the name for this currently opened controller.
 
+proc gameControllerGetVendor*(gamecontroller: GameController): uint16 {.
+    cdecl, importc: "SDL_GameControllerGetVendor", dynlib: SDL2_LIB.}
+  ##  ``Return`` the USB vendor ID of an opened controller, if available.
+  ##  If the vendor ID isn't available this function returns `0`.
+
+proc gameControllerGetProduct*(gamecontroller: GameController): uint16 {.
+    cdecl, importc: "SDL_GameControllerGetProduct", dynlib: SDL2_LIB.}
+  ##  ``Return`` the USB product ID of an opened controller, if available.
+  ##  If the product ID isn't available this function returns `0`.
+
+proc gameControllerGetProductVersion*(gamecontroller: GameController): uint16 {.
+    cdecl, importc: "SDL_GameControllerGetProductVersion", dynlib: SDL2_LIB.}
+  ##  ``Return` the product version of an opened controller, if available.
+  ##  If the product version isn't available this function returns `0`.
+
 proc gameControllerGetAttached*(gamecontroller: GameController): bool {.
     cdecl, importc: "SDL_GameControllerGetAttached", dynlib: SDL2_LIB.}
   ##  ``Returns`` `true` if the controller has been opened and currently
@@ -194,7 +222,15 @@ proc gameControllerUpdate*() {.
 
 type
   GameControllerAxis* {.size: sizeof(uint8).} = enum ##  \
-    ##  The list of axes available from a controller
+    ##  The list of axes available from a controller.
+    ##
+    ##  Thumbstick axis values range
+    ##  from `JOYSTICK_AXIS_MIN` to `JOYSTICK_AXIS_MAX`,
+    ##  and are centered within ~8000 of zero,
+    ##  though advanced UI will allow users to set
+    ##  or autodetect the dead zone, which varies between controllers.
+    ##
+    ##  Trigger axis values range from `0` to `JOYSTICK_AXIS_MAX`.
     CONTROLLER_AXIS_LEFTX,  CONTROLLER_AXIS_LEFTY,
     CONTROLLER_AXIS_RIGHTX, CONTROLLER_AXIS_RIGHTY,
     CONTROLLER_AXIS_TRIGGERLEFT, CONTROLLER_AXIS_TRIGGERRIGHT,

@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module haptic</title>
@@ -1438,10 +1440,10 @@ function main() {
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   <p class="module-desc">
-<h1><a class="toc-backref" id="haptic-nim" href="#haptic-nim">haptic.nim</a></h1><p>The SDL Haptic subsystem allows you to control haptic (force feedback) devices.</p>
+<h1><a class="toc-backref" id="haptic-nim" href="#haptic-nim">haptic.nim</a></h1><p>The SDL haptic subsystem allows you to control haptic (force feedback) devices.</p>
 <p>The basic usage is as follows:</p>
 <ul class="simple"><li>Initialize the Subsystem (::SDL_INIT_HAPTIC).</li>
-<li>Open a Haptic Device.<ul class="simple"><li><tt class="docutils literal"><span class="pre">hapticOpen()</span></tt> to open from index.</li>
+<li>Open a haptic Device.<ul class="simple"><li><tt class="docutils literal"><span class="pre">hapticOpen()</span></tt> to open from index.</li>
 <li><tt class="docutils literal"><span class="pre">hapticOpenFromJoystick()</span></tt> to open from an existing joystick.</li>
 </ul>
 </li>
@@ -1464,10 +1466,6 @@ The haptic structure used to identify an SDL haptic.</p>
 <p><tt class="docutils literal"><span class="pre">hapticOpenFromJoystick()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticClose</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L40"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L40" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HapticDirection"><a name="HapticDirection"></a><pre><span class="Identifier">HapticDirection</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1505,7 +1503,7 @@ Structure that represents a haptic direction.</p>
 <li>Degrees towards (<cite>0, 0, 1</cite>) (device needs at least 3 axes).</li>
 </ul>
 <p>Example of force coming from the south with all encodings (force coming from the south means the user will have to pull the stick to counteract):</p>
-<pre class = "listing"><span class="Keyword">var</span> <span class="Identifier">direction</span><span class="Punctuation">:</span> <span class="Identifier">HapticDirection</span>
+<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">direction</span><span class="Punctuation">:</span> <span class="Identifier">HapticDirection</span>
 <span class="Comment"># Cartesian directions</span>
 <span class="Identifier">direction</span><span class="Operator">.</span><span class="Keyword">type</span> <span class="Operator">=</span> <span class="Identifier">HAPTIC_CARTESIAN</span>
 <span class="Identifier">direction</span><span class="Operator">.</span><span class="Identifier">dir</span><span class="Punctuation">[</span><span class="DecNumber">0</span><span class="Punctuation">]</span> <span class="Operator">=</span> <span class="DecNumber">0</span>  <span class="Comment"># X position</span>
@@ -1550,10 +1548,6 @@ Structure that represents a haptic direction.</p>
 <p><tt class="docutils literal"><span class="pre">HapticEffect</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">SDL_HapticNumAxes()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L249"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L249" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HapticConstantObj"><a name="HapticConstantObj"></a><pre><span class="Identifier">HapticConstantObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1571,16 +1565,12 @@ class="link-seesrc" target="_blank">Source</a>
   </pre></dt>
 <dd>
 <p>A structure containing a template for a Constant effect.</p>
-<p>The struct is exclusive to the <cite>HAPTIC_CONSTANT</cite> effect.</p>
+<p>The struct is exclusively to the <cite>HAPTIC_CONSTANT</cite> effect.</p>
 <p>A constant effect applies a constant force in the specified direction to the joystick.</p>
 <p>See also;</p>
 <p><cite>HAPTIC_CONSTANT</cite></p>
 <p><tt class="docutils literal"><span class="pre">HapticEffect</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L358"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L358" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HapticPeriodicObj"><a name="HapticPeriodicObj"></a><pre><span class="Identifier">HapticPeriodicObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1655,10 +1645,6 @@ SDL_HAPTIC_SAWTOOTHDOWN
 <p><cite>HAPTIC_SAWTOOTHDOWN</cite></p>
 <p><tt class="docutils literal"><span class="pre">HapticEffect</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L389"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L389" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HapticConditionObj"><a name="HapticConditionObj"></a><pre><span class="Identifier">HapticConditionObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1702,10 +1688,6 @@ A structure containing a template for a Condition effect.</p>
 <p><cite>HAPTIC_FRICTION</cite></p>
 <p><tt class="docutils literal"><span class="pre">HapticEffect</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L478"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L478" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HapticRampObj"><a name="HapticRampObj"></a><pre><span class="Identifier">HapticRampObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1731,10 +1713,6 @@ A structure containing a template for a Ramp effect.</p>
 <p><cite>HAPTIC_RAMP</cite></p>
 <p><tt class="docutils literal"><span class="pre">HapticEffect</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L536"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L536" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HapticLeftRightObj"><a name="HapticLeftRightObj"></a><pre><span class="Identifier">HapticLeftRightObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1752,10 +1730,6 @@ A structure containing a template for a Left/Right effect.</p>
 <p><cite>HAPTIC_LEFTRIGHT</cite></p>
 <p><tt class="docutils literal"><span class="pre">HapticEffect</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L570"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L570" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HapticCustomObj"><a name="HapticCustomObj"></a><pre><span class="Identifier">HapticCustomObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1777,16 +1751,13 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 <p>
 A structure containing a template for the <cite>HAPTIC_CUSTOM</cite> effect.</p>
-<p>A custom force feedback effect is much like a periodic effect, where the application can define its exact shape.  You will have to allocate the data yourself. Data should consist of channels * samples uint16 samples.</p>
+<p>This struct is exclusively for the <cite>HAPTIC_CUSTOM</cite> effect.</p>
+<p>A custom force feedback effect is much like a periodic effect, where the application can define its exact shape.  You will have to allocate the data yourself. Data should consist of channels * samples <tt class="docutils literal"><span class="pre">uint16</span></tt> samples.</p>
 <p>If channels is one, the effect is rotated using the defined direction. Otherwise it uses the samples in data for the different axes.</p>
 <p>See also:</p>
 <p><cite>HAPTIC_CUSTOM</cite></p>
 <p><tt class="docutils literal"><span class="pre">HapticEffect</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L593"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L593" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HapticEffect"><a name="HapticEffect"></a><pre><span class="Identifier">HapticEffect</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">union</span></div><span class="Other pragmaend">.}</span>
@@ -1807,7 +1778,7 @@ The generic template for any haptic effect.</p>
 <p>Button triggers may not be supported on all devices, it is advised to not use them if possible.  Buttons start at index <cite>1</cite> instead of index <cite>0</cite> like the joystick.</p>
 <p>If both <tt class="docutils literal"><span class="pre">attack_length</span></tt> and <tt class="docutils literal"><span class="pre">fade_level</span></tt> are <cite>0</cite>, the envelope is not used, otherwise both values are used.</p>
 <p>Common parts:</p>
-<pre class = "listing"><span class="Comment"># Replay - All effects have this</span>
+<pre class="listing"><span class="Comment"># Replay - All effects have this</span>
 <span class="Identifier">length</span><span class="Punctuation">:</span> <span class="Identifier">uint32</span>      <span class="Comment"># Duration of effect (ms).</span>
 <span class="Identifier">delay</span><span class="Punctuation">:</span> <span class="Identifier">uint16</span>       <span class="Comment"># Delay before starting effect.</span>
 <span class="Comment"># Trigger - All effects have this</span>
@@ -1844,10 +1815,6 @@ delay               length</pre>
 <p><tt class="docutils literal"><span class="pre">HapticLeftRight</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">HapticCustom</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L630"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L630" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1862,10 +1829,6 @@ Constant haptic effect.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">hapticCondition</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L58"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L58" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_SINE"><a name="HAPTIC_SINE"></a><pre><span class="Identifier">HAPTIC_SINE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">1</span><span class="Other">)</span></pre></dt>
@@ -1876,10 +1839,6 @@ Sine wave effect supported.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">HapticPeriodic</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L66"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L66" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_LEFTRIGHT"><a name="HAPTIC_LEFTRIGHT"></a><pre><span class="Identifier">HAPTIC_LEFTRIGHT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
@@ -1891,10 +1850,6 @@ Left/Right effect supported.</p>
 <p><tt class="docutils literal"><span class="pre">HapticLeftRight</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">Warning:</span></tt> this value was <cite>HAPTIC_SQUARE</cite> right before 2.0.0 shipped. Sorry, we ran out of bits, and this is important for XInput devices.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L76"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L76" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_TRIANGLE"><a name="HAPTIC_TRIANGLE"></a><pre><span class="Identifier">HAPTIC_TRIANGLE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">3</span><span class="Other">)</span></pre></dt>
@@ -1905,10 +1860,6 @@ Triangle wave effect supported.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">HapticPeriodic</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L93"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L93" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_SAWTOOTHUP"><a name="HAPTIC_SAWTOOTHUP"></a><pre><span class="Identifier">HAPTIC_SAWTOOTHUP</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
@@ -1918,10 +1869,6 @@ Sawtoothup wave effect supported.</p>
 <p>Periodic haptic effect that simulates saw tooth up waves.</p>
 <p><tt class="docutils literal"><span class="pre">HapticPeriodic</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L103"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L103" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_SAWTOOTHDOWN"><a name="HAPTIC_SAWTOOTHDOWN"></a><pre><span class="Identifier">HAPTIC_SAWTOOTHDOWN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">5</span><span class="Other">)</span></pre></dt>
@@ -1932,10 +1879,6 @@ Sawtoothdown wave effect supported.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">HapticPeriodic</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L111"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L111" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_RAMP"><a name="HAPTIC_RAMP"></a><pre><span class="Identifier">HAPTIC_RAMP</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">6</span><span class="Other">)</span></pre></dt>
@@ -1946,10 +1889,6 @@ Ramp effect supported.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">HapticRamp</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L121"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L121" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_SPRING"><a name="HAPTIC_SPRING"></a><pre><span class="Identifier">HAPTIC_SPRING</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">7</span><span class="Other">)</span></pre></dt>
@@ -1960,10 +1899,6 @@ Spring effect supported - uses axes position.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">HapticCondition</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L131"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L131" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_DAMPER"><a name="HAPTIC_DAMPER"></a><pre><span class="Identifier">HAPTIC_DAMPER</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">8</span><span class="Other">)</span></pre></dt>
@@ -1974,10 +1909,6 @@ Damper effect supported - uses axes velocity.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">HapticCondition</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L142"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L142" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_INERTIA"><a name="HAPTIC_INERTIA"></a><pre><span class="Identifier">HAPTIC_INERTIA</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">9</span><span class="Other">)</span></pre></dt>
@@ -1988,10 +1919,6 @@ Inertia effect supported - uses axes acceleration.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">HapticCondition</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L153"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L153" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_FRICTION"><a name="HAPTIC_FRICTION"></a><pre><span class="Identifier">HAPTIC_FRICTION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">10</span><span class="Other">)</span></pre></dt>
@@ -2002,10 +1929,6 @@ Friction effect supported - uses axes movement.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">HapticCondition</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L164"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L164" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_CUSTOM"><a name="HAPTIC_CUSTOM"></a><pre><span class="Identifier">HAPTIC_CUSTOM</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">11</span><span class="Other">)</span></pre></dt>
@@ -2014,10 +1937,6 @@ class="link-seesrc" target="_blank">Source</a>
 Custom effect is supported.</p>
 <p>User defined custom haptic effect.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L175"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L175" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_GAIN"><a name="HAPTIC_GAIN"></a><pre><span class="Identifier">HAPTIC_GAIN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">12</span><span class="Other">)</span></pre></dt>
@@ -2027,10 +1946,6 @@ Device can set global gain.</p>
 <p>Device supports setting the global gain.</p>
 <p><tt class="docutils literal"><span class="pre">HapticSetGain</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L183"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L183" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_AUTOCENTER"><a name="HAPTIC_AUTOCENTER"></a><pre><span class="Identifier">HAPTIC_AUTOCENTER</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">13</span><span class="Other">)</span></pre></dt>
@@ -2041,38 +1956,27 @@ Device can set autocenter.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">HapticSetAutocenter</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L191"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L191" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_STATUS"><a name="HAPTIC_STATUS"></a><pre><span class="Identifier">HAPTIC_STATUS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">14</span><span class="Other">)</span></pre></dt>
 <dd>
 <p>
 Device can be queried for effect status.</p>
-<p>Device can be queried for effect status.</p>
+<p>Device supports querying effect status.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">HapticGetEffectStatus</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L201"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L201" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_PAUSE"><a name="HAPTIC_PAUSE"></a><pre><span class="Identifier">HAPTIC_PAUSE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">15</span><span class="Other">)</span></pre></dt>
 <dd>
 <p>
 Device can be paused.</p>
+<p>Devices supports being paused.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">hapticPause()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticUnpause()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L211"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L211" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_POLAR"><a name="HAPTIC_POLAR"></a><pre><span class="Identifier">HAPTIC_POLAR</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
@@ -2081,10 +1985,6 @@ class="link-seesrc" target="_blank">Source</a>
 Uses polar coordinates for the direction.</p>
 <p><tt class="docutils literal"><span class="pre">HapticDirection</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L223"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L223" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_CARTESIAN"><a name="HAPTIC_CARTESIAN"></a><pre><span class="Identifier">HAPTIC_CARTESIAN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
@@ -2093,10 +1993,6 @@ class="link-seesrc" target="_blank">Source</a>
 Uses cartesian coordinates for the direction.</p>
 <p><tt class="docutils literal"><span class="pre">HapticDirection</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L229"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L229" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_SPHERICAL"><a name="HAPTIC_SPHERICAL"></a><pre><span class="Identifier">HAPTIC_SPHERICAL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
@@ -2105,10 +2001,6 @@ class="link-seesrc" target="_blank">Source</a>
 Uses spherical coordinates for the direction.</p>
 <p><tt class="docutils literal"><span class="pre">HapticDirection</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L235"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L235" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HAPTIC_INFINITY"><a name="HAPTIC_INFINITY"></a><pre><span class="Identifier">HAPTIC_INFINITY</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">4294967295'i64</span></pre></dt>
@@ -2117,10 +2009,6 @@ class="link-seesrc" target="_blank">Source</a>
 Used to play a device an infinite number of times.</p>
 <p><tt class="docutils literal"><span class="pre">hapticRunEffect()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L243"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L243" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -2133,33 +2021,25 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Count the number of haptic devices attached to the system.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> number of haptic devices detected on the system.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L713"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L713" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticName"><a name="hapticName,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticName&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
-<p>Get the implementation dependent name of a Haptic device.</p>
+<p>Get the implementation dependent name of a haptic device.</p>
 <p>This can be called before any joysticks are opened. If no name can be found, this procedure returns <cite>nil</cite>.</p>
 <p><tt class="docutils literal"><span class="pre">device_index</span></tt> Index of the device to get its name.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> name of the device or <cite>nil</cite> on error.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">numHaptics()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L719"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L719" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticOpen"><a name="hapticOpen,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticOpen</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Haptic</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticOpen&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
-<p>Opens a Haptic device for usage.</p>
-<p>The index passed as an argument refers to the N'th Haptic device on this system.</p>
+<p>Opens a haptic device for usage.</p>
+<p>The index passed as an argument refers to the N'th haptic device on this system.</p>
 <p>When opening a haptic device, its gain will be set to maximum and autocenter will be disabled.  To modify these values use <tt class="docutils literal"><span class="pre">hapticSetGain()</span></tt> and <tt class="docutils literal"><span class="pre">hapticSetAutocenter()</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">device_index</span></tt> Index of the device to open.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> device identifier or <cite>nil</cite> on error.</p>
@@ -2173,10 +2053,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">hapticPause()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticStopAll()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L734"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L734" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticOpened"><a name="hapticOpened,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticOpened</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticOpened&quot;</span><span class="Other">,</span>
@@ -2189,10 +2065,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">hapticOpen()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticIndex()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L767"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L767" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticIndex"><a name="hapticIndex,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticIndex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticIndex&quot;</span><span class="Other">,</span>
@@ -2205,10 +2077,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">hapticOpen()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticOpened()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L781"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L781" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="mouseIsHaptic"><a name="mouseIsHaptic,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">mouseIsHaptic</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MouseIsHaptic&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -2218,10 +2086,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">hapticOpenFromMouse()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L795"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L795" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticOpenFromMouse"><a name="hapticOpenFromMouse,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticOpenFromMouse</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Haptic</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticOpenFromMouse&quot;</span><span class="Other">,</span>
@@ -2233,10 +2097,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">mouseIsHaptic()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticOpen()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L805"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L805" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="joystickIsHaptic"><a name="joystickIsHaptic,ptr.Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickIsHaptic</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Joystick</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2248,16 +2108,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">hapticOpenFromJoystick()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L817"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L817" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticOpenFromJoystick"><a name="hapticOpenFromJoystick,ptr.Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticOpenFromJoystick</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Joystick</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Haptic</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticOpenFromJoystick&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
-<p>Opens a Haptic device for usage from a Joystick device.</p>
+<p>Opens a haptic device for usage from a joystick device.</p>
 <p>You must still close the haptic device separately. It will not be closed with the joystick.</p>
 <p>When opening from a joystick you should first close the haptic device before closing the joystick device. If not, on some implementations the haptic device will also get unallocated and you'll be unable to use force feedback on that device.</p>
 <p><tt class="docutils literal"><span class="pre">joystick</span></tt> Joystick to create a haptic device from.</p>
@@ -2266,22 +2122,14 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">hapticOpen()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticClose()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L830"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L830" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticClose"><a name="hapticClose,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticClose</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticClose&quot;</span><span class="Other">,</span>
                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
-<p>Closes a Haptic device previously opened with <tt class="docutils literal"><span class="pre">hapticOpen()</span></tt>.</p>
+<p>Closes a haptic device previously opened with <tt class="docutils literal"><span class="pre">hapticOpen()</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">haptic</span></tt> Haptic device to close.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L852"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L852" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticNumEffects"><a name="hapticNumEffects,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticNumEffects</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2295,10 +2143,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">hapticNumEffectsPlaying()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hpticQuery()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L858"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L858" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticNumEffectsPlaying"><a name="hapticNumEffectsPlaying,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticNumEffectsPlaying</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2312,10 +2156,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">hapticNumEffects()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticQuery()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L877"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L877" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticQuery"><a name="hapticQuery,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticQuery</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cuint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticQuery&quot;</span><span class="Other">,</span>
@@ -2331,10 +2171,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">hapticNumEffects()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticEffectSupported()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L895"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L895" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticNumAxes"><a name="hapticNumAxes,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticNumAxes</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticNumAxes&quot;</span><span class="Other">,</span>
@@ -2344,10 +2180,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">HapticDirection</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L915"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L915" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticEffectSupported"><a name="hapticEffectSupported,Haptic,ptr.HapticEffect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticEffectSupported</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">HapticEffect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2361,10 +2193,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">hapticQuery()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticNewEffect()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L923"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L923" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticNewEffect"><a name="hapticNewEffect,Haptic,ptr.HapticEffect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticNewEffect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">HapticEffect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2373,25 +2201,21 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Creates a new haptic effect on the device.</p>
 <p><tt class="docutils literal"><span class="pre">haptic</span></tt> Haptic device to create the effect on.</p>
 <p><tt class="docutils literal"><span class="pre">effect</span></tt> Properties of the effect to create.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> The id of the effect on success or <cite>-1</cite> on error.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> The identifier of the effect on success or <cite>-1</cite> on error.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">hapticUpdateEffect()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticRunEffect()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticDestroyEffect()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L940"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L940" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticUpdateEffect"><a name="hapticUpdateEffect,Haptic,cint,ptr.HapticEffect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticUpdateEffect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">HapticEffect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticUpdateEffect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Updates the properties of an effect.</p>
-<p>Can be used dynamically, although behaviour when dynamically changing direction may be strange.  Specifically the effect may reupload itself and start playing from the start.  You cannot change the type either when running <tt class="docutils literal"><span class="pre">hapticUpdateEffect()</span></tt>.</p>
+<p>Can be used dynamically, although behavior when dynamically changing direction may be strange.  Specifically the effect may reupload itself and start playing from the start.  You cannot change the type either when running <tt class="docutils literal"><span class="pre">hapticUpdateEffect()</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">haptic</span></tt> Haptic device that has the effect.</p>
-<p><tt class="docutils literal"><span class="pre">effect</span></tt> Effect to update.</p>
+<p><tt class="docutils literal"><span class="pre">effect</span></tt> Identifier of the effect to update.</p>
 <p><tt class="docutils literal"><span class="pre">data</span></tt> New effect properties to use.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success or <cite>-1</cite> on error.</p>
 <p>See also:</p>
@@ -2399,10 +2223,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">hapticRunEffect()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticDestroyEffect()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L958"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L958" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticRunEffect"><a name="hapticRunEffect,Haptic,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticRunEffect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">iterations</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2419,10 +2239,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">hapticDestroyEffect()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticGetEffectStatus()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L984"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L984" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticStopEffect"><a name="hapticStopEffect,Haptic,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticStopEffect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2436,10 +2252,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">hapticRunEffect()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticDestroyEffect()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L1011"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L1011" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticDestroyEffect"><a name="hapticDestroyEffect,Haptic,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticDestroyEffect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2452,10 +2264,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">hapticNewEffect()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L1027"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L1027" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticGetEffectStatus"><a name="hapticGetEffectStatus,Haptic,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticGetEffectStatus</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2470,10 +2278,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">hapticRunEffect()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticStopEffect()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L1042"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L1042" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticSetGain"><a name="hapticSetGain,Haptic,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticSetGain</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">gain</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2488,10 +2292,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">hapticQuery()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L1061"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L1061" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticSetAutocenter"><a name="hapticSetAutocenter,Haptic,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticSetAutocenter</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">autocenter</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2506,10 +2306,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">hapticQuery()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L1082"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L1082" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticPause"><a name="hapticPause,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticPause</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticPause&quot;</span><span class="Other">,</span>
@@ -2523,10 +2319,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">hapticUnpause()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L1101"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L1101" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticUnpause"><a name="hapticUnpause,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticUnpause</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticUnpause&quot;</span><span class="Other">,</span>
@@ -2539,10 +2331,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">hapticPause()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L1119"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L1119" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticStopAll"><a name="hapticStopAll,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticStopAll</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticStopAll&quot;</span><span class="Other">,</span>
@@ -2552,10 +2340,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">haptic</span></tt> Haptic device to stop.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L1133"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L1133" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticRumbleSupported"><a name="hapticRumbleSupported,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticRumbleSupported</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2569,10 +2353,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">hapticRumblePlay()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticRumbleStop()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L1141"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L1141" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticRumbleInit"><a name="hapticRumbleInit,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticRumbleInit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2587,10 +2367,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">hapticRumblePlay()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticRumbleStop()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L1158"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L1158" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticRumblePlay"><a name="hapticRumblePlay,Haptic,cfloat,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticRumblePlay</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">strength</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">;</span> <span class="Identifier">length</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2606,10 +2382,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">hapticRumbleInit()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticRumbleStop()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L1176"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L1176" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hapticRumbleStop"><a name="hapticRumbleStop,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticRumbleStop</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2622,10 +2394,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">hapticRumbleInit()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hapticRumblePlay()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/haptic.nim#L1197"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/haptic.nim#L1197" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -2638,7 +2406,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>

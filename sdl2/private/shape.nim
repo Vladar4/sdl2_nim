@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2017 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -122,7 +122,7 @@ proc setWindowShape*(
   ##
   ##  ``shape_mode`` The parameters to set for the shaped window.
   ##
-  ##  ``Return`` `0` on success, `INVALID_SHAPE_ARGUMENT` on invalid an invalid
+  ##  ``Return`` `0` on success, `INVALID_SHAPE_ARGUMENT` on an invalid
   ##  shape argument, or `NONSHAPEABLE_WINDOW` if the ``Window`` given does not
   ##  reference a valid shaped window.
   ##

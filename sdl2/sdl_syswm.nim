@@ -70,7 +70,8 @@ else:
       SYSWM_MIR,
       SYSWM_WINRT,
       SYSWM_ANDROID,
-      SYSWM_VIVANTE
+      SYSWM_VIVANTE,
+      SYSWM_OS2
 
   when defined(SDL_VIDEO_DRIVER_UIKIT):
     type GLuint* = uint32
@@ -168,14 +169,17 @@ else:
   #    wl*: SysWMinfoWLObj ## when defined(SDL_VIDEO_DRIVER_WAYLAND)
   #    mir*: SysWMinfoMirObj ## when defined(SDL_VIDEO_DRIVER_MIR)
   #    android*: SysWMinfoAndroidObj ## when defined(SDL_VIDEO_DRIVER_ANDROID)
-  #    dummy*: cint ## Can't have an empty union
+  #    dummy*: array[64, uint8]  ##  \
+  #      ##  Make sure this union is always 64 bytes (8 64-bit pointers).
+  #      ##  Be careful not to overflow this if you add a new target!
 
 
   when defined(SDL_VIDEO_DRIVER_WINDOWS):
     type
       SysWMinfoWinObj* = object  ## when defined(SDL_VIDEO_DRIVER_WINDOWS)
-        window*: HWND ##  The window handle
-        hdc*: HDC     ## window device context
+        window*: HWND         ##  The window handle
+        hdc*: HDC             ##  The window device context
+        hinstance*: HINSTANCE ##  The instance handle
 
       SysWMinfoKindObj* = object  ##  when defined(SDL_VIDEO_DRIVER_WINDOWS)
         win*: SysWMinfoWinObj
@@ -274,7 +278,9 @@ else:
   else:
     type
       SysWMinfoKindObj* = object
-        dummy*: cint
+        dummy*: array[64, uint8]  ##  \
+          ##  Make sure this union is always 64 bytes (8 64-bit pointers).
+          ##  Be careful not to overflow this if you add a new target!
 
   type
     SysWMinfo* = object ##  \

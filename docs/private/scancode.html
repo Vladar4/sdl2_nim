@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module scancode</title>
@@ -1339,8 +1341,9 @@ function main() {
                                                                                    ## display mirroring&#x2F;dual display switch, video mode switch 
   SCANCODE_KBDILLUMTOGGLE = 278, SCANCODE_KBDILLUMDOWN = 279,
   SCANCODE_KBDILLUMUP = 280, SCANCODE_EJECT = 281, SCANCODE_SLEEP = 282,
-  SCANCODE_APP1 = 283, SCANCODE_APP2 = 284, NUM_SCANCODES = 512 ## \
-                                                       ## not a key, just marks the number of scancodes for array bounds"><wbr />Scancode<span class="attachedType" style="visibility:hidden"></span></a></li>
+  SCANCODE_APP1 = 283, SCANCODE_APP2 = 284, SCANCODE_AUDIOREWIND = 285,
+  SCANCODE_AUDIOFASTFORWARD = 286, NUM_SCANCODES = 512 ## \
+                                                 ## not a key, just marks the number of scancodes for array bounds"><wbr />Scancode<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1482,18 +1485,15 @@ function main() {
                                                                                    <span class="Comment">## display mirroring/dual display switch, video mode switch </span>
   <span class="Identifier">SCANCODE_KBDILLUMTOGGLE</span> <span class="Other">=</span> <span class="DecNumber">278</span><span class="Other">,</span> <span class="Identifier">SCANCODE_KBDILLUMDOWN</span> <span class="Other">=</span> <span class="DecNumber">279</span><span class="Other">,</span>
   <span class="Identifier">SCANCODE_KBDILLUMUP</span> <span class="Other">=</span> <span class="DecNumber">280</span><span class="Other">,</span> <span class="Identifier">SCANCODE_EJECT</span> <span class="Other">=</span> <span class="DecNumber">281</span><span class="Other">,</span> <span class="Identifier">SCANCODE_SLEEP</span> <span class="Other">=</span> <span class="DecNumber">282</span><span class="Other">,</span>
-  <span class="Identifier">SCANCODE_APP1</span> <span class="Other">=</span> <span class="DecNumber">283</span><span class="Other">,</span> <span class="Identifier">SCANCODE_APP2</span> <span class="Other">=</span> <span class="DecNumber">284</span><span class="Other">,</span> <span class="Identifier">NUM_SCANCODES</span> <span class="Other">=</span> <span class="DecNumber">512</span> <span class="Comment">## \</span>
-                                                       <span class="Comment">## not a key, just marks the number of scancodes for array bounds</span></pre></dt>
+  <span class="Identifier">SCANCODE_APP1</span> <span class="Other">=</span> <span class="DecNumber">283</span><span class="Other">,</span> <span class="Identifier">SCANCODE_APP2</span> <span class="Other">=</span> <span class="DecNumber">284</span><span class="Other">,</span> <span class="Identifier">SCANCODE_AUDIOREWIND</span> <span class="Other">=</span> <span class="DecNumber">285</span><span class="Other">,</span>
+  <span class="Identifier">SCANCODE_AUDIOFASTFORWARD</span> <span class="Other">=</span> <span class="DecNumber">286</span><span class="Other">,</span> <span class="Identifier">NUM_SCANCODES</span> <span class="Other">=</span> <span class="DecNumber">512</span> <span class="Comment">## \</span>
+                                                 <span class="Comment">## not a key, just marks the number of scancodes for array bounds</span></pre></dt>
 <dd>
 <p>
 The SDL keyboard scancode representation.</p>
 <p>Values of this type are used to represent keyboard keys, among other places in the <tt class="docutils literal"><span class="pre">key.keysym.scancode</span></tt> field of the Event structure.</p>
-<p>The values in this enumeration are based on the USB usage page standard: <a class="reference external" href="http://www.usb.org/developers/devclass_docs/Hut1_12v2.pdf">http://www.usb.org/developers/devclass_docs/Hut1_12v2.pdf</a></p>
+<p>The values in this enumeration are based on the USB usage page standard: <a class="reference external" href="http://www.usb.org/developers/hidpage/Hut1_12v2.pdf">http://www.usb.org/developers/hidpage/Hut1_12v2.pdf</a></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/scancode.nim#L28"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/scancode.nim#L28" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1506,7 +1506,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>

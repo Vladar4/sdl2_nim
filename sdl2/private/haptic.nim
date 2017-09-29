@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2017 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -22,12 +22,12 @@
 ##  haptic.nim
 ##  ==========
 ##
-##  The SDL Haptic subsystem allows you to control
+##  The SDL haptic subsystem allows you to control
 ##  haptic (force feedback) devices.
 ##
 ##  The basic usage is as follows:
 ##  * Initialize the Subsystem (::SDL_INIT_HAPTIC).
-##  * Open a Haptic Device.
+##  * Open a haptic Device.
 ##    * ``hapticOpen()`` to open from index.
 ##    * ``hapticOpenFromJoystick()`` to open from an existing joystick.
 ##  * Create an effect (``HapticEffect``).
@@ -201,7 +201,7 @@ const
   HAPTIC_STATUS* = (1 shl 14) ##  \
     ##  Device can be queried for effect status.
     ##
-    ##  Device can be queried for effect status.
+    ##  Device supports querying effect status.
     ##
     ##  See also:
     ##
@@ -210,6 +210,8 @@ const
 const
   HAPTIC_PAUSE* = (1 shl 15)  ##  \
     ##  Device can be paused.
+    ##
+    ##  Devices supports being paused.
     ##
     ##  See also:
     ##
@@ -358,7 +360,7 @@ type
   HapticConstantObj* = object
     ##  A structure containing a template for a Constant effect.
     ##
-    ##  The struct is exclusive to the `HAPTIC_CONSTANT` effect.
+    ##  The struct is exclusively to the `HAPTIC_CONSTANT` effect.
     ##
     ##  A constant effect applies a constant force
     ##  in the specified direction to the joystick.
@@ -593,10 +595,12 @@ type
   HapticCustomObj* = object  ##  \
     ##  A structure containing a template for the `HAPTIC_CUSTOM` effect.
     ##
+    ##  This struct is exclusively for the `HAPTIC_CUSTOM` effect.
+    ##
     ##  A custom force feedback effect is much like a periodic effect, where
     ##  the application can define its exact shape.  You will have to allocate
     ##  the data yourself.
-    ##  Data should consist of channels * samples uint16 samples.
+    ##  Data should consist of channels * samples ``uint16`` samples.
     ##
     ##  If channels is one, the effect is rotated using the defined direction.
     ##  Otherwise it uses the samples in data for the different axes.
@@ -718,7 +722,7 @@ proc numHaptics*(): cint {.
 
 proc hapticName*(device_index: cint): cstring {.
     cdecl, importc: "SDL_HapticName", dynlib: SDL2_LIB.}
-  ##  Get the implementation dependent name of a Haptic device.
+  ##  Get the implementation dependent name of a haptic device.
   ##
   ##  This can be called before any joysticks are opened.
   ##  If no name can be found, this procedure returns `nil`.
@@ -733,9 +737,9 @@ proc hapticName*(device_index: cint): cstring {.
 
 proc hapticOpen*(device_index: cint): Haptic {.
     cdecl, importc: "SDL_HapticOpen", dynlib: SDL2_LIB.}
-  ##  Opens a Haptic device for usage.
+  ##  Opens a haptic device for usage.
   ##
-  ##  The index passed as an argument refers to the N'th Haptic device
+  ##  The index passed as an argument refers to the N'th haptic device
   ##  on this system.
   ##
   ##  When opening a haptic device, its gain will be set to maximum and
@@ -829,7 +833,7 @@ proc joystickIsHaptic*(joystick: ptr Joystick): cint {.
 
 proc hapticOpenFromJoystick*(joystick: ptr Joystick): Haptic {.
     cdecl, importc: "SDL_HapticOpenFromJoystick", dynlib: SDL2_LIB.}
-  ##  Opens a Haptic device for usage from a Joystick device.
+  ##  Opens a haptic device for usage from a joystick device.
   ##
   ##  You must still close the haptic device separately.
   ##  It will not be closed with the joystick.
@@ -851,7 +855,7 @@ proc hapticOpenFromJoystick*(joystick: ptr Joystick): Haptic {.
 
 proc hapticClose*(haptic: Haptic) {.
     cdecl, importc: "SDL_HapticClose", dynlib: SDL2_LIB.}
-  ##  Closes a Haptic device previously opened with ``hapticOpen()``.
+  ##  Closes a haptic device previously opened with ``hapticOpen()``.
   ##
   ##  ``haptic`` Haptic device to close.
 
@@ -945,7 +949,7 @@ proc hapticNewEffect*(haptic: Haptic; effect: ptr HapticEffect): cint {.
   ##
   ##  ``effect`` Properties of the effect to create.
   ##
-  ##  ``Return`` The id of the effect on success or `-1` on error.
+  ##  ``Return`` The identifier of the effect on success or `-1` on error.
   ##
   ##  See also:
   ##
@@ -960,14 +964,14 @@ proc hapticUpdateEffect*(
       cdecl, importc: "SDL_HapticUpdateEffect", dynlib: SDL2_LIB.}
   ##  Updates the properties of an effect.
   ##
-  ##  Can be used dynamically, although behaviour when dynamically changing
+  ##  Can be used dynamically, although behavior when dynamically changing
   ##  direction may be strange.  Specifically the effect may reupload itself
   ##  and start playing from the start.  You cannot change the type either
   ##  when running ``hapticUpdateEffect()``.
   ##
   ##  ``haptic`` Haptic device that has the effect.
   ##
-  ##  ``effect`` Effect to update.
+  ##  ``effect`` Identifier of the effect to update.
   ##
   ##  ``data`` New effect properties to use.
   ##

@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module video</title>
@@ -1257,7 +1259,7 @@ function main() {
   GL_RETAINED_BACKING, GL_CONTEXT_MAJOR_VERSION, GL_CONTEXT_MINOR_VERSION,
   GL_CONTEXT_EGL, GL_CONTEXT_FLAGS, GL_CONTEXT_PROFILE_MASK,
   GL_SHARE_WITH_CURRENT_CONTEXT, GL_FRAMEBUFFER_SRGB_CAPABLE,
-  GL_CONTEXT_RELEASE_BEHAVIOR"><wbr />GLattr<span class="attachedType" style="visibility:hidden"></span></a></li>
+  GL_CONTEXT_RELEASE_BEHAVIOR, GL_CONTEXT_RESET_NOTIFICATION, GL_CONTEXT_NO_ERROR"><wbr />GLattr<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#GLprofile"
     title="GLprofile* = enum
   GL_CONTEXT_PROFILE_CORE = 0x00000001,
@@ -1272,6 +1274,10 @@ function main() {
     title="GLcontextReleaseFlag* = enum
   GL_CONTEXT_RELEASE_BEHAVIOR_NONE = 0x00000000,
   GL_CONTEXT_RELEASE_BEHAVIOUR_FLUSH = 0x00000001"><wbr />GLcontext<wbr />Release<wbr />Flag<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#GLcontextResetNotification"
+    title="GLcontextResetNotification* = enum
+  GL_CONTEXT_RESET_NO_NOTIFICATION = 0x00000000,
+  GL_CONTEXT_RESET_LOSE_CONTEXT = 0x00000001"><wbr />GLcontext<wbr />Reset<wbr />Notification<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HitTestResult"
     title="HitTestResult* = enum
   HITTEST_NORMAL,             ## Region is normal. No special properties.
@@ -1327,6 +1333,8 @@ function main() {
     title="WINDOW_TOOLTIP* = 0x00040000"><wbr />WINDOW_<wbr />TOOLTIP<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#WINDOW_POPUP_MENU"
     title="WINDOW_POPUP_MENU* = 0x00080000"><wbr />WINDOW_<wbr />POPUP_<wbr />MENU<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#WINDOW_VULKAN"
+    title="WINDOW_VULKAN* = 0x10000000"><wbr />WINDOW_<wbr />VULKAN<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#WINDOWPOS_UNDEFINED_MASK"
     title="WINDOWPOS_UNDEFINED_MASK* = 0x1FFF0000"><wbr />WINDOWPOS_<wbr />UNDEFINED_<wbr />MASK<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#WINDOWPOS_UNDEFINED"
@@ -1555,10 +1563,6 @@ The object that defines a display mode</p>
 <p><tt class="docutils literal"><span class="pre">getWindowDisplayMode()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">getWindowDisplayMode()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L28"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L28" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="Window"><a name="Window"></a><pre><span class="Identifier">Window</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
@@ -1591,13 +1595,9 @@ The type used to identify a window</p>
 <p><tt class="docutils literal"><span class="pre">setWindowTitle()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">showWindow()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L53"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L53" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="WindowEventID"><a name="WindowEventID"></a><pre><span class="Identifier">WindowEventID</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt id="WindowEventID"><a name="WindowEventID"></a><pre><span class="Identifier">WindowEventID</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">uint8</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">WINDOWEVENT_NONE</span><span class="Other">,</span>           <span class="Comment">## Never used</span>
   <span class="Identifier">WINDOWEVENT_SHOWN</span><span class="Other">,</span>          <span class="Comment">## Window has been shown</span>
   <span class="Identifier">WINDOWEVENT_HIDDEN</span><span class="Other">,</span>         <span class="Comment">## Window has been hidden</span>
@@ -1624,19 +1624,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Event subtype for window events
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L186"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L186" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="GLContext"><a name="GLContext"></a><pre><span class="Identifier">GLContext</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 An opaque handle to an OpenGL context.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L214"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L214" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="GLattr"><a name="GLattr"></a><pre><span class="Identifier">GLattr</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
@@ -1647,14 +1639,10 @@ class="link-seesrc" target="_blank">Source</a>
   <span class="Identifier">GL_RETAINED_BACKING</span><span class="Other">,</span> <span class="Identifier">GL_CONTEXT_MAJOR_VERSION</span><span class="Other">,</span> <span class="Identifier">GL_CONTEXT_MINOR_VERSION</span><span class="Other">,</span>
   <span class="Identifier">GL_CONTEXT_EGL</span><span class="Other">,</span> <span class="Identifier">GL_CONTEXT_FLAGS</span><span class="Other">,</span> <span class="Identifier">GL_CONTEXT_PROFILE_MASK</span><span class="Other">,</span>
   <span class="Identifier">GL_SHARE_WITH_CURRENT_CONTEXT</span><span class="Other">,</span> <span class="Identifier">GL_FRAMEBUFFER_SRGB_CAPABLE</span><span class="Other">,</span>
-  <span class="Identifier">GL_CONTEXT_RELEASE_BEHAVIOR</span></pre></dt>
+  <span class="Identifier">GL_CONTEXT_RELEASE_BEHAVIOR</span><span class="Other">,</span> <span class="Identifier">GL_CONTEXT_RESET_NOTIFICATION</span><span class="Other">,</span> <span class="Identifier">GL_CONTEXT_NO_ERROR</span></pre></dt>
 <dd>
 
 OpenGL configuration attributes
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L217"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L217" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="GLprofile"><a name="GLprofile"></a><pre><span class="Identifier">GLprofile</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
@@ -1662,10 +1650,6 @@ class="link-seesrc" target="_blank">Source</a>
   <span class="Identifier">GL_CONTEXT_PROFILE_COMPATIBILITY</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span><span class="Other">,</span> <span class="Identifier">GL_CONTEXT_PROFILE_ES</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L228"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L228" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="GLcontextFlag"><a name="GLcontextFlag"></a><pre><span class="Identifier">GLcontextFlag</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
@@ -1675,10 +1659,6 @@ class="link-seesrc" target="_blank">Source</a>
   <span class="Identifier">GL_CONTEXT_RESET_ISOLATION_FLAG</span> <span class="Other">=</span> <span class="DecNumber">0x00000008</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L233"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L233" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="GLcontextReleaseFlag"><a name="GLcontextReleaseFlag"></a><pre><span class="Identifier">GLcontextReleaseFlag</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
@@ -1686,10 +1666,13 @@ class="link-seesrc" target="_blank">Source</a>
   <span class="Identifier">GL_CONTEXT_RELEASE_BEHAVIOUR_FLUSH</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L239"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L239" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<dt id="GLcontextResetNotification"><a name="GLcontextResetNotification"></a><pre><span class="Identifier">GLcontextResetNotification</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">GL_CONTEXT_RESET_NO_NOTIFICATION</span> <span class="Other">=</span> <span class="DecNumber">0x00000000</span><span class="Other">,</span>
+  <span class="Identifier">GL_CONTEXT_RESET_LOSE_CONTEXT</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span></pre></dt>
+<dd>
+
 
 </dd>
 <dt id="HitTestResult"><a name="HitTestResult"></a><pre><span class="Identifier">HitTestResult</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
@@ -1701,10 +1684,6 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Possible return values from the <tt class="docutils literal"><span class="pre">HitTest</span></tt> callback.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1068"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1068" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="HitTest"><a name="HitTest"></a><pre><span class="Identifier">HitTest</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">win</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">area</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Point</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">HitTestResult</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -1714,10 +1693,6 @@ Callback used for hit-testing.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setWindowHitTest()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1082"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1082" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1728,223 +1703,132 @@ class="link-seesrc" target="_blank">Source</a>
 <dt id="WINDOW_FULLSCREEN"><a name="WINDOW_FULLSCREEN"></a><pre><span class="Identifier">WINDOW_FULLSCREEN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span></pre></dt>
 <dd>
 fullscreen window
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L130"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L130" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_OPENGL"><a name="WINDOW_OPENGL"></a><pre><span class="Identifier">WINDOW_OPENGL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span></pre></dt>
 <dd>
 window usable with OpenGL context
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L131"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L131" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_SHOWN"><a name="WINDOW_SHOWN"></a><pre><span class="Identifier">WINDOW_SHOWN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
 <dd>
 window is visible
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L132"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L132" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_HIDDEN"><a name="WINDOW_HIDDEN"></a><pre><span class="Identifier">WINDOW_HIDDEN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000008</span></pre></dt>
 <dd>
 window is not visible
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L133"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L133" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_BORDERLESS"><a name="WINDOW_BORDERLESS"></a><pre><span class="Identifier">WINDOW_BORDERLESS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000010</span></pre></dt>
 <dd>
 no window decoration
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L134"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L134" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_RESIZABLE"><a name="WINDOW_RESIZABLE"></a><pre><span class="Identifier">WINDOW_RESIZABLE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000020</span></pre></dt>
 <dd>
 window can be resized
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L135"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L135" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_MINIMIZED"><a name="WINDOW_MINIMIZED"></a><pre><span class="Identifier">WINDOW_MINIMIZED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000040</span></pre></dt>
 <dd>
 window is minimized
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L136"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L136" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_MAXIMIZED"><a name="WINDOW_MAXIMIZED"></a><pre><span class="Identifier">WINDOW_MAXIMIZED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000080</span></pre></dt>
 <dd>
 window is maximized
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L137"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L137" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_INPUT_GRABBED"><a name="WINDOW_INPUT_GRABBED"></a><pre><span class="Identifier">WINDOW_INPUT_GRABBED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000100</span></pre></dt>
 <dd>
 window has grabbed input focus
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L138"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L138" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_INPUT_FOCUS"><a name="WINDOW_INPUT_FOCUS"></a><pre><span class="Identifier">WINDOW_INPUT_FOCUS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000200</span></pre></dt>
 <dd>
 window has input focus
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L139"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L139" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_MOUSE_FOCUS"><a name="WINDOW_MOUSE_FOCUS"></a><pre><span class="Identifier">WINDOW_MOUSE_FOCUS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000400</span></pre></dt>
 <dd>
 window has mouse focus
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L140"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L140" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_FULLSCREEN_DESKTOP"><a name="WINDOW_FULLSCREEN_DESKTOP"></a><pre><span class="Identifier">WINDOW_FULLSCREEN_DESKTOP</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="Identifier">WINDOW_FULLSCREEN</span> <span class="Keyword">or</span> <span class="DecNumber">0x00001000</span><span class="Other">)</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L141"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L141" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_FOREIGN"><a name="WINDOW_FOREIGN"></a><pre><span class="Identifier">WINDOW_FOREIGN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000800</span></pre></dt>
 <dd>
 window not created by SDL
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L142"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L142" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_ALLOW_HIGHDPI"><a name="WINDOW_ALLOW_HIGHDPI"></a><pre><span class="Identifier">WINDOW_ALLOW_HIGHDPI</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00002000</span></pre></dt>
 <dd>
 window should be created  
 in high-DPI mode if supported
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L143"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L143" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_MOUSE_CAPTURE"><a name="WINDOW_MOUSE_CAPTURE"></a><pre><span class="Identifier">WINDOW_MOUSE_CAPTURE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00004000</span></pre></dt>
 <dd>
 window has mouse captured 
 (unrelated to <cite>INPUT_GRABBED</cite>)
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L145"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L145" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_ALWAYS_ON_TOP"><a name="WINDOW_ALWAYS_ON_TOP"></a><pre><span class="Identifier">WINDOW_ALWAYS_ON_TOP</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00008000</span></pre></dt>
 <dd>
 window should always be above others
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L147"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L147" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_SKIP_TASKBAR"><a name="WINDOW_SKIP_TASKBAR"></a><pre><span class="Identifier">WINDOW_SKIP_TASKBAR</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00010000</span></pre></dt>
 <dd>
 window should not be added 
  to the taskbar
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L148"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L148" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_UTILITY"><a name="WINDOW_UTILITY"></a><pre><span class="Identifier">WINDOW_UTILITY</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00020000</span></pre></dt>
 <dd>
 window should be treated as 
  a utility window
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L150"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L150" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_TOOLTIP"><a name="WINDOW_TOOLTIP"></a><pre><span class="Identifier">WINDOW_TOOLTIP</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00040000</span></pre></dt>
 <dd>
 window should be treated as 
 a tooltip
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L152"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L152" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOW_POPUP_MENU"><a name="WINDOW_POPUP_MENU"></a><pre><span class="Identifier">WINDOW_POPUP_MENU</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00080000</span></pre></dt>
 <dd>
 window should be treated as 
 a popup menu
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L154"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L154" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<dt id="WINDOW_VULKAN"><a name="WINDOW_VULKAN"></a><pre><span class="Identifier">WINDOW_VULKAN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x10000000</span></pre></dt>
+<dd>
+window usable for Vulkan surface
 
 </dd>
 <dt id="WINDOWPOS_UNDEFINED_MASK"><a name="WINDOWPOS_UNDEFINED_MASK"></a><pre><span class="Identifier">WINDOWPOS_UNDEFINED_MASK</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x1FFF0000</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L158"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L158" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOWPOS_UNDEFINED"><a name="WINDOWPOS_UNDEFINED"></a><pre><span class="Identifier">WINDOWPOS_UNDEFINED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">windowPosUndefinedDisplay</span><span class="Other">(</span><span class="DecNumber">0</span><span class="Other">)</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L165"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L165" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOWPOS_CENTERED_MASK"><a name="WINDOWPOS_CENTERED_MASK"></a><pre><span class="Identifier">WINDOWPOS_CENTERED_MASK</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x2FFF0000</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L172"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L172" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="WINDOWPOS_CENTERED"><a name="WINDOWPOS_CENTERED"></a><pre><span class="Identifier">WINDOWPOS_CENTERED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">windowPosCenteredDisplay</span><span class="Other">(</span><span class="DecNumber">0</span><span class="Other">)</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L179"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L179" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1959,10 +1843,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getVideoDriver()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L245"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L245" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getVideoDriver"><a name="getVideoDriver,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getVideoDriver</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetVideoDriver&quot;</span><span class="Other">,</span>
@@ -1973,10 +1853,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getNumVideoDrivers()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L253"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L253" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="videoInit"><a name="videoInit,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">videoInit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">driver_name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_VideoInit&quot;</span><span class="Other">,</span>
@@ -1989,10 +1865,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">videoQuit()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L264"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L264" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="videoQuit"><a name="videoQuit,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">videoQuit</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_VideoQuit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -2002,10 +1874,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">videoInit()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L281"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L281" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getCurrentVideoDriver"><a name="getCurrentVideoDriver,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCurrentVideoDriver</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2018,10 +1886,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">getNumVideoDrivers()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">getVideoDriver()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L291"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L291" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getNumVideoDisplays"><a name="getNumVideoDisplays,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getNumVideoDisplays</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetNumVideoDisplays&quot;</span><span class="Other">,</span>
@@ -2031,10 +1895,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getDisplayBounds()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L304"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L304" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getDisplayName"><a name="getDisplayName,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getDisplayName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2045,10 +1905,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getNumVideoDisplays()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L312"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L312" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getDisplayBounds"><a name="getDisplayBounds,cint,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getDisplayBounds</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2059,10 +1915,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getNumVideoDisplays()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L322"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L322" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getDisplayDPI"><a name="getDisplayDPI,cint,ptr.cfloat,ptr.cfloat,ptr.cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getDisplayDPI</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">ddpi</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">;</span> <span class="Identifier">hdpi</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">;</span>
@@ -2075,10 +1927,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getNumVideoDisplays()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L333"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L333" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getDisplayUsableBounds"><a name="getDisplayUsableBounds,cint,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getDisplayUsableBounds</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2092,10 +1940,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">sdl.getDisplayBounds()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">sdl.getNumVideoDisplays()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L348"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L348" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getNumDisplayModes"><a name="getNumDisplayModes,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getNumDisplayModes</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2105,10 +1949,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getDisplayMode()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L369"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L369" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getDisplayMode"><a name="getDisplayMode,cint,cint,ptr.DisplayMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getDisplayMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">modeIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -2124,30 +1964,18 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getNumDisplayModes()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L377"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L377" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getDesktopDisplayMode"><a name="getDesktopDisplayMode,cint,ptr.DisplayMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getDesktopDisplayMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetDesktopDisplayMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Fill in information about the desktop display mode.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L392"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L392" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getCurrentDisplayMode"><a name="getCurrentDisplayMode,cint,ptr.DisplayMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCurrentDisplayMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetCurrentDisplayMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Fill in information about the current display mode.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L396"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L396" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getClosestDisplayMode"><a name="getClosestDisplayMode,cint,ptr.DisplayMode,ptr.DisplayMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getClosestDisplayMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">;</span>
@@ -2165,10 +1993,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">getNumDisplayModes()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">getDisplayMode()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L400"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L400" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowDisplayIndex"><a name="getWindowDisplayIndex,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowDisplayIndex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2177,10 +2001,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Get the display index associated with a window.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the display index of the display containing the center of the window, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L430"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L430" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowDisplayMode"><a name="setWindowDisplayMode,Window,ptr.DisplayMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowDisplayMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2195,10 +2015,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">getWindowDisplayMode()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">setWindowFullscreen()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L437"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L437" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowDisplayMode"><a name="getWindowDisplayMode,Window,ptr.DisplayMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowDisplayMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">DisplayMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2209,20 +2025,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">setWindowDisplayMode()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">setWindowFullscreen()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L456"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L456" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowPixelFormat"><a name="getWindowPixelFormat,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowPixelFormat</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowPixelFormat&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the pixel format associated with the window.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L467"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L467" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="createWindow"><a name="createWindow,cstring,cint,cint,cint,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">title</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Window</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -2234,16 +2042,17 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">y</span></tt> The y position of the window, <cite>WINDOWPOS_CENTERED</cite>, or <cite>WINDOWPOS_UNDEFINED</cite>.</p>
 <p><tt class="docutils literal"><span class="pre">w</span></tt> The width of the window, in screen coordinates.</p>
 <p><tt class="docutils literal"><span class="pre">h</span></tt> The height of the window, in screen coordinates.</p>
-<p><tt class="docutils literal"><span class="pre">flags</span></tt> The flags for the window, a mask of any of the following: <cite>WINDOW_FULLSCREEN</cite>, <cite>WINDOW_OPENGL</cite>, <cite>WINDOW_HIDDEN</cite>, <cite>WINDOW_BORDERLESS</cite>, <cite>WINDOW_RESIZABLE</cite>, <cite>WINDOW_MAXIMIZED</cite>, <cite>WINDOW_MINIMIZED</cite>, <cite>WINDOW_INPUT_GRABBED</cite>, <cite>WINDOW_ALLOW_HIGHDPI</cite>.</p>
+<p><tt class="docutils literal"><span class="pre">flags</span></tt> The flags for the window, a mask of any of the following: <cite>WINDOW_FULLSCREEN</cite>, <cite>WINDOW_OPENGL</cite>, <cite>WINDOW_HIDDEN</cite>, <cite>WINDOW_BORDERLESS</cite>, <cite>WINDOW_RESIZABLE</cite>, <cite>WINDOW_MAXIMIZED</cite>, <cite>WINDOW_MINIMIZED</cite>, <cite>WINDOW_INPUT_GRABBED</cite>, <cite>WINDOW_ALLOW_HIGHDPI</cite>, <cite>WINDOW_VULKAN</cite>.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the id of the window created, or <tt class="docutils literal"><span class="pre">nil</span></tt> if window creation failed.</p>
-<p>If the window is created with the <cite>WINDOW_ALLOW_HIGHDPI</cite> flag, its size in pixels may differ from its size in screen coordinates on platforms with high-DPI support (e.g. iOS and Mac OS X). Use <tt class="docutils literal"><span class="pre">getWindowSize()</span></tt> to query the client area's size in screen coordinates, and <tt class="docutils literal"><span class="pre">glGetDrawableSize()</span></tt> or <tt class="docutils literal"><span class="pre">getRendererOutputSize()</span></tt> to query the drawable size in pixels.</p>
+<p>If the window is created with the <cite>WINDOW_ALLOW_HIGHDPI</cite> flag, its size in pixels may differ from its size in screen coordinates on platforms with high-DPI support (e.g. iOS and Mac OS X). Use <tt class="docutils literal"><span class="pre">getWindowSize()</span></tt> to query the client area's size in screen coordinates, and <tt class="docutils literal"><span class="pre">glGetDrawableSize()</span></tt>, <tt class="docutils literal"><span class="pre">vulkanGetDrawableSize()</span></tt>, or <tt class="docutils literal"><span class="pre">getRendererOutputSize()</span></tt> to query the drawable size in pixels.</p>
+<p>If the window is created with any of the <cite>WINDOW_OPENGL</cite> or <cite>WINDOW_VULKAN</cite> flags, then the corresponding <tt class="docutils literal"><span class="pre">LoadLibrary</span></tt> function (<tt class="docutils literal"><span class="pre">glLoadLibrary</span></tt> or <tt class="docutils literal"><span class="pre">vulkanLoadLibrary</span></tt>) is called and the corrensponding <tt class="docutils literal"><span class="pre">UnloadLibrary</span></tt> function is called by <tt class="docutils literal"><span class="pre">destroyWindow()</span></tt>.</p>
+<p>If <cite>WINDOW_VULKAN</cite> is specified and there isn't a working Vulkan driver, <tt class="docutils literal"><span class="pre">createWindow()</span></tt> will fail because <tt class="docutils literal"><span class="pre">vulkanLoadLibrary()</span></tt> will fail.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> On non-Apple devices, SDL requires you to either not link to the Vulkan loader or link to a dynamic library version. This limitation may be removed in a future version of SDL.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">destroyWindow()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">glLoadLibrary()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">vulkanLoadLibrary()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L471"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L471" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="createWindowFrom"><a name="createWindowFrom,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createWindowFrom</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Window</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2255,40 +2064,24 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">destroyWindow()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L512"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L512" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowID"><a name="getWindowID,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowID</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowID&quot;</span><span class="Other">,</span>
                                         <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the numeric ID of a window, for logging purposes.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L525"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L525" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowFromID"><a name="getWindowFromID,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowFromID</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">id</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Window</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowFromID&quot;</span><span class="Other">,</span>
                                         <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get a window from a stored ID, or <cite>nil</cite> if it doesn't exist.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L529"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L529" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowFlags"><a name="getWindowFlags,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowFlags</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowFlags&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the window flags.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L533"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L533" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowTitle"><a name="setWindowTitle,Window,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowTitle</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">title</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2298,10 +2091,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getWindowTitle()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L537"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L537" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowTitle"><a name="getWindowTitle,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowTitle</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowTitle&quot;</span><span class="Other">,</span>
@@ -2311,10 +2100,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setWindowTitle()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L545"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L545" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowIcon"><a name="setWindowIcon,Window,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowIcon</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">icon</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2324,10 +2109,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">window</span></tt> The window for which the icon should be set.</p>
 <p><tt class="docutils literal"><span class="pre">icon</span></tt> The icon for the window.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L553"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L553" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowData"><a name="setWindowData,Window,cstring,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowData</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2342,10 +2123,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getWindowData()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L561"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L561" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowData"><a name="getWindowData,Window,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowData</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2358,10 +2135,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setWindowData()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L580"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L580" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowPosition"><a name="setWindowPosition,Window,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowPosition</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2375,10 +2148,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getWindowPosition()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L594"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L594" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowPosition"><a name="getWindowPosition,Window,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowPosition</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2391,10 +2160,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setWindowPosition()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L612"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L612" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowSize"><a name="setWindowSize,Window,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2404,15 +2169,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">window</span></tt> The window to resize.</p>
 <p><tt class="docutils literal"><span class="pre">w</span></tt> The width of the window, in screen coordinates. Must be <cite>&gt;0</cite>.</p>
 <p><tt class="docutils literal"><span class="pre">h</span></tt> The height of the window, in screen coordinates. Must be <cite>&gt;0</cite>.</p>
-<p><tt class="docutils literal"><span class="pre">Note:</span></tt> You can't change the size of a fullscreen window, it automatically matches the size of the display mode.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> Fullscreen windows automatically match the size of the display mode, and you should use <tt class="docutils literal"><span class="pre">setWindowDisplayMode()</span></tt> to change their size.</p>
 <p>The window size in screen coordinates may differ from the size in pixels, if the window was created with <cite>WINDOW_ALLOW_HIGHDPI</cite> on a platform with high-dpi support (e.g. iOS or OS X). Use <tt class="docutils literal"><span class="pre">getDrawableSize()</span></tt> or <tt class="docutils literal"><span class="pre">getRendererOutputSize()</span></tt> to get the real client area size in pixels.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getWindowSize()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">setWindowDisplayMode()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L628"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L628" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowSize"><a name="getWindowSize,Window,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2426,10 +2188,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setWindowSize()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L650"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L650" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowBordersSize"><a name="getWindowBordersSize,Window,ptr.cint,ptr.cint,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowBordersSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">top</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">left</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span>
@@ -2450,10 +2208,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if getting this information is not supported.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> If this function fails (returns <cite>-1</cite>), the size values will be initialized to <cite>0</cite>, <cite>0</cite>, <cite>0</cite>, <cite>0</cite> (if a non-nil pointer is provided), as if the window in question was borderless.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L671"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L671" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowMinimumSize"><a name="setWindowMinimumSize,Window,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowMinimumSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">min_w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">min_h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2468,10 +2222,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">getWindowMinimumSize()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">setWindowMaximumSize()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L697"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L697" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowMinimumSize"><a name="getWindowMinimumSize,Window,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowMinimumSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2485,10 +2235,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">getWindowMaximumSize()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">setWindowMinimumSize()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L716"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L716" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowMaximumSize"><a name="setWindowMaximumSize,Window,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowMaximumSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">max_w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">max_h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2503,10 +2249,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">getWindowMaximumSize()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">setWindowMinimumSize()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L732"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L732" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowMaximumSize"><a name="getWindowMaximumSize,Window,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowMaximumSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2520,10 +2262,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">getWindowMinimumSize()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">setWindowMaximumSize()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L751"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L751" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowBordered"><a name="setWindowBordered,Window,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowBordered</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">bordered</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2537,10 +2275,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getWindowFlags()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L767"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L767" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowResizable"><a name="setWindowResizable,Window,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowResizable</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">resizable</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2554,10 +2288,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getWindowFlags()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L786"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L786" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="showWindow"><a name="showWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">showWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ShowWindow&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -2566,10 +2296,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">hideWindow()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L804"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L804" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hideWindow"><a name="hideWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hideWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HideWindow&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -2578,20 +2304,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">showWindow()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L812"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L812" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="raiseWindow"><a name="raiseWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">raiseWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RaiseWindow&quot;</span><span class="Other">,</span>
                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Raise a window above other windows and set the input focus.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L820"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L820" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="maximizeWindow"><a name="maximizeWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">maximizeWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MaximizeWindow&quot;</span><span class="Other">,</span>
@@ -2601,10 +2319,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">restoreWindow()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L824"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L824" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="minimizeWindow"><a name="minimizeWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">minimizeWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MinimizeWindow&quot;</span><span class="Other">,</span>
@@ -2614,10 +2328,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">restoreWindow()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L832"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L832" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="restoreWindow"><a name="restoreWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">restoreWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RestoreWindow&quot;</span><span class="Other">,</span>
@@ -2628,10 +2338,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">maximizeWindow()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">minimizeWindow()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L840"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L840" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowFullscreen"><a name="setWindowFullscreen,Window,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowFullscreen</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2643,10 +2349,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">setWindowDisplayMode()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">getWindowDisplayMode()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L850"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L850" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowSurface"><a name="getWindowSurface,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2660,10 +2362,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">updateWindowSurface()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">updateWindowSurfaceRects()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L862"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L862" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="updateWindowSurface"><a name="updateWindowSurface,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">updateWindowSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2675,10 +2373,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">getWindowSurface()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">updateWindowSurfaceRects()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L880"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L880" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="updateWindowSurfaceRects"><a name="updateWindowSurfaceRects,Window,ptr.Rect,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">updateWindowSurfaceRects</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">rects</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">numrects</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -2690,10 +2384,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">getWindowSurface()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">updateWindowSurface()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L892"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L892" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowGrab"><a name="setWindowGrab,Window,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowGrab</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">grabbed</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2705,10 +2395,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getWindowGrab()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L905"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L905" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowGrab"><a name="getWindowGrab,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowGrab</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowGrab&quot;</span><span class="Other">,</span>
@@ -2719,10 +2405,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setWindowGrab()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L919"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L919" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getGrabbedWindow"><a name="getGrabbedWindow,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getGrabbedWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Window</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetGrabbedWindow&quot;</span><span class="Other">,</span>
@@ -2733,10 +2415,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setWindowGrab()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L929"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L929" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowBrightness"><a name="setWindowBrightness,Window,cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowBrightness</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">brightness</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2748,10 +2426,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">getWindowBrightness()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">setWindowGammaRamp()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L939"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L939" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowBrightness"><a name="getWindowBrightness,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowBrightness</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cfloat</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2762,10 +2436,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setWindowBrightness()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L952"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L952" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowOpacity"><a name="setWindowOpacity,Window,cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowOpacity</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">opacity</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2780,10 +2450,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getWindowOpacity()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L962"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L962" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowOpacity"><a name="getWindowOpacity,Window,ptr.cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowOpacity</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">out_opacity</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2796,10 +2462,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setWindowOpacity()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L977"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L977" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowModalFor"><a name="setWindowModalFor,Window,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowModalFor</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">modal_window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">parent_window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2810,10 +2472,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">parent_window</span></tt> The parent window.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> otherwise.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L993"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L993" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowInputFocus"><a name="setWindowInputFocus,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowInputFocus</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2826,10 +2484,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">raiseWindow()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1004"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1004" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowGammaRamp"><a name="setWindowGammaRamp,Window,ptr.uint16,ptr.uint16,ptr.uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowGammaRamp</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">red</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">green</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span>
@@ -2846,10 +2500,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getWindowGammaRamp()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1020"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1020" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getWindowGammaRamp"><a name="getWindowGammaRamp,Window,ptr.uint16,ptr.uint16,ptr.uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowGammaRamp</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">red</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">green</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span>
@@ -2865,10 +2515,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setWindowGammaRamp()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1045"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1045" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setWindowHitTest"><a name="setWindowHitTest,Window,HitTest,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowHitTest</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">callback</span><span class="Other">:</span> <span class="Identifier">HitTest</span><span class="Other">;</span> <span class="Identifier">callbackData</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -2886,20 +2532,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">callback_data</span></tt> An app-defined void pointer passed to the callback.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, <cite>-1</cite> on error (including unsupported).</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1091"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1091" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="destroyWindow"><a name="destroyWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroyWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroyWindow&quot;</span><span class="Other">,</span>
                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Destroy a window.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1133"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1133" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="isScreenSaverEnabled"><a name="isScreenSaverEnabled,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isScreenSaverEnabled</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_IsScreenSaverEnabled&quot;</span><span class="Other">,</span>
@@ -2910,10 +2548,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">enableScreenSaver()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">disableScreenSaver()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1137"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1137" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="enableScreenSaver"><a name="enableScreenSaver,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">enableScreenSaver</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_EnableScreenSaver&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -2923,10 +2557,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">isScreenSaverEnabled()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">disableScreenSaver()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1147"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1147" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="disableScreenSaver"><a name="disableScreenSaver,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">disableScreenSaver</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DisableScreenSaver&quot;</span><span class="Other">,</span>
@@ -2937,10 +2567,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">isScreenSaverEnabled()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">enableScreenSaver()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1157"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1157" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="glLoadLibrary"><a name="glLoadLibrary,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glLoadLibrary</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_LoadLibrary&quot;</span><span class="Other">,</span>
@@ -2955,20 +2581,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">glGetProcAddress()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">glUnloadLibrary()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1169"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1169" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="glGetProcAddress"><a name="glGetProcAddress,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetProcAddress</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">glproc</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_GetProcAddress&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the address of an OpenGL procedure.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1192"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1192" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="glUnloadLibrary"><a name="glUnloadLibrary,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glUnloadLibrary</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_UnloadLibrary&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -2977,50 +2595,34 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">glLoadLibrary()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1196"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1196" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="glExtensionSupported"><a name="glExtensionSupported,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glExtensionSupported</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">extension</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_ExtensionSupported&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if an OpenGL extension is supported for the current context.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1204"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1204" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="glResetAttributes"><a name="glResetAttributes,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glResetAttributes</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_ResetAttributes&quot;</span><span class="Other">,</span>
                           <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Reset all previously set OpenGL context attributes to their default values.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1209"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1209" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="glSetAttribute"><a name="glSetAttribute,GLattr,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glSetAttribute</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">attr</span><span class="Other">:</span> <span class="Identifier">GLattr</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_SetAttribute&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
-Set an OpenGL window attribute before window creation.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1214"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1214" class="link-seesrc" target="_blank" >Edit</a>
+<p>Set an OpenGL window attribute before window creation.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the attribute could not be set.</p>
+
 
 </dd>
 <dt id="glGetAttribute"><a name="glGetAttribute,GLattr,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetAttribute</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">attr</span><span class="Other">:</span> <span class="Identifier">GLattr</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_GetAttribute&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
-Get the actual value for an attribute from the current context.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1218"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1218" class="link-seesrc" target="_blank" >Edit</a>
+<p>Get the actual value for an attribute from the current context.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the attribute could not be retrieved. The integer at <tt class="docutils literal"><span class="pre">value</span></tt> will be modified in either case.</p>
+
 
 </dd>
 <dt id="glCreateContext"><a name="glCreateContext,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glCreateContext</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GLContext</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -3030,10 +2632,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">glDeleteContext()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1222"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1222" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="glMakeCurrent"><a name="glMakeCurrent,Window,GLContext"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glMakeCurrent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">context</span><span class="Other">:</span> <span class="Identifier">GLContext</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -3042,30 +2640,18 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Set up an OpenGL context for rendering into an OpenGL window.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> The context must have been created with a compatible window.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1231"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1231" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="glGetCurrentWindow"><a name="glGetCurrentWindow,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetCurrentWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Window</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_GetCurrentWindow&quot;</span><span class="Other">,</span>
                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the currently active OpenGL window.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1237"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1237" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="glGetCurrentContext"><a name="glGetCurrentContext,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetCurrentContext</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GLContext</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_GetCurrentContext&quot;</span><span class="Other">,</span>
                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the currently active OpenGL context.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1241"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1241" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="glGetDrawableSize"><a name="glGetDrawableSize,Window,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetDrawableSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -3080,10 +2666,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">getWindowSize()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">createWindow()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1245"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1245" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="glSetSwapInterval"><a name="glSetSwapInterval,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glSetSwapInterval</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">interval</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -3095,10 +2677,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">glGetSwapInterval()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1267"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1267" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="glGetSwapInterval"><a name="glGetSwapInterval,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glGetSwapInterval</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_GetSwapInterval&quot;</span><span class="Other">,</span>
@@ -3109,20 +2687,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">glSetSwapInterval()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1283"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1283" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="glSwapWindow"><a name="glSwapWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glSwapWindow</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_SwapWindow&quot;</span><span class="Other">,</span>
                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Swap the OpenGL buffers for a window, if double-buffering is supported.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1297"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1297" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="glDeleteContext"><a name="glDeleteContext,GLContext"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glDeleteContext</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <span class="Identifier">GLContext</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_DeleteContext&quot;</span><span class="Other">,</span>
@@ -3132,10 +2702,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">glCreateContext()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L1301"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L1301" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -3147,38 +2713,22 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Used to indicate that you don't care what the window position is.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L160"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L160" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="windowPosIsUndefined"><a name="windowPosIsUndefined.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">windowPosIsUndefined</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L167"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L167" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="windowPosCenteredDisplay"><a name="windowPosCenteredDisplay.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">windowPosCenteredDisplay</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 Used to indicate that the window position should be centered.
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L174"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L174" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="windowPosIsCentered"><a name="windowPosIsCentered.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">windowPosIsCentered</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/video.nim#L181"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/video.nim#L181" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -3191,7 +2741,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>

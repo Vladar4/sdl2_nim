@@ -16,7 +16,7 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
-<title>Module gesture</title>
+<title>Module vulkan</title>
 <style type="text/css" >
 /*
 Stylesheet for use with Docutils/rst2html.
@@ -1195,7 +1195,7 @@ function main() {
 <body onload="main()">
 <div class="document" id="documentId">
   <div class="container">
-    <h1 class="title">Module gesture</h1>
+    <h1 class="title">Module vulkan</h1>
     <div class="row">
   <div class="three columns">
   <div>
@@ -1210,26 +1210,36 @@ function main() {
     </select>
   </div>
   <ul class="simple simple-toc" id="toc-list">
-<li><a class="reference" id="gesture-nim_toc" href="#gesture-nim">gesture.nim</a></li>
+<li><a class="reference" id="vulkan-nim_toc" href="#vulkan-nim">vulkan.nim</a></li>
 <li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#GestureID"
-    title="GestureID* = int64"><wbr />Gesture<wbr />ID<span class="attachedType" style="visibility:hidden"></span></a></li>
+      <li><a class="reference" href="#VkInstance"
+    title="VkInstance* = pointer"><wbr />Vk<wbr />Instance<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#VkSurfaceKHR"
+    title="VkSurfaceKHR* = pointer"><wbr />Vk<wbr />Surface<wbr />KHR<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#VulkanInstance"
+    title="VulkanInstance* = VkInstance"><wbr />Vulkan<wbr />Instance<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#VulkanSurface"
+    title="VulkanSurface* = VkSurfaceKHR"><wbr />Vulkan<wbr />Surface<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#recordGesture,TouchID"
-    title="recordGesture*(touchId: TouchID): cint"><wbr />record<wbr />Gesture<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#saveAllDollarTemplates,ptr.RWops"
-    title="saveAllDollarTemplates*(dst: ptr RWops): cint"><wbr />save<wbr />All<wbr />Dollar<wbr />Templates<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#saveDollarTemplate,GestureID,ptr.RWops"
-    title="saveDollarTemplate*(gestureId: GestureID; dst: ptr RWops): cint"><wbr />save<wbr />Dollar<wbr />Template<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#loadDollarTemplates,TouchID,ptr.RWops"
-    title="loadDollarTemplates*(touchId: TouchID; src: ptr RWops): cint"><wbr />load<wbr />Dollar<wbr />Templates<span class="attachedType" style="visibility:hidden"></span></a></li>
+      <li><a class="reference" href="#vulkanLoadLibrary,cstring"
+    title="vulkanLoadLibrary*(path: cstring): cint"><wbr />vulkan<wbr />Load<wbr />Library<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#vulkanGetVkGetInstanceProcAddr,"
+    title="vulkanGetVkGetInstanceProcAddr*(): pointer"><wbr />vulkan<wbr />Get<wbr />Vk<wbr />Get<wbr />Instance<wbr />Proc<wbr />Addr<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#vulkanUnloadLibrary,"
+    title="vulkanUnloadLibrary*()"><wbr />vulkan<wbr />Unload<wbr />Library<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#vulkanGetInstanceExtensions,Window,ptr.cuint,cstringArray"
+    title="vulkanGetInstanceExtensions*(window: Window; pCount: ptr cuint; pNames: cstringArray): bool"><wbr />vulkan<wbr />Get<wbr />Instance<wbr />Extensions<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#vulkanCreateSurface,Window,VkInstance,ptr.VkSurfaceKHR"
+    title="vulkanCreateSurface*(window: Window; instance: VkInstance; surface: ptr VkSurfaceKHR): bool"><wbr />vulkan<wbr />Create<wbr />Surface<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#vulkanGetDrawableSize,Window,ptr.cint,ptr.cint"
+    title="vulkanGetDrawableSize*(window: Window; w: ptr cint; h: ptr cint)"><wbr />vulkan<wbr />Get<wbr />Drawable<wbr />Size<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1240,14 +1250,31 @@ function main() {
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   <p class="module-desc">
-<h1><a class="toc-backref" id="gesture-nim" href="#gesture-nim">gesture.nim</a></h1><p>Include file for SDL gesture event handling.</p>
+<h1><a class="toc-backref" id="vulkan-nim" href="#vulkan-nim">vulkan.nim</a></h1><p>Header file for functions to creating Vulkan surfaces on SDL windows.</p>
+<p>Vulkan support functions</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> <tt class="docutils literal"><span class="pre">vulkanGetInstanceExtensions</span></tt> &amp; <tt class="docutils literal"><span class="pre">vulkan_CreateSurface</span></tt> API is compatable with Tizen's implementation of Vulkan in SDL.</p>
 </p>
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="GestureID"><a name="GestureID"></a><pre><span class="Identifier">GestureID</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">int64</span></pre></dt>
+<dt id="VkInstance"><a name="VkInstance"></a><pre><span class="Identifier">VkInstance</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 
+
+</dd>
+<dt id="VkSurfaceKHR"><a name="VkSurfaceKHR"></a><pre><span class="Identifier">VkSurfaceKHR</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="VulkanInstance"><a name="VulkanInstance"></a><pre><span class="Identifier">VulkanInstance</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">VkInstance</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="VulkanSurface"><a name="VulkanSurface"></a><pre><span class="Identifier">VulkanSurface</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">VkSurfaceKHR</span></pre></dt>
+<dd>
+for compatibility with Tizen
 
 </dd>
 
@@ -1255,28 +1282,136 @@ function main() {
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="recordGesture"><a name="recordGesture,TouchID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">recordGesture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">touchId</span><span class="Other">:</span> <span class="Identifier">TouchID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RecordGesture&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="vulkanLoadLibrary"><a name="vulkanLoadLibrary,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">vulkanLoadLibrary</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Vulkan_LoadLibrary&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
-Begin recording a gesture on the specified touch, or all touches (<cite>-1</cite>).
+<p>Dynamically load a Vulkan loader library.</p>
+<p><tt class="docutils literal"><span class="pre">path</span></tt> The platform dependent Vulkan loader library name, or <tt class="docutils literal"><span class="pre">nil</span></tt> to open the default Vulkan loader library.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the library couldn't be loaded.</p>
+<p>This should be done after initializing the video driver, but before creating any Vulkan windows. If no Vulkan loader library is loaded, the default library will be loaded upon creation of the first Vulkan window.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> If you specify a non-<tt class="docutils literal"><span class="pre">nil</span></tt> <tt class="docutils literal"><span class="pre">path</span></tt>, you should retrieve all of the Vulkan functions used in your program from the dynamic library using <tt class="docutils literal"><span class="pre">vulkanGetVkGetInstanceProcAddr()</span></tt> unless you can guarantee <tt class="docutils literal"><span class="pre">path</span></tt> points to the same vulkan loader library that you linked to.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> On Apple devices, if <tt class="docutils literal"><span class="pre">path</span></tt> is <tt class="docutils literal"><span class="pre">nil</span></tt>, SDL will attempt to find the <tt class="docutils literal"><span class="pre">vkGetInstanceProcAddr</span></tt> address within all the mach-o images of the current process. This is because the currently (v0.17.0) recommended MoltenVK (Vulkan on Metal) usage is as a static library. If it is not found then SDL will attempt to load <tt class="docutils literal"><span class="pre">libMoltenVK.dylib</span></tt>. Applications using the dylib alternative therefore do not need to do anything special when calling SDL.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> On non-Apple devices, SDL requires you to either not link to the Vulkan loader or link to a dynamic library version. This limitation may be removed in a future version of SDL.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> This function will fail if there are no working Vulkan drivers installed.</p>
+<p>See also:</p>
+<blockquote><p><p><tt class="docutils literal"><span class="pre">vulkanGetVkGetInstanceProcAddr()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">vulkanUnloadLibrary()</span></tt></p>
+</p></blockquote>
+
 
 </dd>
-<dt id="saveAllDollarTemplates"><a name="saveAllDollarTemplates,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">saveAllDollarTemplates</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SaveAllDollarTemplates&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="vulkanGetVkGetInstanceProcAddr"><a name="vulkanGetVkGetInstanceProcAddr,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">vulkanGetVkGetInstanceProcAddr</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Vulkan_GetVkGetInstanceProcAddr&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
-Save all currently loaded Dollar Gesture templates.
+<p>Get the address of the <tt class="docutils literal"><span class="pre">vkGetInstanceProcAddr</span></tt> function.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> This should be called after either calling <tt class="docutils literal"><span class="pre">vulkanLoadLibrary</span></tt> or creating an SDL_Window with the <cite>WINDOW_VULKAN</cite> flag.</p>
+
 
 </dd>
-<dt id="saveDollarTemplate"><a name="saveDollarTemplate,GestureID,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">saveDollarTemplate</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gestureId</span><span class="Other">:</span> <span class="Identifier">GestureID</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SaveDollarTemplate&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="vulkanUnloadLibrary"><a name="vulkanUnloadLibrary,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">vulkanUnloadLibrary</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Vulkan_UnloadLibrary&quot;</span><span class="Other">,</span>
+                            <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
-Save a currently loaded Dollar Gesture template.
+<p>Unload the Vulkan loader library previously loaded by <tt class="docutils literal"><span class="pre">vulkanLoadLibrary()</span></tt>.</p>
+<p>See also:</p>
+<blockquote><p><tt class="docutils literal"><span class="pre">vulkanLoadLibrary()</span></tt></p></blockquote>
+
 
 </dd>
-<dt id="loadDollarTemplates"><a name="loadDollarTemplates,TouchID,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadDollarTemplates</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">touchId</span><span class="Other">:</span> <span class="Identifier">TouchID</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LoadDollarTemplates&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="vulkanGetInstanceExtensions"><a name="vulkanGetInstanceExtensions,Window,ptr.cuint,cstringArray"></a><pre><span class="Keyword">proc</span> <span class="Identifier">vulkanGetInstanceExtensions</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">pCount</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cuint</span><span class="Other">;</span>
+                                 <span class="Identifier">pNames</span><span class="Other">:</span> <span class="Identifier">cstringArray</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Vulkan_GetInstanceExtensions&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
-Load Dollar Gesture templates from a file.
+<p>Get the names of the Vulkan instance extensions needed to create a surface with <tt class="docutils literal"><span class="pre">vulkan_CreateSurface()</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">window</span></tt> Window for which the required Vulkan instance extensions should be retrieved.</p>
+<p><tt class="docutils literal"><span class="pre">pCount</span></tt> Pointer to an <tt class="docutils literal"><span class="pre">cuint</span></tt> related to the number of required Vulkan instance extensions.</p>
+<p><tt class="docutils literal"><span class="pre">pNames</span></tt> <tt class="docutils literal"><span class="pre">nil</span></tt> or a pointer to an array to be filled with the required Vulkan instance extensions.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> on success, <cite>false</cite> on error.</p>
+<p>If <tt class="docutils literal"><span class="pre">pNames</span></tt> is <tt class="docutils literal"><span class="pre">nil</span></tt>, then the number of required Vulkan instance extensions is returned in <tt class="docutils literal"><span class="pre">pCount</span></tt>. Otherwise, <tt class="docutils literal"><span class="pre">pCount</span></tt> must point to a variable set to the number of elements in the <tt class="docutils literal"><span class="pre">pNames</span></tt> array, and on return the variable is overwritten with the number of names actually written to <tt class="docutils literal"><span class="pre">pNames</span></tt>. If <tt class="docutils literal"><span class="pre">pCount</span></tt> is less than the number of required extensions, at most <tt class="docutils literal"><span class="pre">pCount</span></tt> structures will be written. If <tt class="docutils literal"><span class="pre">pCount</span></tt> is smaller than the number of required extensions, <cite>0</cite> will be returned instead <cite>1</cite>, to indicate that not all the required extensions were returned.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> The returned list of extensions will contain VK_KHR_surface and zero or more platform specific extensions</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> The extension names queried here must be enabled when calling <tt class="docutils literal"><span class="pre">vkCreateInstance</span></tt>, otherwise surface creation will fail.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> <tt class="docutils literal"><span class="pre">window</span></tt> should have been created with the <cite>WINDOW_VULKAN</cite> flag.</p>
+<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">count</span><span class="Punctuation">:</span> <span class="Identifier">cuint</span>
+
+<span class="Comment"># get count of required extensions</span>
+<span class="Keyword">if</span> <span class="Keyword">not</span> <span class="Identifier">vulkanGetInstanceExtensions</span><span class="Punctuation">(</span><span class="Identifier">window</span><span class="Punctuation">,</span> <span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">count</span><span class="Punctuation">)</span><span class="Punctuation">,</span> <span class="Keyword">nil</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+  <span class="Identifier">handleError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+
+<span class="Keyword">var</span>
+  <span class="Identifier">additionalExtensions</span><span class="Punctuation">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cstring</span> <span class="Operator">=</span> <span class="Punctuation">[</span>
+    <span class="Identifier">VK_EXT_DEBUG_REPORT_EXTENSION_NAME</span><span class="Punctuation">]</span> <span class="Comment"># example additional extension</span>
+  
+  <span class="Identifier">additionalExtensionsCount</span><span class="Punctuation">:</span> <span class="Identifier">csize</span> <span class="Operator">=</span> <span class="Identifier">sizeof</span><span class="Punctuation">(</span>
+    <span class="Punctuation">(</span><span class="Identifier">additionalExtensions</span><span class="Punctuation">)</span> <span class="Keyword">div</span> <span class="Identifier">sizeof</span><span class="Punctuation">(</span><span class="Punctuation">(</span><span class="Identifier">additionalExtensions</span><span class="Punctuation">[</span><span class="DecNumber">0</span><span class="Punctuation">]</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
+  
+  <span class="Identifier">extensionCount</span><span class="Punctuation">:</span> <span class="Identifier">csize</span> <span class="Operator">=</span> <span class="Identifier">count</span> <span class="Operator">+</span> <span class="Identifier">additionalExtensionsCount</span>
+  
+  <span class="Identifier">names</span><span class="Punctuation">:</span> <span class="Identifier">cstringArray</span> <span class="Operator">=</span> <span class="Identifier">malloc</span><span class="Punctuation">(</span><span class="Identifier">sizeof</span><span class="Punctuation">(</span><span class="Keyword">cast</span><span class="Punctuation">[</span><span class="Identifier">cstring</span><span class="Punctuation">]</span><span class="Punctuation">(</span><span class="Identifier">extensionCount</span><span class="Punctuation">[</span><span class="Punctuation">]</span><span class="Punctuation">)</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
+
+<span class="Keyword">if</span> <span class="Keyword">not</span> <span class="Identifier">names</span><span class="Punctuation">:</span>
+  <span class="Identifier">handleError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+
+<span class="Comment"># get names of required extensions</span>
+<span class="Keyword">if</span> <span class="Keyword">not</span> <span class="Identifier">vulkanGetInstanceExtensions</span><span class="Punctuation">(</span><span class="Identifier">window</span><span class="Punctuation">,</span> <span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">count</span><span class="Punctuation">)</span><span class="Punctuation">,</span> <span class="Identifier">names</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+  <span class="Identifier">handleError</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+
+<span class="Comment"># copy additional extensions after required extensions</span>
+<span class="Keyword">for</span> <span class="Identifier">i</span> <span class="Keyword">in</span> <span class="FloatNumber">0.</span><span class="Operator">.&lt;</span><span class="Identifier">additionalExtensionsCount</span><span class="Punctuation">:</span>
+  <span class="Identifier">names</span><span class="Punctuation">[</span><span class="Identifier">i</span> <span class="Operator">+</span> <span class="Identifier">count</span><span class="Punctuation">]</span> <span class="Operator">=</span> <span class="Identifier">additionalExtensions</span><span class="Punctuation">[</span><span class="Identifier">i</span><span class="Punctuation">]</span>
+
+<span class="Keyword">var</span> <span class="Identifier">instanceCreateInfo</span><span class="Punctuation">:</span> <span class="Identifier">VkInstanceCreateInfo</span> <span class="Operator">=</span> <span class="Punctuation">[</span><span class="Punctuation">]</span>
+
+<span class="Identifier">instanceCreateInfo</span><span class="Operator">.</span><span class="Identifier">enabledExtensionCount</span> <span class="Operator">=</span> <span class="Identifier">extensionCount</span>
+<span class="Identifier">instanceCreateInfo</span><span class="Operator">.</span><span class="Identifier">ppEnabledExtensionNames</span> <span class="Operator">=</span> <span class="Identifier">names</span>
+<span class="Comment"># fill in rest of instanceCreateInfo</span>
+
+<span class="Keyword">var</span> <span class="Identifier">instance</span><span class="Punctuation">:</span> <span class="Identifier">VkInstance</span>
+
+<span class="Comment"># create the Vulkan instance</span>
+<span class="Keyword">var</span> <span class="Identifier">result</span><span class="Operator">*:</span> <span class="Identifier">VkResult</span> <span class="Operator">=</span> <span class="Identifier">vkCreateInstance</span><span class="Punctuation">(</span>
+  <span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">instanceCreateInfo</span><span class="Punctuation">)</span><span class="Punctuation">,</span> <span class="Keyword">nil</span><span class="Punctuation">,</span> <span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">instance</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
+
+<span class="Identifier">free</span><span class="Punctuation">(</span><span class="Identifier">names</span><span class="Punctuation">)</span></pre><p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">vulkanCreateSurface()</span></tt></p>
+
+
+</dd>
+<dt id="vulkanCreateSurface"><a name="vulkanCreateSurface,Window,VkInstance,ptr.VkSurfaceKHR"></a><pre><span class="Keyword">proc</span> <span class="Identifier">vulkanCreateSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">instance</span><span class="Other">:</span> <span class="Identifier">VkInstance</span><span class="Other">;</span>
+                         <span class="Identifier">surface</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">VkSurfaceKHR</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Vulkan_CreateSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+<p>Create a Vulkan rendering surface for a window.</p>
+<p><tt class="docutils literal"><span class="pre">window</span></tt>    <tt class="docutils literal"><span class="pre">Window</span></tt> to which to attach the rendering surface.</p>
+<p><tt class="docutils literal"><span class="pre">instance</span></tt>  Handle to the Vulkan instance to use.</p>
+<p><tt class="docutils literal"><span class="pre">surface</span></tt>   Pointer to a VkSurfaceKHR handle to receive the handle of the newly created surface.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> on success, <cite>false</cite> on error.</p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">instance</span><span class="Punctuation">:</span> <span class="Identifier">VkInstance</span>
+  <span class="Identifier">window</span><span class="Punctuation">:</span> <span class="Identifier">Wwindow</span>
+
+<span class="Comment"># create instance and window</span>
+
+<span class="Comment"># create the Vulkan surface</span>
+<span class="Keyword">var</span> <span class="Identifier">surface</span><span class="Punctuation">:</span> <span class="Identifier">VkSurfaceKHR</span>
+<span class="Keyword">if</span> <span class="Keyword">not</span> <span class="Identifier">vulkanCreateSurface</span><span class="Punctuation">(</span><span class="Identifier">window</span><span class="Punctuation">,</span> <span class="Identifier">instance</span><span class="Punctuation">,</span> <span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">surface</span><span class="Punctuation">)</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+  <span class="Identifier">handleError</span><span class="Punctuation">(</span><span class="Punctuation">)</span></pre><p><tt class="docutils literal"><span class="pre">Note:</span></tt> <tt class="docutils literal"><span class="pre">window</span></tt> should have been created with the <cite>WINDOW_VULKAN</cite> flag.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> <tt class="docutils literal"><span class="pre">instance</span></tt> should have been created with the extensions returned by <tt class="docutils literal"><span class="pre">vulkanCreateSurface()</span></tt> enabled.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">vulkanGetInstanceExtensions()</span></tt></p>
+
+
+</dd>
+<dt id="vulkanGetDrawableSize"><a name="vulkanGetDrawableSize,Window,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">vulkanGetDrawableSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Vulkan_GetDrawableSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+<p>Get the size of a window's underlying drawable in pixels (for use with setting viewport, scissor &amp; etc).</p>
+<p><tt class="docutils literal"><span class="pre">window</span></tt>  <tt class="docutils literal"><span class="pre">Window</span></tt> from which the drawable size should be queried.</p>
+<p><tt class="docutils literal"><span class="pre">w</span></tt>       Pointer to variable for storing the width in pixels, may be <tt class="docutils literal"><span class="pre">nil</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">h</span></tt>       Pointer to variable for storing the height in pixels, may be <tt class="docutils literal"><span class="pre">nil</span></tt>.</p>
+<p>This may differ from <tt class="docutils literal"><span class="pre">getWindowSize()</span></tt> if we're rendering to a high-DPI drawable, i.e. the window was created with <cite>WINDOW_ALLOW_HIGHDPI</cite> on a platform with high-DPI support (Apple calls this &quot;Retina&quot;), and not disabled by the <cite>HINT_VIDEO_HIGHDPI_DISABLED</cite> hint.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">getWindowSize()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">createWindow()</span></tt></p>
+
 
 </dd>
 

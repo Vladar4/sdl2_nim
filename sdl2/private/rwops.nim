@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2017 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -173,6 +173,29 @@ template rwWrite*(ctx, p, size, n: untyped): untyped =
 
 template rwClose*(ctx: untyped): untyped =
   (ctx).close(ctx)
+
+
+proc loadFileRW*(src: ptr RWops, datasize: ptr csize, freesrc: cint): pointer {.
+    cdecl, importc: "SDL_LoadFile_RW", dynlib: SDL2_LIB.}
+  ##  Load all the data from an SDL data stream.
+  ##
+  ##  The data is allocated with a zero byte at the end (null terminated).
+  ##
+  ##  If ``datasize`` is not ``nil``,
+  ##  it is filled with the size of the data read.
+  ##
+  ##  If ``freesrc`` is non-zero, the stream will be closed after being read.
+  ##
+  ##  The data should be freed with ``free()``.
+  ##
+  ##  ``Return`` the data, or ``nil`` if there was an error.
+
+
+template loadFile*(file, datasize: untyped) : untyped = ##  \
+  ##  Load an entire file.
+  ##
+  ##  Convenience template.
+  loadFileRW(rwFromFile(file, "rb"), datasize, 1)
 
 
 # Read/write macros

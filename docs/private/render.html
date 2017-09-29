@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module render</title>
@@ -1428,10 +1430,6 @@ This API supports the following features:<ul class="simple"><li>single pixel poi
 <dd>
 
 Information on the capabilities of a render driver or context
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L72"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L72" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="TextureAccess"><a name="TextureAccess"></a><pre><span class="Identifier">TextureAccess</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
@@ -1441,10 +1439,6 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 The access pattern allowed for a texture
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L91"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L91" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="TextureModulate"><a name="TextureModulate"></a><pre><span class="Identifier">TextureModulate</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
@@ -1454,10 +1448,6 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 The texture channel modulation used in <tt class="docutils literal"><span class="pre">renderCopy()</span></tt>
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L98"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L98" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RendererFlip"><a name="RendererFlip"></a><pre><span class="Identifier">RendererFlip</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
@@ -1468,30 +1458,18 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 Flip constants for <tt class="docutils literal"><span class="pre">renderCopyEx()</span></tt>
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L105"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L105" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="Renderer"><a name="Renderer"></a><pre><span class="Identifier">Renderer</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 
 An object representing rendering state
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L113"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L113" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="Texture"><a name="Texture"></a><pre><span class="Identifier">Texture</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 
 An efficient driver-specific representation of pixel data
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L117"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L117" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1503,40 +1481,24 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 The renderer is a software fallback
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L62"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L62" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RENDERER_ACCELERATED"><a name="RENDERER_ACCELERATED"></a><pre><span class="Identifier">RENDERER_ACCELERATED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span></pre></dt>
 <dd>
 
 The renderer uses hardware acceleration
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L64"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L64" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RENDERER_PRESENTVSYNC"><a name="RENDERER_PRESENTVSYNC"></a><pre><span class="Identifier">RENDERER_PRESENTVSYNC</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
 <dd>
 
 Present is synchronized with the refresh rate
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L66"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L66" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RENDERER_TARGETTEXTURE"><a name="RENDERER_TARGETTEXTURE"></a><pre><span class="Identifier">RENDERER_TARGETTEXTURE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000008</span></pre></dt>
 <dd>
 
 Ther render supports rendering to texture
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L68"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L68" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1553,10 +1515,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">getRenderDriverInfo()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">createRenderer()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L122"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L122" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getRenderDriverInfo"><a name="getRenderDriverInfo,cint,ptr.RendererInfo"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRenderDriverInfo</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RendererInfo</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1569,10 +1527,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">ceateRenderer()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L136"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L136" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="createWindowAndRenderer"><a name="createWindowAndRenderer,cint,cint,uint32,ptr.Window,ptr.Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createWindowAndRenderer</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">window_flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span>
@@ -1587,10 +1541,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">renderer</span></tt> A pointer filled with the renderer, or <cite>nil</cite> on error.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L152"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L152" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="createRenderer"><a name="createRenderer,Window,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createRenderer</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Renderer</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1606,10 +1556,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">getRendererInfo()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">destroyRenderer()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L170"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L170" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="createSoftwareRenderer"><a name="createSoftwareRenderer,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createSoftwareRenderer</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Renderer</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1622,40 +1568,24 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">createRenderer()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">destroyRenderer()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L191"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L191" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getRenderer"><a name="getRenderer,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRenderer</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Renderer</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRenderer&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the renderer associated with a window.
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L205"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L205" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getRendererInfo"><a name="getRendererInfo,Renderer,ptr.RendererInfo"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRendererInfo</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RendererInfo</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRendererInfo&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get information about a rendering context.
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L209"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L209" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getRendererOutputSize"><a name="getRendererOutputSize,Renderer,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRendererOutputSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRendererOutputSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the output size in pixels of a rendering context.
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L213"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L213" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="createTexture"><a name="createTexture,Renderer,uint32,TextureAccess,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">access</span><span class="Other">:</span> <span class="Identifier">TextureAccess</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
@@ -1669,15 +1599,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">w</span></tt> The width of the texture in pixels.</p>
 <p><tt class="docutils literal"><span class="pre">h</span></tt> The height of the texture in pixels.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> The created texture is returned, or <cite>nil</cite> if no rendering context was active, the format was unsupported, or the width or height were out of range.</p>
+<p><tt class="docutils literal"><span class="pre">Note</span></tt> The contents of the texture are not defined at creation.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">queryTexture()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">updateTexture()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">destroyTexture()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L218"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L218" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="createTextureFromSurface"><a name="createTextureFromSurface,Renderer,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createTextureFromSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Texture</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1692,10 +1619,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">queryTexture()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">destroyTexture()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L245"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L245" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="queryTexture"><a name="queryTexture,Texture,ptr.uint32,ptr.TextureAccess,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">queryTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">access</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">TextureAccess</span><span class="Other">;</span>
@@ -1710,10 +1633,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">h</span></tt> A pointer filled in with the height of the texture in pixels.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the texture is not valid.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L264"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L264" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setTextureColorMod"><a name="setTextureColorMod,Texture,uint8,uint8,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setTextureColorMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1728,10 +1647,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getTextureColorMod()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L283"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L283" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getTextureColorMod"><a name="getTextureColorMod,Texture,ptr.uint8,ptr.uint8,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getTextureColorMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -1746,10 +1661,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setTextureColorMod()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L306"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L306" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setTextureAlphaMod"><a name="setTextureAlphaMod,Texture,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setTextureAlphaMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1762,10 +1673,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getTextureAlphaMod()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L329"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L329" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getTextureAlphaMod"><a name="getTextureAlphaMod,Texture,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getTextureAlphaMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1778,10 +1685,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setTextureAlphaMod()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L344"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L344" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setTextureBlendMode"><a name="setTextureBlendMode,Texture,BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setTextureBlendMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1795,10 +1698,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getTextureBlendMode()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L358"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L358" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getTextureBlendMode"><a name="getTextureBlendMode,Texture,ptr.BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getTextureBlendMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1811,10 +1710,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setTextureBlendMode()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L376"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L376" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="updateTexture"><a name="updateTexture,Texture,ptr.Rect,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">updateTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">pixels</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -1823,15 +1718,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Update the given texture rectangle with new pixel data.</p>
 <p><tt class="docutils literal"><span class="pre">texture</span></tt> The texture to update</p>
 <p><tt class="docutils literal"><span class="pre">rect</span></tt> A pointer to the rectangle of pixels to update, or <cite>nil</cite> to update the entire texture.</p>
-<p><tt class="docutils literal"><span class="pre">pixels</span></tt> The raw pixel data.</p>
+<p><tt class="docutils literal"><span class="pre">pixels</span></tt> The raw pixel data in the format of the texture.</p>
 <p><tt class="docutils literal"><span class="pre">pitch</span></tt> The number of bytes in a row of pixel data, including padding between lines.</p>
+<p>The pixel data must be in the format of the texture. The pixel format can be queried with <tt class="docutils literal"><span class="pre">queryTexture()</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the texture is not valid.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> This is a fairly slow procedure.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L390"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L390" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="updateYUVTexture"><a name="updateYUVTexture,Texture,ptr.Rect,ptr.uint8,cint,ptr.uint8,cint,ptr.uint8,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">updateYUVTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">yPlane</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">yPitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
@@ -1850,10 +1742,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the texture is not valid.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> You can use <tt class="docutils literal"><span class="pre">updateTexture()</span></tt> as long as your pixel data is a contiguous block of Y and U/V planes in the proper order, but this procedure is available if your pixel data is not contiguous.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L409"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L409" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="lockTexture"><a name="lockTexture,Texture,ptr.Rect,ptr.pointer,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">pixels</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">pitch</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -1868,10 +1756,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">unlockTexture()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L441"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L441" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="unlockTexture"><a name="unlockTexture,Texture"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockTexture&quot;</span><span class="Other">,</span>
@@ -1881,10 +1765,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">lockTexture()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L465"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L465" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderTargetSupported"><a name="renderTargetSupported,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderTargetSupported</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1894,10 +1774,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">renderer</span></tt> The renderer that will be checked.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if supported, <cite>false</cite> if not.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L473"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L473" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setRenderTarget"><a name="setRenderTarget,Renderer,Texture"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setRenderTarget</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1910,10 +1786,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getRenderTarget()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L481"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L481" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getRenderTarget"><a name="getRenderTarget,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRenderTarget</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Texture</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1924,10 +1796,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setRenderTarget()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L496"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L496" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderSetLogicalSize"><a name="renderSetLogicalSize,Renderer,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderSetLogicalSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1946,10 +1814,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">renderSetScale()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">renderSetViewport()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L506"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L506" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderGetLogicalSize"><a name="renderGetLogicalSize,Renderer,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGetLogicalSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1962,10 +1826,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">renderSetLogicalSize()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L537"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L537" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderSetIntegerScale"><a name="renderSetIntegerScale,Renderer,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderSetIntegerScale</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">enable</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1978,10 +1838,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">renderSetLogicalSize()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L551"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L551" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderGetIntegerScale"><a name="renderGetIntegerScale,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGetIntegerScale</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1992,10 +1848,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">renderSetIntegerScale()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L567"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L567" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderSetViewport"><a name="renderSetViewport,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderSetViewport</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2011,10 +1863,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">renderGetViewport()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">renderSetLogicalSize()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L578"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L578" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderGetViewport"><a name="renderGetViewport,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGetViewport</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2024,10 +1872,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">renderSetViewport()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L600"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L600" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderSetClipRect"><a name="renderSetClipRect,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderSetClipRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2040,10 +1884,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">renderGetClipRect()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L608"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L608" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderGetClipRect"><a name="renderGetClipRect,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGetClipRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2055,10 +1895,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">renderSetClipRect()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L623"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L623" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderIsClipEnabled"><a name="renderIsClipEnabled,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderIsClipEnabled</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2069,10 +1905,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">renderGetClipRect()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L636"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L636" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderSetScale"><a name="renderSetScale,Renderer,cfloat,cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderSetScale</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">scaleX</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">;</span> <span class="Identifier">scaleY</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2088,10 +1920,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">renderGetScale()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">renderSetLogicalSize()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L646"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L646" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderGetScale"><a name="renderGetScale,Renderer,ptr.cfloat,ptr.cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGetScale</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">scaleX</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">;</span> <span class="Identifier">scaleY</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2104,10 +1932,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">renderSetScale()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L671"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L671" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setRenderDrawColor"><a name="setRenderDrawColor,Renderer,uint8,uint8,uint8,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setRenderDrawColor</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -2121,10 +1945,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">a</span></tt> The alpha value used to draw on the rendering target, usually <cite>ALPHA_OPAQUE</cite> (<cite>255</cite>).</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L686"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L686" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getRenderDrawColor"><a name="getRenderDrawColor,Renderer,ptr.uint8,ptr.uint8,ptr.uint8,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRenderDrawColor</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span>
@@ -2139,10 +1959,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">a</span></tt> A pointer to the alpha value used to draw on the rendering target, usually <cite>ALPHA_OPAQUE</cite> (<cite>255</cite>).</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L707"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L707" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setRenderDrawBlendMode"><a name="setRenderDrawBlendMode,Renderer,BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setRenderDrawBlendMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2156,10 +1972,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getRenderDrawBlendMode()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L729"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L729" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getRenderDrawBlendMode"><a name="getRenderDrawBlendMode,Renderer,ptr.BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRenderDrawBlendMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -2172,10 +1984,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setRenderDrawBlendMode()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L746"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L746" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderClear"><a name="renderClear,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderClear</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderClear&quot;</span><span class="Other">,</span>
@@ -2185,10 +1993,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>This procedure clears the entire rendering target, ignoring the viewport, and the clip rectangle.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L761"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L761" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderDrawPoint"><a name="renderDrawPoint,Renderer,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawPoint</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2200,10 +2004,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">y</span></tt> The y coordinate of the point.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L770"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L770" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderDrawPoints"><a name="renderDrawPoints,Renderer,ptr.Point,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawPoints</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">points</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Point</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2215,10 +2015,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">count</span></tt> The number of points to draw.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L782"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L782" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderDrawLine"><a name="renderDrawLine,Renderer,cint,cint,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawLine</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y1</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">x2</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
@@ -2232,10 +2028,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">y2</span></tt> The y coordinate of the end point.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L795"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L795" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderDrawLines"><a name="renderDrawLines,Renderer,ptr.Point,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawLines</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">points</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Point</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2247,10 +2039,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">count</span></tt> The number of points, drawing <cite>count-1</cite> lines.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L812"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L812" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderDrawRect"><a name="renderDrawRect,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2261,10 +2049,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">rect</span></tt> A pointer to the destination rectangle, or <cite>nil</cite> to outline the entire rendering target.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L825"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L825" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderDrawRects"><a name="renderDrawRects,Renderer,ptr.Rect,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawRects</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rects</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2276,10 +2060,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">count</span></tt> The number of rectangles.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L836"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L836" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderFillRect"><a name="renderFillRect,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderFillRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2290,10 +2070,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">rect</span></tt> A pointer to the destination rectangle, or <cite>nil</cite> for the entire rendering target.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L849"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L849" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderFillRects"><a name="renderFillRects,Renderer,ptr.Rect,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderFillRects</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rects</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2305,10 +2081,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">count</span></tt> The number of rectangles.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L860"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L860" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderCopy"><a name="renderCopy,Renderer,Texture,ptr.Rect,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderCopy</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span>
@@ -2322,10 +2094,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">dstrect</span></tt> A pointer to the destination rectangle, or <cite>nil</cite> for the entire rendering target.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L874"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L874" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderCopyEx"><a name="renderCopyEx,Renderer,Texture,ptr.Rect,ptr.Rect,cdouble,ptr.Point,RendererFlip"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderCopyEx</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span>
@@ -2338,15 +2106,11 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">texture</span></tt> The source texture.</p>
 <p><tt class="docutils literal"><span class="pre">srcrect</span></tt> A pointer to the source rectangle, or <cite>nil</cite> for the entire texture.</p>
 <p><tt class="docutils literal"><span class="pre">dstrect</span></tt> A pointer to the destination rectangle, or <cite>nil</cite> for the entire rendering target.</p>
-<p><tt class="docutils literal"><span class="pre">angle</span></tt> An angle in degrees that indicates the rotation that will be applied to dstrect.</p>
+<p><tt class="docutils literal"><span class="pre">angle</span></tt> An angle in degrees that indicates the rotation that will be applied to dstrect, rotating it in a clockwise direction.</p>
 <p><tt class="docutils literal"><span class="pre">center</span></tt> A pointer to a point indicating the point around which <tt class="docutils literal"><span class="pre">dstrect</span></tt> will be rotated (if <cite>nil</cite>, rotation will be done around <cite>dstrect.w/2</cite>, <cite>dstrect.h/2</cite>).</p>
 <p><tt class="docutils literal"><span class="pre">flip</span></tt> <tt class="docutils literal"><span class="pre">RendererFlip</span></tt> value stating which flipping actions should be performed on the texture.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L892"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L892" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderReadPixels"><a name="renderReadPixels,Renderer,ptr.Rect,uint32,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderReadPixels</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span>
@@ -2362,20 +2126,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if pixel reading is not supported.</p>
 <p><tt class="docutils literal"><span class="pre">Warning:</span></tt> This is a very slow operation, and should not be used frequently.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L922"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L922" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="renderPresent"><a name="renderPresent,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderPresent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderPresent&quot;</span><span class="Other">,</span>
                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Update the screen with rendering performed.
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L945"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L945" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="destroyTexture"><a name="destroyTexture,Texture"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroyTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroyTexture&quot;</span><span class="Other">,</span>
@@ -2386,10 +2142,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">createTexture()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">createTextureFromSurface()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L949"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L949" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="destroyRenderer"><a name="destroyRenderer,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroyRenderer</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroyRenderer&quot;</span><span class="Other">,</span>
@@ -2399,10 +2151,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">createRenderer()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L959"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L959" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="glBindTexture"><a name="glBindTexture,Texture,ptr.cfloat,ptr.cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glBindTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">texw</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">;</span> <span class="Identifier">texh</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2414,10 +2162,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">texh</span></tt> A pointer to a float that will be filled with the texture height.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the operation is not supported.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L967"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L967" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="glUnbindTexture"><a name="glUnbindTexture,Texture"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glUnbindTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -2427,10 +2171,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">texture</span></tt> The SDL texture to unbind.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the operation is not supported.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L981"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L981" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -2441,37 +2181,21 @@ class="link-seesrc" target="_blank">Source</a>
 <dt id="setTextureColorMod"><a name="setTextureColorMod.t,Texture,Color"></a><pre><span class="Keyword">template</span> <span class="Identifier">setTextureColorMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L303"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L303" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getTextureColorMod"><a name="getTextureColorMod.t,Texture,Color"></a><pre><span class="Keyword">template</span> <span class="Identifier">getTextureColorMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L325"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L325" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setRenderDrawColor"><a name="setRenderDrawColor.t,Renderer,Color"></a><pre><span class="Keyword">template</span> <span class="Identifier">setRenderDrawColor</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L704"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L704" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getRenderDrawColor"><a name="getRenderDrawColor.t,Renderer,Color"></a><pre><span class="Keyword">template</span> <span class="Identifier">getRenderDrawColor</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/render.nim#L725"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/render.nim#L725" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -2484,7 +2208,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>

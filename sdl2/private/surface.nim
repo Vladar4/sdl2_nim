@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2017 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -99,6 +99,7 @@ proc createRGBSurface*(
   ##
   ##  ``aMask`` The alpha mask of the surface to create.
 
+# FIXME for 2.1: why does this ask for depth? Format provides that.
 proc createRGBSurfaceWithFormat*(
     flags: uint32; width: cint; height: cint; depth: cint;
     format: uint32): Surface {.
@@ -341,6 +342,10 @@ proc getClipRect*(surface: Surface; rect: ptr Rect) {.
   ##
   ##  ``rect`` must be a pointer to a valid rectangle which will be filled
   ##  with the correct values.
+
+proc duplicateSurface*(surface: Surface): Surface {.
+    cdecl, importc: "SDL_DuplicateSurface", dynlib: SDL2_LIB.}
+  ##  Creates a new surface identical to the existing surface.
 
 proc convertSurface*(
     src: Surface; fmt: ptr PixelFormat; flags: uint32): Surface {.

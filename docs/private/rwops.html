@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module rwops</title>
@@ -1324,6 +1326,8 @@ function main() {
     title="allocRW*(): ptr RWops"><wbr />alloc<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#freeRW,ptr.RWops"
     title="freeRW*(area: ptr RWops)"><wbr />free<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#loadFileRW,ptr.RWops,ptr.csize,cint"
+    title="loadFileRW*(src: ptr RWops; datasize: ptr csize; freesrc: cint): pointer"><wbr />load<wbr />File<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#readU8,ptr.RWops"
     title="readU8*(src: ptr RWops): uint8"><wbr />read<wbr />U8<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#readLE16,ptr.RWops"
@@ -1370,6 +1374,8 @@ function main() {
     title="rwWrite*(ctx, p, size, n: untyped): untyped"><wbr />rw<wbr />Write<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#rwClose.t,untyped"
     title="rwClose*(ctx: untyped): untyped"><wbr />rw<wbr />Close<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#loadFile.t,untyped,untyped"
+    title="loadFile*(file, datasize: untyped): untyped"><wbr />load<wbr />File<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1398,10 +1404,6 @@ function main() {
 </pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L38"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L38" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RWopsWindowsioBuffer"><a name="RWopsWindowsioBuffer"></a><pre><span class="Identifier">RWopsWindowsioBuffer</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1411,10 +1413,6 @@ class="link-seesrc" target="_blank">Source</a>
 </pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L49"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L49" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RWopsWindowsio"><a name="RWopsWindowsio"></a><pre><span class="Identifier">RWopsWindowsio</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1424,10 +1422,6 @@ class="link-seesrc" target="_blank">Source</a>
 </pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L54"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L54" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RWopsStdio"><a name="RWopsStdio"></a><pre><span class="Identifier">RWopsStdio</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1436,10 +1430,6 @@ class="link-seesrc" target="_blank">Source</a>
 </pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L59"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L59" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RWopsMemio"><a name="RWopsMemio"></a><pre><span class="Identifier">RWopsMemio</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1449,10 +1439,6 @@ class="link-seesrc" target="_blank">Source</a>
 </pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L63"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L63" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RWopsUnknownio"><a name="RWopsUnknownio"></a><pre><span class="Identifier">RWopsUnknownio</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1461,10 +1447,6 @@ class="link-seesrc" target="_blank">Source</a>
 </pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L68"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L68" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RWopsKind"><a name="RWopsKind"></a><pre><span class="Identifier">RWopsKind</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">union</span></div><span class="Other pragmaend">.}</span>
@@ -1476,10 +1458,6 @@ class="link-seesrc" target="_blank">Source</a>
 </pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L72"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L72" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RWops"><a name="RWops"></a><pre><span class="Identifier">RWops</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1514,10 +1492,6 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 This is the read/write operation structure -- very basic.
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L79"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L79" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1528,82 +1502,46 @@ class="link-seesrc" target="_blank">Source</a>
 <dt id="RWOPS_UNKNOWN"><a name="RWOPS_UNKNOWN"></a><pre><span class="Identifier">RWOPS_UNKNOWN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 Unknown stream type
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L30"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L30" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RWOPS_WINFILE"><a name="RWOPS_WINFILE"></a><pre><span class="Identifier">RWOPS_WINFILE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
 Win32 file
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L31"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L31" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RWOPS_STDFILE"><a name="RWOPS_STDFILE"></a><pre><span class="Identifier">RWOPS_STDFILE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
 <dd>
 Stdio file
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L32"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L32" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RWOPS_JNIFILE"><a name="RWOPS_JNIFILE"></a><pre><span class="Identifier">RWOPS_JNIFILE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">3</span></pre></dt>
 <dd>
 Android asset
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L33"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L33" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RWOPS_MEMORY"><a name="RWOPS_MEMORY"></a><pre><span class="Identifier">RWOPS_MEMORY</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">4</span></pre></dt>
 <dd>
 Memory stream
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L34"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L34" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RWOPS_MEMORY_RO"><a name="RWOPS_MEMORY_RO"></a><pre><span class="Identifier">RWOPS_MEMORY_RO</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">5</span></pre></dt>
 <dd>
 Read-Only memory stream
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L35"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L35" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RW_SEEK_SET"><a name="RW_SEEK_SET"></a><pre><span class="Identifier">RW_SEEK_SET</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 Seek from the beginning of data
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L150"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L150" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RW_SEEK_CUR"><a name="RW_SEEK_CUR"></a><pre><span class="Identifier">RW_SEEK_CUR</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
 Seek relative to current read point
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L151"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L151" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="RW_SEEK_END"><a name="RW_SEEK_END"></a><pre><span class="Identifier">RW_SEEK_END</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
 <dd>
 Seek relative to the end of data
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L152"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L152" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1615,197 +1553,129 @@ class="link-seesrc" target="_blank">Source</a>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RWFromFile&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L123"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L123" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="rwFromFP"><a name="rwFromFP,File,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rwFromFP</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">fp</span><span class="Other">:</span> <span class="Identifier">File</span><span class="Other">;</span> <span class="Identifier">autoclose</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RWFromFP&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L126"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L126" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="rwFromMem"><a name="rwFromMem,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rwFromMem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mem</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RWFromMem&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L133"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L133" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="rwFromConstMem"><a name="rwFromConstMem,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rwFromConstMem</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mem</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RWFromConstMem&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L136"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L136" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="allocRW"><a name="allocRW,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocRW</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AllocRW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L142"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L142" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="freeRW"><a name="freeRW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freeRW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">area</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FreeRW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L145"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L145" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<dt id="loadFileRW"><a name="loadFileRW,ptr.RWops,ptr.csize,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadFileRW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">datasize</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">csize</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LoadFile_RW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+<p>Load all the data from an SDL data stream.</p>
+<p>The data is allocated with a zero byte at the end (null terminated).</p>
+<p>If <tt class="docutils literal"><span class="pre">datasize</span></tt> is not <tt class="docutils literal"><span class="pre">nil</span></tt>, it is filled with the size of the data read.</p>
+<p>If <tt class="docutils literal"><span class="pre">freesrc</span></tt> is non-zero, the stream will be closed after being read.</p>
+<p>The data should be freed with <tt class="docutils literal"><span class="pre">free()</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the data, or <tt class="docutils literal"><span class="pre">nil</span></tt> if there was an error.</p>
+
 
 </dd>
 <dt id="readU8"><a name="readU8,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readU8</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadU8&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L183"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L183" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="readLE16"><a name="readLE16,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readLE16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadLE16&quot;</span><span class="Other">,</span>
                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L186"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L186" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="readBE16"><a name="readBE16,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readBE16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadBE16&quot;</span><span class="Other">,</span>
                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L189"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L189" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="readLE32"><a name="readLE32,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readLE32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadLE32&quot;</span><span class="Other">,</span>
                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L192"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L192" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="readBE32"><a name="readBE32,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readBE32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadBE32&quot;</span><span class="Other">,</span>
                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L195"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L195" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="readLE64"><a name="readLE64,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readLE64</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint64</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadLE64&quot;</span><span class="Other">,</span>
                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L198"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L198" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="readBE64"><a name="readBE64,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readBE64</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint64</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ReadBE64&quot;</span><span class="Other">,</span>
                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L201"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L201" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="writeU8"><a name="writeU8,ptr.RWops,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeU8</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteU8&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L209"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L209" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="writeLE16"><a name="writeLE16,ptr.RWops,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeLE16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteLE16&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L212"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L212" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="writeBE16"><a name="writeBE16,ptr.RWops,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeBE16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteBE16&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L215"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L215" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="writeLE32"><a name="writeLE32,ptr.RWops,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeLE32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteLE32&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L218"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L218" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="writeBE32"><a name="writeBE32,ptr.RWops,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeBE32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteBE32&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L221"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L221" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="writeLE64"><a name="writeLE64,ptr.RWops,uint64"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeLE64</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint64</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteLE64&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L224"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L224" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="writeBE64"><a name="writeBE64,ptr.RWops,uint64"></a><pre><span class="Keyword">proc</span> <span class="Identifier">writeBE64</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint64</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteBE64&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L227"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L227" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1816,55 +1686,39 @@ class="link-seesrc" target="_blank">Source</a>
 <dt id="rwSize"><a name="rwSize.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">rwSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L159"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L159" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="rwSeek"><a name="rwSeek.t,untyped,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">rwSeek</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">,</span> <span class="Identifier">offset</span><span class="Other">,</span> <span class="Identifier">whence</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L162"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L162" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="rwTell"><a name="rwTell.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">rwTell</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L165"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L165" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="rwRead"><a name="rwRead.t,untyped,untyped,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">rwRead</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">,</span> <span class="Identifier">p</span><span class="Other">,</span> <span class="Identifier">size</span><span class="Other">,</span> <span class="Identifier">n</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L168"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L168" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="rwWrite"><a name="rwWrite.t,untyped,untyped,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">rwWrite</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">,</span> <span class="Identifier">p</span><span class="Other">,</span> <span class="Identifier">size</span><span class="Other">,</span> <span class="Identifier">n</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L171"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L171" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="rwClose"><a name="rwClose.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">rwClose</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/rwops.nim#L174"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/rwops.nim#L174" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<dt id="loadFile"><a name="loadFile.t,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">loadFile</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">,</span> <span class="Identifier">datasize</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dd>
+<p>
+Load an entire file.</p>
+<p>Convenience template.</p>
+
 
 </dd>
 
@@ -1877,7 +1731,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>

@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module keyboard</title>
@@ -1290,10 +1292,6 @@ function main() {
 The SDL keysym object, used in key events.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> If you are looking for translated character input, see the TEXTINPUT event.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L28"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L28" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1305,10 +1303,6 @@ class="link-seesrc" target="_blank">Source</a>
                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the window which currently has keyboard focus.
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L40"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L40" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getKeyboardState"><a name="getKeyboardState,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getKeyboardState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">numkeys</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">NUM_SCANCODES</span><span class="Other">.</span><span class="Identifier">int</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1318,22 +1312,14 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">numkeys</span></tt> if non-<cite>nil</cite>, receives the length of the returned array.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> an array of key states. Indexes into this array are obtained by using <tt class="docutils literal"><span class="pre">Scancode</span></tt> values.</p>
 <p>Example:</p>
-<pre class = "listing"><span class="Keyword">let</span> <span class="Identifier">state</span> <span class="Operator">=</span> <span class="Identifier">getKeyboardState</span><span class="Punctuation">(</span><span class="Keyword">nil</span><span class="Punctuation">)</span>
+<pre class="listing"><span class="Keyword">let</span> <span class="Identifier">state</span> <span class="Operator">=</span> <span class="Identifier">getKeyboardState</span><span class="Punctuation">(</span><span class="Keyword">nil</span><span class="Punctuation">)</span>
 <span class="Keyword">if</span> <span class="Identifier">state</span><span class="Punctuation">[</span><span class="Identifier">SCANCODE_RETURN</span><span class="Punctuation">]</span> <span class="Operator">&gt;</span> <span class="DecNumber">0</span><span class="Punctuation">:</span>
   <span class="Identifier">echo</span> <span class="StringLit">&quot;&lt;RETURN&gt; is pressed.&quot;</span></pre>
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L44"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L44" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getModState"><a name="getModState,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getModState</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Keymod</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetModState&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the current key modifier state for the keyboard.
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L62"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L62" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setModState"><a name="setModState,Keymod"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setModState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">modstate</span><span class="Other">:</span> <span class="Identifier">Keymod</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetModState&quot;</span><span class="Other">,</span>
@@ -1342,10 +1328,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Set the current key modifier state for the keyboard.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> This does not change the keyboard state, only the key modifier flags.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L66"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L66" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getKeyFromScancode"><a name="getKeyFromScancode,Scancode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getKeyFromScancode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">scancode</span><span class="Other">:</span> <span class="Identifier">Scancode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Keycode</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1356,10 +1338,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getKeyName()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L73"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L73" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getScancodeFromKey"><a name="getScancodeFromKey,Keycode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getScancodeFromKey</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">Keycode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Scancode</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1370,10 +1348,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getScancodeName()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L84"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L84" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getScancodeName"><a name="getScancodeName,Scancode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getScancodeName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">scancode</span><span class="Other">:</span> <span class="Identifier">Scancode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1384,10 +1358,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">Scancode</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L95"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L95" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getScancodeFromName"><a name="getScancodeFromName,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getScancodeFromName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Scancode</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1398,10 +1368,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">Scancode</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L107"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L107" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getKeyName"><a name="getKeyName,Keycode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getKeyName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">Keycode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetKeyName&quot;</span><span class="Other">,</span>
@@ -1412,10 +1378,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">Keycode</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L117"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L117" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="getKeyFromName"><a name="getKeyFromName,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getKeyFromName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Keycode</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetKeyFromName&quot;</span><span class="Other">,</span>
@@ -1426,10 +1388,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">Keycode</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L130"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L130" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="startTextInput"><a name="startTextInput,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">startTextInput</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_StartTextInput&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -1441,10 +1399,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">setTextInputRect()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hasScreenKeyboardSupport()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L140"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L140" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="isTextInputActive"><a name="isTextInputActive,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isTextInputActive</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_IsTextInputActive&quot;</span><span class="Other">,</span>
@@ -1455,10 +1409,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">startTextInput()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">stopTextInput()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L154"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L154" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="stopTextInput"><a name="stopTextInput,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">stopTextInput</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_StopTextInput&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -1469,10 +1419,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p><tt class="docutils literal"><span class="pre">startTextInput()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">hasScreenKeyboardSupport()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L164"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L164" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="setTextInputRect"><a name="setTextInputRect,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setTextInputRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetTextInputRect&quot;</span><span class="Other">,</span>
@@ -1483,10 +1429,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">startTextInput()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L176"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L176" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="hasScreenKeyboardSupport"><a name="hasScreenKeyboardSupport,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasScreenKeyboardSupport</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1499,10 +1441,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">isScreenKeyboardShown()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L186"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L186" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="isScreenKeyboardShown"><a name="isScreenKeyboardShown,ptr.Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isScreenKeyboardShown</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1514,10 +1452,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">hasScreenKeyboardSupport()</span></tt></p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L199"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L199" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1528,10 +1462,6 @@ class="link-seesrc" target="_blank">Source</a>
 <dt id="[]"><a name="[].t,array[Idx,T],Scancode"></a><pre><span class="Keyword">template</span> <span class="Other">`</span><span class="Operator">[]</span><span class="Other">`</span><span class="Operator">*</span><span class="Other">[</span><span class="Identifier">Idx</span><span class="Other">,</span> <span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">Idx</span><span class="Other">,</span> <span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">Scancode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/keyboard.nim#L60"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/keyboard.nim#L60" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1544,7 +1474,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-01-06 16:18:24 UTC</small>
+        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
       </div>
     </div>
   </div>
