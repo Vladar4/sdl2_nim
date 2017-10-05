@@ -678,3 +678,9 @@ proc registerEvents*(numevents: cint): uint32 {.
   ##
   ##  If there aren't enough user-defined events left, this procedure
   ##  returns `-1'u32`.
+
+iterator events*(): sdl.Event =
+  ## Iterate through and consume the event queue.
+  var event: sdl.Event
+  while pollEvent(event.addr) != 0:
+    yield event
