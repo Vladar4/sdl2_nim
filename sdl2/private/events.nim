@@ -684,3 +684,4 @@ iterator events*(): sdl.Event =
   var event: sdl.Event
   while pollEvent(event.addr) != 0:
     yield event
+

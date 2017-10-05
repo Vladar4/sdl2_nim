@@ -23,15 +23,19 @@
 ##  ==========
 ##
 
-proc malloc*(size: uint): pointer {.cdecl, importc: "SDL_malloc", dynlib: SDL2_LIB.}
+proc malloc*(size: csize): pointer {.
+    cdecl, importc: "SDL_malloc", dynlib: SDL2_LIB.}
   ## Allocate memory with the same memory allocater that SDL uses.
 
-proc calloc*(nmemb, size: uint): pointer {.cdecl, importc: "SDL_calloc", dynlib: SDL2_LIB.}
+proc calloc*(nmemb: csize; size: csize): pointer {.
+    cdecl, importc: "SDL_calloc", dynlib: SDL2_LIB.}
 
-proc realloc*(mem: pointer; size: uint): pointer {.cdecl, importc: "SDL_realloc", dynlib: SDL2_LIB.}
+proc realloc*(mem: pointer; size: csize): pointer {.
+    cdecl, importc: "SDL_realloc", dynlib: SDL2_LIB.}
 
-proc free*(size: pointer): void {.cdecl, importc: "SDL_free", dynlib: SDL2_LIB.}
-  ## When SDL allocates memory that you have to free. Free it with this procedure.
+proc free*(mem: pointer) {.cdecl, importc: "SDL_free", dynlib: SDL2_LIB.}
+  ## When SDL allocates memory that you have to free,
+  ## free it with this procedure.
 
 template ptrMath*(body: untyped) =  ##  \
   ##  Pointer arithmetic. Could be used for pixels manipulation.
