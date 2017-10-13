@@ -248,7 +248,7 @@ proc joystickGetAxis*(joystick: Joystick; axis: cint): int16 {.
   ##
   ##  The axis indices start at index `0`.
 
-proc  joystickGetAxisInitialState(joystick: Joystick, axis: cint, state: ptr int16): cint {.
+proc joystickGetAxisInitialState*(joystick: Joystick, axis: cint, state: ptr int16): cint {.
     cdecl, importc: "SDL_JoystickGetAxisInitialState", dynlib: SDL2_LIB.}
   ##  Get the initial state of an axis control on a joystick.
   ##
@@ -325,4 +325,3 @@ proc joystickClose*(joystick: Joystick) {.
 proc joystickCurrentPowerLevel*(joystick: Joystick): JoystickPowerLevel {.
     cdecl, importc: "SDL_JoystickCurrentPowerLevel", dynlib: SDL2_LIB.}
   ##  Return the battery level of this ``joystick``.
-
