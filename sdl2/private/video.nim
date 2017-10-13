@@ -243,8 +243,8 @@ const # GLcontextReleaseFlag
   GL_CONTEXT_RELEASE_BEHAVIOUR_FLUSH* = 0x0001
 
 const # GLcontextResetNotification*
-  GL_CONTEXT_RESET_NO_NOTIFICATION    = 0x0000
-  GL_CONTEXT_RESET_LOSE_CONTEXT       = 0x0001
+  GL_CONTEXT_RESET_NO_NOTIFICATION*   = 0x0000
+  GL_CONTEXT_RESET_LOSE_CONTEXT*      = 0x0001
 
 
 # Procedure prototypes
