@@ -265,12 +265,7 @@ else:
     PIXELFORMAT_ABGR32* = PIXELFORMAT_RGBA8888
 
 type
-  Color* = object
-    r*: uint8
-    g*: uint8
-    b*: uint8
-    a*: uint8
-
+  Color* = tuple[r, g, b, a: uint8]
   Colour* = Color
 
 type
@@ -412,7 +407,6 @@ proc getRGB*(pixel: uint32; format: ptr PixelFormat;
   ##  ``getRGBA()``
 
 proc getRGB*(pixel: uint32, format: ptr PixelFormat): Color {.inline.} =
-  result = Color()
   getRGB(pixel, format,
     addr(result.r), addr(result.g), addr(result.b))
 
@@ -426,7 +420,6 @@ proc getRGBA*(pixel: uint32; format: ptr PixelFormat;
   ##  ``getRGB()``
 
 proc getRGBA*(pixel: uint32, format: ptr PixelFormat): Color {.inline.} =
-  result = Color()
   getRGBA(pixel, format,
     addr(result.r), addr(result.g), addr(result.b), addr(result.a))
 
