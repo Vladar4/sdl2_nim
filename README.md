@@ -19,7 +19,7 @@ Includes:
 * SDL_net 2.0.1
 * SDL_ttf 2.0.14
 
-What does not implemented here:
+What is not implemented here:
 -------------------------------
 
 * OpenGL headers (use [opengl](https://github.com/nim-lang/opengl) lib instead)
@@ -37,17 +37,17 @@ d     - sdl2_nim revision
 
 FAQ:
 ====
-**Q**: Why it exist if there's official [nim-lang/sdl2](https://github.com/nim-lang/sdl2) repository?
+**Q**: Why does this exist if there's an official [nim-lang/sdl2](https://github.com/nim-lang/sdl2) repository?
 
-**A**: This wrapper is actually was created before the official (Aug.2013 vs. Mar.2014). It may be, I wouldn't make it if there was other wrapper at the time.
+**A**: This wrapper actually was created before the official (Aug. 2013 vs. Mar. 2014). Maybe I wouldn't have made it if there already was a wrapper at the time.
 
-**Q**: How it is different from the official wrapper?
+**Q**: How is it different from the official wrapper?
 
 **A**: Obviously, it can't be *much* different, as they both are wrappers for the same library, but what comes to mind:
 
 * This one is fully documented, nim-style, with the generated documentation as a bonus;
 * I personally created a series of highly commented examples for almost every aspect of the library and its "satelites" (gfx, ttf, etc.);
-* Design decisions that I thought made more sence than official one's (like Event type through {.union.} vs. evConv template with casting; naming sceme closer to the original sdl2, etc.);
+* Design decisions that I thought made more sense than official one's (like Event type through {.union.} vs. evConv template with casting; naming sceme closer to the original sdl2, etc.);
 * Source files' structure is closely following the original library.
 
 **Q**: Why should I use this one vs. the official?
@@ -101,4 +101,3 @@ CHANGELOG:
 * added SDL2-net
 * added event convertion templates
 * different fixes
-

@@ -1197,7 +1197,7 @@ proc setTargetRGB*(target: Target; r, g, b: uint8) {.
 
 proc setTargetRGBA*(target: Target; r, g, b, a: uint8) {.
     cdecl, importc: "GPU_SetTargetRGBA", dynlib: SDL2_GPU_LIB.}
-  ##  Sets the modulation color for subsequent drawing of images and shapes on the given target. 
+  ##  Sets the modulation color for subsequent drawing of images and shapes on the given target.
   ##  This has a cumulative effect with the image coloring functions.
   ##  e.g. setRGB(image, 255, 128, 0); setTargetRGB(target, 128, 128, 128);
   ##  Would make the image draw with color of roughly (128, 64, 0).
@@ -1213,17 +1213,17 @@ proc unsetTargetColor*(target: Target) {.
 
 # SurfaceControls
 
-proc loadSurface*(filename: cstring): ptr Surface {.
+proc loadSurface*(filename: cstring): Surface {.
     cdecl, importc: "GPU_LoadSurface", dynlib: SDL2_GPU_LIB.}
   ##  Load surface from an image file that is supported by this renderer.
   ##  Don't forget to SDL's ``freeSurface()`` it.
 
-proc loadSurfaceRW*(rwops: ptr RWops; freeRwops: bool): ptr Surface {.
+proc loadSurfaceRW*(rwops: ptr RWops; freeRwops: bool): Surface {.
     cdecl, importc: "GPU_LoadSurface_RW", dynlib: SDL2_GPU_LIB.}
   ##  Load surface from an image file in memory.
   ##  Don't forget to SDL's ``freeSurface()`` it.
 
-proc saveSurface*(surface: ptr Surface; filename: cstring; format: FileFormat): bool {.
+proc saveSurface*(surface: Surface; filename: cstring; format: FileFormat): bool {.
     cdecl, importc: "GPU_SaveSurface", dynlib: SDL2_GPU_LIB.}
   ##  Save surface to a file.
   ##  With a format of `FILE_AUTO`, the file type is deduced from the extension.
@@ -1232,7 +1232,7 @@ proc saveSurface*(surface: ptr Surface; filename: cstring; format: FileFormat): 
   ##
   ##  ``Return`` `0` on failure.
 
-proc saveSurfaceRW*(surface: ptr Surface; rwops: ptr RWops; freeRwops: bool;
+proc saveSurfaceRW*(surface: Surface; rwops: ptr RWops; freeRwops: bool;
                    format: FileFormat): bool {.
     cdecl, importc: "GPU_SaveSurface_RW", dynlib: SDL2_GPU_LIB.}
   ##  Save surface to a ``RWops`` stream.
@@ -1303,7 +1303,7 @@ proc unsetImageVirtualResolution*(image: Image) {.
     cdecl, importc: "GPU_UnsetImageVirtualResolution", dynlib: SDL2_GPU_LIB.}
   ##  Reset the logical size of the given image to its original value.
 
-proc updateImage*(image: Image; imageRect: ptr Rect; surface: ptr Surface;
+proc updateImage*(image: Image; imageRect: ptr Rect; surface: Surface;
                   surfaceRect: ptr Rect) {.
     cdecl, importc: "GPU_UpdateImage", dynlib: SDL2_GPU_LIB.}
   ##  Update an image from surface data.
@@ -1319,7 +1319,7 @@ proc updateImageBytes*(
   ##  Ignores virtual resolution on the image
   ##  so the number of pixels needed from the surface is known.
 
-proc replaceImage*(image: Image; surface: ptr Surface; surfaceRect: ptr Rect): bool {.
+proc replaceImage*(image: Image; surface: Surface; surfaceRect: ptr Rect): bool {.
     cdecl, importc: "GPU_ReplaceImage", dynlib: SDL2_GPU_LIB.}
   ##  Update an image from surface data,
   ##  replacing its underlying texture to allow for size changes.
@@ -1426,7 +1426,7 @@ proc setWrapMode*(image: Image; wrapModeX: Wrap; wrapModeY: Wrap) {.
 
 # Surface / Image / Target conversions
 
-proc copyImageFromSurface*(surface: ptr Surface): Image {.
+proc copyImageFromSurface*(surface: Surface): Image {.
     cdecl, importc: "GPU_CopyImageFromSurface", dynlib: SDL2_GPU_LIB.}
   ##  Copy Surface data into a new image.
   ##  Don't forget to SDL's ``freeSurface()`` the surface
@@ -1437,12 +1437,12 @@ proc copyImageFromTarget*(target: Target): Image {.
   ##  Copy target data into a new image.
   ##  Don't forget to ``freeImage()`` the image.
 
-proc copySurfaceFromTarget*(target: Target): ptr Surface {.
+proc copySurfaceFromTarget*(target: Target): Surface {.
     cdecl, importc: "GPU_CopySurfaceFromTarget", dynlib: SDL2_GPU_LIB.}
   ##  Copy target data into a new ``Surface``.
   ##  Don't forget to SDL's ``freeSurface()`` the surface.
 
-proc copySurfaceFromImage*(image: Image): ptr Surface {.
+proc copySurfaceFromImage*(image: Image): Surface {.
     cdecl, importc: "GPU_CopySurfaceFromImage", dynlib: SDL2_GPU_LIB.}
   ##  Copy image data into a new ``Surface``.
   ##  Don't forget to SDL's ``freeSurface()`` the surface
@@ -2420,4 +2420,3 @@ proc setAttributeSource*(numValues: cint; source: Attribute) {.
   ##  Enables a shader attribute and sets its source data.
 
 # End of ShaderInterface
-
