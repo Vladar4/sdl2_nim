@@ -273,6 +273,12 @@ type
 
   Colour* = Color
 
+converter tupleToColor*(c: tuple[r, g, b, a: int]): Color =
+  Color(r: c.r.uint8, g: c.g.uint8, b: c.b.uint8, a: c.a.uint8)
+
+converter tupleToColor*(c: tuple[r, g, b: int]): Color =
+  Color(r: c.r.uint8, g: c.g.uint8, b: c.b.uint8, a: 0xFF)
+
 type
   Palette* = object
     ncolors*: cint
