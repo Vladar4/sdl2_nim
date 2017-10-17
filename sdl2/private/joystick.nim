@@ -166,7 +166,7 @@ proc joystickGetVendor*(joystick: Joystick): uint16 {.
 
 proc joystickGetProduct*(joystick: Joystick): uint16 {.
     cdecl, importc: "SDL_JoystickGetProduct", dynlib: SDL2_LIB.}
-  ##  ``Return` the USB product ID of an opened joystick, if available.
+  ##  ``Return`` the USB product ID of an opened joystick, if available.
   ##  If the product ID isn't available this function returns `0`.
 
 proc joystickGetProductVersion*(joystick: Joystick): uint16 {.
