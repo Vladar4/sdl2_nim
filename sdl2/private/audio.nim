@@ -456,7 +456,6 @@ type
     ##
     ##  This is opaque to the outside world.
 
-
 proc newAudioStream*(
   srcFormat: AudioFormat; srcChannels: uint8; srcRate: cint;
   dstFormat: AudioFormat; dstChannels: uint8; dstRate: cint): AudioStream {.
@@ -487,7 +486,6 @@ proc newAudioStream*(
 ##
 ##   ``freeAudioStream()``
 
-
 proc audioStreamPut*(stream: AudioStream; buf: pointer; len: cint): cint {.
     cdecl, importc: "SDL_AudioStreamPut", dynlib: SDL2_LIB.}
 ##  Add data to be converted/resampled to the stream
@@ -513,7 +511,6 @@ proc audioStreamPut*(stream: AudioStream; buf: pointer; len: cint): cint {.
 ##  ``audioStreamClear()``
 ##
 ##  ``freeAudioStream()``
-
 
 proc audioStreamGet*(stream: AudioStream; buf: pointer; len: cint): cint {.
     cdecl, importc: "SDL_AudioStreamGet", dynlib: SDL2_LIB.}
@@ -542,7 +539,6 @@ proc audioStreamGet*(stream: AudioStream; buf: pointer; len: cint): cint {.
 ##  ``freeAudioStream()``
 ##
 
-
 proc audioStreamAvailable*(stream: AudioStream): cint {.
     cdecl, importc: "SDL_AudioStreamAvailable", dynlib: SDL2_LIB.}
 ##  Get the number of converted/resampled bytes available. The stream may be
@@ -563,7 +559,6 @@ proc audioStreamAvailable*(stream: AudioStream): cint {.
 ##  ``audioStreamClear()``
 ##
 ##  ``freeAudioStream()``
-
 
 proc audioStreamFlush*(stream: AudioStream): cint {.
     cdecl, importc: "SDL_AudioStreamFlush", dynlib: SDL2_LIB.}
@@ -586,7 +581,6 @@ proc audioStreamFlush*(stream: AudioStream): cint {.
 ##
 ##  ``audioStreamClear()``
 
-
 proc audioStreamClear*(stream: AudioStream) {.
     cdecl, importc: "SDL_AudioStreamClear", dynlib: SDL2_LIB.}
 ##  Clear any pending data in the stream without converting it.
@@ -604,7 +598,6 @@ proc audioStreamClear*(stream: AudioStream) {.
 ##  ``audioStreamFlush()``
 ##
 ##  ``freeAudioStream()``
-
 
 proc freeAudioStream*(stream: AudioStream) {.
     cdecl, importc: "SDL_FreeAudioStream", dynlib: SDL2_LIB.}
