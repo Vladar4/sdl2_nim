@@ -1,6 +1,6 @@
 #
 #  SDL_mixer:  An audio mixer library based on the SDL library
-#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2017 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -70,7 +70,16 @@ import
 const
   MAJOR_VERSION* = 2
   MINOR_VERSION* = 0
-  PATCHLEVEL* = 1
+  PATCHLEVEL* = 2
+
+template compiledVersion*() = ##  \
+  ##  This is the version number macro for the current SDL_mixer version.
+  (versionNum(MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL))
+
+template versionAtLeast*(x, y, z: untyped): untyped =  ##  \
+  ##   This macro will evaluate to true if compiled
+  ##   with SDL_mixer at least X.Y.Z.
+  (compiledversion() >= versionNum(x, y, z))
 
 proc linkedVersion*(): ptr Version {.
     cdecl, importc: "Mix_Linked_Version", dynlib: SDL2_MIX_LIB.}
@@ -78,25 +87,16 @@ proc linkedVersion*(): ptr Version {.
   ##  library. It should NOT be used to fill a version structure, instead you
   ##  should use the ``version()`` template.
 
-#type
-#  InitFlags* {.size: sizeof(cint).} = enum
-#    INIT_FLAC = 0x00000001,
-#    INIT_MOD = 0x00000002,
-#    INIT_MODPLUG = 0x00000004,
-#    INIT_MP3 = 0x00000008,
-#    INIT_OGG = 0x00000010,
-#    INIT_FLUIDSYNTH = 0x00000020
-
 # InitFlags
 const
   INIT_FLAC* = 0x00000001 ##  (.flac) requiring the FLAC library on system - \
     ##  also any command-line player, which is not mixed by SDL_mixer
   INIT_MOD* = 0x00000002  ##  (.mod .xm .s3m .669 .it .med and more) \
     ##  requiring libmikmod on system
-  INIT_MODPLUG* = 0x00000004
+  INIT_MODPLUG* {.deprecated.} = 0x00000004
   INIT_MP3* = 0x00000008  ##  (.mp3) requiring SMPEG or MAD library on system
   INIT_OGG* = 0x00000010  ##  (.ogg) requiring ogg/vorbis libraries on system
-  INIT_FLUIDSYNTH* = 0x00000020
+  INIT_MID* = 0x00000020
 
 proc init*(flags: cint): cint {.
     cdecl, importc: "Mix_Init", dynlib: SDL2_MIX_LIB.}
@@ -163,7 +163,7 @@ else:
 
 const
   DEFAULT_CHANNELS* = 2
-  MAX_VOLUME* = 128 ##  Volume of a chunk
+  MAX_VOLUME* = MIX_MAXVOLUME ##  Volume of a chunk
 
 type
   Chunk* = ptr ChunkObj
@@ -203,6 +203,8 @@ type
     ##  If no music is playing then `MUS_NONE` is returned.    ##
     ##  If music is playing via an external command then `MUS_CMD` is returned.
     ##  Otherwise they are self explanatory.
+    ##
+    ##  These are types of music files (not libraries used to load them).
     MUS_NONE,
     MUS_CMD,
     MUS_WAV,
@@ -210,9 +212,9 @@ type
     MUS_MID,
     MUS_OGG,
     MUS_MP3,
-    MUS_MP3_MAD,
+    MUS_MP3_MAD_UNUSED,
     MUS_FLAC,
-    MUS_MODPLUG
+    MUS_MODPLUG_UNUSED
 
 type
   Music* = pointer ##  \
@@ -257,6 +259,11 @@ proc openAudio*(
   ##  format parameters.
   ##
   ##  ``Return`` `0` on success, `-1` on errors.
+
+proc openAudioDevice*(frequency: cint, format: uint16, channels: cint,
+  chunksize: cint, device: cstring, allowed_changes: cint): cint {.
+    cdecl, importc: "Mix_OpenAudioDevice", dynlib: SDL2_MIX_LIB.}
+  ##  Open the mixer with specific device and certain audio format.
 
 proc allocateChannels*(numchans: cint): cint {.
     cdecl, importc: "Mix_AllocateChannels", dynlib: SDL2_MIX_LIB.}
@@ -457,6 +464,9 @@ proc getChunkDecoder*(index: cint): cstring {.
   ##  This string is owned by the SDL_mixer library, do not modify or free it.
   ##  It is valid until you call ``sdl_mixer.closeAudio()`` the final time.
 
+proc hasChunkDecoder*(name: cstring): bool {.
+    cdecl, importc: "Mix_HasChunkDecoder", dynlib: SDL2_MIX_LIB.}
+
 proc getNumMusicDecoders*(): cint {.
     cdecl, importc: "Mix_GetNumMusicDecoders", dynlib: SDL2_MIX_LIB.}
   ##   Get the number of music decoders available
@@ -480,6 +490,9 @@ proc getMusicDecoder*(index: cint): cstring {.
   ##  ``Return`` the name of the ``index``'ed music decoder.
   ##  This string is owned by the SDL_mixer library, do not modify or free it.
   ##  It is valid until you call ``sdl_mixer.closeAudio()`` the final time.
+
+proc hasMusicDecoder*(name: cstring): bool {.
+    cdecl, importc: "Mix_HasMusicDecoder", dynlib: SDL2_MIX_LIB.}
 
 proc getMusicType*(music: Music): MusicType {.
     cdecl, importc: "Mix_GetMusicType", dynlib: SDL2_MIX_LIB.}
@@ -1547,8 +1560,8 @@ proc setMusicPosition*(position: cdouble): cint {.
   ##    Does not go in reverse. Negative values do nothing.
   ##
   ##  This procedurre is only implemented for MOD music formats (set pattern
-  ##  order number) and for OGG, FLAC, MP3_MAD, and MODPLUG music (set
-  ##  position in seconds), at the moment.
+  ##  order number) and for OGG, FLAC, MP3_MAD, MPD_MPG and MODPLUG music
+  ##  (set position in seconds), at the moment.
   ##
   ##  ``Return`` `0` on success,
   ##  or `-1` if the codec doesn't support this procedure.
@@ -1674,3 +1687,6 @@ template setError*(fmt: untyped): cint =
 
 template getError*(): cstring =
   sdl.getError()
+
+template clearError*() =
+  sdl.clearError()
