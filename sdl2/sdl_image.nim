@@ -1,6 +1,6 @@
 #
 #  SDL_image:  An example image loading library for use with SDL
-#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2017 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -31,7 +31,16 @@ import
 const
   MAJOR_VERSION* = 2
   MINOR_VERSION* = 0
-  PATCHLEVEL* = 1
+  PATCHLEVEL* = 2
+
+template compiledVersion*() = ##  \
+  ##  This is the version number macro for the current SDL_image version.
+  (versionNum(MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL))
+
+template versionAtLeast*(x, y, z: untyped): untyped =  ##  \
+  ##   This macro will evaluate to true if compiled
+  ##   with SDL_image at least X.Y.Z.
+  (compiledversion() >= versionNum(x, y, z))
 
 proc linkedVersion*(): ptr Version {.
     cdecl, importc: "IMG_Linked_Version", dynlib: SDL2_IMG_LIB.}
@@ -132,6 +141,9 @@ proc isPNG*(src: ptr RWops): cint {.
 proc isPNM*(src: ptr RWops): cint {.
     cdecl, importc: "IMG_isPNM", dynlib: SDL2_IMG_LIB.}
 
+proc isSVG*(src: ptr RWops): cint {.
+    cdecl, importc: "IMG_isSVG", dynlib: SDL2_IMG_LIB.}
+
 proc isTIF*(src: ptr RWops): cint {.
     cdecl, importc: "IMG_isTIF", dynlib: SDL2_IMG_LIB.}
 
@@ -176,6 +188,9 @@ proc loadPNG_RW*(src: ptr RWops): Surface {.
 proc loadPNM_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadPNM_RW", dynlib: SDL2_IMG_LIB.}
 
+proc loadSVG_RW*(src: ptr RWops): Surface {.
+    cdecl, importc: "IMG_LoadSVG_RW", dynlib: SDL2_IMG_LIB.}
+
 proc loadTGA_RW*(src: ptr RWops): Surface {.
     cdecl, importc: "IMG_LoadTGA_RW", dynlib: SDL2_IMG_LIB.}
 
@@ -204,6 +219,13 @@ proc savePNG*(surface: Surface; file: cstring): cint {.
 
 proc savePNG_RW*(surface: Surface; dst: ptr RWops; freedst: cint): cint {.
     cdecl, importc: "IMG_SavePNG_RW", dynlib: SDL2_IMG_LIB.}
+
+proc saveJPG*(surface: Surface; file: cstring; quality: cint): cint {.
+    cdecl, importc: "IMG_SaveJPG", dynlib: SDL2_IMG_LIB.}
+
+proc saveJPG_RW*(
+  surface: Surface; dst: ptr RWops; freedst: cint; quality: cint): cint {.
+    cdecl, importc: "IMG_SaveJPG_RW", dynlib: SDL2_IMG_LIB.}
 
 template setError*(fmt: untyped): cint =
   sdl.setError(fmt)
