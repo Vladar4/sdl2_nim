@@ -77,8 +77,8 @@ template compiledVersion*() = ##  \
   (versionNum(MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL))
 
 template versionAtLeast*(x, y, z: untyped): untyped =  ##  \
-  ##   This macro will evaluate to true if compiled
-  ##   with SDL_mixer at least X.Y.Z.
+  ##  This macro will evaluate to true if compiled
+  ##  with SDL_mixer at least X.Y.Z.
   (compiledversion() >= versionNum(x, y, z))
 
 proc linkedVersion*(): ptr Version {.
@@ -332,9 +332,9 @@ proc loadWAV_RW*(src: ptr RWops; freesrc: cint): Chunk {.
   ##  `nil` is returned on errors.
 
 template loadWAV*(file: untyped): untyped = ##  \
-  ##   Load file for use as a sample. This is actually
-  ##   ``sdl_mixer.loadWAV_RW(sdl.rwFromFile(file, "rb"), 1)``.
-  ##   This can load WAVE, AIFF, RIFF, OGG, and VOC files.
+  ##  Load file for use as a sample. This is actually
+  ##  ``sdl_mixer.loadWAV_RW(sdl.rwFromFile(file, "rb"), 1)``.
+  ##  This can load WAVE, AIFF, RIFF, OGG, and VOC files.
   ##
   ##  ``file`` File name to load sample from.
   ##
@@ -469,12 +469,12 @@ proc hasChunkDecoder*(name: cstring): bool {.
 
 proc getNumMusicDecoders*(): cint {.
     cdecl, importc: "Mix_GetNumMusicDecoders", dynlib: SDL2_MIX_LIB.}
-  ##   Get the number of music decoders available
-  ##   from the ``sdl_mixer.getMusicDecoder()`` procedure.
+  ##  Get the number of music decoders available
+  ##  from the ``sdl_mixer.getMusicDecoder()`` procedure.
   ##
-  ##   This number can be different for each run of a program,
-  ##   due to the change in availability of shared libraries
-  ##   that support each format.
+  ##  This number can be different for each run of a program,
+  ##  due to the change in availability of shared libraries
+  ##  that support each format.
   ##
   ##  ``Return`` the number of music decoders available.
 
@@ -873,6 +873,7 @@ proc setPosition*(channel: cint; angle: int16; distance: uint8): cint {.
   ##    `180` = directly behind.
   ##
   ##    `270` = directly to the left.
+  ##
   ##  So you can see it goes clockwise starting at directly in front.
   ##  This ends up being similar in effect to ``sdl_mixer.setPanning()``
   ##  For efficiency, the precision of this effect may be limited
@@ -1032,10 +1033,10 @@ proc reserveChannels*(num: cint): cint {.
   ##
   ##  The following procedures are affected by this setting:
   ##
-  ##    * ``sdl_mixer.playChannel()``
-  ##    * ``sdl_mixer.playChannelTimed()``
-  ##    * ``sdl_mixer.fadeInChannel()``
-  ##    * ``sdl_mixer.fadeInChannelTimed()``
+  ##  * ``sdl_mixer.playChannel()``
+  ##  * ``sdl_mixer.playChannelTimed()``
+  ##  * ``sdl_mixer.fadeInChannel()``
+  ##  * ``sdl_mixer.fadeInChannelTimed()``
   ##
   ##  ``Return`` the number of channels reserved.
   ##  Never fails, but may return less channels than you ask for,
@@ -1317,7 +1318,7 @@ proc volume*(channel: cint; volume: cint): cint {.
 
 proc volumeChunk*(chunk: Chunk; volume: cint): cint {.
     cdecl, importc: "Mix_VolumeChunk", dynlib: SDL2_MIX_LIB.}
-  ##   Set ``chunk.volume`` to ``volume``.
+  ##  Set ``chunk.volume`` to ``volume``.
   ##
   ##  The volume setting will take effect when the chunk is used on a channel,
   ##  being mixed into the output.
@@ -1531,7 +1532,7 @@ proc rewindMusic*() {.
 
 proc pausedMusic*(): cint {.
   cdecl, importc: "Mix_PausedMusic", dynlib: SDL2_MIX_LIB.}
-  ##   Tells you if music is paused, or not.
+  ##  Tells you if music is paused, or not.
   ##
   ##  ``Note:`` Does not check if the music was been halted after it was paused,
   ##  which may seem a little weird.
@@ -1583,7 +1584,7 @@ proc playing*(channel: cint): cint {.
 
 proc playingMusic*(): cint {.
     cdecl, importc: "Mix_PlayingMusic", dynlib: SDL2_MIX_LIB.}
-  ##   Tells you if music is actively playing, or not.
+  ##  Tells you if music is actively playing, or not.
   ##
   ##  ``Note:`` Does not check if the channel has been paused.
   ##
@@ -1655,8 +1656,8 @@ proc eachSoundFont*(
 
 proc getChunk*(channel: cint): Chunk {.
     cdecl, importc: "Mix_GetChunk", dynlib: SDL2_MIX_LIB.}
-  ##   Get the most recent sample chunk pointer played on ``channel``.
-  ##   This pointer may be currently playing, or just the last used.
+  ##  Get the most recent sample chunk pointer played on ``channel``.
+  ##  This pointer may be currently playing, or just the last used.
   ##
   ##  ``channel`` Channel to get the current ``sdl_mixer.Chunk`` playing.
   ##  `-1` is not valid, but will not crash the program.

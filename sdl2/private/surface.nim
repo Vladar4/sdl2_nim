@@ -421,63 +421,63 @@ template blitSurface*(
   ##  The blit semantics for surfaces with and without blending and colorkey
   ##  are defined as follows:
   ##
-  ##   ``RGBA->RGB``:
+  ##  ``RGBA->RGB``:
   ##
-  ##     Source surface blend mode set to `BLENDMODE_BLEND`:
+  ##    Source surface blend mode set to `BLENDMODE_BLEND`:
   ##
-  ##       alpha-blend (using the source alpha-channel and per-surface alpha)
-  ##       `SRCCOLORKEY` ignored.
+  ##      alpha-blend (using the source alpha-channel and per-surface alpha)
+  ##      `SRCCOLORKEY` ignored.
   ##
-  ##     Source surface blend mode set to `BLENDMODE_NONE`:
+  ##    Source surface blend mode set to `BLENDMODE_NONE`:
   ##
-  ##       copy RGB.
+  ##      copy RGB.
   ##
-  ##       if `SRCCOLORKEY` set, only copy the pixels matching the RGB values
-  ##       of the source color key, ignoring alpha in the comparison.
+  ##      if `SRCCOLORKEY` set, only copy the pixels matching the RGB values
+  ##      of the source color key, ignoring alpha in the comparison.
   ##
-  ##   ``RGB->RGBA``:
+  ##  ``RGB->RGBA``:
   ##
-  ##     Source surface blend mode set to `BLENDMODE_BLEND`:
+  ##    Source surface blend mode set to `BLENDMODE_BLEND`:
   ##
-  ##       alpha-blend (using the source per-surface alpha)
+  ##      alpha-blend (using the source per-surface alpha)
   ##
-  ##     Source surface blend mode set to `BLENDMODE_NONE`:
+  ##    Source surface blend mode set to `BLENDMODE_NONE`:
   ##
-  ##       copy RGB, set destination alpha to source per-surface alpha value.
+  ##      copy RGB, set destination alpha to source per-surface alpha value.
   ##
-  ##     both:
+  ##    both:
   ##
-  ##       if `SRCCOLORKEY` set, only copy the pixels matching the
-  ##       source color key.
+  ##      if `SRCCOLORKEY` set, only copy the pixels matching the
+  ##      source color key.
   ##
-  ##   ``RGBA->RGBA``:
+  ##  ``RGBA->RGBA``:
   ##
-  ##     Source surface blend mode set to `BLENDMODE_BLEND`:
+  ##    Source surface blend mode set to `BLENDMODE_BLEND`:
   ##
-  ##       alpha-blend (using the source alpha-channel and per-surface alpha)
-  ##       `SRCCOLORKEY` ignored.
+  ##      alpha-blend (using the source alpha-channel and per-surface alpha)
+  ##      `SRCCOLORKEY` ignored.
   ##
-  ##     Source surface blend mode set to `BLENDMODE_NONE`:
+  ##    Source surface blend mode set to `BLENDMODE_NONE`:
   ##
-  ##       copy all of RGBA to the destination.
+  ##      copy all of RGBA to the destination.
   ##
-  ##       if `SRCCOLORKEY` set, only copy the pixels matching the RGB values
-  ##       of the source color key, ignoring alpha in the comparison.
+  ##      if `SRCCOLORKEY` set, only copy the pixels matching the RGB values
+  ##      of the source color key, ignoring alpha in the comparison.
   ##
-  ##   ``RGB->RGB``:
+  ##  ``RGB->RGB``:
   ##
-  ##     Source surface blend mode set to `BLENDMODE_BLEND`:
+  ##    Source surface blend mode set to `BLENDMODE_BLEND`:
   ##
-  ##       alpha-blend (using the source per-surface alpha)
+  ##      alpha-blend (using the source per-surface alpha)
   ##
-  ##     Source surface blend mode set to `BLENDMODE_NONE`:
+  ##    Source surface blend mode set to `BLENDMODE_NONE`:
   ##
-  ##       copy RGB.
+  ##      copy RGB.
   ##
-  ##     both:
+  ##    both:
   ##
-  ##       if `SRCCOLORKEY` set, only copy the pixels matching the
-  ##       source color key.
+  ##      if `SRCCOLORKEY` set, only copy the pixels matching the
+  ##      source color key.
   ##
   ##  You should call ``blitSurface()`` unless you know exactly how SDL
   ##  blitting works internally and how to use the other blit procedures.

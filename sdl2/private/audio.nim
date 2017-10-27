@@ -460,31 +460,31 @@ proc newAudioStream*(
   srcFormat: AudioFormat; srcChannels: uint8; srcRate: cint;
   dstFormat: AudioFormat; dstChannels: uint8; dstRate: cint): AudioStream {.
     cdecl, importc: "SDL_NewAudioStream", dynlib: SDL2_LIB.}
-##   Create a new audio stream
+##  Create a new audio stream
 ##
-##   ``src_format`` The format of the source audio
+##  ``src_format`` The format of the source audio
 ##
-##   ``src_channels`` The number of channels of the source audio
-##   ``src_rate``     The sampling rate of the source audio
-##   ``dst_format``   The format of the desired audio output
-##   ``dst_channels`` The number of channels of the desired audio output
-##   ``dst_rate``     The sampling rate of the desired audio output
+##  ``src_channels`` The number of channels of the source audio
+##  ``src_rate``     The sampling rate of the source audio
+##  ``dst_format``   The format of the desired audio output
+##  ``dst_channels`` The number of channels of the desired audio output
+##  ``dst_rate``     The sampling rate of the desired audio output
 ##
-##   ``Return`` `0` on success, or `-1` on error.
+##  ``Return`` `0` on success, or `-1` on error.
 ##
 ##  See also:
 ##
-##   ``audioStreamPut()``
+##  ``audioStreamPut()``
 ##
-##   ``audioStreamGet()``
+##  ``audioStreamGet()``
 ##
-##   ``audioStreamAvailable()``
+##  ``audioStreamAvailable()``
 ##
-##   ``audioStreamFlush()``
+##  ``audioStreamFlush()``
 ##
-##   ``audioStreamClear()``
+##  ``audioStreamClear()``
 ##
-##   ``freeAudioStream()``
+##  ``freeAudioStream()``
 
 proc audioStreamPut*(stream: AudioStream; buf: pointer; len: cint): cint {.
     cdecl, importc: "SDL_AudioStreamPut", dynlib: SDL2_LIB.}

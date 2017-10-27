@@ -547,8 +547,8 @@ proc freePacketV*(packetV: ptr ptr UDPpacket) {.
   ##
   ##  ``packetV`` A pointer to the ``UDPpacket`` vector to be freed from memory.
   ##
-  ##   Free a ``UDPpacket`` vector from memory. Do not use this ``UDPpacket``
-  ##   vector, or any ``UDPpacket`` in it, after this procedure is called on it.
+  ##  Free a ``UDPpacket`` vector from memory. Do not use this ``UDPpacket``
+  ##  vector, or any ``UDPpacket`` in it, after this procedure is called on it.
   ##
   ##  ``Return`` nothing, this always succeeds.
   ##
@@ -672,8 +672,8 @@ proc udpUnbind*(sock: UDPsocket; channel: cint) {.
   ##
   ##  ``channel`` The channel to unbind the addresses from in the ``UDPsocket``.
   ##
-  ##   This removes all previously assigned (bound) addresses from a socket
-  ##   channel. After this you may bind new addresses to the socket channel.
+  ##  This removes all previously assigned (bound) addresses from a socket
+  ##  channel. After this you may bind new addresses to the socket channel.
   ##
   ##  ``Return`` nothing, this always succeeds.
   ##
@@ -996,15 +996,15 @@ proc addSocket*(set: SocketSet; sock: GenericSocket): cint {.
   ##
   ##  ``sock`` The socket to add to the socket set.
   ##
-  ##   Add a socket to a socket set that will be watched.
+  ##  Add a socket to a socket set that will be watched.
   ##
-  ##   TCP and UDP sockets should be added using the corrosponding template
-  ##   (as in sdl_net.tcpAddSocket for a TCP socket). The generic socket
-  ##   procedure will be called by the TCP and UDP templates.
-  ##   Both TCP and UDP sockets may be added to the same socket set.
-  ##   TCP clients and servers may all be in the same socket set.
-  ##   There is no limitation on the sockets in the socket set,
-  ##   other than they have been opened.
+  ##  TCP and UDP sockets should be added using the corrosponding template
+  ##  (as in sdl_net.tcpAddSocket for a TCP socket). The generic socket
+  ##  procedure will be called by the TCP and UDP templates.
+  ##  Both TCP and UDP sockets may be added to the same socket set.
+  ##  TCP clients and servers may all be in the same socket set.
+  ##  There is no limitation on the sockets in the socket set,
+  ##  other than they have been opened.
   ##
   ##  ``Return`` the number of sockets used in the set on success.
   ##  `-1` is returned on errors.
@@ -1047,12 +1047,12 @@ proc delSocket*(set: SocketSet; sock: GenericSocket): cint {.
   ##
   ##  ``sock`` The socket to remove from the socket set.
   ##
-  ##   Remove a socket from a socket set.
+  ##  Remove a socket from a socket set.
   ##
-  ##   Use this before closing a socket that you are watching with a socket set.
-  ##   This doesn't close the socket. Call the appropriate template for TCP or
-  ##   UDP sockets. The generic socket procedure will be called by the TCP and
-  ##   UDP macros.
+  ##  Use this before closing a socket that you are watching with a socket set.
+  ##  This doesn't close the socket. Call the appropriate template for TCP or
+  ##  UDP sockets. The generic socket procedure will be called by the TCP and
+  ##  UDP macros.
   ##
   ##  ``Return`` the number of sockets used in the set on success.
   ##  `-1` is returned on errors.

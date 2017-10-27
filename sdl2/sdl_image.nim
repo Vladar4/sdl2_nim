@@ -38,8 +38,8 @@ template compiledVersion*() = ##  \
   (versionNum(MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL))
 
 template versionAtLeast*(x, y, z: untyped): untyped =  ##  \
-  ##   This macro will evaluate to true if compiled
-  ##   with SDL_image at least X.Y.Z.
+  ##  This macro will evaluate to true if compiled
+  ##  with SDL_image at least X.Y.Z.
   (compiledversion() >= versionNum(x, y, z))
 
 proc linkedVersion*(): ptr Version {.

@@ -73,7 +73,7 @@ template version*(x: untyped) = ##  \
 template versionNum*(x, y, z: untyped): untyped = ##  \
   ##  This template turns the version numbers into a numeric value:
   ##
-  ##   `(1,2,3) -> (1203)`
+  ##  `(1,2,3) -> (1203)`
   ##
   ##  This assumes that there will never be more than 100 patchlevels.
   ((x) * 1000 + (y) * 100 + (z))
