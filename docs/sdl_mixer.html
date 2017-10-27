@@ -2078,12 +2078,11 @@ Load a music file from an RWop object assuming a specific format.
 <p>Reserve <tt class="docutils literal"><span class="pre">num</span></tt> channels from being used when playing samples when passing in <cite>-1</cite> as a channel number to playback procedures. The channels are reserved starting from channel <cite>0</cite> to <tt class="docutils literal"><span class="pre">num</span></tt>-1. Passing in <cite>0</cite> will unreserve all channels. Normally SDL_mixer starts without any channels reserved.</p>
 <p><tt class="docutils literal"><span class="pre">num</span></tt> Number of channels to reserve from default mixing. <cite>0</cite> removes all reservations.</p>
 <p>The following procedures are affected by this setting:</p>
-<blockquote><p><ul class="simple"><li><tt class="docutils literal"><span class="pre">sdl_mixer.playChannel()</span></tt></li>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">sdl_mixer.playChannel()</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">sdl_mixer.playChannelTimed()</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">sdl_mixer.fadeInChannel()</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">sdl_mixer.fadeInChannelTimed()</span></tt></li>
 </ul>
-</p></blockquote>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of channels reserved. Never fails, but may return less channels than you ask for, depending on the number of channels previously allocated.</p>
 
 
@@ -2502,19 +2501,14 @@ This is the version number macro for the current SDL_mixer version.
 </dd>
 <dt id="versionAtLeast"><a name="versionAtLeast.t,untyped,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">versionAtLeast</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
-<dl class="docutils"><dt>
- This macro will evaluate to true if compiled</dt>
-<dd>with SDL_mixer at least X.Y.Z.</dd>
-</dl>
 
+This macro will evaluate to true if compiled with SDL_mixer at least X.Y.Z.
 
 </dd>
 <dt id="loadWAV"><a name="loadWAV.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">loadWAV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
-<dl class="docutils"><dt>
- Load file for use as a sample. This is actually</dt>
-<dd><tt class="docutils literal"><span class="pre">sdl_mixer.loadWAV_RW(sdl.rwFromFile(file, &quot;rb&quot;), 1)</span></tt>. This can load WAVE, AIFF, RIFF, OGG, and VOC files.</dd>
-</dl>
+<p>
+Load file for use as a sample. This is actually <tt class="docutils literal"><span class="pre">sdl_mixer.loadWAV_RW(sdl.rwFromFile(file, &quot;rb&quot;), 1)</span></tt>. This can load WAVE, AIFF, RIFF, OGG, and VOC files.</p>
 <p><tt class="docutils literal"><span class="pre">file</span></tt> File name to load sample from.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> You must call <tt class="docutils literal"><span class="pre">sdl.openAudio()</span></tt> before this. It must know the output characteristics so it can convert the sample for playback, it does this conversion at load time.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> a pointer to the sample as a <tt class="docutils literal"><span class="pre">sdl_mixer.Chunk</span></tt>. <cite>nil</cite> is returned on errors.</p>
@@ -2573,7 +2567,7 @@ Play <tt class="docutils literal"><span class="pre">chunk</span></tt> on <tt cla
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-10-27 09:25:57 UTC</small>
+        <small>Made with Nim. Generated: 2017-10-27 11:32:41 UTC</small>
       </div>
     </div>
   </div>

@@ -1232,6 +1232,7 @@ function main() {
                                                        ##       MYAPP_CATEGORY_AWESOME1 = LOG_CATEGORY_CUSTOM,
                                                        ##       MYAPP_CATEGORY_AWESOME2,
                                                        ##       MYAPP_CATEGORY_AWESOME3
+                                                       ## 
   LOG_CATEGORY_CUSTOM = 19"><wbr />Log<wbr />Category<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#LogPriority"
     title="LogPriority* = enum
@@ -1294,8 +1295,7 @@ function main() {
   <p class="module-desc">
 <h1><a class="toc-backref" id="log-nim" href="#log-nim">log.nim</a></h1><p>Simple log messages with categories and priorities.</p>
 <p>By default logs are quiet, but if you're debugging SDL you might want:</p>
-<blockquote><p><tt class="docutils literal"><span class="pre">logSetAllPriority(LOG_PRIORITY_WARN)</span></tt></p></blockquote>
-<p>Here's where the messages go on different platforms:</p>
+<pre class="listing"><span class="Identifier">logSetAllPriority</span><span class="Punctuation">(</span><span class="Identifier">LOG_PRIORITY_WARN</span><span class="Punctuation">)</span></pre><p>Here's where the messages go on different platforms:</p>
 <blockquote><p><p>Windows: debug output stream</p>
 <p>Android: log output</p>
 <p>Others: standard error output (stderr)</p>
@@ -1321,6 +1321,7 @@ function main() {
                                                        <span class="Comment">##       MYAPP_CATEGORY_AWESOME1 = LOG_CATEGORY_CUSTOM,</span>
                                                        <span class="Comment">##       MYAPP_CATEGORY_AWESOME2,</span>
                                                        <span class="Comment">##       MYAPP_CATEGORY_AWESOME3</span>
+                                                       <span class="Comment">## </span>
   <span class="Identifier">LOG_CATEGORY_CUSTOM</span> <span class="Other">=</span> <span class="DecNumber">19</span></pre></dt>
 <dd>
 <p>
@@ -1456,7 +1457,7 @@ This procedure allows you to replace the default log output procedure with one o
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
+        <small>Made with Nim. Generated: 2017-10-27 11:33:02 UTC</small>
       </div>
     </div>
   </div>

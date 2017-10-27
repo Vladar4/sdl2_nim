@@ -1758,7 +1758,8 @@ Performs a fast blit from the source surface to the destination surface.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> If the blit is successful, it returns <cite>0</cite>, otherwise it returns <cite>-1</cite>.</p>
 <p>The blit procedure should not be called on a locked surface.</p>
 <p>The blit semantics for surfaces with and without blending and colorkey are defined as follows:</p>
-<blockquote><p><tt class="docutils literal"><span class="pre">RGBA-&gt;RGB</span></tt>:<blockquote><p>Source surface blend mode set to <cite>BLENDMODE_BLEND</cite>:<blockquote><p>alpha-blend (using the source alpha-channel and per-surface alpha) <cite>SRCCOLORKEY</cite> ignored.</p></blockquote>
+<p><tt class="docutils literal"><span class="pre">RGBA-&gt;RGB</span></tt>:</p>
+<blockquote><p>Source surface blend mode set to <cite>BLENDMODE_BLEND</cite>:<blockquote><p>alpha-blend (using the source alpha-channel and per-surface alpha) <cite>SRCCOLORKEY</cite> ignored.</p></blockquote>
 <p>Source surface blend mode set to <cite>BLENDMODE_NONE</cite>:</p>
 <blockquote><p><p>copy RGB.</p>
 <p>if <cite>SRCCOLORKEY</cite> set, only copy the pixels matching the RGB values of the source color key, ignoring alpha in the comparison.</p>
@@ -1785,7 +1786,6 @@ Performs a fast blit from the source surface to the destination surface.</p>
 <p>both:</p>
 <blockquote><p>if <cite>SRCCOLORKEY</cite> set, only copy the pixels matching the source color key.</p></blockquote>
 </p></blockquote>
-</p></blockquote>
 <p>You should call <tt class="docutils literal"><span class="pre">blitSurface()</span></tt> unless you know exactly how SDL blitting works internally and how to use the other blit procedures.</p>
 
 
@@ -1805,7 +1805,7 @@ Performs a fast blit from the source surface to the destination surface.</p>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
+        <small>Made with Nim. Generated: 2017-10-27 11:33:05 UTC</small>
       </div>
     </div>
   </div>

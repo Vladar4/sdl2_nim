@@ -1786,7 +1786,7 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
 <dd>
 <p>Free a UDP packet vector (array of packets).</p>
 <p><tt class="docutils literal"><span class="pre">packetV</span></tt> A pointer to the <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> vector to be freed from memory.</p>
-<blockquote><p>Free a <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> vector from memory. Do not use this <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> vector, or any <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> in it, after this procedure is called on it.</p></blockquote>
+<p>Free a <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> vector from memory. Do not use this <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> vector, or any <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> in it, after this procedure is called on it.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> nothing, this always succeeds.</p>
 <pre class="listing"><span class="Comment"># free a UDPpacket vector</span>
 <span class="Comment"># var packetV: ptr ptr UDPpacket</span>
@@ -1851,7 +1851,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
 <p>Unbind all addresses from the given channel.</p>
 <p><tt class="docutils literal"><span class="pre">sock</span></tt> A valid <tt class="docutils literal"><span class="pre">UDPsocket</span></tt> to unbind addresses from.</p>
 <p><tt class="docutils literal"><span class="pre">channel</span></tt> The channel to unbind the addresses from in the <tt class="docutils literal"><span class="pre">UDPsocket</span></tt>.</p>
-<blockquote><p>This removes all previously assigned (bound) addresses from a socket channel. After this you may bind new addresses to the socket channel.</p></blockquote>
+<p>This removes all previously assigned (bound) addresses from a socket channel. After this you may bind new addresses to the socket channel.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> nothing, this always succeeds.</p>
 <pre class="listing"><span class="Comment"># unbind all addresses on the UDPsocket channel 0</span>
 <span class="Comment"># var udpsock: UDPsocket</span>
@@ -2029,9 +2029,8 @@ Set the percentage of simulated packet loss for packets sent on the socket.
 <p>Add a socket to a set of sockets to be checked for available data.</p>
 <p><tt class="docutils literal"><span class="pre">set</span></tt> The socket set to add this socket to.</p>
 <p><tt class="docutils literal"><span class="pre">sock</span></tt> The socket to add to the socket set.</p>
-<blockquote><p><p>Add a socket to a socket set that will be watched.</p>
+<p>Add a socket to a socket set that will be watched.</p>
 <p>TCP and UDP sockets should be added using the corrosponding template (as in sdl_net.tcpAddSocket for a TCP socket). The generic socket procedure will be called by the TCP and UDP templates. Both TCP and UDP sockets may be added to the same socket set. TCP clients and servers may all be in the same socket set. There is no limitation on the sockets in the socket set, other than they have been opened.</p>
-</p></blockquote>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of sockets used in the set on success. <cite>-1</cite> is returned on errors.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">tcp_AddSocket()</span></tt></p>
@@ -2059,9 +2058,8 @@ Set the percentage of simulated packet loss for packets sent on the socket.
 <p>Remove a socket from a set of sockets to be checked for available data.</p>
 <p><tt class="docutils literal"><span class="pre">sset</span></tt> The socket set to remove this socket from.</p>
 <p><tt class="docutils literal"><span class="pre">sock</span></tt> The socket to remove from the socket set.</p>
-<blockquote><p><p>Remove a socket from a socket set.</p>
+<p>Remove a socket from a socket set.</p>
 <p>Use this before closing a socket that you are watching with a socket set. This doesn't close the socket. Call the appropriate template for TCP or UDP sockets. The generic socket procedure will be called by the TCP and UDP macros.</p>
-</p></blockquote>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of sockets used in the set on success. <cite>-1</cite> is returned on errors.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">tcp_DelSocket()</span></tt></p>
@@ -2247,7 +2245,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-09-29 13:46:17 UTC</small>
+        <small>Made with Nim. Generated: 2017-10-27 11:32:43 UTC</small>
       </div>
     </div>
   </div>
