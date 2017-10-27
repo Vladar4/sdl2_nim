@@ -1253,6 +1253,8 @@ function main() {
   <li><a class="reference" href="#AudioStatus"
     title="AudioStatus* = enum
   AUDIO_STOPPED = 0, AUDIO_PLAYING, AUDIO_PAUSED"><wbr />Audio<wbr />Status<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#AudioStream"
+    title="AudioStream* = pointer"><wbr />Audio<wbr />Stream<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1360,6 +1362,21 @@ function main() {
                dst_rate: cint): cint"><wbr />build<wbr />Audio<wbr />CVT<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#convertAudio,ptr.AudioCVT"
     title="convertAudio*(cvt: ptr AudioCVT): cint"><wbr />convert<wbr />Audio<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#newAudioStream,AudioFormat,uint8,cint,AudioFormat,uint8,cint"
+    title="newAudioStream*(srcFormat: AudioFormat; srcChannels: uint8; srcRate: cint;
+                dstFormat: AudioFormat; dstChannels: uint8; dstRate: cint): AudioStream"><wbr />new<wbr />Audio<wbr />Stream<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#audioStreamPut,AudioStream,pointer,cint"
+    title="audioStreamPut*(stream: AudioStream; buf: pointer; len: cint): cint"><wbr />audio<wbr />Stream<wbr />Put<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#audioStreamGet,AudioStream,pointer,cint"
+    title="audioStreamGet*(stream: AudioStream; buf: pointer; len: cint): cint"><wbr />audio<wbr />Stream<wbr />Get<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#audioStreamAvailable,AudioStream"
+    title="audioStreamAvailable*(stream: AudioStream): cint"><wbr />audio<wbr />Stream<wbr />Available<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#audioStreamFlush,AudioStream"
+    title="audioStreamFlush*(stream: AudioStream): cint"><wbr />audio<wbr />Stream<wbr />Flush<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#audioStreamClear,AudioStream"
+    title="audioStreamClear*(stream: AudioStream)"><wbr />audio<wbr />Stream<wbr />Clear<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#freeAudioStream,AudioStream"
+    title="freeAudioStream*(stream: AudioStream)"><wbr />free<wbr />Audio<wbr />Stream<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#mixAudio,ptr.uint8,ptr.uint8,uint32,cint"
     title="mixAudio*(dst: ptr uint8; src: ptr uint8; len: uint32; volume: cint)"><wbr />mix<wbr />Audio<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#mixAudioFormat,ptr.uint8,ptr.uint8,AudioFormat,uint32,cint"
@@ -1418,6 +1435,73 @@ function main() {
   <div id="tocRoot"></div>
   <p class="module-desc">
 <h1><a class="toc-backref" id="audio-nim" href="#audio-nim">audio.nim</a></h1><p>Access to the raw audio mixing buffer for the SDL library.</p>
+<p>Create a new audio stream</p>
+<p><tt class="docutils literal"><span class="pre">src_format</span></tt> The format of the source audio</p>
+<p><tt class="docutils literal"><span class="pre">src_channels</span></tt> The number of channels of the source audio <tt class="docutils literal"><span class="pre">src_rate</span></tt>     The sampling rate of the source audio <tt class="docutils literal"><span class="pre">dst_format</span></tt>   The format of the desired audio output <tt class="docutils literal"><span class="pre">dst_channels</span></tt> The number of channels of the desired audio output <tt class="docutils literal"><span class="pre">dst_rate</span></tt>     The sampling rate of the desired audio output</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">audioStreamPut()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamGet()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamAvailable()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamFlush()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamClear()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">freeAudioStream()</span></tt></p>
+<p>Add data to be converted/resampled to the stream</p>
+<p><tt class="docutils literal"><span class="pre">stream</span></tt>  The stream the audio data is being added to</p>
+<p><tt class="docutils literal"><span class="pre">buf</span></tt>     A pointer to the audio data to add</p>
+<p><tt class="docutils literal"><span class="pre">len</span></tt>     The number of bytes to write to the stream</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">newAudioStream()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamGet()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamAvailable()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamFlush()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamClear()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">freeAudioStream()</span></tt></p>
+<p>Get converted/resampled data from the stream</p>
+<p><tt class="docutils literal"><span class="pre">stream</span></tt>  The stream the audio is being requested from</p>
+<p><tt class="docutils literal"><span class="pre">buf</span></tt>     A buffer to fill with audio data</p>
+<p><tt class="docutils literal"><span class="pre">len</span></tt>     The maximum number of bytes to fill</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of bytes read from the stream, or <cite>-1</cite> on error.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">newAudioStream()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamPut()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamAvailable()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamFlush()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamClear()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">freeAudioStream()</span></tt> </p>
+<p>Get the number of converted/resampled bytes available. The stream may be buffering data behind the scenes until it has enough to resample correctly, so this number might be lower than what you expect, or even be zero. Add more data or flush the stream if you need the data now.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">newAudioStream()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamPut()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamGet()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamFlush()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamClear()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">freeAudioStream()</span></tt></p>
+<p>Tell the stream that you're done sending data, and anything being buffered should be converted/resampled and made available immediately.</p>
+<p>It is legal to add more data to a stream after flushing, but there will be audio gaps in the output. Generally this is intended to signal the end of input, so the complete output becomes available.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">newAudioStream()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamPut()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamGet()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamAvailable()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamClear()</span></tt></p>
+<p>Clear any pending data in the stream without converting it.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">newAudioStream()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamPut()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamGet()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamAvailable()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamFlush()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">freeAudioStream()</span></tt></p>
+<p>Free an audio stream.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">newAudioStream()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamPut()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamGet()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamAvailable()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamFlush()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">audioStreamClear()</span></tt></p>
 </p>
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
@@ -1467,8 +1551,18 @@ This procedure is called when the audio device needs more data.</p>
                    <span class="Comment">## (ignored for `nil` callbacks).</span>
   </pre></dt>
 <dd>
+<p>
+The calculated values in this object are calculated by <tt class="docutils literal"><span class="pre">OpenAudio()</span></tt>.</p>
+<p>For multi-channel audio, the default SDL channel mapping is:</p>
+<ul class="simple"><li>2:  FL FR                     (stereo)</li>
+<li>3:  FL FR LFE                 (2.1 surround)</li>
+<li>4:  FL FR BL BR               (quad)</li>
+<li>5:  FL FR FC BL BR            (quad + center)</li>
+<li>6:  FL FR FC LFE SL SR        (5.1 surround - last two can also be BL BR)</li>
+<li>7:  FL FR FC LFE BC SL SR     (6.1 surround)</li>
+<li>8:  FL FR FC LFE BL BR SL SR  (7.1 surround)</li>
+</ul>
 
-The calculated values in this object are calculated by <tt class="docutils literal"><span class="pre">OpenAudio()</span></tt>.
 
 </dd>
 <dt id="AudioFilter"><a name="AudioFilter"></a><pre><span class="Identifier">AudioFilter</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">cvt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">AudioCVT</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span></div><span class="Other pragmaend">.}</span></pre></dt>
@@ -1509,6 +1603,19 @@ SDL Audio Device IDs.</p>
 <dt id="AudioStatus"><a name="AudioStatus"></a><pre><span class="Identifier">AudioStatus</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">AUDIO_STOPPED</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">AUDIO_PLAYING</span><span class="Other">,</span> <span class="Identifier">AUDIO_PAUSED</span></pre></dt>
 <dd>
+
+
+</dd>
+<dt id="AudioStream"><a name="AudioStream"></a><pre><span class="Identifier">AudioStream</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
+<dd>
+<p>
+<tt class="docutils literal"><span class="pre">AudioStream</span></tt> is a new audio conversion interface.</p>
+<p>The benefits vs <tt class="docutils literal"><span class="pre">AudioCVT</span></tt>:</p>
+<ul class="simple"><li>it can handle resampling data in chunks without generating artifacts, when it doesn't have the complete buffer available.</li>
+<li>it can handle incoming data in any variable size.</li>
+<li>You push data as you have it, and pull it when you need it.</li>
+</ul>
+<p>This is opaque to the outside world.</p>
 
 
 </dd>
@@ -1813,6 +1920,49 @@ This procedure frees data previously allocated with <tt class="docutils literal"
 
 
 </dd>
+<dt id="newAudioStream"><a name="newAudioStream,AudioFormat,uint8,cint,AudioFormat,uint8,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">newAudioStream</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">srcFormat</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span><span class="Other">;</span> <span class="Identifier">srcChannels</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">srcRate</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
+                    <span class="Identifier">dstFormat</span><span class="Other">:</span> <span class="Identifier">AudioFormat</span><span class="Other">;</span> <span class="Identifier">dstChannels</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">dstRate</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">AudioStream</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_NewAudioStream&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="audioStreamPut"><a name="audioStreamPut,AudioStream,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">audioStreamPut</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">stream</span><span class="Other">:</span> <span class="Identifier">AudioStream</span><span class="Other">;</span> <span class="Identifier">buf</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AudioStreamPut&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="audioStreamGet"><a name="audioStreamGet,AudioStream,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">audioStreamGet</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">stream</span><span class="Other">:</span> <span class="Identifier">AudioStream</span><span class="Other">;</span> <span class="Identifier">buf</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AudioStreamGet&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="audioStreamAvailable"><a name="audioStreamAvailable,AudioStream"></a><pre><span class="Keyword">proc</span> <span class="Identifier">audioStreamAvailable</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">stream</span><span class="Other">:</span> <span class="Identifier">AudioStream</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AudioStreamAvailable&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="audioStreamFlush"><a name="audioStreamFlush,AudioStream"></a><pre><span class="Keyword">proc</span> <span class="Identifier">audioStreamFlush</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">stream</span><span class="Other">:</span> <span class="Identifier">AudioStream</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AudioStreamFlush&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="audioStreamClear"><a name="audioStreamClear,AudioStream"></a><pre><span class="Keyword">proc</span> <span class="Identifier">audioStreamClear</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">stream</span><span class="Other">:</span> <span class="Identifier">AudioStream</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AudioStreamClear&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="freeAudioStream"><a name="freeAudioStream,AudioStream"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freeAudioStream</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">stream</span><span class="Other">:</span> <span class="Identifier">AudioStream</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FreeAudioStream&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
 <dt id="mixAudio"><a name="mixAudio,ptr.uint8,ptr.uint8,uint32,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">mixAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">volume</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MixAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
@@ -1998,7 +2148,7 @@ Loads a WAV from a file.</p>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
+        <small>Made with Nim. Generated: 2017-10-27 09:25:08 UTC</small>
       </div>
     </div>
   </div>

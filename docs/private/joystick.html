@@ -1255,7 +1255,11 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#numJoysticks,"
+      <li><a class="reference" href="#lockJoysticks,"
+    title="lockJoysticks*()"><wbr />lock<wbr />Joysticks<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#unlockJoysticks,"
+    title="unlockJoysticks*()"><wbr />unlock<wbr />Joysticks<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#numJoysticks,"
     title="numJoysticks*(): cint"><wbr />num<wbr />Joysticks<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#joystickNameForIndex,cint"
     title="joystickNameForIndex*(device_index: cint): cstring"><wbr />joystick<wbr />Name<wbr />For<wbr />Index<span class="attachedType" style="visibility:hidden"></span></a></li>
@@ -1409,6 +1413,19 @@ This is a unique ID for a joystick for the time it is connected to the system, a
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
+<dt id="lockJoysticks"><a name="lockJoysticks,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockJoysticks</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockJoysticks&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+<p>Locking for multi-threaded access to the joystick API.</p>
+<p>If you are using the joystick API or handling events from multiple threads you should use these locking functions to protect access to the joysticks.</p>
+<p>In particular, you are guaranteed that the joystick list won't change, so the API functions that take a joystick index will be valid, and joystick and game controller events will not be delivered.</p>
+
+
+</dd>
+<dt id="unlockJoysticks"><a name="unlockJoysticks,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockJoysticks</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockJoysticks&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
 <dt id="numJoysticks"><a name="numJoysticks,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">numJoysticks</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_NumJoysticks&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Count the number of joysticks attached to the system right now.
@@ -1666,7 +1683,7 @@ Return the battery level of this <tt class="docutils literal"><span class="pre">
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-10-17 14:00:56 UTC</small>
+        <small>Made with Nim. Generated: 2017-10-27 09:25:14 UTC</small>
       </div>
     </div>
   </div>

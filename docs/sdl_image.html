@@ -1225,7 +1225,7 @@ function main() {
   <li><a class="reference" href="#MINOR_VERSION"
     title="MINOR_VERSION* = 0"><wbr />MINOR_<wbr />VERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#PATCHLEVEL"
-    title="PATCHLEVEL* = 1"><wbr />PATCHLEVEL<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="PATCHLEVEL* = 2"><wbr />PATCHLEVEL<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#INIT_JPG"
     title="INIT_JPG* = 0x00000001"><wbr />INIT_<wbr />JPG<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#INIT_PNG"
@@ -1276,6 +1276,8 @@ function main() {
     title="isPNG*(src: ptr RWops): cint"><wbr />is<wbr />PNG<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isPNM,ptr.RWops"
     title="isPNM*(src: ptr RWops): cint"><wbr />is<wbr />PNM<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#isSVG,ptr.RWops"
+    title="isSVG*(src: ptr RWops): cint"><wbr />is<wbr />SVG<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isTIF,ptr.RWops"
     title="isTIF*(src: ptr RWops): cint"><wbr />is<wbr />TIF<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isXCF,ptr.RWops"
@@ -1304,6 +1306,8 @@ function main() {
     title="loadPNG_RW*(src: ptr RWops): Surface"><wbr />load<wbr />PNG_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadPNM_RW,ptr.RWops"
     title="loadPNM_RW*(src: ptr RWops): Surface"><wbr />load<wbr />PNM_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#loadSVG_RW,ptr.RWops"
+    title="loadSVG_RW*(src: ptr RWops): Surface"><wbr />load<wbr />SVG_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadTGA_RW,ptr.RWops"
     title="loadTGA_RW*(src: ptr RWops): Surface"><wbr />load<wbr />TGA_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadTIF_RW,ptr.RWops"
@@ -1322,13 +1326,21 @@ function main() {
     title="savePNG*(surface: Surface; file: cstring): cint"><wbr />save<wbr />PNG<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#savePNG_RW,Surface,ptr.RWops,cint"
     title="savePNG_RW*(surface: Surface; dst: ptr RWops; freedst: cint): cint"><wbr />save<wbr />PNG_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#saveJPG,Surface,cstring,cint"
+    title="saveJPG*(surface: Surface; file: cstring; quality: cint): cint"><wbr />save<wbr />JPG<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#saveJPG_RW,Surface,ptr.RWops,cint,cint"
+    title="saveJPG_RW*(surface: Surface; dst: ptr RWops; freedst: cint; quality: cint): cint"><wbr />save<wbr />JPG_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#17" id="67">Templates</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#setError.t,untyped"
+      <li><a class="reference" href="#compiledVersion.t,"
+    title="compiledVersion*()"><wbr />compiled<wbr />Version<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#versionAtLeast.t,untyped,untyped,untyped"
+    title="versionAtLeast*(x, y, z: untyped): untyped"><wbr />version<wbr />At<wbr />Least<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#setError.t,untyped"
     title="setError*(fmt: untyped): cint"><wbr />set<wbr />Error<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#getError.t,"
     title="getError*(): cstring"><wbr />get<wbr />Error<span class="attachedType" style="visibility:hidden"></span></a></li>
@@ -1362,7 +1374,7 @@ function main() {
 
 
 </dd>
-<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
+<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
 <dd>
 
 
@@ -1495,6 +1507,11 @@ Unloads libraries loaded with <tt class="docutils literal"><span class="pre">ini
 
 
 </dd>
+<dt id="isSVG"><a name="isSVG,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isSVG</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isSVG&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
 <dt id="isTIF"><a name="isTIF,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isTIF</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isTIF&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
@@ -1574,6 +1591,12 @@ Unloads libraries loaded with <tt class="docutils literal"><span class="pre">ini
 
 
 </dd>
+<dt id="loadSVG_RW"><a name="loadSVG_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadSVG_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadSVG_RW&quot;</span><span class="Other">,</span>
+                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
 <dt id="loadTGA_RW"><a name="loadTGA_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadTGA_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadTGA_RW&quot;</span><span class="Other">,</span>
                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
@@ -1628,11 +1651,38 @@ Unloads libraries loaded with <tt class="docutils literal"><span class="pre">ini
 
 
 </dd>
+<dt id="saveJPG"><a name="saveJPG,Surface,cstring,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">saveJPG</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">quality</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_SaveJPG&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="saveJPG_RW"><a name="saveJPG_RW,Surface,ptr.RWops,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">saveJPG_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freedst</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">quality</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_SaveJPG_RW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
 
 </dl></div>
 <div class="section" id="17">
 <h1><a class="toc-backref" href="#17">Templates</a></h1>
 <dl class="item">
+<dt id="compiledVersion"><a name="compiledVersion.t,"></a><pre><span class="Keyword">template</span> <span class="Identifier">compiledVersion</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span></pre></dt>
+<dd>
+
+This is the version number macro for the current SDL_image version.
+
+</dd>
+<dt id="versionAtLeast"><a name="versionAtLeast.t,untyped,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">versionAtLeast</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dd>
+<dl class="docutils"><dt>
+ This macro will evaluate to true if compiled</dt>
+<dd>with SDL_image at least X.Y.Z.</dd>
+</dl>
+
+
+</dd>
 <dt id="setError"><a name="setError.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">setError</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
 <dd>
 
@@ -1653,7 +1703,7 @@ Unloads libraries loaded with <tt class="docutils literal"><span class="pre">ini
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-09-29 13:46:08 UTC</small>
+        <small>Made with Nim. Generated: 2017-10-27 09:25:51 UTC</small>
       </div>
     </div>
   </div>
