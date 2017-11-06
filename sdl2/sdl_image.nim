@@ -32,15 +32,13 @@ const
   MAJOR_VERSION* = 2
   MINOR_VERSION* = 0
   PATCHLEVEL* = 2
-
-template compiledVersion*() = ##  \
-  ##  This is the version number macro for the current SDL_image version.
-  (versionNum(MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL))
+  COMPILEDVERSION* = versionNum(MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL) ##  \
+    ##  This is the version number const for the current SDL_image version.
 
 template versionAtLeast*(x, y, z: untyped): untyped =  ##  \
-  ##  This macro will evaluate to true if compiled
+  ##  This macro will evaluate to `true` if compiled
   ##  with SDL_image at least X.Y.Z.
-  (compiledversion() >= versionNum(x, y, z))
+  (COMPILEDVERSION >= versionNum(x, y, z))
 
 proc linkedVersion*(): ptr Version {.
     cdecl, importc: "IMG_Linked_Version", dynlib: SDL2_IMG_LIB.}

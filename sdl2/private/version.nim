@@ -87,7 +87,7 @@ template versionAtLeast*(x, y, z: untyped): bool = ##  \
   ##  at least ``x``.``y``.``z``.
   (COMPILEDVERSION >= versionNum(x, y, z))
 
-proc getVersion*(ver: ref Version) {.
+proc getVersion*(ver: ptr Version) {.
     cdecl, importc: "SDL_GetVersion", dynlib: SDL2_LIB.}
   ##  Get the version of SDL that is linked against your program.
   ##
