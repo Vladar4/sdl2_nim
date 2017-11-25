@@ -232,6 +232,8 @@ proc exit(app: App) =
   app.renderer.destroyRenderer()
   app.window.destroyWindow()
   while mix.init(0) != 0: mix.quit()
+  let mixNumOpened = mix.querySpec(nil, nil, nil)
+  for i in 0..<mixNumOpened: mix.closeAudio()
   ttf.quit()
   img.quit()
   sdl.logInfo(sdl.LogCategoryApplication, "SDL shutdown completed")
