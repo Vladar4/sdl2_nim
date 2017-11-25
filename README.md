@@ -1,4 +1,4 @@
-sdl2_nim 2.0.6.0
+sdl2_nim 2.0.7.0
 ================
 
 sdl2_nim is a wrapper of the SDL 2 library for the Nim language.
@@ -11,11 +11,11 @@ You need to have SDL 2 dynamic libraries installed on your system.
 
 Includes:
 ---------
-* SDL 2.0.6
-* SDL_gfx 1.0.1
+* SDL 2.0.7
+* SDL_gfx 1.0.1 (fully 1.0.3 compatible)
 * SDL_gpu 0.11.0
-* SDL_image 2.0.1
-* SDL_mixer 2.0.1
+* SDL_image 2.0.2
+* SDL_mixer 2.0.2
 * SDL_net 2.0.1
 * SDL_ttf 2.0.14
 
@@ -57,6 +57,15 @@ FAQ:
 
 CHANGELOG:
 ==========
+
+**v2.0.7.0**
+* updated to SDL-2.0.7, SDL_image-2.0.2, and SDL_mixer-2.0.2 (see [changelog](https://github.com/Vladar4/sdl2_nim/blob/master/CHANGELOG-2.0.7.md))
+* updated documentation
+
+**v2.0.6.1**
+* events iterator and memory allocation procedures (by [krux02](https://github.com/krux02))
+* tupleToColor converters
+* various bugfixes and documentation updates
 
 **v2.0.6.0**
 * updated to SDL2-2.0.6 (introduced no breaking changes for 2.0.5, see [changelog](https://github.com/Vladar4/sdl2_nim/blob/master/CHANGELOG-2.0.6.md))

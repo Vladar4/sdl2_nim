@@ -1242,8 +1242,8 @@ function main() {
   NO_FADING, FADING_OUT, FADING_IN"><wbr />Fading<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#MusicType"
     title="MusicType* = enum
-  MUS_NONE, MUS_CMD, MUS_WAV, MUS_MOD, MUS_MID, MUS_OGG, MUS_MP3, MUS_MP3_MAD, MUS_FLAC,
-  MUS_MODPLUG"><wbr />Music<wbr />Type<span class="attachedType" style="visibility:hidden"></span></a></li>
+  MUS_NONE, MUS_CMD, MUS_WAV, MUS_MOD, MUS_MID, MUS_OGG, MUS_MP3, MUS_MP3_MAD_UNUSED,
+  MUS_FLAC, MUS_MODPLUG_UNUSED"><wbr />Music<wbr />Type<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#Music"
     title="Music* = pointer"><wbr />Music<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#EffectFunc_t"
@@ -1261,7 +1261,7 @@ function main() {
   <li><a class="reference" href="#MINOR_VERSION"
     title="MINOR_VERSION* = 0"><wbr />MINOR_<wbr />VERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#PATCHLEVEL"
-    title="PATCHLEVEL* = 1"><wbr />PATCHLEVEL<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="PATCHLEVEL* = 2"><wbr />PATCHLEVEL<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#INIT_FLAC"
     title="INIT_FLAC* = 0x00000001"><wbr />INIT_<wbr />FLAC<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#INIT_MOD"
@@ -1272,8 +1272,8 @@ function main() {
     title="INIT_MP3* = 0x00000008"><wbr />INIT_<wbr />MP3<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#INIT_OGG"
     title="INIT_OGG* = 0x00000010"><wbr />INIT_<wbr />OGG<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#INIT_FLUIDSYNTH"
-    title="INIT_FLUIDSYNTH* = 0x00000020"><wbr />INIT_<wbr />FLUIDSYNTH<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#INIT_MID"
+    title="INIT_MID* = 0x00000020"><wbr />INIT_<wbr />MID<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#CHANNELS"
     title="CHANNELS* = 8"><wbr />CHANNELS<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#DEFAULT_FREQUENCY"
@@ -1283,7 +1283,7 @@ function main() {
   <li><a class="reference" href="#DEFAULT_CHANNELS"
     title="DEFAULT_CHANNELS* = 2"><wbr />DEFAULT_<wbr />CHANNELS<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#MAX_VOLUME"
-    title="MAX_VOLUME* = 128"><wbr />MAX_<wbr />VOLUME<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="MAX_VOLUME* = MIX_MAXVOLUME"><wbr />MAX_<wbr />VOLUME<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#CHANNEL_POST"
     title="CHANNEL_POST* = - 2"><wbr />CHANNEL_<wbr />POST<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#EFFECTSMAXSPEED"
@@ -1302,6 +1302,9 @@ function main() {
     title="quit*()"><wbr />quit<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#openAudio,cint,uint16,cint,cint"
     title="openAudio*(frequency: cint; format: uint16; channels: cint; chunksize: cint): cint"><wbr />open<wbr />Audio<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#openAudioDevice,cint,uint16,cint,cint,cstring,cint"
+    title="openAudioDevice*(frequency: cint; format: uint16; channels: cint; chunksize: cint;
+                 device: cstring; allowed_changes: cint): cint"><wbr />open<wbr />Audio<wbr />Device<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#allocateChannels,cint"
     title="allocateChannels*(numchans: cint): cint"><wbr />allocate<wbr />Channels<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#querySpec,ptr.cint,ptr.uint16,ptr.cint"
@@ -1326,10 +1329,14 @@ function main() {
     title="getNumChunkDecoders*(): cint"><wbr />get<wbr />Num<wbr />Chunk<wbr />Decoders<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#getChunkDecoder,cint"
     title="getChunkDecoder*(index: cint): cstring"><wbr />get<wbr />Chunk<wbr />Decoder<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#hasChunkDecoder,cstring"
+    title="hasChunkDecoder*(name: cstring): bool"><wbr />has<wbr />Chunk<wbr />Decoder<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#getNumMusicDecoders,"
     title="getNumMusicDecoders*(): cint"><wbr />get<wbr />Num<wbr />Music<wbr />Decoders<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#getMusicDecoder,cint"
     title="getMusicDecoder*(index: cint): cstring"><wbr />get<wbr />Music<wbr />Decoder<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#hasMusicDecoder,cstring"
+    title="hasMusicDecoder*(name: cstring): bool"><wbr />has<wbr />Music<wbr />Decoder<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#getMusicType,Music"
     title="getMusicType*(music: Music): MusicType"><wbr />get<wbr />Music<wbr />Type<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#setPostMix,proc(pointer,ptr.uint8,cint),pointer"
@@ -1446,7 +1453,11 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#17" id="67">Templates</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#loadWAV.t,untyped"
+      <li><a class="reference" href="#compiledVersion.t,"
+    title="compiledVersion*()"><wbr />compiled<wbr />Version<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#versionAtLeast.t,untyped,untyped,untyped"
+    title="versionAtLeast*(x, y, z: untyped): untyped"><wbr />version<wbr />At<wbr />Least<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#loadWAV.t,untyped"
     title="loadWAV*(file: untyped): untyped"><wbr />load<wbr />WAV<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#playChannel.t,untyped,untyped,untyped"
     title="playChannel*(channel, chunk, loops: untyped): untyped"><wbr />play<wbr />Channel<span class="attachedType" style="visibility:hidden"></span></a></li>
@@ -1456,6 +1467,8 @@ function main() {
     title="setError*(fmt: untyped): cint"><wbr />set<wbr />Error<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#getError.t,"
     title="getError*(): cstring"><wbr />get<wbr />Error<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#clearError.t,"
+    title="clearError*()"><wbr />clear<wbr />Error<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1538,12 +1551,13 @@ Return values from <tt class="docutils literal"><span class="pre">sdl_mixer.fadi
 
 </dd>
 <dt id="MusicType"><a name="MusicType"></a><pre><span class="Identifier">MusicType</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">MUS_NONE</span><span class="Other">,</span> <span class="Identifier">MUS_CMD</span><span class="Other">,</span> <span class="Identifier">MUS_WAV</span><span class="Other">,</span> <span class="Identifier">MUS_MOD</span><span class="Other">,</span> <span class="Identifier">MUS_MID</span><span class="Other">,</span> <span class="Identifier">MUS_OGG</span><span class="Other">,</span> <span class="Identifier">MUS_MP3</span><span class="Other">,</span> <span class="Identifier">MUS_MP3_MAD</span><span class="Other">,</span> <span class="Identifier">MUS_FLAC</span><span class="Other">,</span>
-  <span class="Identifier">MUS_MODPLUG</span></pre></dt>
+  <span class="Identifier">MUS_NONE</span><span class="Other">,</span> <span class="Identifier">MUS_CMD</span><span class="Other">,</span> <span class="Identifier">MUS_WAV</span><span class="Other">,</span> <span class="Identifier">MUS_MOD</span><span class="Other">,</span> <span class="Identifier">MUS_MID</span><span class="Other">,</span> <span class="Identifier">MUS_OGG</span><span class="Other">,</span> <span class="Identifier">MUS_MP3</span><span class="Other">,</span> <span class="Identifier">MUS_MP3_MAD_UNUSED</span><span class="Other">,</span>
+  <span class="Identifier">MUS_FLAC</span><span class="Other">,</span> <span class="Identifier">MUS_MODPLUG_UNUSED</span></pre></dt>
 <dd>
 <p>
 Return values from <tt class="docutils literal"><span class="pre">sdl_mixer.getMusicType()</span></tt> are of these enumerated values.</p>
 <p>If no music is playing then <cite>MUS_NONE</cite> is returned.    ## If music is playing via an external command then <cite>MUS_CMD</cite> is returned. Otherwise they are self explanatory.</p>
+<p>These are types of music files (not libraries used to load them).</p>
 
 
 </dd>
@@ -1593,7 +1607,7 @@ This is the prototype for effect processing procedures.</p>
 
 
 </dd>
-<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
+<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
 <dd>
 
 
@@ -1610,7 +1624,7 @@ also any command-line player, which is not mixed by SDL_mixer
 requiring libmikmod on system
 
 </dd>
-<dt id="INIT_MODPLUG"><a name="INIT_MODPLUG"></a><pre><span class="Identifier">INIT_MODPLUG</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
+<dt id="INIT_MODPLUG"><a name="INIT_MODPLUG"></a><pre><span class="Identifier">INIT_MODPLUG</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">deprecated</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
 <dd>
 
 
@@ -1625,7 +1639,7 @@ requiring libmikmod on system
 (.ogg) requiring ogg/vorbis libraries on system
 
 </dd>
-<dt id="INIT_FLUIDSYNTH"><a name="INIT_FLUIDSYNTH"></a><pre><span class="Identifier">INIT_FLUIDSYNTH</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000020</span></pre></dt>
+<dt id="INIT_MID"><a name="INIT_MID"></a><pre><span class="Identifier">INIT_MID</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000020</span></pre></dt>
 <dd>
 
 
@@ -1650,7 +1664,7 @@ Good default values for a PC soundcard
 
 
 </dd>
-<dt id="MAX_VOLUME"><a name="MAX_VOLUME"></a><pre><span class="Identifier">MAX_VOLUME</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">128</span></pre></dt>
+<dt id="MAX_VOLUME"><a name="MAX_VOLUME"></a><pre><span class="Identifier">MAX_VOLUME</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">MIX_MAXVOLUME</span></pre></dt>
 <dd>
 Volume of a chunk
 
@@ -1711,6 +1725,13 @@ This procedure gets the version of the dynamically linked SDL_mixer library. It 
 <p>You may call this procedures multiple times, however you will have to call <tt class="docutils literal"><span class="pre">sdl_mixer.closeAudio()</span></tt> just as many times for the device to actually close. The format will not changed on subsequent calls until fully closed. So you will have to close all the way before trying to open with different format parameters.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, <cite>-1</cite> on errors.</p>
 
+
+</dd>
+<dt id="openAudioDevice"><a name="openAudioDevice,cint,uint16,cint,cint,cstring,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">openAudioDevice</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">frequency</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">channels</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">chunksize</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
+                     <span class="Identifier">device</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">allowed_changes</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_OpenAudioDevice&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_MIX_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+Open the mixer with specific device and certain audio format.
 
 </dd>
 <dt id="allocateChannels"><a name="allocateChannels,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocateChannels</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">numchans</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1833,6 +1854,12 @@ Load a music file from an RWop object assuming a specific format.
 
 
 </dd>
+<dt id="hasChunkDecoder"><a name="hasChunkDecoder,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasChunkDecoder</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_HasChunkDecoder&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_MIX_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
 <dt id="getNumMusicDecoders"><a name="getNumMusicDecoders,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getNumMusicDecoders</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_GetNumMusicDecoders&quot;</span><span class="Other">,</span>
                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_MIX_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
@@ -1848,6 +1875,12 @@ Load a music file from an RWop object assuming a specific format.
 <p>Get the name of the <tt class="docutils literal"><span class="pre">index</span></tt>'ed music decoder. You need to get the number of music decoders available using the <tt class="docutils literal"><span class="pre">sdl_mixer.getNumMusicDecoders()</span></tt> procedure.</p>
 <p><tt class="docutils literal"><span class="pre">index</span></tt> The index number of music decoder to get. In the range from <cite>0</cite> to <tt class="docutils literal"><span class="pre">sdl_mixer.getNumMusicDecoders()</span></tt>-1, inclusive.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the name of the <tt class="docutils literal"><span class="pre">index</span></tt>'ed music decoder. This string is owned by the SDL_mixer library, do not modify or free it. It is valid until you call <tt class="docutils literal"><span class="pre">sdl_mixer.closeAudio()</span></tt> the final time.</p>
+
+
+</dd>
+<dt id="hasMusicDecoder"><a name="hasMusicDecoder,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasMusicDecoder</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_HasMusicDecoder&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_MIX_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
 
 
 </dd>
@@ -2045,12 +2078,11 @@ Load a music file from an RWop object assuming a specific format.
 <p>Reserve <tt class="docutils literal"><span class="pre">num</span></tt> channels from being used when playing samples when passing in <cite>-1</cite> as a channel number to playback procedures. The channels are reserved starting from channel <cite>0</cite> to <tt class="docutils literal"><span class="pre">num</span></tt>-1. Passing in <cite>0</cite> will unreserve all channels. Normally SDL_mixer starts without any channels reserved.</p>
 <p><tt class="docutils literal"><span class="pre">num</span></tt> Number of channels to reserve from default mixing. <cite>0</cite> removes all reservations.</p>
 <p>The following procedures are affected by this setting:</p>
-<blockquote><p><ul class="simple"><li><tt class="docutils literal"><span class="pre">sdl_mixer.playChannel()</span></tt></li>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">sdl_mixer.playChannel()</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">sdl_mixer.playChannelTimed()</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">sdl_mixer.fadeInChannel()</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">sdl_mixer.fadeInChannelTimed()</span></tt></li>
 </ul>
-</p></blockquote>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of channels reserved. Never fails, but may return less channels than you ask for, depending on the number of channels previously allocated.</p>
 
 
@@ -2367,7 +2399,7 @@ Unpause the music. This is safe to use on halted, paused, and already playing mu
 <dt><tt class="docutils literal"><span class="pre">MP3</span></tt></dt>
 <dd>Jumps to position seconds from the current position in the stream. So you may want to call <tt class="docutils literal"><span class="pre">sdl_mixer.rewindMusic()</span></tt> before this. Does not go in reverse. Negative values do nothing.</dd>
 </dl>
-<p>This procedurre is only implemented for MOD music formats (set pattern order number) and for OGG, FLAC, MP3_MAD, and MODPLUG music (set position in seconds), at the moment.</p>
+<p>This procedurre is only implemented for MOD music formats (set pattern order number) and for OGG, FLAC, MP3_MAD, MPD_MPG and MODPLUG music (set position in seconds), at the moment.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the codec doesn't support this procedure.</p>
 
 
@@ -2461,12 +2493,22 @@ Iterate SoundFonts paths to use by supported MIDI backends.
 <div class="section" id="17">
 <h1><a class="toc-backref" href="#17">Templates</a></h1>
 <dl class="item">
+<dt id="compiledVersion"><a name="compiledVersion.t,"></a><pre><span class="Keyword">template</span> <span class="Identifier">compiledVersion</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span></pre></dt>
+<dd>
+
+This is the version number macro for the current SDL_mixer version.
+
+</dd>
+<dt id="versionAtLeast"><a name="versionAtLeast.t,untyped,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">versionAtLeast</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dd>
+
+This macro will evaluate to true if compiled with SDL_mixer at least X.Y.Z.
+
+</dd>
 <dt id="loadWAV"><a name="loadWAV.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">loadWAV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
-<dl class="docutils"><dt>
- Load file for use as a sample. This is actually</dt>
-<dd><tt class="docutils literal"><span class="pre">sdl_mixer.loadWAV_RW(sdl.rwFromFile(file, &quot;rb&quot;), 1)</span></tt>. This can load WAVE, AIFF, RIFF, OGG, and VOC files.</dd>
-</dl>
+<p>
+Load file for use as a sample. This is actually <tt class="docutils literal"><span class="pre">sdl_mixer.loadWAV_RW(sdl.rwFromFile(file, &quot;rb&quot;), 1)</span></tt>. This can load WAVE, AIFF, RIFF, OGG, and VOC files.</p>
 <p><tt class="docutils literal"><span class="pre">file</span></tt> File name to load sample from.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> You must call <tt class="docutils literal"><span class="pre">sdl.openAudio()</span></tt> before this. It must know the output characteristics so it can convert the sample for playback, it does this conversion at load time.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> a pointer to the sample as a <tt class="docutils literal"><span class="pre">sdl_mixer.Chunk</span></tt>. <cite>nil</cite> is returned on errors.</p>
@@ -2510,6 +2552,11 @@ Play <tt class="docutils literal"><span class="pre">chunk</span></tt> on <tt cla
 
 
 </dd>
+<dt id="clearError"><a name="clearError.t,"></a><pre><span class="Keyword">template</span> <span class="Identifier">clearError</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span></pre></dt>
+<dd>
+
+
+</dd>
 
 </dl></div>
 
@@ -2520,7 +2567,7 @@ Play <tt class="docutils literal"><span class="pre">chunk</span></tt> on <tt cla
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-09-29 13:46:13 UTC</small>
+        <small>Made with Nim. Generated: 2017-10-27 11:32:41 UTC</small>
       </div>
     </div>
   </div>

@@ -1230,7 +1230,7 @@ function main() {
   <li><a class="reference" href="#MINOR_VERSION"
     title="MINOR_VERSION* = 0"><wbr />MINOR_<wbr />VERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#PATCHLEVEL"
-    title="PATCHLEVEL* = 6"><wbr />PATCHLEVEL<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="PATCHLEVEL* = 7"><wbr />PATCHLEVEL<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#COMPILEDVERSION"
     title="COMPILEDVERSION* = versionNum(MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL)"><wbr />COMPILEDVERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
 
@@ -1302,7 +1302,7 @@ Information the version of SDL in use.</p>
 
 
 </dd>
-<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">6</span></pre></dt>
+<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">7</span></pre></dt>
 <dd>
 
 
@@ -1366,8 +1366,9 @@ Template to determine SDL version program was compiled against.</p>
 </dd>
 <dt id="versionNum"><a name="versionNum.t,untyped,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">versionNum</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
-
-This template turns the version numbers into a numeric value:<blockquote><p><cite>(1,2,3) -&gt; (1203)</cite></p></blockquote>
+<p>
+This template turns the version numbers into a numeric value:</p>
+<p><cite>(1,2,3) -&gt; (1203)</cite></p>
 <p>This assumes that there will never be more than 100 patchlevels.</p>
 
 
@@ -1388,7 +1389,7 @@ This templaye will evaluate to true if compiled with SDL at least <tt class="doc
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
+        <small>Made with Nim. Generated: 2017-10-27 11:33:10 UTC</small>
       </div>
     </div>
   </div>

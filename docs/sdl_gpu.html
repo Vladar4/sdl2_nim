@@ -1753,14 +1753,13 @@ function main() {
   <li><a class="reference" href="#unsetTargetColor,Target"
     title="unsetTargetColor*(target: Target)"><wbr />unset<wbr />Target<wbr />Color<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadSurface,cstring"
-    title="loadSurface*(filename: cstring): ptr Surface"><wbr />load<wbr />Surface<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadSurface*(filename: cstring): Surface"><wbr />load<wbr />Surface<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadSurfaceRW,ptr.RWops,bool"
-    title="loadSurfaceRW*(rwops: ptr RWops; freeRwops: bool): ptr Surface"><wbr />load<wbr />Surface<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#saveSurface,ptr.Surface,cstring,FileFormat"
-    title="saveSurface*(surface: ptr Surface; filename: cstring; format: FileFormat): bool"><wbr />save<wbr />Surface<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#saveSurfaceRW,ptr.Surface,ptr.RWops,bool,FileFormat"
-    title="saveSurfaceRW*(surface: ptr Surface; rwops: ptr RWops; freeRwops: bool;
-               format: FileFormat): bool"><wbr />save<wbr />Surface<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadSurfaceRW*(rwops: ptr RWops; freeRwops: bool): Surface"><wbr />load<wbr />Surface<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#saveSurface,Surface,cstring,FileFormat"
+    title="saveSurface*(surface: Surface; filename: cstring; format: FileFormat): bool"><wbr />save<wbr />Surface<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#saveSurfaceRW,Surface,ptr.RWops,bool,FileFormat"
+    title="saveSurfaceRW*(surface: Surface; rwops: ptr RWops; freeRwops: bool; format: FileFormat): bool"><wbr />save<wbr />Surface<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#createImage,uint16,uint16,Format"
     title="createImage*(w, h: uint16; format: Format): Image"><wbr />create<wbr />Image<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#createImageUsingTexture,uint32,bool"
@@ -1779,14 +1778,13 @@ function main() {
     title="setImageVirtualResolution*(image: Image; w: uint16; h: uint16)"><wbr />set<wbr />Image<wbr />Virtual<wbr />Resolution<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#unsetImageVirtualResolution,Image"
     title="unsetImageVirtualResolution*(image: Image)"><wbr />unset<wbr />Image<wbr />Virtual<wbr />Resolution<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#updateImage,Image,ptr.Rect,ptr.Surface,ptr.Rect"
-    title="updateImage*(image: Image; imageRect: ptr Rect; surface: ptr Surface;
-             surfaceRect: ptr Rect)"><wbr />update<wbr />Image<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#updateImage,Image,ptr.Rect,Surface,ptr.Rect"
+    title="updateImage*(image: Image; imageRect: ptr Rect; surface: Surface; surfaceRect: ptr Rect)"><wbr />update<wbr />Image<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#updateImageBytes,Image,ptr.Rect,ptr.cuchar,cint"
     title="updateImageBytes*(image: Image; imageRect: ptr Rect; bytes: ptr cuchar;
                   bytesPerRow: cint)"><wbr />update<wbr />Image<wbr />Bytes<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#replaceImage,Image,ptr.Surface,ptr.Rect"
-    title="replaceImage*(image: Image; surface: ptr Surface; surfaceRect: ptr Rect): bool"><wbr />replace<wbr />Image<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#replaceImage,Image,Surface,ptr.Rect"
+    title="replaceImage*(image: Image; surface: Surface; surfaceRect: ptr Rect): bool"><wbr />replace<wbr />Image<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#saveImage,Image,cstring,FileFormat"
     title="saveImage*(image: Image; filename: cstring; format: FileFormat): bool"><wbr />save<wbr />Image<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#saveImageRW,Image,ptr.RWops,bool,FileFormat"
@@ -1824,14 +1822,14 @@ function main() {
     title="setSnapMode*(image: Image; mode: Snap)"><wbr />set<wbr />Snap<wbr />Mode<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#setWrapMode,Image,Wrap,Wrap"
     title="setWrapMode*(image: Image; wrapModeX: Wrap; wrapModeY: Wrap)"><wbr />set<wbr />Wrap<wbr />Mode<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#copyImageFromSurface,ptr.Surface"
-    title="copyImageFromSurface*(surface: ptr Surface): Image"><wbr />copy<wbr />Image<wbr />From<wbr />Surface<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#copyImageFromSurface,Surface"
+    title="copyImageFromSurface*(surface: Surface): Image"><wbr />copy<wbr />Image<wbr />From<wbr />Surface<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#copyImageFromTarget,Target"
     title="copyImageFromTarget*(target: Target): Image"><wbr />copy<wbr />Image<wbr />From<wbr />Target<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#copySurfaceFromTarget,Target"
-    title="copySurfaceFromTarget*(target: Target): ptr Surface"><wbr />copy<wbr />Surface<wbr />From<wbr />Target<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="copySurfaceFromTarget*(target: Target): Surface"><wbr />copy<wbr />Surface<wbr />From<wbr />Target<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#copySurfaceFromImage,Image"
-    title="copySurfaceFromImage*(image: Image): ptr Surface"><wbr />copy<wbr />Surface<wbr />From<wbr />Image<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="copySurfaceFromImage*(image: Image): Surface"><wbr />copy<wbr />Surface<wbr />From<wbr />Image<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#vectorLength,ptr.cfloat"
     title="vectorLength*(vec3: ptr cfloat): cfloat"><wbr />vector<wbr />Length<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#vectorNormalize,ptr.cfloat"
@@ -3506,19 +3504,19 @@ Sets the modulation color for subsequent drawing of images and shapes on the giv
 Unsets the modulation color for subsequent drawing of images and shapes on the given target. This has the same effect as coloring with pure opaque white (255, 255, 255, 255).
 
 </dd>
-<dt id="loadSurface"><a name="loadSurface,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filename</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GPU_LoadSurface&quot;</span><span class="Other">,</span>
+<dt id="loadSurface"><a name="loadSurface,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">filename</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GPU_LoadSurface&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GPU_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Load surface from an image file that is supported by this renderer. Don't forget to SDL's <tt class="docutils literal"><span class="pre">freeSurface()</span></tt> it.
 
 </dd>
-<dt id="loadSurfaceRW"><a name="loadSurfaceRW,ptr.RWops,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadSurfaceRW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">rwops</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freeRwops</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="loadSurfaceRW"><a name="loadSurfaceRW,ptr.RWops,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadSurfaceRW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">rwops</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freeRwops</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GPU_LoadSurface_RW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GPU_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Load surface from an image file in memory. Don't forget to SDL's <tt class="docutils literal"><span class="pre">freeSurface()</span></tt> it.
 
 </dd>
-<dt id="saveSurface"><a name="saveSurface,ptr.Surface,cstring,FileFormat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">saveSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">filename</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">FileFormat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+<dt id="saveSurface"><a name="saveSurface,Surface,cstring,FileFormat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">saveSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">filename</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">FileFormat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GPU_SaveSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GPU_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Save surface to a file. With a format of <cite>FILE_AUTO</cite>, the file type is deduced from the extension.</p>
@@ -3527,7 +3525,7 @@ Load surface from an image file in memory. Don't forget to SDL's <tt class="docu
 
 
 </dd>
-<dt id="saveSurfaceRW"><a name="saveSurfaceRW,ptr.Surface,ptr.RWops,bool,FileFormat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">saveSurfaceRW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">rwops</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freeRwops</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span>
+<dt id="saveSurfaceRW"><a name="saveSurfaceRW,Surface,ptr.RWops,bool,FileFormat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">saveSurfaceRW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">rwops</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freeRwops</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span>
                    <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">FileFormat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GPU_SaveSurface_RW&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GPU_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
@@ -3595,7 +3593,7 @@ Change the logical size of the given image. Rendering this image will scaled it 
 Reset the logical size of the given image to its original value.
 
 </dd>
-<dt id="updateImage"><a name="updateImage,Image,ptr.Rect,ptr.Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">updateImage</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">image</span><span class="Other">:</span> <span class="Identifier">Image</span><span class="Other">;</span> <span class="Identifier">imageRect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">surface</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Surface</span><span class="Other">;</span>
+<dt id="updateImage"><a name="updateImage,Image,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">updateImage</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">image</span><span class="Other">:</span> <span class="Identifier">Image</span><span class="Other">;</span> <span class="Identifier">imageRect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span>
                  <span class="Identifier">surfaceRect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GPU_UpdateImage&quot;</span><span class="Other">,</span>
                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GPU_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
@@ -3613,8 +3611,8 @@ Reset the logical size of the given image to its original value.
 
 
 </dd>
-<dt id="replaceImage"><a name="replaceImage,Image,ptr.Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">replaceImage</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">image</span><span class="Other">:</span> <span class="Identifier">Image</span><span class="Other">;</span> <span class="Identifier">surface</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">surfaceRect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GPU_ReplaceImage&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GPU_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="replaceImage"><a name="replaceImage,Image,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">replaceImage</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">image</span><span class="Other">:</span> <span class="Identifier">Image</span><span class="Other">;</span> <span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">surfaceRect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GPU_ReplaceImage&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GPU_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Update an image from surface data, replacing its underlying texture to allow for size changes.</p>
 <p>Ignores virtual resolution on the image so the number of pixels needed from the surface is known.</p>
@@ -3738,7 +3736,7 @@ Sets the pixel grid snapping mode for the given image.
 Sets the image wrapping mode, if supported by the renderer.
 
 </dd>
-<dt id="copyImageFromSurface"><a name="copyImageFromSurface,ptr.Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">copyImageFromSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Surface</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Image</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="copyImageFromSurface"><a name="copyImageFromSurface,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">copyImageFromSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Image</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GPU_CopyImageFromSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GPU_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Copy Surface data into a new image. Don't forget to SDL's <tt class="docutils literal"><span class="pre">freeSurface()</span></tt> the surface and <tt class="docutils literal"><span class="pre">freeImage()</span></tt> the image.
@@ -3750,13 +3748,13 @@ Copy Surface data into a new image. Don't forget to SDL's <tt class="docutils li
 Copy target data into a new image. Don't forget to <tt class="docutils literal"><span class="pre">freeImage()</span></tt> the image.
 
 </dd>
-<dt id="copySurfaceFromTarget"><a name="copySurfaceFromTarget,Target"></a><pre><span class="Keyword">proc</span> <span class="Identifier">copySurfaceFromTarget</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">target</span><span class="Other">:</span> <span class="Identifier">Target</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="copySurfaceFromTarget"><a name="copySurfaceFromTarget,Target"></a><pre><span class="Keyword">proc</span> <span class="Identifier">copySurfaceFromTarget</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">target</span><span class="Other">:</span> <span class="Identifier">Target</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GPU_CopySurfaceFromTarget&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GPU_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Copy target data into a new <tt class="docutils literal"><span class="pre">Surface</span></tt>. Don't forget to SDL's <tt class="docutils literal"><span class="pre">freeSurface()</span></tt> the surface.
 
 </dd>
-<dt id="copySurfaceFromImage"><a name="copySurfaceFromImage,Image"></a><pre><span class="Keyword">proc</span> <span class="Identifier">copySurfaceFromImage</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">image</span><span class="Other">:</span> <span class="Identifier">Image</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="copySurfaceFromImage"><a name="copySurfaceFromImage,Image"></a><pre><span class="Keyword">proc</span> <span class="Identifier">copySurfaceFromImage</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">image</span><span class="Other">:</span> <span class="Identifier">Image</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;GPU_CopySurfaceFromImage&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_GPU_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Copy image data into a new <tt class="docutils literal"><span class="pre">Surface</span></tt>. Don't forget to SDL's <tt class="docutils literal"><span class="pre">freeSurface()</span></tt> the surface and <tt class="docutils literal"><span class="pre">freeImage()</span></tt> the image.
@@ -4680,7 +4678,7 @@ Enables a shader attribute and sets its source data.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-09-29 13:46:04 UTC</small>
+        <small>Made with Nim. Generated: 2017-10-17 13:59:22 UTC</small>
       </div>
     </div>
   </div>

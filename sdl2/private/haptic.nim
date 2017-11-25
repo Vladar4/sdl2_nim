@@ -902,8 +902,8 @@ proc hapticQuery*(haptic: Haptic): cuint {.
   ##
   ##  Example:
   ##
-  ##    if (hapticQuery(haptic) and HAPTIC_CONSTANT):
-  ##
+  ##  .. code-block:: nim
+  ##    if hapticQuery(haptic) and HAPTIC_CONSTANT:
   ##      echo("We have constant haptic effect!")
   ##
   ##  ``haptic`` The haptic device to query.

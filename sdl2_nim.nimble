@@ -1,6 +1,6 @@
 # Package
 
-version       = "2.0.6.0"
+version       = "2.0.7.0"
 author        = "Vladar"
 description   = "Wrapper of the SDL 2 library for the Nim language."
 license       = "zlib"

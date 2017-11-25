@@ -26,15 +26,16 @@
 ##
 ##  By default logs are quiet, but if you're debugging SDL you might want:
 ##
-##      ``logSetAllPriority(LOG_PRIORITY_WARN)``
+##  .. code-block:: nim
+##    logSetAllPriority(LOG_PRIORITY_WARN)
 ##
 ##  Here's where the messages go on different platforms:
 ##
-##      Windows: debug output stream
+##    Windows: debug output stream
 ##
-##      Android: log output
+##    Android: log output
 ##
-##      Others: standard error output (stderr)
+##    Others: standard error output (stderr)
 
 const
   MAX_LOG_MESSAGE* = 4096 ##  \
@@ -78,6 +79,7 @@ type
       ##        MYAPP_CATEGORY_AWESOME1 = LOG_CATEGORY_CUSTOM,
       ##        MYAPP_CATEGORY_AWESOME2,
       ##        MYAPP_CATEGORY_AWESOME3
+      ##
     LOG_CATEGORY_CUSTOM = 19
 
   LogPriority* {.size: sizeof(cint).} = enum ##  \

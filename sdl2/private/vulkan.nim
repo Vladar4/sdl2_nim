@@ -90,9 +90,9 @@ proc vulkanLoadLibrary*(path: cstring): cint {.
   ##
   ##  See also:
   ##
-  ##   ``vulkanGetVkGetInstanceProcAddr()``
+  ##  ``vulkanGetVkGetInstanceProcAddr()``
   ##
-  ##   ``vulkanUnloadLibrary()``
+  ##  ``vulkanUnloadLibrary()``
 
 proc vulkanGetVkGetInstanceProcAddr*(): pointer {.
     cdecl, importc: "SDL_Vulkan_GetVkGetInstanceProcAddr", dynlib: SDL2_LIB.}
@@ -108,7 +108,7 @@ proc vulkanUnloadLibrary*() {.
   ##
   ##  See also:
   ##
-  ##   ``vulkanLoadLibrary()``
+  ##  ``vulkanLoadLibrary()``
 
 proc vulkanGetInstanceExtensions*(
     window: Window; pCount: ptr cuint; pNames: cstringArray): bool {.

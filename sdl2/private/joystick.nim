@@ -84,6 +84,20 @@ type
 
 # Procedures
 
+proc lockJoysticks*() {.
+    cdecl, importc: "SDL_LockJoysticks", dynlib: SDL2_LIB.}
+  ##  Locking for multi-threaded access to the joystick API.
+  ##
+  ##  If you are using the joystick API or handling events from multiple threads
+  ##  you should use these locking functions to protect access to the joysticks.
+  ##
+  ##  In particular, you are guaranteed that the joystick list won't change, so
+  ##  the API functions that take a joystick index will be valid, and joystick
+  ##  and game controller events will not be delivered.
+
+proc unlockJoysticks*() {.
+    cdecl, importc: "SDL_UnlockJoysticks", dynlib: SDL2_LIB.}
+
 proc numJoysticks*(): cint {.
     cdecl, importc: "SDL_NumJoysticks", dynlib: SDL2_LIB.}
   ##  Count the number of joysticks attached to the system right now.
@@ -166,7 +180,7 @@ proc joystickGetVendor*(joystick: Joystick): uint16 {.
 
 proc joystickGetProduct*(joystick: Joystick): uint16 {.
     cdecl, importc: "SDL_JoystickGetProduct", dynlib: SDL2_LIB.}
-  ##  ``Return` the USB product ID of an opened joystick, if available.
+  ##  ``Return`` the USB product ID of an opened joystick, if available.
   ##  If the product ID isn't available this function returns `0`.
 
 proc joystickGetProductVersion*(joystick: Joystick): uint16 {.

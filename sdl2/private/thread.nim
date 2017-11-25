@@ -219,9 +219,9 @@ proc tlsCreate*(): TLSID {.
   ##
   ##  See also:
   ##
-  ##    ``tlsGet()``
+  ##  ``tlsGet()``
   ##
-  ##    ``tlsSet()``
+  ##  ``tlsSet()``
 
 proc tlsGet*(id: TLSID): pointer {.
     cdecl, importc: "SDL_TLSGet", dynlib: SDL2_LIB.}

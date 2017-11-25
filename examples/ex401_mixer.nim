@@ -179,18 +179,18 @@ proc init(app: App): bool =
                     ttf.getError())
 
   # Init SDL_MIXER
-  if mix.init(mix.InitMP3) == 0:
-    sdl.logCritical(sdl.LogCategoryError,
-                    "Can't initialize SDL_MIXER: %s",
-                    mix.getError())
-
   if mix.openAudio(mix.DefaultFrequency,  # 22050
                    mix.DefaultFormat,     # AudioS16LSB
                    mix.DefaultChannels,   # 2
                    1024 # chunksize in bytes
                   ) != 0:
     sdl.logCritical(sdl.LogCategoryError,
-                    "Can't open mixer with given audio format: %s",
+                    "Can't open mixer with the given audio format: %s",
+                    mix.getError())
+
+  if mix.init(mix.InitMP3) == 0:
+    sdl.logCritical(sdl.LogCategoryError,
+                    "Can't initialize mixer flags: %s",
                     mix.getError())
 
   # Create window
@@ -232,6 +232,8 @@ proc exit(app: App) =
   app.renderer.destroyRenderer()
   app.window.destroyWindow()
   while mix.init(0) != 0: mix.quit()
+  let mixNumOpened = mix.querySpec(nil, nil, nil)
+  for i in 0..<mixNumOpened: mix.closeAudio()
   ttf.quit()
   img.quit()
   sdl.logInfo(sdl.LogCategoryApplication, "SDL shutdown completed")

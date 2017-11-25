@@ -146,6 +146,16 @@ type
 type
   AudioSpec* = object ##  \
     ##  The calculated values in this object are calculated by ``OpenAudio()``.
+    ##
+    ##  For multi-channel audio, the default SDL channel mapping is:
+    ##  * 2:  FL FR                     (stereo)
+    ##  * 3:  FL FR LFE                 (2.1 surround)
+    ##  * 4:  FL FR BL BR               (quad)
+    ##  * 5:  FL FR FC BL BR            (quad + center)
+    ##  * 6:  FL FR FC LFE SL SR        (5.1 surround - last two can also be BL BR)
+    ##  * 7:  FL FR FC LFE BC SL SR     (6.1 surround)
+    ##  * 8:  FL FR FC LFE BL BR SL SR  (7.1 surround)
+    ##
     freq*: cint               ##  DSP frequency -- samples per second
     format*: AudioFormat      ##  Audio data format
     channels*: uint8          ##  Number of channels: `1` mono, `2` stereo
@@ -432,6 +442,181 @@ proc convertAudio*(cvt: ptr AudioCVT): cint {.
   ##  by ``buildAudioCVT()``, and should be `cvt.len*cvt.len_mult` bytes long.
   ##
   ##  ``Return`` `0` on success or `-1` if ``cvt.buf`` is ``nil``.
+
+
+type
+  AudioStream* = pointer  ##  \
+    ##  ``AudioStream`` is a new audio conversion interface.
+    ##
+    ##  The benefits vs ``AudioCVT``:
+    ##  * it can handle resampling data in chunks without generating
+    ##    artifacts, when it doesn't have the complete buffer available.
+    ##  * it can handle incoming data in any variable size.
+    ##  * You push data as you have it, and pull it when you need it.
+    ##
+    ##  This is opaque to the outside world.
+
+proc newAudioStream*(
+  srcFormat: AudioFormat; srcChannels: uint8; srcRate: cint;
+  dstFormat: AudioFormat; dstChannels: uint8; dstRate: cint): AudioStream {.
+    cdecl, importc: "SDL_NewAudioStream", dynlib: SDL2_LIB.}
+##  Create a new audio stream
+##
+##  ``src_format`` The format of the source audio
+##
+##  ``src_channels`` The number of channels of the source audio
+##  ``src_rate``     The sampling rate of the source audio
+##  ``dst_format``   The format of the desired audio output
+##  ``dst_channels`` The number of channels of the desired audio output
+##  ``dst_rate``     The sampling rate of the desired audio output
+##
+##  ``Return`` `0` on success, or `-1` on error.
+##
+##  See also:
+##
+##  ``audioStreamPut()``
+##
+##  ``audioStreamGet()``
+##
+##  ``audioStreamAvailable()``
+##
+##  ``audioStreamFlush()``
+##
+##  ``audioStreamClear()``
+##
+##  ``freeAudioStream()``
+
+proc audioStreamPut*(stream: AudioStream; buf: pointer; len: cint): cint {.
+    cdecl, importc: "SDL_AudioStreamPut", dynlib: SDL2_LIB.}
+##  Add data to be converted/resampled to the stream
+##
+##  ``stream``  The stream the audio data is being added to
+##
+##  ``buf``     A pointer to the audio data to add
+##
+##  ``len``     The number of bytes to write to the stream
+##
+##  ``Return`` `0` on success, or `-1` on error.
+##
+##  See also:
+##
+##  ``newAudioStream()``
+##
+##  ``audioStreamGet()``
+##
+##  ``audioStreamAvailable()``
+##
+##  ``audioStreamFlush()``
+##
+##  ``audioStreamClear()``
+##
+##  ``freeAudioStream()``
+
+proc audioStreamGet*(stream: AudioStream; buf: pointer; len: cint): cint {.
+    cdecl, importc: "SDL_AudioStreamGet", dynlib: SDL2_LIB.}
+##  Get converted/resampled data from the stream
+##
+##  ``stream``  The stream the audio is being requested from
+##
+##  ``buf``     A buffer to fill with audio data
+##
+##  ``len``     The maximum number of bytes to fill
+##
+##  ``Return`` the number of bytes read from the stream, or `-1` on error.
+##
+##  See also:
+##
+##  ``newAudioStream()``
+##
+##  ``audioStreamPut()``
+##
+##  ``audioStreamAvailable()``
+##
+##  ``audioStreamFlush()``
+##
+##  ``audioStreamClear()``
+##
+##  ``freeAudioStream()``
+##
+
+proc audioStreamAvailable*(stream: AudioStream): cint {.
+    cdecl, importc: "SDL_AudioStreamAvailable", dynlib: SDL2_LIB.}
+##  Get the number of converted/resampled bytes available. The stream may be
+##  buffering data behind the scenes until it has enough to resample
+##  correctly, so this number might be lower than what you expect, or even
+##  be zero. Add more data or flush the stream if you need the data now.
+##
+##  See also:
+##
+##  ``newAudioStream()``
+##
+##  ``audioStreamPut()``
+##
+##  ``audioStreamGet()``
+##
+##  ``audioStreamFlush()``
+##
+##  ``audioStreamClear()``
+##
+##  ``freeAudioStream()``
+
+proc audioStreamFlush*(stream: AudioStream): cint {.
+    cdecl, importc: "SDL_AudioStreamFlush", dynlib: SDL2_LIB.}
+##  Tell the stream that you're done sending data, and anything being buffered
+##  should be converted/resampled and made available immediately.
+##
+##  It is legal to add more data to a stream after flushing, but there will
+##  be audio gaps in the output. Generally this is intended to signal the
+##  end of input, so the complete output becomes available.
+##
+##  See also:
+##
+##  ``newAudioStream()``
+##
+##  ``audioStreamPut()``
+##
+##  ``audioStreamGet()``
+##
+##  ``audioStreamAvailable()``
+##
+##  ``audioStreamClear()``
+
+proc audioStreamClear*(stream: AudioStream) {.
+    cdecl, importc: "SDL_AudioStreamClear", dynlib: SDL2_LIB.}
+##  Clear any pending data in the stream without converting it.
+##
+##  See also:
+##
+##  ``newAudioStream()``
+##
+##  ``audioStreamPut()``
+##
+##  ``audioStreamGet()``
+##
+##  ``audioStreamAvailable()``
+##
+##  ``audioStreamFlush()``
+##
+##  ``freeAudioStream()``
+
+proc freeAudioStream*(stream: AudioStream) {.
+    cdecl, importc: "SDL_FreeAudioStream", dynlib: SDL2_LIB.}
+##  Free an audio stream.
+##
+##  See also:
+##
+##  ``newAudioStream()``
+##
+##  ``audioStreamPut()``
+##
+##  ``audioStreamGet()``
+##
+##  ``audioStreamAvailable()``
+##
+##  ``audioStreamFlush()``
+##
+##  ``audioStreamClear()``
+
 
 const
   MIX_MAXVOLUME* = 128

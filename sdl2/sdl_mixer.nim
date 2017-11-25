@@ -1,6 +1,6 @@
 #
 #  SDL_mixer:  An audio mixer library based on the SDL library
-#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2017 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -70,7 +70,14 @@ import
 const
   MAJOR_VERSION* = 2
   MINOR_VERSION* = 0
-  PATCHLEVEL* = 1
+  PATCHLEVEL* = 2
+  COMPILEDVERSION* = versionNum(MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL) ##  \
+    ##  This is the version number const for the current SDL_mixer version.
+
+template versionAtLeast*(x, y, z: untyped): untyped =  ##  \
+  ##  This macro will evaluate to true if compiled
+  ##  with SDL_mixer at least X.Y.Z.
+  (COMPILEDVERSION >= versionNum(x, y, z))
 
 proc linkedVersion*(): ptr Version {.
     cdecl, importc: "Mix_Linked_Version", dynlib: SDL2_MIX_LIB.}
@@ -78,25 +85,16 @@ proc linkedVersion*(): ptr Version {.
   ##  library. It should NOT be used to fill a version structure, instead you
   ##  should use the ``version()`` template.
 
-#type
-#  InitFlags* {.size: sizeof(cint).} = enum
-#    INIT_FLAC = 0x00000001,
-#    INIT_MOD = 0x00000002,
-#    INIT_MODPLUG = 0x00000004,
-#    INIT_MP3 = 0x00000008,
-#    INIT_OGG = 0x00000010,
-#    INIT_FLUIDSYNTH = 0x00000020
-
 # InitFlags
 const
   INIT_FLAC* = 0x00000001 ##  (.flac) requiring the FLAC library on system - \
     ##  also any command-line player, which is not mixed by SDL_mixer
   INIT_MOD* = 0x00000002  ##  (.mod .xm .s3m .669 .it .med and more) \
     ##  requiring libmikmod on system
-  INIT_MODPLUG* = 0x00000004
+  INIT_MODPLUG* {.deprecated.} = 0x00000004
   INIT_MP3* = 0x00000008  ##  (.mp3) requiring SMPEG or MAD library on system
   INIT_OGG* = 0x00000010  ##  (.ogg) requiring ogg/vorbis libraries on system
-  INIT_FLUIDSYNTH* = 0x00000020
+  INIT_MID* = 0x00000020
 
 proc init*(flags: cint): cint {.
     cdecl, importc: "Mix_Init", dynlib: SDL2_MIX_LIB.}
@@ -163,7 +161,7 @@ else:
 
 const
   DEFAULT_CHANNELS* = 2
-  MAX_VOLUME* = 128 ##  Volume of a chunk
+  MAX_VOLUME* = MIX_MAXVOLUME ##  Volume of a chunk
 
 type
   Chunk* = ptr ChunkObj
@@ -203,6 +201,8 @@ type
     ##  If no music is playing then `MUS_NONE` is returned.    ##
     ##  If music is playing via an external command then `MUS_CMD` is returned.
     ##  Otherwise they are self explanatory.
+    ##
+    ##  These are types of music files (not libraries used to load them).
     MUS_NONE,
     MUS_CMD,
     MUS_WAV,
@@ -210,9 +210,9 @@ type
     MUS_MID,
     MUS_OGG,
     MUS_MP3,
-    MUS_MP3_MAD,
+    MUS_MP3_MAD_UNUSED,
     MUS_FLAC,
-    MUS_MODPLUG
+    MUS_MODPLUG_UNUSED
 
 type
   Music* = pointer ##  \
@@ -257,6 +257,11 @@ proc openAudio*(
   ##  format parameters.
   ##
   ##  ``Return`` `0` on success, `-1` on errors.
+
+proc openAudioDevice*(frequency: cint, format: uint16, channels: cint,
+  chunksize: cint, device: cstring, allowed_changes: cint): cint {.
+    cdecl, importc: "Mix_OpenAudioDevice", dynlib: SDL2_MIX_LIB.}
+  ##  Open the mixer with specific device and certain audio format.
 
 proc allocateChannels*(numchans: cint): cint {.
     cdecl, importc: "Mix_AllocateChannels", dynlib: SDL2_MIX_LIB.}
@@ -325,9 +330,9 @@ proc loadWAV_RW*(src: ptr RWops; freesrc: cint): Chunk {.
   ##  `nil` is returned on errors.
 
 template loadWAV*(file: untyped): untyped = ##  \
-  ##   Load file for use as a sample. This is actually
-  ##   ``sdl_mixer.loadWAV_RW(sdl.rwFromFile(file, "rb"), 1)``.
-  ##   This can load WAVE, AIFF, RIFF, OGG, and VOC files.
+  ##  Load file for use as a sample. This is actually
+  ##  ``sdl_mixer.loadWAV_RW(sdl.rwFromFile(file, "rb"), 1)``.
+  ##  This can load WAVE, AIFF, RIFF, OGG, and VOC files.
   ##
   ##  ``file`` File name to load sample from.
   ##
@@ -457,14 +462,17 @@ proc getChunkDecoder*(index: cint): cstring {.
   ##  This string is owned by the SDL_mixer library, do not modify or free it.
   ##  It is valid until you call ``sdl_mixer.closeAudio()`` the final time.
 
+proc hasChunkDecoder*(name: cstring): bool {.
+    cdecl, importc: "Mix_HasChunkDecoder", dynlib: SDL2_MIX_LIB.}
+
 proc getNumMusicDecoders*(): cint {.
     cdecl, importc: "Mix_GetNumMusicDecoders", dynlib: SDL2_MIX_LIB.}
-  ##   Get the number of music decoders available
-  ##   from the ``sdl_mixer.getMusicDecoder()`` procedure.
+  ##  Get the number of music decoders available
+  ##  from the ``sdl_mixer.getMusicDecoder()`` procedure.
   ##
-  ##   This number can be different for each run of a program,
-  ##   due to the change in availability of shared libraries
-  ##   that support each format.
+  ##  This number can be different for each run of a program,
+  ##  due to the change in availability of shared libraries
+  ##  that support each format.
   ##
   ##  ``Return`` the number of music decoders available.
 
@@ -480,6 +488,9 @@ proc getMusicDecoder*(index: cint): cstring {.
   ##  ``Return`` the name of the ``index``'ed music decoder.
   ##  This string is owned by the SDL_mixer library, do not modify or free it.
   ##  It is valid until you call ``sdl_mixer.closeAudio()`` the final time.
+
+proc hasMusicDecoder*(name: cstring): bool {.
+    cdecl, importc: "Mix_HasMusicDecoder", dynlib: SDL2_MIX_LIB.}
 
 proc getMusicType*(music: Music): MusicType {.
     cdecl, importc: "Mix_GetMusicType", dynlib: SDL2_MIX_LIB.}
@@ -860,6 +871,7 @@ proc setPosition*(channel: cint; angle: int16; distance: uint8): cint {.
   ##    `180` = directly behind.
   ##
   ##    `270` = directly to the left.
+  ##
   ##  So you can see it goes clockwise starting at directly in front.
   ##  This ends up being similar in effect to ``sdl_mixer.setPanning()``
   ##  For efficiency, the precision of this effect may be limited
@@ -1019,10 +1031,10 @@ proc reserveChannels*(num: cint): cint {.
   ##
   ##  The following procedures are affected by this setting:
   ##
-  ##    * ``sdl_mixer.playChannel()``
-  ##    * ``sdl_mixer.playChannelTimed()``
-  ##    * ``sdl_mixer.fadeInChannel()``
-  ##    * ``sdl_mixer.fadeInChannelTimed()``
+  ##  * ``sdl_mixer.playChannel()``
+  ##  * ``sdl_mixer.playChannelTimed()``
+  ##  * ``sdl_mixer.fadeInChannel()``
+  ##  * ``sdl_mixer.fadeInChannelTimed()``
   ##
   ##  ``Return`` the number of channels reserved.
   ##  Never fails, but may return less channels than you ask for,
@@ -1304,7 +1316,7 @@ proc volume*(channel: cint; volume: cint): cint {.
 
 proc volumeChunk*(chunk: Chunk; volume: cint): cint {.
     cdecl, importc: "Mix_VolumeChunk", dynlib: SDL2_MIX_LIB.}
-  ##   Set ``chunk.volume`` to ``volume``.
+  ##  Set ``chunk.volume`` to ``volume``.
   ##
   ##  The volume setting will take effect when the chunk is used on a channel,
   ##  being mixed into the output.
@@ -1518,7 +1530,7 @@ proc rewindMusic*() {.
 
 proc pausedMusic*(): cint {.
   cdecl, importc: "Mix_PausedMusic", dynlib: SDL2_MIX_LIB.}
-  ##   Tells you if music is paused, or not.
+  ##  Tells you if music is paused, or not.
   ##
   ##  ``Note:`` Does not check if the music was been halted after it was paused,
   ##  which may seem a little weird.
@@ -1547,8 +1559,8 @@ proc setMusicPosition*(position: cdouble): cint {.
   ##    Does not go in reverse. Negative values do nothing.
   ##
   ##  This procedurre is only implemented for MOD music formats (set pattern
-  ##  order number) and for OGG, FLAC, MP3_MAD, and MODPLUG music (set
-  ##  position in seconds), at the moment.
+  ##  order number) and for OGG, FLAC, MP3_MAD, MPD_MPG and MODPLUG music
+  ##  (set position in seconds), at the moment.
   ##
   ##  ``Return`` `0` on success,
   ##  or `-1` if the codec doesn't support this procedure.
@@ -1570,7 +1582,7 @@ proc playing*(channel: cint): cint {.
 
 proc playingMusic*(): cint {.
     cdecl, importc: "Mix_PlayingMusic", dynlib: SDL2_MIX_LIB.}
-  ##   Tells you if music is actively playing, or not.
+  ##  Tells you if music is actively playing, or not.
   ##
   ##  ``Note:`` Does not check if the channel has been paused.
   ##
@@ -1642,8 +1654,8 @@ proc eachSoundFont*(
 
 proc getChunk*(channel: cint): Chunk {.
     cdecl, importc: "Mix_GetChunk", dynlib: SDL2_MIX_LIB.}
-  ##   Get the most recent sample chunk pointer played on ``channel``.
-  ##   This pointer may be currently playing, or just the last used.
+  ##  Get the most recent sample chunk pointer played on ``channel``.
+  ##  This pointer may be currently playing, or just the last used.
   ##
   ##  ``channel`` Channel to get the current ``sdl_mixer.Chunk`` playing.
   ##  `-1` is not valid, but will not crash the program.
@@ -1674,3 +1686,6 @@ template setError*(fmt: untyped): cint =
 
 template getError*(): cstring =
   sdl.getError()
+
+template clearError*() =
+  sdl.clearError()

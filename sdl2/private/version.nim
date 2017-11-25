@@ -47,7 +47,7 @@ type
 const
   MAJOR_VERSION* = 2
   MINOR_VERSION* = 0
-  PATCHLEVEL* = 6
+  PATCHLEVEL* = 7
 
 template version*(x: untyped) = ##  \
   ##  Template to determine SDL version program was compiled against.
@@ -73,7 +73,7 @@ template version*(x: untyped) = ##  \
 template versionNum*(x, y, z: untyped): untyped = ##  \
   ##  This template turns the version numbers into a numeric value:
   ##
-  ##   `(1,2,3) -> (1203)`
+  ##  `(1,2,3) -> (1203)`
   ##
   ##  This assumes that there will never be more than 100 patchlevels.
   ((x) * 1000 + (y) * 100 + (z))
@@ -87,7 +87,7 @@ template versionAtLeast*(x, y, z: untyped): bool = ##  \
   ##  at least ``x``.``y``.``z``.
   (COMPILEDVERSION >= versionNum(x, y, z))
 
-proc getVersion*(ver: ref Version) {.
+proc getVersion*(ver: ptr Version) {.
     cdecl, importc: "SDL_GetVersion", dynlib: SDL2_LIB.}
   ##  Get the version of SDL that is linked against your program.
   ##
