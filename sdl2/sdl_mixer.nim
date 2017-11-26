@@ -489,8 +489,12 @@ proc getMusicDecoder*(index: cint): cstring {.
   ##  This string is owned by the SDL_mixer library, do not modify or free it.
   ##  It is valid until you call ``sdl_mixer.closeAudio()`` the final time.
 
+#[
 proc hasMusicDecoder*(name: cstring): bool {.
     cdecl, importc: "Mix_HasMusicDecoder", dynlib: SDL2_MIX_LIB.}
+  ##  This proc is not yet implemented in the SDL_mixer source (2.0.2)
+  ##  and thus it cannot be imported
+]#
 
 proc getMusicType*(music: Music): MusicType {.
     cdecl, importc: "Mix_GetMusicType", dynlib: SDL2_MIX_LIB.}
@@ -643,7 +647,7 @@ type
     ##  ``DO NOT EVER`` call ``lockAudio()`` from your callback procedure!
 
 
-type 
+type
   EffectDone_t* = proc (chan: cint; udata: pointer) {.cdecl.} ##  \
     ##  This is the prototype for effect processing procedures.
     ##
@@ -779,7 +783,7 @@ proc unregisterEffect*(channel: cint; f: EffectFunc_t): cint {.
   ##
   ##  Error messages can be retrieved from ``getError()``.
 
-proc unregisterAllEffects*(channel: cint): cint {.cdecl, 
+proc unregisterAllEffects*(channel: cint): cint {.cdecl,
     importc: "Mix_UnregisterAllEffects", dynlib: SDL2_MIX_LIB.}
   ##  This removes all effects registered to ``channel``.
   ##
@@ -1265,7 +1269,7 @@ template fadeInChannel*(channel, chunk, loops, ms: untyped): untyped =  ##  \
   ##  pick the first free unreserved channel.
   ##
   ##  ``channel`` Channel to play on,
-  ##  or `-1` for the first free unreserved channel. 
+  ##  or `-1` for the first free unreserved channel.
   ##
   ##  ``chunk`` Sample to play.
   ##
