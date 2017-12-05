@@ -47,7 +47,6 @@ const
   RENDERER_ORDER_MAX* = 10
   MODELVIEW*          = 0
   PROJECTION*         = 1
-  MATRIX_STACK_MAX*   = 5
 
   DEFAULT_INIT_FLAGS* = 0
   NONE* = 0x0
@@ -447,8 +446,9 @@ type
 
   MatrixStack* = object ##  \
     ##  Matrix stack data structure for global vertex transforms.
+    storage_size*: cuint
     size*: cuint
-    matrix*: array[MATRIX_STACK_MAX, array[16, cfloat]]
+    matrix*: pointer # array[MATRIX_STACK_MAX, array[16, cfloat]]
 
   Context* = ptr object ##  \
     ##  Rendering context data.
@@ -659,7 +659,7 @@ proc setPreInitFlags*(flags: InitFlags) {.
   ##  Set special flags to use for initialization.
   ##  Set these before calling ``init()``.
   ##
-  ##  ``flags`` An OR'ed combination of ``initFlagEnum`` flags.
+  ##  ``flags`` an OR'ed combination of ``initFlags`` constants.
   ##  Default flags (0) enable late swap vsync and double buffering.
 
 proc getPreInitFlags*(): InitFlags {.
@@ -1522,8 +1522,8 @@ proc matrixRotate*(result: ptr cfloat; degrees: cfloat; x: cfloat; y: cfloat; z:
     cdecl, importc: "GPU_MatrixRotate", dynlib: SDL2_GPU_LIB.}
   ##  Multiplies a rotation matrix into the given matrix.
 
-proc multiply4x4*(result: ptr cfloat; a: ptr cfloat; b: ptr cfloat) {.
-    cdecl, importc: "GPU_Multiply4x4", dynlib: SDL2_GPU_LIB.}
+proc multiply4x4*(result: ptr cfloat; a, b: ptr cfloat) {.
+    cdecl, importc: "GPU_MatrixMultiply", dynlib: SDL2_GPU_LIB.}
   ##  Multiplies matrices A and B and stores the result
   ##  in the given ``result`` matrix (result = A*B)
   ##  Do not use A or B as ``result``.
@@ -1565,6 +1565,10 @@ proc getModelViewProjection*(result: ptr cfloat) {.
 
 # Matrix stack manipulators
 
+proc initMatrixStack*(stack: MatrixStack) {.
+    cdecl, importc: "GPU_InitMatrixStack", dynlib: SDL2_GPU_LIB.}
+  ##  Allocate new matrices for the given stack.
+
 proc matrixMode*(matrixMode: cint) {.
     cdecl, importc: "GPU_MatrixMode", dynlib: SDL2_GPU_LIB.}
   ##  Changes matrix mode to either `PROJECTION` or `MODELVIEW`.
@@ -1581,6 +1585,10 @@ proc popMatrix*() {.
 proc loadIdentity*() {.
     cdecl, importc: "GPU_LoadIdentity", dynlib: SDL2_GPU_LIB.}
   ##  Fills current matrix with the identity matrix.
+
+proc loadMatrix*(matrix4x4: ptr cfloat) {.
+    cdecl, importc: "GPU_LoadMatrix", dynlib: SDL2_GPU_LIB.}
+  ##  Copies a given matrix to be the current matrix.
 
 proc ortho*(left: cfloat; right: cfloat; bottom: cfloat; top: cfloat; near: cfloat;
            far: cfloat) {.
