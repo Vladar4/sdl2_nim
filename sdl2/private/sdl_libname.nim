@@ -13,6 +13,7 @@ when defined windows:
   decl(SDL2_TTF_LIB, "SDL2_ttf.dll")
   decl(SDL2_NET_LIB, "SDL2_net.dll")
   decl(SDL2_GPU_LIB, "SDL2_gpu.dll")
+  decl(SMPEG2_LIB,   "smpeg2.dll")
 
 elif defined macosx:
 
@@ -23,6 +24,7 @@ elif defined macosx:
   decl(SDL2_NET_LIB, "libSDL2_net.dylib")
   decl(SDL2_TTF_LIB, "libSDL2_ttf.dylib")
   decl(SDL2_GPU_LIB, "libSDL2_gpu.dylib")
+  decl(SMPEG2_LIB,   "libsmpeg2.dylib")
 
 else:
 
@@ -33,3 +35,4 @@ else:
   decl(SDL2_NET_LIB, "libSDL2_net(|-2.0).so(|.0.0.1|.0)")
   decl(SDL2_TTF_LIB, "libSDL2_ttf(|-2.0).so(|.0.14.0|.0)")
   decl(SDL2_GPU_LIB, "libSDL2_gpu(|-2.0).so(|.0.11.0|.0)")
+  decl(SMPEG2_LIB,   "libsmpeg2(|-2.0).so(|.0.0.0|.0)")

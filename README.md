@@ -1,4 +1,4 @@
-sdl2_nim 2.0.7.0
+sdl2_nim 2.0.7.1
 ================
 
 sdl2_nim is a wrapper of the SDL 2 library for the Nim language.
@@ -18,6 +18,7 @@ Includes:
 * SDL_mixer 2.0.2
 * SDL_net 2.0.1
 * SDL_ttf 2.0.14
+* SMPEG 2.0.0
 
 What is not implemented here:
 -------------------------------
@@ -54,9 +55,18 @@ FAQ:
 
 **A**: No reason. It's a question of preference.
 
+**Q**: Where could I find smpeg2.dll?
+
+**A**: It is distributed within SDL2_mixer builds.
+
 
 CHANGELOG:
 ==========
+
+**v2.0.7.1** **(WIP)**
+* added SMPEG 2.0.0
+* updated examples, added smpeg example
+* bugfixes and documentation updates
 
 **v2.0.7.0**
 * updated to SDL-2.0.7, SDL_image-2.0.2, and SDL_mixer-2.0.2 (see [changelog](https://github.com/Vladar4/sdl2_nim/blob/master/CHANGELOG-2.0.7.md))
