@@ -41,7 +41,8 @@ proc createMutex*(): Mutex {.
     cdecl, importc: "SDL_CreateMutex", dynlib: SDL2_LIB.}
   ##  Create a mutex, initialized unlocked.
 
-template mutexP*(m: untyped): untyped =
+template mutexP*(m: untyped): untyped = ##  \
+  ##  Wrapper for the ``lockMutex()``.
   lockMutex(m)
 
 proc lockMutex*(mutex: Mutex): cint {.
@@ -56,7 +57,8 @@ proc tryLockMutex*(mutex: Mutex): cint {.
   ##
   ##  ``Return`` `0`, `MUTEX_TIMEDOUT`, or `-1` on error.
 
-template mutexV*(m: untyped): untyped =
+template mutexV*(m: untyped): untyped = ##  \
+  ##  Wrapper for the ``unlockMutex()``.
   unlockMutex(m)
 
 proc unlockMutex*(mutex: Mutex): cint {.
