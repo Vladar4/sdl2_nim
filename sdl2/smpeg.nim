@@ -16,6 +16,18 @@
 ##  Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 ##
 
+##  smpeg.nim
+##  =========
+##
+##  SDL2 MPEG Player library.
+##
+##  Use ``ffmpeg`` to convert media files to the supported format:
+##
+##  .. code-block::
+##    ffmpeg -i input_file -target ntsc-vcd -c:v mpeg1video -c:a mp2 output.mpg
+##
+
+
 import sdl
 
 const
@@ -74,6 +86,22 @@ type
 type
   DisplayCallback* = proc (data: pointer; frame: ptr Frame) {.cdecl.}
     ##  Matches the declaration of ``sdl.updateRect()``
+    ##
+    ##  ``data``  Your custom movie object,
+    ##  should contain at least ``ptr Frame`` field.
+    ##
+    ##  ``frame`` New frame data. Use it to update target texture on render
+    ##  with ``updateTexture()`` call. Target texture should be of
+    ##  `sdl.PixelFormat_YV12` format and with `sdl.TextureAccessStreaming`
+    ##  access.
+    ##
+    ##  Minimal viable implementation:
+    ##
+    ##  .. code-block:: nim
+    ##    proc update(data: pointer, frame: ptr Frame) {.cdecl.} =
+    ##      var movie = cast[MyCustomMovie](data)
+    ##      movie.frame = frame
+    ##
 
 
 proc new*(file: cstring; info: ptr Info; sdlAudio: bool): Smpeg {.
