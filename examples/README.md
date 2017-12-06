@@ -40,3 +40,6 @@ SDL2 examples
     * ex502c_udp        -   UDP sockets (client)
     * ex502s_udp        -   UDP sockets (server)
 
+6. **SMPEG**
+    * ex601_smpeg       -   Using SMPEG2 library
+
