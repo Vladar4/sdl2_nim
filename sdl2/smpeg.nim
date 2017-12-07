@@ -52,7 +52,8 @@ template version*(x: untyped) = ##  \
 type
   Smpeg* = pointer  ##  This is the actual SMPEG object
 
-  Frame* = object ##  \
+  Frame* = ptr FrameObj
+  FrameObj* = object ##  \
     ##  A YV12 format video frame
     w*: cuint
     h*: cuint
@@ -84,11 +85,11 @@ type
 
 
 type
-  DisplayCallback* = proc (data: pointer; frame: ptr Frame) {.cdecl.}
+  DisplayCallback* = proc (data: pointer; frame: Frame) {.cdecl.}
     ##  Matches the declaration of ``sdl.updateRect()``
     ##
     ##  ``data``  Your custom movie object,
-    ##  should contain at least ``ptr Frame`` field.
+    ##  should contain at least ``Frame`` field.
     ##
     ##  ``frame`` New frame data. Use it to update target texture on render
     ##  with ``updateTexture()`` call. Target texture should be of
@@ -98,7 +99,7 @@ type
     ##  Minimal viable implementation:
     ##
     ##  .. code-block:: nim
-    ##    proc update(data: pointer, frame: ptr Frame) {.cdecl.} =
+    ##    proc update(data: pointer, frame: Frame) {.cdecl.} =
     ##      var movie = cast[MyCustomMovie](data)
     ##      movie.frame = frame
     ##

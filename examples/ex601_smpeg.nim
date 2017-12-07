@@ -27,7 +27,7 @@ type
 
   Movie = ref object
     smpeg*: smpeg.Smpeg
-    frame*: ptr smpeg.Frame
+    frame*: smpeg.Frame
     texture*: sdl.Texture
     mutex*: sdl.Mutex
     rect*: sdl.Rect
@@ -37,7 +37,7 @@ type
 # MOVIE #
 #########
 
-proc update(data: pointer, frame: ptr Frame) {.cdecl.} =
+proc update(data: pointer, frame: Frame) {.cdecl.} =
   var movie = cast[Movie](data)
   movie.frame = frame
   movie.updated = true
