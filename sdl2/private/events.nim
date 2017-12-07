@@ -218,6 +218,27 @@ type
     windowID*: uint32       ##  The window with keyboard focus, if any
     text*: array[TEXTINPUTEVENT_TEXT_SIZE, char]  ##  The input text
 
+proc charArrayToString*(a: openarray[char]): string =
+  ##  Convert an array of char to a proper string.
+  ##
+  result = ""
+  for c in a:
+    add(result, $c)
+    if c == '\0':
+      break
+
+when TEXTEDITINGEVENT_TEXT_SIZE != TEXTINPUTEVENT_TEXT_SIZE:
+  # Futureproofing
+  proc `$`*(a: array[TEXTEDITINGEVENT_TEXT_SIZE, char]): string =
+    ##  Convert an array of char to a proper string.
+    ##
+    result = charArrayToString(a)
+
+proc `$`*(a: array[TEXTINPUTEVENT_TEXT_SIZE, char]): string =
+  ##  Convert an array of char to a proper string.
+  ##
+  result = charArrayToString(a)
+
 type
   MouseMotionEventObj* = object ##  \
     ##  Mouse motion event structure (`event.motion.*`)
