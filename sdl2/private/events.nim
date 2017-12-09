@@ -223,9 +223,9 @@ proc charArrayToString*(a: openarray[char]): string =
   ##
   result = ""
   for c in a:
-    add(result, $c)
     if c == '\0':
       break
+    add(result, $c)
 
 when TEXTEDITINGEVENT_TEXT_SIZE != TEXTINPUTEVENT_TEXT_SIZE:
   # Futureproofing
