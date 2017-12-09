@@ -229,15 +229,15 @@ proc charArrayToString*(a: openarray[char]): string =
 
 when TEXTEDITINGEVENT_TEXT_SIZE != TEXTINPUTEVENT_TEXT_SIZE:
   # Futureproofing
-  proc `$`*(a: array[TEXTEDITINGEVENT_TEXT_SIZE, char]): string =
+  template `$`*(a: array[TEXTEDITINGEVENT_TEXT_SIZE, char]): string =
     ##  Convert an array of char to a proper string.
     ##
-    result = charArrayToString(a)
+    charArrayToString(a)
 
-proc `$`*(a: array[TEXTINPUTEVENT_TEXT_SIZE, char]): string =
+template `$`*(a: array[TEXTINPUTEVENT_TEXT_SIZE, char]): string =
   ##  Convert an array of char to a proper string.
   ##
-  result = charArrayToString(a)
+  charArrayToString(a)
 
 type
   MouseMotionEventObj* = object ##  \
