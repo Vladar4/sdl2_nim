@@ -89,9 +89,16 @@ proc openFontIndex*(file: cstring; ptsize: cint; index: clong): Font {.
 proc openFontRW*(src: ptr RWops; freesrc: cint; ptsize: cint): Font {.
     cdecl, importc: "TTF_OpenFontRW", dynlib: SDL2_TTF_LIB.}
 
+template openFontRW*(src: ptr RWops; freesrc: bool; ptsize: cint): Font =
+  openFontRW(src, freesrc.cint, ptsize)
+
 proc openFontIndexRW*(
     src: ptr RWops; freesrc: cint; ptsize: cint; index: clong): Font {.
       cdecl, importc: "TTF_OpenFontIndexRW", dynlib: SDL2_TTF_LIB.}
+
+template openFontIndexRW*(
+    src: ptr RWops; freesrc: bool; ptsize: cint; index: clong): Font =
+  openFontIndexRW(src, freesrc.cint, ptsize, index)
 
 # Set and retrieve the font style
 

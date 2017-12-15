@@ -57,7 +57,7 @@ FAQ:
 
 **Q**: Where could I find smpeg2.dll?
 
-**A**: It is distributed within SDL2_mixer builds.
+**A**: It is distributed within SDL2_mixer 2.0.1 and older builds.
 
 
 CHANGELOG:
