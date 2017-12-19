@@ -31,6 +31,8 @@
 ##  =====================
 ##
 
+{.deadCodeElim: on.}
+
 import
   sdl
 

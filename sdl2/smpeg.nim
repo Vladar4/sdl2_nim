@@ -27,6 +27,7 @@
 ##    ffmpeg -i input_file -target ntsc-vcd -c:v mpeg1video -c:a mp2 output.mpg
 ##
 
+{.deadCodeElim: on.}
 
 import sdl
 

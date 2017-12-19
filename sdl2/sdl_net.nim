@@ -36,6 +36,8 @@
 ##
 ##  For network addresses, 1.2.3.4 is always stored as {0x01 0x02 0x03 0x04}.
 
+{.deadCodeElim: on.}
+
 import
   sdl
 

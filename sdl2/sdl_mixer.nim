@@ -63,6 +63,8 @@
 ##  from a callback.
 ##  Callbacks include Effects procedures and other SDL_mixer audio hooks.
 
+{.deadCodeElim: on.}
+
 import
   sdl
 

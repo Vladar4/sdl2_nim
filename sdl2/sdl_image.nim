@@ -24,6 +24,8 @@
 ##
 ##  A simple library to load images of various formats as SDL surfaces.
 
+{.deadCodeElim: on.}
+
 import
   sdl
 

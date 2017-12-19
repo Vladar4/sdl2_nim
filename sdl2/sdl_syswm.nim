@@ -29,6 +29,8 @@
 ##  an unhandled window event occurs.  This event is ignored by default, but
 ##  you can enable it with ``eventState()``.
 
+{.deadCodeElim: on.}
+
 import
   sdl
 

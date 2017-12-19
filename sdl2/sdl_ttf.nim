@@ -33,6 +33,8 @@
 ##  Unicode is hard, we learn as we go, and we apologize for adding to the
 ##  confusion.
 
+{.deadCodeElim: on.}
+
 import
   sdl
 
