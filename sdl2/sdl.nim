@@ -1,3 +1,4 @@
+{.deadCodeElim: on.}
 include
   private/sdl_libname,
   private/sdl_init,

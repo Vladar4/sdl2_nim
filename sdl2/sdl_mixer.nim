@@ -63,6 +63,8 @@
 ##  from a callback.
 ##  Callbacks include Effects procedures and other SDL_mixer audio hooks.
 
+{.deadCodeElim: on.}
+
 import
   sdl
 
@@ -329,6 +331,9 @@ proc loadWAV_RW*(src: ptr RWops; freesrc: cint): Chunk {.
   ##  ``Return`` a pointer to the sample as a ``sdl_mixer.chunk()``.
   ##  `nil` is returned on errors.
 
+template loadWAV_RW*(src: ptr RWops; freesrc: bool): Chunk =
+  loadWAV_RW(src, freesrc.cint)
+
 template loadWAV*(file: untyped): untyped = ##  \
   ##  Load file for use as a sample. This is actually
   ##  ``sdl_mixer.loadWAV_RW(sdl.rwFromFile(file, "rb"), 1)``.
@@ -367,9 +372,16 @@ proc loadMUS_RW*(src: ptr RWops; freesrc: cint): Music {.
   ##
   ##  Matt Campbell (matt@campbellhome.dhs.org) April 2000
 
+template loadMUS_RW*(src: ptr RWops; freesrc: bool): Music =
+  loadMUS_RW(src, freesrc.cint)
+
 proc loadMUSType_RW*(src: ptr RWops; kind: MusicType; freesrc: cint): Music {.
     cdecl, importc: "Mix_LoadMUSType_RW", dynlib: SDL2_MIX_LIB.}
   ##  Load a music file from an RWop object assuming a specific format.
+
+template loadMUSType_RW*(
+    src: ptr RWops; kind: MusicType; freesrc: bool): Music =
+  loadMUSType_RW(src, kind, freesrc.cint)
 
 proc quickLoad_WAV*(mem: ptr uint8): Chunk {.
     cdecl, importc: "Mix_QuickLoad_WAV", dynlib: SDL2_MIX_LIB.}

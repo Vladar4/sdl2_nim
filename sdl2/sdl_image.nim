@@ -24,6 +24,8 @@
 ##
 ##  A simple library to load images of various formats as SDL surfaces.
 
+{.deadCodeElim: on.}
+
 import
   sdl
 
@@ -86,6 +88,10 @@ proc loadTyped_RW*(
   ##  .. code-block:: nim
   ##    setColorKey(image, RLEACCEL, image.format.colorkey)
 
+template loadTyped_RW*(
+    src: ptr RWops; freesrc: bool; kind: cstring): Surface =
+  loadTyped_RW(src, freesrc.cint, kind)
+
 # Convenience procedures
 
 proc load*(file: cstring): Surface {.
@@ -93,6 +99,9 @@ proc load*(file: cstring): Surface {.
 
 proc load_RW*(src: ptr RWops; freesrc: cint): Surface {.
     cdecl, importc: "IMG_Load_RW", dynlib: SDL2_IMG_LIB.}
+
+template load_RW*(src: ptr RWops; freesrc: bool): Surface =
+  load_RW(src, freesrc.cint)
 
 when versionAtLeast(2, 0, 0):
 
@@ -105,10 +114,19 @@ when versionAtLeast(2, 0, 0):
       renderer: Renderer; src: ptr RWops; freesrc: cint): Texture {.
         cdecl, importc: "IMG_LoadTexture_RW", dynlib: SDL2_IMG_LIB.}
 
+  template loadTexture_RW*(
+      renderer: Renderer; src: ptr RWops; freesrc: bool): Texture =
+    loadTexture_RW(renderer, src, freesrc.cint)
+
   proc loadTextureTyped_RW*(
       renderer: Renderer; src: ptr RWops; freesrc: cint;
       kind: cstring): Texture {.
         cdecl, importc: "IMG_LoadTextureTyped_RW", dynlib: SDL2_IMG_LIB.}
+
+  template loadTextureTyped_RW*(
+      renderer: Renderer; src: ptr RWops; freesrc: bool;
+      kind: cstring): Texture =
+    loadTextureTyped_RW(renderer, src, freesrc.cint, kind)
 
 # Procedures to detect a file type, given a seekable source 
 

@@ -218,6 +218,27 @@ type
     windowID*: uint32       ##  The window with keyboard focus, if any
     text*: array[TEXTINPUTEVENT_TEXT_SIZE, char]  ##  The input text
 
+proc charArrayToString*(a: openarray[char]): string =
+  ##  Convert an array of char to a proper string.
+  ##
+  result = ""
+  for c in a:
+    if c == '\0':
+      break
+    add(result, $c)
+
+when TEXTEDITINGEVENT_TEXT_SIZE != TEXTINPUTEVENT_TEXT_SIZE:
+  # Futureproofing
+  template `$`*(a: array[TEXTEDITINGEVENT_TEXT_SIZE, char]): string =
+    ##  Convert an array of char to a proper string.
+    ##
+    charArrayToString(a)
+
+template `$`*(a: array[TEXTINPUTEVENT_TEXT_SIZE, char]): string =
+  ##  Convert an array of char to a proper string.
+  ##
+  charArrayToString(a)
+
 type
   MouseMotionEventObj* = object ##  \
     ##  Mouse motion event structure (`event.motion.*`)
@@ -679,9 +700,9 @@ proc registerEvents*(numevents: cint): uint32 {.
   ##  If there aren't enough user-defined events left, this procedure
   ##  returns `-1'u32`.
 
-iterator events*(): sdl.Event =
+iterator events*(): Event =
   ## Iterate through and consume the event queue.
-  var event: sdl.Event
+  var event: Event
   while pollEvent(event.addr) != 0:
     yield event
 

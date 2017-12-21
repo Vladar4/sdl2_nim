@@ -35,6 +35,8 @@
 ##  * Rotates and scales about the center of images
 ##    (adjustable via anchor settings)
 
+{.deadCodeElim: on.}
+
 import
   sdl
 

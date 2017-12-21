@@ -190,6 +190,10 @@ proc loadFileRW*(src: ptr RWops, datasize: ptr csize, freesrc: cint): pointer {.
   ##
   ##  ``Return`` the data, or ``nil`` if there was an error.
 
+template loadFileRW*(
+    src: ptr RWops, datasize: ptr csize, freesrc: bool): pointer =
+  loadFileRW(src, datasize, freesrc.cint)
+
 
 template loadFile*(file, datasize: untyped) : untyped = ##  \
   ##  Load an entire file.

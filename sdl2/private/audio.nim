@@ -406,6 +406,11 @@ proc loadWAV_RW*(
   ##  wave file cannot be opened, uses an unknown data format, or is
   ##  corrupt.  Currently raw and MS-ADPCM WAVE files are supported.
 
+template loadWAV_RW*(
+    src: ptr RWops; freesrc: bool; spec: ptr AudioSpec;
+    audio_buf: ptr ptr uint8; audio_len: ptr uint32): ptr AudioSpec =
+  loadWAV_RW(src, freesrc.cint, spec, audio_buf, audio_len)
+
 template loadWAV*(file, spec, audio_buf, audio_len: untyped): untyped = ##  \
   ##  Loads a WAV from a file.
   ##

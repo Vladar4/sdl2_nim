@@ -164,6 +164,9 @@ proc loadBMP_RW*(src: ptr RWops; freesrc: cint): Surface {.
   ##
   ##  ``Return`` the new surface, or `nil` if there was an error.
 
+template loadBMP_RW*(src: ptr RWops; freesrc: bool): Surface =
+  loadBMP_RW(src, freesrc.cint)
+
 template loadBMP*(file: untyped): untyped = ##  \
   ##  Load a surface from a file.
   ##
