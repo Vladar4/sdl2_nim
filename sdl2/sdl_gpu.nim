@@ -432,9 +432,7 @@ type
     ##  ``getCamera()``
     x*, y*, z*: cfloat
     angle*, zoom*: cfloat
-    # For some reason, the C code genertated from the Nim compiler won't compile when using
-    # the variable name "far" here
-    near*, far*: cfloat ## z clipping planes
+    near*, dist*: cfloat ## z clipping planes
 
   ShaderBlock* = object ##  \
     ##  Container for the built-in shader attribute and uniform locations (indices).
