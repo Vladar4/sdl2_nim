@@ -432,7 +432,7 @@ type
     ##  ``getCamera()``
     x*, y*, z*: cfloat
     angle*, zoom*: cfloat
-    near*, dist*: cfloat ## z clipping planes
+    zNear*, zFar*: cfloat ## z clipping planes
 
   ShaderBlock* = object ##  \
     ##  Container for the built-in shader attribute and uniform locations (indices).
@@ -1516,12 +1516,12 @@ proc matrixIdentity*(result: ptr cfloat) {.
   ##  Fills ``result`` matrix with the identity matrix.
 
 proc matrixOrtho*(result: ptr cfloat; left: cfloat; right: cfloat; bottom: cfloat;
-                  top: cfloat; near: cfloat; far: cfloat) {.
+                  top: cfloat; zNear: cfloat; zFar: cfloat) {.
     cdecl, importc: "GPU_MatrixOrtho", dynlib: SDL2_GPU_LIB.}
   ##  Multiplies an orthographic projection matrix into the given matrix.
 
 proc matrixFrustum*(result: ptr cfloat; left: cfloat; right: cfloat; bottom: cfloat;
-                    top: cfloat; near: cfloat; far: cfloat) {.
+                    top: cfloat; zNear: cfloat; zFar: cfloat) {.
     cdecl, importc: "GPU_MatrixFrustum", dynlib: SDL2_GPU_LIB.}
   ##  Multiplies a perspective projection matrix into the given matrix.
 
@@ -1617,12 +1617,12 @@ proc loadMatrix*(matrix4x4: ptr cfloat) {.
   ##  Copies a given matrix to be the current matrix.
 
 proc ortho*(left: cfloat; right: cfloat; bottom: cfloat; top: cfloat;
-    near: cfloat; far: cfloat) {.
+    zNear: cfloat; zFar: cfloat) {.
     cdecl, importc: "GPU_Ortho", dynlib: SDL2_GPU_LIB.}
   ##  Multiplies an orthographic projection matrix into the current matrix.
 
 proc frustum*(left: cfloat; right: cfloat; bottom: cfloat; top: cfloat;
-    near: cfloat; far: cfloat) {.
+    zNear: cfloat; zFar: cfloat) {.
     cdecl, importc: "GPU_Frustum", dynlib: SDL2_GPU_LIB.}
   ##  Multiplies a perspective projection matrix into the current matrix.
 
