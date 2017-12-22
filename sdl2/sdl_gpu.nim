@@ -432,6 +432,7 @@ type
     ##  ``getCamera()``
     x*, y*, z*: cfloat
     angle*, zoom*: cfloat
+    zNear*, zFar*: cfloat ## z clipping planes
 
   ShaderBlock* = object ##  \
     ##  Container for the built-in shader attribute and uniform locations (indices).
@@ -524,6 +525,8 @@ type
     viewport*: Rect
     camera*: Camera ##  Perspective and object viewing transforms.
     useCamera*: bool
+    useDepthTest*: bool
+    useDepthWrite*: bool
 
     context*: Context ##  Renderer context data.
       ## ``nil`` if the target does not represent a window or rendering context.
@@ -1123,8 +1126,8 @@ proc unsetViewport*(target: Target) {.
 
 proc getDefaultCamera*(): Camera {.
     cdecl, importc: "GPU_GetDefaultCamera", dynlib: SDL2_GPU_LIB.}
-  ##  ``Return`` a ``Camera`` with position (0, 0, -10),
-  ##  angle of `0`, and zoom of `1`.
+  ##  ``Return`` a ``Camera`` with position (0, 0, 0),
+  ##  angle of `0`, zoom of `1`, and near/far clipping planes of -100 and 100.
 
 proc getCamera*(target: Target): Camera {.
     cdecl, importc: "GPU_GetCamera", dynlib: SDL2_GPU_LIB.}
@@ -1149,6 +1152,23 @@ proc enableCamera*(target: Target; useCamera: bool) {.
 proc isCameraEnabled*(target: Target): bool {.
     cdecl, importc: "GPU_IsCameraEnabled", dynlib: SDL2_GPU_LIB.}
   ##  ``Return`` `1` if the camera transforms are enabled, `0` otherwise.
+
+proc addDepthBuffer*(target: Target) {.
+    cdecl, importc: "GPU_AddDepthBuffer", dynlib: SDL2_GPU_LIB.}
+  ##  Attach a new depth buffer to the given target so that it can use depth testing.
+  ##  Context targets automatically have a depth buffer already.
+  ##  If successful, also enables depth testing for this target.
+
+proc setDepthTest*(target: Target, enable: bool) {.
+    cdecl, importc: "GPU_SetDepthTest", dynlib: SDL2_GPU_LIB.}
+  ##  Enables or disables the depth test, which will skip drawing pixels/fragments behind other fragments.
+  ##  Disabled by default.
+  ##  This has implications for alpha blending, where compositing might not work correctly depending on render order.
+
+proc setDepthWrite*(target: Target, enable: bool) {.
+    cdecl, importc: "GPU_SetDepthWrite", dynlib: SDL2_GPU_LIB.}
+  ##  Enables or disables writing the depth (effective view z-coordinate) of new pixels to the depth buffer.
+  ##  Enabled by default, but you must call setDepthTest() to use it.
 
 proc getPixel*(target: Target; x, y: int16): Color {.
     cdecl, importc: "GPU_GetPixel", dynlib: SDL2_GPU_LIB.}
@@ -1481,6 +1501,10 @@ proc vectorApplyMatrix*(vec3: ptr cfloat; matrix4x4: ptr cfloat) {.
     cdecl, importc: "GPU_VectorApplyMatrix", dynlib: SDL2_GPU_LIB.}
   ##  Multiplies the given matrix into the given vector (vec3 = matrix*vec3).
 
+proc vectorApplyMatrix*(vec4: ptr cfloat; matrix4x4: ptr cfloat) {.
+    cdecl, importc: "GPU_Vector4ApplyMatrix", dynlib: SDL2_GPU_LIB.}
+  ##  Multiplies the given matrix into the given vector (vec4 = matrix*vec4).
+
 # Basic matrix operations (4x4)
 
 proc matrixCopy*(result: ptr cfloat; a: ptr cfloat) {.
@@ -1492,12 +1516,12 @@ proc matrixIdentity*(result: ptr cfloat) {.
   ##  Fills ``result`` matrix with the identity matrix.
 
 proc matrixOrtho*(result: ptr cfloat; left: cfloat; right: cfloat; bottom: cfloat;
-                  top: cfloat; near: cfloat; far: cfloat) {.
+                  top: cfloat; zNear: cfloat; zFar: cfloat) {.
     cdecl, importc: "GPU_MatrixOrtho", dynlib: SDL2_GPU_LIB.}
   ##  Multiplies an orthographic projection matrix into the given matrix.
 
 proc matrixFrustum*(result: ptr cfloat; left: cfloat; right: cfloat; bottom: cfloat;
-                    top: cfloat; near: cfloat; far: cfloat) {.
+                    top: cfloat; zNear: cfloat; zFar: cfloat) {.
     cdecl, importc: "GPU_MatrixFrustum", dynlib: SDL2_GPU_LIB.}
   ##  Multiplies a perspective projection matrix into the given matrix.
 
@@ -1592,13 +1616,13 @@ proc loadMatrix*(matrix4x4: ptr cfloat) {.
     cdecl, importc: "GPU_LoadMatrix", dynlib: SDL2_GPU_LIB.}
   ##  Copies a given matrix to be the current matrix.
 
-proc ortho*(left: cfloat; right: cfloat; bottom: cfloat; top: cfloat; near: cfloat;
-           far: cfloat) {.
+proc ortho*(left: cfloat; right: cfloat; bottom: cfloat; top: cfloat;
+    zNear: cfloat; zFar: cfloat) {.
     cdecl, importc: "GPU_Ortho", dynlib: SDL2_GPU_LIB.}
   ##  Multiplies an orthographic projection matrix into the current matrix.
 
-proc frustum*(left: cfloat; right: cfloat; bottom: cfloat; top: cfloat; near: cfloat;
-             far: cfloat) {.
+proc frustum*(left: cfloat; right: cfloat; bottom: cfloat; top: cfloat;
+    zNear: cfloat; zFar: cfloat) {.
     cdecl, importc: "GPU_Frustum", dynlib: SDL2_GPU_LIB.}
   ##  Multiplies a perspective projection matrix into the current matrix.
 
