@@ -63,7 +63,7 @@ FAQ:
 CHANGELOG:
 ==========
 
-**v2.0.7.1** **(WIP)**
+**v2.0.7.1**
 * added SMPEG 2.0.0
 * updated examples, added smpeg example
 * added some convenience templates
