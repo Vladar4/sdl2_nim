@@ -1224,19 +1224,19 @@ function main() {
     title="SysWMKind = enum
   SYSWM_UNKNOWN, SYSWM_WINDOWS, SYSWM_X11, SYSWM_DIRECTFB, SYSWM_COCOA, SYSWM_UIKIT,
   SYSWM_WAYLAND, SYSWM_MIR, SYSWM_WINRT, SYSWM_ANDROID, SYSWM_VIVANTE, SYSWM_OS2"><wbr />Sys<wbr />WMKind<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#SysWMmsgX11Obj"
-    title="SysWMmsgX11Obj = object
-  event*: TXEvent"><wbr />Sys<wbr />WMmsg<wbr />X11Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#SysWMmsgKindObj"
-    title="SysWMmsgKindObj = object
-  x11*: SysWMmsgX11Obj"><wbr />Sys<wbr />WMmsg<wbr />Kind<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#SysWMmsg"
-    title="SysWMmsg = ptr SysWMmsgObj"><wbr />Sys<wbr />WMmsg<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#SysWMmsgObj"
-    title="SysWMmsgObj = object
+  <li><a class="reference" href="#SysWMMsgX11Obj"
+    title="SysWMMsgX11Obj = object
+  event*: TXEvent"><wbr />Sys<wbr />WMMsg<wbr />X11Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#SysWMMsgKindObj"
+    title="SysWMMsgKindObj = object
+  x11*: SysWMMsgX11Obj"><wbr />Sys<wbr />WMMsg<wbr />Kind<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#SysWMMsg"
+    title="SysWMMsg = ptr SysWMMsgObj"><wbr />Sys<wbr />WMMsg<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#SysWMMsgObj"
+    title="SysWMMsgObj = object
   version*: Version
   subsystem*: SysWMKind
-  msg*: SysWMmsgKindObj"><wbr />Sys<wbr />WMmsg<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  msg*: SysWMMsgKindObj"><wbr />Sys<wbr />WMMsg<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#SysWMinfoX11Obj"
     title="SysWMinfoX11Obj = object
   display*: ptr xlib.TXDisplay  ## The X11 display
@@ -1286,29 +1286,29 @@ function main() {
 These are the various supported windowing subsystems
 
 </dd>
-<dt id="SysWMmsgX11Obj"><a name="SysWMmsgX11Obj"></a><pre><span class="Identifier">SysWMmsgX11Obj</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="SysWMMsgX11Obj"><a name="SysWMMsgX11Obj"></a><pre><span class="Identifier">SysWMMsgX11Obj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">event</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TXEvent</span>
 </pre></dt>
 <dd>
 when defined(SDL_VIDEO_DRIVER_X11)
 
 </dd>
-<dt id="SysWMmsgKindObj"><a name="SysWMmsgKindObj"></a><pre><span class="Identifier">SysWMmsgKindObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">x11</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMmsgX11Obj</span>
+<dt id="SysWMMsgKindObj"><a name="SysWMMsgKindObj"></a><pre><span class="Identifier">SysWMMsgKindObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">x11</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMMsgX11Obj</span>
 </pre></dt>
 <dd>
 when defined(SDL_VIDEO_DRIVER_X11)
 
 </dd>
-<dt id="SysWMmsg"><a name="SysWMmsg"></a><pre><span class="Identifier">SysWMmsg</span> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Identifier">SysWMmsgObj</span></pre></dt>
+<dt id="SysWMMsg"><a name="SysWMMsg"></a><pre><span class="Identifier">SysWMMsg</span> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Identifier">SysWMMsgObj</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="SysWMmsgObj"><a name="SysWMmsgObj"></a><pre><span class="Identifier">SysWMmsgObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="SysWMMsgObj"><a name="SysWMMsgObj"></a><pre><span class="Identifier">SysWMMsgObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">version</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Version</span>
   <span class="Identifier">subsystem</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMKind</span>
-  <span class="Identifier">msg</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMmsgKindObj</span>
+  <span class="Identifier">msg</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMMsgKindObj</span>
 </pre></dt>
 <dd>
 The custom event structure.
@@ -1370,7 +1370,7 @@ The custom window manager information structure.</p>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-09-29 11:57:22 UTC</small>
+        <small>Made with Nim. Generated: 2018-01-01 17:43:01 UTC</small>
       </div>
     </div>
   </div>

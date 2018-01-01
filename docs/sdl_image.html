@@ -1212,28 +1212,16 @@ function main() {
   <ul class="simple simple-toc" id="toc-list">
 <li><a class="reference" id="sdl-image-nim_toc" href="#sdl-image-nim">sdl_image.nim</a></li>
 <li>
-  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
-  <ul class="simple simple-toc-section">
-    
-  </ul>
-</li>
-<li>
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#MAJOR_VERSION"
-    title="MAJOR_VERSION* = 2"><wbr />MAJOR_<wbr />VERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#MINOR_VERSION"
-    title="MINOR_VERSION* = 0"><wbr />MINOR_<wbr />VERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#PATCHLEVEL"
-    title="PATCHLEVEL* = 2"><wbr />PATCHLEVEL<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#INIT_JPG"
-    title="INIT_JPG* = 0x00000001"><wbr />INIT_<wbr />JPG<span class="attachedType" style="visibility:hidden"></span></a></li>
+      <li><a class="reference" href="#INIT_JPG"
+    title="INIT_JPG = 0x00000001"><wbr />INIT_<wbr />JPG<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#INIT_PNG"
-    title="INIT_PNG* = 0x00000002"><wbr />INIT_<wbr />PNG<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="INIT_PNG = 0x00000002"><wbr />INIT_<wbr />PNG<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#INIT_TIF"
-    title="INIT_TIF* = 0x00000004"><wbr />INIT_<wbr />TIF<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="INIT_TIF = 0x00000004"><wbr />INIT_<wbr />TIF<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#INIT_WEBP"
-    title="INIT_WEBP* = 0x00000008"><wbr />INIT_<wbr />WEBP<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="INIT_WEBP = 0x00000008"><wbr />INIT_<wbr />WEBP<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1241,109 +1229,105 @@ function main() {
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#linkedVersion,"
-    title="linkedVersion*(): ptr Version"><wbr />linked<wbr />Version<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="linkedVersion(): ptr Version"><wbr />linked<wbr />Version<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#init,cint"
-    title="init*(flags: cint): cint"><wbr />init<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="init(flags: cint): cint"><wbr />init<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#quit,"
-    title="quit*()"><wbr />quit<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="quit()"><wbr />quit<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadTyped_RW,ptr.RWops,cint,cstring"
-    title="loadTyped_RW*(src: ptr RWops; freesrc: cint; kind: cstring): Surface"><wbr />load<wbr />Typed_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadTyped_RW(src: ptr RWops; freesrc: cint; kind: cstring): Surface"><wbr />load<wbr />Typed_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#load,cstring"
-    title="load*(file: cstring): Surface"><wbr />load<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="load(file: cstring): Surface"><wbr />load<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#load_RW,ptr.RWops,cint"
-    title="load_RW*(src: ptr RWops; freesrc: cint): Surface"><wbr />load_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#loadTexture,Renderer,cstring"
-    title="loadTexture*(renderer: Renderer; file: cstring): ptr Texture"><wbr />load<wbr />Texture<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#loadTexture_RW,Renderer,ptr.RWops,cint"
-    title="loadTexture_RW*(renderer: Renderer; src: ptr RWops; freesrc: cint): Texture"><wbr />load<wbr />Texture_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#loadTextureTyped_RW,Renderer,ptr.RWops,cint,cstring"
-    title="loadTextureTyped_RW*(renderer: Renderer; src: ptr RWops; freesrc: cint; kind: cstring): Texture"><wbr />load<wbr />Texture<wbr />Typed_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="load_RW(src: ptr RWops; freesrc: cint): Surface"><wbr />load_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isICO,ptr.RWops"
-    title="isICO*(src: ptr RWops): cint"><wbr />is<wbr />ICO<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="isICO(src: ptr RWops): cint"><wbr />is<wbr />ICO<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isCUR,ptr.RWops"
-    title="isCUR*(src: ptr RWops): cint"><wbr />is<wbr />CUR<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="isCUR(src: ptr RWops): cint"><wbr />is<wbr />CUR<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isBMP,ptr.RWops"
-    title="isBMP*(src: ptr RWops): cint"><wbr />is<wbr />BMP<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="isBMP(src: ptr RWops): cint"><wbr />is<wbr />BMP<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isGIF,ptr.RWops"
-    title="isGIF*(src: ptr RWops): cint"><wbr />is<wbr />GIF<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="isGIF(src: ptr RWops): cint"><wbr />is<wbr />GIF<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isJPG,ptr.RWops"
-    title="isJPG*(src: ptr RWops): cint"><wbr />is<wbr />JPG<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="isJPG(src: ptr RWops): cint"><wbr />is<wbr />JPG<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isLBM,ptr.RWops"
-    title="isLBM*(src: ptr RWops): cint"><wbr />is<wbr />LBM<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="isLBM(src: ptr RWops): cint"><wbr />is<wbr />LBM<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isPCX,ptr.RWops"
-    title="isPCX*(src: ptr RWops): cint"><wbr />is<wbr />PCX<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="isPCX(src: ptr RWops): cint"><wbr />is<wbr />PCX<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isPNG,ptr.RWops"
-    title="isPNG*(src: ptr RWops): cint"><wbr />is<wbr />PNG<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="isPNG(src: ptr RWops): cint"><wbr />is<wbr />PNG<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isPNM,ptr.RWops"
-    title="isPNM*(src: ptr RWops): cint"><wbr />is<wbr />PNM<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="isPNM(src: ptr RWops): cint"><wbr />is<wbr />PNM<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isSVG,ptr.RWops"
-    title="isSVG*(src: ptr RWops): cint"><wbr />is<wbr />SVG<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="isSVG(src: ptr RWops): cint"><wbr />is<wbr />SVG<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isTIF,ptr.RWops"
-    title="isTIF*(src: ptr RWops): cint"><wbr />is<wbr />TIF<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="isTIF(src: ptr RWops): cint"><wbr />is<wbr />TIF<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isXCF,ptr.RWops"
-    title="isXCF*(src: ptr RWops): cint"><wbr />is<wbr />XCF<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="isXCF(src: ptr RWops): cint"><wbr />is<wbr />XCF<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isXPM,ptr.RWops"
-    title="isXPM*(src: ptr RWops): cint"><wbr />is<wbr />XPM<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="isXPM(src: ptr RWops): cint"><wbr />is<wbr />XPM<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isXV,ptr.RWops"
-    title="isXV*(src: ptr RWops): cint"><wbr />is<wbr />XV<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="isXV(src: ptr RWops): cint"><wbr />is<wbr />XV<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#isWEBP,ptr.RWops"
-    title="isWEBP*(src: ptr RWops): cint"><wbr />is<wbr />WEBP<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="isWEBP(src: ptr RWops): cint"><wbr />is<wbr />WEBP<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadICO_RW,ptr.RWops"
-    title="loadICO_RW*(src: ptr RWops): Surface"><wbr />load<wbr />ICO_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadICO_RW(src: ptr RWops): Surface"><wbr />load<wbr />ICO_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadCUR_RW,ptr.RWops"
-    title="loadCUR_RW*(src: ptr RWops): Surface"><wbr />load<wbr />CUR_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadCUR_RW(src: ptr RWops): Surface"><wbr />load<wbr />CUR_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadBMP_RW,ptr.RWops"
-    title="loadBMP_RW*(src: ptr RWops): Surface"><wbr />load<wbr />BMP_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadBMP_RW(src: ptr RWops): Surface"><wbr />load<wbr />BMP_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadGIF_RW,ptr.RWops"
-    title="loadGIF_RW*(src: ptr RWops): Surface"><wbr />load<wbr />GIF_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadGIF_RW(src: ptr RWops): Surface"><wbr />load<wbr />GIF_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadJPG_RW,ptr.RWops"
-    title="loadJPG_RW*(src: ptr RWops): Surface"><wbr />load<wbr />JPG_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadJPG_RW(src: ptr RWops): Surface"><wbr />load<wbr />JPG_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadLBM_RW,ptr.RWops"
-    title="loadLBM_RW*(src: ptr RWops): Surface"><wbr />load<wbr />LBM_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadLBM_RW(src: ptr RWops): Surface"><wbr />load<wbr />LBM_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadPCX_RW,ptr.RWops"
-    title="loadPCX_RW*(src: ptr RWops): Surface"><wbr />load<wbr />PCX_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadPCX_RW(src: ptr RWops): Surface"><wbr />load<wbr />PCX_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadPNG_RW,ptr.RWops"
-    title="loadPNG_RW*(src: ptr RWops): Surface"><wbr />load<wbr />PNG_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadPNG_RW(src: ptr RWops): Surface"><wbr />load<wbr />PNG_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadPNM_RW,ptr.RWops"
-    title="loadPNM_RW*(src: ptr RWops): Surface"><wbr />load<wbr />PNM_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadPNM_RW(src: ptr RWops): Surface"><wbr />load<wbr />PNM_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadSVG_RW,ptr.RWops"
-    title="loadSVG_RW*(src: ptr RWops): Surface"><wbr />load<wbr />SVG_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadSVG_RW(src: ptr RWops): Surface"><wbr />load<wbr />SVG_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadTGA_RW,ptr.RWops"
-    title="loadTGA_RW*(src: ptr RWops): Surface"><wbr />load<wbr />TGA_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadTGA_RW(src: ptr RWops): Surface"><wbr />load<wbr />TGA_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadTIF_RW,ptr.RWops"
-    title="loadTIF_RW*(src: ptr RWops): Surface"><wbr />load<wbr />TIF_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadTIF_RW(src: ptr RWops): Surface"><wbr />load<wbr />TIF_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadXCF_RW,ptr.RWops"
-    title="loadXCF_RW*(src: ptr RWops): Surface"><wbr />load<wbr />XCF_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadXCF_RW(src: ptr RWops): Surface"><wbr />load<wbr />XCF_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadXPM_RW,ptr.RWops"
-    title="loadXPM_RW*(src: ptr RWops): Surface"><wbr />load<wbr />XPM_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadXPM_RW(src: ptr RWops): Surface"><wbr />load<wbr />XPM_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadXV_RW,ptr.RWops"
-    title="loadXV_RW*(src: ptr RWops): Surface"><wbr />load<wbr />XV_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadXV_RW(src: ptr RWops): Surface"><wbr />load<wbr />XV_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#loadWEBP_RW,ptr.RWops"
-    title="loadWEBP_RW*(src: ptr RWops): Surface"><wbr />load<wbr />WEBP_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loadWEBP_RW(src: ptr RWops): Surface"><wbr />load<wbr />WEBP_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#readXPMFromArray,cstringArray"
-    title="readXPMFromArray*(xpm: cstringArray): Surface"><wbr />read<wbr />XPMFrom<wbr />Array<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="readXPMFromArray(xpm: cstringArray): Surface"><wbr />read<wbr />XPMFrom<wbr />Array<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#savePNG,Surface,cstring"
-    title="savePNG*(surface: Surface; file: cstring): cint"><wbr />save<wbr />PNG<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="savePNG(surface: Surface; file: cstring): cint"><wbr />save<wbr />PNG<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#savePNG_RW,Surface,ptr.RWops,cint"
-    title="savePNG_RW*(surface: Surface; dst: ptr RWops; freedst: cint): cint"><wbr />save<wbr />PNG_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="savePNG_RW(surface: Surface; dst: ptr RWops; freedst: cint): cint"><wbr />save<wbr />PNG_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#saveJPG,Surface,cstring,cint"
-    title="saveJPG*(surface: Surface; file: cstring; quality: cint): cint"><wbr />save<wbr />JPG<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="saveJPG(surface: Surface; file: cstring; quality: cint): cint"><wbr />save<wbr />JPG<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#saveJPG_RW,Surface,ptr.RWops,cint,cint"
-    title="saveJPG_RW*(surface: Surface; dst: ptr RWops; freedst: cint; quality: cint): cint"><wbr />save<wbr />JPG_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="saveJPG_RW(surface: Surface; dst: ptr RWops; freedst: cint; quality: cint): cint"><wbr />save<wbr />JPG_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
 <li>
-  <a class="reference reference-toplevel" href="#17" id="67">Templates</a>
+  <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#compiledVersion.t,"
-    title="compiledVersion*()"><wbr />compiled<wbr />Version<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#versionAtLeast.t,untyped,untyped,untyped"
-    title="versionAtLeast*(x, y, z: untyped): untyped"><wbr />version<wbr />At<wbr />Least<span class="attachedType" style="visibility:hidden"></span></a></li>
+      <li><a class="reference" href="#versionAtLeast.t,untyped,untyped,untyped"
+    title="versionAtLeast(x, y, z: untyped): untyped"><wbr />version<wbr />At<wbr />Least<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#loadTyped_RW.t,ptr.RWops,bool,cstring"
+    title="loadTyped_RW(src: ptr RWops; freesrc: bool; kind: cstring): Surface"><wbr />load<wbr />Typed_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#load_RW.t,ptr.RWops,bool"
+    title="load_RW(src: ptr RWops; freesrc: bool): Surface"><wbr />load_<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#setError.t,untyped"
-    title="setError*(fmt: untyped): cint"><wbr />set<wbr />Error<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="setError(fmt: untyped): cint"><wbr />set<wbr />Error<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#getError.t,"
-    title="getError*(): cstring"><wbr />get<wbr />Error<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getError(): cstring"><wbr />get<wbr />Error<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1356,45 +1340,25 @@ function main() {
   <p class="module-desc">
 <h1><a class="toc-backref" id="sdl-image-nim" href="#sdl-image-nim">sdl_image.nim</a></h1><p>A simple library to load images of various formats as SDL surfaces.</p>
 </p>
-  <div class="section" id="6">
-<h1><a class="toc-backref" href="#6">Imports</a></h1>
-<dl class="item">
-<a class="reference external" href="sdl.html">sdl</a>
-</dl></div>
-<div class="section" id="10">
+  <div class="section" id="10">
 <h1><a class="toc-backref" href="#10">Consts</a></h1>
 <dl class="item">
-<dt id="MAJOR_VERSION"><a name="MAJOR_VERSION"></a><pre><span class="Identifier">MAJOR_VERSION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
+<dt id="INIT_JPG"><a name="INIT_JPG"></a><pre><span class="Identifier">INIT_JPG</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="MINOR_VERSION"><a name="MINOR_VERSION"></a><pre><span class="Identifier">MINOR_VERSION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
+<dt id="INIT_PNG"><a name="INIT_PNG"></a><pre><span class="Identifier">INIT_PNG</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
+<dt id="INIT_TIF"><a name="INIT_TIF"></a><pre><span class="Identifier">INIT_TIF</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="INIT_JPG"><a name="INIT_JPG"></a><pre><span class="Identifier">INIT_JPG</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="INIT_PNG"><a name="INIT_PNG"></a><pre><span class="Identifier">INIT_PNG</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="INIT_TIF"><a name="INIT_TIF"></a><pre><span class="Identifier">INIT_TIF</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="INIT_WEBP"><a name="INIT_WEBP"></a><pre><span class="Identifier">INIT_WEBP</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000008</span></pre></dt>
+<dt id="INIT_WEBP"><a name="INIT_WEBP"></a><pre><span class="Identifier">INIT_WEBP</span> <span class="Other">=</span> <span class="DecNumber">0x00000008</span></pre></dt>
 <dd>
 
 
@@ -1404,13 +1368,13 @@ function main() {
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="linkedVersion"><a name="linkedVersion,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">linkedVersion</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Version</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_Linked_Version&quot;</span><span class="Other">,</span>
-                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="linkedVersion"><a name="linkedVersion,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">linkedVersion</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Version</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_Linked_Version&quot;</span><span class="Other">,</span>
+                                <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This procedure gets the version of the dynamically linked SDL_image library. It should NOT be used to fill a version structure, instead you should use the <tt class="docutils literal"><span class="pre">version()</span></tt> template.
 
 </dd>
-<dt id="init"><a name="init,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">init</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_Init&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="init"><a name="init,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">init</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_Init&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Loads dynamic libraries and prepares them for use.</p>
 <p><tt class="docutils literal"><span class="pre">flags</span></tt> should be one or more flags from InitFlags OR'd together.</p>
@@ -1418,12 +1382,12 @@ This procedure gets the version of the dynamically linked SDL_image library. It 
 
 
 </dd>
-<dt id="quit"><a name="quit,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">quit</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_Quit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="quit"><a name="quit,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">quit</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_Quit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Unloads libraries loaded with <tt class="docutils literal"><span class="pre">init()</span></tt>.
 
 </dd>
-<dt id="loadTyped_RW"><a name="loadTyped_RW,ptr.RWops,cint,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadTyped_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="loadTyped_RW"><a name="loadTyped_RW,ptr.RWops,cint,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadTyped_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadTyped_RW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Load an image from an SDL data source.</p>
@@ -1432,232 +1396,213 @@ Unloads libraries loaded with <tt class="docutils literal"><span class="pre">ini
 <pre class="listing"><span class="Identifier">setColorKey</span><span class="Punctuation">(</span><span class="Identifier">image</span><span class="Punctuation">,</span> <span class="Identifier">RLEACCEL</span><span class="Punctuation">,</span> <span class="Identifier">image</span><span class="Operator">.</span><span class="Identifier">format</span><span class="Operator">.</span><span class="Identifier">colorkey</span><span class="Punctuation">)</span></pre>
 
 </dd>
-<dt id="load"><a name="load,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">load</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_Load&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="load"><a name="load,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">load</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_Load&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="load_RW"><a name="load_RW,ptr.RWops,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">load_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_Load_RW&quot;</span><span class="Other">,</span>
+<dt id="load_RW"><a name="load_RW,ptr.RWops,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">load_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_Load_RW&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="loadTexture"><a name="loadTexture,Renderer,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Texture</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadTexture&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="isICO"><a name="isICO,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isICO</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isICO&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="loadTexture_RW"><a name="loadTexture_RW,Renderer,ptr.RWops,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadTexture_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Texture</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadTexture_RW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="isCUR"><a name="isCUR,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isCUR</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isCUR&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="loadTextureTyped_RW"><a name="loadTextureTyped_RW,Renderer,ptr.RWops,cint,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadTextureTyped_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
-                         <span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Texture</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadTextureTyped_RW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="isBMP"><a name="isBMP,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isBMP</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isBMP&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="isICO"><a name="isICO,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isICO</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isICO&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="isGIF"><a name="isGIF,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isGIF</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isGIF&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="isCUR"><a name="isCUR,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isCUR</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isCUR&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="isJPG"><a name="isJPG,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isJPG</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isJPG&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="isBMP"><a name="isBMP,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isBMP</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isBMP&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="isLBM"><a name="isLBM,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isLBM</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isLBM&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="isGIF"><a name="isGIF,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isGIF</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isGIF&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="isPCX"><a name="isPCX,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isPCX</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isPCX&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="isJPG"><a name="isJPG,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isJPG</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isJPG&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="isPNG"><a name="isPNG,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isPNG</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isPNG&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="isLBM"><a name="isLBM,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isLBM</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isLBM&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="isPNM"><a name="isPNM,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isPNM</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isPNM&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="isPCX"><a name="isPCX,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isPCX</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isPCX&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="isSVG"><a name="isSVG,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isSVG</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isSVG&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="isPNG"><a name="isPNG,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isPNG</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isPNG&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="isTIF"><a name="isTIF,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isTIF</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isTIF&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="isPNM"><a name="isPNM,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isPNM</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isPNM&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="isXCF"><a name="isXCF,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isXCF</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isXCF&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="isSVG"><a name="isSVG,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isSVG</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isSVG&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="isXPM"><a name="isXPM,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isXPM</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isXPM&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="isTIF"><a name="isTIF,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isTIF</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isTIF&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="isXV"><a name="isXV,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isXV</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isXV&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="isXCF"><a name="isXCF,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isXCF</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isXCF&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="isWEBP"><a name="isWEBP,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isWEBP</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isWEBP&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="isXPM"><a name="isXPM,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isXPM</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isXPM&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="isXV"><a name="isXV,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isXV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isXV&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="isWEBP"><a name="isWEBP,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isWEBP</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_isWEBP&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="loadICO_RW"><a name="loadICO_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadICO_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadICO_RW&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="loadCUR_RW"><a name="loadCUR_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadCUR_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadCUR_RW&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="loadBMP_RW"><a name="loadBMP_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadBMP_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadBMP_RW&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="loadGIF_RW"><a name="loadGIF_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadGIF_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadGIF_RW&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="loadJPG_RW"><a name="loadJPG_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadJPG_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadJPG_RW&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="loadLBM_RW"><a name="loadLBM_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadLBM_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadLBM_RW&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="loadPCX_RW"><a name="loadPCX_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadPCX_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadPCX_RW&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="loadPNG_RW"><a name="loadPNG_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadPNG_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadPNG_RW&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="loadPNM_RW"><a name="loadPNM_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadPNM_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadPNM_RW&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="loadSVG_RW"><a name="loadSVG_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadSVG_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadSVG_RW&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="loadTGA_RW"><a name="loadTGA_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadTGA_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadTGA_RW&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="loadTIF_RW"><a name="loadTIF_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadTIF_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadTIF_RW&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="loadXCF_RW"><a name="loadXCF_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadXCF_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadXCF_RW&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="loadXPM_RW"><a name="loadXPM_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadXPM_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadXPM_RW&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="loadXV_RW"><a name="loadXV_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadXV_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadXV_RW&quot;</span><span class="Other">,</span>
+<dt id="loadICO_RW"><a name="loadICO_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadICO_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadICO_RW&quot;</span><span class="Other">,</span>
                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="loadWEBP_RW"><a name="loadWEBP_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadWEBP_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadWEBP_RW&quot;</span><span class="Other">,</span>
-                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="loadCUR_RW"><a name="loadCUR_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadCUR_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadCUR_RW&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="readXPMFromArray"><a name="readXPMFromArray,cstringArray"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readXPMFromArray</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">xpm</span><span class="Other">:</span> <span class="Identifier">cstringArray</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="loadBMP_RW"><a name="loadBMP_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadBMP_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadBMP_RW&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="loadGIF_RW"><a name="loadGIF_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadGIF_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadGIF_RW&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="loadJPG_RW"><a name="loadJPG_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadJPG_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadJPG_RW&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="loadLBM_RW"><a name="loadLBM_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadLBM_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadLBM_RW&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="loadPCX_RW"><a name="loadPCX_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadPCX_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadPCX_RW&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="loadPNG_RW"><a name="loadPNG_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadPNG_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadPNG_RW&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="loadPNM_RW"><a name="loadPNM_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadPNM_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadPNM_RW&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="loadSVG_RW"><a name="loadSVG_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadSVG_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadSVG_RW&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="loadTGA_RW"><a name="loadTGA_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadTGA_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadTGA_RW&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="loadTIF_RW"><a name="loadTIF_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadTIF_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadTIF_RW&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="loadXCF_RW"><a name="loadXCF_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadXCF_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadXCF_RW&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="loadXPM_RW"><a name="loadXPM_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadXPM_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadXPM_RW&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="loadXV_RW"><a name="loadXV_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadXV_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadXV_RW&quot;</span><span class="Other">,</span>
+                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="loadWEBP_RW"><a name="loadWEBP_RW,ptr.RWops"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadWEBP_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadWEBP_RW&quot;</span><span class="Other">,</span>
+                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="readXPMFromArray"><a name="readXPMFromArray,cstringArray"></a><pre><span class="Keyword">proc</span> <span class="Identifier">readXPMFromArray</span><span class="Other">(</span><span class="Identifier">xpm</span><span class="Other">:</span> <span class="Identifier">cstringArray</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_ReadXPMFromArray&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="savePNG"><a name="savePNG,Surface,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">savePNG</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_SavePNG&quot;</span><span class="Other">,</span>
+<dt id="savePNG"><a name="savePNG,Surface,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">savePNG</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_SavePNG&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="savePNG_RW"><a name="savePNG_RW,Surface,ptr.RWops,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">savePNG_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freedst</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="savePNG_RW"><a name="savePNG_RW,Surface,ptr.RWops,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">savePNG_RW</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freedst</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_SavePNG_RW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="saveJPG"><a name="saveJPG,Surface,cstring,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">saveJPG</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">quality</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="saveJPG"><a name="saveJPG,Surface,cstring,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">saveJPG</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">quality</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_SaveJPG&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="saveJPG_RW"><a name="saveJPG_RW,Surface,ptr.RWops,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">saveJPG_RW</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freedst</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">quality</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+<dt id="saveJPG_RW"><a name="saveJPG_RW,Surface,ptr.RWops,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">saveJPG_RW</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freedst</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">quality</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_SaveJPG_RW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_IMG_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
@@ -1665,27 +1610,31 @@ Unloads libraries loaded with <tt class="docutils literal"><span class="pre">ini
 </dd>
 
 </dl></div>
-<div class="section" id="17">
-<h1><a class="toc-backref" href="#17">Templates</a></h1>
+<div class="section" id="18">
+<h1><a class="toc-backref" href="#18">Templates</a></h1>
 <dl class="item">
-<dt id="compiledVersion"><a name="compiledVersion.t,"></a><pre><span class="Keyword">template</span> <span class="Identifier">compiledVersion</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span></pre></dt>
+<dt id="versionAtLeast"><a name="versionAtLeast.t,untyped,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">versionAtLeast</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-This is the version number macro for the current SDL_image version.
+This macro will evaluate to <cite>true</cite> if compiled with SDL_image at least X.Y.Z.
 
 </dd>
-<dt id="versionAtLeast"><a name="versionAtLeast.t,untyped,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">versionAtLeast</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
-<dd>
-
-This macro will evaluate to true if compiled with SDL_image at least X.Y.Z.
-
-</dd>
-<dt id="setError"><a name="setError.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">setError</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<dt id="loadTyped_RW"><a name="loadTyped_RW.t,ptr.RWops,bool,cstring"></a><pre><span class="Keyword">template</span> <span class="Identifier">loadTyped_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="getError"><a name="getError.t,"></a><pre><span class="Keyword">template</span> <span class="Identifier">getError</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span></pre></dt>
+<dt id="load_RW"><a name="load_RW.t,ptr.RWops,bool"></a><pre><span class="Keyword">template</span> <span class="Identifier">load_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Surface</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="setError"><a name="setError.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">setError</span><span class="Other">(</span><span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="getError"><a name="getError.t,"></a><pre><span class="Keyword">template</span> <span class="Identifier">getError</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span></pre></dt>
 <dd>
 
 
@@ -1700,7 +1649,7 @@ This macro will evaluate to true if compiled with SDL_image at least X.Y.Z.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-10-27 11:32:35 UTC</small>
+        <small>Made with Nim. Generated: 2018-01-01 17:23:59 UTC</small>
       </div>
     </div>
   </div>

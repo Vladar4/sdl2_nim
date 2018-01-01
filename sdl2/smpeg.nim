@@ -221,7 +221,7 @@ proc playAudio*(mpeg: Smpeg; stream: ptr uint8; len: cint): cint {.
   ##
   ##  The procedure takes a buffer and the amount of data to fill, and returns
   ##  the amount of data in bytes that was actually written. This will be the
-  ##   amount requested unless the MPEG audio has finished.
+  ##  amount requested unless the MPEG audio has finished.
 
 proc playAudioSDL*(mpeg: pointer; stream: ptr uint8; len: cint) {.
     cdecl, importc: "SMPEG_playAudioSDL", dynlib: SMPEG2_LIB.}

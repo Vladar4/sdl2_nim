@@ -1215,7 +1215,7 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#RendererInfo"
-    title="RendererInfo* = object
+    title="RendererInfo = object
   name*: cstring               ## The name of the renderer
   flags*: uint32               ## Supported ``RendererFlags``
   num_texture_formats*: uint32 ## The number of available texture formats
@@ -1223,25 +1223,25 @@ function main() {
   max_texture_width*: cint     ## The maximum texture width
   max_texture_height*: cint    ## The maximum texture height"><wbr />Renderer<wbr />Info<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#TextureAccess"
-    title="TextureAccess* = enum
+    title="TextureAccess = enum
   TEXTUREACCESS_STATIC = 0x00000000, ## Changes rarely, not lockable
   TEXTUREACCESS_STREAMING = 0x00000001, ## Changes frequently, lockable
   TEXTUREACCESS_TARGET = 0x00000002 ## Texture can be used as a render target"><wbr />Texture<wbr />Access<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#TextureModulate"
-    title="TextureModulate* = enum
+    title="TextureModulate = enum
   TEXTUREMODULATE_NONE = 0x00000000, ## No modulation
   TEXTUREMODULATE_COLOR = 0x00000001, ## srcC = srcC * color
   TEXTUREMODULATE_ALPHA = 0x00000002 ## srcA = srcA * alpha"><wbr />Texture<wbr />Modulate<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#RendererFlip"
-    title="RendererFlip* = enum
+    title="RendererFlip = enum
   FLIP_NONE = 0x00000000,       ## Do not flip
   FLIP_HORIZONTAL = 0x00000001, ## flip horizontally
   FLIP_VERTICAL = 0x00000002,   ## flip vertically
   FLIP_BOTH = 0x00000003        ## flip horizontally and vertically"><wbr />Renderer<wbr />Flip<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#Renderer"
-    title="Renderer* = pointer"><wbr />Renderer<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="Renderer = pointer"><wbr />Renderer<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#Texture"
-    title="Texture* = pointer"><wbr />Texture<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="Texture = pointer"><wbr />Texture<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1249,13 +1249,13 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#RENDERER_SOFTWARE"
-    title="RENDERER_SOFTWARE* = 0x00000001"><wbr />RENDERER_<wbr />SOFTWARE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="RENDERER_SOFTWARE = 0x00000001"><wbr />RENDERER_<wbr />SOFTWARE<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#RENDERER_ACCELERATED"
-    title="RENDERER_ACCELERATED* = 0x00000002"><wbr />RENDERER_<wbr />ACCELERATED<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="RENDERER_ACCELERATED = 0x00000002"><wbr />RENDERER_<wbr />ACCELERATED<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#RENDERER_PRESENTVSYNC"
-    title="RENDERER_PRESENTVSYNC* = 0x00000004"><wbr />RENDERER_<wbr />PRESENTVSYNC<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="RENDERER_PRESENTVSYNC = 0x00000004"><wbr />RENDERER_<wbr />PRESENTVSYNC<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#RENDERER_TARGETTEXTURE"
-    title="RENDERER_TARGETTEXTURE* = 0x00000008"><wbr />RENDERER_<wbr />TARGETTEXTURE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="RENDERER_TARGETTEXTURE = 0x00000008"><wbr />RENDERER_<wbr />TARGETTEXTURE<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1263,138 +1263,138 @@ function main() {
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#getNumRenderDrivers,"
-    title="getNumRenderDrivers*(): cint"><wbr />get<wbr />Num<wbr />Render<wbr />Drivers<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getNumRenderDrivers(): cint"><wbr />get<wbr />Num<wbr />Render<wbr />Drivers<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#getRenderDriverInfo,cint,ptr.RendererInfo"
-    title="getRenderDriverInfo*(index: cint; info: ptr RendererInfo): cint"><wbr />get<wbr />Render<wbr />Driver<wbr />Info<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getRenderDriverInfo(index: cint; info: ptr RendererInfo): cint"><wbr />get<wbr />Render<wbr />Driver<wbr />Info<span class="attachedType" style="visibility:hidden">RendererInfo</span></a></li>
   <li><a class="reference" href="#createWindowAndRenderer,cint,cint,uint32,ptr.Window,ptr.Renderer"
-    title="createWindowAndRenderer*(width: cint; height: cint; window_flags: uint32;
-                         window: ptr Window; renderer: ptr Renderer): cint"><wbr />create<wbr />Window<wbr />And<wbr />Renderer<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="createWindowAndRenderer(width: cint; height: cint; window_flags: uint32;
+                        window: ptr Window; renderer: ptr Renderer): cint"><wbr />create<wbr />Window<wbr />And<wbr />Renderer<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#createRenderer,Window,cint,uint32"
-    title="createRenderer*(window: Window; index: cint; flags: uint32): Renderer"><wbr />create<wbr />Renderer<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="createRenderer(window: Window; index: cint; flags: uint32): Renderer"><wbr />create<wbr />Renderer<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#createSoftwareRenderer,Surface"
-    title="createSoftwareRenderer*(surface: Surface): Renderer"><wbr />create<wbr />Software<wbr />Renderer<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="createSoftwareRenderer(surface: Surface): Renderer"><wbr />create<wbr />Software<wbr />Renderer<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#getRenderer,Window"
-    title="getRenderer*(window: Window): Renderer"><wbr />get<wbr />Renderer<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getRenderer(window: Window): Renderer"><wbr />get<wbr />Renderer<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#getRendererInfo,Renderer,ptr.RendererInfo"
-    title="getRendererInfo*(renderer: Renderer; info: ptr RendererInfo): cint"><wbr />get<wbr />Renderer<wbr />Info<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getRendererInfo(renderer: Renderer; info: ptr RendererInfo): cint"><wbr />get<wbr />Renderer<wbr />Info<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#getRendererOutputSize,Renderer,ptr.cint,ptr.cint"
-    title="getRendererOutputSize*(renderer: Renderer; w: ptr cint; h: ptr cint): cint"><wbr />get<wbr />Renderer<wbr />Output<wbr />Size<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getRendererOutputSize(renderer: Renderer; w: ptr cint; h: ptr cint): cint"><wbr />get<wbr />Renderer<wbr />Output<wbr />Size<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#createTexture,Renderer,uint32,TextureAccess,cint,cint"
-    title="createTexture*(renderer: Renderer; format: uint32; access: TextureAccess; w: cint;
-               h: cint): Texture"><wbr />create<wbr />Texture<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="createTexture(renderer: Renderer; format: uint32; access: TextureAccess; w: cint;
+              h: cint): Texture"><wbr />create<wbr />Texture<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#createTextureFromSurface,Renderer,Surface"
-    title="createTextureFromSurface*(renderer: Renderer; surface: Surface): Texture"><wbr />create<wbr />Texture<wbr />From<wbr />Surface<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="createTextureFromSurface(renderer: Renderer; surface: Surface): Texture"><wbr />create<wbr />Texture<wbr />From<wbr />Surface<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#queryTexture,Texture,ptr.uint32,ptr.TextureAccess,ptr.cint,ptr.cint"
-    title="queryTexture*(texture: Texture; format: ptr uint32; access: ptr TextureAccess;
-              w: ptr cint; h: ptr cint): cint"><wbr />query<wbr />Texture<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="queryTexture(texture: Texture; format: ptr uint32; access: ptr TextureAccess;
+             w: ptr cint; h: ptr cint): cint"><wbr />query<wbr />Texture<span class="attachedType" style="visibility:hidden">Texture</span></a></li>
   <li><a class="reference" href="#setTextureColorMod,Texture,uint8,uint8,uint8"
-    title="setTextureColorMod*(texture: Texture; r: uint8; g: uint8; b: uint8): cint"><wbr />set<wbr />Texture<wbr />Color<wbr />Mod<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="setTextureColorMod(texture: Texture; r: uint8; g: uint8; b: uint8): cint"><wbr />set<wbr />Texture<wbr />Color<wbr />Mod<span class="attachedType" style="visibility:hidden">Texture</span></a></li>
   <li><a class="reference" href="#getTextureColorMod,Texture,ptr.uint8,ptr.uint8,ptr.uint8"
-    title="getTextureColorMod*(texture: Texture; r: ptr uint8; g: ptr uint8; b: ptr uint8): cint"><wbr />get<wbr />Texture<wbr />Color<wbr />Mod<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getTextureColorMod(texture: Texture; r: ptr uint8; g: ptr uint8; b: ptr uint8): cint"><wbr />get<wbr />Texture<wbr />Color<wbr />Mod<span class="attachedType" style="visibility:hidden">Texture</span></a></li>
   <li><a class="reference" href="#setTextureAlphaMod,Texture,uint8"
-    title="setTextureAlphaMod*(texture: Texture; alpha: uint8): cint"><wbr />set<wbr />Texture<wbr />Alpha<wbr />Mod<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="setTextureAlphaMod(texture: Texture; alpha: uint8): cint"><wbr />set<wbr />Texture<wbr />Alpha<wbr />Mod<span class="attachedType" style="visibility:hidden">Texture</span></a></li>
   <li><a class="reference" href="#getTextureAlphaMod,Texture,ptr.uint8"
-    title="getTextureAlphaMod*(texture: Texture; alpha: ptr uint8): cint"><wbr />get<wbr />Texture<wbr />Alpha<wbr />Mod<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getTextureAlphaMod(texture: Texture; alpha: ptr uint8): cint"><wbr />get<wbr />Texture<wbr />Alpha<wbr />Mod<span class="attachedType" style="visibility:hidden">Texture</span></a></li>
   <li><a class="reference" href="#setTextureBlendMode,Texture,BlendMode"
-    title="setTextureBlendMode*(texture: Texture; blendMode: BlendMode): cint"><wbr />set<wbr />Texture<wbr />Blend<wbr />Mode<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="setTextureBlendMode(texture: Texture; blendMode: BlendMode): cint"><wbr />set<wbr />Texture<wbr />Blend<wbr />Mode<span class="attachedType" style="visibility:hidden">Texture</span></a></li>
   <li><a class="reference" href="#getTextureBlendMode,Texture,ptr.BlendMode"
-    title="getTextureBlendMode*(texture: Texture; blendMode: ptr BlendMode): cint"><wbr />get<wbr />Texture<wbr />Blend<wbr />Mode<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getTextureBlendMode(texture: Texture; blendMode: ptr BlendMode): cint"><wbr />get<wbr />Texture<wbr />Blend<wbr />Mode<span class="attachedType" style="visibility:hidden">Texture</span></a></li>
   <li><a class="reference" href="#updateTexture,Texture,ptr.Rect,pointer,cint"
-    title="updateTexture*(texture: Texture; rect: ptr Rect; pixels: pointer; pitch: cint): cint"><wbr />update<wbr />Texture<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="updateTexture(texture: Texture; rect: ptr Rect; pixels: pointer; pitch: cint): cint"><wbr />update<wbr />Texture<span class="attachedType" style="visibility:hidden">Texture</span></a></li>
   <li><a class="reference" href="#updateYUVTexture,Texture,ptr.Rect,ptr.uint8,cint,ptr.uint8,cint,ptr.uint8,cint"
-    title="updateYUVTexture*(texture: Texture; rect: ptr Rect; yPlane: ptr uint8; yPitch: cint;
-                  uPlane: ptr uint8; uPitch: cint; vPlane: ptr uint8; vPitch: cint): cint"><wbr />update<wbr />YUVTexture<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="updateYUVTexture(texture: Texture; rect: ptr Rect; yPlane: ptr uint8; yPitch: cint;
+                 uPlane: ptr uint8; uPitch: cint; vPlane: ptr uint8; vPitch: cint): cint"><wbr />update<wbr />YUVTexture<span class="attachedType" style="visibility:hidden">Texture</span></a></li>
   <li><a class="reference" href="#lockTexture,Texture,ptr.Rect,ptr.pointer,ptr.cint"
-    title="lockTexture*(texture: Texture; rect: ptr Rect; pixels: ptr pointer; pitch: ptr cint): cint"><wbr />lock<wbr />Texture<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="lockTexture(texture: Texture; rect: ptr Rect; pixels: ptr pointer; pitch: ptr cint): cint"><wbr />lock<wbr />Texture<span class="attachedType" style="visibility:hidden">Texture</span></a></li>
   <li><a class="reference" href="#unlockTexture,Texture"
-    title="unlockTexture*(texture: Texture)"><wbr />unlock<wbr />Texture<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="unlockTexture(texture: Texture)"><wbr />unlock<wbr />Texture<span class="attachedType" style="visibility:hidden">Texture</span></a></li>
   <li><a class="reference" href="#renderTargetSupported,Renderer"
-    title="renderTargetSupported*(renderer: Renderer): bool"><wbr />render<wbr />Target<wbr />Supported<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderTargetSupported(renderer: Renderer): bool"><wbr />render<wbr />Target<wbr />Supported<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#setRenderTarget,Renderer,Texture"
-    title="setRenderTarget*(renderer: Renderer; texture: Texture): cint"><wbr />set<wbr />Render<wbr />Target<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="setRenderTarget(renderer: Renderer; texture: Texture): cint"><wbr />set<wbr />Render<wbr />Target<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#getRenderTarget,Renderer"
-    title="getRenderTarget*(renderer: Renderer): Texture"><wbr />get<wbr />Render<wbr />Target<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getRenderTarget(renderer: Renderer): Texture"><wbr />get<wbr />Render<wbr />Target<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderSetLogicalSize,Renderer,cint,cint"
-    title="renderSetLogicalSize*(renderer: Renderer; w: cint; h: cint): cint"><wbr />render<wbr />Set<wbr />Logical<wbr />Size<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderSetLogicalSize(renderer: Renderer; w: cint; h: cint): cint"><wbr />render<wbr />Set<wbr />Logical<wbr />Size<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderGetLogicalSize,Renderer,ptr.cint,ptr.cint"
-    title="renderGetLogicalSize*(renderer: Renderer; w: ptr cint; h: ptr cint)"><wbr />render<wbr />Get<wbr />Logical<wbr />Size<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderGetLogicalSize(renderer: Renderer; w: ptr cint; h: ptr cint)"><wbr />render<wbr />Get<wbr />Logical<wbr />Size<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderSetIntegerScale,Renderer,bool"
-    title="renderSetIntegerScale*(renderer: Renderer; enable: bool): cint"><wbr />render<wbr />Set<wbr />Integer<wbr />Scale<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderSetIntegerScale(renderer: Renderer; enable: bool): cint"><wbr />render<wbr />Set<wbr />Integer<wbr />Scale<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderGetIntegerScale,Renderer"
-    title="renderGetIntegerScale*(renderer: Renderer): bool"><wbr />render<wbr />Get<wbr />Integer<wbr />Scale<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderGetIntegerScale(renderer: Renderer): bool"><wbr />render<wbr />Get<wbr />Integer<wbr />Scale<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderSetViewport,Renderer,ptr.Rect"
-    title="renderSetViewport*(renderer: Renderer; rect: ptr Rect): cint"><wbr />render<wbr />Set<wbr />Viewport<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderSetViewport(renderer: Renderer; rect: ptr Rect): cint"><wbr />render<wbr />Set<wbr />Viewport<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderGetViewport,Renderer,ptr.Rect"
-    title="renderGetViewport*(renderer: Renderer; rect: ptr Rect)"><wbr />render<wbr />Get<wbr />Viewport<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderGetViewport(renderer: Renderer; rect: ptr Rect)"><wbr />render<wbr />Get<wbr />Viewport<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderSetClipRect,Renderer,ptr.Rect"
-    title="renderSetClipRect*(renderer: Renderer; rect: ptr Rect): cint"><wbr />render<wbr />Set<wbr />Clip<wbr />Rect<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderSetClipRect(renderer: Renderer; rect: ptr Rect): cint"><wbr />render<wbr />Set<wbr />Clip<wbr />Rect<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderGetClipRect,Renderer,ptr.Rect"
-    title="renderGetClipRect*(renderer: Renderer; rect: ptr Rect)"><wbr />render<wbr />Get<wbr />Clip<wbr />Rect<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderGetClipRect(renderer: Renderer; rect: ptr Rect)"><wbr />render<wbr />Get<wbr />Clip<wbr />Rect<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderIsClipEnabled,Renderer"
-    title="renderIsClipEnabled*(renderer: Renderer): bool"><wbr />render<wbr />Is<wbr />Clip<wbr />Enabled<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderIsClipEnabled(renderer: Renderer): bool"><wbr />render<wbr />Is<wbr />Clip<wbr />Enabled<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderSetScale,Renderer,cfloat,cfloat"
-    title="renderSetScale*(renderer: Renderer; scaleX: cfloat; scaleY: cfloat): cint"><wbr />render<wbr />Set<wbr />Scale<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderSetScale(renderer: Renderer; scaleX: cfloat; scaleY: cfloat): cint"><wbr />render<wbr />Set<wbr />Scale<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderGetScale,Renderer,ptr.cfloat,ptr.cfloat"
-    title="renderGetScale*(renderer: Renderer; scaleX: ptr cfloat; scaleY: ptr cfloat)"><wbr />render<wbr />Get<wbr />Scale<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderGetScale(renderer: Renderer; scaleX: ptr cfloat; scaleY: ptr cfloat)"><wbr />render<wbr />Get<wbr />Scale<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#setRenderDrawColor,Renderer,uint8,uint8,uint8,uint8"
-    title="setRenderDrawColor*(renderer: Renderer; r: uint8; g: uint8; b: uint8; a: uint8): cint"><wbr />set<wbr />Render<wbr />Draw<wbr />Color<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="setRenderDrawColor(renderer: Renderer; r: uint8; g: uint8; b: uint8; a: uint8): cint"><wbr />set<wbr />Render<wbr />Draw<wbr />Color<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#getRenderDrawColor,Renderer,ptr.uint8,ptr.uint8,ptr.uint8,ptr.uint8"
-    title="getRenderDrawColor*(renderer: Renderer; r: ptr uint8; g: ptr uint8; b: ptr uint8;
-                    a: ptr uint8): cint"><wbr />get<wbr />Render<wbr />Draw<wbr />Color<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getRenderDrawColor(renderer: Renderer; r: ptr uint8; g: ptr uint8; b: ptr uint8;
+                   a: ptr uint8): cint"><wbr />get<wbr />Render<wbr />Draw<wbr />Color<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#setRenderDrawBlendMode,Renderer,BlendMode"
-    title="setRenderDrawBlendMode*(renderer: Renderer; blendMode: BlendMode): cint"><wbr />set<wbr />Render<wbr />Draw<wbr />Blend<wbr />Mode<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="setRenderDrawBlendMode(renderer: Renderer; blendMode: BlendMode): cint"><wbr />set<wbr />Render<wbr />Draw<wbr />Blend<wbr />Mode<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#getRenderDrawBlendMode,Renderer,ptr.BlendMode"
-    title="getRenderDrawBlendMode*(renderer: Renderer; blendMode: ptr BlendMode): cint"><wbr />get<wbr />Render<wbr />Draw<wbr />Blend<wbr />Mode<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getRenderDrawBlendMode(renderer: Renderer; blendMode: ptr BlendMode): cint"><wbr />get<wbr />Render<wbr />Draw<wbr />Blend<wbr />Mode<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderClear,Renderer"
-    title="renderClear*(renderer: Renderer): cint"><wbr />render<wbr />Clear<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderClear(renderer: Renderer): cint"><wbr />render<wbr />Clear<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderDrawPoint,Renderer,cint,cint"
-    title="renderDrawPoint*(renderer: Renderer; x: cint; y: cint): cint"><wbr />render<wbr />Draw<wbr />Point<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderDrawPoint(renderer: Renderer; x: cint; y: cint): cint"><wbr />render<wbr />Draw<wbr />Point<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderDrawPoints,Renderer,ptr.Point,cint"
-    title="renderDrawPoints*(renderer: Renderer; points: ptr Point; count: cint): cint"><wbr />render<wbr />Draw<wbr />Points<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderDrawPoints(renderer: Renderer; points: ptr Point; count: cint): cint"><wbr />render<wbr />Draw<wbr />Points<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderDrawLine,Renderer,cint,cint,cint,cint"
-    title="renderDrawLine*(renderer: Renderer; x1: cint; y1: cint; x2: cint; y2: cint): cint"><wbr />render<wbr />Draw<wbr />Line<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderDrawLine(renderer: Renderer; x1: cint; y1: cint; x2: cint; y2: cint): cint"><wbr />render<wbr />Draw<wbr />Line<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderDrawLines,Renderer,ptr.Point,cint"
-    title="renderDrawLines*(renderer: Renderer; points: ptr Point; count: cint): cint"><wbr />render<wbr />Draw<wbr />Lines<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderDrawLines(renderer: Renderer; points: ptr Point; count: cint): cint"><wbr />render<wbr />Draw<wbr />Lines<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderDrawRect,Renderer,ptr.Rect"
-    title="renderDrawRect*(renderer: Renderer; rect: ptr Rect): cint"><wbr />render<wbr />Draw<wbr />Rect<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderDrawRect(renderer: Renderer; rect: ptr Rect): cint"><wbr />render<wbr />Draw<wbr />Rect<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderDrawRects,Renderer,ptr.Rect,cint"
-    title="renderDrawRects*(renderer: Renderer; rects: ptr Rect; count: cint): cint"><wbr />render<wbr />Draw<wbr />Rects<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderDrawRects(renderer: Renderer; rects: ptr Rect; count: cint): cint"><wbr />render<wbr />Draw<wbr />Rects<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderFillRect,Renderer,ptr.Rect"
-    title="renderFillRect*(renderer: Renderer; rect: ptr Rect): cint"><wbr />render<wbr />Fill<wbr />Rect<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderFillRect(renderer: Renderer; rect: ptr Rect): cint"><wbr />render<wbr />Fill<wbr />Rect<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderFillRects,Renderer,ptr.Rect,cint"
-    title="renderFillRects*(renderer: Renderer; rects: ptr Rect; count: cint): cint"><wbr />render<wbr />Fill<wbr />Rects<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderFillRects(renderer: Renderer; rects: ptr Rect; count: cint): cint"><wbr />render<wbr />Fill<wbr />Rects<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderCopy,Renderer,Texture,ptr.Rect,ptr.Rect"
-    title="renderCopy*(renderer: Renderer; texture: Texture; srcrect: ptr Rect; dstrect: ptr Rect): cint"><wbr />render<wbr />Copy<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderCopy(renderer: Renderer; texture: Texture; srcrect: ptr Rect; dstrect: ptr Rect): cint"><wbr />render<wbr />Copy<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderCopyEx,Renderer,Texture,ptr.Rect,ptr.Rect,cdouble,ptr.Point,RendererFlip"
-    title="renderCopyEx*(renderer: Renderer; texture: Texture; srcrect: ptr Rect;
-              dstrect: ptr Rect; angle: cdouble; center: ptr Point; flip: RendererFlip): cint"><wbr />render<wbr />Copy<wbr />Ex<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderCopyEx(renderer: Renderer; texture: Texture; srcrect: ptr Rect;
+             dstrect: ptr Rect; angle: cdouble; center: ptr Point; flip: RendererFlip): cint"><wbr />render<wbr />Copy<wbr />Ex<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderReadPixels,Renderer,ptr.Rect,uint32,pointer,cint"
-    title="renderReadPixels*(renderer: Renderer; rect: ptr Rect; format: uint32; pixels: pointer;
-                  pitch: cint): cint"><wbr />render<wbr />Read<wbr />Pixels<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderReadPixels(renderer: Renderer; rect: ptr Rect; format: uint32; pixels: pointer;
+                 pitch: cint): cint"><wbr />render<wbr />Read<wbr />Pixels<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#renderPresent,Renderer"
-    title="renderPresent*(renderer: Renderer)"><wbr />render<wbr />Present<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderPresent(renderer: Renderer)"><wbr />render<wbr />Present<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#destroyTexture,Texture"
-    title="destroyTexture*(texture: Texture)"><wbr />destroy<wbr />Texture<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="destroyTexture(texture: Texture)"><wbr />destroy<wbr />Texture<span class="attachedType" style="visibility:hidden">Texture</span></a></li>
   <li><a class="reference" href="#destroyRenderer,Renderer"
-    title="destroyRenderer*(renderer: Renderer)"><wbr />destroy<wbr />Renderer<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="destroyRenderer(renderer: Renderer)"><wbr />destroy<wbr />Renderer<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#glBindTexture,Texture,ptr.cfloat,ptr.cfloat"
-    title="glBindTexture*(texture: Texture; texw: ptr cfloat; texh: ptr cfloat): cint"><wbr />gl<wbr />Bind<wbr />Texture<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="glBindTexture(texture: Texture; texw: ptr cfloat; texh: ptr cfloat): cint"><wbr />gl<wbr />Bind<wbr />Texture<span class="attachedType" style="visibility:hidden">Texture</span></a></li>
   <li><a class="reference" href="#glUnbindTexture,Texture"
-    title="glUnbindTexture*(texture: Texture): cint"><wbr />gl<wbr />Unbind<wbr />Texture<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="glUnbindTexture(texture: Texture): cint"><wbr />gl<wbr />Unbind<wbr />Texture<span class="attachedType" style="visibility:hidden">Texture</span></a></li>
 
   </ul>
 </li>
 <li>
-  <a class="reference reference-toplevel" href="#17" id="67">Templates</a>
+  <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#setTextureColorMod.t,Texture,Color"
-    title="setTextureColorMod*(texture: Texture; color: Color): untyped"><wbr />set<wbr />Texture<wbr />Color<wbr />Mod<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="setTextureColorMod(texture: Texture; color: Color): untyped"><wbr />set<wbr />Texture<wbr />Color<wbr />Mod<span class="attachedType" style="visibility:hidden">Texture</span></a></li>
   <li><a class="reference" href="#getTextureColorMod.t,Texture,Color"
-    title="getTextureColorMod*(texture: Texture; color: Color): untyped"><wbr />get<wbr />Texture<wbr />Color<wbr />Mod<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getTextureColorMod(texture: Texture; color: Color): untyped"><wbr />get<wbr />Texture<wbr />Color<wbr />Mod<span class="attachedType" style="visibility:hidden">Texture</span></a></li>
   <li><a class="reference" href="#setRenderDrawColor.t,Renderer,Color"
-    title="setRenderDrawColor*(renderer: Renderer; color: Color): untyped"><wbr />set<wbr />Render<wbr />Draw<wbr />Color<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="setRenderDrawColor(renderer: Renderer; color: Color): untyped"><wbr />set<wbr />Render<wbr />Draw<wbr />Color<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
   <li><a class="reference" href="#getRenderDrawColor.t,Renderer,Color"
-    title="getRenderDrawColor*(renderer: Renderer; color: Color): untyped"><wbr />get<wbr />Render<wbr />Draw<wbr />Color<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getRenderDrawColor(renderer: Renderer; color: Color): untyped"><wbr />get<wbr />Render<wbr />Draw<wbr />Color<span class="attachedType" style="visibility:hidden">Renderer</span></a></li>
 
   </ul>
 </li>
@@ -1419,7 +1419,7 @@ This API supports the following features:<ul class="simple"><li>single pixel poi
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="RendererInfo"><a name="RendererInfo"></a><pre><span class="Identifier">RendererInfo</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="RendererInfo"><a name="RendererInfo"></a><pre><span class="Identifier">RendererInfo</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cstring</span>               <span class="Comment">## The name of the renderer</span>
   <span class="Identifier">flags</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>               <span class="Comment">## Supported ``RendererFlags``</span>
   <span class="Identifier">num_texture_formats</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Comment">## The number of available texture formats</span>
@@ -1432,7 +1432,7 @@ This API supports the following features:<ul class="simple"><li>single pixel poi
 Information on the capabilities of a render driver or context
 
 </dd>
-<dt id="TextureAccess"><a name="TextureAccess"></a><pre><span class="Identifier">TextureAccess</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt id="TextureAccess"><a name="TextureAccess"></a><pre><span class="Identifier">TextureAccess</span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">TEXTUREACCESS_STATIC</span> <span class="Other">=</span> <span class="DecNumber">0x00000000</span><span class="Other">,</span> <span class="Comment">## Changes rarely, not lockable</span>
   <span class="Identifier">TEXTUREACCESS_STREAMING</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span><span class="Other">,</span> <span class="Comment">## Changes frequently, lockable</span>
   <span class="Identifier">TEXTUREACCESS_TARGET</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span> <span class="Comment">## Texture can be used as a render target</span></pre></dt>
@@ -1441,7 +1441,7 @@ Information on the capabilities of a render driver or context
 The access pattern allowed for a texture
 
 </dd>
-<dt id="TextureModulate"><a name="TextureModulate"></a><pre><span class="Identifier">TextureModulate</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt id="TextureModulate"><a name="TextureModulate"></a><pre><span class="Identifier">TextureModulate</span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">TEXTUREMODULATE_NONE</span> <span class="Other">=</span> <span class="DecNumber">0x00000000</span><span class="Other">,</span> <span class="Comment">## No modulation</span>
   <span class="Identifier">TEXTUREMODULATE_COLOR</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span><span class="Other">,</span> <span class="Comment">## srcC = srcC * color</span>
   <span class="Identifier">TEXTUREMODULATE_ALPHA</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span> <span class="Comment">## srcA = srcA * alpha</span></pre></dt>
@@ -1450,7 +1450,7 @@ The access pattern allowed for a texture
 The texture channel modulation used in <tt class="docutils literal"><span class="pre">renderCopy()</span></tt>
 
 </dd>
-<dt id="RendererFlip"><a name="RendererFlip"></a><pre><span class="Identifier">RendererFlip</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt id="RendererFlip"><a name="RendererFlip"></a><pre><span class="Identifier">RendererFlip</span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">FLIP_NONE</span> <span class="Other">=</span> <span class="DecNumber">0x00000000</span><span class="Other">,</span>       <span class="Comment">## Do not flip</span>
   <span class="Identifier">FLIP_HORIZONTAL</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span><span class="Other">,</span> <span class="Comment">## flip horizontally</span>
   <span class="Identifier">FLIP_VERTICAL</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span><span class="Other">,</span>   <span class="Comment">## flip vertically</span>
@@ -1460,13 +1460,13 @@ The texture channel modulation used in <tt class="docutils literal"><span class=
 Flip constants for <tt class="docutils literal"><span class="pre">renderCopyEx()</span></tt>
 
 </dd>
-<dt id="Renderer"><a name="Renderer"></a><pre><span class="Identifier">Renderer</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
+<dt id="Renderer"><a name="Renderer"></a><pre><span class="Identifier">Renderer</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 
 An object representing rendering state
 
 </dd>
-<dt id="Texture"><a name="Texture"></a><pre><span class="Identifier">Texture</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
+<dt id="Texture"><a name="Texture"></a><pre><span class="Identifier">Texture</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 
 An efficient driver-specific representation of pixel data
@@ -1477,25 +1477,25 @@ An efficient driver-specific representation of pixel data
 <div class="section" id="10">
 <h1><a class="toc-backref" href="#10">Consts</a></h1>
 <dl class="item">
-<dt id="RENDERER_SOFTWARE"><a name="RENDERER_SOFTWARE"></a><pre><span class="Identifier">RENDERER_SOFTWARE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span></pre></dt>
+<dt id="RENDERER_SOFTWARE"><a name="RENDERER_SOFTWARE"></a><pre><span class="Identifier">RENDERER_SOFTWARE</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span></pre></dt>
 <dd>
 
 The renderer is a software fallback
 
 </dd>
-<dt id="RENDERER_ACCELERATED"><a name="RENDERER_ACCELERATED"></a><pre><span class="Identifier">RENDERER_ACCELERATED</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span></pre></dt>
+<dt id="RENDERER_ACCELERATED"><a name="RENDERER_ACCELERATED"></a><pre><span class="Identifier">RENDERER_ACCELERATED</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span></pre></dt>
 <dd>
 
 The renderer uses hardware acceleration
 
 </dd>
-<dt id="RENDERER_PRESENTVSYNC"><a name="RENDERER_PRESENTVSYNC"></a><pre><span class="Identifier">RENDERER_PRESENTVSYNC</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
+<dt id="RENDERER_PRESENTVSYNC"><a name="RENDERER_PRESENTVSYNC"></a><pre><span class="Identifier">RENDERER_PRESENTVSYNC</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
 <dd>
 
 Present is synchronized with the refresh rate
 
 </dd>
-<dt id="RENDERER_TARGETTEXTURE"><a name="RENDERER_TARGETTEXTURE"></a><pre><span class="Identifier">RENDERER_TARGETTEXTURE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000008</span></pre></dt>
+<dt id="RENDERER_TARGETTEXTURE"><a name="RENDERER_TARGETTEXTURE"></a><pre><span class="Identifier">RENDERER_TARGETTEXTURE</span> <span class="Other">=</span> <span class="DecNumber">0x00000008</span></pre></dt>
 <dd>
 
 Ther render supports rendering to texture
@@ -1506,8 +1506,8 @@ Ther render supports rendering to texture
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="getNumRenderDrivers"><a name="getNumRenderDrivers,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getNumRenderDrivers</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetNumRenderDrivers&quot;</span><span class="Other">,</span>
-                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="getNumRenderDrivers"><a name="getNumRenderDrivers,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getNumRenderDrivers</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetNumRenderDrivers&quot;</span><span class="Other">,</span>
+                                <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the number of 2D rendering drivers available for the current display.</p>
 <p>A render driver is a set of code that handles rendering and texture management on a particular display.  Normally there is only one, but some drivers may have several available with different capabilities.</p>
@@ -1517,7 +1517,7 @@ Ther render supports rendering to texture
 
 
 </dd>
-<dt id="getRenderDriverInfo"><a name="getRenderDriverInfo,cint,ptr.RendererInfo"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRenderDriverInfo</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RendererInfo</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="getRenderDriverInfo"><a name="getRenderDriverInfo,cint,ptr.RendererInfo"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRenderDriverInfo</span><span class="Other">(</span><span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RendererInfo</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRenderDriverInfo&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get information about a specific 2D rendering driver for the current display.</p>
@@ -1529,8 +1529,8 @@ Ther render supports rendering to texture
 
 
 </dd>
-<dt id="createWindowAndRenderer"><a name="createWindowAndRenderer,cint,cint,uint32,ptr.Window,ptr.Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createWindowAndRenderer</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">window_flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span>
-                             <span class="Identifier">window</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">renderer</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="createWindowAndRenderer"><a name="createWindowAndRenderer,cint,cint,uint32,ptr.Window,ptr.Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createWindowAndRenderer</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">window_flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span>
+                            <span class="Identifier">window</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">renderer</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateWindowAndRenderer&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Create a window and default renderer.</p>
@@ -1543,7 +1543,7 @@ Ther render supports rendering to texture
 
 
 </dd>
-<dt id="createRenderer"><a name="createRenderer,Window,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createRenderer</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Renderer</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="createRenderer"><a name="createRenderer,Window,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createRenderer</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Renderer</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateRenderer&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Create a 2D rendering context for a window.</p>
@@ -1558,7 +1558,7 @@ Ther render supports rendering to texture
 
 
 </dd>
-<dt id="createSoftwareRenderer"><a name="createSoftwareRenderer,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createSoftwareRenderer</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Renderer</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="createSoftwareRenderer"><a name="createSoftwareRenderer,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createSoftwareRenderer</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Renderer</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateSoftwareRenderer&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Create a 2D software rendering context for a surface.</p>
@@ -1570,27 +1570,27 @@ Ther render supports rendering to texture
 
 
 </dd>
-<dt id="getRenderer"><a name="getRenderer,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRenderer</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Renderer</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRenderer&quot;</span><span class="Other">,</span>
+<dt id="getRenderer"><a name="getRenderer,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRenderer</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Renderer</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRenderer&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the renderer associated with a window.
 
 </dd>
-<dt id="getRendererInfo"><a name="getRendererInfo,Renderer,ptr.RendererInfo"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRendererInfo</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RendererInfo</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="getRendererInfo"><a name="getRendererInfo,Renderer,ptr.RendererInfo"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRendererInfo</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RendererInfo</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRendererInfo&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get information about a rendering context.
 
 </dd>
-<dt id="getRendererOutputSize"><a name="getRendererOutputSize,Renderer,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRendererOutputSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="getRendererOutputSize"><a name="getRendererOutputSize,Renderer,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRendererOutputSize</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRendererOutputSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the output size in pixels of a rendering context.
 
 </dd>
-<dt id="createTexture"><a name="createTexture,Renderer,uint32,TextureAccess,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">access</span><span class="Other">:</span> <span class="Identifier">TextureAccess</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
-                   <span class="Identifier">h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Texture</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateTexture&quot;</span><span class="Other">,</span>
-                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="createTexture"><a name="createTexture,Renderer,uint32,TextureAccess,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createTexture</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">access</span><span class="Other">:</span> <span class="Identifier">TextureAccess</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
+                  <span class="Identifier">h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Texture</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateTexture&quot;</span><span class="Other">,</span>
+                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Create a texture for a rendering context.</p>
 <p><tt class="docutils literal"><span class="pre">renderer</span></tt> The renderer.</p>
@@ -1607,7 +1607,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="createTextureFromSurface"><a name="createTextureFromSurface,Renderer,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createTextureFromSurface</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Texture</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="createTextureFromSurface"><a name="createTextureFromSurface,Renderer,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createTextureFromSurface</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">surface</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Texture</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateTextureFromSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Create a texture from an existing surface.</p>
@@ -1621,8 +1621,8 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="queryTexture"><a name="queryTexture,Texture,ptr.uint32,ptr.TextureAccess,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">queryTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">access</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">TextureAccess</span><span class="Other">;</span>
-                  <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_QueryTexture&quot;</span><span class="Other">,</span>
+<dt id="queryTexture"><a name="queryTexture,Texture,ptr.uint32,ptr.TextureAccess,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">queryTexture</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">access</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">TextureAccess</span><span class="Other">;</span>
+                 <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_QueryTexture&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Query the attributes of a texture.</p>
@@ -1635,7 +1635,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="setTextureColorMod"><a name="setTextureColorMod,Texture,uint8,uint8,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setTextureColorMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="setTextureColorMod"><a name="setTextureColorMod,Texture,uint8,uint8,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setTextureColorMod</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetTextureColorMod&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Set an additional color value used in render copy operations.</p>
@@ -1649,7 +1649,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="getTextureColorMod"><a name="getTextureColorMod,Texture,ptr.uint8,ptr.uint8,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getTextureColorMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+<dt id="getTextureColorMod"><a name="getTextureColorMod,Texture,ptr.uint8,ptr.uint8,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getTextureColorMod</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetTextureColorMod&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the additional color value used in render copy operations.</p>
@@ -1663,7 +1663,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="setTextureAlphaMod"><a name="setTextureAlphaMod,Texture,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setTextureAlphaMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="setTextureAlphaMod"><a name="setTextureAlphaMod,Texture,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setTextureAlphaMod</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetTextureAlphaMod&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Set an additional alpha value used in render copy operations.</p>
@@ -1675,7 +1675,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="getTextureAlphaMod"><a name="getTextureAlphaMod,Texture,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getTextureAlphaMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="getTextureAlphaMod"><a name="getTextureAlphaMod,Texture,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getTextureAlphaMod</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetTextureAlphaMod&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the additional alpha value used in render copy operations.</p>
@@ -1687,7 +1687,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="setTextureBlendMode"><a name="setTextureBlendMode,Texture,BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setTextureBlendMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="setTextureBlendMode"><a name="setTextureBlendMode,Texture,BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setTextureBlendMode</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetTextureBlendMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Set the blend mode used for texture copy operations.</p>
@@ -1700,7 +1700,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="getTextureBlendMode"><a name="getTextureBlendMode,Texture,ptr.BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getTextureBlendMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="getTextureBlendMode"><a name="getTextureBlendMode,Texture,ptr.BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getTextureBlendMode</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetTextureBlendMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the blend mode used for texture copy operations.</p>
@@ -1712,7 +1712,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="updateTexture"><a name="updateTexture,Texture,ptr.Rect,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">updateTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">pixels</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+<dt id="updateTexture"><a name="updateTexture,Texture,ptr.Rect,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">updateTexture</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">pixels</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UpdateTexture&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Update the given texture rectangle with new pixel data.</p>
@@ -1726,8 +1726,8 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="updateYUVTexture"><a name="updateYUVTexture,Texture,ptr.Rect,ptr.uint8,cint,ptr.uint8,cint,ptr.uint8,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">updateYUVTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">yPlane</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">yPitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
-                      <span class="Identifier">uPlane</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">uPitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">vPlane</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">vPitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+<dt id="updateYUVTexture"><a name="updateYUVTexture,Texture,ptr.Rect,ptr.uint8,cint,ptr.uint8,cint,ptr.uint8,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">updateYUVTexture</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">yPlane</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">yPitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
+                     <span class="Identifier">uPlane</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">uPitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">vPlane</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">vPitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UpdateYUVTexture&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Update a rectangle within a planar YV12 or IYUV texture with new pixel data.</p>
@@ -1744,7 +1744,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="lockTexture"><a name="lockTexture,Texture,ptr.Rect,ptr.pointer,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">pixels</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">pitch</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+<dt id="lockTexture"><a name="lockTexture,Texture,ptr.Rect,ptr.pointer,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockTexture</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">pixels</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">pitch</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockTexture&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Lock a portion of the texture for write-only pixel access.</p>
@@ -1758,8 +1758,8 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="unlockTexture"><a name="unlockTexture,Texture"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockTexture&quot;</span><span class="Other">,</span>
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="unlockTexture"><a name="unlockTexture,Texture"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockTexture</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockTexture&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Unlock a texture, uploading the changes to video memory, if needed.</p>
 <p>See also:</p>
@@ -1767,7 +1767,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderTargetSupported"><a name="renderTargetSupported,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderTargetSupported</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderTargetSupported"><a name="renderTargetSupported,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderTargetSupported</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderTargetSupported&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Determines whether a window supports the use of render targets.</p>
@@ -1776,7 +1776,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="setRenderTarget"><a name="setRenderTarget,Renderer,Texture"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setRenderTarget</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="setRenderTarget"><a name="setRenderTarget,Renderer,Texture"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setRenderTarget</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetRenderTarget&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Set a texture as the current rendering target.</p>
@@ -1788,7 +1788,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="getRenderTarget"><a name="getRenderTarget,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRenderTarget</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Texture</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="getRenderTarget"><a name="getRenderTarget,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRenderTarget</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Texture</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRenderTarget&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the current render target or <cite>nil</cite> for the default render target.</p>
@@ -1798,7 +1798,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderSetLogicalSize"><a name="renderSetLogicalSize,Renderer,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderSetLogicalSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderSetLogicalSize"><a name="renderSetLogicalSize,Renderer,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderSetLogicalSize</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderSetLogicalSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Set device independent resolution for rendering.</p>
@@ -1816,7 +1816,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderGetLogicalSize"><a name="renderGetLogicalSize,Renderer,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGetLogicalSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderGetLogicalSize"><a name="renderGetLogicalSize,Renderer,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGetLogicalSize</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderGetLogicalSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get device independent resolution for rendering.</p>
@@ -1828,7 +1828,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderSetIntegerScale"><a name="renderSetIntegerScale,Renderer,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderSetIntegerScale</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">enable</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderSetIntegerScale"><a name="renderSetIntegerScale,Renderer,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderSetIntegerScale</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">enable</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderSetIntegerScale&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Set whether to force integer scales for resolution-independent rendering.</p>
@@ -1840,7 +1840,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderGetIntegerScale"><a name="renderGetIntegerScale,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGetIntegerScale</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderGetIntegerScale"><a name="renderGetIntegerScale,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGetIntegerScale</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderGetIntegerScale&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get whether integer scales are forced for resolution-independent rendering.</p>
@@ -1850,7 +1850,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderSetViewport"><a name="renderSetViewport,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderSetViewport</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderSetViewport"><a name="renderSetViewport,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderSetViewport</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderSetViewport&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Set the drawing area for rendering on the current target.</p>
@@ -1865,7 +1865,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderGetViewport"><a name="renderGetViewport,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGetViewport</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderGetViewport"><a name="renderGetViewport,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGetViewport</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderGetViewport&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the drawing area for the current target.</p>
@@ -1874,7 +1874,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderSetClipRect"><a name="renderSetClipRect,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderSetClipRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderSetClipRect"><a name="renderSetClipRect,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderSetClipRect</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderSetClipRect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Set the clip rectangle for the current target.</p>
@@ -1886,7 +1886,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderGetClipRect"><a name="renderGetClipRect,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGetClipRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderGetClipRect"><a name="renderGetClipRect,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGetClipRect</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderGetClipRect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the clip rectangle for the current target.</p>
@@ -1897,7 +1897,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderIsClipEnabled"><a name="renderIsClipEnabled,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderIsClipEnabled</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderIsClipEnabled"><a name="renderIsClipEnabled,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderIsClipEnabled</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderIsClipEnabled&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get whether clipping is enabled on the given renderer.</p>
@@ -1907,7 +1907,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderSetScale"><a name="renderSetScale,Renderer,cfloat,cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderSetScale</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">scaleX</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">;</span> <span class="Identifier">scaleY</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderSetScale"><a name="renderSetScale,Renderer,cfloat,cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderSetScale</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">scaleX</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">;</span> <span class="Identifier">scaleY</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderSetScale&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Set the drawing scale for rendering on the current target.</p>
@@ -1922,7 +1922,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderGetScale"><a name="renderGetScale,Renderer,ptr.cfloat,ptr.cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGetScale</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">scaleX</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">;</span> <span class="Identifier">scaleY</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderGetScale"><a name="renderGetScale,Renderer,ptr.cfloat,ptr.cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGetScale</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">scaleX</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">;</span> <span class="Identifier">scaleY</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderGetScale&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the drawing scale for the current target.</p>
@@ -1934,7 +1934,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="setRenderDrawColor"><a name="setRenderDrawColor,Renderer,uint8,uint8,uint8,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setRenderDrawColor</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+<dt id="setRenderDrawColor"><a name="setRenderDrawColor,Renderer,uint8,uint8,uint8,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setRenderDrawColor</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetRenderDrawColor&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Set the color used for drawing operations (Rect, Line and Clear).</p>
@@ -1947,8 +1947,8 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="getRenderDrawColor"><a name="getRenderDrawColor,Renderer,ptr.uint8,ptr.uint8,ptr.uint8,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRenderDrawColor</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span>
-                        <span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="getRenderDrawColor"><a name="getRenderDrawColor,Renderer,ptr.uint8,ptr.uint8,ptr.uint8,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRenderDrawColor</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span>
+                       <span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRenderDrawColor&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the color used for drawing operations (Rect, Line and Clear).</p>
@@ -1961,7 +1961,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="setRenderDrawBlendMode"><a name="setRenderDrawBlendMode,Renderer,BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setRenderDrawBlendMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="setRenderDrawBlendMode"><a name="setRenderDrawBlendMode,Renderer,BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setRenderDrawBlendMode</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetRenderDrawBlendMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Set the blend mode used for drawing operations (Fill and Line).</p>
@@ -1974,7 +1974,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="getRenderDrawBlendMode"><a name="getRenderDrawBlendMode,Renderer,ptr.BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRenderDrawBlendMode</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+<dt id="getRenderDrawBlendMode"><a name="getRenderDrawBlendMode,Renderer,ptr.BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getRenderDrawBlendMode</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetRenderDrawBlendMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the blend mode used for drawing operations.</p>
@@ -1986,7 +1986,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderClear"><a name="renderClear,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderClear</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderClear&quot;</span><span class="Other">,</span>
+<dt id="renderClear"><a name="renderClear,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderClear</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderClear&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Clear the current rendering target with the drawing color.</p>
@@ -1995,7 +1995,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderDrawPoint"><a name="renderDrawPoint,Renderer,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawPoint</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderDrawPoint"><a name="renderDrawPoint,Renderer,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawPoint</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderDrawPoint&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Draw a point on the current rendering target.</p>
@@ -2006,7 +2006,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderDrawPoints"><a name="renderDrawPoints,Renderer,ptr.Point,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawPoints</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">points</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Point</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderDrawPoints"><a name="renderDrawPoints,Renderer,ptr.Point,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawPoints</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">points</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Point</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderDrawPoints&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Draw multiple points on the current rendering target.</p>
@@ -2017,7 +2017,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderDrawLine"><a name="renderDrawLine,Renderer,cint,cint,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawLine</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y1</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">x2</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+<dt id="renderDrawLine"><a name="renderDrawLine,Renderer,cint,cint,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawLine</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y1</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">x2</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderDrawLine&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Draw a line on the current rendering target.</p>
@@ -2030,7 +2030,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderDrawLines"><a name="renderDrawLines,Renderer,ptr.Point,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawLines</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">points</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Point</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderDrawLines"><a name="renderDrawLines,Renderer,ptr.Point,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawLines</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">points</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Point</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderDrawLines&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Draw a series of connected lines on the current rendering target.</p>
@@ -2041,7 +2041,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderDrawRect"><a name="renderDrawRect,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderDrawRect"><a name="renderDrawRect,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawRect</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderDrawRect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Draw a rectangle on the current rendering target.</p>
@@ -2051,7 +2051,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderDrawRects"><a name="renderDrawRects,Renderer,ptr.Rect,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawRects</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rects</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderDrawRects"><a name="renderDrawRects,Renderer,ptr.Rect,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderDrawRects</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rects</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderDrawRects&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Draw some number of rectangles on the current rendering target.</p>
@@ -2062,7 +2062,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderFillRect"><a name="renderFillRect,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderFillRect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderFillRect"><a name="renderFillRect,Renderer,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderFillRect</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderFillRect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Fill a rectangle on the current rendering target with the drawing color.</p>
@@ -2072,7 +2072,7 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderFillRects"><a name="renderFillRects,Renderer,ptr.Rect,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderFillRects</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rects</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderFillRects"><a name="renderFillRects,Renderer,ptr.Rect,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderFillRects</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rects</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderFillRects&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Fill some number of rectangles on the current rendering target with the drawing color.</p>
@@ -2083,9 +2083,9 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderCopy"><a name="renderCopy,Renderer,Texture,ptr.Rect,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderCopy</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span>
-                <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderCopy&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="renderCopy"><a name="renderCopy,Renderer,Texture,ptr.Rect,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderCopy</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span>
+               <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderCopy&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Copy a portion of the texture to the current rendering target.</p>
 <p><tt class="docutils literal"><span class="pre">renderer</span></tt> The renderer which should copy parts of a texture.</p>
@@ -2096,9 +2096,9 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderCopyEx"><a name="renderCopyEx,Renderer,Texture,ptr.Rect,ptr.Rect,cdouble,ptr.Point,RendererFlip"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderCopyEx</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span>
-                  <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">angle</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">center</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Point</span><span class="Other">;</span>
-                  <span class="Identifier">flip</span><span class="Other">:</span> <span class="Identifier">RendererFlip</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderCopyEx&quot;</span><span class="Other">,</span>
+<dt id="renderCopyEx"><a name="renderCopyEx,Renderer,Texture,ptr.Rect,ptr.Rect,cdouble,ptr.Point,RendererFlip"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderCopyEx</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span>
+                 <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">angle</span><span class="Other">:</span> <span class="Identifier">cdouble</span><span class="Other">;</span> <span class="Identifier">center</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Point</span><span class="Other">;</span>
+                 <span class="Identifier">flip</span><span class="Other">:</span> <span class="Identifier">RendererFlip</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderCopyEx&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Copy a portion of the source texture to the current rendering target, rotating it by angle around the given center.</p>
@@ -2113,8 +2113,8 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderReadPixels"><a name="renderReadPixels,Renderer,ptr.Rect,uint32,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderReadPixels</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span>
-                      <span class="Identifier">pixels</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="renderReadPixels"><a name="renderReadPixels,Renderer,ptr.Rect,uint32,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderReadPixels</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span>
+                     <span class="Identifier">pixels</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderReadPixels&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Read pixels from the current rendering target.</p>
@@ -2128,14 +2128,14 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
-<dt id="renderPresent"><a name="renderPresent,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderPresent</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderPresent&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="renderPresent"><a name="renderPresent,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderPresent</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderPresent&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Update the screen with rendering performed.
 
 </dd>
-<dt id="destroyTexture"><a name="destroyTexture,Texture"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroyTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroyTexture&quot;</span><span class="Other">,</span>
-                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="destroyTexture"><a name="destroyTexture,Texture"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroyTexture</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroyTexture&quot;</span><span class="Other">,</span>
+                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Destroy the specified texture.</p>
 <p>See also:</p>
@@ -2144,8 +2144,8 @@ Update the screen with rendering performed.
 
 
 </dd>
-<dt id="destroyRenderer"><a name="destroyRenderer,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroyRenderer</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroyRenderer&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="destroyRenderer"><a name="destroyRenderer,Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">destroyRenderer</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DestroyRenderer&quot;</span><span class="Other">,</span>
+                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Destroy the rendering context for a window and free associated textures.</p>
 <p>See also:</p>
@@ -2153,7 +2153,7 @@ Update the screen with rendering performed.
 
 
 </dd>
-<dt id="glBindTexture"><a name="glBindTexture,Texture,ptr.cfloat,ptr.cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glBindTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">texw</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">;</span> <span class="Identifier">texh</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="glBindTexture"><a name="glBindTexture,Texture,ptr.cfloat,ptr.cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glBindTexture</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">texw</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">;</span> <span class="Identifier">texh</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cfloat</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_BindTexture&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Bind the texture to the current OpenGL/ES/ES2 context for use with OpenGL instructions.</p>
@@ -2164,7 +2164,7 @@ Update the screen with rendering performed.
 
 
 </dd>
-<dt id="glUnbindTexture"><a name="glUnbindTexture,Texture"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glUnbindTexture</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="glUnbindTexture"><a name="glUnbindTexture,Texture"></a><pre><span class="Keyword">proc</span> <span class="Identifier">glUnbindTexture</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GL_UnbindTexture&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Unbind a texture from the current OpenGL/ES/ES2 context.</p>
@@ -2175,25 +2175,25 @@ Update the screen with rendering performed.
 </dd>
 
 </dl></div>
-<div class="section" id="17">
-<h1><a class="toc-backref" href="#17">Templates</a></h1>
+<div class="section" id="18">
+<h1><a class="toc-backref" href="#18">Templates</a></h1>
 <dl class="item">
-<dt id="setTextureColorMod"><a name="setTextureColorMod.t,Texture,Color"></a><pre><span class="Keyword">template</span> <span class="Identifier">setTextureColorMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dt id="setTextureColorMod"><a name="setTextureColorMod.t,Texture,Color"></a><pre><span class="Keyword">template</span> <span class="Identifier">setTextureColorMod</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="getTextureColorMod"><a name="getTextureColorMod.t,Texture,Color"></a><pre><span class="Keyword">template</span> <span class="Identifier">getTextureColorMod</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dt id="getTextureColorMod"><a name="getTextureColorMod.t,Texture,Color"></a><pre><span class="Keyword">template</span> <span class="Identifier">getTextureColorMod</span><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <span class="Identifier">Texture</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="setRenderDrawColor"><a name="setRenderDrawColor.t,Renderer,Color"></a><pre><span class="Keyword">template</span> <span class="Identifier">setRenderDrawColor</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dt id="setRenderDrawColor"><a name="setRenderDrawColor.t,Renderer,Color"></a><pre><span class="Keyword">template</span> <span class="Identifier">setRenderDrawColor</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="getRenderDrawColor"><a name="getRenderDrawColor.t,Renderer,Color"></a><pre><span class="Keyword">template</span> <span class="Identifier">getRenderDrawColor</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dt id="getRenderDrawColor"><a name="getRenderDrawColor.t,Renderer,Color"></a><pre><span class="Keyword">template</span> <span class="Identifier">getRenderDrawColor</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Identifier">Renderer</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">Color</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 
@@ -2208,7 +2208,7 @@ Update the screen with rendering performed.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
+        <small>Made with Nim. Generated: 2018-01-01 17:22:28 UTC</small>
       </div>
     </div>
   </div>

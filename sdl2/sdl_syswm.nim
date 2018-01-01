@@ -78,15 +78,15 @@ else:
   when defined(SDL_VIDEO_DRIVER_UIKIT):
     type GLuint* = uint32
 
-  # SysWMmsg
+  # SysWMMsg
 
   #type
-  #  SysWMmsgKindObj* = object {.union.}
-  #    win*: SysWMmsgWinObj # when defined(SDL_VIDEO_DRIVER_WINDOWS)
-  #    x11*: SysWMmsgX11Obj # when defined(SDL_VIDEO_DRIVER_X11)
-  #    dfb*: SysWMmsgDFBObj # when defined(SDL_VIDEO_DRIVER_DIRECTFB)
-  #    cocoa*: SysWMmsgCocoaObj # when defined(SDL_VIDEO_DRIVER_COCOA)
-  #    uikit*: SysWMmsgUIKitObj # when defined(SDL_VIDEO_DRIVER_UIKIT)
+  #  SysWMMsgKindObj* = object {.union.}
+  #    win*: SysWMMsgWinObj # when defined(SDL_VIDEO_DRIVER_WINDOWS)
+  #    x11*: SysWMMsgX11Obj # when defined(SDL_VIDEO_DRIVER_X11)
+  #    dfb*: SysWMMsgDFBObj # when defined(SDL_VIDEO_DRIVER_DIRECTFB)
+  #    cocoa*: SysWMMsgCocoaObj # when defined(SDL_VIDEO_DRIVER_COCOA)
+  #    uikit*: SysWMMsgUIKitObj # when defined(SDL_VIDEO_DRIVER_UIKIT)
   #    dummy*: cint  # Can't have an empty union
 
   when defined(SDL_VIDEO_DRIVER_WINDOWS):
@@ -97,28 +97,28 @@ else:
         wParam*: WPARAM ## WORD message parameter
         lParam*: LPARAM ## LONG message parameter
 
-      SysWMmsgKindObj* = object ##  when defined(SDL_VIDEO_DRIVER_WINDOWS)
+      SysWMMsgKindObj* = object ##  when defined(SDL_VIDEO_DRIVER_WINDOWS)
         win*: SysWMMsgWinObj
 
   elif defined(SDL_VIDEO_DRIVER_X11):
     type
-      SysWMmsgX11Obj* = object  ## when defined(SDL_VIDEO_DRIVER_X11)
+      SysWMMsgX11Obj* = object  ## when defined(SDL_VIDEO_DRIVER_X11)
         event*: TXEvent
 
-      SysWMmsgKindObj* = object ## when defined(SDL_VIDEO_DRIVER_X11)
+      SysWMMsgKindObj* = object ## when defined(SDL_VIDEO_DRIVER_X11)
         x11*: SysWMMsgX11Obj
 
   elif defined(SDL_VIDEO_DRIVER_DIRECTFB):
     type
-      SysWMmsgDFBObj* = object
+      SysWMMsgDFBObj* = object
         event*: DFBEvent
 
-      SysWMmsgKindObj* = object
-        dfb*: SysWMmsgDFBObj
+      SysWMMsgKindObj* = object
+        dfb*: SysWMMsgDFBObj
 
   elif defined(SDL_VIDEO_DRIVER_COCOA):
     type
-      SysWMmsgCocoaObj* = object
+      SysWMMsgCocoaObj* = object
         dummy*: cint ## \
           ##  Latest version of Xcode clang
           ##  complains about empty structs in C v. C++:
@@ -127,35 +127,35 @@ else:
           ##
           ##  No Cocoa window events yet
 
-      SysWMmsgKindObj* = object
-        cocoa*: SysWMmsgCocoaObj
+      SysWMMsgKindObj* = object
+        cocoa*: SysWMMsgCocoaObj
 
   elif defined(SDL_VIDEO_DRIVER_UIKIT):
     type
-      SysWMmsgUIKitObj* = object
+      SysWMMsgUIKitObj* = object
         dummy*: cint  ##  No UIKit window events yet
 
-      SysWMmsgKindObj* = object
-        uikit*: SysWMmsgUIKitObj
+      SysWMMsgKindObj* = object
+        uikit*: SysWMMsgUIKitObj
 
   elif defined(SDL_VIDEO_DRIVER_VIVANTE):
     type
-      SysWMmsgVivanteObj* = object
+      SysWMMsgVivanteObj* = object
         dummy*: cint  ##  No Vivante window events yet
 
-      SysWMmsgKindObj* = object
-        vivante*: SysWMmsgVivanteObj
+      SysWMMsgKindObj* = object
+        vivante*: SysWMMsgVivanteObj
 
   else:
-    type SysWMmsgKindObj* = object
+    type SysWMMsgKindObj* = object
       dummy*: cint
 
   type
-    SysWMmsg* = ptr SysWMmsgObj
-    SysWMmsgObj* = object  ##  The custom event structure.
+    SysWMMsg* = ptr SysWMMsgObj
+    SysWMMsgObj* = object  ##  The custom event structure.
       version*: Version
       subsystem*: SysWMKind
-      msg*: SysWMmsgKindObj
+      msg*: SysWMMsgKindObj
 
 
 # SysWMinfo

@@ -16,7 +16,7 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
-<title>Module shape</title>
+<title>Module sdl_syswm</title>
 <style type="text/css" >
 /*
 Stylesheet for use with Docutils/rst2html.
@@ -1195,7 +1195,7 @@ function main() {
 <body onload="main()">
 <div class="document" id="documentId">
   <div class="container">
-    <h1 class="title">Module shape</h1>
+    <h1 class="title">Module sdl_syswm</h1>
     <div class="row">
   <div class="three columns">
   <div>
@@ -1210,65 +1210,53 @@ function main() {
     </select>
   </div>
   <ul class="simple simple-toc" id="toc-list">
-<li><a class="reference" id="shape-nim_toc" href="#shape-nim">shape.nim</a></li>
+<li><a class="reference" id="syswm-nim_toc" href="#syswm-nim">syswm.nim</a></li>
 <li>
-  <a class="reference reference-toplevel" href="#7" id="57">Types</a>
+  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#WindowShapeMode"
-    title="WindowShapeMode = enum
-  ShapeModeDefault,           ## \
-                   ## The default mode, a binarized alpha cutoff of 1.
-  ShapeModeBinarizeAlpha,     ## \
-                         ## A binarized alpha cutoff with a given integer value.
-  ShapeModeReverseBinarizeAlpha, ## \
-                                ## A binarized alpha cutoff with a given integer value,
-                                ## but with the opposite comparison.
-  ShapeModeColorKey           ## \
-                   ## A color key is applied."><wbr />Window<wbr />Shape<wbr />Mode<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#WindowShapeParams"
-    title="WindowShapeParams = object
-  binarizationCutoff*: uint8   ## \
-                           ## A cutoff alpha value for binarization
-                           ## of the window shape&#x27;s alpha channel.
-  colorKey*: Color"><wbr />Window<wbr />Shape<wbr />Params<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#WindowShapeModeObj"
-    title="WindowShapeModeObj = object
-  mode*: WindowShapeMode       ## The mode of these window-shape parameters.
-  parameters*: WindowShapeParams ## Window-shape parameters."><wbr />Window<wbr />Shape<wbr />Mode<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
-
+    
   </ul>
 </li>
 <li>
-  <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
+  <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#NONSHAPEABLE_WINDOW"
-    title="NONSHAPEABLE_WINDOW = -1"><wbr />NONSHAPEABLE_<wbr />WINDOW<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#INVALID_SHAPE_ARGUMENT"
-    title="INVALID_SHAPE_ARGUMENT = -2"><wbr />INVALID_<wbr />SHAPE_<wbr />ARGUMENT<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#WINDOW_LACKS_SHAPE"
-    title="WINDOW_LACKS_SHAPE = -3"><wbr />WINDOW_<wbr />LACKS_<wbr />SHAPE<span class="attachedType" style="visibility:hidden"></span></a></li>
+      <li><a class="reference" href="#SysWMKind"
+    title="SysWMKind = enum
+  SYSWM_UNKNOWN, SYSWM_WINDOWS, SYSWM_X11, SYSWM_DIRECTFB, SYSWM_COCOA, SYSWM_UIKIT,
+  SYSWM_WAYLAND, SYSWM_MIR, SYSWM_WINRT, SYSWM_ANDROID, SYSWM_VIVANTE, SYSWM_OS2"><wbr />Sys<wbr />WMKind<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#SysWMMsgX11Obj"
+    title="SysWMMsgX11Obj = object
+  event*: TXEvent"><wbr />Sys<wbr />WMMsg<wbr />X11Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#SysWMMsgKindObj"
+    title="SysWMMsgKindObj = object
+  x11*: SysWMMsgX11Obj"><wbr />Sys<wbr />WMMsg<wbr />Kind<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#SysWMMsg"
+    title="SysWMMsg = ptr SysWMMsgObj"><wbr />Sys<wbr />WMMsg<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#SysWMMsgObj"
+    title="SysWMMsgObj = object
+  version*: Version
+  subsystem*: SysWMKind
+  msg*: SysWMMsgKindObj"><wbr />Sys<wbr />WMMsg<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#SysWMinfoX11Obj"
+    title="SysWMinfoX11Obj = object
+  display*: ptr xlib.TXDisplay  ## The X11 display
+  window*: x.TWindow           ## The X11 window"><wbr />Sys<wbr />WMinfo<wbr />X11Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#SysWMinfoKindObj"
+    title="SysWMinfoKindObj = object
+  x11*: SysWMinfoX11Obj"><wbr />Sys<wbr />WMinfo<wbr />Kind<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#SysWMinfo"
+    title="SysWMinfo = object
+  version*: Version
+  subsystem*: SysWMKind
+  info*: SysWMinfoKindObj"><wbr />Sys<wbr />WMinfo<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#createShapedWindow,cstring,cuint,cuint,cuint,cuint,uint32"
-    title="createShapedWindow(title: cstring; x: cuint; y: cuint; w: cuint; h: cuint; flags: uint32): Window"><wbr />create<wbr />Shaped<wbr />Window<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#isShapedWindow,Window"
-    title="isShapedWindow(window: Window): bool"><wbr />is<wbr />Shaped<wbr />Window<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#setWindowShape,Window,Surface,ptr.WindowShapeModeObj"
-    title="setWindowShape(window: Window; shape: Surface; shape_mode: ptr WindowShapeModeObj): cint"><wbr />set<wbr />Window<wbr />Shape<span class="attachedType" style="visibility:hidden">WindowShapeModeObj</span></a></li>
-  <li><a class="reference" href="#getShapedWindowMode,Window,ptr.WindowShapeModeObj"
-    title="getShapedWindowMode(window: Window; shape_mode: ptr WindowShapeModeObj): cint"><wbr />get<wbr />Shaped<wbr />Window<wbr />Mode<span class="attachedType" style="visibility:hidden">WindowShapeModeObj</span></a></li>
-
-  </ul>
-</li>
-<li>
-  <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
-  <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#shapeModeAlpha.t,untyped"
-    title="shapeModeAlpha(mode: untyped): untyped"><wbr />shape<wbr />Mode<wbr />Alpha<span class="attachedType" style="visibility:hidden"></span></a></li>
+      <li><a class="reference" href="#getWindowWMInfo,Window,ptr.SysWMinfo"
+    title="getWindowWMInfo(window: Window; info: ptr SysWMinfo): bool"><wbr />get<wbr />Window<wbr />WMInfo<span class="attachedType" style="visibility:hidden">SysWMinfo</span></a></li>
 
   </ul>
 </li>
@@ -1279,63 +1267,77 @@ function main() {
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   <p class="module-desc">
-<h1><a class="toc-backref" id="shape-nim" href="#shape-nim">shape.nim</a></h1><p>Header file for the shaped window API.</p>
+<h1><a class="toc-backref" id="syswm-nim" href="#syswm-nim">syswm.nim</a></h1><p>Include file for SDL custom system window manager hooks.</p>
+<p>Your application has access to a special type of event <tt class="docutils literal"><span class="pre">SYSWMEVENT</span></tt>, which contains window-manager specific information and arrives whenever an unhandled window event occurs.  This event is ignored by default, but you can enable it with <tt class="docutils literal"><span class="pre">eventState()</span></tt>.</p>
 </p>
-  <div class="section" id="7">
+  <div class="section" id="6">
+<h1><a class="toc-backref" href="#6">Imports</a></h1>
+<dl class="item">
+<a class="reference external" href="x.html">x</a>, <a class="reference external" href="xlib.html">xlib</a>
+</dl></div>
+<div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="WindowShapeMode"><a name="WindowShapeMode"></a><pre><span class="Identifier">WindowShapeMode</span> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">ShapeModeDefault</span><span class="Other">,</span>           <span class="Comment">## \</span>
-                   <span class="Comment">## The default mode, a binarized alpha cutoff of 1.</span>
-  <span class="Identifier">ShapeModeBinarizeAlpha</span><span class="Other">,</span>     <span class="Comment">## \</span>
-                         <span class="Comment">## A binarized alpha cutoff with a given integer value.</span>
-  <span class="Identifier">ShapeModeReverseBinarizeAlpha</span><span class="Other">,</span> <span class="Comment">## \</span>
-                                <span class="Comment">## A binarized alpha cutoff with a given integer value,</span>
-                                <span class="Comment">## but with the opposite comparison.</span>
-  <span class="Identifier">ShapeModeColorKey</span>           <span class="Comment">## \</span>
-                   <span class="Comment">## A color key is applied.</span></pre></dt>
+<dt id="SysWMKind"><a name="SysWMKind"></a><pre><span class="Identifier">SysWMKind</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">SYSWM_UNKNOWN</span><span class="Other">,</span> <span class="Identifier">SYSWM_WINDOWS</span><span class="Other">,</span> <span class="Identifier">SYSWM_X11</span><span class="Other">,</span> <span class="Identifier">SYSWM_DIRECTFB</span><span class="Other">,</span> <span class="Identifier">SYSWM_COCOA</span><span class="Other">,</span> <span class="Identifier">SYSWM_UIKIT</span><span class="Other">,</span>
+  <span class="Identifier">SYSWM_WAYLAND</span><span class="Other">,</span> <span class="Identifier">SYSWM_MIR</span><span class="Other">,</span> <span class="Identifier">SYSWM_WINRT</span><span class="Other">,</span> <span class="Identifier">SYSWM_ANDROID</span><span class="Other">,</span> <span class="Identifier">SYSWM_VIVANTE</span><span class="Other">,</span> <span class="Identifier">SYSWM_OS2</span></pre></dt>
 <dd>
 
-An enum denoting the specific type of contents present in an <tt class="docutils literal"><span class="pre">WindowShapeParams</span></tt> union.
+These are the various supported windowing subsystems
 
 </dd>
-<dt id="WindowShapeParams"><a name="WindowShapeParams"></a><pre><span class="Identifier">WindowShapeParams</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">union</span></div><span class="Other pragmaend">.}</span>
-  <span class="Identifier">binarizationCutoff</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>   <span class="Comment">## \</span>
-                           <span class="Comment">## A cutoff alpha value for binarization</span>
-                           <span class="Comment">## of the window shape's alpha channel.</span>
-  <span class="Identifier">colorKey</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Color</span>
+<dt id="SysWMMsgX11Obj"><a name="SysWMMsgX11Obj"></a><pre><span class="Identifier">SysWMMsgX11Obj</span> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">event</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TXEvent</span>
 </pre></dt>
 <dd>
-
-A union containing parameters for shaped windows.
+when defined(SDL_VIDEO_DRIVER_X11)
 
 </dd>
-<dt id="WindowShapeModeObj"><a name="WindowShapeModeObj"></a><pre><span class="Identifier">WindowShapeModeObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">mode</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">WindowShapeMode</span>       <span class="Comment">## The mode of these window-shape parameters.</span>
-  <span class="Identifier">parameters</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">WindowShapeParams</span> <span class="Comment">## Window-shape parameters.</span>
+<dt id="SysWMMsgKindObj"><a name="SysWMMsgKindObj"></a><pre><span class="Identifier">SysWMMsgKindObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">x11</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMMsgX11Obj</span>
+</pre></dt>
+<dd>
+when defined(SDL_VIDEO_DRIVER_X11)
+
+</dd>
+<dt id="SysWMMsg"><a name="SysWMMsg"></a><pre><span class="Identifier">SysWMMsg</span> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Identifier">SysWMMsgObj</span></pre></dt>
+<dd>
+
+
+</dd>
+<dt id="SysWMMsgObj"><a name="SysWMMsgObj"></a><pre><span class="Identifier">SysWMMsgObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">version</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Version</span>
+  <span class="Identifier">subsystem</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMKind</span>
+  <span class="Identifier">msg</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMMsgKindObj</span>
+</pre></dt>
+<dd>
+The custom event structure.
+
+</dd>
+<dt id="SysWMinfoX11Obj"><a name="SysWMinfoX11Obj"></a><pre><span class="Identifier">SysWMinfoX11Obj</span> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">display</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">xlib</span><span class="Other">.</span><span class="Identifier">TXDisplay</span>  <span class="Comment">## The X11 display</span>
+  <span class="Identifier">window</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">x</span><span class="Other">.</span><span class="Identifier">TWindow</span>           <span class="Comment">## The X11 window</span>
   </pre></dt>
 <dd>
-
-A struct that tags the <tt class="docutils literal"><span class="pre">WindowShapeParams</span></tt> union with an enum describing the type of its contents.
-
-</dd>
-
-</dl></div>
-<div class="section" id="10">
-<h1><a class="toc-backref" href="#10">Consts</a></h1>
-<dl class="item">
-<dt id="NONSHAPEABLE_WINDOW"><a name="NONSHAPEABLE_WINDOW"></a><pre><span class="Identifier">NONSHAPEABLE_WINDOW</span> <span class="Other">=</span> <span class="DecNumber">-1</span></pre></dt>
-<dd>
-
+when defined(SDL_VIDEO_DRIVER_X11)
 
 </dd>
-<dt id="INVALID_SHAPE_ARGUMENT"><a name="INVALID_SHAPE_ARGUMENT"></a><pre><span class="Identifier">INVALID_SHAPE_ARGUMENT</span> <span class="Other">=</span> <span class="DecNumber">-2</span></pre></dt>
+<dt id="SysWMinfoKindObj"><a name="SysWMinfoKindObj"></a><pre><span class="Identifier">SysWMinfoKindObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">x11</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMinfoX11Obj</span>
+</pre></dt>
 <dd>
-
+when defined(SDL_VIDEO_DRIVER_X11)
 
 </dd>
-<dt id="WINDOW_LACKS_SHAPE"><a name="WINDOW_LACKS_SHAPE"></a><pre><span class="Identifier">WINDOW_LACKS_SHAPE</span> <span class="Other">=</span> <span class="DecNumber">-3</span></pre></dt>
+<dt id="SysWMinfo"><a name="SysWMinfo"></a><pre><span class="Identifier">SysWMinfo</span> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">version</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Version</span>
+  <span class="Identifier">subsystem</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMKind</span>
+  <span class="Identifier">info</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMinfoKindObj</span>
+</pre></dt>
 <dd>
+<p>
+The custom window manager information structure.</p>
+<p>When this structure is returned, it holds information about which low level system it is using, and will be one of <tt class="docutils literal"><span class="pre">SysWMKind</span></tt>.</p>
 
 
 </dd>
@@ -1344,72 +1346,18 @@ A struct that tags the <tt class="docutils literal"><span class="pre">WindowShap
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="createShapedWindow"><a name="createShapedWindow,cstring,cuint,cuint,cuint,cuint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createShapedWindow</span><span class="Other">(</span><span class="Identifier">title</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">cuint</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">cuint</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Identifier">cuint</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Identifier">cuint</span><span class="Other">;</span>
-                       <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Window</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateShapedWindow&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="getWindowWMInfo"><a name="getWindowWMInfo,Window,ptr.SysWMinfo"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowWMInfo</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">SysWMinfo</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowWMInfo&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
-<p>Create a window that can be shaped with the specified position, dimensions, and flags.</p>
-<p><tt class="docutils literal"><span class="pre">title</span></tt> The title of the window, in UTF-8 encoding.</p>
-<p><tt class="docutils literal"><span class="pre">x</span></tt> The x position of the window, <cite>WINDOWPOS_CENTERED</cite>, or <cite>WINDOWPOS_UNDEFINED</cite>.</p>
-<p><tt class="docutils literal"><span class="pre">y</span></tt> The y position of the window, <cite>WINDOWPOS_CENTERED</cite>, or <cite>WINDOWPOS_UNDEFINED</cite>.</p>
-<p><tt class="docutils literal"><span class="pre">w</span></tt> The width of the window.</p>
-<p><tt class="docutils literal"><span class="pre">h</span></tt> The height of the window.</p>
-<dl class="docutils"><dt><tt class="docutils literal"><span class="pre">flags</span></tt></dt>
-<dd>The flags for the window, a mask of <cite>WINDOW_BORDERLESS</cite> with any of the following: <cite>WINDOW_OPENGL</cite>,    <cite>WINDOW_INPUT_GRABBED</cite>, <cite>WINDOW_HIDDEN</cite>,    <cite>WINDOW_RESIZABLE</cite>, <cite>WINDOW_MAXIMIZED</cite>, <cite>WINDOW_MINIMIZED</cite>, <cite>WINDOW_BORDERLESS</cite> is always set, and <cite>WINDOW_FULLSCREEN</cite> is always unset.</dd>
-</dl>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> The window created, or <cite>nil</cite> if window creation failed.</p>
-<p>See also:</p>
-<p><tt class="docutils literal"><span class="pre">destroyWindow()</span></tt></p>
-
-
-</dd>
-<dt id="isShapedWindow"><a name="isShapedWindow,Window"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isShapedWindow</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_IsShapedWindow&quot;</span><span class="Other">,</span>
-                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-<p>Return whether the given window is a shaped window.</p>
-<p><tt class="docutils literal"><span class="pre">window</span></tt> The window to query for being shaped.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if the window is a window that can be shaped, <cite>false</cite> if the window is unshaped or <cite>nil</cite>.</p>
-<p>See also:</p>
-<p><tt class="docutils literal"><span class="pre">createShapedWindow()</span></tt></p>
-
-
-</dd>
-<dt id="setWindowShape"><a name="setWindowShape,Window,Surface,ptr.WindowShapeModeObj"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowShape</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">shape</span><span class="Other">:</span> <span class="Identifier">Surface</span><span class="Other">;</span>
-                   <span class="Identifier">shape_mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">WindowShapeModeObj</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowShape&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-<p>Set the shape and parameters of a shaped window.</p>
-<p><tt class="docutils literal"><span class="pre">window</span></tt> The shaped window whose parameters should be set.</p>
-<p><tt class="docutils literal"><span class="pre">shape</span></tt> A surface encoding the desired shape for the window.</p>
-<p><tt class="docutils literal"><span class="pre">shape_mode</span></tt> The parameters to set for the shaped window.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, <cite>INVALID_SHAPE_ARGUMENT</cite> on an invalid shape argument, or <cite>NONSHAPEABLE_WINDOW</cite> if the <tt class="docutils literal"><span class="pre">Window</span></tt> given does not reference a valid shaped window.</p>
-<p>See also:</p>
-<p><tt class="docutils literal"><span class="pre">WindowShapeMode</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">getShapedWindowMode()</span></tt></p>
-
-
-</dd>
-<dt id="getShapedWindowMode"><a name="getShapedWindowMode,Window,ptr.WindowShapeModeObj"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getShapedWindowMode</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">shape_mode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">WindowShapeModeObj</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetShapedWindowMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-<p>Get the shape parameters of a shaped window.</p>
-<p><tt class="docutils literal"><span class="pre">window</span></tt> The shaped window whose parameters should be retrieved.</p>
-<p><tt class="docutils literal"><span class="pre">shape_mode</span></tt> An empty shape-mode structure to fill, or <cite>nil</cite> to check whether the window has a shape.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> if the window has a shape and, provided <tt class="docutils literal"><span class="pre">shape_mode</span></tt> was not <cite>nil</cite>, <tt class="docutils literal"><span class="pre">shape_mode</span></tt> has been filled with the mode data, <cite>NONSHAPEABLE_WINDOW</cite> if the <tt class="docutils literal"><span class="pre">Window</span></tt> given is not a shaped window, or <cite>WINDOW_LACKS_SHAPE</cite> if the <tt class="docutils literal"><span class="pre">Window</span></tt> given is a shapeable window currently lacking a shape.</p>
-<p>See also:</p>
-<p><tt class="docutils literal"><span class="pre">WindowShapeMode</span></tt></p>
-<p><tt class="docutils literal"><span class="pre">setWindowShape()</span></tt></p>
-
-
-</dd>
-
-</dl></div>
-<div class="section" id="18">
-<h1><a class="toc-backref" href="#18">Templates</a></h1>
-<dl class="item">
-<dt id="shapeModeAlpha"><a name="shapeModeAlpha.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">shapeModeAlpha</span><span class="Other">(</span><span class="Identifier">mode</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
-<dd>
-
+<p>This procedure allows access to driver-dependent window information.</p>
+<p><tt class="docutils literal"><span class="pre">window</span></tt> The window about which information is being requested</p>
+<p><tt class="docutils literal"><span class="pre">info</span></tt> This object must be initialized with the SDL version, and is then filled in with information about the given window.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">true</span></tt> if the procedure is implemented and the version member of the <tt class="docutils literal"><span class="pre">info</span></tt> object is valid, <tt class="docutils literal"><span class="pre">false</span></tt> otherwise.</p>
+<p>You typically use this procedure like this:</p>
+<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">info</span><span class="Punctuation">:</span> <span class="Identifier">SysWMinfo</span>
+<span class="Identifier">version</span><span class="Punctuation">(</span><span class="Identifier">info</span><span class="Operator">.</span><span class="Identifier">version</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+<span class="Keyword">if</span> <span class="Identifier">getWindowWMInfo</span><span class="Punctuation">(</span><span class="Identifier">window</span><span class="Punctuation">,</span> <span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">info</span><span class="Punctuation">)</span><span class="Punctuation">)</span><span class="StringLit">&quot;</span>
+  <span class="Operator">...</span></pre>
 
 </dd>
 
@@ -1422,7 +1370,7 @@ A struct that tags the <tt class="docutils literal"><span class="pre">WindowShap
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-01-01 17:22:28 UTC</small>
+        <small>Made with Nim. Generated: 2018-01-01 17:41:12 UTC</small>
       </div>
     </div>
   </div>

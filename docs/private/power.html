@@ -1215,7 +1215,7 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#PowerState"
-    title="PowerState* = enum
+    title="PowerState = enum
   POWERSTATE_UNKNOWN,         ## cannot determine power status
   POWERSTATE_ON_BATTERY,      ## Not plugged in, running on the battery
   POWERSTATE_NO_BATTERY,      ## Plugged in, no battery available
@@ -1228,7 +1228,7 @@ function main() {
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#getPowerInfo,ptr.cint,ptr.cint"
-    title="getPowerInfo*(secs: ptr cint; pct: ptr cint): PowerState"><wbr />get<wbr />Power<wbr />Info<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getPowerInfo(secs: ptr cint; pct: ptr cint): PowerState"><wbr />get<wbr />Power<wbr />Info<span class="attachedType" style="visibility:hidden">PowerState</span></a></li>
 
   </ul>
 </li>
@@ -1243,7 +1243,7 @@ function main() {
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="PowerState"><a name="PowerState"></a><pre><span class="Identifier">PowerState</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt id="PowerState"><a name="PowerState"></a><pre><span class="Identifier">PowerState</span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">POWERSTATE_UNKNOWN</span><span class="Other">,</span>         <span class="Comment">## cannot determine power status</span>
   <span class="Identifier">POWERSTATE_ON_BATTERY</span><span class="Other">,</span>      <span class="Comment">## Not plugged in, running on the battery</span>
   <span class="Identifier">POWERSTATE_NO_BATTERY</span><span class="Other">,</span>      <span class="Comment">## Plugged in, no battery available</span>
@@ -1259,7 +1259,7 @@ The basic state for the system's power supply.
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="getPowerInfo"><a name="getPowerInfo,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getPowerInfo</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">secs</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">pct</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">PowerState</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="getPowerInfo"><a name="getPowerInfo,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getPowerInfo</span><span class="Other">(</span><span class="Identifier">secs</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">pct</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">PowerState</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetPowerInfo&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the current power supply details.</p>
@@ -1279,7 +1279,7 @@ The basic state for the system's power supply.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-09-29 11:50:06 UTC</small>
+        <small>Made with Nim. Generated: 2018-01-01 17:22:27 UTC</small>
       </div>
     </div>
   </div>
