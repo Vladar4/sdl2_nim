@@ -59,31 +59,43 @@ proc vulkanLoadLibrary*(path: cstring): cint {.
     cdecl, importc: "SDL_Vulkan_LoadLibrary", dynlib: SDL2_LIB.}
   ##  Dynamically load a Vulkan loader library.
   ##
-  ##  ``path`` The platform dependent Vulkan loader library name,
-  ##  or ``nil`` to open the default Vulkan loader library.
+  ##  ``path`` The platform dependent Vulkan loader library name, or ``nil``.
   ##
   ##  ``Return`` `0` on success, or `-1` if the library couldn't be loaded.
   ##
-  ##  This should be done after initializing the video driver, but before
+  ##  If ``path`` is `nil` SDL will use the value of the environment variable
+  ##  ``SDL_VULKAN_LIBRARY``, if set, otherwise it loads the default Vulkan
+  ##  loader library.
+  ##
+  ##  This should be called after initializing the video driver, but before
   ##  creating any Vulkan windows. If no Vulkan loader library is loaded, the
   ##  default library will be loaded upon creation of the first Vulkan window.
   ##
-  ##  ``Note:`` If you specify a non-``nil`` ``path``, you should retrieve all
-  ##  of the Vulkan functions used in your program from the dynamic library
+  ##  ``Note:`` It is fairly common for Vulkan applications to link with
+  ##  ``libvulkan`` instead of explicitly loading it at run time. This will
+  ##  work with SDL provided the application links to a dynamic library and
+  ##  both it and SDL use the same search path.
+  ##
+  ##  ``Note:`` If you specify a non-`nil` ``path``, an application should
+  ##  retrieve all of the Vulkan functions it uses from the dynamic library
   ##  using ``vulkanGetVkGetInstanceProcAddr()`` unless you can guarantee
-  ##  ``path`` points to the same vulkan loader library that you linked to.
+  ##  ``path`` points to the same vulkan loader library the application
+  ##  linked to.
   ##
-  ##  ``Note:`` On Apple devices, if ``path`` is ``nil``, SDL will attempt
-  ##  to find the ``vkGetInstanceProcAddr`` address within all the mach-o
-  ##  images of the current process. This is because the currently (v0.17.0)
-  ##  recommended MoltenVK (Vulkan on Metal) usage is as a static library.
-  ##  If it is not found then SDL will attempt to load ``libMoltenVK.dylib``.
-  ##  Applications using the dylib alternative therefore do not need to do
-  ##  anything special when calling SDL.
+  ##  ``Note:`` On Apple devices, if ``path`` is `nil`, SDL will attempt to find
+  ##  the ``vkGetInstanceProcAddr`` address within all the mach-o images of
+  ##  the current process. This is because it is fairly common for Vulkan
+  ##  applications to link with libvulkan (and historically MoltenVK was
+  ##  provided as a static library). If it is not found then, on macOS, SDL
+  ##  will attempt to load ``vulkan.framework/vulkan``, ``libvulkan.1.dylib``,
+  ##  ``MoltenVK.framework/MoltenVK`` and ``libMoltenVK.dylib`` in that order.
+  ##  On iOS SDL will attempt to load ``libMoltenVK.dylib``. Applications
+  ##  using a dynamic framework or .dylib must ensure it is included in its
+  ##  application bundle.
   ##
-  ##  ``Note:`` On non-Apple devices, SDL requires you to either not link to
-  ##  the Vulkan loader or link to a dynamic library version. This limitation
-  ##  may be removed in a future version of SDL.
+  ##  ``Note`` On non-Apple devices, application linking with a static
+  ##  libvulkan is not supported. Either do not link to the Vulkan loader or
+  ##  link to a dynamic library version.
   ##
   ##  ``Note:`` This function will fail if there are no working Vulkan drivers
   ##  installed.
@@ -246,6 +258,9 @@ proc vulkanGetDrawableSize*(window: Window; w: ptr cint; h: ptr cint) {.
   ##  drawable, i.e. the window was created with `WINDOW_ALLOW_HIGHDPI` on a
   ##  platform with high-DPI support (Apple calls this "Retina"),
   ##  and not disabled by the `HINT_VIDEO_HIGHDPI_DISABLED` hint.
+  ##
+  ##  ``Note:`` On macOS high-DPI support must be enabled for an application by
+  ##  setting ``NSHighResolutionCapable`` to `true` in its ``Info.plist``.
   ##
   ##  See also:
   ##
