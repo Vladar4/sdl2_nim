@@ -102,6 +102,10 @@ when false:
       ##  See the official Android developer guide for more information:
       ##  http://developer.android.com/guide/topics/data/data-storage.html
 
+    proc isAndroidTV(): bool {.
+        cdecl, importc: "SDL_IsAndroidTV", dynlib: SDL2_LIB.}
+      ##  ``Return`` `true` if the application is running on Android TV.
+
     const
       ANDROID_EXTERNAL_STORAGE_READ* = 0x00000001
       ANDROID_EXTERNAL_STORAGE_WRITE* = 0x00000002
@@ -144,7 +148,15 @@ when false:
           ##  Unsupported on Windows Phone.
           ##  Files written here may be deleted at any time.
 
-    proc WinRTGetFSPathUNICODE*(pathType: WinRT_Path): ptr wchar_t {.
+    type
+      WinRT_DeviceFamily* {.size: sizeof(cint).} = enum ##  \
+        ##  WinRT Device Family
+        WINRT_DEVICEFAMILY_UNKNOWN, ##  Unknown family
+        WINRT_DEVICEFAMILY_DESKTOP, ##  Desktop family
+        WINRT_DEVICEFAMILY_MOBILE,  ##  Mobile family (for example smartphone)
+        WINRT_DEVICEFAMILY_XBOX     ##  XBox family
+
+    proc winRTGetFSPathUNICODE*(pathType: WinRT_Path): ptr wchar_t {.
         cdecl, importc: "SDL_WinRTGetFSPathUNICODE", dynlib: SDL2_LIB.}
       ##  Retrieves a WinRT defined path on the local file system
       ##
@@ -161,7 +173,7 @@ when false:
       ##  Check the documentation for the given ``WinRT_Path``
       ##  for more information on which path types are supported where.
 
-    proc WinRTGetFSPathUTF8*(pathType: WinRT_Path): cstring {.
+    proc winRTGetFSPathUTF8*(pathType: WinRT_Path): cstring {.
         cdecl, importc: "SDL_WinRTGetFSPathUTF8", dynlib: SDL2_LIB.}
       ##  Retrieves a WinRT defined path on the local file system
       ##
@@ -177,3 +189,9 @@ when false:
       ##  This is especially true on Windows Phone.
       ##  Check the documentation for the given ``WinRT_Path``
       ##  for more information on which path types are supported where.
+
+    proc winRTGetDeviceFamily(): WinRT_DeviceFamily {.
+        cdecl, importc: "SDL_WinRTGetDeviceFamily", dynlib: SDL2_LIB.}
+      ##  Detects the device family of WinRT plattform on runtime.
+      ##
+      ##  ``Return`` device family.
