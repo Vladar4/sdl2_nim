@@ -68,6 +68,7 @@ const
     ##  * "opengl"
     ##  * "opengles2"
     ##  * "opengles"
+    ##  * "metal"
     ##  * "software"
     ##
     ##  The default varies by platform, but it's the first one in the list that
@@ -200,6 +201,18 @@ const
     ##  app is hung.
     ##
     ##  The hint is checked in ``createWindow()``.
+
+const
+  HINT_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR* =
+    "SDL_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR"  ##  \
+    ##  A variable controlling whether the X11 _NET_WM_BYPASS_COMPOSITOR
+    ##  hint should be used.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0" - Disable _NET_WM_BYPASS_COMPOSITOR
+    ##  * "1" - Enable _NET_WM_BYPASS_COMPOSITOR
+    ##
+    ##  By default SDL will use _NET_WM_BYPASS_COMPOSITOR.
 
 const
   HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN* =
@@ -345,19 +358,44 @@ const
     ##  will automatically match the rotation of the remote.
     ##
     ##  This variable can be set to the following values:
-    ##  * "0" - Remote orientation does not affect joystick axes (the default).
-    ##  * "1" - Joystick axes are based on the orientation of the remote.
+    ##  * "0"     - Remote orientation does not affect joystick axes
+    ##    (the default).
+    ##  * "1"     - Joystick axes are based on the orientation of the remote.
+
+const
+  HINT_IOS_HIDE_HOME_INDICATOR* = "SDL_IOS_HIDE_HOME_INDICATOR" ##  \
+    ##  A variable controlling whether the home indicator bar on iPhone X
+    ##  should be hidden.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"     - The indicator bar is not hidden
+    ##    (default for windowed applications)
+    ##  * "1"     - The indicator bar is hidden and is shown when the screen is
+    ##    touched (useful for movie playback applications)
+    ##  * "2"     - The indicator bar is dim and the first swipe makes it
+    ##    visible and the second swipe performs the "home" action
+    ##    (default for fullscreen applications)
 
 const
   HINT_ACCELEROMETER_AS_JOYSTICK* = "SDL_ACCELEROMETER_AS_JOYSTICK" ##  \
     ##  A variable controlling whether an Android / iOS built-in accelerometer
-    ##  should be listed as a joystick device, rather than listing actual
-    ##  joysticks only.
+    ##  should be listed as a joystick device.
     ##
     ##  This variable can be set to the following values:
-    ##  * "0"       - List only real joysticks and accept input from them
-    ##  * "1"       - List real joysticks along with the accelerometer
+    ##  * "0"       - The accelerometer is not listed as a joystick
+    ##  * "1"       - The accelerometer is available as a 3 axis joystick
+    ##    (the default)
     ##    as if it were a 3 axis joystick (the default).
+
+const
+  HINT_TV_REMOTE_AS_JOYSTICK* = "SDL_TV_REMOTE_AS_JOYSTICK" ##  \
+    ##  A variable controlling whether the Android / tvOS remotes should be
+    ##  listed as joystick devices, instead of sending keyboard events.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - Remotes send enter/escape/arrow key events
+    ##  * "1"       - Remotes are available as 2 axis, 2 button joysticks
+    ##    (the default).
 
 const
   HINT_XINPUT_ENABLED* = "SDL_XINPUT_ENABLED" ##  \
@@ -757,6 +795,20 @@ const
     ##  so it can be changed at any time.
 
 const
+  HINT_RETURN_KEY_HIDES_IME* = "SDL_RETURN_KEY_HIDES_IME" ##  \
+    ##
+    ##  A variable to control whether the return key on the soft keyboard
+    ##  should hide the soft keyboard on Android and iOS.
+    ##
+    ##  The variable can be set to the following values:
+    ##  * "0"       - The return key will be handled as a key event.
+    ##    This is the behaviour of SDL <= 2.0.3. (default)
+    ##  * "1"       - The return key will hide the keyboard.
+    ##
+    ##  The value of this hint is used at runtime,
+    ##  so it can be changed at any time.
+
+const
   HINT_EMSCRIPTEN_KEYBOARD_ELEMENT* = "SDL_EMSCRIPTEN_KEYBOARD_ELEMENT" ##  \
     ##  Override the binding element for keyboard inputs for Emscripten builds.
     ##
@@ -832,6 +884,24 @@ const
     ##  Also known as Z-order.
     ##  The variable can take a negative or positive value.
     ##  The default is `10000`.
+
+const
+  HINT_VIDEO_DOUBLE_BUFFER* = "SDL_VIDEO_DOUBLE_BUFFER"
+    ##  Tell the video driver that we only want a double buffer.
+    ##
+    ##  By default, most lowlevel 2D APIs will use a triple buffer scheme that
+    ##  wastes no CPU time on waiting for vsync after issuing a flip, but
+    ##  introduces a frame of latency. On the other hand, using a double buffer
+    ##  scheme instead is recommended for cases where low latency is an
+    ##  important factor because we save a whole frame of latency.
+    ##  We do so by waiting for vsync immediately after issuing a flip,
+    ##  usually just after ``eglSwapBuffers`` call in the backend's
+    ##  ``*_SwapWindow`` procedure.
+    ##
+    ##  Since it's driver-specific, it's only supported where possible and
+    ##  implemented. Currently supported the following drivers:
+    ##  * KMSDRM (kmsdrm)
+    ##  * Raspberry Pi (raspberrypi)
 
 const
   HINT_OPENGL_ES_DRIVER* = "SDL_OPENGL_ES_DRIVER" ##  \
