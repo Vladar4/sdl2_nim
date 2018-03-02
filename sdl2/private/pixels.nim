@@ -249,6 +249,8 @@ const
     ##  Planar mode: Y + U/V interleaved (2 planes)
   PIXELFORMAT_NV21* = definePixelFourCC('N', 'V', '2', '1') ##  \
     ##  Planar mode: Y + V/U interleaved (2 planes)
+  PIXELFORMAT_EXTERNAL_OES* = definePixelFourCC('O', 'E', 'S', ' ') ##  \
+    ##  Android video texture format
 
 # Aliases for RGBA byte arrays of color data, for the current platform.
 when cpuEndian == bigEndian:
