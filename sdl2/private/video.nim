@@ -141,7 +141,9 @@ const
   WINDOW_FULLSCREEN_DESKTOP* = (WINDOW_FULLSCREEN or 0x00001000)
   WINDOW_FOREIGN*       = 0x00000800  ##  window not created by SDL
   WINDOW_ALLOW_HIGHDPI* = 0x00002000  ##  window should be created  \
-    ##  in high-DPI mode if supported
+    ##  in high-DPI mode if supported.
+    ##  On macOS ``NSHighResolutionCapable`` must be set true
+    ##  in the application's ``Info.plist`` for this to have any effect.
   WINDOW_MOUSE_CAPTURE* = 0x00004000  ##  window has mouse captured \
     ##  (unrelated to `INPUT_GRABBED`)
   WINDOW_ALWAYS_ON_TOP* = 0x00008000  ##  window should always be above others
@@ -517,7 +519,7 @@ proc createWindow*(title: cstring;
   ##  If the window is created with any of the `WINDOW_OPENGL` or
   ##  `WINDOW_VULKAN` flags, then the corresponding ``LoadLibrary`` function
   ##  (``glLoadLibrary`` or ``vulkanLoadLibrary``) is called and the
-  ##  corrensponding ``UnloadLibrary`` function is called by
+  ##  corresponding ``UnloadLibrary`` function is called by
   ##  ``destroyWindow()``.
   ##
   ##  If `WINDOW_VULKAN` is specified and there isn't a working Vulkan driver,
