@@ -990,3 +990,30 @@ proc glUnbindTexture*(texture: Texture): cint {.
   ##  ``texture`` The SDL texture to unbind.
   ##
   ##  ``Return`` `0` on success, or `-1` if the operation is not supported.
+
+proc renderGetMetalLayer*(renderer: Renderer): pointer {.
+    cdecl, importc: "SDL_RenderGetMetalLayer", dynlib: SDL2_LIB.}
+  ##  Get the CAMetalLayer associated with the given Metal renderer.
+  ##
+  ##  ``renderer`` The renderer to query.
+  ##
+  ##  ``Return`` CAMetalLayer* on success,
+  ##  or `nil` if the renderer isn't a Metal renderer.
+  ##
+  ##  See also:
+  ##
+  ##  ``renderGetMetalCommandEncoder()``
+
+proc renderGetMetalCommandEncoder*(renderer: Renderer): pointer {.
+    cdecl, importc: "SDL_RenderGetMetalCommandEncoder", dynlib: SDL2_LIB.}
+  ##
+  ##  Get the Metal command encoder for the current frame.
+  ##
+  ##  ``renderer`` The renderer to query.
+  ##
+  ##  ``Return`` id<MTLRenderCommandEncoder> on success,
+  ##  or `nil` if the renderer isn't a Metal renderer.
+  ##
+  ##  See also:
+  ##
+  ##  ``renderGetMetalLayer()``
