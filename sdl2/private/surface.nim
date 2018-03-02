@@ -71,6 +71,15 @@ type
       dst: Surface; dstrect: ptr Rect): cint {.cdecl.} ##  \
     ##  The type of procedure used for surface blitting procedures.
 
+type
+  YUVConversionMode* {.size: sizeof(cint).} = enum  ##  \
+    ##  The formula used for converting between YUV and RGB
+    YUV_CONVERSION_JPEG,      ##  Full range JPEG
+    YUV_CONVERSION_BT601,     ##  BT.601 (the default)
+    YUV_CONVERSION_BT709,     ##  BT.709
+    YUV_CONVERSION_AUTOMATIC  ##  BT.601 for SD content, BT.709 for HD content
+
+
 proc createRGBSurface*(
     flags: uint32; width: cint; height: cint; depth: cint;
     rMask: uint32; gMask: uint32; bMask: uint32; aMask: uint32): Surface {.
@@ -514,3 +523,17 @@ proc lowerBlitScaled*(
       cdecl, importc: "SDL_LowerBlitScaled", dynlib: SDL2_LIB.}
   ##  This is a semi-private blit procedure and it performs low-level surface
   ##  scaled blitting only.
+
+proc setYUVConversionMode*(mode: YUVConversionMode) {.
+    cdecl, importc: "SDL_SetYUVConversionMode", dynlib: SDL2_LIB.}
+  ##  Set the YUV conversion mode.
+
+proc getYUVConversionMode*(): YUVConversionMode {.
+    cdecl, importc: "SDL_GetYUVConversionMode", dynlib: SDL2_LIB.}
+  ##  Get the YUV conversion mode.
+
+proc getYUVConversionModeForResolution*(
+  width: cint; height: cint): YUVConversionMode {.
+    cdecl, importc: "SDL_GetYUVConversionModeForResolution", dynlib: SDL2_LIB.}
+  ##  Get the YUV conversion mode, returning the correct mode for the
+  ##  resolution when the current conversion mode is `YUV_CONVERSION_AUTOMATIC`.
