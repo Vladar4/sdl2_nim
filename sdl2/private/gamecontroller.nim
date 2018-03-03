@@ -191,7 +191,7 @@ proc gameControllerGetProduct*(gamecontroller: GameController): uint16 {.
 
 proc gameControllerGetProductVersion*(gamecontroller: GameController): uint16 {.
     cdecl, importc: "SDL_GameControllerGetProductVersion", dynlib: SDL2_LIB.}
-  ##  ``Return` the product version of an opened controller, if available.
+  ##  ``Return`` the product version of an opened controller, if available.
   ##  If the product version isn't available this function returns `0`.
 
 proc gameControllerGetAttached*(gamecontroller: GameController): bool {.

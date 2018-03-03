@@ -12,7 +12,7 @@
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='https://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Lato:400,600,900' rel='stylesheet' type='text/css'/>
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
@@ -45,18 +45,19 @@ html {
 
 /* Where we want fancier font if available */
 h1, h2, h3, h4, h5, h6, p.module-desc, table.docinfo + blockquote p, table.docinfo blockquote p, h1 + blockquote p {
-  font-family: "Raleway", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important; }
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important; }
 
 h1.title {
   font-weight: 900; }
 
 body {
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
-  color: #666;
-  background-color: rgba(252, 248, 244, 0.75); }
+  color: #444;
+  letter-spacing: 0.15px;
+  background-color: rgba(252, 248, 244, 0.45); }
 
 /* Skeleton grid */
 .container {
@@ -172,8 +173,8 @@ cite {
   font-style: italic !important; }
 
 dt > pre {
-  border-color: rgba(0, 0, 0, 0.15);
-  background-color: transparent;
+  border-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.3);
   margin: 15px 0px 5px; }
 
 dd > pre {
@@ -189,6 +190,17 @@ dd > pre {
 .line-nums-table {
   width: 100%;
   table-layout: fixed; }
+
+/* Nim search input */
+div#searchInput {
+  margin-bottom: 8px;
+}
+div#searchInput input#searchInput {
+  width: 10em;
+}
+div.search-groupby {
+  margin-bottom: 8px;
+}
 
 table.line-nums-table {
   border-radius: 4px;
@@ -333,7 +345,7 @@ img {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
 
 p {
-  margin: 0 0 12px; }
+  margin: 0 0 8px; }
 
 small {
   font-size: 85%; }
@@ -353,7 +365,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: 600;
   line-height: 20px;
   color: inherit;
@@ -361,6 +373,7 @@ h6 {
 
 h1 {
   font-size: 2em;
+  font-weight: 400;
   padding-bottom: .15em;
   border-bottom: 1px solid #aaaaaa;
   margin-top: 1.0em;
@@ -491,13 +504,13 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0.25em 10px 0.25em 10px;
-  font-size: 14px;
+  margin: 0.25em 10px 10px 10px;
+  font-size: 15px;
   line-height: 20px;
   white-space: pre !important;
   overflow-y: hidden;
   overflow-x: visible;
-  background-color: whitesmoke;
+  background-color: rgba(0, 0, 0, 0.01);
   border: 1px solid #cccccc;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -776,14 +789,14 @@ div.admonition p.admonition-title, div.hint p.admonition-title,
 div.important p.admonition-title, div.note p.admonition-title,
 div.tip p.admonition-title {
   font-weight: bold;
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif; }
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
 
 div.attention p.admonition-title, div.caution p.admonition-title,
 div.danger p.admonition-title, div.error p.admonition-title,
 div.warning p.admonition-title, .code .error {
   color: #b30000;
   font-weight: bold;
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif; }
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
 
 /* Uncomment (and remove this text!) to get reduced vertical space in
    compound paragraphs.
@@ -830,7 +843,7 @@ div.sidebar {
   clear: right; }
 
 div.sidebar p.rubric {
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-size: medium; }
 
 div.system-messages {
@@ -937,12 +950,12 @@ p.rubric {
   text-align: center; }
 
 p.sidebar-title {
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: larger; }
 
 p.sidebar-subtitle {
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: bold; }
 
 p.topic-title {
@@ -984,15 +997,15 @@ pre.code .inserted, code .inserted {
   background-color: #A3D289; }
 
 span.classifier {
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-style: oblique; }
 
 span.classifier-delimiter {
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: bold; }
 
 span.interpreted {
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif; }
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
 
 span.option {
   white-space: nowrap; }
@@ -1015,7 +1028,7 @@ table.docinfo {
   margin: 0em;
   margin-top: 2em;
   margin-bottom: 2em;
-  font-family: "Raleway", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important;
   color: #444444; }
 
 table.docutils {
@@ -1145,21 +1158,26 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
-  div.pragma {
-    display: none;
-  }
-  span.pragmabegin {
-    cursor: pointer;
-  }
-  span.pragmaend {
-    cursor: pointer;
-  }
+div.pragma {
+  display: none;
+}
+span.pragmabegin {
+  cursor: pointer;
+}
+span.pragmaend {
+  cursor: pointer;
+}
 
 div.search_results {
   background-color: antiquewhite;
   margin: 3em;
   padding: 1em;
   border: 1px solid #4d4d4d;
+}
+
+div#global-links ul {
+  margin-left: 0;
+  list-style-type: none;
 }
 </style>
 
@@ -1198,7 +1216,11 @@ function main() {
     <h1 class="title">Module sdl_net</h1>
     <div class="row">
   <div class="three columns">
-  <div>
+  <div id="global-links">
+    <ul class="simple">
+    </ul>
+  </div>
+  <div id="searchInput">
     Search: <input type="text" id="searchInput"
       onkeyup="search()" />
   </div>
@@ -1213,19 +1235,25 @@ function main() {
 <li><a class="reference" id="sdl-net-nim_toc" href="#sdl-net-nim">sdl_net.nim</a></li>
 <li><a class="reference" id="network-byte-order_toc" href="#network-byte-order">Network Byte Order</a></li>
 <li>
+  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
+  <ul class="simple simple-toc-section">
+    
+  </ul>
+</li>
+<li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#IPaddress"
-    title="IPaddress = object
+    title="IPaddress* = object
   host*: uint32                ## the IPv4 address of a host, encoded in Network Byte Order
   port*: uint16                ## the IPv4 port number of a socket, \
               ## encoded in Network Byte Order."><wbr />IPaddress<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#TCPsocket"
-    title="TCPsocket = pointer"><wbr />TCPsocket<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="TCPsocket* = pointer"><wbr />TCPsocket<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#UDPsocket"
-    title="UDPsocket = pointer"><wbr />UDPsocket<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="UDPsocket* = pointer"><wbr />UDPsocket<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#UDPpacket"
-    title="UDPpacket = object
+    title="UDPpacket* = object
   channel*: cint               ## The src&#x2F;dst channel of the packet
   data*: ptr uint8              ## The packet data
   len*: cint                   ## The length of the packet data
@@ -1234,11 +1262,11 @@ function main() {
   address*: IPaddress          ## \
                     ## The source&#x2F;dest address of an incoming&#x2F;outgoing packet"><wbr />UDPpacket<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#SocketSet"
-    title="SocketSet = pointer"><wbr />Socket<wbr />Set<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="SocketSet* = pointer"><wbr />Socket<wbr />Set<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#GenericSocket"
-    title="GenericSocket = ptr GenericSocketObj"><wbr />Generic<wbr />Socket<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="GenericSocket* = ptr GenericSocketObj"><wbr />Generic<wbr />Socket<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#GenericSocketObj"
-    title="GenericSocketObj = object
+    title="GenericSocketObj* = object
   ready*: cint"><wbr />Generic<wbr />Socket<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
@@ -1247,23 +1275,23 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#MAJOR_VERSION"
-    title="MAJOR_VERSION = 2"><wbr />MAJOR_<wbr />VERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="MAJOR_VERSION* = 2"><wbr />MAJOR_<wbr />VERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#MINOR_VERSION"
-    title="MINOR_VERSION = 0"><wbr />MINOR_<wbr />VERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="MINOR_VERSION* = 0"><wbr />MINOR_<wbr />VERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#PATCHLEVEL"
-    title="PATCHLEVEL = 1"><wbr />PATCHLEVEL<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="PATCHLEVEL* = 1"><wbr />PATCHLEVEL<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#INADDR_ANY"
-    title="INADDR_ANY = 0x00000000"><wbr />INADDR_<wbr />ANY<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="INADDR_ANY* = 0x00000000"><wbr />INADDR_<wbr />ANY<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#INADDR_NONE"
-    title="INADDR_NONE = 0x00000000FFFFFFFF&#x27;i64"><wbr />INADDR_<wbr />NONE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="INADDR_NONE* = 0x00000000FFFFFFFF&#x27;i64"><wbr />INADDR_<wbr />NONE<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#INADDR_LOOPBACK"
-    title="INADDR_LOOPBACK = 0x7F000001"><wbr />INADDR_<wbr />LOOPBACK<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="INADDR_LOOPBACK* = 0x7F000001"><wbr />INADDR_<wbr />LOOPBACK<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#INADDR_BROADCAST"
-    title="INADDR_BROADCAST = 0x00000000FFFFFFFF&#x27;i64"><wbr />INADDR_<wbr />BROADCAST<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="INADDR_BROADCAST* = 0x00000000FFFFFFFF&#x27;i64"><wbr />INADDR_<wbr />BROADCAST<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#MAX_UDPCHANNELS"
-    title="MAX_UDPCHANNELS = 32"><wbr />MAX_<wbr />UDPCHANNELS<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="MAX_UDPCHANNELS* = 32"><wbr />MAX_<wbr />UDPCHANNELS<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#MAX_UDPADDRESSES"
-    title="MAX_UDPADDRESSES = 4"><wbr />MAX_<wbr />UDPADDRESSES<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="MAX_UDPADDRESSES* = 4"><wbr />MAX_<wbr />UDPADDRESSES<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1271,83 +1299,83 @@ function main() {
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#linkedVersion,"
-    title="linkedVersion(): ptr Version"><wbr />linked<wbr />Version<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="linkedVersion*(): ptr Version"><wbr />linked<wbr />Version<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#init,"
-    title="init(): cint"><wbr />init<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="init*(): cint"><wbr />init<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#quit,"
-    title="quit()"><wbr />quit<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="quit*()"><wbr />quit<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#resolveHost,ptr.IPaddress,cstring,uint16"
-    title="resolveHost(address: ptr IPaddress; host: cstring; port: uint16): cint"><wbr />resolve<wbr />Host<span class="attachedType" style="visibility:hidden">IPaddress</span></a></li>
+    title="resolveHost*(address: ptr IPaddress; host: cstring; port: uint16): cint"><wbr />resolve<wbr />Host<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#resolveIP,ptr.IPaddress"
-    title="resolveIP(address: ptr IPaddress): cstring"><wbr />resolve<wbr />IP<span class="attachedType" style="visibility:hidden">IPaddress</span></a></li>
+    title="resolveIP*(address: ptr IPaddress): cstring"><wbr />resolve<wbr />IP<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#getLocalAddresses,ptr.IPaddress,cint"
-    title="getLocalAddresses(addresses: ptr IPaddress; maxcount: cint): cint"><wbr />get<wbr />Local<wbr />Addresses<span class="attachedType" style="visibility:hidden">IPaddress</span></a></li>
+    title="getLocalAddresses*(addresses: ptr IPaddress; maxcount: cint): cint"><wbr />get<wbr />Local<wbr />Addresses<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#tcpOpen,ptr.IPaddress"
-    title="tcpOpen(ip: ptr IPaddress): TCPsocket"><wbr />tcp<wbr />Open<span class="attachedType" style="visibility:hidden">IPaddress</span></a></li>
+    title="tcpOpen*(ip: ptr IPaddress): TCPsocket"><wbr />tcp<wbr />Open<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#tcpAccept,TCPsocket"
-    title="tcpAccept(server: TCPsocket): TCPsocket"><wbr />tcp<wbr />Accept<span class="attachedType" style="visibility:hidden">TCPsocket</span></a></li>
+    title="tcpAccept*(server: TCPsocket): TCPsocket"><wbr />tcp<wbr />Accept<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#tcpGetPeerAddress,TCPsocket"
-    title="tcpGetPeerAddress(sock: TCPsocket): ptr IPaddress"><wbr />tcp<wbr />Get<wbr />Peer<wbr />Address<span class="attachedType" style="visibility:hidden">TCPsocket</span></a></li>
+    title="tcpGetPeerAddress*(sock: TCPsocket): ptr IPaddress"><wbr />tcp<wbr />Get<wbr />Peer<wbr />Address<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#tcpSend,TCPsocket,pointer,cint"
-    title="tcpSend(sock: TCPsocket; data: pointer; len: cint): cint"><wbr />tcp<wbr />Send<span class="attachedType" style="visibility:hidden">TCPsocket</span></a></li>
+    title="tcpSend*(sock: TCPsocket; data: pointer; len: cint): cint"><wbr />tcp<wbr />Send<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#tcpRecv,TCPsocket,pointer,cint"
-    title="tcpRecv(sock: TCPsocket; data: pointer; maxlen: cint): cint"><wbr />tcp<wbr />Recv<span class="attachedType" style="visibility:hidden">TCPsocket</span></a></li>
+    title="tcpRecv*(sock: TCPsocket; data: pointer; maxlen: cint): cint"><wbr />tcp<wbr />Recv<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#tcpClose,TCPsocket"
-    title="tcpClose(sock: TCPsocket)"><wbr />tcp<wbr />Close<span class="attachedType" style="visibility:hidden">TCPsocket</span></a></li>
+    title="tcpClose*(sock: TCPsocket)"><wbr />tcp<wbr />Close<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#allocPacket,cint"
-    title="allocPacket(size: cint): ptr UDPpacket"><wbr />alloc<wbr />Packet<span class="attachedType" style="visibility:hidden">UDPpacket</span></a></li>
+    title="allocPacket*(size: cint): ptr UDPpacket"><wbr />alloc<wbr />Packet<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#resizePacket,ptr.UDPpacket,cint"
-    title="resizePacket(packet: ptr UDPpacket; newsize: cint): cint"><wbr />resize<wbr />Packet<span class="attachedType" style="visibility:hidden">UDPpacket</span></a></li>
+    title="resizePacket*(packet: ptr UDPpacket; newsize: cint): cint"><wbr />resize<wbr />Packet<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#freePacket,ptr.UDPpacket"
-    title="freePacket(packet: ptr UDPpacket)"><wbr />free<wbr />Packet<span class="attachedType" style="visibility:hidden">UDPpacket</span></a></li>
+    title="freePacket*(packet: ptr UDPpacket)"><wbr />free<wbr />Packet<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#allocPacketV,cint,cint"
-    title="allocPacketV(howmany: cint; size: cint): ptr ptr UDPpacket"><wbr />alloc<wbr />Packet<wbr />V<span class="attachedType" style="visibility:hidden">UDPpacket</span></a></li>
+    title="allocPacketV*(howmany: cint; size: cint): ptr ptr UDPpacket"><wbr />alloc<wbr />Packet<wbr />V<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#freePacketV,ptr.ptr.UDPpacket"
-    title="freePacketV(packetV: ptr ptr UDPpacket)"><wbr />free<wbr />Packet<wbr />V<span class="attachedType" style="visibility:hidden">UDPpacket</span></a></li>
+    title="freePacketV*(packetV: ptr ptr UDPpacket)"><wbr />free<wbr />Packet<wbr />V<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#udpOpen,uint16"
-    title="udpOpen(port: uint16): UDPsocket"><wbr />udp<wbr />Open<span class="attachedType" style="visibility:hidden">UDPsocket</span></a></li>
+    title="udpOpen*(port: uint16): UDPsocket"><wbr />udp<wbr />Open<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#udpSetPacketLoss,UDPsocket,cint"
-    title="udpSetPacketLoss(sock: UDPsocket; percent: cint)"><wbr />udp<wbr />Set<wbr />Packet<wbr />Loss<span class="attachedType" style="visibility:hidden">UDPsocket</span></a></li>
+    title="udpSetPacketLoss*(sock: UDPsocket; percent: cint)"><wbr />udp<wbr />Set<wbr />Packet<wbr />Loss<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#udpBind,UDPsocket,cint,ptr.IPaddress"
-    title="udpBind(sock: UDPsocket; channel: cint; address: ptr IPaddress): cint"><wbr />udp<wbr />Bind<span class="attachedType" style="visibility:hidden">UDPsocket</span></a></li>
+    title="udpBind*(sock: UDPsocket; channel: cint; address: ptr IPaddress): cint"><wbr />udp<wbr />Bind<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#udpUnbind,UDPsocket,cint"
-    title="udpUnbind(sock: UDPsocket; channel: cint)"><wbr />udp<wbr />Unbind<span class="attachedType" style="visibility:hidden">UDPsocket</span></a></li>
+    title="udpUnbind*(sock: UDPsocket; channel: cint)"><wbr />udp<wbr />Unbind<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#udpGetPeerAddress,UDPsocket,cint"
-    title="udpGetPeerAddress(sock: UDPsocket; channel: cint): ptr IPaddress"><wbr />udp<wbr />Get<wbr />Peer<wbr />Address<span class="attachedType" style="visibility:hidden">UDPsocket</span></a></li>
+    title="udpGetPeerAddress*(sock: UDPsocket; channel: cint): ptr IPaddress"><wbr />udp<wbr />Get<wbr />Peer<wbr />Address<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#udpSendV,UDPsocket,ptr.ptr.UDPpacket,cint"
-    title="udpSendV(sock: UDPsocket; packets: ptr ptr UDPpacket; npackets: cint): cint"><wbr />udp<wbr />Send<wbr />V<span class="attachedType" style="visibility:hidden">UDPsocket</span></a></li>
+    title="udpSendV*(sock: UDPsocket; packets: ptr ptr UDPpacket; npackets: cint): cint"><wbr />udp<wbr />Send<wbr />V<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#udpSend,UDPsocket,cint,ptr.UDPpacket"
-    title="udpSend(sock: UDPsocket; channel: cint; packet: ptr UDPpacket): cint"><wbr />udp<wbr />Send<span class="attachedType" style="visibility:hidden">UDPsocket</span></a></li>
+    title="udpSend*(sock: UDPsocket; channel: cint; packet: ptr UDPpacket): cint"><wbr />udp<wbr />Send<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#udpRecvV,UDPsocket,ptr.ptr.UDPpacket"
-    title="udpRecvV(sock: UDPsocket; packets: ptr ptr UDPpacket): cint"><wbr />udp<wbr />Recv<wbr />V<span class="attachedType" style="visibility:hidden">UDPsocket</span></a></li>
+    title="udpRecvV*(sock: UDPsocket; packets: ptr ptr UDPpacket): cint"><wbr />udp<wbr />Recv<wbr />V<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#udpRecv,UDPsocket,ptr.UDPpacket"
-    title="udpRecv(sock: UDPsocket; packet: ptr UDPpacket): cint"><wbr />udp<wbr />Recv<span class="attachedType" style="visibility:hidden">UDPsocket</span></a></li>
+    title="udpRecv*(sock: UDPsocket; packet: ptr UDPpacket): cint"><wbr />udp<wbr />Recv<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#udpClose,UDPsocket"
-    title="udpClose(sock: UDPsocket)"><wbr />udp<wbr />Close<span class="attachedType" style="visibility:hidden">UDPsocket</span></a></li>
+    title="udpClose*(sock: UDPsocket)"><wbr />udp<wbr />Close<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#allocSocketSet,cint"
-    title="allocSocketSet(maxsockets: cint): SocketSet"><wbr />alloc<wbr />Socket<wbr />Set<span class="attachedType" style="visibility:hidden">SocketSet</span></a></li>
+    title="allocSocketSet*(maxsockets: cint): SocketSet"><wbr />alloc<wbr />Socket<wbr />Set<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#addSocket,SocketSet,GenericSocket"
-    title="addSocket(set: SocketSet; sock: GenericSocket): cint"><wbr />add<wbr />Socket<span class="attachedType" style="visibility:hidden">SocketSet</span></a></li>
+    title="addSocket*(set: SocketSet; sock: GenericSocket): cint"><wbr />add<wbr />Socket<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#delSocket,SocketSet,GenericSocket"
-    title="delSocket(set: SocketSet; sock: GenericSocket): cint"><wbr />del<wbr />Socket<span class="attachedType" style="visibility:hidden">SocketSet</span></a></li>
+    title="delSocket*(set: SocketSet; sock: GenericSocket): cint"><wbr />del<wbr />Socket<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#checkSockets,SocketSet,uint32"
-    title="checkSockets(set: SocketSet; timeout: uint32): cint"><wbr />check<wbr />Sockets<span class="attachedType" style="visibility:hidden">SocketSet</span></a></li>
+    title="checkSockets*(set: SocketSet; timeout: uint32): cint"><wbr />check<wbr />Sockets<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#socketReady,GenericSocket"
-    title="socketReady(sock: GenericSocket): cint"><wbr />socket<wbr />Ready<span class="attachedType" style="visibility:hidden">GenericSocket</span></a></li>
+    title="socketReady*(sock: GenericSocket): cint"><wbr />socket<wbr />Ready<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#freeSocketSet,SocketSet"
-    title="freeSocketSet(set: SocketSet)"><wbr />free<wbr />Socket<wbr />Set<span class="attachedType" style="visibility:hidden">SocketSet</span></a></li>
+    title="freeSocketSet*(set: SocketSet)"><wbr />free<wbr />Socket<wbr />Set<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#setError,cstring"
-    title="setError(fmt: cstring)"><wbr />set<wbr />Error<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="setError*(fmt: cstring)"><wbr />set<wbr />Error<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#getError,"
-    title="getError(): cstring"><wbr />get<wbr />Error<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getError*(): cstring"><wbr />get<wbr />Error<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#write16,uint16,pointer"
-    title="write16(value: uint16; area: pointer)"><wbr />write16<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="write16*(value: uint16; area: pointer)"><wbr />write16<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#write32,uint32,pointer"
-    title="write32(value: uint32; area: pointer)"><wbr />write32<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="write32*(value: uint32; area: pointer)"><wbr />write32<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#read16,pointer"
-    title="read16(area: pointer): uint16"><wbr />read16<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="read16*(area: pointer): uint16"><wbr />read16<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#read32,pointer"
-    title="read32(area: pointer): uint32"><wbr />read32<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="read32*(area: pointer): uint32"><wbr />read32<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1355,13 +1383,13 @@ function main() {
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#tcpAddSocket.t,SocketSet,TCPsocket"
-    title="tcpAddSocket(set: SocketSet; sock: TCPsocket): cint"><wbr />tcp<wbr />Add<wbr />Socket<span class="attachedType" style="visibility:hidden">SocketSet</span></a></li>
+    title="tcpAddSocket*(set: SocketSet; sock: TCPsocket): cint"><wbr />tcp<wbr />Add<wbr />Socket<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#udpAddSocket.t,SocketSet,UDPsocket"
-    title="udpAddSocket(set: SocketSet; sock: UDPsocket): cint"><wbr />udp<wbr />Add<wbr />Socket<span class="attachedType" style="visibility:hidden">SocketSet</span></a></li>
+    title="udpAddSocket*(set: SocketSet; sock: UDPsocket): cint"><wbr />udp<wbr />Add<wbr />Socket<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#tcpDelSocket.t,SocketSet,TCPsocket"
-    title="tcpDelSocket(set: SocketSet; sock: TCPsocket): cint"><wbr />tcp<wbr />Del<wbr />Socket<span class="attachedType" style="visibility:hidden">SocketSet</span></a></li>
+    title="tcpDelSocket*(set: SocketSet; sock: TCPsocket): cint"><wbr />tcp<wbr />Del<wbr />Socket<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#udpDelSocket.t,SocketSet,UDPsocket"
-    title="udpDelSocket(set: SocketSet; sock: UDPsocket): cint"><wbr />udp<wbr />Del<wbr />Socket<span class="attachedType" style="visibility:hidden">SocketSet</span></a></li>
+    title="udpDelSocket*(set: SocketSet; sock: UDPsocket): cint"><wbr />udp<wbr />Del<wbr />Socket<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1378,10 +1406,15 @@ function main() {
 <p><tt class="docutils literal"><span class="pre">Little-Endian</span></tt> (LSB) is stored in the opposite order, with the least significant byte first in memory. Intel and AMD are two LSB machines.</p>
 <p>For network addresses, 1.2.3.4 is always stored as {0x01 0x02 0x03 0x04}.</p>
 </p>
-  <div class="section" id="7">
+  <div class="section" id="6">
+<h1><a class="toc-backref" href="#6">Imports</a></h1>
+<dl class="item">
+<a class="reference external" href="sdl.html">sdl</a>
+</dl></div>
+<div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="IPaddress"><a name="IPaddress"></a><pre><span class="Identifier">IPaddress</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="IPaddress"><a name="IPaddress"></a><pre><span class="Identifier">IPaddress</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">host</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>                <span class="Comment">## the IPv4 address of a host, encoded in Network Byte Order</span>
   <span class="Identifier">port</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">## the IPv4 port number of a socket, \</span>
               <span class="Comment">## encoded in Network Byte Order.</span>
@@ -1391,19 +1424,19 @@ function main() {
 This type contains the information used to form network connections and sockets.
 
 </dd>
-<dt id="TCPsocket"><a name="TCPsocket"></a><pre><span class="Identifier">TCPsocket</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
+<dt id="TCPsocket"><a name="TCPsocket"></a><pre><span class="Identifier">TCPsocket</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 
 This is an opaque data type used for TCP connections. This is a pointer, and so it could be <cite>nil</cite> at times. <cite>nil</cite> would indicate no socket has been established.
 
 </dd>
-<dt id="UDPsocket"><a name="UDPsocket"></a><pre><span class="Identifier">UDPsocket</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
+<dt id="UDPsocket"><a name="UDPsocket"></a><pre><span class="Identifier">UDPsocket</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 
 This is an opaque data type used for UDP sockets. This is a pointer, and so it could be <cite>nil</cite> at times. <cite>nil</cite> would indicate no socket has been established.
 
 </dd>
-<dt id="UDPpacket"><a name="UDPpacket"></a><pre><span class="Identifier">UDPpacket</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="UDPpacket"><a name="UDPpacket"></a><pre><span class="Identifier">UDPpacket</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">channel</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>               <span class="Comment">## The src/dst channel of the packet</span>
   <span class="Identifier">data</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span>              <span class="Comment">## The packet data</span>
   <span class="Identifier">len</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>                   <span class="Comment">## The length of the packet data</span>
@@ -1424,13 +1457,13 @@ This is an opaque data type used for UDP sockets. This is a pointer, and so it c
 
 
 </dd>
-<dt id="SocketSet"><a name="SocketSet"></a><pre><span class="Identifier">SocketSet</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
+<dt id="SocketSet"><a name="SocketSet"></a><pre><span class="Identifier">SocketSet</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 
 This is an opaque data type used for socket sets. This is a pointer, and so it could be <cite>nil</cite> at times. <cite>nil</cite> would indicate no socket set has been created.
 
 </dd>
-<dt id="GenericSocket"><a name="GenericSocket"></a><pre><span class="Identifier">GenericSocket</span> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Identifier">GenericSocketObj</span></pre></dt>
+<dt id="GenericSocket"><a name="GenericSocket"></a><pre><span class="Identifier">GenericSocket</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Identifier">GenericSocketObj</span></pre></dt>
 <dd>
 <p>
 This data type is able to be used for both <tt class="docutils literal"><span class="pre">UDPsocket</span></tt> and <tt class="docutils literal"><span class="pre">TCPsocket</span></tt> types.</p>
@@ -1439,7 +1472,7 @@ This data type is able to be used for both <tt class="docutils literal"><span cl
 
 
 </dd>
-<dt id="GenericSocketObj"><a name="GenericSocketObj"></a><pre><span class="Identifier">GenericSocketObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="GenericSocketObj"><a name="GenericSocketObj"></a><pre><span class="Identifier">GenericSocketObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">ready</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
 </pre></dt>
 <dd>
@@ -1452,49 +1485,49 @@ Any network socket can be safely cast to this socket type
 <div class="section" id="10">
 <h1><a class="toc-backref" href="#10">Consts</a></h1>
 <dl class="item">
-<dt id="MAJOR_VERSION"><a name="MAJOR_VERSION"></a><pre><span class="Identifier">MAJOR_VERSION</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
+<dt id="MAJOR_VERSION"><a name="MAJOR_VERSION"></a><pre><span class="Identifier">MAJOR_VERSION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
 <dd>
 SDL_net library major number at compilation time
 
 </dd>
-<dt id="MINOR_VERSION"><a name="MINOR_VERSION"></a><pre><span class="Identifier">MINOR_VERSION</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
+<dt id="MINOR_VERSION"><a name="MINOR_VERSION"></a><pre><span class="Identifier">MINOR_VERSION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 SDL_net library minor number at compilation time
 
 </dd>
-<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
+<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
 SDL_net library patch level at compilation time
 
 </dd>
-<dt id="INADDR_ANY"><a name="INADDR_ANY"></a><pre><span class="Identifier">INADDR_ANY</span> <span class="Other">=</span> <span class="DecNumber">0x00000000</span></pre></dt>
+<dt id="INADDR_ANY"><a name="INADDR_ANY"></a><pre><span class="Identifier">INADDR_ANY</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000000</span></pre></dt>
 <dd>
 Used for listening on all network interfaces.
 
 </dd>
-<dt id="INADDR_NONE"><a name="INADDR_NONE"></a><pre><span class="Identifier">INADDR_NONE</span> <span class="Other">=</span> <span class="DecNumber">0x00000000FFFFFFFF'i64</span></pre></dt>
+<dt id="INADDR_NONE"><a name="INADDR_NONE"></a><pre><span class="Identifier">INADDR_NONE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000000FFFFFFFF'i64</span></pre></dt>
 <dd>
 Which has limited applications.
 
 </dd>
-<dt id="INADDR_LOOPBACK"><a name="INADDR_LOOPBACK"></a><pre><span class="Identifier">INADDR_LOOPBACK</span> <span class="Other">=</span> <span class="DecNumber">0x7F000001</span></pre></dt>
+<dt id="INADDR_LOOPBACK"><a name="INADDR_LOOPBACK"></a><pre><span class="Identifier">INADDR_LOOPBACK</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x7F000001</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="INADDR_BROADCAST"><a name="INADDR_BROADCAST"></a><pre><span class="Identifier">INADDR_BROADCAST</span> <span class="Other">=</span> <span class="DecNumber">0x00000000FFFFFFFF'i64</span></pre></dt>
+<dt id="INADDR_BROADCAST"><a name="INADDR_BROADCAST"></a><pre><span class="Identifier">INADDR_BROADCAST</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0x00000000FFFFFFFF'i64</span></pre></dt>
 <dd>
 
 Used as destination when sending a message to all clients on a subnet that allows broadcasts.
 
 </dd>
-<dt id="MAX_UDPCHANNELS"><a name="MAX_UDPCHANNELS"></a><pre><span class="Identifier">MAX_UDPCHANNELS</span> <span class="Other">=</span> <span class="DecNumber">32</span></pre></dt>
+<dt id="MAX_UDPCHANNELS"><a name="MAX_UDPCHANNELS"></a><pre><span class="Identifier">MAX_UDPCHANNELS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">32</span></pre></dt>
 <dd>
 
 The maximum channels on a a UDP socket
 
 </dd>
-<dt id="MAX_UDPADDRESSES"><a name="MAX_UDPADDRESSES"></a><pre><span class="Identifier">MAX_UDPADDRESSES</span> <span class="Other">=</span> <span class="DecNumber">4</span></pre></dt>
+<dt id="MAX_UDPADDRESSES"><a name="MAX_UDPADDRESSES"></a><pre><span class="Identifier">MAX_UDPADDRESSES</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">4</span></pre></dt>
 <dd>
 
 The maximum addresses bound to a single UDP socket channel
@@ -1505,13 +1538,13 @@ The maximum addresses bound to a single UDP socket channel
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="linkedVersion"><a name="linkedVersion,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">linkedVersion</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Version</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Linked_Version&quot;</span><span class="Other">,</span>
-                                <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="linkedVersion"><a name="linkedVersion,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">linkedVersion</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Version</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Linked_Version&quot;</span><span class="Other">,</span>
+                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 This procedure gets the version of the dynamically linked SDL_net library. It should NOT be used to fill a version structure, instead you should use the <tt class="docutils literal"><span class="pre">version()</span></tt> template.
 
 </dd>
-<dt id="init"><a name="init,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">init</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Init&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="init"><a name="init,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">init</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Init&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Initialize the network API.</p>
 <p>SDL must be initialized before calls to procedures in this library, because this library uses utility procedures from the SDL library.</p>
@@ -1519,14 +1552,14 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
 
 
 </dd>
-<dt id="quit"><a name="quit,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">quit</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Quit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="quit"><a name="quit,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">quit</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Quit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Shutdown and cleanup the network API.</p>
 <p>After calling this all sockets are closed, and the SDL_net procedures should not be used. You may, of course, use <tt class="docutils literal"><span class="pre">sdl_net.init()</span></tt> to use the functionality again.</p>
 
 
 </dd>
-<dt id="resolveHost"><a name="resolveHost,ptr.IPaddress,cstring,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">resolveHost</span><span class="Other">(</span><span class="Identifier">address</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">;</span> <span class="Identifier">host</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">port</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="resolveHost"><a name="resolveHost,ptr.IPaddress,cstring,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">resolveHost</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">address</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">;</span> <span class="Identifier">host</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">port</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_ResolveHost&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Resolve a host name and port to an IP address in network form.</p>
@@ -1551,7 +1584,7 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
 <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">resolveHost</span><span class="Punctuation">(</span><span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">ipaddress</span><span class="Punctuation">)</span><span class="Punctuation">,</span> <span class="StringLit">&quot;host.domain.ext&quot;</span><span class="Punctuation">,</span> <span class="DecNumber">1234</span><span class="Punctuation">)</span></pre>
 
 </dd>
-<dt id="resolveIP"><a name="resolveIP,ptr.IPaddress"></a><pre><span class="Keyword">proc</span> <span class="Identifier">resolveIP</span><span class="Other">(</span><span class="Identifier">address</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_ResolveIP&quot;</span><span class="Other">,</span>
+<dt id="resolveIP"><a name="resolveIP,ptr.IPaddress"></a><pre><span class="Keyword">proc</span> <span class="Identifier">resolveIP</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">address</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_ResolveIP&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Resolve an ip address to a host name in canonical form.</p>
@@ -1562,7 +1595,7 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
 
 
 </dd>
-<dt id="getLocalAddresses"><a name="getLocalAddresses,ptr.IPaddress,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getLocalAddresses</span><span class="Other">(</span><span class="Identifier">addresses</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">;</span> <span class="Identifier">maxcount</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="getLocalAddresses"><a name="getLocalAddresses,ptr.IPaddress,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getLocalAddresses</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">addresses</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">;</span> <span class="Identifier">maxcount</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_GetLocalAddresses&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the addresses of network interfaces on this system.</p>
@@ -1570,8 +1603,8 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
 
 
 </dd>
-<dt id="tcpOpen"><a name="tcpOpen,ptr.IPaddress"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpOpen</span><span class="Other">(</span><span class="Identifier">ip</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_Open&quot;</span><span class="Other">,</span>
-                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="tcpOpen"><a name="tcpOpen,ptr.IPaddress"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpOpen</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">ip</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_Open&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Open a TCP network socket.</p>
 <p><tt class="docutils literal"><span class="pre">ip</span></tt> This points to the <tt class="docutils literal"><span class="pre">IPaddress</span></tt> that contains the resolved IP address and port number to use.</p>
@@ -1604,7 +1637,7 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
   <span class="Identifier">quit</span><span class="Punctuation">(</span><span class="Identifier">QuitFailure</span><span class="Punctuation">)</span></pre>
 
 </dd>
-<dt id="tcpAccept"><a name="tcpAccept,TCPsocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpAccept</span><span class="Other">(</span><span class="Identifier">server</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_Accept&quot;</span><span class="Other">,</span>
+<dt id="tcpAccept"><a name="tcpAccept,TCPsocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpAccept</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">server</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_Accept&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Accept an incoming connection on the given <tt class="docutils literal"><span class="pre">server</span></tt> <tt class="docutils literal"><span class="pre">TCPsocket</span></tt>.</p>
@@ -1622,7 +1655,7 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
   <span class="Comment"># communicate over new_tcpsock</span></pre>
 
 </dd>
-<dt id="tcpGetPeerAddress"><a name="tcpGetPeerAddress,TCPsocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpGetPeerAddress</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="tcpGetPeerAddress"><a name="tcpGetPeerAddress,TCPsocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpGetPeerAddress</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_GetPeerAddress&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the IP address of the remote system associated with the socket.</p>
@@ -1641,7 +1674,7 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
   <span class="Comment"># print the info in IPaddress or something else...</span></pre>
 
 </dd>
-<dt id="tcpSend"><a name="tcpSend,TCPsocket,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpSend</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="tcpSend"><a name="tcpSend,TCPsocket,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpSend</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_Send&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Send <tt class="docutils literal"><span class="pre">len</span></tt> bytes of <tt class="docutils literal"><span class="pre">data</span></tt> over the non-server socket <tt class="docutils literal"><span class="pre">sock</span></tt>.</p>
@@ -1660,7 +1693,7 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
   <span class="Comment"># it may be ood to disconnect sock because it is likely invalid now</span></pre>
 
 </dd>
-<dt id="tcpRecv"><a name="tcpRecv,TCPsocket,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpRecv</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">maxlen</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="tcpRecv"><a name="tcpRecv,TCPsocket,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpRecv</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">maxlen</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_Recv&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Receive up to <tt class="docutils literal"><span class="pre">maxlen</span></tt> bytes of data over the non-server socket <tt class="docutils literal"><span class="pre">sock</span></tt>, and store them in the buffer pointed to by <tt class="docutils literal"><span class="pre">data</span></tt>.</p>
@@ -1686,8 +1719,8 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
 <span class="Identifier">echo</span> <span class="StringLit">&quot;Received: &quot;</span><span class="Punctuation">,</span> <span class="Identifier">msg</span></pre>
 
 </dd>
-<dt id="tcpClose"><a name="tcpClose,TCPsocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpClose</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_Close&quot;</span><span class="Other">,</span>
-                              <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="tcpClose"><a name="tcpClose,TCPsocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tcpClose</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_TCP_Close&quot;</span><span class="Other">,</span>
+                               <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Close a TCP network socket.</p>
 <p><tt class="docutils literal"><span class="pre">sock</span></tt> A valid <tt class="docutils literal"><span class="pre">TCPsocket</span></tt>. This can be a server or client type socket.</p>
@@ -1697,7 +1730,7 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
 
 
 </dd>
-<dt id="allocPacket"><a name="allocPacket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocPacket</span><span class="Other">(</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_AllocPacket&quot;</span><span class="Other">,</span>
+<dt id="allocPacket"><a name="allocPacket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocPacket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_AllocPacket&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Allocate a single UDP packet <tt class="docutils literal"><span class="pre">size</span></tt> bytes long.</p>
@@ -1716,7 +1749,7 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
   <span class="Comment"># sdl_net.freePacket this packet when finished with it</span></pre>
 
 </dd>
-<dt id="resizePacket"><a name="resizePacket,ptr.UDPpacket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">resizePacket</span><span class="Other">(</span><span class="Identifier">packet</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">;</span> <span class="Identifier">newsize</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="resizePacket"><a name="resizePacket,ptr.UDPpacket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">resizePacket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">packet</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">;</span> <span class="Identifier">newsize</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_ResizePacket&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Resize a single UDP packet <tt class="docutils literal"><span class="pre">size</span></tt> bytes long.</p>
@@ -1736,8 +1769,8 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
   <span class="Comment"># do stuff with the resized packet</span></pre>
 
 </dd>
-<dt id="freePacket"><a name="freePacket,ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freePacket</span><span class="Other">(</span><span class="Identifier">packet</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_FreePacket&quot;</span><span class="Other">,</span>
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="freePacket"><a name="freePacket,ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freePacket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">packet</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_FreePacket&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Free a single UDP packet.</p>
 <p><tt class="docutils literal"><span class="pre">packet</span></tt> A pointer to the <tt class="docutils literal"><span class="pre">UDPpacket</span></tt> to be freed from memory.</p>
@@ -1750,7 +1783,7 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
 <span class="Identifier">packet</span> <span class="Operator">=</span> <span class="Keyword">nil</span> <span class="Comment"># just to help you know that it is freed</span></pre>
 
 </dd>
-<dt id="allocPacketV"><a name="allocPacketV,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocPacketV</span><span class="Other">(</span><span class="Identifier">howmany</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="allocPacketV"><a name="allocPacketV,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocPacketV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">howmany</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_AllocPacketV&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Allocate a UDP packet vector (array of packets) of <tt class="docutils literal"><span class="pre">howmany</span></tt> packets, each <tt class="docutils literal"><span class="pre">size</span></tt> bytes long.</p>
@@ -1770,7 +1803,7 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
   <span class="Comment"># sdl_net.freePacketV this packet vector when finished with it</span></pre>
 
 </dd>
-<dt id="freePacketV"><a name="freePacketV,ptr.ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freePacketV</span><span class="Other">(</span><span class="Identifier">packetV</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_FreePacketV&quot;</span><span class="Other">,</span>
+<dt id="freePacketV"><a name="freePacketV,ptr.ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freePacketV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">packetV</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_FreePacketV&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Free a UDP packet vector (array of packets).</p>
@@ -1784,8 +1817,8 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
 <span class="Identifier">packetV</span> <span class="Operator">=</span> <span class="Keyword">nil</span> <span class="Comment"># just to help you know that it is freed</span></pre>
 
 </dd>
-<dt id="udpOpen"><a name="udpOpen,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpOpen</span><span class="Other">(</span><span class="Identifier">port</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Open&quot;</span><span class="Other">,</span>
-                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="udpOpen"><a name="udpOpen,uint16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpOpen</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">port</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Open&quot;</span><span class="Other">,</span>
+                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Open a UDP network socket.</p>
 <p><tt class="docutils literal"><span class="pre">port</span></tt> This is the port number (in native byte order) on which to receive UDP packets. Most servers will want to use a known port number here so that clients can easily communicate with the server. This can also be zero, which then opens an anonymous unused port number, to most likely be used to send UDP packets from. The <tt class="docutils literal"><span class="pre">port</span></tt> should be given in native byte order, but is used internally in network (big endian) byte order, in addresses, etc. This allows other systems to send to this socket via a known port.</p>
@@ -1808,13 +1841,13 @@ This procedure gets the version of the dynamically linked SDL_net library. It sh
   <span class="Identifier">quit</span><span class="Punctuation">(</span><span class="Identifier">QuitFailure</span><span class="Punctuation">)</span></pre>
 
 </dd>
-<dt id="udpSetPacketLoss"><a name="udpSetPacketLoss,UDPsocket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpSetPacketLoss</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">percent</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="udpSetPacketLoss"><a name="udpSetPacketLoss,UDPsocket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpSetPacketLoss</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">percent</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_SetPacketLoss&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Set the percentage of simulated packet loss for packets sent on the socket.
 
 </dd>
-<dt id="udpBind"><a name="udpBind,UDPsocket,cint,ptr.IPaddress"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpBind</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">address</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="udpBind"><a name="udpBind,UDPsocket,cint,ptr.IPaddress"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpBind</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">address</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Bind&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Bind the address <tt class="docutils literal"><span class="pre">address</span></tt> to the requested channel on the UDP socket.</p>
@@ -1834,7 +1867,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
   <span class="Comment"># do something because we failed to bind</span></pre>
 
 </dd>
-<dt id="udpUnbind"><a name="udpUnbind,UDPsocket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpUnbind</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Unbind&quot;</span><span class="Other">,</span>
+<dt id="udpUnbind"><a name="udpUnbind,UDPsocket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpUnbind</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Unbind&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Unbind all addresses from the given channel.</p>
@@ -1848,7 +1881,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
 <span class="Identifier">sdl_net</span><span class="Operator">.</span><span class="Identifier">udpUnbind</span><span class="Punctuation">(</span><span class="Identifier">udpsock</span><span class="Punctuation">,</span> <span class="DecNumber">0</span><span class="Punctuation">)</span></pre>
 
 </dd>
-<dt id="udpGetPeerAddress"><a name="udpGetPeerAddress,UDPsocket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpGetPeerAddress</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="udpGetPeerAddress"><a name="udpGetPeerAddress,UDPsocket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpGetPeerAddress</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">IPaddress</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_GetPeerAddress&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Get the primary IP address of the remote system associated with the <tt class="docutils literal"><span class="pre">socket</span></tt> and <tt class="docutils literal"><span class="pre">channel</span></tt>.</p>
@@ -1868,7 +1901,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
   <span class="Comment"># perhaps print out address.host and address.port</span></pre>
 
 </dd>
-<dt id="udpSendV"><a name="udpSendV,UDPsocket,ptr.ptr.UDPpacket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpSendV</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">packets</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">;</span> <span class="Identifier">npackets</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="udpSendV"><a name="udpSendV,UDPsocket,ptr.ptr.UDPpacket,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpSendV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">packets</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">;</span> <span class="Identifier">npackets</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_SendV&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Send a vector of packets to the the channels specified within the packet.</p>
@@ -1893,7 +1926,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
   <span class="Comment"># this may just be because no addresses are bound to the channels...</span></pre>
 
 </dd>
-<dt id="udpSend"><a name="udpSend,UDPsocket,cint,ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpSend</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">packet</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="udpSend"><a name="udpSend,UDPsocket,cint,ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpSend</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">packet</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Send&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Send a single <tt class="docutils literal"><span class="pre">packet</span></tt> to the specified <tt class="docutils literal"><span class="pre">channel</span></tt>.</p>
@@ -1932,7 +1965,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
   <span class="Comment"># this may just be because no addresses are bound to the channel...</span></pre>
 
 </dd>
-<dt id="udpRecvV"><a name="udpRecvV,UDPsocket,ptr.ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpRecvV</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">packets</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="udpRecvV"><a name="udpRecvV,UDPsocket,ptr.ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpRecvV</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">packets</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_RecvV&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Receive a vector of pending packets from the UDP socket.</p>
@@ -1958,7 +1991,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
   <span class="Comment"># do something with packetV[i]</span></pre>
 
 </dd>
-<dt id="udpRecv"><a name="udpRecv,UDPsocket,ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpRecv</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">packet</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="udpRecv"><a name="udpRecv,UDPsocket,ptr.UDPpacket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpRecv</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">;</span> <span class="Identifier">packet</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">UDPpacket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Recv&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Receive a single packet from the UDP socket.</p>
@@ -1981,8 +2014,8 @@ Set the percentage of simulated packet loss for packets sent on the socket.
   <span class="Comment"># do something with packet</span></pre>
 
 </dd>
-<dt id="udpClose"><a name="udpClose,UDPsocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpClose</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Close&quot;</span><span class="Other">,</span>
-                              <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="udpClose"><a name="udpClose,UDPsocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">udpClose</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_UDP_Close&quot;</span><span class="Other">,</span>
+                               <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Close a UDP network socket.</p>
 <p><tt class="docutils literal"><span class="pre">sock</span></tt> A valid <tt class="docutils literal"><span class="pre">UDPsocket</span></tt> to shutdown, close, and free.</p>
@@ -1995,7 +2028,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
               <span class="Comment"># UDPsocket is not valid anymore</span></pre>
 
 </dd>
-<dt id="allocSocketSet"><a name="allocSocketSet,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocSocketSet</span><span class="Other">(</span><span class="Identifier">maxsockets</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">SocketSet</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="allocSocketSet"><a name="allocSocketSet,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">allocSocketSet</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">maxsockets</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">SocketSet</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_AllocSocketSet&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Allocate a socket set for use with <tt class="docutils literal"><span class="pre">sdl_net.checkSockets()</span></tt>.</p>
@@ -2012,7 +2045,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
                     <span class="Comment"># but do what you want</span></pre>
 
 </dd>
-<dt id="addSocket"><a name="addSocket,SocketSet,GenericSocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">addSocket</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">GenericSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="addSocket"><a name="addSocket,SocketSet,GenericSocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">addSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">GenericSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_AddSocket&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Add a socket to a set of sockets to be checked for available data.</p>
@@ -2041,7 +2074,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
   <span class="Comment"># perhaps you need to restart the set and make it bigger...</span></pre>
 
 </dd>
-<dt id="delSocket"><a name="delSocket,SocketSet,GenericSocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">delSocket</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">GenericSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="delSocket"><a name="delSocket,SocketSet,GenericSocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">delSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">GenericSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_DelSocket&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Remove a socket from a set of sockets to be checked for available data.</p>
@@ -2069,7 +2102,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
   <span class="Comment"># perhaps the socket is not in the set</span></pre>
 
 </dd>
-<dt id="checkSockets"><a name="checkSockets,SocketSet,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">checkSockets</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">timeout</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt id="checkSockets"><a name="checkSockets,SocketSet,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">checkSockets</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">timeout</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_CheckSockets&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>This procedure checks to see if data is available for reading on the given set of sockets.</p>
@@ -2093,7 +2126,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
     <span class="Comment"># and handle the active ones.</span></pre>
 
 </dd>
-<dt id="socketReady"><a name="socketReady,GenericSocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">socketReady</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">GenericSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="socketReady"><a name="socketReady,GenericSocket"></a><pre><span class="Keyword">proc</span> <span class="Identifier">socketReady</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">GenericSocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">inline</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Check whether a socket has been marked as active.</p>
 <p><tt class="docutils literal"><span class="pre">sock</span></tt> The socket to check for activity. Both <tt class="docutils literal"><span class="pre">UDPsocket</span></tt> and <tt class="docutils literal"><span class="pre">TCPsocket</span></tt> can be used with this procedure.</p>
@@ -2135,8 +2168,8 @@ Set the percentage of simulated packet loss for packets sent on the socket.
     <span class="Comment"># process the packet.</span></pre>
 
 </dd>
-<dt id="freeSocketSet"><a name="freeSocketSet,SocketSet"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freeSocketSet</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_FreeSocketSet&quot;</span><span class="Other">,</span>
-                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="freeSocketSet"><a name="freeSocketSet,SocketSet"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freeSocketSet</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_FreeSocketSet&quot;</span><span class="Other">,</span>
+                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Free a set of sockets allocated by <tt class="docutils literal"><span class="pre">allocSocketSet()</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">set</span></tt> The socket set to free from memory.</p>
@@ -2150,19 +2183,19 @@ Set the percentage of simulated packet loss for packets sent on the socket.
 <span class="Identifier">set</span> <span class="Operator">=</span> <span class="Keyword">nil</span> <span class="Comment"># this helps us remember that this set is not allocated</span></pre>
 
 </dd>
-<dt id="setError"><a name="setError,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setError</span><span class="Other">(</span><span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_SetError&quot;</span><span class="Other">,</span>
-                           <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="setError"><a name="setError,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setError</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">fmt</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">varargs</span><span class="Other">,</span> <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_SetError&quot;</span><span class="Other">,</span>
+                            <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="getError"><a name="getError,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getError</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_GetError&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="getError"><a name="getError,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getError</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_GetError&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="write16"><a name="write16,uint16,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">write16</span><span class="Other">(</span><span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">area</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Write16&quot;</span><span class="Other">,</span>
-                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="write16"><a name="write16,uint16,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">write16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">area</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Write16&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Write a 16-bit value to network packet buffer.</p>
 <p><tt class="docutils literal"><span class="pre">value</span></tt> The 16bit number to put into the area buffer.</p>
@@ -2171,8 +2204,8 @@ Set the percentage of simulated packet loss for packets sent on the socket.
 
 
 </dd>
-<dt id="write32"><a name="write32,uint32,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">write32</span><span class="Other">(</span><span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">area</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Write32&quot;</span><span class="Other">,</span>
-                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="write32"><a name="write32,uint32,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">write32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">area</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Write32&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Write a 32-bit value to network packet buffer.</p>
 <p><tt class="docutils literal"><span class="pre">value</span></tt> The 32bit number to put into the area buffer.</p>
@@ -2181,8 +2214,8 @@ Set the percentage of simulated packet loss for packets sent on the socket.
 
 
 </dd>
-<dt id="read16"><a name="read16,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">read16</span><span class="Other">(</span><span class="Identifier">area</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Read16&quot;</span><span class="Other">,</span>
-                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="read16"><a name="read16,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">read16</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">area</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Read16&quot;</span><span class="Other">,</span>
+                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Read a 16-bit value from network packet buffer.</p>
 <p><tt class="docutils literal"><span class="pre">area</span></tt> The pointer into a data buffer, at which to get the number from.</p>
@@ -2190,8 +2223,8 @@ Set the percentage of simulated packet loss for packets sent on the socket.
 
 
 </dd>
-<dt id="read32"><a name="read32,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">read32</span><span class="Other">(</span><span class="Identifier">area</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Read32&quot;</span><span class="Other">,</span>
-                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="read32"><a name="read32,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">read32</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">area</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDLNet_Read32&quot;</span><span class="Other">,</span>
+                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_NET_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <p>Read a 32-bit value from network packet buffer.</p>
 <p><tt class="docutils literal"><span class="pre">area</span></tt> The pointer into a data buffer, at which to get the number from.</p>
@@ -2204,22 +2237,22 @@ Set the percentage of simulated packet loss for packets sent on the socket.
 <div class="section" id="18">
 <h1><a class="toc-backref" href="#18">Templates</a></h1>
 <dl class="item">
-<dt id="tcpAddSocket"><a name="tcpAddSocket.t,SocketSet,TCPsocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">tcpAddSocket</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<dt id="tcpAddSocket"><a name="tcpAddSocket.t,SocketSet,TCPsocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">tcpAddSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="udpAddSocket"><a name="udpAddSocket.t,SocketSet,UDPsocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">udpAddSocket</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<dt id="udpAddSocket"><a name="udpAddSocket.t,SocketSet,UDPsocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">udpAddSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="tcpDelSocket"><a name="tcpDelSocket.t,SocketSet,TCPsocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">tcpDelSocket</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<dt id="tcpDelSocket"><a name="tcpDelSocket.t,SocketSet,TCPsocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">tcpDelSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">TCPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="udpDelSocket"><a name="udpDelSocket.t,SocketSet,UDPsocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">udpDelSocket</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<dt id="udpDelSocket"><a name="udpDelSocket.t,SocketSet,UDPsocket"></a><pre><span class="Keyword">template</span> <span class="Identifier">udpDelSocket</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">set</span><span class="Other">:</span> <span class="Identifier">SocketSet</span><span class="Other">;</span> <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">UDPsocket</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
 <dd>
 
 
@@ -2234,7 +2267,7 @@ Set the percentage of simulated packet loss for packets sent on the socket.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-01-01 17:24:00 UTC</small>
+        <small>Made with Nim. Generated: 2018-03-03 12:31:11 UTC</small>
       </div>
     </div>
   </div>

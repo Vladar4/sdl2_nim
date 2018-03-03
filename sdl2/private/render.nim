@@ -1006,7 +1006,6 @@ proc renderGetMetalLayer*(renderer: Renderer): pointer {.
 
 proc renderGetMetalCommandEncoder*(renderer: Renderer): pointer {.
     cdecl, importc: "SDL_RenderGetMetalCommandEncoder", dynlib: SDL2_LIB.}
-  ##
   ##  Get the Metal command encoder for the current frame.
   ##
   ##  ``renderer`` The renderer to query.

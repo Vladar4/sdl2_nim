@@ -177,6 +177,11 @@ else:
 
 
   when defined(SDL_VIDEO_DRIVER_WINDOWS):
+    when not declared(HINSTANCE):
+      when declared(HINST):
+        type HINSTANCE = HINST
+      else:
+        type HINSTANCE = HANDLE
     type
       SysWMinfoWinObj* = object  ## when defined(SDL_VIDEO_DRIVER_WINDOWS)
         window*: HWND         ##  The window handle

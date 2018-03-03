@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA=="/>
 
 <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,600,900' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Lato:400,600,900' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
 <title>Module gamecontroller</title>
@@ -43,18 +45,19 @@ html {
 
 /* Where we want fancier font if available */
 h1, h2, h3, h4, h5, h6, p.module-desc, table.docinfo + blockquote p, table.docinfo blockquote p, h1 + blockquote p {
-  font-family: "Raleway", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important; }
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important; }
 
 h1.title {
   font-weight: 900; }
 
 body {
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
-  color: #666;
-  background-color: rgba(252, 248, 244, 0.75); }
+  color: #444;
+  letter-spacing: 0.15px;
+  background-color: rgba(252, 248, 244, 0.45); }
 
 /* Skeleton grid */
 .container {
@@ -170,8 +173,8 @@ cite {
   font-style: italic !important; }
 
 dt > pre {
-  border-color: rgba(0, 0, 0, 0.15);
-  background-color: transparent;
+  border-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.3);
   margin: 15px 0px 5px; }
 
 dd > pre {
@@ -187,6 +190,17 @@ dd > pre {
 .line-nums-table {
   width: 100%;
   table-layout: fixed; }
+
+/* Nim search input */
+div#searchInput {
+  margin-bottom: 8px;
+}
+div#searchInput input#searchInput {
+  width: 10em;
+}
+div.search-groupby {
+  margin-bottom: 8px;
+}
 
 table.line-nums-table {
   border-radius: 4px;
@@ -331,7 +345,7 @@ img {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
 
 p {
-  margin: 0 0 12px; }
+  margin: 0 0 8px; }
 
 small {
   font-size: 85%; }
@@ -351,7 +365,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: 600;
   line-height: 20px;
   color: inherit;
@@ -359,6 +373,7 @@ h6 {
 
 h1 {
   font-size: 2em;
+  font-weight: 400;
   padding-bottom: .15em;
   border-bottom: 1px solid #aaaaaa;
   margin-top: 1.0em;
@@ -489,13 +504,13 @@ pre {
   box-sizing: border-box;
   min-width: calc(100% - 19.5px);
   padding: 9.5px;
-  margin: 0.25em 10px 0.25em 10px;
-  font-size: 14px;
+  margin: 0.25em 10px 10px 10px;
+  font-size: 15px;
   line-height: 20px;
   white-space: pre !important;
   overflow-y: hidden;
   overflow-x: visible;
-  background-color: whitesmoke;
+  background-color: rgba(0, 0, 0, 0.01);
   border: 1px solid #cccccc;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -774,14 +789,14 @@ div.admonition p.admonition-title, div.hint p.admonition-title,
 div.important p.admonition-title, div.note p.admonition-title,
 div.tip p.admonition-title {
   font-weight: bold;
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif; }
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
 
 div.attention p.admonition-title, div.caution p.admonition-title,
 div.danger p.admonition-title, div.error p.admonition-title,
 div.warning p.admonition-title, .code .error {
   color: #b30000;
   font-weight: bold;
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif; }
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
 
 /* Uncomment (and remove this text!) to get reduced vertical space in
    compound paragraphs.
@@ -828,7 +843,7 @@ div.sidebar {
   clear: right; }
 
 div.sidebar p.rubric {
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-size: medium; }
 
 div.system-messages {
@@ -935,12 +950,12 @@ p.rubric {
   text-align: center; }
 
 p.sidebar-title {
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: larger; }
 
 p.sidebar-subtitle {
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: bold; }
 
 p.topic-title {
@@ -982,15 +997,15 @@ pre.code .inserted, code .inserted {
   background-color: #A3D289; }
 
 span.classifier {
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-style: oblique; }
 
 span.classifier-delimiter {
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: bold; }
 
 span.interpreted {
-  font-family: "Helvetica Neue", "HelveticaNeue", "Raleway", Helvetica, Arial, sans-serif; }
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
 
 span.option {
   white-space: nowrap; }
@@ -1013,7 +1028,7 @@ table.docinfo {
   margin: 0em;
   margin-top: 2em;
   margin-bottom: 2em;
-  font-family: "Raleway", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important;
   color: #444444; }
 
 table.docutils {
@@ -1143,21 +1158,26 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
-  div.pragma {
-    display: none;
-  }
-  span.pragmabegin {
-    cursor: pointer;
-  }
-  span.pragmaend {
-    cursor: pointer;
-  }
+div.pragma {
+  display: none;
+}
+span.pragmabegin {
+  cursor: pointer;
+}
+span.pragmaend {
+  cursor: pointer;
+}
 
 div.search_results {
   background-color: antiquewhite;
   margin: 3em;
   padding: 1em;
   border: 1px solid #4d4d4d;
+}
+
+div#global-links ul {
+  margin-left: 0;
+  list-style-type: none;
 }
 </style>
 
@@ -1196,7 +1216,11 @@ function main() {
     <h1 class="title">Module gamecontroller</h1>
     <div class="row">
   <div class="three columns">
-  <div>
+  <div id="global-links">
+    <ul class="simple">
+    </ul>
+  </div>
+  <div id="searchInput">
     Search: <input type="text" id="searchInput"
       onkeyup="search()" />
   </div>
@@ -1257,6 +1281,10 @@ function main() {
     title="gameControllerAddMappingsFromRW*(rw: ptr RWops; freerw: cint): cint"><wbr />game<wbr />Controller<wbr />Add<wbr />Mappings<wbr />From<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#gameControllerAddMapping,cstring"
     title="gameControllerAddMapping*(mappingString: cstring): cint"><wbr />game<wbr />Controller<wbr />Add<wbr />Mapping<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#gameControllerNumMappings,"
+    title="gameControllerNumMappings*(): cint"><wbr />game<wbr />Controller<wbr />Num<wbr />Mappings<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#gameControllerMappingForIndex,cint"
+    title="gameControllerMappingForIndex*(mapping_index: cint): cstring"><wbr />game<wbr />Controller<wbr />Mapping<wbr />For<wbr />Index<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#gameControllerMappingForGUID,JoystickGUID"
     title="gameControllerMappingForGUID*(guid: JoystickGUID): cstring"><wbr />game<wbr />Controller<wbr />Mapping<wbr />For<wbr />GUID<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#gameControllerMapping,GameController"
@@ -1271,6 +1299,12 @@ function main() {
     title="gameControllerFromInstanceID*(joyid: JoystickID): GameController"><wbr />game<wbr />Controller<wbr />From<wbr />Instance<wbr />ID<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#gameControllerName,GameController"
     title="gameControllerName*(gamecontroller: GameController): cstring"><wbr />game<wbr />Controller<wbr />Name<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#gameControllerGetVendor,GameController"
+    title="gameControllerGetVendor*(gamecontroller: GameController): uint16"><wbr />game<wbr />Controller<wbr />Get<wbr />Vendor<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#gameControllerGetProduct,GameController"
+    title="gameControllerGetProduct*(gamecontroller: GameController): uint16"><wbr />game<wbr />Controller<wbr />Get<wbr />Product<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#gameControllerGetProductVersion,GameController"
+    title="gameControllerGetProductVersion*(gamecontroller: GameController): uint16"><wbr />game<wbr />Controller<wbr />Get<wbr />Product<wbr />Version<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#gameControllerGetAttached,GameController"
     title="gameControllerGetAttached*(gamecontroller: GameController): bool"><wbr />game<wbr />Controller<wbr />Get<wbr />Attached<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#gameControllerGetJoystick,GameController"
@@ -1304,7 +1338,7 @@ function main() {
   </ul>
 </li>
 <li>
-  <a class="reference reference-toplevel" href="#17" id="67">Templates</a>
+  <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#gameControllerAddMappingsFromFile.t,untyped"
     title="gameControllerAddMappingsFromFile*(file: untyped): untyped"><wbr />game<wbr />Controller<wbr />Add<wbr />Mappings<wbr />From<wbr />File<span class="attachedType" style="visibility:hidden"></span></a></li>
@@ -1321,7 +1355,7 @@ function main() {
 <h1><a class="toc-backref" id="gamecontroller-nim" href="#gamecontroller-nim">gamecontroller.nim</a></h1><p>Include file for SDL game controller event handling.</p>
 <p>In order to use these procedures, <tt class="docutils literal"><span class="pre">init()</span></tt> must have been called with the <cite>INIT_GAMECONTROLLER</cite> flag.  This causes SDL to scan the system for game controllers, and load appropriate drivers.</p>
 <p>If you would like to receive controller updates while the application is in the background, you should set the following hint before calling <tt class="docutils literal"><span class="pre">init()</span></tt>: <cite>HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS</cite></p>
-To count the number of game controllers in the system for the following:<pre class = "listing"><span class="Keyword">var</span> <span class="Identifier">nJoysticks</span><span class="Punctuation">:</span> <span class="Identifier">int</span> <span class="Operator">=</span> <span class="Identifier">numJoysticks</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+To count the number of game controllers in the system for the following:<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">nJoysticks</span><span class="Punctuation">:</span> <span class="Identifier">int</span> <span class="Operator">=</span> <span class="Identifier">numJoysticks</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
 <span class="Keyword">var</span> <span class="Identifier">nGameControllers</span><span class="Punctuation">:</span> <span class="Identifier">int</span> <span class="Operator">=</span> <span class="DecNumber">0</span>
 <span class="Keyword">for</span> <span class="Identifier">i</span> <span class="Keyword">in</span> <span class="FloatNumber">0.</span><span class="Operator">.</span><span class="Identifier">nJoysticks</span><span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">:</span>
   <span class="Keyword">if</span> <span class="Identifier">isGameController</span><span class="Punctuation">(</span><span class="Identifier">i</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
@@ -1337,7 +1371,7 @@ To count the number of game controllers in the system for the following:<pre cla
 </p></blockquote>
 <p>Buttons can be used as a controller axis and vice versa.</p>
 <p>This string shows an example of a valid mapping for a controller</p>
-<p>&quot;341a3608000000000000504944564944,Afterglow PS3 Controller, a:b1,b:b2,y:b3,x:b0,start:b9,guide:b12,back:b8,dpup:h0.1, dpleft:h0.8,dpdown:h0.4,dpright:h0.2,leftshoulder:b4,rightshoulder:b5, leftstick:b10,rightstick:b11,leftx:a0,lefty:a1,rightx:a2,righty:a3, lefttrigger:b6,righttrigger:b7&quot;</p>
+<p>&quot;03000000341a00003608000000000000,PS3 Controller,a:b1,b:b2,y:b3,x:b0, start:b9,guide:b12,back:b8,dpup:h0.1,dpleft:h0.8,dpdown:h0.4,dpright:h0.2, leftshoulder:b4,rightshoulder:b5,leftstick:b10,rightstick:b11,leftx:a0, lefty:a1,rightx:a2,righty:a3,lefttrigger:b6,righttrigger:b7&quot;</p>
 </p>
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
@@ -1345,10 +1379,7 @@ To count the number of game controllers in the system for the following:<pre cla
 <dt id="GameController"><a name="GameController"></a><pre><span class="Identifier">GameController</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L36"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+The gamecontroller structure used to identify an SDL game controller.
 
 </dd>
 <dt id="GameControllerBindType"><a name="GameControllerBindType"></a><pre><span class="Identifier">GameControllerBindType</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
@@ -1356,10 +1387,6 @@ class="link-seesrc" target="_blank">Source</a>
   <span class="Identifier">CONTROLLER_BINDTYPE_AXIS</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BINDTYPE_HAT</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L38"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L38" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="GameControllerButtonBindValueHat"><a name="GameControllerButtonBindValueHat"></a><pre><span class="Identifier">GameControllerButtonBindValueHat</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1368,10 +1395,6 @@ class="link-seesrc" target="_blank">Source</a>
 </pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L44"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L44" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="GameControllerButtonBindValue"><a name="GameControllerButtonBindValue"></a><pre><span class="Identifier">GameControllerButtonBindValue</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">union</span></div><span class="Other pragmaend">.}</span>
@@ -1381,10 +1404,6 @@ class="link-seesrc" target="_blank">Source</a>
 </pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L48"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L48" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="GameControllerButtonBind"><a name="GameControllerButtonBind"></a><pre><span class="Identifier">GameControllerButtonBind</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
@@ -1395,10 +1414,6 @@ class="link-seesrc" target="_blank">Source</a>
 
 Get the SDL joystick layer binding 
 for this controller button/axis mapping
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L53"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L53" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="GameControllerAxis"><a name="GameControllerAxis"></a><pre><span class="Identifier">GameControllerAxis</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">uint8</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
@@ -1407,12 +1422,11 @@ class="link-seesrc" target="_blank">Source</a>
   <span class="Identifier">CONTROLLER_AXIS_TRIGGERRIGHT</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_MAX</span><span class="Other">,</span>
   <span class="Identifier">CONTROLLER_AXIS_INVALID</span> <span class="Other">=</span> <span class="Identifier">uint8</span><span class="Other">.</span><span class="Identifier">high</span></pre></dt>
 <dd>
+<p>
+The list of axes available from a controller.</p>
+<p>Thumbstick axis values range from <cite>JOYSTICK_AXIS_MIN</cite> to <cite>JOYSTICK_AXIS_MAX</cite>, and are centered within ~8000 of zero, though advanced UI will allow users to set or autodetect the dead zone, which varies between controllers.</p>
+<p>Trigger axis values range from <cite>0</cite> to <cite>JOYSTICK_AXIS_MAX</cite>.</p>
 
-The list of axes available from a controller
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L196"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L196" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="GameControllerButton"><a name="GameControllerButton"></a><pre><span class="Identifier">GameControllerButton</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">uint8</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
@@ -1427,10 +1441,6 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 The list of buttons available from a controller
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L229"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L229" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1446,10 +1456,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>If <tt class="docutils literal"><span class="pre">freerw</span></tt> is non-zero, the stream will be closed after being read.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> number of mappings added, <cite>-1</cite> on error</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L101"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L101" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerAddMapping"><a name="gameControllerAddMapping,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerAddMapping</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mappingString</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1458,10 +1464,21 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Add or update an existing mapping configuration.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite> if mapping is added, <cite>0</cite> if updated, <cite>-1</cite> on error.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L117"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L117" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<dt id="gameControllerNumMappings"><a name="gameControllerNumMappings,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerNumMappings</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerNumMappings&quot;</span><span class="Other">,</span>
+                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+<p>Get the number of mappings installed.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of mappings.</p>
+
+
+</dd>
+<dt id="gameControllerMappingForIndex"><a name="gameControllerMappingForIndex,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerMappingForIndex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mapping_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerMappingForIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+Get the mapping at a particular index.<blockquote><p><tt class="docutils literal"><span class="pre">Return</span></tt> the mapping string. Must be freed with <tt class="docutils literal"><span class="pre">free()</span></tt>. Returns <tt class="docutils literal"><span class="pre">nil</span></tt> if the index is out of range.</p></blockquote>
+
 
 </dd>
 <dt id="gameControllerMappingForGUID"><a name="gameControllerMappingForGUID,JoystickGUID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerMappingForGUID</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">guid</span><span class="Other">:</span> <span class="Identifier">JoystickGUID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1470,10 +1487,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Get a mapping string for a GUID.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the mapping string.  Must be freed with <tt class="docutils literal"><span class="pre">sdl.free()</span></tt>. Returns <cite>nil</cite> if no mapping is available</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L123"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L123" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerMapping"><a name="gameControllerMapping,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerMapping</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1482,20 +1495,12 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Get a mapping string for an open GameController.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the mapping string.  Must be freed with <tt class="docutils literal"><span class="pre">sdl.free()</span></tt>. Returns <cite>nil</cite> if no mapping is available</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L130"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L130" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="isGameController"><a name="isGameController,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isGameController</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_IsGameController&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Is the joystick on this index supported by the game controller interface?
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L137"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L137" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerNameForIndex"><a name="gameControllerNameForIndex,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerNameForIndex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1504,10 +1509,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Get the implementation dependent name of a game controller.</p>
 <p>This can be called before any controllers are opened. If no name can be found, this procedure returns <cite>nil</cite>.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L141"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L141" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerOpen"><a name="gameControllerOpen,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerOpen</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GameController</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1518,50 +1519,48 @@ class="link-seesrc" target="_blank">Source</a>
 <p>This index is not the value which will identify this controller in future controller events. The joystick's instance id (<tt class="docutils literal"><span class="pre">JoystickID</span></tt>) will be used there instead.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> a controller identifier, or <cite>nil</cite> if an error occurred.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L148"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L148" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerFromInstanceID"><a name="gameControllerFromInstanceID,JoystickID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerFromInstanceID</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joyid</span><span class="Other">:</span> <span class="Identifier">JoystickID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GameController</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerFromInstanceID&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <tt class="docutils literal"><span class="pre">Return</span></tt> the <tt class="docutils literal"><span class="pre">GameController</span></tt> associated with an instance id.
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L161"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L161" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerName"><a name="gameControllerName,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerName&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <tt class="docutils literal"><span class="pre">Return</span></tt> the name for this currently opened controller.
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L165"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L165" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<dt id="gameControllerGetVendor"><a name="gameControllerGetVendor,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetVendor</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetVendor&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+<tt class="docutils literal"><span class="pre">Return</span></tt> the USB vendor ID of an opened controller, if available. If the vendor ID isn't available this function returns <cite>0</cite>.
+
+</dd>
+<dt id="gameControllerGetProduct"><a name="gameControllerGetProduct,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetProduct</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetProduct&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+<tt class="docutils literal"><span class="pre">Return</span></tt> the USB product ID of an opened controller, if available. If the product ID isn't available this function returns <cite>0</cite>.
+
+</dd>
+<dt id="gameControllerGetProductVersion"><a name="gameControllerGetProductVersion,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetProductVersion</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span class="Other pragmabegin">{.</span><div class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetProductVersion&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dd>
+<tt class="docutils literal"><span class="pre">Return</span></tt> the product version of an opened controller, if available. If the product version isn't available this function returns <cite>0</cite>.
 
 </dd>
 <dt id="gameControllerGetAttached"><a name="gameControllerGetAttached,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetAttached</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetAttached&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 <tt class="docutils literal"><span class="pre">Returns</span></tt> <cite>true</cite> if the controller has been opened and currently connected, or <cite>false</cite> if it has not.
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L169"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L169" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerGetJoystick"><a name="gameControllerGetJoystick,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetJoystick</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Joystick</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetJoystick&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the underlying joystick object used by a controller.
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L174"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L174" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerEventState"><a name="gameControllerEventState,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerEventState</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">state</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
@@ -1571,10 +1570,6 @@ class="link-seesrc" target="_blank">Source</a>
 <p>If controller events are disabled, you must call <tt class="docutils literal"><span class="pre">gameControllerUpdate()</span></tt> yourself and check the state of the controller when you want controller information.</p>
 <p>The state can be one of <cite>QUERY</cite>, <cite>ENABLE</cite> or <cite>IGNORE</cite>.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L178"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L178" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerUpdate"><a name="gameControllerUpdate,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerUpdate</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerUpdate&quot;</span><span class="Other">,</span>
@@ -1583,30 +1578,18 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Update the current state of the open game controllers.</p>
 <p>This is called automatically by the event loop if any game controller events are enabled.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L188"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L188" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerGetAxisFromString"><a name="gameControllerGetAxisFromString,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetAxisFromString</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">pchString</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GameControllerAxis</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetAxisFromString&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Turn this string into a axis mapping.
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L204"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L204" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerGetStringForAxis"><a name="gameControllerGetStringForAxis,GameControllerAxis"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetStringForAxis</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">GameControllerAxis</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetStringForAxis&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Turn this axis enum into a string mapping.
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L208"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L208" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerGetBindForAxis"><a name="gameControllerGetBindForAxis,GameController,GameControllerAxis"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetBindForAxis</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">;</span>
@@ -1614,10 +1597,6 @@ class="link-seesrc" target="_blank">Source</a>
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetBindForAxis&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the SDL joystick layer binding for this controller button mapping.
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L212"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L212" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerGetAxis"><a name="gameControllerGetAxis,GameController,GameControllerAxis"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetAxis</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">;</span>
@@ -1628,30 +1607,18 @@ class="link-seesrc" target="_blank">Source</a>
 <p>The state is a value ranging from <cite>-32768</cite> to <cite>32767</cite> (except for the triggers, which range from <cite>0</cite> to <cite>32767</cite>.</p>
 <p>The axis indices start at index <cite>0</cite>.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L218"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L218" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerGetButtonFromString"><a name="gameControllerGetButtonFromString,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetButtonFromString</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">pchString</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">GameControllerButton</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetButtonFromString&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Turn this string into a button mapping.
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L243"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L243" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerGetStringForButton"><a name="gameControllerGetStringForButton,GameControllerButton"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetStringForButton</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">button</span><span class="Other">:</span> <span class="Identifier">GameControllerButton</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetStringForButton&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Turn this button enum into a string mapping.
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L248"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L248" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerGetBindForButton"><a name="gameControllerGetBindForButton,GameController,GameControllerButton"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetBindForButton</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">;</span>
@@ -1659,10 +1626,6 @@ class="link-seesrc" target="_blank">Source</a>
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetBindForButton&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Get the SDL joystick layer binding for this controller button mapping.
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L252"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L252" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerGetButton"><a name="gameControllerGetButton,GameController,GameControllerButton"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetButton</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">;</span>
@@ -1672,36 +1635,24 @@ class="link-seesrc" target="_blank">Source</a>
 <p>Get the current state of a button on a game controller.</p>
 <p>The button indices start at index <cite>0</cite>.</p>
 
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L258"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L258" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <dt id="gameControllerClose"><a name="gameControllerClose,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerClose</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <span class="Identifier">GameController</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerClose&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
 <dd>
 Close a controller previously opened with <tt class="docutils literal"><span class="pre">gameControllerOpen()</span></tt>.
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L265"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L265" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
 </dl></div>
-<div class="section" id="17">
-<h1><a class="toc-backref" href="#17">Templates</a></h1>
+<div class="section" id="18">
+<h1><a class="toc-backref" href="#18">Templates</a></h1>
 <dl class="item">
 <dt id="gameControllerAddMappingsFromFile"><a name="gameControllerAddMappingsFromFile.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">gameControllerAddMappingsFromFile</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 Load a set of mappings from a file, 
 filtered by the current <tt class="docutils literal"><span class="pre">getPlatform()</span></tt>.
-&nbsp;&nbsp;<a
-href="/tree/master/gamecontroller.nim#L112"
-class="link-seesrc" target="_blank">Source</a>
-<a href="/edit/devel/gamecontroller.nim#L112" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -1714,7 +1665,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-03-18 21:28:16 UTC</small>
+        <small>Made with Nim. Generated: 2018-03-03 12:30:27 UTC</small>
       </div>
     </div>
   </div>
