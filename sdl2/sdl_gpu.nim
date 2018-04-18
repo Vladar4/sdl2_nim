@@ -151,7 +151,24 @@ type
     renderer*: RendererKind
     majorVersion*: cint
     minorVersion*: cint
-
+  
+  ComparisonEnum* {.size: sizeof(cint).} = enum ##\
+    ## Comparison operations (for depth testing)
+    ##
+    ## Values chosen for direct OpenGL compatibility.
+    ##
+    ## See also:
+    ##
+    ## ``setDepthFunction()``
+    NEVER    = 0x0200
+    LESS     = 0x0201
+    EQUAL    = 0x0202
+    LEQUAL   = 0x0203
+    GREATER  = 0x0204
+    NOTEQUAL = 0x0205
+    GEQUAL   = 0x0206
+    ALWAYS   = 0x0207
+  
   BlendFunc* {.size: sizeof(cint).} = enum  ##  \
     ##  Blend component functions.
     ##
@@ -419,7 +436,16 @@ type
     data*: pointer
     refcount*: cint
     isAlias*: bool
-
+  
+  TextureHandle* {.importc: "uintptr_t", nodecl.} = pointer  ##  \
+    ##  A backend-neutral type that is intended to hold a backend-specific handle/pointer to a texture.
+    ##
+    ##  See also:
+    ##
+    ##  ``createImageUsingTexture()``
+    ##
+    ##  ``getTextureHandle()``
+  
   Camera* = object  ##  \
     ##  Camera object that determines viewing transform.
     ##
@@ -527,6 +553,7 @@ type
     useCamera*: bool
     useDepthTest*: bool
     useDepthWrite*: bool
+    depthFunction*: ComparisonEnum
 
     context*: Context ##  Renderer context data.
       ## ``nil`` if the target does not represent a window or rendering context.
@@ -1170,6 +1197,10 @@ proc setDepthWrite*(target: Target, enable: bool) {.
   ##  Enables or disables writing the depth (effective view z-coordinate) of new pixels to the depth buffer.
   ##  Enabled by default, but you must call setDepthTest() to use it.
 
+proc setDepthFunction*(target: Target; compareOperation: ComparisonEnum) {.
+    cdecl, importc: "GPU_SetDepthFunction", dynlib: SDL2_GPU_LIB.}
+  ##  Sets the operation to perform when depth testing.
+
 proc getPixel*(target: Target; x, y: int16): Color {.
     cdecl, importc: "GPU_GetPixel", dynlib: SDL2_GPU_LIB.}
   ##  ``Return`` the RGBA color of a pixel.
@@ -1282,7 +1313,7 @@ proc createImage*(w, h: uint16; format: Format): Image {.
   ##
   ##  ``format`` Format of color channels.
 
-proc createImageUsingTexture*(handle: uint32; takeOwnership: bool): Image {.
+proc createImageUsingTexture*(handle: TextureHandle; takeOwnership: bool): Image {.
     cdecl, importc: "GPU_CreateImageUsingTexture", dynlib: SDL2_GPU_LIB.}
   ##  Create a new image that uses the given native texture handle
   ##  as the image texture.
@@ -1442,6 +1473,11 @@ proc setSnapMode*(image: Image; mode: Snap) {.
 proc setWrapMode*(image: Image; wrapModeX: Wrap; wrapModeY: Wrap) {.
     cdecl, importc: "GPU_SetWrapMode", dynlib: SDL2_GPU_LIB.}
   ##  Sets the image wrapping mode, if supported by the renderer.
+
+proc getTextureHandle*(image: Image):TextureHandle {.
+    cdecl, importc: "GPU_GetTextureHandle", dynlib: SDL2_GPU_LIB.}
+  ##  Returns the backend-specific texture handle associated with the given image.
+  ##  Note that SDL_gpu will be unaware of changes made to the texture.
 
 # End of ImageControls
 
@@ -2203,6 +2239,23 @@ proc polygon*(
   ##  as interlaced x and y coords, e.g. [x1, y1, x2, y2, ...]
   ##
   ##  ``color`` The color of the shape to render.
+
+proc polyline*(target: Target; numVertices: cuint; vertices: ptr cfloat;
+               color: Color; closeLoop: bool) {.
+    cdecl, importc: "GPU_Polyline", dynlib: SDL2_GPU_LIB.}
+##  Renders a colored sequence of line segments.
+##
+##  ``target`` The destination render target
+##
+##  ``num_vertices`` Number of vertices (x and y pairs)
+##
+##  ``vertices`` An array of vertex positions stored
+##  as interlaced x and y coords, e.g. [x1, y1, x2, y2, ...]
+##
+##  ``color`` The color of the shape to render
+##
+##  ``close_loop`` Make a closed polygon by drawing a
+##   line at the end back to the start point
 
 proc polygonFilled*(target: Target; numVertices: cuint; vertices: ptr cfloat;
                    color: Color) {.
