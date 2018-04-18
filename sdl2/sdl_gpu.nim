@@ -437,7 +437,7 @@ type
     refcount*: cint
     isAlias*: bool
   
-  TextureHandle* {.importc: "uintptr_t", nodecl.} = pointer  ##  \
+  TextureHandle* {.importc: "uintptr_t", header: "<stdint.h>".} = distinct pointer  ##  \
     ##  A backend-neutral type that is intended to hold a backend-specific handle/pointer to a texture.
     ##
     ##  See also:
