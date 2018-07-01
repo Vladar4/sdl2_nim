@@ -6,6 +6,7 @@ sdl2_nim is a wrapper of the SDL 2 library for the Nim language.
 * sdl2_nim docs online: https://vladar4.github.io/sdl2_nim/
 * SDL homepage: http://www.libsdl.org/
 * Nim homepage: http://nim-lang.org/
+* [Other useful links](LINKS.md)
 
 You need to have SDL 2 dynamic libraries installed on your system.
 
