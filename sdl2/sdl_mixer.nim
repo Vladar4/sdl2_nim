@@ -72,7 +72,7 @@ import
 const
   MAJOR_VERSION* = 2
   MINOR_VERSION* = 0
-  PATCHLEVEL* = 2
+  PATCHLEVEL* = 4
   COMPILEDVERSION* = versionNum(MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL) ##  \
     ##  This is the version number const for the current SDL_mixer version.
 
@@ -89,14 +89,16 @@ proc linkedVersion*(): ptr Version {.
 
 # InitFlags
 const
-  INIT_FLAC* = 0x00000001 ##  (.flac) requiring the FLAC library on system - \
+  INIT_FLAC*  = 0x00000001 ##  (.flac) requiring the FLAC library on system - \
     ##  also any command-line player, which is not mixed by SDL_mixer
-  INIT_MOD* = 0x00000002  ##  (.mod .xm .s3m .669 .it .med and more) \
+  INIT_MOD*   = 0x00000002  ##  (.mod .xm .s3m .669 .it .med and more) \
     ##  requiring libmikmod on system
   INIT_MODPLUG* {.deprecated.} = 0x00000004
-  INIT_MP3* = 0x00000008  ##  (.mp3) requiring SMPEG or MAD library on system
-  INIT_OGG* = 0x00000010  ##  (.ogg) requiring ogg/vorbis libraries on system
-  INIT_MID* = 0x00000020
+  INIT_MP3*   = 0x00000008  ##  (.mp3) requiring SMPEG or MAD library on system
+  INIT_OGG*   = 0x00000010  ##  (.ogg) requiring ogg/vorbis libraries on system
+  INIT_MID*   = 0x00000020
+  INIT_OPUS*  = 0x00000040
+
 
 proc init*(flags: cint): cint {.
     cdecl, importc: "Mix_Init", dynlib: SDL2_MIX_LIB.}
@@ -214,7 +216,8 @@ type
     MUS_MP3,
     MUS_MP3_MAD_UNUSED,
     MUS_FLAC,
-    MUS_MODPLUG_UNUSED
+    MUS_MODPLUG_UNUSED,
+    MUS_OPUS
 
 type
   Music* = pointer ##  \
