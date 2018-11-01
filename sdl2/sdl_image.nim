@@ -33,7 +33,7 @@ import
 const
   MAJOR_VERSION* = 2
   MINOR_VERSION* = 0
-  PATCHLEVEL* = 2
+  PATCHLEVEL* = 4
   COMPILEDVERSION* = versionNum(MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL) ##  \
     ##  This is the version number const for the current SDL_image version.
 
