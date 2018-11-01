@@ -118,9 +118,11 @@ const
   AUDIO_ALLOW_FREQUENCY_CHANGE* = 0x00000001
   AUDIO_ALLOW_FORMAT_CHANGE*    = 0x00000002
   AUDIO_ALLOW_CHANNELS_CHANGE*  = 0x00000004
+  AUDIO_ALLOW_SAMPLES_CHANGE*   = 0x00000008
   AUDIO_ALLOW_ANY_CHANGE*       = (AUDIO_ALLOW_FREQUENCY_CHANGE or
                                    AUDIO_ALLOW_FORMAT_CHANGE or
-                                   AUDIO_ALLOW_CHANNELS_CHANGE)
+                                   AUDIO_ALLOW_CHANNELS_CHANGE or
+                                   AUDIO_ALLOW_SAMPLES_CHANGE)
 
 # Audio flags
 

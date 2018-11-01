@@ -257,6 +257,14 @@ const
     ##  so system shortcuts still work.
 
 const
+  HINT_MOUSE_DOUBLE_CLICK_TIME* = "SDL_MOUSE_DOUBLE_CLICK_TIME" ##  \
+    ##  A variable setting the double click time, in milliseconds.
+
+const
+  HINT_MOUSE_DOUBLE_CLICK_RADIUS* = "SDL_MOUSE_DOUBLE_CLICK_RADIUS" ##  \
+    ##  A variable setting the double click radius, in pixels.
+
+const
   HINT_MOUSE_NORMAL_SPEED_SCALE* = "SDL_MOUSE_NORMAL_SPEED_SCALE" ##  \
     ##  A variable setting the speed scale for mouse motion, in floating point,
     ##  when the mouse is not in relative mode.
@@ -322,7 +330,7 @@ const
 
 const
   HINT_ORIENTATIONS* = "SDL_IOS_ORIENTATIONS" ##  \
-    ##  A variable controlling which orientations are allowed on iOS.
+    ##  A variable controlling which orientations are allowed on iOS/Android.
     ##
     ##  In some circumstances it is necessary to be able to explicitly control
     ##  which UI orientations are allowed.
@@ -470,6 +478,89 @@ const
     ##  The default value is "0".  This hint may be set at any time.
 
 const
+  HINT_JOYSTICK_HIDAPI* = "SDL_JOYSTICK_HIDAPI" ##  \
+    ##  A variable controlling whether the HIDAPI joystick drivers
+    ##  should be used.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - HIDAPI drivers are not used
+    ##  * "1"       - HIDAPI drivers are used (the default)
+    ##
+    ##  This variable is the default for all drivers,
+    ##  but can be overridden by the hints for specific drivers below.
+
+const
+  HINT_JOYSTICK_HIDAPI_PS4* = "SDL_JOYSTICK_HIDAPI_PS4" ##  \
+    ##  A variable controlling whether the HIDAPI driver
+    ##  for PS4 controllers should be used.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - HIDAPI driver is not used
+    ##  * "1"       - HIDAPI driver is used
+    ##
+    ##  The default is the value of `HINT_JOYSTICK_HIDAPI`.
+
+const
+  HINT_JOYSTICK_HIDAPI_PS4_RUMBLE* = "SDL_JOYSTICK_HIDAPI_PS4_RUMBLE" ##  \
+    ##  A variable controlling whether extended input reports should be used
+    ##  for PS4 controllers when using the HIDAPI driver.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - extended reports are not enabled (the default)
+    ##  * "1"       - extended reports
+    ##
+    ##  Extended input reports allow rumble on Bluetooth PS4 controllers, but
+    ##  break DirectInput handling for applications that don't use SDL.
+    ##
+    ##  Once extended reports are enabled, they can not be disabled without
+    ##  power cycling the controller.
+
+const
+  HINT_JOYSTICK_HIDAPI_STEAM* = "SDL_JOYSTICK_HIDAPI_STEAM" ##  \
+    ##  A variable controlling whether the HIDAPI driver
+    ##  for Steam Controllers should be used.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - HIDAPI driver is not used
+    ##  * "1"       - HIDAPI driver is used
+    ##
+    ##  The default is the value of `HINT_JOYSTICK_HIDAPI`.
+
+const
+  HINT_JOYSTICK_HIDAPI_SWITCH* = "SDL_JOYSTICK_HIDAPI_SWITCH" ##  \
+    ##  A variable controlling whether the HIDAPI driver
+    ##  for Nintendo Switch controllers should be used.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - HIDAPI driver is not used
+    ##  * "1"       - HIDAPI driver is used
+    ##
+    ##  The default is the value of `HINT_JOYSTICK_HIDAPI`.
+
+const
+  HINT_JOYSTICK_HIDAPI_XBOX* = "SDL_JOYSTICK_HIDAPI_XBOX" ##  \
+    ##  A variable controlling whether the HIDAPI driver
+    ##  for XBox controllers should be used.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - HIDAPI driver is not used
+    ##  * "1"       - HIDAPI driver is used
+    ##
+    ##  The default is the value of `HINT_JOYSTICK_HIDAPI`.
+
+const
+  HINT_ENABLE_STEAM_CONTROLLERS* = "SDL_ENABLE_STEAM_CONTROLLERS" ##  \
+    ##  A variable that controls whether Steam Controllers should be exposed
+    ##  using the ``sdl.Joystick`` and game controller APIs.
+    ##
+    ##  The variable can be set to the following values:
+    ##  * "0"       - Do not scan for Steam Controllers
+    ##  * "1"       - Scan for Steam Controllers (the default)
+    ##
+    ##  The default value is "1".
+    ##  This hint must be set before initializing the joystick subsystem.
+
+const
   HINT_ALLOW_TOPMOST* = "SDL_ALLOW_TOPMOST" ##  \
     ##  If set to `0` then never set the top most bit on a ``Window``,
     ##  even if the video mode expects it.
@@ -545,6 +636,10 @@ const
     ##
     ##  Support for this hint is currently available only in the pthread,
     ##  Windows, and PSP backend.
+    ##
+    ##  ``NOTE:`` Instead of this hint, in 2.0.9 and later you can use
+    ##  ``sdl.CreateThreadWithStackSize()``. This hint only works with
+    ##  the classic ``sdl.CreateThread()``.
 
 const
   HINT_VIDEO_HIGHDPI_DISABLED* = "SDL_VIDEO_HIGHDPI_DISABLED" ##  \
@@ -790,6 +885,27 @@ const
     ##    This is the behaviour of SDL <= 2.0.3. (default)
     ##  * "1"       - Mouse events will be handled separately
     ##    from pure touch events.
+    ##
+    ##  The value of this hint is used at runtime,
+    ##  so it can be changed at any time.
+
+const
+  HINT_ANDROID_TRAP_BACK_BUTTON* = "SDL_ANDROID_TRAP_BACK_BUTTON" ##  \
+    ##  A variable to control whether we trap the Android back button
+    ##  to handle it manually.
+    ##
+    ##  This is necessary for the right mouse button to work on some
+    ##  Android devices, or to be able to trap the back button for use
+    ##  in your code reliably.  If set to `true`, the back button will
+    ##  show up as an `sdl.KEYDOWN` / `sdl.KEYUP` pair with a keycode
+    ##  of `sdl.SCANCODE_AC_BACK`.
+    ##
+    ##  The variable can be set to the following values:
+    ##  * "0"       - Back button will be handled as usual for system.
+    ##  (default)
+    ##  * "1"       - Back button will be trapped, allowing you to handle
+    ##  the key press manually.  (This will also let right mouse click work
+    ##  on systems where the right mouse button functions as back.)
     ##
     ##  The value of this hint is used at runtime,
     ##  so it can be changed at any time.

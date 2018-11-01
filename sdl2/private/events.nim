@@ -80,6 +80,9 @@ type
       ##
       ##  Called on Android ``in onResume()``
 
+    # Display events
+    DISPLAYEVENT = 0x00000150,##  Display state change
+
     # Window events
 
     WINDOWEVENT = 0x00000200, ##  Window state change
@@ -149,6 +152,9 @@ type
     AUDIODEVICEADDED = 0x1100,  ##  A new audio device is available
     AUDIODEVICEREMOVED,         ##  An audio device has been removed
 
+    # Sensor events
+    SENSORUPDATE = 0x1200,  ##  A sensor was updated
+
     # Render events
 
     RENDER_TARGETS_RESET = 0x00002000,  ##  The render targets have been reset \
@@ -168,6 +174,18 @@ type
     ##  Fields shared by every event
     kind*: EventKind
     timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
+
+type
+  DisplayEventObj* = object ##  \
+    ##  Display state change event data (`event.display.*`)
+    kind*: EventKind        ##  `DISPLAYEVENT`
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
+    display*: uint32        ##  The associated display index
+    event*: uint8           ##  DisplayEventID
+    padding1*: uint8
+    padding2*: uint8
+    padding3*: uint8
+    data1*: int32           ##  Event dependent data
 
 type
   WindowEventObj* = object ##  \
@@ -458,6 +476,15 @@ type
     windowID: uint32  ##  The window that was dropped on, if any
 
 type
+  SensorEventObj* = object ## \
+    ##  Sensor event structure (`event.sensor.*`)
+    kind*: EventKind        ##  `SENSORUPDATE`
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
+    which*: int32           ##  The instance ID of the sensor
+    data*: array[6, cfloat] ##  Up to 6 values from the sensor -  \
+      ##  additional values can be queried using ``sensorGetData()``
+
+type
   QuitEventObj* = object ##  \
     ##  The "quit requested" event
     kind*: EventKind        ## `QUIT`
@@ -500,6 +527,7 @@ type
     ##  General event structure
     kind*: EventKind                    ## Event type, shared with all events
     common*: CommonEventObj             ##  Common event data
+    display*: DisplayEventObj           ##  Display event data
     window*: WindowEventObj             ##  Window event data
     key*: KeyboardEventObj              ##  Keyboard event data
     edit*: TextEditingEventObj          ##  Text editing event data
@@ -516,6 +544,7 @@ type
     cbutton*: ControllerButtonEventObj  ##  Game Controller button event data
     cdevice*: ControllerDeviceEventObj  ##  Game Controller device event data
     adevice*: AudioDeviceEventObj       ##  Audio device event data
+    sensor*: SensorEventObj             ##  Sensor event data
     quit*: QuitEventObj                 ##  Quit request event data
     user*: UserEventObj                 ##  Custom event data
     syswm*: SysWMEventObj               ##  System dependent window event data

@@ -226,6 +226,13 @@ proc setColorKey*(surface: Surface; flag: cint; key: uint32): cint {.
   ##
   ##  You can pass `RLEACCEL` to enable RLE accelerated blits.
 
+proc hasColorKey*(surface: Surface): bool {.
+    cdecl, importc: "SDL_HasColorKey", dynlib: SDL2_LIB.}
+  ##  Whether the surface has a color key.
+  ##
+  ##  ``Return`` `true` if the surface has a color key,
+  ##  or `false` if the surface is `nil` or has no color key.
+
 proc getColorKey*(surface: Surface; key: ptr uint32): cint {.
     cdecl, importc: "SDL_GetColorKey", dynlib: SDL2_LIB.}
   ##  Gets the color key (transparent pixel) in a blittable surface.

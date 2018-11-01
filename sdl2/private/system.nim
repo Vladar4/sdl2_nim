@@ -60,7 +60,17 @@ when defined windows:
     ##  to get the objects required to create a DX10 or DX11 device and swap
     ##  chain.
 
-# Currently disabled
+when (defined linux) or (hostOS == "linux"):
+
+  proc linuxSetThreadPriority*(threadID: int64; priority: cint): cint {.
+    cdecl, importc: "SDL_LinuxSetThreadPriority", dynlib: SDL2_LIB.}
+  ##  Sets the UNIX nice value for a thread,
+  ##  using ``setpriority()`` if possible, and RealtimeKit if available.
+  ##
+  ##  ``Return`` `0` on success, or `-1` on error.
+
+
+#FIXME: Currently disabled, needs testing
 when false:
 
   # Platform specific procedures for iOS
@@ -102,13 +112,28 @@ when false:
       ##  See the official Android developer guide for more information:
       ##  http://developer.android.com/guide/topics/data/data-storage.html
 
-    proc isAndroidTV(): bool {.
+    proc isAndroidTV*(): bool {.
         cdecl, importc: "SDL_IsAndroidTV", dynlib: SDL2_LIB.}
       ##  ``Return`` `true` if the application is running on Android TV.
 
+    proc isChromebook*(): bool {.
+        cdecl, importc: "SDL_IsChromebook", dynlib: SDL2_LIB.}
+      ##  ``Return`` `true` if the application is running on a Chromebook.
+
+    proc isDeXMode*(): bool {.
+        cdecl, importc: "SDL_IsDeXMode", dynlib: SDL2_LIB.}
+      ##  ``Return`` `true` is the application is running on a Samsung DeX
+      ##  docking station.
+
+    proc androidBackButton*() {.
+        cdecl, importc: "SDL_AndroidBackButton", dynlib: SDL2_LIB.}
+      ##  Trigger the Android system back button behavior.
+
     const
       ANDROID_EXTERNAL_STORAGE_READ* = 0x00000001
-      ANDROID_EXTERNAL_STORAGE_WRITE* = 0x00000002
+      ANDROID_EXTERNAL_STORAGE_WRITE* = 0x00000002  ##  \
+        ##  See the official Android developer guide for more information:
+        ##  http://developer.android.com/guide/topics/data/data-storage.html
 
     proc androidGetInternalStoragePath*(): cstring {.
         cdecl, importc: "SDL_AndroidGetInternalStoragePath", dynlib: SDL2_LIB.}
@@ -195,3 +220,9 @@ when false:
       ##  Detects the device family of WinRT plattform on runtime.
       ##
       ##  ``Return`` device family.
+
+
+proc isTablet*(): bool {.
+    cdecl, importc: "SDL_IsTablet", dynlib: SDL2_LIB.}
+  ##  ``Return`` `true` if the current device is a tablet.
+

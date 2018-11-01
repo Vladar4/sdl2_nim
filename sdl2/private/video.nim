@@ -212,6 +212,22 @@ type
     WINDOWEVENT_HIT_TEST      ##  Window had a hit test that wasn't \
       ##  `SDL_HITTEST_NORMAL`.
 
+type
+  DisplayEventID* {.size: sizeof(uint8).} = enum  ##  \
+    ##  Event subtype for display events
+    DISPLAYEVENT_NONE,        ##  Never used
+    DISPLAYEVENT_ORIENTATION  ##  Display orientation has changed to data1
+
+type
+  DisplayOrientation* {.size: sizeof(uint8).} = enum
+    ORIENTATION_UNKNOWN,      ##  The display orientation can't be determined
+    ORIENTATION_LANDSCAPE,    ##  The display is in landscape mode, \
+      ##  with the right side up, relative to portrait mode
+    ORIENTATION_LANDSCAPE_FLIPPED,  ##  The display is in landscape mode, \
+      ##  with the left side up, relative to portrait mode
+    ORIENTATION_PORTRAIT,     ##  The display is in portrait mode
+    ORIENTATION_PORTRAIT_FLIPPED  ##  \
+      ##  The display is in portrait mode, upside down
 
 type
   GLContext* = pointer ##  An opaque handle to an OpenGL context.
@@ -339,21 +355,6 @@ proc getDisplayBounds*(displayIndex: cint; rect: ptr Rect): cint {.
   ##
   ##  ``getNumVideoDisplays()``
 
-proc getDisplayDPI*(displayIndex: cint;
-  ddpi: ptr cfloat; hdpi: ptr cfloat; vdpi: ptr cfloat): cint {.
-    cdecl, importc: "SDL_GetDisplayDPI", dynlib: SDL2_LIB.}
-  ##  Get the dots/pixels-per-inch for a display.
-  ##
-  ##  ``Note`` Diagonal, horizontal and vertical DPI can all be optionally
-  ##  returned if the parameter is non-nil.
-  ##
-  ##  ``Return`` `0` on success, or `-1` if no DPI information is available
-  ##  or the index is out of range.
-  ##
-  ##  See also:
-  ##
-  ##  ``getNumVideoDisplays()``
-
 proc getDisplayUsableBounds*(displayIndex: cint; rect: ptr Rect): cint {.
     cdecl, importc: "SDL_GetDisplayUsableBounds", dynlib: SDL2_LIB.}
   ##  Get the usable desktop area represented by a display, with the
@@ -374,6 +375,32 @@ proc getDisplayUsableBounds*(displayIndex: cint; rect: ptr Rect): cint {.
   ##  ``sdl.getDisplayBounds()``
   ##
   ##  ``sdl.getNumVideoDisplays()``
+
+proc getDisplayDPI*(displayIndex: cint;
+  ddpi: ptr cfloat; hdpi: ptr cfloat; vdpi: ptr cfloat): cint {.
+    cdecl, importc: "SDL_GetDisplayDPI", dynlib: SDL2_LIB.}
+  ##  Get the dots/pixels-per-inch for a display.
+  ##
+  ##  ``Note`` Diagonal, horizontal and vertical DPI can all be optionally
+  ##  returned if the parameter is non-nil.
+  ##
+  ##  ``Return`` `0` on success, or `-1` if no DPI information is available
+  ##  or the index is out of range.
+  ##
+  ##  See also:
+  ##
+  ##  ``getNumVideoDisplays()``
+
+proc getDisplayOrientation*(displayIndex: cint): DisplayOrientation {.
+    cdecl, importc: "SDL_GetDisplayOrientation", dynlib: SDL2_LIB.}
+  ##  Get the orientation of a display.
+  ##
+  ##  ``Return`` The orientation of the display,
+  ##  or `ORIENTATION_UNKNOWN` if it isn't available.
+  ##
+  ##  See also:
+  ##
+  ##  ``getNumVideoDisplays()``
 
 proc getNumDisplayModes*(displayIndex: cint): cint {.
     cdecl, importc: "SDL_GetNumDisplayModes", dynlib: SDL2_LIB.}

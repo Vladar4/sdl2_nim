@@ -37,10 +37,11 @@ type
     ##  The SDL thread priority.
     ##
     ##  ``Note`` On many systems you require special privileges
-    ##  to set high priority.
+    ##  to set high or time critical priority.
     THREAD_PRIORITY_LOW,
     THREAD_PRIORITY_NORMAL,
-    THREAD_PRIORITY_HIGH
+    THREAD_PRIORITY_HIGH,
+    THREAD_PRIORITY_TIME_CRITICAL
 
 type
   ThreadFunction* = proc (data: pointer): cint {.cdecl.} ##  \
@@ -98,31 +99,66 @@ when hostOS == "windows":
       fn: ThreadFunction; name: cstring; data: pointer): Thread {.cdecl.} =
     return createThread_internal(fn, name, data, beginThreadEx, endThreadEx)
 
+  proc createThreadWithStackSize_internal(
+      fn: ThreadFunction; name: cstring; stacksize: csize; data: pointer;
+      cbegin: CurrentBeginThread; cend: CurrentEndThreada): Thread {.
+        cdecl, importc: "SDL_CreateThreadWithStackSize".}
+
+  proc createThreadWithStackSize*(
+      fn: ThreadFunction;
+      name: cstring; stacksize: csize; data: pointer): Thread {.cdecl.} =
+    return createThreadWithStackSize_internal(
+      fn, name, stacksize, data, beginThreadEx, endThreadEx)
+
+
+#END: hostOS == "windows"
+
 #TODO? elif hostOS == "os2":
 #
-# See SDL_thread.h:121,136
+# See SDL_thread.h:129,160
 
 else:
 
   proc createThread*(
       fn: ThreadFunction; name: cstring; data: pointer): Thread {.
         cdecl, importc: "SDL_CreateThread", dynlib: SDL2_LIB.}
+    ##  Create a thread with a default stack size.
+    ##
+    ##  This is equivalent to calling:
+    ##  ``sdl.createThreadWithStackSize(fn, name, 0, data)``.
+
+  proc createThreadWithStackSize*(
+      fn: ThreadFunction;
+      name: cstring; stacksize: csize; data: pointer): Thread {.
+        cdecl, importc: "SDL_CreateThreadWithStackSize", dynlib: SDL2_LIB.}
     ##  Create a thread.
     ##
     ##  Thread naming is a little complicated: Most systems have very small
-    ##  limits for the string length (Haiku has 32 bytes, Linux currently has
-    ##  16, Visual C++ 6.0 has nine!), and possibly other arbitrary rules.
-    ##  You'll have to see what happens with your system's debugger.
+    ##  limits for the string length (Haiku has 32 bytes,
+    ##  Linux currently has 16, Visual C++ 6.0 has nine!),
+    ##  and possibly other arbitrary rules. You'll have to see what happens
+    ##  with your system's debugger.
+    ##
     ##  The name should be UTF-8 (but using the naming limits of C identifiers
-    ##  is a better bet). There are no requirements for thread naming
-    ##  conventions, so long as the string is null-terminated UTF-8, but these
-    ##  guidelines are helpful in choosing a name:
+    ##  is a better bet).
+    ##
+    ##  There are no requirements for thread naming conventions, so long as the
+    ##  string is null-terminated UTF-8, but these guidelines are helpful in
+    ##  choosing a name:
     ##
     ##  http://stackoverflow.com/questions/149932/naming-conventions-for-threads
     ##
     ##  If a system imposes requirements, SDL will try to munge the string for
     ##  it (truncate, etc), but the original string contents will be available
     ##  from ``getThreadName()``.
+    ##
+    ##  The size (in bytes) of the new stack can be specified. Zero means "use
+    ##  the system default" which might be wildly different between platforms
+    ##  (x86 Linux generally defaults to eight megabytes, an embedded device
+    ##  might be a few kilobytes instead).
+    ##
+    ##  In SDL 2.1, stacksize will be folded into the original
+    ##  ``sdl.createThread()`` function.
 
 proc getThreadName*(thread: Thread): cstring {.
     cdecl, importc: "SDL_GetThreadName", dynlib: SDL2_LIB.}

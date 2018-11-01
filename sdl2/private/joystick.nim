@@ -75,10 +75,10 @@ type
 
   JoystickPowerLevel* {.size: sizeof(cint).} = enum
     JOYSTICK_POWER_UNKNOWN = - 1,
-    JOYSTICK_POWER_EMPTY,
-    JOYSTICK_POWER_LOW,
-    JOYSTICK_POWER_MEDIUM,
-    JOYSTICK_POWER_FULL,
+    JOYSTICK_POWER_EMPTY,   ##  <= 5%
+    JOYSTICK_POWER_LOW,     ##  <= 20%
+    JOYSTICK_POWER_MEDIUM,  ##  <= 70%
+    JOYSTICK_POWER_FULL,    ##  <= 100%
     JOYSTICK_POWER_WIRED,
     JOYSTICK_POWER_MAX
 
@@ -108,6 +108,11 @@ proc joystickNameForIndex*(device_index: cint): cstring {.
   ##
   ##  This can be called before any joysticks are opened.
   ##  If no name can be found, this procedure returns `nil`.
+
+proc joystickGetDevicePlayerIndex*(device_index: cint): cint {.
+    cdecl, importc: "SDL_JoystickGetDevicePlayerIndex", dynlib: SDL2_LIB.}
+  ##  Get the player index of a joystick, or `-1` if it's not available
+  ##  This can be called before any joysticks are opened.
 
 proc joystickGetDeviceGUID*(device_index: cint): JoystickGUID {.
     cdecl, importc: "SDL_JoystickGetDeviceGUID", dynlib: SDL2_LIB.}
@@ -168,6 +173,12 @@ proc joystickName*(joystick: Joystick): cstring {.
     cdecl, importc: "SDL_JoystickName", dynlib: SDL2_LIB.}
   ##  ``Return`` the name for this currently opened joystick.
   ##  If no name can be found, this procedure returns `nil`.
+
+proc joystickGetPlayerIndex*(joystick: Joystick): cint {.
+    cdecl, importc: "SDL_JoystickGetPlayerIndex", dynlib: SDL2_LIB.}
+  ##  Get the player index of an opened joystick, or `-1` if it's not available
+  ##
+  ##  For XInput controllers this returns the XInput user index.
 
 proc joystickGetGUID*(joystick: Joystick): JoystickGUID {.
     cdecl, importc: "SDL_JoystickGetGUID", dynlib: SDL2_LIB.}
@@ -331,6 +342,27 @@ proc joystickGetButton*(joystick: Joystick; button: cint): uint8 {.
   ##  Get the current state of a button on a joystick.
   ##
   ##  The button indices start at index `0`.
+
+proc joystickRumble*(
+  joystick: Joystick; low_frequency_rumble: uint16;
+  high_frequency_rumble: uint16; duration_ms: uint32): cint {.
+    cdecl, importc: "SDL_JoystickRumble", dynlib: SDL2_LIB.}
+  ##  Trigger a rumble effect.
+  ##
+  ##  Each call to this function cancels any previous rumble effect,
+  ##  and calling it with `0` intensity stops any rumbling.
+  ##
+  ##  ``joystick`` The joystick to vibrate
+  ##
+  ##  ``low_frequency_rumble`` The intensity of the low frequency
+  ##  (left) rumble motor, from `0` to `0xFFFF`
+  ##
+  ##  ``high_frequency_rumble`` The intensity of the high frequency
+  ##  (right) rumble motor, from `0` to `0xFFFF`
+  ##
+  ##  ``duration_ms`` The duration of the rumble effect, in milliseconds
+  ##
+  ##  ``Return`` `0`, or `-1` if rumble isn't supported on this joystick.
 
 proc joystickClose*(joystick: Joystick) {.
     cdecl, importc: "SDL_JoystickClose", dynlib: SDL2_LIB.}

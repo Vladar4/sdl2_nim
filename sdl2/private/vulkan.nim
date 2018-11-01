@@ -128,7 +128,7 @@ proc vulkanGetInstanceExtensions*(
   ##  Get the names of the Vulkan instance extensions needed to create
   ##  a surface with ``vulkan_CreateSurface()``.
   ##
-  ##  ``window`` Window for which the required Vulkan instance
+  ##  ``window`` `nil` or window for which the required Vulkan instance
   ##  extensions should be retrieved.
   ##
   ##  ``pCount`` Pointer to an ``cuint`` related to the number of
@@ -149,6 +149,10 @@ proc vulkanGetInstanceExtensions*(
   ##  `0` will be returned instead `1`, to indicate that not all the required
   ##  extensions were returned.
   ##
+  ##  ``Note:`` If ``window`` is not `nil`, it will be checked against its
+  ##  creation flags to ensure that the Vulkan flag is present. This parameter
+  ##  will be removed in a future major release.
+  ##
   ##  ``Note:`` The returned list of extensions will contain VK_KHR_surface
   ##  and zero or more platform specific extensions
   ##
@@ -156,13 +160,13 @@ proc vulkanGetInstanceExtensions*(
   ##  ``vkCreateInstance``, otherwise surface creation will fail.
   ##
   ##  ``Note:`` ``window`` should have been created with the
-  ##  `WINDOW_VULKAN` flag.
+  ##  `WINDOW_VULKAN` flag or be `nil`.
   ##
   ##  .. code-block:: nim
   ##    var count: cuint
   ##
   ##    # get count of required extensions
-  ##    if not vulkanGetInstanceExtensions(window, addr(count), nil):
+  ##    if not vulkanGetInstanceExtensions(nil, addr(count), nil):
   ##      handleError()
   ##
   ##    var
@@ -180,7 +184,7 @@ proc vulkanGetInstanceExtensions*(
   ##      handleError()
   ##
   ##    # get names of required extensions
-  ##    if not vulkanGetInstanceExtensions(window, addr(count), names):
+  ##    if not vulkanGetInstanceExtensions(nil, addr(count), names):
   ##      handleError()
   ##
   ##    # copy additional extensions after required extensions

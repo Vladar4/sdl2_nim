@@ -36,6 +36,21 @@
 ##  * (optional) Free the effect with ``hapticDestroyEffect()``.
 ##  * Close the haptic device with ``hapticClose()``.
 
+##  ``FIXME``:
+##  For SDL 2.1, adjust all the magnitude variables to be ``uint16`` (`0xFFFF`).
+##
+##  At the moment the magnitude variables are mixed between signed/unsigned,
+##  and it is also not made clear that ALL of those variables expect a max of
+##  `0x7FFF`.
+##
+##  Some platforms may have higher precision than that
+##  (Linux FF, Windows XInput) so we should fix the inconsistency
+##  in favor of higher possible precision, adjusting for platforms
+##  that use different scales.
+##
+##  -flibit
+
+
 type
   Haptic* = pointer ##  \
     ##  The haptic structure used to identify an SDL haptic.
@@ -575,8 +590,9 @@ type
     ##  This struct is exclusively for the `HAPTIC_LEFTRIGHT` effect.
     ##
     ##  The Left/Right effect is used to explicitly control the large and small
-    ##  motors, commonly found in modern game controllers. One motor is high
-    ##  frequency, the other is low frequency.
+    ##  motors, commonly found in modern game controllers.
+    ##  The small (right) motor is high frequency,
+    ##  and the large (left) motor is low frequency.
     ##
     ##  See also:
     ##
@@ -586,7 +602,7 @@ type
     # Header
     kind*: uint16   ##  `HAPTIC_LEFTRIGHT`
     # Replay
-    length*: uint32 ##  Duration of the effect.
+    length*: uint32 ##  Duration of the effect in milliseconds.
     # Rumble
     large_magnitude*: uint16  ##  Control of the large controller motor.
     small_magnitude*: uint16  ##  Control of the small controller motor.

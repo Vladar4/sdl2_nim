@@ -86,6 +86,11 @@ proc hasAVX2*(): bool {.
     cdecl, importc: "SDL_HasAVX2", dynlib: SDL2_LIB.}
   ##  This procedure returns true if the CPU has AVX2 features.
 
+proc hasAVX512F*(): bool {.
+    cdecl, importc: "SDL_HasAVX512F", dynlib: SDL2_LIB.}
+  ##  This function returns true if the CPU has AVX-512F (foundation) features.
+
+
 proc hasNEON*(): bool {.
     cdecl, importc: "SDL_HasNEON", dynlib: SDL2_LIB.}
   ##  This function returns true if the CPU has NEON (ARM SIMD) features.

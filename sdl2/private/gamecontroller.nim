@@ -158,6 +158,16 @@ proc gameControllerNameForIndex*(joystick_index: cint): cstring {.
   ##  This can be called before any controllers are opened.
   ##  If no name can be found, this procedure returns `nil`.
 
+proc gameControllerMappingForDeviceIndex*(joystick_index: cint): cstring {.
+    cdecl, importc: "SDL_GameControllerMappingForDeviceIndex", dynlib: SDL2_LIB.}
+  ##  Get the mapping of a game controller.
+  ##
+  ##  This can be called before any controllers are opened.
+  ##
+  ##  `Return` the mapping string.
+  ##  Must be freed with ``sdl.free()``.
+  ##  Returns `nil` if no mapping is available.
+
 proc gameControllerOpen*(joystick_index: cint): GameController {.
     cdecl, importc: "SDL_GameControllerOpen", dynlib: SDL2_LIB.}
   ##  Open a game controller for use.
@@ -178,6 +188,13 @@ proc gameControllerFromInstanceID*(joyid: JoystickID): GameController {.
 proc gameControllerName*(gamecontroller: GameController): cstring {.
     cdecl, importc: "SDL_GameControllerName", dynlib: SDL2_LIB.}
   ##  ``Return`` the name for this currently opened controller.
+
+proc gameControllerGetPlayerIndex*(gamecontroller: GameController): cint {.
+    cdecl, importc: "SDL_GameControllerGetPlayerIndex", dynlib: SDL2_LIB.}
+  ## Get the player index of an opened game controller,
+  ## or `-1` if it's not available.
+  ##
+  ##  For XInput controllers this returns the XInput user index.
 
 proc gameControllerGetVendor*(gamecontroller: GameController): uint16 {.
     cdecl, importc: "SDL_GameControllerGetVendor", dynlib: SDL2_LIB.}
@@ -297,6 +314,27 @@ proc gameControllerGetButton*(
   ##  Get the current state of a button on a game controller.
   ##
   ##  The button indices start at index `0`.
+
+proc gameControllerRumble*(
+  gamecontroller: GameController; low_frequency_rumble: uint16;
+  high_frequency_rumble: uint16; duration_ms: uint32): cint {.
+    cdecl, importc: "SDL_GameControllerRumble", dynlib: SDL2_LIB.}
+  ##  Trigger a rumble effect
+  ##
+  ##  Each call to this function cancels any previous rumble effect,
+  ##  and calling it with `0` intensity stops any rumbling.
+  ##
+  ##  ``gamecontroller``  The controller to vibrate
+  ##
+  ##  ``low_frequency_rumble``  The intensity of the low frequency (left)
+  ##  rumble motor, from 0 to 0xFFFF
+  ##
+  ##  ``high_frequency_rumble`` The intensity of the high frequency (right)
+  ##  rumble motor, from `0` to `0xFFFF`
+  ##
+  ##  ``duration_ms`` The duration of the rumble effect, in milliseconds
+  ##
+  ##  ``Return`` `0`, or `-1` if rumble isn't supported on this joystick.
 
 proc gameControllerClose*(gamecontroller: GameController) {.
     cdecl, importc: "SDL_GameControllerClose", dynlib: SDL2_LIB.}
