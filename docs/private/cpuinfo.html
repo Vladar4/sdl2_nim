@@ -57,7 +57,7 @@ body {
   line-height: 20px;
   color: #444;
   letter-spacing: 0.15px;
-  background-color: rgba(252, 248, 244, 0.45); }
+  background-color: #FDFBFA; }
 
 /* Skeleton grid */
 .container {
@@ -192,10 +192,10 @@ dd > pre {
   table-layout: fixed; }
 
 /* Nim search input */
-div#searchInput {
+div#searchInputDiv {
   margin-bottom: 8px;
 }
-div#searchInput input#searchInput {
+div#searchInputDiv input#searchInput {
   width: 10em;
 }
 div.search-groupby {
@@ -1143,7 +1143,7 @@ dt pre > span.Identifier ~ span.Identifier, dt pre > span.Operator ~ span.Identi
   color: inherit;
   font-weight: inherit; }
 
-dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator {
+dt pre > span.Operator ~ span.Identifier {
   color: inherit;
   font-weight: inherit; }
 
@@ -1158,15 +1158,6 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
-div.pragma {
-  display: none;
-}
-span.pragmabegin {
-  cursor: pointer;
-}
-span.pragmaend {
-  cursor: pointer;
-}
 
 div.search_results {
   background-color: antiquewhite;
@@ -1179,32 +1170,47 @@ div#global-links ul {
   margin-left: 0;
   list-style-type: none;
 }
+
+span.pragmadots {
+  /* Position: relative frees us up to make the dots
+  look really nice without fucking up the layout and
+  causing bulging in the parent container */
+  position: relative;
+  /* 1px down looks slightly nicer */
+  top: 1px;
+
+  padding: 2px;
+  background-color: #D3D3D3;
+  border-radius: 4px;
+  margin: 0 2px;
+  cursor: pointer;
+
+  /* For some reason on Chrome, making the font size
+  smaller than 1em is causing the parent container to
+  bulge slightly. So, we're stuck with inheriting 1em,
+  which is sad, because 0.8em looks better... */
+}
+span.pragmadots:hover {
+  background-color: #DBDBDB;
+}
+span.pragmawrap {
+  display: none;
+}
+
 </style>
 
 <script type="text/javascript" src="../dochack.js"></script>
 
 <script type="text/javascript">
-function togglepragma(d) {
-  if (d.style.display != 'inline')
-    d.style.display = 'inline';
-  else
-    d.style.display = 'none';
-}
-
 function main() {
-  var elements = document.getElementsByClassName("pragmabegin");
-  for (var i = 0; i < elements.length; ++i) {
-    var e = elements[i];
-    e.onclick = function(event) {
-      togglepragma(event.target.nextSibling);
-    };
-  }
-  var elements = document.getElementsByClassName("pragmaend");
-  for (var i = 0; i < elements.length; ++i) {
-    var e = elements[i];
-    e.onclick = function(event) {
-      togglepragma(event.target.previousSibling);
-    };
+  var pragmaDots = document.getElementsByClassName("pragmadots");
+  for (var i = 0; i < pragmaDots.length; i++) {
+    pragmaDots[i].onclick = function(event) {
+      // Hide tease
+      event.target.parentNode.style.display = "none";
+      // Show actual
+      event.target.parentNode.nextElementSibling.style.display = "inline";
+    }
   }
 }
 </script>
@@ -1220,7 +1226,7 @@ function main() {
     <ul class="simple">
     </ul>
   </div>
-  <div id="searchInput">
+  <div id="searchInputDiv">
     Search: <input type="text" id="searchInput"
       onkeyup="search()" />
   </div>
@@ -1232,12 +1238,12 @@ function main() {
     </select>
   </div>
   <ul class="simple simple-toc" id="toc-list">
-<li><a class="reference" id="cpuinfo-nim_toc" href="#cpuinfo-nim">cpuinfo.nim</a></li>
+<li><a class="reference" id="cpuinfodotnim_toc" href="#cpuinfodotnim">cpuinfo.nim</a></li>
 <li>
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#CACHELINE_SIZE"
-    title="CACHELINE_SIZE* = 128"><wbr />CACHELINE_<wbr />SIZE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="CACHELINE_SIZE = 128"><wbr />CACHELINE_<wbr />SIZE<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1245,35 +1251,37 @@ function main() {
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#getCPUCount,"
-    title="getCPUCount*(): cint"><wbr />get<wbr />CPUCount<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getCPUCount(): cint"><wbr />get<wbr />CPUCount<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#getCPUCacheLineSize,"
-    title="getCPUCacheLineSize*(): cint"><wbr />get<wbr />CPUCache<wbr />Line<wbr />Size<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getCPUCacheLineSize(): cint"><wbr />get<wbr />CPUCache<wbr />Line<wbr />Size<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#hasRDTSC,"
-    title="hasRDTSC*(): bool"><wbr />has<wbr />RDTSC<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hasRDTSC(): bool"><wbr />has<wbr />RDTSC<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#hasAltiVec,"
-    title="hasAltiVec*(): bool"><wbr />has<wbr />Alti<wbr />Vec<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hasAltiVec(): bool"><wbr />has<wbr />Alti<wbr />Vec<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#hasMMX,"
-    title="hasMMX*(): bool"><wbr />has<wbr />MMX<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hasMMX(): bool"><wbr />has<wbr />MMX<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#has3DNow,"
-    title="has3DNow*(): bool"><wbr />has3DNow<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="has3DNow(): bool"><wbr />has3DNow<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#hasSSE,"
-    title="hasSSE*(): bool"><wbr />has<wbr />SSE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hasSSE(): bool"><wbr />has<wbr />SSE<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#hasSSE2,"
-    title="hasSSE2*(): bool"><wbr />has<wbr />SSE2<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hasSSE2(): bool"><wbr />has<wbr />SSE2<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#hasSSE3,"
-    title="hasSSE3*(): bool"><wbr />has<wbr />SSE3<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hasSSE3(): bool"><wbr />has<wbr />SSE3<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#hasSSE41,"
-    title="hasSSE41*(): bool"><wbr />has<wbr />SSE41<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hasSSE41(): bool"><wbr />has<wbr />SSE41<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#hasSSE42,"
-    title="hasSSE42*(): bool"><wbr />has<wbr />SSE42<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hasSSE42(): bool"><wbr />has<wbr />SSE42<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#hasAVX,"
-    title="hasAVX*(): bool"><wbr />has<wbr />AVX<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hasAVX(): bool"><wbr />has<wbr />AVX<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#hasAVX2,"
-    title="hasAVX2*(): bool"><wbr />has<wbr />AVX2<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hasAVX2(): bool"><wbr />has<wbr />AVX2<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#hasAVX512F,"
+    title="hasAVX512F(): bool"><wbr />has<wbr />AVX512F<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#hasNEON,"
-    title="hasNEON*(): bool"><wbr />has<wbr />NEON<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hasNEON(): bool"><wbr />has<wbr />NEON<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#getSystemRAM,"
-    title="getSystemRAM*(): cint"><wbr />get<wbr />System<wbr />RAM<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getSystemRAM(): cint"><wbr />get<wbr />System<wbr />RAM<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1284,12 +1292,12 @@ function main() {
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   <p class="module-desc">
-<h1><a class="toc-backref" id="cpuinfo-nim" href="#cpuinfo-nim">cpuinfo.nim</a></h1><p>CPU feature detection for SDL.</p>
+<h1><a class="toc-backref" id="cpuinfodotnim" href="#cpuinfodotnim">cpuinfo.nim</a></h1><p>CPU feature detection for SDL.</p>
 </p>
   <div class="section" id="10">
 <h1><a class="toc-backref" href="#10">Consts</a></h1>
 <dl class="item">
-<dt id="CACHELINE_SIZE"><a name="CACHELINE_SIZE"></a><pre><span class="Identifier">CACHELINE_SIZE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">128</span></pre></dt>
+<dt id="CACHELINE_SIZE"><a name="CACHELINE_SIZE"></a><pre><span class="Identifier">CACHELINE_SIZE</span> <span class="Other">=</span> <span class="DecNumber">128</span></pre></dt>
 <dd>
 
 This is a guess for the cacheline size used for padding. Most x86 processors have a 64 byte cache line. The 64-bit PowerPC processors have a 128 byte cache line. We'll use the larger value to be generally safe.
@@ -1300,80 +1308,85 @@ This is a guess for the cacheline size used for padding. Most x86 processors hav
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="getCPUCount"><a name="getCPUCount,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCPUCount</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetCPUCount&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="getCPUCount"><a name="getCPUCount,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCPUCount</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetCPUCount&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 This procedure returns the number of CPU cores available.
 
 </dd>
-<dt id="getCPUCacheLineSize"><a name="getCPUCacheLineSize,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCPUCacheLineSize</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetCPUCacheLineSize&quot;</span><span class="Other">,</span>
-                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="getCPUCacheLineSize"><a name="getCPUCacheLineSize,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getCPUCacheLineSize</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetCPUCacheLineSize&quot;</span><span class="Other">,</span>
+                                <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>This procedure returns the L1 cache line size of the CPU</p>
 <p>This is useful for determining multi-threaded structure padding or SIMD prefetch sizes.</p>
 
 
 </dd>
-<dt id="hasRDTSC"><a name="hasRDTSC,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasRDTSC</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasRDTSC&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hasRDTSC"><a name="hasRDTSC,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasRDTSC</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasRDTSC&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 This procedure returns true if the CPU has the RDTSC instruction.
 
 </dd>
-<dt id="hasAltiVec"><a name="hasAltiVec,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasAltiVec</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasAltiVec&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hasAltiVec"><a name="hasAltiVec,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasAltiVec</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasAltiVec&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 This procedure returns true if the CPU has AltiVec features.
 
 </dd>
-<dt id="hasMMX"><a name="hasMMX,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasMMX</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasMMX&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hasMMX"><a name="hasMMX,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasMMX</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasMMX&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 This procedure returns true if the CPU has MMX features.
 
 </dd>
-<dt id="has3DNow"><a name="has3DNow,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">has3DNow</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Has3DNow&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="has3DNow"><a name="has3DNow,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">has3DNow</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Has3DNow&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 This procedure returns true if the CPU has 3DNow! features.
 
 </dd>
-<dt id="hasSSE"><a name="hasSSE,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasSSE</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasSSE&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hasSSE"><a name="hasSSE,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasSSE</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasSSE&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 This procedure returns true if the CPU has SSE features.
 
 </dd>
-<dt id="hasSSE2"><a name="hasSSE2,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasSSE2</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasSSE2&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hasSSE2"><a name="hasSSE2,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasSSE2</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasSSE2&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 This procedure returns true if the CPU has SSE2 features.
 
 </dd>
-<dt id="hasSSE3"><a name="hasSSE3,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasSSE3</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasSSE3&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hasSSE3"><a name="hasSSE3,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasSSE3</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasSSE3&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 This procedure returns true if the CPU has SSE3 features.
 
 </dd>
-<dt id="hasSSE41"><a name="hasSSE41,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasSSE41</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasSSE41&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hasSSE41"><a name="hasSSE41,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasSSE41</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasSSE41&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 This procedure returns true if the CPU has SSE4.1 features.
 
 </dd>
-<dt id="hasSSE42"><a name="hasSSE42,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasSSE42</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasSSE42&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hasSSE42"><a name="hasSSE42,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasSSE42</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasSSE42&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 This procedure returns true if the CPU has SSE4.2 features.
 
 </dd>
-<dt id="hasAVX"><a name="hasAVX,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasAVX</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasAVX&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hasAVX"><a name="hasAVX,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasAVX</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasAVX&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 This procedure returns true if the CPU has AVX features.
 
 </dd>
-<dt id="hasAVX2"><a name="hasAVX2,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasAVX2</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasAVX2&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hasAVX2"><a name="hasAVX2,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasAVX2</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasAVX2&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 This procedure returns true if the CPU has AVX2 features.
 
 </dd>
-<dt id="hasNEON"><a name="hasNEON,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasNEON</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasNEON&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hasAVX512F"><a name="hasAVX512F,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasAVX512F</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasAVX512F&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+This function returns true if the CPU has AVX-512F (foundation) features.
+
+</dd>
+<dt id="hasNEON"><a name="hasNEON,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasNEON</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasNEON&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 This function returns true if the CPU has NEON (ARM SIMD) features.
 
 </dd>
-<dt id="getSystemRAM"><a name="getSystemRAM,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getSystemRAM</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetSystemRAM&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="getSystemRAM"><a name="getSystemRAM,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getSystemRAM</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetSystemRAM&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 This procedure returns the amount of RAM configured in the system, in MB.
 
@@ -1388,7 +1401,7 @@ This procedure returns the amount of RAM configured in the system, in MB.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-03-03 12:24:57 UTC</small>
+        <small>Made with Nim. Generated: 2018-11-02 19:11:01 UTC</small>
       </div>
     </div>
   </div>

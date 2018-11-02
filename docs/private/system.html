@@ -57,7 +57,7 @@ body {
   line-height: 20px;
   color: #444;
   letter-spacing: 0.15px;
-  background-color: rgba(252, 248, 244, 0.45); }
+  background-color: #FDFBFA; }
 
 /* Skeleton grid */
 .container {
@@ -192,10 +192,10 @@ dd > pre {
   table-layout: fixed; }
 
 /* Nim search input */
-div#searchInput {
+div#searchInputDiv {
   margin-bottom: 8px;
 }
-div#searchInput input#searchInput {
+div#searchInputDiv input#searchInput {
   width: 10em;
 }
 div.search-groupby {
@@ -1143,7 +1143,7 @@ dt pre > span.Identifier ~ span.Identifier, dt pre > span.Operator ~ span.Identi
   color: inherit;
   font-weight: inherit; }
 
-dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator {
+dt pre > span.Operator ~ span.Identifier {
   color: inherit;
   font-weight: inherit; }
 
@@ -1158,15 +1158,6 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
-div.pragma {
-  display: none;
-}
-span.pragmabegin {
-  cursor: pointer;
-}
-span.pragmaend {
-  cursor: pointer;
-}
 
 div.search_results {
   background-color: antiquewhite;
@@ -1179,32 +1170,47 @@ div#global-links ul {
   margin-left: 0;
   list-style-type: none;
 }
+
+span.pragmadots {
+  /* Position: relative frees us up to make the dots
+  look really nice without fucking up the layout and
+  causing bulging in the parent container */
+  position: relative;
+  /* 1px down looks slightly nicer */
+  top: 1px;
+
+  padding: 2px;
+  background-color: #D3D3D3;
+  border-radius: 4px;
+  margin: 0 2px;
+  cursor: pointer;
+
+  /* For some reason on Chrome, making the font size
+  smaller than 1em is causing the parent container to
+  bulge slightly. So, we're stuck with inheriting 1em,
+  which is sad, because 0.8em looks better... */
+}
+span.pragmadots:hover {
+  background-color: #DBDBDB;
+}
+span.pragmawrap {
+  display: none;
+}
+
 </style>
 
 <script type="text/javascript" src="../dochack.js"></script>
 
 <script type="text/javascript">
-function togglepragma(d) {
-  if (d.style.display != 'inline')
-    d.style.display = 'inline';
-  else
-    d.style.display = 'none';
-}
-
 function main() {
-  var elements = document.getElementsByClassName("pragmabegin");
-  for (var i = 0; i < elements.length; ++i) {
-    var e = elements[i];
-    e.onclick = function(event) {
-      togglepragma(event.target.nextSibling);
-    };
-  }
-  var elements = document.getElementsByClassName("pragmaend");
-  for (var i = 0; i < elements.length; ++i) {
-    var e = elements[i];
-    e.onclick = function(event) {
-      togglepragma(event.target.previousSibling);
-    };
+  var pragmaDots = document.getElementsByClassName("pragmadots");
+  for (var i = 0; i < pragmaDots.length; i++) {
+    pragmaDots[i].onclick = function(event) {
+      // Hide tease
+      event.target.parentNode.style.display = "none";
+      // Show actual
+      event.target.parentNode.nextElementSibling.style.display = "inline";
+    }
   }
 }
 </script>
@@ -1220,7 +1226,7 @@ function main() {
     <ul class="simple">
     </ul>
   </div>
-  <div id="searchInput">
+  <div id="searchInputDiv">
     Search: <input type="text" id="searchInput"
       onkeyup="search()" />
   </div>
@@ -1232,29 +1238,14 @@ function main() {
     </select>
   </div>
   <ul class="simple simple-toc" id="toc-list">
-<li><a class="reference" id="system-nim_toc" href="#system-nim">system.nim</a></li>
-<li>
-  <a class="reference reference-toplevel" href="#7" id="57">Types</a>
-  <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#WindowsMessageHook"
-    title="WindowsMessageHook* = proc (userdata: pointer; hWnd: pointer; message: cuint;
-                         wParam: uint64; lParam: int64)"><wbr />Windows<wbr />Message<wbr />Hook<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#IDirect3DDevice9"
-    title="IDirect3DDevice9* = pointer"><wbr />IDirect3DDevice9<span class="attachedType" style="visibility:hidden"></span></a></li>
-
-  </ul>
-</li>
+<li><a class="reference" id="systemdotnim_toc" href="#systemdotnim">system.nim</a></li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#setWindowsMessageHook,WindowsMessageHook,pointer"
-    title="setWindowsMessageHook*(callback: WindowsMessageHook; userdata: pointer)"><wbr />set<wbr />Windows<wbr />Message<wbr />Hook<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#direct3D9GetAdapterIndex,cint"
-    title="direct3D9GetAdapterIndex*(displayIndex: cint): cint"><wbr />direct3D9Get<wbr />Adapter<wbr />Index<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#renderGetD3D9Device,ptr.Renderer"
-    title="renderGetD3D9Device*(renderer: ptr Renderer): IDirect3DDevice9"><wbr />render<wbr />Get<wbr />D3D9Device<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#dXGIGetOutputInfo,cint,ptr.cint,ptr.cint"
-    title="dXGIGetOutputInfo*(displayIndex: cint; adapterIndex: ptr cint; outputIndex: ptr cint): bool"><wbr />d<wbr />XGIGet<wbr />Output<wbr />Info<span class="attachedType" style="visibility:hidden"></span></a></li>
+      <li><a class="reference" href="#linuxSetThreadPriority,int64,cint"
+    title="linuxSetThreadPriority(threadID: int64; priority: cint): cint"><wbr />linux<wbr />Set<wbr />Thread<wbr />Priority<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#isTablet,"
+    title="isTablet(): bool"><wbr />is<wbr />Tablet<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1265,50 +1256,22 @@ function main() {
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   <p class="module-desc">
-<h1><a class="toc-backref" id="system-nim" href="#system-nim">system.nim</a></h1><p>Include file for platform specific SDL API procedures.</p>
+<h1><a class="toc-backref" id="systemdotnim" href="#systemdotnim">system.nim</a></h1><p>Include file for platform specific SDL API procedures.</p>
+<p>Sets the UNIX nice value for a thread, using <tt class="docutils literal"><span class="pre">setpriority()</span></tt> if possible, and RealtimeKit if available.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
 </p>
-  <div class="section" id="7">
-<h1><a class="toc-backref" href="#7">Types</a></h1>
-<dl class="item">
-<dt id="WindowsMessageHook"><a name="WindowsMessageHook"></a><pre><span class="Identifier">WindowsMessageHook</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">hWnd</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">message</span><span class="Other">:</span> <span class="Identifier">cuint</span><span class="Other">;</span>
-                         <span class="Identifier">wParam</span><span class="Other">:</span> <span class="Identifier">uint64</span><span class="Other">;</span> <span class="Identifier">lParam</span><span class="Other">:</span> <span class="Identifier">int64</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-
-
-</dd>
-<dt id="IDirect3DDevice9"><a name="IDirect3DDevice9"></a><pre><span class="Identifier">IDirect3DDevice9</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
-<dd>
-
-
-</dd>
-
-</dl></div>
-<div class="section" id="12">
+  <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="setWindowsMessageHook"><a name="setWindowsMessageHook,WindowsMessageHook,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setWindowsMessageHook</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">callback</span><span class="Other">:</span> <span class="Identifier">WindowsMessageHook</span><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowsMessageHook&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="linuxSetThreadPriority"><a name="linuxSetThreadPriority,int64,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">linuxSetThreadPriority</span><span class="Other">(</span><span class="Identifier">threadID</span><span class="Other">:</span> <span class="Identifier">int64</span><span class="Other">;</span> <span class="Identifier">priority</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LinuxSetThreadPriority&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-Set a procedure that is called for every windows message, before <tt class="docutils literal"><span class="pre">translateMessage()</span></tt>.
+
 
 </dd>
-<dt id="direct3D9GetAdapterIndex"><a name="direct3D9GetAdapterIndex,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">direct3D9GetAdapterIndex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_Direct3D9GetAdapterIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="isTablet"><a name="isTablet,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isTablet</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_IsTablet&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-Returns the D3D9 adapter index that matches the specified display index. This adapter index can be passed to IDirect3D9::CreateDevice and controls on which monitor a full screen application will appear.
-
-</dd>
-<dt id="renderGetD3D9Device"><a name="renderGetD3D9Device,ptr.Renderer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderGetD3D9Device</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Renderer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">IDirect3DDevice9</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RenderGetD3D9Device&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-Returns the D3D device associated with a renderer, or <cite>nil</cite> if it's not a D3D renderer. Once you are done using the device, you should release it to avoid a resource leak.
-
-</dd>
-<dt id="dXGIGetOutputInfo"><a name="dXGIGetOutputInfo,cint,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">dXGIGetOutputInfo</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">displayIndex</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">adapterIndex</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span>
-                       <span class="Identifier">outputIndex</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DXGIGetOutputInfo&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
-Returns the DXGI Adapter and Output indices for the specified display index. These can be passed to EnumAdapters and EnumOutputs respectively to get the objects required to create a DX10 or DX11 device and swap chain.
+<tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if the current device is a tablet.
 
 </dd>
 
@@ -1321,7 +1284,7 @@ Returns the DXGI Adapter and Output indices for the specified display index. The
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-03-03 12:24:57 UTC</small>
+        <small>Made with Nim. Generated: 2018-11-02 19:11:05 UTC</small>
       </div>
     </div>
   </div>

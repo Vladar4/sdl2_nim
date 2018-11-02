@@ -57,7 +57,7 @@ body {
   line-height: 20px;
   color: #444;
   letter-spacing: 0.15px;
-  background-color: rgba(252, 248, 244, 0.45); }
+  background-color: #FDFBFA; }
 
 /* Skeleton grid */
 .container {
@@ -192,10 +192,10 @@ dd > pre {
   table-layout: fixed; }
 
 /* Nim search input */
-div#searchInput {
+div#searchInputDiv {
   margin-bottom: 8px;
 }
-div#searchInput input#searchInput {
+div#searchInputDiv input#searchInput {
   width: 10em;
 }
 div.search-groupby {
@@ -1143,7 +1143,7 @@ dt pre > span.Identifier ~ span.Identifier, dt pre > span.Operator ~ span.Identi
   color: inherit;
   font-weight: inherit; }
 
-dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator {
+dt pre > span.Operator ~ span.Identifier {
   color: inherit;
   font-weight: inherit; }
 
@@ -1158,15 +1158,6 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
-div.pragma {
-  display: none;
-}
-span.pragmabegin {
-  cursor: pointer;
-}
-span.pragmaend {
-  cursor: pointer;
-}
 
 div.search_results {
   background-color: antiquewhite;
@@ -1179,32 +1170,47 @@ div#global-links ul {
   margin-left: 0;
   list-style-type: none;
 }
+
+span.pragmadots {
+  /* Position: relative frees us up to make the dots
+  look really nice without fucking up the layout and
+  causing bulging in the parent container */
+  position: relative;
+  /* 1px down looks slightly nicer */
+  top: 1px;
+
+  padding: 2px;
+  background-color: #D3D3D3;
+  border-radius: 4px;
+  margin: 0 2px;
+  cursor: pointer;
+
+  /* For some reason on Chrome, making the font size
+  smaller than 1em is causing the parent container to
+  bulge slightly. So, we're stuck with inheriting 1em,
+  which is sad, because 0.8em looks better... */
+}
+span.pragmadots:hover {
+  background-color: #DBDBDB;
+}
+span.pragmawrap {
+  display: none;
+}
+
 </style>
 
 <script type="text/javascript" src="../dochack.js"></script>
 
 <script type="text/javascript">
-function togglepragma(d) {
-  if (d.style.display != 'inline')
-    d.style.display = 'inline';
-  else
-    d.style.display = 'none';
-}
-
 function main() {
-  var elements = document.getElementsByClassName("pragmabegin");
-  for (var i = 0; i < elements.length; ++i) {
-    var e = elements[i];
-    e.onclick = function(event) {
-      togglepragma(event.target.nextSibling);
-    };
-  }
-  var elements = document.getElementsByClassName("pragmaend");
-  for (var i = 0; i < elements.length; ++i) {
-    var e = elements[i];
-    e.onclick = function(event) {
-      togglepragma(event.target.previousSibling);
-    };
+  var pragmaDots = document.getElementsByClassName("pragmadots");
+  for (var i = 0; i < pragmaDots.length; i++) {
+    pragmaDots[i].onclick = function(event) {
+      // Hide tease
+      event.target.parentNode.style.display = "none";
+      // Show actual
+      event.target.parentNode.nextElementSibling.style.display = "inline";
+    }
   }
 }
 </script>
@@ -1220,7 +1226,7 @@ function main() {
     <ul class="simple">
     </ul>
   </div>
-  <div id="searchInput">
+  <div id="searchInputDiv">
     Search: <input type="text" id="searchInput"
       onkeyup="search()" />
   </div>
@@ -1232,18 +1238,18 @@ function main() {
     </select>
   </div>
   <ul class="simple simple-toc" id="toc-list">
-<li><a class="reference" id="haptic-nim_toc" href="#haptic-nim">haptic.nim</a></li>
+<li><a class="reference" id="hapticdotnim_toc" href="#hapticdotnim">haptic.nim</a></li>
 <li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Haptic"
-    title="Haptic* = pointer"><wbr />Haptic<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="Haptic = pointer"><wbr />Haptic<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HapticDirection"
-    title="HapticDirection* = object
+    title="HapticDirection = object
   kind*: uint8                 ## The type of encoding.
   dir*: array[3, int32]         ## The encoded direction."><wbr />Haptic<wbr />Direction<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HapticConstantObj"
-    title="HapticConstantObj* = object
+    title="HapticConstantObj = object
   kind*: uint16                ## `HAPTIC_CONSTANT`
   direction*: HapticDirection  ## Direction of the effect.
   length*: uint32              ## Duration of the effect.
@@ -1256,7 +1262,7 @@ function main() {
   fade_length*: uint16         ## Duration of the fade.
   fade_level*: uint16          ## Level at the end of the fade."><wbr />Haptic<wbr />Constant<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HapticPeriodicObj"
-    title="HapticPeriodicObj* = object
+    title="HapticPeriodicObj = object
   kind*: uint16 ## \
               ## `HAPTIC_SINE`, `HAPTIC_LEFTRIGHT`, `HAPTIC_TRIANGLE,
               ## `SDL_HAPTIC_SAWTOOTHUP` or `HAPTIC_SAWTOOTHDOWN`
@@ -1275,7 +1281,7 @@ function main() {
   fade_length*: uint16         ## Duration of the fade.
   fade_level*: uint16          ## Level at the end of the fade."><wbr />Haptic<wbr />Periodic<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HapticConditionObj"
-    title="HapticConditionObj* = object
+    title="HapticConditionObj = object
   kind*: uint16                ## \
               ## `HAPTIC_SPRING`, `HAPTIC_DAMPER`,
               ## `HAPTIC_INERTIA` or `HAPTIC_FRICTION`
@@ -1296,7 +1302,7 @@ function main() {
                            ## max ``0xFFFF`: whole axis-range when 0-centered.
   center*: array[3, int16]      ## Position of the dead zone."><wbr />Haptic<wbr />Condition<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HapticRampObj"
-    title="HapticRampObj* = object
+    title="HapticRampObj = object
   kind*: uint16                ## `HAPTIC_RAMP`
   direction*: HapticDirection  ## Direction of the effect.
   length*: uint32              ## Duration of the effect.
@@ -1310,13 +1316,13 @@ function main() {
   fade_length*: uint16         ## Duration of the fade.
   fade_level*: uint16          ## Level at the end of the fade."><wbr />Haptic<wbr />Ramp<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HapticLeftRightObj"
-    title="HapticLeftRightObj* = object
+    title="HapticLeftRightObj = object
   kind*: uint16                ## `HAPTIC_LEFTRIGHT`
-  length*: uint32              ## Duration of the effect.
+  length*: uint32              ## Duration of the effect in milliseconds.
   large_magnitude*: uint16     ## Control of the large controller motor.
   small_magnitude*: uint16     ## Control of the small controller motor."><wbr />Haptic<wbr />Left<wbr />Right<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HapticCustomObj"
-    title="HapticCustomObj* = object
+    title="HapticCustomObj = object
   kind*: uint16                ## `HAPTIC_CUSTOM`
   direction*: HapticDirection  ## Direction of the effect.
   length*: uint32              ## Duration of the effect.
@@ -1332,7 +1338,7 @@ function main() {
   fade_length*: uint16         ## Duration of the fade.
   fade_level*: uint16          ## Level at the end of the fade."><wbr />Haptic<wbr />Custom<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HapticEffect"
-    title="HapticEffect* = object
+    title="HapticEffect = object {.union.}
   kind*: uint16                ## Effect type.
   constant*: HapticConstantObj ## Constant effect.
   periodic*: HapticPeriodicObj ## Periodic effect.
@@ -1347,45 +1353,45 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#HAPTIC_CONSTANT"
-    title="HAPTIC_CONSTANT* = (1 shl 0)"><wbr />HAPTIC_<wbr />CONSTANT<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_CONSTANT = 1"><wbr />HAPTIC_<wbr />CONSTANT<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_SINE"
-    title="HAPTIC_SINE* = (1 shl 1)"><wbr />HAPTIC_<wbr />SINE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_SINE = 2"><wbr />HAPTIC_<wbr />SINE<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_LEFTRIGHT"
-    title="HAPTIC_LEFTRIGHT* = (1 shl 2)"><wbr />HAPTIC_<wbr />LEFTRIGHT<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_LEFTRIGHT = 4"><wbr />HAPTIC_<wbr />LEFTRIGHT<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_TRIANGLE"
-    title="HAPTIC_TRIANGLE* = (1 shl 3)"><wbr />HAPTIC_<wbr />TRIANGLE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_TRIANGLE = 8"><wbr />HAPTIC_<wbr />TRIANGLE<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_SAWTOOTHUP"
-    title="HAPTIC_SAWTOOTHUP* = (1 shl 4)"><wbr />HAPTIC_<wbr />SAWTOOTHUP<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_SAWTOOTHUP = 16"><wbr />HAPTIC_<wbr />SAWTOOTHUP<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_SAWTOOTHDOWN"
-    title="HAPTIC_SAWTOOTHDOWN* = (1 shl 5)"><wbr />HAPTIC_<wbr />SAWTOOTHDOWN<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_SAWTOOTHDOWN = 32"><wbr />HAPTIC_<wbr />SAWTOOTHDOWN<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_RAMP"
-    title="HAPTIC_RAMP* = (1 shl 6)"><wbr />HAPTIC_<wbr />RAMP<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_RAMP = 64"><wbr />HAPTIC_<wbr />RAMP<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_SPRING"
-    title="HAPTIC_SPRING* = (1 shl 7)"><wbr />HAPTIC_<wbr />SPRING<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_SPRING = 128"><wbr />HAPTIC_<wbr />SPRING<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_DAMPER"
-    title="HAPTIC_DAMPER* = (1 shl 8)"><wbr />HAPTIC_<wbr />DAMPER<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_DAMPER = 256"><wbr />HAPTIC_<wbr />DAMPER<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_INERTIA"
-    title="HAPTIC_INERTIA* = (1 shl 9)"><wbr />HAPTIC_<wbr />INERTIA<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_INERTIA = 512"><wbr />HAPTIC_<wbr />INERTIA<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_FRICTION"
-    title="HAPTIC_FRICTION* = (1 shl 10)"><wbr />HAPTIC_<wbr />FRICTION<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_FRICTION = 1024"><wbr />HAPTIC_<wbr />FRICTION<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_CUSTOM"
-    title="HAPTIC_CUSTOM* = (1 shl 11)"><wbr />HAPTIC_<wbr />CUSTOM<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_CUSTOM = 2048"><wbr />HAPTIC_<wbr />CUSTOM<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_GAIN"
-    title="HAPTIC_GAIN* = (1 shl 12)"><wbr />HAPTIC_<wbr />GAIN<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_GAIN = 4096"><wbr />HAPTIC_<wbr />GAIN<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_AUTOCENTER"
-    title="HAPTIC_AUTOCENTER* = (1 shl 13)"><wbr />HAPTIC_<wbr />AUTOCENTER<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_AUTOCENTER = 8192"><wbr />HAPTIC_<wbr />AUTOCENTER<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_STATUS"
-    title="HAPTIC_STATUS* = (1 shl 14)"><wbr />HAPTIC_<wbr />STATUS<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_STATUS = 16384"><wbr />HAPTIC_<wbr />STATUS<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_PAUSE"
-    title="HAPTIC_PAUSE* = (1 shl 15)"><wbr />HAPTIC_<wbr />PAUSE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_PAUSE = 32768"><wbr />HAPTIC_<wbr />PAUSE<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_POLAR"
-    title="HAPTIC_POLAR* = 0"><wbr />HAPTIC_<wbr />POLAR<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_POLAR = 0"><wbr />HAPTIC_<wbr />POLAR<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_CARTESIAN"
-    title="HAPTIC_CARTESIAN* = 1"><wbr />HAPTIC_<wbr />CARTESIAN<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_CARTESIAN = 1"><wbr />HAPTIC_<wbr />CARTESIAN<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_SPHERICAL"
-    title="HAPTIC_SPHERICAL* = 2"><wbr />HAPTIC_<wbr />SPHERICAL<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_SPHERICAL = 2"><wbr />HAPTIC_<wbr />SPHERICAL<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#HAPTIC_INFINITY"
-    title="HAPTIC_INFINITY* = 4294967295&#x27;i64"><wbr />HAPTIC_<wbr />INFINITY<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HAPTIC_INFINITY = 4294967295&#x27;i64"><wbr />HAPTIC_<wbr />INFINITY<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1393,65 +1399,65 @@ function main() {
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#numHaptics,"
-    title="numHaptics*(): cint"><wbr />num<wbr />Haptics<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="numHaptics(): cint"><wbr />num<wbr />Haptics<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#hapticName,cint"
-    title="hapticName*(device_index: cint): cstring"><wbr />haptic<wbr />Name<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticName(device_index: cint): cstring"><wbr />haptic<wbr />Name<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#hapticOpen,cint"
-    title="hapticOpen*(device_index: cint): Haptic"><wbr />haptic<wbr />Open<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticOpen(device_index: cint): Haptic"><wbr />haptic<wbr />Open<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticOpened,cint"
-    title="hapticOpened*(device_index: cint): cint"><wbr />haptic<wbr />Opened<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticOpened(device_index: cint): cint"><wbr />haptic<wbr />Opened<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#hapticIndex,Haptic"
-    title="hapticIndex*(haptic: Haptic): cint"><wbr />haptic<wbr />Index<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticIndex(haptic: Haptic): cint"><wbr />haptic<wbr />Index<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#mouseIsHaptic,"
-    title="mouseIsHaptic*(): cint"><wbr />mouse<wbr />Is<wbr />Haptic<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="mouseIsHaptic(): cint"><wbr />mouse<wbr />Is<wbr />Haptic<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#hapticOpenFromMouse,"
-    title="hapticOpenFromMouse*(): Haptic"><wbr />haptic<wbr />Open<wbr />From<wbr />Mouse<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticOpenFromMouse(): Haptic"><wbr />haptic<wbr />Open<wbr />From<wbr />Mouse<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#joystickIsHaptic,ptr.Joystick"
-    title="joystickIsHaptic*(joystick: ptr Joystick): cint"><wbr />joystick<wbr />Is<wbr />Haptic<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="joystickIsHaptic(joystick: ptr Joystick): cint"><wbr />joystick<wbr />Is<wbr />Haptic<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#hapticOpenFromJoystick,ptr.Joystick"
-    title="hapticOpenFromJoystick*(joystick: ptr Joystick): Haptic"><wbr />haptic<wbr />Open<wbr />From<wbr />Joystick<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticOpenFromJoystick(joystick: ptr Joystick): Haptic"><wbr />haptic<wbr />Open<wbr />From<wbr />Joystick<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticClose,Haptic"
-    title="hapticClose*(haptic: Haptic)"><wbr />haptic<wbr />Close<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticClose(haptic: Haptic)"><wbr />haptic<wbr />Close<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticNumEffects,Haptic"
-    title="hapticNumEffects*(haptic: Haptic): cint"><wbr />haptic<wbr />Num<wbr />Effects<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticNumEffects(haptic: Haptic): cint"><wbr />haptic<wbr />Num<wbr />Effects<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticNumEffectsPlaying,Haptic"
-    title="hapticNumEffectsPlaying*(haptic: Haptic): cint"><wbr />haptic<wbr />Num<wbr />Effects<wbr />Playing<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticNumEffectsPlaying(haptic: Haptic): cint"><wbr />haptic<wbr />Num<wbr />Effects<wbr />Playing<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticQuery,Haptic"
-    title="hapticQuery*(haptic: Haptic): cuint"><wbr />haptic<wbr />Query<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticQuery(haptic: Haptic): cuint"><wbr />haptic<wbr />Query<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticNumAxes,Haptic"
-    title="hapticNumAxes*(haptic: Haptic): cint"><wbr />haptic<wbr />Num<wbr />Axes<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticNumAxes(haptic: Haptic): cint"><wbr />haptic<wbr />Num<wbr />Axes<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticEffectSupported,Haptic,ptr.HapticEffect"
-    title="hapticEffectSupported*(haptic: Haptic; effect: ptr HapticEffect): cint"><wbr />haptic<wbr />Effect<wbr />Supported<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticEffectSupported(haptic: Haptic; effect: ptr HapticEffect): cint"><wbr />haptic<wbr />Effect<wbr />Supported<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticNewEffect,Haptic,ptr.HapticEffect"
-    title="hapticNewEffect*(haptic: Haptic; effect: ptr HapticEffect): cint"><wbr />haptic<wbr />New<wbr />Effect<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticNewEffect(haptic: Haptic; effect: ptr HapticEffect): cint"><wbr />haptic<wbr />New<wbr />Effect<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticUpdateEffect,Haptic,cint,ptr.HapticEffect"
-    title="hapticUpdateEffect*(haptic: Haptic; effect: cint; data: ptr HapticEffect): cint"><wbr />haptic<wbr />Update<wbr />Effect<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticUpdateEffect(haptic: Haptic; effect: cint; data: ptr HapticEffect): cint"><wbr />haptic<wbr />Update<wbr />Effect<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticRunEffect,Haptic,cint,uint32"
-    title="hapticRunEffect*(haptic: Haptic; effect: cint; iterations: uint32): cint"><wbr />haptic<wbr />Run<wbr />Effect<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticRunEffect(haptic: Haptic; effect: cint; iterations: uint32): cint"><wbr />haptic<wbr />Run<wbr />Effect<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticStopEffect,Haptic,cint"
-    title="hapticStopEffect*(haptic: Haptic; effect: cint): cint"><wbr />haptic<wbr />Stop<wbr />Effect<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticStopEffect(haptic: Haptic; effect: cint): cint"><wbr />haptic<wbr />Stop<wbr />Effect<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticDestroyEffect,Haptic,cint"
-    title="hapticDestroyEffect*(haptic: Haptic; effect: cint)"><wbr />haptic<wbr />Destroy<wbr />Effect<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticDestroyEffect(haptic: Haptic; effect: cint)"><wbr />haptic<wbr />Destroy<wbr />Effect<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticGetEffectStatus,Haptic,cint"
-    title="hapticGetEffectStatus*(haptic: Haptic; effect: cint): cint"><wbr />haptic<wbr />Get<wbr />Effect<wbr />Status<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticGetEffectStatus(haptic: Haptic; effect: cint): cint"><wbr />haptic<wbr />Get<wbr />Effect<wbr />Status<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticSetGain,Haptic,cint"
-    title="hapticSetGain*(haptic: Haptic; gain: cint): cint"><wbr />haptic<wbr />Set<wbr />Gain<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticSetGain(haptic: Haptic; gain: cint): cint"><wbr />haptic<wbr />Set<wbr />Gain<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticSetAutocenter,Haptic,cint"
-    title="hapticSetAutocenter*(haptic: Haptic; autocenter: cint): cint"><wbr />haptic<wbr />Set<wbr />Autocenter<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticSetAutocenter(haptic: Haptic; autocenter: cint): cint"><wbr />haptic<wbr />Set<wbr />Autocenter<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticPause,Haptic"
-    title="hapticPause*(haptic: Haptic): cint"><wbr />haptic<wbr />Pause<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticPause(haptic: Haptic): cint"><wbr />haptic<wbr />Pause<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticUnpause,Haptic"
-    title="hapticUnpause*(haptic: Haptic): cint"><wbr />haptic<wbr />Unpause<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticUnpause(haptic: Haptic): cint"><wbr />haptic<wbr />Unpause<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticStopAll,Haptic"
-    title="hapticStopAll*(haptic: Haptic): cint"><wbr />haptic<wbr />Stop<wbr />All<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticStopAll(haptic: Haptic): cint"><wbr />haptic<wbr />Stop<wbr />All<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticRumbleSupported,Haptic"
-    title="hapticRumbleSupported*(haptic: Haptic): cint"><wbr />haptic<wbr />Rumble<wbr />Supported<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticRumbleSupported(haptic: Haptic): cint"><wbr />haptic<wbr />Rumble<wbr />Supported<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticRumbleInit,Haptic"
-    title="hapticRumbleInit*(haptic: Haptic): cint"><wbr />haptic<wbr />Rumble<wbr />Init<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticRumbleInit(haptic: Haptic): cint"><wbr />haptic<wbr />Rumble<wbr />Init<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticRumblePlay,Haptic,cfloat,uint32"
-    title="hapticRumblePlay*(haptic: Haptic; strength: cfloat; length: uint32): cint"><wbr />haptic<wbr />Rumble<wbr />Play<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticRumblePlay(haptic: Haptic; strength: cfloat; length: uint32): cint"><wbr />haptic<wbr />Rumble<wbr />Play<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
   <li><a class="reference" href="#hapticRumbleStop,Haptic"
-    title="hapticRumbleStop*(haptic: Haptic): cint"><wbr />haptic<wbr />Rumble<wbr />Stop<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hapticRumbleStop(haptic: Haptic): cint"><wbr />haptic<wbr />Rumble<wbr />Stop<span class="attachedType" style="visibility:hidden">Haptic</span></a></li>
 
   </ul>
 </li>
@@ -1462,7 +1468,7 @@ function main() {
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   <p class="module-desc">
-<h1><a class="toc-backref" id="haptic-nim" href="#haptic-nim">haptic.nim</a></h1><p>The SDL haptic subsystem allows you to control haptic (force feedback) devices.</p>
+<h1><a class="toc-backref" id="hapticdotnim" href="#hapticdotnim">haptic.nim</a></h1><p>The SDL haptic subsystem allows you to control haptic (force feedback) devices.</p>
 <p>The basic usage is as follows:</p>
 <ul class="simple"><li>Initialize the Subsystem (::SDL_INIT_HAPTIC).</li>
 <li>Open a haptic Device.<ul class="simple"><li><tt class="docutils literal"><span class="pre">hapticOpen()</span></tt> to open from index.</li>
@@ -1475,11 +1481,16 @@ function main() {
 <li>(optional) Free the effect with <tt class="docutils literal"><span class="pre">hapticDestroyEffect()</span></tt>.</li>
 <li>Close the haptic device with <tt class="docutils literal"><span class="pre">hapticClose()</span></tt>.</li>
 </ul>
-</p>
+<p><tt class="docutils literal"><span class="pre">FIXME</span></tt>: For SDL 2.1, adjust all the magnitude variables to be <tt class="docutils literal"><span class="pre">uint16</span></tt> (<cite>0xFFFF</cite>).</p>
+<p>At the moment the magnitude variables are mixed between signed/unsigned, and it is also not made clear that ALL of those variables expect a max of <cite>0x7FFF</cite>.</p>
+<p>Some platforms may have higher precision than that (Linux FF, Windows XInput) so we should fix the inconsistency in favor of higher possible precision, adjusting for platforms that use different scales.</p>
+<table frame="void"><tr><th align="left">-flibit</th><td align="left"></td>
+</tr>
+</table></p>
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="Haptic"><a name="Haptic"></a><pre><span class="Identifier">Haptic</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
+<dt id="Haptic"><a name="Haptic"></a><pre><a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 <p>
 The haptic structure used to identify an SDL haptic.</p>
@@ -1490,7 +1501,7 @@ The haptic structure used to identify an SDL haptic.</p>
 
 
 </dd>
-<dt id="HapticDirection"><a name="HapticDirection"></a><pre><span class="Identifier">HapticDirection</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="HapticDirection"><a name="HapticDirection"></a><pre><a href="haptic.html#HapticDirection"><span class="Identifier">HapticDirection</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>                 <span class="Comment">## The type of encoding.</span>
   <span class="Identifier">dir</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">3</span><span class="Other">,</span> <span class="Identifier">int32</span><span class="Other">]</span>         <span class="Comment">## The encoded direction.</span>
   </pre></dt>
@@ -1572,9 +1583,9 @@ Structure that represents a haptic direction.</p>
 
 
 </dd>
-<dt id="HapticConstantObj"><a name="HapticConstantObj"></a><pre><span class="Identifier">HapticConstantObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="HapticConstantObj"><a name="HapticConstantObj"></a><pre><a href="haptic.html#HapticConstantObj"><span class="Identifier">HapticConstantObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">## `HAPTIC_CONSTANT`</span>
-  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticDirection</span>  <span class="Comment">## Direction of the effect.</span>
+  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <a href="haptic.html#HapticDirection"><span class="Identifier">HapticDirection</span></a>  <span class="Comment">## Direction of the effect.</span>
   <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">## Duration of the effect.</span>
   <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">## Delay before starting the effect.</span>
   <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">## Button that triggers the effect.</span>
@@ -1595,11 +1606,11 @@ Structure that represents a haptic direction.</p>
 
 
 </dd>
-<dt id="HapticPeriodicObj"><a name="HapticPeriodicObj"></a><pre><span class="Identifier">HapticPeriodicObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="HapticPeriodicObj"><a name="HapticPeriodicObj"></a><pre><a href="haptic.html#HapticPeriodicObj"><span class="Identifier">HapticPeriodicObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span class="Comment">## \</span>
               <span class="Comment">## `HAPTIC_SINE`, `HAPTIC_LEFTRIGHT`, `HAPTIC_TRIANGLE,</span>
               <span class="Comment">## `SDL_HAPTIC_SAWTOOTHUP` or `HAPTIC_SAWTOOTHDOWN`</span>
-  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticDirection</span>  <span class="Comment">## Direction of the effect.</span>
+  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <a href="haptic.html#HapticDirection"><span class="Identifier">HapticDirection</span></a>  <span class="Comment">## Direction of the effect.</span>
   <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">## uration of the effect.</span>
   <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">## Delay before starting the effect.</span>
   <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">## Button that triggers the effect.</span>
@@ -1669,11 +1680,11 @@ SDL_HAPTIC_SAWTOOTHDOWN
 
 
 </dd>
-<dt id="HapticConditionObj"><a name="HapticConditionObj"></a><pre><span class="Identifier">HapticConditionObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="HapticConditionObj"><a name="HapticConditionObj"></a><pre><a href="haptic.html#HapticConditionObj"><span class="Identifier">HapticConditionObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">## \</span>
               <span class="Comment">## `HAPTIC_SPRING`, `HAPTIC_DAMPER`,</span>
               <span class="Comment">## `HAPTIC_INERTIA` or `HAPTIC_FRICTION`</span>
-  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticDirection</span>  <span class="Comment">## Direction of the effect - Not used ATM.</span>
+  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <a href="haptic.html#HapticDirection"><span class="Identifier">HapticDirection</span></a>  <span class="Comment">## Direction of the effect - Not used ATM.</span>
   <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">## Duration of the effect.</span>
   <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">## Delay before starting the effect.</span>
   <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">## Button that triggers the effect.</span>
@@ -1712,9 +1723,9 @@ A structure containing a template for a Condition effect.</p>
 
 
 </dd>
-<dt id="HapticRampObj"><a name="HapticRampObj"></a><pre><span class="Identifier">HapticRampObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="HapticRampObj"><a name="HapticRampObj"></a><pre><a href="haptic.html#HapticRampObj"><span class="Identifier">HapticRampObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">## `HAPTIC_RAMP`</span>
-  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticDirection</span>  <span class="Comment">## Direction of the effect.</span>
+  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <a href="haptic.html#HapticDirection"><span class="Identifier">HapticDirection</span></a>  <span class="Comment">## Direction of the effect.</span>
   <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">## Duration of the effect.</span>
   <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">## Delay before starting the effect.</span>
   <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">## Button that triggers the effect.</span>
@@ -1737,9 +1748,9 @@ A structure containing a template for a Ramp effect.</p>
 
 
 </dd>
-<dt id="HapticLeftRightObj"><a name="HapticLeftRightObj"></a><pre><span class="Identifier">HapticLeftRightObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="HapticLeftRightObj"><a name="HapticLeftRightObj"></a><pre><a href="haptic.html#HapticLeftRightObj"><span class="Identifier">HapticLeftRightObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">## `HAPTIC_LEFTRIGHT`</span>
-  <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">## Duration of the effect.</span>
+  <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">## Duration of the effect in milliseconds.</span>
   <span class="Identifier">large_magnitude</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>     <span class="Comment">## Control of the large controller motor.</span>
   <span class="Identifier">small_magnitude</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>     <span class="Comment">## Control of the small controller motor.</span>
   </pre></dt>
@@ -1747,16 +1758,16 @@ A structure containing a template for a Ramp effect.</p>
 <p>
 A structure containing a template for a Left/Right effect.</p>
 <p>This struct is exclusively for the <cite>HAPTIC_LEFTRIGHT</cite> effect.</p>
-<p>The Left/Right effect is used to explicitly control the large and small motors, commonly found in modern game controllers. One motor is high frequency, the other is low frequency.</p>
+<p>The Left/Right effect is used to explicitly control the large and small motors, commonly found in modern game controllers. The small (right) motor is high frequency, and the large (left) motor is low frequency.</p>
 <p>See also:</p>
 <p><cite>HAPTIC_LEFTRIGHT</cite></p>
 <p><tt class="docutils literal"><span class="pre">HapticEffect</span></tt></p>
 
 
 </dd>
-<dt id="HapticCustomObj"><a name="HapticCustomObj"></a><pre><span class="Identifier">HapticCustomObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="HapticCustomObj"><a name="HapticCustomObj"></a><pre><a href="haptic.html#HapticCustomObj"><span class="Identifier">HapticCustomObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">## `HAPTIC_CUSTOM`</span>
-  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticDirection</span>  <span class="Comment">## Direction of the effect.</span>
+  <span class="Identifier">direction</span><span class="Operator">*</span><span class="Other">:</span> <a href="haptic.html#HapticDirection"><span class="Identifier">HapticDirection</span></a>  <span class="Comment">## Direction of the effect.</span>
   <span class="Identifier">length</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>              <span class="Comment">## Duration of the effect.</span>
   <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>               <span class="Comment">## Delay before starting the effect.</span>
   <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>              <span class="Comment">## Button that triggers the effect.</span>
@@ -1782,14 +1793,14 @@ A structure containing a template for the <cite>HAPTIC_CUSTOM</cite> effect.</p>
 
 
 </dd>
-<dt id="HapticEffect"><a name="HapticEffect"></a><pre><span class="Identifier">HapticEffect</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">union</span></div><span class="Other pragmaend">.}</span>
+<dt id="HapticEffect"><a name="HapticEffect"></a><pre><a href="haptic.html#HapticEffect"><span class="Identifier">HapticEffect</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">union</span></span><span class="Other">.}</span></span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>                <span class="Comment">## Effect type.</span>
-  <span class="Identifier">constant</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticConstantObj</span> <span class="Comment">## Constant effect.</span>
-  <span class="Identifier">periodic</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticPeriodicObj</span> <span class="Comment">## Periodic effect.</span>
-  <span class="Identifier">condition</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticConditionObj</span> <span class="Comment">## Condition effect.</span>
-  <span class="Identifier">ramp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticRampObj</span>         <span class="Comment">## Ramp effect.</span>
-  <span class="Identifier">leftright</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticLeftRightObj</span> <span class="Comment">## Left/Right effect.</span>
-  <span class="Identifier">custom</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HapticCustomObj</span>     <span class="Comment">## Custom effect.</span>
+  <span class="Identifier">constant</span><span class="Operator">*</span><span class="Other">:</span> <a href="haptic.html#HapticConstantObj"><span class="Identifier">HapticConstantObj</span></a> <span class="Comment">## Constant effect.</span>
+  <span class="Identifier">periodic</span><span class="Operator">*</span><span class="Other">:</span> <a href="haptic.html#HapticPeriodicObj"><span class="Identifier">HapticPeriodicObj</span></a> <span class="Comment">## Periodic effect.</span>
+  <span class="Identifier">condition</span><span class="Operator">*</span><span class="Other">:</span> <a href="haptic.html#HapticConditionObj"><span class="Identifier">HapticConditionObj</span></a> <span class="Comment">## Condition effect.</span>
+  <span class="Identifier">ramp</span><span class="Operator">*</span><span class="Other">:</span> <a href="haptic.html#HapticRampObj"><span class="Identifier">HapticRampObj</span></a>         <span class="Comment">## Ramp effect.</span>
+  <span class="Identifier">leftright</span><span class="Operator">*</span><span class="Other">:</span> <a href="haptic.html#HapticLeftRightObj"><span class="Identifier">HapticLeftRightObj</span></a> <span class="Comment">## Left/Right effect.</span>
+  <span class="Identifier">custom</span><span class="Operator">*</span><span class="Other">:</span> <a href="haptic.html#HapticCustomObj"><span class="Identifier">HapticCustomObj</span></a>     <span class="Comment">## Custom effect.</span>
   </pre></dt>
 <dd>
 <p>
@@ -1844,7 +1855,7 @@ delay               length</pre>
 <div class="section" id="10">
 <h1><a class="toc-backref" href="#10">Consts</a></h1>
 <dl class="item">
-<dt id="HAPTIC_CONSTANT"><a name="HAPTIC_CONSTANT"></a><pre><span class="Identifier">HAPTIC_CONSTANT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">0</span><span class="Other">)</span></pre></dt>
+<dt id="HAPTIC_CONSTANT"><a name="HAPTIC_CONSTANT"></a><pre><span class="Identifier">HAPTIC_CONSTANT</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
 <p>
 Constant haptic effect.</p>
@@ -1853,7 +1864,7 @@ Constant haptic effect.</p>
 
 
 </dd>
-<dt id="HAPTIC_SINE"><a name="HAPTIC_SINE"></a><pre><span class="Identifier">HAPTIC_SINE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">1</span><span class="Other">)</span></pre></dt>
+<dt id="HAPTIC_SINE"><a name="HAPTIC_SINE"></a><pre><span class="Identifier">HAPTIC_SINE</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
 <dd>
 <p>
 Sine wave effect supported.</p>
@@ -1863,7 +1874,7 @@ Sine wave effect supported.</p>
 
 
 </dd>
-<dt id="HAPTIC_LEFTRIGHT"><a name="HAPTIC_LEFTRIGHT"></a><pre><span class="Identifier">HAPTIC_LEFTRIGHT</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">2</span><span class="Other">)</span></pre></dt>
+<dt id="HAPTIC_LEFTRIGHT"><a name="HAPTIC_LEFTRIGHT"></a><pre><span class="Identifier">HAPTIC_LEFTRIGHT</span> <span class="Other">=</span> <span class="DecNumber">4</span></pre></dt>
 <dd>
 <p>
 Left/Right effect supported.</p>
@@ -1874,7 +1885,7 @@ Left/Right effect supported.</p>
 
 
 </dd>
-<dt id="HAPTIC_TRIANGLE"><a name="HAPTIC_TRIANGLE"></a><pre><span class="Identifier">HAPTIC_TRIANGLE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">3</span><span class="Other">)</span></pre></dt>
+<dt id="HAPTIC_TRIANGLE"><a name="HAPTIC_TRIANGLE"></a><pre><span class="Identifier">HAPTIC_TRIANGLE</span> <span class="Other">=</span> <span class="DecNumber">8</span></pre></dt>
 <dd>
 <p>
 Triangle wave effect supported.</p>
@@ -1884,7 +1895,7 @@ Triangle wave effect supported.</p>
 
 
 </dd>
-<dt id="HAPTIC_SAWTOOTHUP"><a name="HAPTIC_SAWTOOTHUP"></a><pre><span class="Identifier">HAPTIC_SAWTOOTHUP</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">4</span><span class="Other">)</span></pre></dt>
+<dt id="HAPTIC_SAWTOOTHUP"><a name="HAPTIC_SAWTOOTHUP"></a><pre><span class="Identifier">HAPTIC_SAWTOOTHUP</span> <span class="Other">=</span> <span class="DecNumber">16</span></pre></dt>
 <dd>
 <p>
 Sawtoothup wave effect supported.</p>
@@ -1893,7 +1904,7 @@ Sawtoothup wave effect supported.</p>
 
 
 </dd>
-<dt id="HAPTIC_SAWTOOTHDOWN"><a name="HAPTIC_SAWTOOTHDOWN"></a><pre><span class="Identifier">HAPTIC_SAWTOOTHDOWN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">5</span><span class="Other">)</span></pre></dt>
+<dt id="HAPTIC_SAWTOOTHDOWN"><a name="HAPTIC_SAWTOOTHDOWN"></a><pre><span class="Identifier">HAPTIC_SAWTOOTHDOWN</span> <span class="Other">=</span> <span class="DecNumber">32</span></pre></dt>
 <dd>
 <p>
 Sawtoothdown wave effect supported.</p>
@@ -1903,7 +1914,7 @@ Sawtoothdown wave effect supported.</p>
 
 
 </dd>
-<dt id="HAPTIC_RAMP"><a name="HAPTIC_RAMP"></a><pre><span class="Identifier">HAPTIC_RAMP</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">6</span><span class="Other">)</span></pre></dt>
+<dt id="HAPTIC_RAMP"><a name="HAPTIC_RAMP"></a><pre><span class="Identifier">HAPTIC_RAMP</span> <span class="Other">=</span> <span class="DecNumber">64</span></pre></dt>
 <dd>
 <p>
 Ramp effect supported.</p>
@@ -1913,7 +1924,7 @@ Ramp effect supported.</p>
 
 
 </dd>
-<dt id="HAPTIC_SPRING"><a name="HAPTIC_SPRING"></a><pre><span class="Identifier">HAPTIC_SPRING</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">7</span><span class="Other">)</span></pre></dt>
+<dt id="HAPTIC_SPRING"><a name="HAPTIC_SPRING"></a><pre><span class="Identifier">HAPTIC_SPRING</span> <span class="Other">=</span> <span class="DecNumber">128</span></pre></dt>
 <dd>
 <p>
 Spring effect supported - uses axes position.</p>
@@ -1923,7 +1934,7 @@ Spring effect supported - uses axes position.</p>
 
 
 </dd>
-<dt id="HAPTIC_DAMPER"><a name="HAPTIC_DAMPER"></a><pre><span class="Identifier">HAPTIC_DAMPER</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">8</span><span class="Other">)</span></pre></dt>
+<dt id="HAPTIC_DAMPER"><a name="HAPTIC_DAMPER"></a><pre><span class="Identifier">HAPTIC_DAMPER</span> <span class="Other">=</span> <span class="DecNumber">256</span></pre></dt>
 <dd>
 <p>
 Damper effect supported - uses axes velocity.</p>
@@ -1933,7 +1944,7 @@ Damper effect supported - uses axes velocity.</p>
 
 
 </dd>
-<dt id="HAPTIC_INERTIA"><a name="HAPTIC_INERTIA"></a><pre><span class="Identifier">HAPTIC_INERTIA</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">9</span><span class="Other">)</span></pre></dt>
+<dt id="HAPTIC_INERTIA"><a name="HAPTIC_INERTIA"></a><pre><span class="Identifier">HAPTIC_INERTIA</span> <span class="Other">=</span> <span class="DecNumber">512</span></pre></dt>
 <dd>
 <p>
 Inertia effect supported - uses axes acceleration.</p>
@@ -1943,7 +1954,7 @@ Inertia effect supported - uses axes acceleration.</p>
 
 
 </dd>
-<dt id="HAPTIC_FRICTION"><a name="HAPTIC_FRICTION"></a><pre><span class="Identifier">HAPTIC_FRICTION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">10</span><span class="Other">)</span></pre></dt>
+<dt id="HAPTIC_FRICTION"><a name="HAPTIC_FRICTION"></a><pre><span class="Identifier">HAPTIC_FRICTION</span> <span class="Other">=</span> <span class="DecNumber">1024</span></pre></dt>
 <dd>
 <p>
 Friction effect supported - uses axes movement.</p>
@@ -1953,7 +1964,7 @@ Friction effect supported - uses axes movement.</p>
 
 
 </dd>
-<dt id="HAPTIC_CUSTOM"><a name="HAPTIC_CUSTOM"></a><pre><span class="Identifier">HAPTIC_CUSTOM</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">11</span><span class="Other">)</span></pre></dt>
+<dt id="HAPTIC_CUSTOM"><a name="HAPTIC_CUSTOM"></a><pre><span class="Identifier">HAPTIC_CUSTOM</span> <span class="Other">=</span> <span class="DecNumber">2048</span></pre></dt>
 <dd>
 <p>
 Custom effect is supported.</p>
@@ -1961,7 +1972,7 @@ Custom effect is supported.</p>
 
 
 </dd>
-<dt id="HAPTIC_GAIN"><a name="HAPTIC_GAIN"></a><pre><span class="Identifier">HAPTIC_GAIN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">12</span><span class="Other">)</span></pre></dt>
+<dt id="HAPTIC_GAIN"><a name="HAPTIC_GAIN"></a><pre><span class="Identifier">HAPTIC_GAIN</span> <span class="Other">=</span> <span class="DecNumber">4096</span></pre></dt>
 <dd>
 <p>
 Device can set global gain.</p>
@@ -1970,7 +1981,7 @@ Device can set global gain.</p>
 
 
 </dd>
-<dt id="HAPTIC_AUTOCENTER"><a name="HAPTIC_AUTOCENTER"></a><pre><span class="Identifier">HAPTIC_AUTOCENTER</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">13</span><span class="Other">)</span></pre></dt>
+<dt id="HAPTIC_AUTOCENTER"><a name="HAPTIC_AUTOCENTER"></a><pre><span class="Identifier">HAPTIC_AUTOCENTER</span> <span class="Other">=</span> <span class="DecNumber">8192</span></pre></dt>
 <dd>
 <p>
 Device can set autocenter.</p>
@@ -1980,7 +1991,7 @@ Device can set autocenter.</p>
 
 
 </dd>
-<dt id="HAPTIC_STATUS"><a name="HAPTIC_STATUS"></a><pre><span class="Identifier">HAPTIC_STATUS</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">14</span><span class="Other">)</span></pre></dt>
+<dt id="HAPTIC_STATUS"><a name="HAPTIC_STATUS"></a><pre><span class="Identifier">HAPTIC_STATUS</span> <span class="Other">=</span> <span class="DecNumber">16384</span></pre></dt>
 <dd>
 <p>
 Device can be queried for effect status.</p>
@@ -1990,7 +2001,7 @@ Device can be queried for effect status.</p>
 
 
 </dd>
-<dt id="HAPTIC_PAUSE"><a name="HAPTIC_PAUSE"></a><pre><span class="Identifier">HAPTIC_PAUSE</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Other">(</span><span class="DecNumber">1</span> <span class="Keyword">shl</span> <span class="DecNumber">15</span><span class="Other">)</span></pre></dt>
+<dt id="HAPTIC_PAUSE"><a name="HAPTIC_PAUSE"></a><pre><span class="Identifier">HAPTIC_PAUSE</span> <span class="Other">=</span> <span class="DecNumber">32768</span></pre></dt>
 <dd>
 <p>
 Device can be paused.</p>
@@ -2001,7 +2012,7 @@ Device can be paused.</p>
 
 
 </dd>
-<dt id="HAPTIC_POLAR"><a name="HAPTIC_POLAR"></a><pre><span class="Identifier">HAPTIC_POLAR</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
+<dt id="HAPTIC_POLAR"><a name="HAPTIC_POLAR"></a><pre><span class="Identifier">HAPTIC_POLAR</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 <p>
 Uses polar coordinates for the direction.</p>
@@ -2009,7 +2020,7 @@ Uses polar coordinates for the direction.</p>
 
 
 </dd>
-<dt id="HAPTIC_CARTESIAN"><a name="HAPTIC_CARTESIAN"></a><pre><span class="Identifier">HAPTIC_CARTESIAN</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
+<dt id="HAPTIC_CARTESIAN"><a name="HAPTIC_CARTESIAN"></a><pre><span class="Identifier">HAPTIC_CARTESIAN</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
 <p>
 Uses cartesian coordinates for the direction.</p>
@@ -2017,7 +2028,7 @@ Uses cartesian coordinates for the direction.</p>
 
 
 </dd>
-<dt id="HAPTIC_SPHERICAL"><a name="HAPTIC_SPHERICAL"></a><pre><span class="Identifier">HAPTIC_SPHERICAL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
+<dt id="HAPTIC_SPHERICAL"><a name="HAPTIC_SPHERICAL"></a><pre><span class="Identifier">HAPTIC_SPHERICAL</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
 <dd>
 <p>
 Uses spherical coordinates for the direction.</p>
@@ -2025,7 +2036,7 @@ Uses spherical coordinates for the direction.</p>
 
 
 </dd>
-<dt id="HAPTIC_INFINITY"><a name="HAPTIC_INFINITY"></a><pre><span class="Identifier">HAPTIC_INFINITY</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">4294967295'i64</span></pre></dt>
+<dt id="HAPTIC_INFINITY"><a name="HAPTIC_INFINITY"></a><pre><span class="Identifier">HAPTIC_INFINITY</span> <span class="Other">=</span> <span class="DecNumber">4294967295'i64</span></pre></dt>
 <dd>
 <p>
 Used to play a device an infinite number of times.</p>
@@ -2038,15 +2049,15 @@ Used to play a device an infinite number of times.</p>
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="numHaptics"><a name="numHaptics,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">numHaptics</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_NumHaptics&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="numHaptics"><a name="numHaptics,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">numHaptics</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_NumHaptics&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Count the number of haptic devices attached to the system.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> number of haptic devices detected on the system.</p>
 
 
 </dd>
-<dt id="hapticName"><a name="hapticName,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticName</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticName&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticName"><a name="hapticName,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticName</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticName&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Get the implementation dependent name of a haptic device.</p>
 <p>This can be called before any joysticks are opened. If no name can be found, this procedure returns <cite>nil</cite>.</p>
@@ -2057,8 +2068,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticOpen"><a name="hapticOpen,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticOpen</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Haptic</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticOpen&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticOpen"><a name="hapticOpen,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticOpen</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticOpen&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Opens a haptic device for usage.</p>
 <p>The index passed as an argument refers to the N'th haptic device on this system.</p>
@@ -2077,8 +2088,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticOpened"><a name="hapticOpened,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticOpened</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticOpened&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticOpened"><a name="hapticOpened,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticOpened</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticOpened&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Checks if the haptic device at index has been opened.</p>
 <p><tt class="docutils literal"><span class="pre">device_index</span></tt> Index to check to see if it has been opened.</p>
@@ -2089,8 +2100,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticIndex"><a name="hapticIndex,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticIndex</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticIndex&quot;</span><span class="Other">,</span>
-                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticIndex"><a name="hapticIndex,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticIndex</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticIndex&quot;</span><span class="Other">,</span>
+                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Gets the index of a haptic device.</p>
 <p><tt class="docutils literal"><span class="pre">haptic</span></tt> Haptic device to get the index of.</p>
@@ -2101,7 +2112,7 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="mouseIsHaptic"><a name="mouseIsHaptic,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">mouseIsHaptic</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MouseIsHaptic&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="mouseIsHaptic"><a name="mouseIsHaptic,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">mouseIsHaptic</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MouseIsHaptic&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Gets whether or not the current mouse has haptic capabilities.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite> if the mouse is haptic, <cite>0</cite> if it isn't.</p>
@@ -2110,8 +2121,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticOpenFromMouse"><a name="hapticOpenFromMouse,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticOpenFromMouse</span><span class="Operator">*</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Haptic</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticOpenFromMouse&quot;</span><span class="Other">,</span>
-                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticOpenFromMouse"><a name="hapticOpenFromMouse,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticOpenFromMouse</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticOpenFromMouse&quot;</span><span class="Other">,</span>
+                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Tries to open a haptic device from the current mouse.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> The haptic device identifier or <cite>nil</cite> on error.</p>
@@ -2121,8 +2132,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="joystickIsHaptic"><a name="joystickIsHaptic,ptr.Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickIsHaptic</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Joystick</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickIsHaptic&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="joystickIsHaptic"><a name="joystickIsHaptic,ptr.Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickIsHaptic</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Joystick</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickIsHaptic&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Checks to see if a joystick has haptic features.</p>
 <p><tt class="docutils literal"><span class="pre">joystick</span></tt> Joystick to test for haptic capabilities.</p>
@@ -2132,8 +2143,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticOpenFromJoystick"><a name="hapticOpenFromJoystick,ptr.Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticOpenFromJoystick</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Joystick</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Haptic</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticOpenFromJoystick&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticOpenFromJoystick"><a name="hapticOpenFromJoystick,ptr.Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticOpenFromJoystick</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Joystick</span><span class="Other">)</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticOpenFromJoystick&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Opens a haptic device for usage from a joystick device.</p>
 <p>You must still close the haptic device separately. It will not be closed with the joystick.</p>
@@ -2146,16 +2157,15 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticClose"><a name="hapticClose,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticClose</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticClose&quot;</span><span class="Other">,</span>
-                                 <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticClose"><a name="hapticClose,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticClose</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticClose&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Closes a haptic device previously opened with <tt class="docutils literal"><span class="pre">hapticOpen()</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">haptic</span></tt> Haptic device to close.</p>
 
 
 </dd>
-<dt id="hapticNumEffects"><a name="hapticNumEffects,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticNumEffects</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticNumEffects&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticNumEffects"><a name="hapticNumEffects,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticNumEffects</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticNumEffects&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Returns the number of effects a haptic device can store.</p>
 <p>On some platforms this isn't fully supported, and therefore is an approximation.  Always check to see if your created effect was actually created and do not rely solely on <tt class="docutils literal"><span class="pre">hapticNumEffects()</span></tt>.</p>
@@ -2167,8 +2177,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticNumEffectsPlaying"><a name="hapticNumEffectsPlaying,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticNumEffectsPlaying</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticNumEffectsPlaying&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticNumEffectsPlaying"><a name="hapticNumEffectsPlaying,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticNumEffectsPlaying</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticNumEffectsPlaying&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Returns the number of effects a haptic device can play at the same time.</p>
 <p>This is not supported on all platforms, but will always return a value. Added here for the sake of completeness.</p>
@@ -2180,8 +2190,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticQuery"><a name="hapticQuery,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticQuery</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cuint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticQuery&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticQuery"><a name="hapticQuery,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticQuery</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cuint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticQuery&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Gets the haptic device's supported features in bitwise manner.</p>
 <p>Example:</p>
@@ -2194,8 +2204,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticNumAxes"><a name="hapticNumAxes,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticNumAxes</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticNumAxes&quot;</span><span class="Other">,</span>
-                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticNumAxes"><a name="hapticNumAxes,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticNumAxes</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticNumAxes&quot;</span><span class="Other">,</span>
+                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Gets the number of haptic axes the device has.</p>
 <p>See also:</p>
@@ -2203,8 +2213,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticEffectSupported"><a name="hapticEffectSupported,Haptic,ptr.HapticEffect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticEffectSupported</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">HapticEffect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticEffectSupported&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticEffectSupported"><a name="hapticEffectSupported,Haptic,ptr.HapticEffect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticEffectSupported</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="haptic.html#HapticEffect"><span class="Identifier">HapticEffect</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticEffectSupported&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Checks to see if effect is supported by haptic.</p>
 <p><tt class="docutils literal"><span class="pre">haptic</span></tt> Haptic device to check on.</p>
@@ -2216,8 +2226,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticNewEffect"><a name="hapticNewEffect,Haptic,ptr.HapticEffect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticNewEffect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">HapticEffect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticNewEffect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticNewEffect"><a name="hapticNewEffect,Haptic,ptr.HapticEffect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticNewEffect</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="haptic.html#HapticEffect"><span class="Identifier">HapticEffect</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticNewEffect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Creates a new haptic effect on the device.</p>
 <p><tt class="docutils literal"><span class="pre">haptic</span></tt> Haptic device to create the effect on.</p>
@@ -2230,8 +2240,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticUpdateEffect"><a name="hapticUpdateEffect,Haptic,cint,ptr.HapticEffect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticUpdateEffect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">HapticEffect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticUpdateEffect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticUpdateEffect"><a name="hapticUpdateEffect,Haptic,cint,ptr.HapticEffect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticUpdateEffect</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="haptic.html#HapticEffect"><span class="Identifier">HapticEffect</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticUpdateEffect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Updates the properties of an effect.</p>
 <p>Can be used dynamically, although behavior when dynamically changing direction may be strange.  Specifically the effect may reupload itself and start playing from the start.  You cannot change the type either when running <tt class="docutils literal"><span class="pre">hapticUpdateEffect()</span></tt>.</p>
@@ -2246,8 +2256,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticRunEffect"><a name="hapticRunEffect,Haptic,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticRunEffect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">iterations</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticRunEffect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticRunEffect"><a name="hapticRunEffect,Haptic,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticRunEffect</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">iterations</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticRunEffect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Runs the haptic effect on its associated haptic device.</p>
 <p>If iterations are <cite>HAPTIC_INFINITY</cite>, it'll run the effect over and over repeating the envelope (attack and fade) every time. If you only want the effect to last forever, set <cite>HAPTIC_INFINITY</cite> in the effect's length parameter.</p>
@@ -2262,8 +2272,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticStopEffect"><a name="hapticStopEffect,Haptic,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticStopEffect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticStopEffect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticStopEffect"><a name="hapticStopEffect,Haptic,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticStopEffect</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticStopEffect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Stops the haptic effect on its associated haptic device.</p>
 <p><tt class="docutils literal"><span class="pre">haptic</span></tt> Haptic device to stop the effect on.</p>
@@ -2275,8 +2285,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticDestroyEffect"><a name="hapticDestroyEffect,Haptic,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticDestroyEffect</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticDestroyEffect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticDestroyEffect"><a name="hapticDestroyEffect,Haptic,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticDestroyEffect</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticDestroyEffect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Destroys a haptic effect on the device.</p>
 <p>This will stop the effect if it's running.  Effects are automatically destroyed when the device is closed.</p>
@@ -2287,8 +2297,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticGetEffectStatus"><a name="hapticGetEffectStatus,Haptic,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticGetEffectStatus</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticGetEffectStatus&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticGetEffectStatus"><a name="hapticGetEffectStatus,Haptic,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticGetEffectStatus</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">;</span> <span class="Identifier">effect</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticGetEffectStatus&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Gets the status of the current effect on the haptic device.</p>
 <p>Device must support the <cite>HAPTIC_STATUS</cite> feature.</p>
@@ -2301,8 +2311,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticSetGain"><a name="hapticSetGain,Haptic,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticSetGain</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">gain</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticSetGain&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticSetGain"><a name="hapticSetGain,Haptic,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticSetGain</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">;</span> <span class="Identifier">gain</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticSetGain&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Sets the global gain of the device.</p>
 <p>Device must support the <cite>HAPTIC_GAIN</cite> feature.</p>
@@ -2315,8 +2325,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticSetAutocenter"><a name="hapticSetAutocenter,Haptic,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticSetAutocenter</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">autocenter</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticSetAutocenter&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticSetAutocenter"><a name="hapticSetAutocenter,Haptic,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticSetAutocenter</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">;</span> <span class="Identifier">autocenter</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticSetAutocenter&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Sets the global autocenter of the device.</p>
 <p>Autocenter should be between <cite>0</cite> and <cite>100</cite>. Setting it to <cite>0</cite> will disable autocentering.</p>
@@ -2329,8 +2339,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticPause"><a name="hapticPause,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticPause</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticPause&quot;</span><span class="Other">,</span>
-                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticPause"><a name="hapticPause,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticPause</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticPause&quot;</span><span class="Other">,</span>
+                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Pauses a haptic device.</p>
 <p>Device must support the <cite>HAPTIC_PAUSE</cite> feature. Call <tt class="docutils literal"><span class="pre">hapticUnpause()</span></tt> to resume playback.</p>
@@ -2342,8 +2352,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticUnpause"><a name="hapticUnpause,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticUnpause</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticUnpause&quot;</span><span class="Other">,</span>
-                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticUnpause"><a name="hapticUnpause,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticUnpause</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticUnpause&quot;</span><span class="Other">,</span>
+                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Unpauses a haptic device.</p>
 <p>Call to unpause after <tt class="docutils literal"><span class="pre">hapticPause()</span></tt>.</p>
@@ -2354,8 +2364,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticStopAll"><a name="hapticStopAll,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticStopAll</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticStopAll&quot;</span><span class="Other">,</span>
-                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticStopAll"><a name="hapticStopAll,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticStopAll</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticStopAll&quot;</span><span class="Other">,</span>
+                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Stops all the currently playing effects on a haptic device.</p>
 <p><tt class="docutils literal"><span class="pre">haptic</span></tt> Haptic device to stop.</p>
@@ -2363,8 +2373,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticRumbleSupported"><a name="hapticRumbleSupported,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticRumbleSupported</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticRumbleSupported&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticRumbleSupported"><a name="hapticRumbleSupported,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticRumbleSupported</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticRumbleSupported&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Checks to see if rumble is supported on a haptic device.</p>
 <p><tt class="docutils literal"><span class="pre">haptic</span></tt> Haptic device to check to see if it supports rumble.</p>
@@ -2376,8 +2386,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticRumbleInit"><a name="hapticRumbleInit,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticRumbleInit</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticRumbleInit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticRumbleInit"><a name="hapticRumbleInit,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticRumbleInit</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticRumbleInit&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Initializes the haptic device for simple rumble playback.</p>
 <p><tt class="docutils literal"><span class="pre">haptic</span></tt> Haptic device to initialize for simple rumble playback.</p>
@@ -2390,8 +2400,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticRumblePlay"><a name="hapticRumblePlay,Haptic,cfloat,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticRumblePlay</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">;</span> <span class="Identifier">strength</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">;</span> <span class="Identifier">length</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticRumblePlay&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticRumblePlay"><a name="hapticRumblePlay,Haptic,cfloat,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticRumblePlay</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">;</span> <span class="Identifier">strength</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">;</span> <span class="Identifier">length</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticRumblePlay&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Runs simple rumble on a haptic device</p>
 <p><tt class="docutils literal"><span class="pre">haptic</span></tt> Haptic device to play rumble effect on.</p>
@@ -2405,8 +2415,8 @@ Used to play a device an infinite number of times.</p>
 
 
 </dd>
-<dt id="hapticRumbleStop"><a name="hapticRumbleStop,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticRumbleStop</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <span class="Identifier">Haptic</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticRumbleStop&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="hapticRumbleStop"><a name="hapticRumbleStop,Haptic"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hapticRumbleStop</span><span class="Other">(</span><span class="Identifier">haptic</span><span class="Other">:</span> <a href="haptic.html#Haptic"><span class="Identifier">Haptic</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HapticRumbleStop&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Stops the simple rumble on a haptic device.</p>
 <p><tt class="docutils literal"><span class="pre">haptic</span></tt> Haptic to stop the rumble on. <tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success or <cite>-1</cite> on error.</p>
@@ -2427,7 +2437,7 @@ Used to play a device an infinite number of times.</p>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-03-03 12:24:57 UTC</small>
+        <small>Made with Nim. Generated: 2018-11-02 19:11:02 UTC</small>
       </div>
     </div>
   </div>

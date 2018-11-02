@@ -57,7 +57,7 @@ body {
   line-height: 20px;
   color: #444;
   letter-spacing: 0.15px;
-  background-color: rgba(252, 248, 244, 0.45); }
+  background-color: #FDFBFA; }
 
 /* Skeleton grid */
 .container {
@@ -192,10 +192,10 @@ dd > pre {
   table-layout: fixed; }
 
 /* Nim search input */
-div#searchInput {
+div#searchInputDiv {
   margin-bottom: 8px;
 }
-div#searchInput input#searchInput {
+div#searchInputDiv input#searchInput {
   width: 10em;
 }
 div.search-groupby {
@@ -1143,7 +1143,7 @@ dt pre > span.Identifier ~ span.Identifier, dt pre > span.Operator ~ span.Identi
   color: inherit;
   font-weight: inherit; }
 
-dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator {
+dt pre > span.Operator ~ span.Identifier {
   color: inherit;
   font-weight: inherit; }
 
@@ -1158,15 +1158,6 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
-div.pragma {
-  display: none;
-}
-span.pragmabegin {
-  cursor: pointer;
-}
-span.pragmaend {
-  cursor: pointer;
-}
 
 div.search_results {
   background-color: antiquewhite;
@@ -1179,32 +1170,47 @@ div#global-links ul {
   margin-left: 0;
   list-style-type: none;
 }
+
+span.pragmadots {
+  /* Position: relative frees us up to make the dots
+  look really nice without fucking up the layout and
+  causing bulging in the parent container */
+  position: relative;
+  /* 1px down looks slightly nicer */
+  top: 1px;
+
+  padding: 2px;
+  background-color: #D3D3D3;
+  border-radius: 4px;
+  margin: 0 2px;
+  cursor: pointer;
+
+  /* For some reason on Chrome, making the font size
+  smaller than 1em is causing the parent container to
+  bulge slightly. So, we're stuck with inheriting 1em,
+  which is sad, because 0.8em looks better... */
+}
+span.pragmadots:hover {
+  background-color: #DBDBDB;
+}
+span.pragmawrap {
+  display: none;
+}
+
 </style>
 
 <script type="text/javascript" src="../dochack.js"></script>
 
 <script type="text/javascript">
-function togglepragma(d) {
-  if (d.style.display != 'inline')
-    d.style.display = 'inline';
-  else
-    d.style.display = 'none';
-}
-
 function main() {
-  var elements = document.getElementsByClassName("pragmabegin");
-  for (var i = 0; i < elements.length; ++i) {
-    var e = elements[i];
-    e.onclick = function(event) {
-      togglepragma(event.target.nextSibling);
-    };
-  }
-  var elements = document.getElementsByClassName("pragmaend");
-  for (var i = 0; i < elements.length; ++i) {
-    var e = elements[i];
-    e.onclick = function(event) {
-      togglepragma(event.target.previousSibling);
-    };
+  var pragmaDots = document.getElementsByClassName("pragmadots");
+  for (var i = 0; i < pragmaDots.length; i++) {
+    pragmaDots[i].onclick = function(event) {
+      // Hide tease
+      event.target.parentNode.style.display = "none";
+      // Show actual
+      event.target.parentNode.nextElementSibling.style.display = "inline";
+    }
   }
 }
 </script>
@@ -1220,7 +1226,7 @@ function main() {
     <ul class="simple">
     </ul>
   </div>
-  <div id="searchInput">
+  <div id="searchInputDiv">
     Search: <input type="text" id="searchInput"
       onkeyup="search()" />
   </div>
@@ -1232,7 +1238,7 @@ function main() {
     </select>
   </div>
   <ul class="simple simple-toc" id="toc-list">
-<li><a class="reference" id="smpeg-nim_toc" href="#smpeg-nim">smpeg.nim</a></li>
+<li><a class="reference" id="smpegdotnim_toc" href="#smpegdotnim">smpeg.nim</a></li>
 <li>
   <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
   <ul class="simple simple-toc-section">
@@ -1243,23 +1249,23 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Version"
-    title="Version* = object
+    title="Version = object
   major*: uint8
   minor*: uint8
   patch*: uint8"><wbr />Version<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#Smpeg"
-    title="Smpeg* = pointer"><wbr />Smpeg<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="Smpeg = pointer"><wbr />Smpeg<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#Frame"
-    title="Frame* = ptr FrameObj"><wbr />Frame<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="Frame = ptr FrameObj"><wbr />Frame<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#FrameObj"
-    title="FrameObj* = object
+    title="FrameObj = object
   w*: cuint
   h*: cuint
   imageWidth*: cuint
   imageHeight*: cuint
   image*: ptr uint8"><wbr />Frame<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#Info"
-    title="Info* = object
+    title="Info = object
   hasAudio*: cint
   hasVideo*: cint
   width*: cint
@@ -1273,10 +1279,10 @@ function main() {
   currentTime*: cdouble
   totalTime*: cdouble"><wbr />Info<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#SMPEGstatus"
-    title="SMPEGstatus* = enum
+    title="SMPEGstatus {.size: 4.} = enum
   ERROR = -1, STOPPED, PLAYING"><wbr />SMPEGstatus<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#DisplayCallback"
-    title="DisplayCallback* = proc (data: pointer; frame: Frame)"><wbr />Display<wbr />Callback<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="DisplayCallback = proc (data: pointer; frame: Frame) {.cdecl.}"><wbr />Display<wbr />Callback<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1284,11 +1290,11 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#MAJOR_VERSION"
-    title="MAJOR_VERSION* = 2"><wbr />MAJOR_<wbr />VERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="MAJOR_VERSION = 2"><wbr />MAJOR_<wbr />VERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#MINOR_VERSION"
-    title="MINOR_VERSION* = 0"><wbr />MINOR_<wbr />VERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="MINOR_VERSION = 0"><wbr />MINOR_<wbr />VERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#PATCHLEVEL"
-    title="PATCHLEVEL* = 0"><wbr />PATCHLEVEL<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="PATCHLEVEL = 0"><wbr />PATCHLEVEL<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1296,55 +1302,55 @@ function main() {
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#new,cstring,ptr.Info,bool"
-    title="new*(file: cstring; info: ptr Info; sdlAudio: bool): Smpeg"><wbr />new<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="new(file: cstring; info: ptr Info; sdlAudio: bool): Smpeg"><wbr />new<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#newDescr,cint,ptr.Info,bool"
-    title="newDescr*(file: cint; info: ptr Info; sdlAudio: bool): Smpeg"><wbr />new<wbr />Descr<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="newDescr(file: cint; info: ptr Info; sdlAudio: bool): Smpeg"><wbr />new<wbr />Descr<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#newData,pointer,cint,ptr.Info,bool"
-    title="newData*(data: pointer; size: cint; info: ptr Info; sdlAudio: bool): Smpeg"><wbr />new<wbr />Data<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="newData(data: pointer; size: cint; info: ptr Info; sdlAudio: bool): Smpeg"><wbr />new<wbr />Data<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#newRwops,ptr.,ptr.Info,bool,bool"
-    title="newRwops*(src: ptr sdl.RWops; info: ptr Info; freesrc: bool; sdlAudio: bool): Smpeg"><wbr />new<wbr />Rwops<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="newRwops(src: ptr sdl.RWops; info: ptr Info; freesrc: bool; sdlAudio: bool): Smpeg"><wbr />new<wbr />Rwops<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#getInfo,Smpeg,ptr.Info"
-    title="getInfo*(mpeg: Smpeg; info: ptr Info)"><wbr />get<wbr />Info<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="getInfo(mpeg: Smpeg; info: ptr Info)"><wbr />get<wbr />Info<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#enableAudio,Smpeg,bool"
-    title="enableAudio*(mpeg: Smpeg; enable: bool)"><wbr />enable<wbr />Audio<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="enableAudio(mpeg: Smpeg; enable: bool)"><wbr />enable<wbr />Audio<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#enableVideo,Smpeg,bool"
-    title="enableVideo*(mpeg: Smpeg; enable: bool)"><wbr />enable<wbr />Video<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="enableVideo(mpeg: Smpeg; enable: bool)"><wbr />enable<wbr />Video<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#delete,Smpeg"
-    title="delete*(mpeg: Smpeg)"><wbr />delete<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="delete(mpeg: Smpeg)"><wbr />delete<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#status,Smpeg"
-    title="status*(mpeg: Smpeg): SMPEGstatus"><wbr />status<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="status(mpeg: Smpeg): SMPEGstatus"><wbr />status<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#setVolume,Smpeg,cint"
-    title="setVolume*(mpeg: Smpeg; volume: cint)"><wbr />set<wbr />Volume<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="setVolume(mpeg: Smpeg; volume: cint)"><wbr />set<wbr />Volume<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#setDisplay,Smpeg,DisplayCallback,pointer,"
-    title="setDisplay*(mpeg: Smpeg; callback: DisplayCallback; data: pointer; lock: sdl.Mutex)"><wbr />set<wbr />Display<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="setDisplay(mpeg: Smpeg; callback: DisplayCallback; data: pointer; lock: sdl.Mutex)"><wbr />set<wbr />Display<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#loop,Smpeg,bool"
-    title="loop*(mpeg: Smpeg; repeat: bool)"><wbr />loop<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="loop(mpeg: Smpeg; repeat: bool)"><wbr />loop<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#play,Smpeg"
-    title="play*(mpeg: Smpeg)"><wbr />play<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="play(mpeg: Smpeg)"><wbr />play<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#pause,Smpeg"
-    title="pause*(mpeg: Smpeg)"><wbr />pause<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="pause(mpeg: Smpeg)"><wbr />pause<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#stop,Smpeg"
-    title="stop*(mpeg: Smpeg)"><wbr />stop<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="stop(mpeg: Smpeg)"><wbr />stop<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#rewind,Smpeg"
-    title="rewind*(mpeg: Smpeg)"><wbr />rewind<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="rewind(mpeg: Smpeg)"><wbr />rewind<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#seek,Smpeg,cint"
-    title="seek*(mpeg: Smpeg; bytes: cint)"><wbr />seek<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="seek(mpeg: Smpeg; bytes: cint)"><wbr />seek<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#skip,Smpeg,cfloat"
-    title="skip*(mpeg: Smpeg; seconds: cfloat)"><wbr />skip<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="skip(mpeg: Smpeg; seconds: cfloat)"><wbr />skip<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#renderFrame,Smpeg,cint"
-    title="renderFrame*(mpeg: Smpeg; framenum: cint)"><wbr />render<wbr />Frame<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderFrame(mpeg: Smpeg; framenum: cint)"><wbr />render<wbr />Frame<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#renderFinal,Smpeg"
-    title="renderFinal*(mpeg: Smpeg)"><wbr />render<wbr />Final<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="renderFinal(mpeg: Smpeg)"><wbr />render<wbr />Final<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#error,Smpeg"
-    title="error*(mpeg: Smpeg): cstring"><wbr />error<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="error(mpeg: Smpeg): cstring"><wbr />error<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#playAudio,Smpeg,ptr.uint8,cint"
-    title="playAudio*(mpeg: Smpeg; stream: ptr uint8; len: cint): cint"><wbr />play<wbr />Audio<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="playAudio(mpeg: Smpeg; stream: ptr uint8; len: cint): cint"><wbr />play<wbr />Audio<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#playAudioSDL,pointer,ptr.uint8,cint"
-    title="playAudioSDL*(mpeg: pointer; stream: ptr uint8; len: cint)"><wbr />play<wbr />Audio<wbr />SDL<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="playAudioSDL(mpeg: pointer; stream: ptr uint8; len: cint)"><wbr />play<wbr />Audio<wbr />SDL<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#wantedSpec,Smpeg,ptr."
-    title="wantedSpec*(mpeg: Smpeg; wanted: ptr sdl.AudioSpec): cint"><wbr />wanted<wbr />Spec<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="wantedSpec(mpeg: Smpeg; wanted: ptr sdl.AudioSpec): cint"><wbr />wanted<wbr />Spec<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
   <li><a class="reference" href="#actualSpec,Smpeg,ptr."
-    title="actualSpec*(mpeg: Smpeg; spec: ptr sdl.AudioSpec)"><wbr />actual<wbr />Spec<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="actualSpec(mpeg: Smpeg; spec: ptr sdl.AudioSpec)"><wbr />actual<wbr />Spec<span class="attachedType" style="visibility:hidden">Smpeg</span></a></li>
 
   </ul>
 </li>
@@ -1352,7 +1358,7 @@ function main() {
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#version.t,untyped"
-    title="version*(x: untyped)"><wbr />version<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="version(x: untyped)"><wbr />version<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -1367,7 +1373,7 @@ function main() {
 <p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Library General Public License for more details.</p>
 <p>You should have received a copy of the GNU Library General Public License along with this library; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. </p>
 
-<h1><a class="toc-backref" id="smpeg-nim" href="#smpeg-nim">smpeg.nim</a></h1><p>SDL2 MPEG Player library.</p>
+<h1><a class="toc-backref" id="smpegdotnim" href="#smpegdotnim">smpeg.nim</a></h1><p>SDL2 MPEG Player library.</p>
 <p>Use <tt class="docutils literal"><span class="pre">ffmpeg</span></tt> to convert media files to the supported format:</p>
 <pre class="listing"><span class="Identifier">ffmpeg</span> <span class="Operator">-</span><span class="Identifier">i</span> <span class="Identifier">input_file</span> <span class="Operator">-</span><span class="Identifier">target</span> <span class="Identifier">ntsc</span><span class="Operator">-</span><span class="Identifier">vcd</span> <span class="Operator">-</span><span class="Identifier">c</span><span class="Punctuation">:</span><span class="Identifier">v</span> <span class="Identifier">mpeg1video</span> <span class="Operator">-</span><span class="Identifier">c</span><span class="Punctuation">:</span><span class="Identifier">a</span> <span class="Identifier">mp2</span> <span class="Identifier">output</span><span class="Operator">.</span><span class="Identifier">mpg</span></pre></p>
   <div class="section" id="6">
@@ -1378,7 +1384,7 @@ function main() {
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="Version"><a name="Version"></a><pre><span class="Identifier">Version</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="Version"><a name="Version"></a><pre><a href="smpeg.html#Version"><span class="Identifier">Version</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">major</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">minor</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
   <span class="Identifier">patch</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint8</span>
@@ -1387,17 +1393,17 @@ function main() {
 
 
 </dd>
-<dt id="Smpeg"><a name="Smpeg"></a><pre><span class="Identifier">Smpeg</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
+<dt id="Smpeg"><a name="Smpeg"></a><pre><a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 This is the actual SMPEG object
 
 </dd>
-<dt id="Frame"><a name="Frame"></a><pre><span class="Identifier">Frame</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Identifier">FrameObj</span></pre></dt>
+<dt id="Frame"><a name="Frame"></a><pre><a href="smpeg.html#Frame"><span class="Identifier">Frame</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <a href="smpeg.html#FrameObj"><span class="Identifier">FrameObj</span></a></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="FrameObj"><a name="FrameObj"></a><pre><span class="Identifier">FrameObj</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="FrameObj"><a name="FrameObj"></a><pre><a href="smpeg.html#FrameObj"><span class="Identifier">FrameObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">w</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cuint</span>
   <span class="Identifier">h</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cuint</span>
   <span class="Identifier">imageWidth</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cuint</span>
@@ -1409,7 +1415,7 @@ This is the actual SMPEG object
 A YV12 format video frame
 
 </dd>
-<dt id="Info"><a name="Info"></a><pre><span class="Identifier">Info</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="Info"><a name="Info"></a><pre><a href="smpeg.html#Info"><span class="Identifier">Info</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">hasAudio</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
   <span class="Identifier">hasVideo</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
   <span class="Identifier">width</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
@@ -1428,13 +1434,13 @@ A YV12 format video frame
 Used to get information about the SMPEG object
 
 </dd>
-<dt id="SMPEGstatus"><a name="SMPEGstatus"></a><pre><span class="Identifier">SMPEGstatus</span><span class="Operator">*</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">sizeof</span><span class="Other">(</span><span class="Identifier">cint</span><span class="Other">)</span></div><span class="Other pragmaend">.}</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt id="SMPEGstatus"><a name="SMPEGstatus"></a><pre><a href="smpeg.html#SMPEGstatus"><span class="Identifier">SMPEGstatus</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">ERROR</span> <span class="Other">=</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">STOPPED</span><span class="Other">,</span> <span class="Identifier">PLAYING</span></pre></dt>
 <dd>
 Possible MPEG status codes
 
 </dd>
-<dt id="DisplayCallback"><a name="DisplayCallback"></a><pre><span class="Identifier">DisplayCallback</span><span class="Operator">*</span> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">frame</span><span class="Other">:</span> <span class="Identifier">Frame</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="DisplayCallback"><a name="DisplayCallback"></a><pre><a href="smpeg.html#DisplayCallback"><span class="Identifier">DisplayCallback</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">frame</span><span class="Other">:</span> <a href="smpeg.html#Frame"><span class="Identifier">Frame</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Matches the declaration of <tt class="docutils literal"><span class="pre">sdl.updateRect()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">data</span></tt>  Your custom movie object, should contain at least <tt class="docutils literal"><span class="pre">Frame</span></tt> field.</p>
@@ -1450,17 +1456,17 @@ Possible MPEG status codes
 <div class="section" id="10">
 <h1><a class="toc-backref" href="#10">Consts</a></h1>
 <dl class="item">
-<dt id="MAJOR_VERSION"><a name="MAJOR_VERSION"></a><pre><span class="Identifier">MAJOR_VERSION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
+<dt id="MAJOR_VERSION"><a name="MAJOR_VERSION"></a><pre><span class="Identifier">MAJOR_VERSION</span> <span class="Other">=</span> <span class="DecNumber">2</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="MINOR_VERSION"><a name="MINOR_VERSION"></a><pre><span class="Identifier">MINOR_VERSION</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
+<dt id="MINOR_VERSION"><a name="MINOR_VERSION"></a><pre><span class="Identifier">MINOR_VERSION</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span><span class="Operator">*</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
+<dt id="PATCHLEVEL"><a name="PATCHLEVEL"></a><pre><span class="Identifier">PATCHLEVEL</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 
 
@@ -1470,8 +1476,8 @@ Possible MPEG status codes
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="new"><a name="new,cstring,ptr.Info,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">new</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Info</span><span class="Other">;</span> <span class="Identifier">sdlAudio</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Smpeg</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_new&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="new"><a name="new,cstring,ptr.Info,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">new</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="smpeg.html#Info"><span class="Identifier">Info</span></a><span class="Other">;</span> <span class="Identifier">sdlAudio</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_new&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Create a new SMPEG object from an MPEG file.</p>
 <p>On return, if <tt class="docutils literal"><span class="pre">info</span></tt> is not <cite>nil</cite>, it will be filled with information about the MPEG object.</p>
@@ -1480,146 +1486,146 @@ Possible MPEG status codes
 
 
 </dd>
-<dt id="newDescr"><a name="newDescr,cint,ptr.Info,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">newDescr</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Info</span><span class="Other">;</span> <span class="Identifier">sdlAudio</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Smpeg</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_new_descr&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="newDescr"><a name="newDescr,cint,ptr.Info,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">newDescr</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="smpeg.html#Info"><span class="Identifier">Info</span></a><span class="Other">;</span> <span class="Identifier">sdlAudio</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_new_descr&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 The same as above for a file descriptor
 
 </dd>
-<dt id="newData"><a name="newData,pointer,cint,ptr.Info,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">newData</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Info</span><span class="Other">;</span> <span class="Identifier">sdlAudio</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Smpeg</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_new_data&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="newData"><a name="newData,pointer,cint,ptr.Info,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">newData</span><span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="smpeg.html#Info"><span class="Identifier">Info</span></a><span class="Other">;</span> <span class="Identifier">sdlAudio</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_new_data&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>The same as above but for a raw chunk of data.</p>
 <p>SMPEG makes a copy of the data, so the application is free to delete after a successful call to this procedure.</p>
 
 
 </dd>
-<dt id="newRwops"><a name="newRwops,ptr.,ptr.Info,bool,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">newRwops</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">sdl</span><span class="Other">.</span><span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Info</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">sdlAudio</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Smpeg</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_new_rwops&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="newRwops"><a name="newRwops,ptr.,ptr.Info,bool,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">newRwops</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">sdl</span><span class="Other">.</span><span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="smpeg.html#Info"><span class="Identifier">Info</span></a><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">;</span> <span class="Identifier">sdlAudio</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_new_rwops&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>The same for a generic <tt class="docutils literal"><span class="pre">sdl.RWops</span></tt> structure.</p>
 <p><tt class="docutils literal"><span class="pre">freesrc</span></tt> should be <cite>true</cite> if SMPEG should close the source when it's done.</p>
 
 
 </dd>
-<dt id="getInfo"><a name="getInfo,Smpeg,ptr.Info"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getInfo</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Info</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_getinfo&quot;</span><span class="Other">,</span>
-                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="getInfo"><a name="getInfo,Smpeg,ptr.Info"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getInfo</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="smpeg.html#Info"><span class="Identifier">Info</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_getinfo&quot;</span><span class="Other">,</span>
+                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Get current information about an SMPEG object.
 
 </dd>
-<dt id="enableAudio"><a name="enableAudio,Smpeg,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">enableAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">;</span> <span class="Identifier">enable</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_enableaudio&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="enableAudio"><a name="enableAudio,Smpeg,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">enableAudio</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">;</span> <span class="Identifier">enable</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_enableaudio&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Enable or disable audio playback in MPEG stream.
 
 </dd>
-<dt id="enableVideo"><a name="enableVideo,Smpeg,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">enableVideo</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">;</span> <span class="Identifier">enable</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_enablevideo&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="enableVideo"><a name="enableVideo,Smpeg,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">enableVideo</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">;</span> <span class="Identifier">enable</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_enablevideo&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Enable or disable video playback in MPEG stream.
 
 </dd>
-<dt id="delete"><a name="delete,Smpeg"></a><pre><span class="Keyword">proc</span> <span class="Identifier">delete</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_delete&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="delete"><a name="delete,Smpeg"></a><pre><span class="Keyword">proc</span> <span class="Identifier">delete</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_delete&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Delete an SMPEG object.
 
 </dd>
-<dt id="status"><a name="status,Smpeg"></a><pre><span class="Keyword">proc</span> <span class="Identifier">status</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">SMPEGstatus</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_status&quot;</span><span class="Other">,</span>
-                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="status"><a name="status,Smpeg"></a><pre><span class="Keyword">proc</span> <span class="Identifier">status</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">)</span><span class="Other">:</span> <a href="smpeg.html#SMPEGstatus"><span class="Identifier">SMPEGstatus</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_status&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Get the current status of an SMPEG object.
 
 </dd>
-<dt id="setVolume"><a name="setVolume,Smpeg,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setVolume</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">;</span> <span class="Identifier">volume</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_setvolume&quot;</span><span class="Other">,</span>
-                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="setVolume"><a name="setVolume,Smpeg,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setVolume</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">;</span> <span class="Identifier">volume</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_setvolume&quot;</span><span class="Other">,</span>
+                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Set the audio volume of an MPEG stream, in the range <cite>0</cite>-<cite>100</cite>.
 
 </dd>
-<dt id="setDisplay"><a name="setDisplay,Smpeg,DisplayCallback,pointer,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setDisplay</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">;</span> <span class="Identifier">callback</span><span class="Other">:</span> <span class="Identifier">DisplayCallback</span><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">lock</span><span class="Other">:</span> <span class="Identifier">sdl</span><span class="Other">.</span><span class="Identifier">Mutex</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_setdisplay&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="setDisplay"><a name="setDisplay,Smpeg,DisplayCallback,pointer,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setDisplay</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">;</span> <span class="Identifier">callback</span><span class="Other">:</span> <a href="smpeg.html#DisplayCallback"><span class="Identifier">DisplayCallback</span></a><span class="Other">;</span> <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">lock</span><span class="Other">:</span> <span class="Identifier">sdl</span><span class="Other">.</span><span class="Identifier">Mutex</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_setdisplay&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Set the frame display callback for MPEG video.</p>
 <p><tt class="docutils literal"><span class="pre">lock</span></tt> is a mutex used to synchronize access to the frame data, and is held during the update callback.</p>
 
 
 </dd>
-<dt id="loop"><a name="loop,Smpeg,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loop</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">;</span> <span class="Identifier">repeat</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_loop&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="loop"><a name="loop,Smpeg,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loop</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">;</span> <span class="Identifier">repeat</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_loop&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Set or clear looping play on an SMPEG object.
 
 </dd>
-<dt id="play"><a name="play,Smpeg"></a><pre><span class="Keyword">proc</span> <span class="Identifier">play</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_play&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="play"><a name="play,Smpeg"></a><pre><span class="Keyword">proc</span> <span class="Identifier">play</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_play&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Play an SMPEG object.
 
 </dd>
-<dt id="pause"><a name="pause,Smpeg"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pause</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_pause&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="pause"><a name="pause,Smpeg"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pause</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_pause&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Pause/Resume playback of an SMPEG object.
 
 </dd>
-<dt id="stop"><a name="stop,Smpeg"></a><pre><span class="Keyword">proc</span> <span class="Identifier">stop</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_stop&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="stop"><a name="stop,Smpeg"></a><pre><span class="Keyword">proc</span> <span class="Identifier">stop</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_stop&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Stop playback of an SMPEG object.
 
 </dd>
-<dt id="rewind"><a name="rewind,Smpeg"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rewind</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_rewind&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="rewind"><a name="rewind,Smpeg"></a><pre><span class="Keyword">proc</span> <span class="Identifier">rewind</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_rewind&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Rewind the play position of an SMPEG object to the beginning of the MPEG.
 
 </dd>
-<dt id="seek"><a name="seek,Smpeg,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">seek</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">;</span> <span class="Identifier">bytes</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_seek&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="seek"><a name="seek,Smpeg,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">seek</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">;</span> <span class="Identifier">bytes</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_seek&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Seek <tt class="docutils literal"><span class="pre">bytes</span></tt> bytes in the MPEG stream.
 
 </dd>
-<dt id="skip"><a name="skip,Smpeg,cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">skip</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">;</span> <span class="Identifier">seconds</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_skip&quot;</span><span class="Other">,</span>
-                                      <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="skip"><a name="skip,Smpeg,cfloat"></a><pre><span class="Keyword">proc</span> <span class="Identifier">skip</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">;</span> <span class="Identifier">seconds</span><span class="Other">:</span> <span class="Identifier">cfloat</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_skip&quot;</span><span class="Other">,</span>
+                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Skip <tt class="docutils literal"><span class="pre">seconds</span></tt> seconds in the MPEG stream.
 
 </dd>
-<dt id="renderFrame"><a name="renderFrame,Smpeg,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderFrame</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">;</span> <span class="Identifier">framenum</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_renderFrame&quot;</span><span class="Other">,</span>
-    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="renderFrame"><a name="renderFrame,Smpeg,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderFrame</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">;</span> <span class="Identifier">framenum</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_renderFrame&quot;</span><span class="Other">,</span>
+    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Render a particular frame in the MPEG video.
 
 </dd>
-<dt id="renderFinal"><a name="renderFinal,Smpeg"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderFinal</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_renderFinal&quot;</span><span class="Other">,</span>
-                              <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="renderFinal"><a name="renderFinal,Smpeg"></a><pre><span class="Keyword">proc</span> <span class="Identifier">renderFinal</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_renderFinal&quot;</span><span class="Other">,</span>
+                             <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Render the last frame of an MPEG video.
 
 </dd>
-<dt id="error"><a name="error,Smpeg"></a><pre><span class="Keyword">proc</span> <span class="Identifier">error</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_error&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="error"><a name="error,Smpeg"></a><pre><span class="Keyword">proc</span> <span class="Identifier">error</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_error&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Return <cite>nil</cite> if there is no error in the MPEG stream, or an error message if there was a fatal error in the MPEG stream for the SMPEG object.
 
 </dd>
-<dt id="playAudio"><a name="playAudio,Smpeg,ptr.uint8,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">playAudio</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">;</span> <span class="Identifier">stream</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_playAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="playAudio"><a name="playAudio,Smpeg,ptr.uint8,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">playAudio</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">;</span> <span class="Identifier">stream</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_playAudio&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Exported callback procedure for audio playback.</p>
 <p>The procedure takes a buffer and the amount of data to fill, and returns the amount of data in bytes that was actually written. This will be the amount requested unless the MPEG audio has finished.</p>
 
 
 </dd>
-<dt id="playAudioSDL"><a name="playAudioSDL,pointer,ptr.uint8,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">playAudioSDL</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">stream</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_playAudioSDL&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="playAudioSDL"><a name="playAudioSDL,pointer,ptr.uint8,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">playAudioSDL</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">stream</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_playAudioSDL&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Wrapper for <tt class="docutils literal"><span class="pre">smpeg.playAudio()</span></tt> that can be passed to SDL and SDL_mixer.
 
 </dd>
-<dt id="wantedSpec"><a name="wantedSpec,Smpeg,ptr."></a><pre><span class="Keyword">proc</span> <span class="Identifier">wantedSpec</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">;</span> <span class="Identifier">wanted</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">sdl</span><span class="Other">.</span><span class="Identifier">AudioSpec</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_wantedSpec&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="wantedSpec"><a name="wantedSpec,Smpeg,ptr."></a><pre><span class="Keyword">proc</span> <span class="Identifier">wantedSpec</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">;</span> <span class="Identifier">wanted</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">sdl</span><span class="Other">.</span><span class="Identifier">AudioSpec</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_wantedSpec&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Get the best SDL audio spec for the audio stream.
 
 </dd>
-<dt id="actualSpec"><a name="actualSpec,Smpeg,ptr."></a><pre><span class="Keyword">proc</span> <span class="Identifier">actualSpec</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <span class="Identifier">Smpeg</span><span class="Other">;</span> <span class="Identifier">spec</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">sdl</span><span class="Other">.</span><span class="Identifier">AudioSpec</span><span class="Other">)</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_actualSpec&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="actualSpec"><a name="actualSpec,Smpeg,ptr."></a><pre><span class="Keyword">proc</span> <span class="Identifier">actualSpec</span><span class="Other">(</span><span class="Identifier">mpeg</span><span class="Other">:</span> <a href="smpeg.html#Smpeg"><span class="Identifier">Smpeg</span></a><span class="Other">;</span> <span class="Identifier">spec</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">sdl</span><span class="Other">.</span><span class="Identifier">AudioSpec</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SMPEG_actualSpec&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SMPEG2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Inform SMPEG of the actual SDL audio spec used for sound playback.
 
@@ -1629,7 +1635,7 @@ Inform SMPEG of the actual SDL audio spec used for sound playback.
 <div class="section" id="18">
 <h1><a class="toc-backref" href="#18">Templates</a></h1>
 <dl class="item">
-<dt id="version"><a name="version.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">version</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span></pre></dt>
+<dt id="version"><a name="version.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">version</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span></pre></dt>
 <dd>
 
 This template can be used to fill a version structure with the compile-time version of the SDL library.
@@ -1645,7 +1651,7 @@ This template can be used to fill a version structure with the compile-time vers
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-03-03 12:31:11 UTC</small>
+        <small>Made with Nim. Generated: 2018-11-02 19:12:31 UTC</small>
       </div>
     </div>
   </div>

@@ -57,7 +57,7 @@ body {
   line-height: 20px;
   color: #444;
   letter-spacing: 0.15px;
-  background-color: rgba(252, 248, 244, 0.45); }
+  background-color: #FDFBFA; }
 
 /* Skeleton grid */
 .container {
@@ -192,10 +192,10 @@ dd > pre {
   table-layout: fixed; }
 
 /* Nim search input */
-div#searchInput {
+div#searchInputDiv {
   margin-bottom: 8px;
 }
-div#searchInput input#searchInput {
+div#searchInputDiv input#searchInput {
   width: 10em;
 }
 div.search-groupby {
@@ -1143,7 +1143,7 @@ dt pre > span.Identifier ~ span.Identifier, dt pre > span.Operator ~ span.Identi
   color: inherit;
   font-weight: inherit; }
 
-dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator {
+dt pre > span.Operator ~ span.Identifier {
   color: inherit;
   font-weight: inherit; }
 
@@ -1158,15 +1158,6 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
-div.pragma {
-  display: none;
-}
-span.pragmabegin {
-  cursor: pointer;
-}
-span.pragmaend {
-  cursor: pointer;
-}
 
 div.search_results {
   background-color: antiquewhite;
@@ -1179,32 +1170,47 @@ div#global-links ul {
   margin-left: 0;
   list-style-type: none;
 }
+
+span.pragmadots {
+  /* Position: relative frees us up to make the dots
+  look really nice without fucking up the layout and
+  causing bulging in the parent container */
+  position: relative;
+  /* 1px down looks slightly nicer */
+  top: 1px;
+
+  padding: 2px;
+  background-color: #D3D3D3;
+  border-radius: 4px;
+  margin: 0 2px;
+  cursor: pointer;
+
+  /* For some reason on Chrome, making the font size
+  smaller than 1em is causing the parent container to
+  bulge slightly. So, we're stuck with inheriting 1em,
+  which is sad, because 0.8em looks better... */
+}
+span.pragmadots:hover {
+  background-color: #DBDBDB;
+}
+span.pragmawrap {
+  display: none;
+}
+
 </style>
 
 <script type="text/javascript" src="../dochack.js"></script>
 
 <script type="text/javascript">
-function togglepragma(d) {
-  if (d.style.display != 'inline')
-    d.style.display = 'inline';
-  else
-    d.style.display = 'none';
-}
-
 function main() {
-  var elements = document.getElementsByClassName("pragmabegin");
-  for (var i = 0; i < elements.length; ++i) {
-    var e = elements[i];
-    e.onclick = function(event) {
-      togglepragma(event.target.nextSibling);
-    };
-  }
-  var elements = document.getElementsByClassName("pragmaend");
-  for (var i = 0; i < elements.length; ++i) {
-    var e = elements[i];
-    e.onclick = function(event) {
-      togglepragma(event.target.previousSibling);
-    };
+  var pragmaDots = document.getElementsByClassName("pragmadots");
+  for (var i = 0; i < pragmaDots.length; i++) {
+    pragmaDots[i].onclick = function(event) {
+      // Hide tease
+      event.target.parentNode.style.display = "none";
+      // Show actual
+      event.target.parentNode.nextElementSibling.style.display = "inline";
+    }
   }
 }
 </script>
@@ -1220,7 +1226,7 @@ function main() {
     <ul class="simple">
     </ul>
   </div>
-  <div id="searchInput">
+  <div id="searchInputDiv">
     Search: <input type="text" id="searchInput"
       onkeyup="search()" />
   </div>
@@ -1232,7 +1238,7 @@ function main() {
     </select>
   </div>
   <ul class="simple simple-toc" id="toc-list">
-<li><a class="reference" id="syswm-nim_toc" href="#syswm-nim">syswm.nim</a></li>
+<li><a class="reference" id="syswmdotnim_toc" href="#syswmdotnim">syswm.nim</a></li>
 <li>
   <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
   <ul class="simple simple-toc-section">
@@ -1243,7 +1249,7 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#SysWMKind"
-    title="SysWMKind = enum
+    title="SysWMKind {.size: 4.} = enum
   SYSWM_UNKNOWN, SYSWM_WINDOWS, SYSWM_X11, SYSWM_DIRECTFB, SYSWM_COCOA, SYSWM_UIKIT,
   SYSWM_WAYLAND, SYSWM_MIR, SYSWM_WINRT, SYSWM_ANDROID, SYSWM_VIVANTE, SYSWM_OS2"><wbr />Sys<wbr />WMKind<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#SysWMMsgWinObj"
@@ -1293,18 +1299,18 @@ function main() {
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   <p class="module-desc">
-<h1><a class="toc-backref" id="syswm-nim" href="#syswm-nim">syswm.nim</a></h1><p>Include file for SDL custom system window manager hooks.</p>
+<h1><a class="toc-backref" id="syswmdotnim" href="#syswmdotnim">syswm.nim</a></h1><p>Include file for SDL custom system window manager hooks.</p>
 <p>Your application has access to a special type of event <tt class="docutils literal"><span class="pre">SYSWMEVENT</span></tt>, which contains window-manager specific information and arrives whenever an unhandled window event occurs.  This event is ignored by default, but you can enable it with <tt class="docutils literal"><span class="pre">eventState()</span></tt>.</p>
 </p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="sdl.html">sdl</a>, <a class="reference external" href="windows.html">windows</a>
+<a class="reference external" href="sdl.html">sdl</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="SysWMKind"><a name="SysWMKind"></a><pre><span class="Identifier">SysWMKind</span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt id="SysWMKind"><a name="SysWMKind"></a><pre><a href="sdl_syswm.html#SysWMKind"><span class="Identifier">SysWMKind</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">SYSWM_UNKNOWN</span><span class="Other">,</span> <span class="Identifier">SYSWM_WINDOWS</span><span class="Other">,</span> <span class="Identifier">SYSWM_X11</span><span class="Other">,</span> <span class="Identifier">SYSWM_DIRECTFB</span><span class="Other">,</span> <span class="Identifier">SYSWM_COCOA</span><span class="Other">,</span> <span class="Identifier">SYSWM_UIKIT</span><span class="Other">,</span>
   <span class="Identifier">SYSWM_WAYLAND</span><span class="Other">,</span> <span class="Identifier">SYSWM_MIR</span><span class="Other">,</span> <span class="Identifier">SYSWM_WINRT</span><span class="Other">,</span> <span class="Identifier">SYSWM_ANDROID</span><span class="Other">,</span> <span class="Identifier">SYSWM_VIVANTE</span><span class="Other">,</span> <span class="Identifier">SYSWM_OS2</span></pre></dt>
 <dd>
@@ -1312,7 +1318,7 @@ function main() {
 These are the various supported windowing subsystems
 
 </dd>
-<dt id="SysWMMsgWinObj"><a name="SysWMMsgWinObj"></a><pre><span class="Identifier">SysWMMsgWinObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="SysWMMsgWinObj"><a name="SysWMMsgWinObj"></a><pre><a href="sdl_syswm.html#SysWMMsgWinObj"><span class="Identifier">SysWMMsgWinObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">hwnd</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HWND</span>                  <span class="Comment">## The window for the message</span>
   <span class="Identifier">msg</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">WINUINT</span>                <span class="Comment">## The type of message</span>
   <span class="Identifier">wParam</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">WPARAM</span>              <span class="Comment">## WORD message parameter</span>
@@ -1322,28 +1328,28 @@ These are the various supported windowing subsystems
 when defined(SDL_VIDEO_DRIVER_WINDOWS)
 
 </dd>
-<dt id="SysWMMsgKindObj"><a name="SysWMMsgKindObj"></a><pre><span class="Identifier">SysWMMsgKindObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">win</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMMsgWinObj</span>
+<dt id="SysWMMsgKindObj"><a name="SysWMMsgKindObj"></a><pre><a href="sdl_syswm.html#SysWMMsgKindObj"><span class="Identifier">SysWMMsgKindObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">win</span><span class="Operator">*</span><span class="Other">:</span> <a href="sdl_syswm.html#SysWMMsgWinObj"><span class="Identifier">SysWMMsgWinObj</span></a>
 </pre></dt>
 <dd>
 when defined(SDL_VIDEO_DRIVER_WINDOWS)
 
 </dd>
-<dt id="SysWMMsg"><a name="SysWMMsg"></a><pre><span class="Identifier">SysWMMsg</span> <span class="Other">=</span> <span class="Keyword">ptr</span> <span class="Identifier">SysWMMsgObj</span></pre></dt>
+<dt id="SysWMMsg"><a name="SysWMMsg"></a><pre><a href="sdl_syswm.html#SysWMMsg"><span class="Identifier">SysWMMsg</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <a href="sdl_syswm.html#SysWMMsgObj"><span class="Identifier">SysWMMsgObj</span></a></pre></dt>
 <dd>
 
 
 </dd>
-<dt id="SysWMMsgObj"><a name="SysWMMsgObj"></a><pre><span class="Identifier">SysWMMsgObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">version</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Version</span>
-  <span class="Identifier">subsystem</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMKind</span>
-  <span class="Identifier">msg</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMMsgKindObj</span>
+<dt id="SysWMMsgObj"><a name="SysWMMsgObj"></a><pre><a href="sdl_syswm.html#SysWMMsgObj"><span class="Identifier">SysWMMsgObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">version</span><span class="Operator">*</span><span class="Other">:</span> <a href="sdl.html#Version"><span class="Identifier">Version</span></a>
+  <span class="Identifier">subsystem</span><span class="Operator">*</span><span class="Other">:</span> <a href="sdl_syswm.html#SysWMKind"><span class="Identifier">SysWMKind</span></a>
+  <span class="Identifier">msg</span><span class="Operator">*</span><span class="Other">:</span> <a href="sdl_syswm.html#SysWMMsgKindObj"><span class="Identifier">SysWMMsgKindObj</span></a>
 </pre></dt>
 <dd>
 The custom event structure.
 
 </dd>
-<dt id="SysWMinfoWinObj"><a name="SysWMinfoWinObj"></a><pre><span class="Identifier">SysWMinfoWinObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt id="SysWMinfoWinObj"><a name="SysWMinfoWinObj"></a><pre><a href="sdl_syswm.html#SysWMinfoWinObj"><span class="Identifier">SysWMinfoWinObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">window</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HWND</span>                <span class="Comment">## The window handle</span>
   <span class="Identifier">hdc</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HDC</span>                    <span class="Comment">## The window device context</span>
   <span class="Identifier">hinstance</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">HINSTANCE</span>        <span class="Comment">## The instance handle</span>
@@ -1352,17 +1358,17 @@ The custom event structure.
 when defined(SDL_VIDEO_DRIVER_WINDOWS)
 
 </dd>
-<dt id="SysWMinfoKindObj"><a name="SysWMinfoKindObj"></a><pre><span class="Identifier">SysWMinfoKindObj</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">win</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMinfoWinObj</span>
+<dt id="SysWMinfoKindObj"><a name="SysWMinfoKindObj"></a><pre><a href="sdl_syswm.html#SysWMinfoKindObj"><span class="Identifier">SysWMinfoKindObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">win</span><span class="Operator">*</span><span class="Other">:</span> <a href="sdl_syswm.html#SysWMinfoWinObj"><span class="Identifier">SysWMinfoWinObj</span></a>
 </pre></dt>
 <dd>
 when defined(SDL_VIDEO_DRIVER_WINDOWS)
 
 </dd>
-<dt id="SysWMinfo"><a name="SysWMinfo"></a><pre><span class="Identifier">SysWMinfo</span> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">version</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Version</span>
-  <span class="Identifier">subsystem</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMKind</span>
-  <span class="Identifier">info</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">SysWMinfoKindObj</span>
+<dt id="SysWMinfo"><a name="SysWMinfo"></a><pre><a href="sdl_syswm.html#SysWMinfo"><span class="Identifier">SysWMinfo</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">version</span><span class="Operator">*</span><span class="Other">:</span> <a href="sdl.html#Version"><span class="Identifier">Version</span></a>
+  <span class="Identifier">subsystem</span><span class="Operator">*</span><span class="Other">:</span> <a href="sdl_syswm.html#SysWMKind"><span class="Identifier">SysWMKind</span></a>
+  <span class="Identifier">info</span><span class="Operator">*</span><span class="Other">:</span> <a href="sdl_syswm.html#SysWMinfoKindObj"><span class="Identifier">SysWMinfoKindObj</span></a>
 </pre></dt>
 <dd>
 <p>
@@ -1376,8 +1382,8 @@ The custom window manager information structure.</p>
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="getWindowWMInfo"><a name="getWindowWMInfo,Window,ptr.SysWMinfo"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowWMInfo</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <span class="Identifier">Window</span><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">SysWMinfo</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowWMInfo&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<dt id="getWindowWMInfo"><a name="getWindowWMInfo,Window,ptr.SysWMinfo"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getWindowWMInfo</span><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <a href="sdl.html#Window"><span class="Identifier">Window</span></a><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="sdl_syswm.html#SysWMinfo"><span class="Identifier">SysWMinfo</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowWMInfo&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>This procedure allows access to driver-dependent window information.</p>
 <p><tt class="docutils literal"><span class="pre">window</span></tt> The window about which information is being requested</p>
@@ -1400,7 +1406,7 @@ The custom window manager information structure.</p>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-03-03 12:57:16 UTC</small>
+        <small>Made with Nim. Generated: 2018-11-02 19:14:07 UTC</small>
       </div>
     </div>
   </div>
