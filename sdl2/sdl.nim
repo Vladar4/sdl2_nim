@@ -36,6 +36,7 @@ include
   private/quit,
   private/render,
   private/revision,
+  private/sensor,
   private/shape,
   private/system,
   private/thread,
