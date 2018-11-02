@@ -176,7 +176,7 @@ proc exit(app: App) =
 proc events(pressed: var seq[sdl.Keycode]): bool =
   result = false
   var e: sdl.Event
-  if pressed != nil:
+  if pressed.len > 0:
     pressed = @[]
 
   while sdl.pollEvent(addr(e)) != 0:
@@ -188,8 +188,7 @@ proc events(pressed: var seq[sdl.Keycode]): bool =
     # Key pressed
     elif e.kind == sdl.KeyDown:
       # Add pressed key to sequence
-      if pressed != nil:
-        pressed.add(e.key.keysym.sym)
+      pressed.add(e.key.keysym.sym)
 
       # Exit on Escape key press
       if e.key.keysym.sym == sdl.K_Escape:

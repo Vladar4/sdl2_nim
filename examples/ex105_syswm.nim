@@ -20,6 +20,7 @@ proc subsys(kind: SysWMKind): string =
   of SysWM_WinRT: "Microsoft Windows RT"
   of SysWM_Android: "Android"
   of SysWM_Vivante: "Vivante"
+  of SysWM_OS2: "OS/2"
 
 
 

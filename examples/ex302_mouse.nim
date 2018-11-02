@@ -242,7 +242,7 @@ proc render(renderer: sdl.Renderer,
 proc events(pressed: var seq[sdl.Keycode]): bool =
   result = false
   var e: sdl.Event
-  if pressed != nil:
+  if pressed.len > 0:
     pressed = @[]
 
   while sdl.pollEvent(addr(e)) != 0:
@@ -254,8 +254,7 @@ proc events(pressed: var seq[sdl.Keycode]): bool =
     # Key pressed
     elif e.kind == sdl.KeyDown:
       # Add pressed key to sequence
-      if pressed != nil:
-        pressed.add(e.key.keysym.sym)
+      pressed.add(e.key.keysym.sym)
 
       # Exit on Escape key press
       if e.key.keysym.sym == sdl.K_Escape:
@@ -342,7 +341,7 @@ if init(app):
 
     # Render text
     for i in 0..text.high:
-      if (text[i] != nil) and (text[i] != ""):
+      if text[i].len > 0:
         var t = font.renderUTF8_Shaded(text[i], white, black)
         if t != nil:
           discard app.renderer.render(t, 10, 30 + 20 * i)
