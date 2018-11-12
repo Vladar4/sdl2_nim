@@ -101,7 +101,7 @@ when hostOS == "windows":
 
   proc createThreadWithStackSize_internal(
       fn: ThreadFunction; name: cstring; stacksize: csize; data: pointer;
-      cbegin: CurrentBeginThread; cend: CurrentEndThreada): Thread {.
+      cbegin: CurrentBeginThread; cend: CurrentEndThread): Thread {.
         cdecl, importc: "SDL_CreateThreadWithStackSize".}
 
   proc createThreadWithStackSize*(
