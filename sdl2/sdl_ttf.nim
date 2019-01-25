@@ -1,6 +1,6 @@
 #
 #  SDL_ttf:  A companion library to SDL for working with TrueType (tm) fonts
-#  Copyright (C) 2001-2013 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 2001-2019 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -42,7 +42,14 @@ import
 const
   MAJOR_VERSION* = 2
   MINOR_VERSION* = 0
-  PATCHLEVEL* = 14
+  PATCHLEVEL* = 15
+  COMPILEDVERSION* = versionNum(MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL) ##  \
+    ##  This is the version number const for the current SDL_ttf version.
+
+template versionAtLeast*(x, y, z: untyped): untyped =  ##  \
+  ##  This macro will evaluate to `true` if compiled
+  ##  with SDL_ttf at least X.Y.Z.
+  (COMPILEDVERSION >= versionNum(x, y, z))
 
 proc linkedVersion*(): ptr Version {.
     cdecl, importc: "TTF_Linked_Version", dynlib: SDL2_TTF_LIB.}
