@@ -1,4 +1,4 @@
-sdl2_nim 2.0.9.0
+sdl2_nim 2.0.9.1
 ================
 
 sdl2_nim is a wrapper of the SDL 2 library for the Nim language.
@@ -18,7 +18,7 @@ Includes:
 * SDL_image 2.0.4
 * SDL_mixer 2.0.4
 * SDL_net 2.0.1
-* SDL_ttf 2.0.14
+* SDL_ttf 2.0.15
 * SMPEG 2.0.0
 
 What is not implemented here:
@@ -63,6 +63,9 @@ FAQ:
 
 CHANGELOG:
 ==========
+
+**v2.0.9.1**
+* updated to SDL_ttf-2.0.15
 
 **v2.0.9.0**
 * updated to SDL-2.0.9 (see [changelog](https://github.com/Vladar4/sdl2_nim/blob/master/CHANGELOG-2.0.9.md))
