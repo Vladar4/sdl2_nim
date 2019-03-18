@@ -43,7 +43,7 @@ else:
   when defined(SDL_VIDEO_DRIVER_WINDOWS):
     import windows  ## oldwinapi lib
   elif defined(SDL_VIDEO_DRIVER_X11):
-    import x, xlib  ## x11 lib
+    import x11/x, x11/xlib  ## x11 lib
   elif defined(SDL_VIDEO_DRIVER_DIRECTFB):
     nil
   elif defined(SDL_VIDEO_DRIVER_COCOA):
