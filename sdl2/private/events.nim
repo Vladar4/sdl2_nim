@@ -523,7 +523,7 @@ type
     msg*: SysWMmsg          ##  driver dependent data, defined in ``syswm.nim``
 
 type
-  Event* = object {.union.} ##  \
+  Event* {.union.} = object ##  \
     ##  General event structure
     kind*: EventKind                    ## Event type, shared with all events
     common*: CommonEventObj             ##  Common event data

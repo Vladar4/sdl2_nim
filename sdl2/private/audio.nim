@@ -180,7 +180,7 @@ const
 type
   AudioFilter* = proc (cvt: ptr AudioCVT; format: AudioFormat) {.cdecl.}
 
-  AudioCVT* = object {.packed.} ##  \
+  AudioCVT* {.packed.} = object ##  \
     ##  A structure to hold a set of audio conversion filters and buffers.
     ##
     ##  Note that various parts of the conversion pipeline can take advantage

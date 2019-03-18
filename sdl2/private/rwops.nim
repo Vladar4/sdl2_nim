@@ -69,7 +69,7 @@ type
     data1*: pointer
     data2*: pointer
 
-  RWopsKind* = object {.union.}
+  RWopsKind* {.union.} = object
       androidio*: RWopsAndroidio
       windowsio*: RWopsWindowsio
       stdio*: RWopsStdio

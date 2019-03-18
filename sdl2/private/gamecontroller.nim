@@ -46,7 +46,7 @@ type
     hat*: cint
     hat_mask*: cint
 
-  GameControllerButtonBindValue* = object  {.union.}
+  GameControllerButtonBindValue* {.union.} = object
     button*: cint
     axis*: cint
     hat*: GameControllerButtonBindValueHat

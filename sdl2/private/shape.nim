@@ -96,7 +96,7 @@ template shapeModeAlpha*(mode: untyped): untyped =
     mode == ShapeModeReverseBinarizeAlpha)
 
 type
-  WindowShapeParams* = object  {.union.} ##  \
+  WindowShapeParams* {.union.} = object ##  \
     ##  A union containing parameters for shaped windows.
     binarizationCutoff*: uint8 ##  \
       ##  A cutoff alpha value for binarization
