@@ -1,4 +1,4 @@
-sdl2_nim 2.0.9.1
+sdl2_nim 2.0.9.2
 ================
 
 sdl2_nim is a wrapper of the SDL 2 library for the Nim language.
@@ -63,6 +63,10 @@ FAQ:
 
 CHANGELOG:
 ==========
+
+**v2.0.9.2**
+* updated x11 includes (sdl_syswm)
+* updated pragmas to a new style
 
 **v2.0.9.1**
 * updated to SDL_ttf-2.0.15
