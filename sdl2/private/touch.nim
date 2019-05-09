@@ -36,7 +36,7 @@ type
     pressure*: cfloat
 
 const
-  TOUCH_MOUSEID* = uint32(-1) ##  \
+  TOUCH_MOUSEID* = cast[uint32](-1'i32) ##  \
     ##  Used as the device ID for mouse events simulated with touch input
 
 # Procedures
