@@ -4,5 +4,5 @@
 ##  This header defines the current SDL revision.
 
 const
-  REVISION* = "hg-12373:8feb5da6f2fb"
-  REVISION_NUMBER* = 12373
+  REVISION* = "hg-12952:bc90ce38f1e2"
+  REVISION_NUMBER* = 12952

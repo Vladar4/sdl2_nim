@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2018 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -26,7 +26,7 @@
 
 type
   Point* = object ##  \
-    ##  The object that defines a point
+    ##  The object that defines a point (integer)
     ##
     ##  See also:
     ##
@@ -37,8 +37,20 @@ type
     y*: cint
 
 type
+  FPoint* = object ## \
+    ##  The structure that defines a point (floating point)
+    ##
+    ##  See also:
+    ##
+    ##  ``enclosePoints()``
+    ##
+    ##  ``pointInRect()``
+    x*: cfloat
+    y*: cfloat
+
+type
   Rect* = object ##  \
-    ##  A rectangle, with the origin at the upper left.
+    ##  A rectangle, with the origin at the upper left (integer).
     ##
     ##  See also:
     ##
@@ -57,6 +69,15 @@ type
     y*: cint
     w*: cint
     h*: cint
+
+type
+  FRect* = object ##  \
+    ##  A rectangle, with the origin at the upper left (floating point).
+    x*: cfloat
+    y*: cfloat
+    w*: cfloat
+    h*: cfloat
+
 
 template pointInRect*(p, r: untyped): bool = ##  \
   ##  ``Return`` `true` if point resides inside a rectangle.

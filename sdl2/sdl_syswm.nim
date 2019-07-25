@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -258,8 +258,8 @@ else:
   elif defined(SDL_VIDEO_DRIVER_MIR):
     type
       SysWMinfoMirObj* = object
-        connection*: ptr MirConnection  ##  Mir display server connection
-        surface*: ptr MirSurface        ##  Mir surface
+        connection*: pointer  ##  Mir display server connection
+        surface*: pointer     ##  Mir surface
 
       SysWMinfoKindObj* = object
         mir*: SysWMinfoMirObj

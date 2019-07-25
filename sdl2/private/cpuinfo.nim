@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2018 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -90,7 +90,6 @@ proc hasAVX512F*(): bool {.
     cdecl, importc: "SDL_HasAVX512F", dynlib: SDL2_LIB.}
   ##  This function returns true if the CPU has AVX-512F (foundation) features.
 
-
 proc hasNEON*(): bool {.
     cdecl, importc: "SDL_HasNEON", dynlib: SDL2_LIB.}
   ##  This function returns true if the CPU has NEON (ARM SIMD) features.
@@ -98,3 +97,69 @@ proc hasNEON*(): bool {.
 proc getSystemRAM*(): cint {.
     cdecl, importc: "SDL_GetSystemRAM", dynlib: SDL2_LIB.}
   ##  This procedure returns the amount of RAM configured in the system, in MB.
+
+proc simdGetAlignment*(): csize {.
+    cdecl, importc: "SDL_SIMDGetAlignment", dynlib: SDL2_LIB.}
+  ##  Report the alignment this system needs for SIMD allocations.
+  ##
+  ##  This will return the minimum number of bytes to which a pointer must be
+  ##  aligned to be compatible with SIMD instructions on the current machine.
+  ##  For example, if the machine supports SSE only, it will return 16, but if
+  ##  it supports AVX-512F, it'll return 64 (etc). This only reports values
+  ##  for instruction sets SDL knows about, so if your SDL build doesn't have
+  ##  ``sdl.hasAVX512F()``, then it might return 16 for the SSE support it
+  ##  sees and not 64 for the AVX-512 instructions that exist but SDL doesn't
+  ##  know about. Plan accordingly.
+
+proc simdAlloc*(len: csize): pointer {.
+    cdecl, importc: "SDL_SIMDAlloc", dynlib: SDL2_LIB.}
+  ##  Allocate memory in a SIMD-friendly way.
+  ##
+  ##  This will allocate a block of memory that is suitable for use with SIMD
+  ##  instructions. Specifically, it will be properly aligned and padded for
+  ##  the system's supported vector instructions.
+  ##
+  ##  The memory returned will be padded such that it is safe to read or write
+  ##  an incomplete vector at the end of the memory block. This can be useful
+  ##  so you don't have to drop back to a scalar fallback at the end of your
+  ##  SIMD processing loop to deal with the final elements without overflowing
+  ##  the allocated buffer.
+  ##
+  ##  You must free this memory with ``sdl.freeSIMD()``, not ``free()`` or
+  ##  ``sdl.free()`` etc.
+  ##
+  ##  Note that SDL will only deal with SIMD instruction sets it is aware of;
+  ##  for example, SDL 2.0.8 knows that SSE wants 16-byte vectors
+  ##  (``sdl.hasSSE()``), and AVX2 wants 32 bytes (``sdl.hasAVX2()``),
+  ##  but doesn't know that AVX-512 wants 64. To be clear: if you can't decide
+  ##  to use an instruction set with an ``sdl.has...()`` function, don't use
+  ##  that instruction set with memory allocated through here.
+  ##
+  ##  ``sdl.allocSIMD(0)`` will return a non-``nil`` pointer, assuming
+  ##  the system isn't out of memory.
+  ##
+  ##  ``len`` The length, in bytes, of the block to allocated.
+  ##  The actual allocated block might be larger due to padding, etc.
+  ##
+  ##  ``Return`` pointer to newly-allocated block, ``nil`` if out of memory.
+  ##
+  ##  See also:
+  ##
+  ##  ``sdl.simdAlignment()``
+  ##
+  ##  ``sdl.simdFree()``
+
+proc simdFree*(p: pointer) {.
+    cdecl, importc: "SDL_SIMDFree", dynlib: SDL2_LIB.}
+  ##  Deallocate memory obtained from ``sdl.simdAlloc()``.
+  ##
+  ##  It is not valid to use this function on a pointer from anything but
+  ##  ``sdl.simdAlloc()``. It can't be used on pointers from malloc, realloc,
+  ##  ``sdl.malloc()``, memalign, new[], etc.
+  ##
+  ##  However, ``sdl.simdFree(nil)`` is a legal no-op.
+  ##
+  ##  See also:
+  ##
+  ##  ``sdl.simdAlloc()``
+

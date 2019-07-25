@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2018 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -47,7 +47,7 @@ type
 const
   MAJOR_VERSION* = 2
   MINOR_VERSION* = 0
-  PATCHLEVEL* = 9
+  PATCHLEVEL* = 10
 
 template version*(x: untyped) = ##  \
   ##  Template to determine SDL version program was compiled against.

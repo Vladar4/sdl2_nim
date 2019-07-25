@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2018 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -29,6 +29,15 @@ type
 
   FingerID* = int64
 
+  TouchDeviceType* {.size: sizeof(cint).} = enum
+    TOUCH_DEVICE_INVALID = -1,
+    TOUCH_DEVICE_DIRECT,  ##  \
+      ##  touch screen with window-relative coordinates
+    TOUCH_DEVICE_INDIRECT_ABSOLUTE, ##  \
+      ##  trackpad with absolute device coordinates
+    TOUCH_DEVICE_INDIRECT_RELATIVE  ##  \
+      ##  trackpad with screen cursor-relative coordinates
+
   Finger* = object
     id*: FingerID
     x*: cfloat
@@ -39,6 +48,10 @@ const
   TOUCH_MOUSEID* = cast[uint32](-1'i32) ##  \
     ##  Used as the device ID for mouse events simulated with touch input
 
+const
+  MOUSE_TOUCHID*: int64 = -1  ##  \
+    ##  Used as the ``sdl.TouchID`` for touch events simulated with mouse input
+
 # Procedures
 
 proc getNumTouchDevices*(): cint {.
@@ -48,6 +61,10 @@ proc getNumTouchDevices*(): cint {.
 proc getTouchDevice*(index: cint): TouchID {.
     cdecl, importc: "SDL_GetTouchDevice", dynlib: SDL2_LIB.}
   ##  Get the touch ID with the given index, or `0` if the index is invalid.
+
+proc getTouchDeviceType*(touchID: TouchID): TouchDeviceType {.
+    cdecl, importc: "SDL_GetTouchDeviceType", dynlib: SDL2_LIB.}
+  ##  Get the type of the given touch device.
 
 proc getNumTouchFingers*(touchID: TouchID): cint {.
     cdecl, importc: "SDL_GetNumTouchFingers", dynlib: SDL2_LIB.}

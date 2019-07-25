@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2018 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -94,14 +94,14 @@ type
     read*: proc (context: ptr RWops;
         p: pointer; size: csize; maxnum: csize): csize {.cdecl.} ##  \
       ##  Read up to ``maxnum`` objects each of size ``size`` from the data
-      ##  stream to the area pointed at by ``ptr``.
+      ##  stream to the area pointed at by ``p``.
       ##
       ##  ``Return`` the number of objects read, or `0` at error or end of file.
 
     write*: proc (context: ptr RWops;
         p: pointer; size: csize; num: csize): csize {.cdecl.} ##  \
       ##  Write exactly ``num`` objects each of size ``size`` from the area
-      ##  pointed at by ``ptr`` to data stream.
+      ##  pointed at by ``p`` to data stream.
       ##
       ##  ``Return`` the number of objects written,
       ##  or `0` at error or end of file.
@@ -151,11 +151,10 @@ const
   RW_SEEK_CUR* = 1 ## Seek relative to current read point
   RW_SEEK_END* = 2 ## Seek relative to the end of data
 
-
-#   Read/write macros
+#   Read/write macros (deprecated since 2.0.10)
 #
 #   Macros to easily read and write from an RWopsObj object.
-
+#[
 template rwSize*(ctx: untyped): untyped =
   (ctx).size(ctx)
 
@@ -173,7 +172,44 @@ template rwWrite*(ctx, p, size, n: untyped): untyped =
 
 template rwClose*(ctx: untyped): untyped =
   (ctx).close(ctx)
+]#
 
+proc rwSize*(context: ptr RWops): int64 {.
+    cdecl, importc: "SDL_RWsize", dynlib: SDL2_LIB.}
+  ##  ``Return`` the size of the file in this rwops, or `-1` if unknown.
+
+proc rwSeek*(context: ptr RWops; offset: int64; whence: cint): int64 {.
+    cdecl, importc: "SDL_RWseek", dynlib: SDL2_LIB.}
+  ##  Seek to ``offset`` relative to ``whence``, one of stdio's whence values:
+  ##  `RW_SEEK_SET`, `RW_SEEK_CUR`, `RW_SEEK_END`.
+  ##
+  ##  ``Return`` the final offset in the data stream, or `-1` on error.
+
+proc rwTell*(context: ptr RWops): int64 {.
+    cdecl, importc: "SDL_RWtell", dynlib: SDL2_LIB.}
+  ##  ``Return`` the current offset in the data stream, or `-1` on error.
+
+proc rwRead*(
+    context: ptr RWops; p: pointer; size: csize; maxnum: csize): csize {.
+      cdecl, importc: "SDL_RWread", dynlib: SDL2_LIB.}
+  ##  Read up to ``maxnum`` objects each of size ``size`` from the data
+  ##  stream to the area pointed at by ``p``.
+  ##
+  ##  ``Return`` the number of objects read, or `0` at error or end of file.
+
+proc rwWrite*(
+    context: ptr RWops; p: pointer; size: csize; num: csize): csize {.
+      cdecl, importc: "SDL_RWwrite", dynlib: SDL2_LIB.}
+  ##  Write exactly ``num`` objects each of size ``size`` from the area
+  ##  pointed at by ``p`` to data stream.
+  ##
+  ##  ``Return`` the number of objects written, or `0` at error or end of file.
+
+proc rwClose*(context: ptr RWops): cint {.
+    cdecl, importc: "SDL_RWclose", dynlib: SDL2_LIB.}
+  ##  Close and free an allocated ``sdl.RWops`` structure.
+  ##
+  ##  ``Return`` `0` if successful or `-1` on write error when flushing data.
 
 proc loadFileRW*(src: ptr RWops, datasize: ptr csize, freesrc: cint): pointer {.
     cdecl, importc: "SDL_LoadFile_RW", dynlib: SDL2_LIB.}
@@ -194,12 +230,29 @@ template loadFileRW*(
     src: ptr RWops, datasize: ptr csize, freesrc: bool): pointer =
   loadFileRW(src, datasize, freesrc.cint)
 
-
+# (deprecated since 2.0.10)
+#[
 template loadFile*(file, datasize: untyped) : untyped = ##  \
   ##  Load an entire file.
   ##
   ##  Convenience template.
   loadFileRW(rwFromFile(file, "rb"), datasize, 1)
+]#
+
+proc loadFile*(file: cstring, datasize: ptr csize): pointer {.
+    cdecl, importc: "SDL_LoadFile", dynlib: SDL2_LIB.} =
+  ##  Load an entire file.
+  ##
+  ##  The data is allocated with a zero byte at the end (null terminated).
+  ##
+  ##  If ``datasize`` is not ``nil``,
+  ##  it is filled with the size of the data read.
+  ##
+  ##  If ``freesrc`` is non-zero, the stream will be closed after being read.
+  ##
+  ##  The data should be freed with ``sdl.free()``.
+  ##
+  ##  ``Return`` the data, or ``nil`` if there was an error.
 
 
 # Read/write macros

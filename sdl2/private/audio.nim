@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2018 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -390,23 +390,66 @@ proc loadWAV_RW*(
     src: ptr RWops; freesrc: cint; spec: ptr AudioSpec;
     audio_buf: ptr ptr uint8; audio_len: ptr uint32): ptr AudioSpec {.
       cdecl, importc: "SDL_LoadWAV_RW", dynlib: SDL2_LIB.}
-  ##  This procedure loads a WAVE from the data source, automatically freeing
-  ##  that source if ``freesrc`` is non-zero.  For example, to load a WAVE file,
-  ##  you could do:
+  ##  Load the audio data of a WAVE file into memory.
   ##
-  ##      loadWAV_RW(rwFromFile("sample.wav", "rb"), 1, ...)
+  ##  Loading a WAVE file requires ``src``, ``spec``, ``audio_buf`` and
+  ##  ``audio_len`` to be valid pointers. The entire data portion of the file
+  ##  is then loaded into memory and decoded if necessary.
   ##
+  ##  If ``freesrc`` is non-zero, the data source gets automatically closed and
+  ##  freed before the function returns.
   ##
-  ##  If this procedure succeeds, it returns the given AudioSpec,
-  ##  filled with the audio data format of the wave data, and sets
-  ##  ``audio_buf[]`` to a malloc()'d buffer containing the audio data,
-  ##  and sets ``audio_len[]`` to the length of that audio buffer, in bytes.
-  ##  You need to free the audio buffer with ``freeWAV()`` when you are
-  ##  done with it.
+  ##  Supported are RIFF WAVE files with the formats PCM
+  ##  (8, 16, 24, and 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA
+  ##  ADPCM (4 bits), and A-law and µ-law (8 bits). Other formats are currently
+  ##  unsupported and cause an error.
   ##
-  ##  This procedure returns `nil` and sets the SDL error message if the
-  ##  wave file cannot be opened, uses an unknown data format, or is
-  ##  corrupt.  Currently raw and MS-ADPCM WAVE files are supported.
+  ##  If this function succeeds, the pointer returned by it is equal to ``spec``
+  ##  and the pointer to the audio data allocated by the function is written to
+  ##  ``audio_buf`` and its length in bytes to ``audio_len``.
+  ##  The ``sdl.AudioSpec`` members ``freq``, ``channels``, and ``format`` are
+  ##  set to the values of the audio data in the buffer. The ``samples`` member
+  ##  is set to a sane default and all others are set to zero.
+  ##
+  ##  It's necessary to use ``sdl.freeWAV()`` to free the audio data returned
+  ##  in ``audio_buf`` when it is no longer used.
+  ##
+  ##  Because of the underspecification of the Waveform format, there are many
+  ##  problematic files in the wild that cause issues with strict decoders. To
+  ##  provide compatibility with these files, this decoder is lenient in regards
+  ##  to the truncation of the file, the fact chunk, and the size of the RIFF
+  ##  chunk. The hints ``sdl.HINT_WAVE_RIFF_CHUNK_SIZE``,
+  ##  ``sdl.HINT_WAVE_TRUNCATION``, and ``sdl.HINT_WAVE_FACT_CHUNK``
+  ##  can be used to tune the behavior of the loading process.
+  ##
+  ##  Any file that is invalid (due to truncation, corruption, or wrong values
+  ##  in the headers), too big, or unsupported causes an error. Additionally,
+  ##  any critical I/O error from the data source will terminate the loading
+  ##  process with an error. The function returns ``nil`` on error and in all
+  ##  cases (with the exception of ``src`` being ``nil``), an appropriate error
+  ##  message will be set.
+  ##
+  ##  It is required that the data source supports seeking.
+  ##
+  ##  Example:
+  ##
+  ##  .. code-block:: nim
+  ##    sdl.loadWAV_RW(sdl.rwFromFile("sample.wav", "rb"), 1, ...)
+  ##
+  ##  ``src`` The data source with the WAVE data
+  ##
+  ##  ``freesrc`` A integer value that makes the function close the data source
+  ##  if non-zero
+  ##
+  ##  ``spec`` A pointer filled with the audio format of the audio data
+  ##
+  ##  ``audio_buf`` A pointer filled with the audio data allocated by the
+  ##  function
+  ##
+  ##  ``audio_len`` A pointer filled with the length of the audio data buffer
+  ##  in bytes
+  ##
+  ##  ``Return`` ``nil`` on error, or non-``nil`` on success.
 
 template loadWAV_RW*(
     src: ptr RWops; freesrc: bool; spec: ptr AudioSpec;
@@ -449,7 +492,6 @@ proc convertAudio*(cvt: ptr AudioCVT): cint {.
   ##  by ``buildAudioCVT()``, and should be `cvt.len*cvt.len_mult` bytes long.
   ##
   ##  ``Return`` `0` on success or `-1` if ``cvt.buf`` is ``nil``.
-
 
 type
   AudioStream* = pointer  ##  \

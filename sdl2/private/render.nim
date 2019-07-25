@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2018 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -924,6 +924,160 @@ proc renderCopyEx*(
   ##
   ##  ``Return`` `0` on success, or `-1` on error.
 
+
+
+proc renderDrawPointF*(renderer: Renderer; x: cfloat; y: cfloat): cint {.
+    cdecl, importc: "SDL_RenderDrawPointF", dynlib: SDL2_LIB.}
+  ##  Draw a point on the current rendering target.
+  ##
+  ##  ``renderer`` The renderer which should draw a point.
+  ##
+  ##  ``x`` The x coordinate of the point.
+  ##
+  ##  ``y`` The y coordinate of the point.
+  ##
+  ##  ``Return`` `0` on success, or `-1` on error.
+
+proc renderDrawPointsF*(
+  renderer: Renderer; points: ptr FPoint; count: cint): cint {.
+    cdecl, importc: "SDL_RenderDrawPointsF", dynlib: SDL2_LIB.}
+  ##  Draw multiple points on the current rendering target.
+  ##
+  ##  ``renderer`` The renderer which should draw multiple points.
+  ##
+  ##  ``points`` The points to draw
+  ##
+  ##  ``count`` The number of points to draw
+  ##
+  ##  ``Return`` `0` on success, or `-1` on error.
+
+proc renderDrawLineF*(
+    renderer: Renderer; x1: cfloat; y1: cfloat; x2: cfloat; y2: cfloat): cint {.
+      cdecl, importc: "SDL_RenderDrawLineF", dynlib: SDL2_LIB.}
+  ##  Draw a line on the current rendering target.
+  ##
+  ##  ``renderer`` The renderer which should draw a line.
+  ##
+  ##  ``x1`` The x coordinate of the start point.
+  ##
+  ##  ``y1`` The y coordinate of the start point.
+  ##
+  ##  ``x2`` The x coordinate of the end point.
+  ##
+  ##  ``y2`` The y coordinate of the end point.
+  ##
+  ##  ``Return`` `0` on success, or `-1` on error.
+
+proc renderDrawLinesF*(
+    renderer: Renderer; points: ptr FPoint; count: cint): cint {.
+      cdecl, importc: "SDL_RenderDrawLinesF", dynlib: SDL2_LIB.}
+##   Draw a series of connected lines on the current rendering target.
+##
+##   ``renderer`` The renderer which should draw multiple lines.
+##
+##   ``points`` The points along the lines
+##
+##   ``count`` The number of points, `drawing count-1` lines
+##
+##   ``Return`` `0` on success, or `-1` on error.
+
+proc renderDrawRectF*(renderer: Renderer; rect: ptr FRect): cint {.
+    cdecl, importc: "SDL_RenderDrawRectF", dynlib: SDL2_LIB.}
+  ##  Draw a rectangle on the current rendering target.
+  ##
+  ##  ``renderer`` The renderer which should draw a rectangle.
+  ##
+  ##  ``rect`` A pointer to the destination rectangle,
+  ##  or ``nil`` to outline the entire rendering target.
+  ##
+  ##  ``Return`` `0` on success, or `-1` on error.
+
+proc renderDrawRectsF*(
+    renderer: Renderer; rects: ptr FRect; count: cint): cint {.
+      cdecl, importc: "SDL_RenderDrawRectsF", dynlib: SDL2_LIB.}
+  ##  Draw some number of rectangles on the current rendering target.
+  ##
+  ##  ``renderer`` The renderer which should draw multiple rectangles.
+  ##
+  ##  ``rects`` A pointer to an array of destination rectangles.
+  ##
+  ##  ``count`` The number of rectangles.
+  ##
+  ##  ``Return`` `0` on success, or `-1` on error.
+
+proc renderFillRectF*(renderer: Renderer; rect: ptr FRect): cint {.
+    cdecl, importc: "SDL_RenderFillRectF", dynlib: SDL2_LIB.}
+  ##  Fill a rectangle on the current rendering target with the drawing color.
+  ##
+  ##  ``renderer`` The renderer which should fill a rectangle.
+  ##
+  ##  ``rect`` A pointer to the destination rectangle,
+  ##  or ``nil`` for the entire rendering target.
+  ##
+  ##  ``Return`` `0` on success, or `-1` on error.
+
+proc renderFillRectsF*(
+    renderer: Renderer; rects: ptr FRect; count: cint): cint {.
+     cdecl, importc: "SDL_RenderFillRectsF", dynlib: SDL2_LIB.}
+  ##  Fill some number of rectangles on the current rendering target
+  ##  with the drawing color.
+  ##
+  ##  ``renderer`` The renderer which should fill multiple rectangles.
+  ##
+  ##  ``rects`` A pointer to an array of destination rectangles.
+  ##
+  ##  ``count`` The number of rectangles.
+  ##
+  ##  ``Return`` `0` on success, or `-1` on error.
+
+proc renderCopyF*(
+    renderer: Renderer; texture: Texture;
+    srcrect: ptr Rect; dstrect: ptr FRect): cint {.
+      cdecl, importc: "SDL_RenderCopyF", dynlib: SDL2_LIB.}
+  ##  Copy a portion of the texture to the current rendering target.
+  ##
+  ##  ``renderer`` The renderer which should copy parts of a texture.
+  ##
+  ##  ``texture`` The source texture.
+  ##
+  ##  ``srcrect`` A pointer to the source rectangle,
+  ##  or ``nil`` for the entire texture.
+  ##
+  ##  ``dstrect`` A pointer to the destination rectangle,
+  ##  or ``nil`` for the entire rendering target.
+  ##
+  ##  ``Return`` `0` on success, or `-1` on error.
+
+proc renderCopyExF*(
+    renderer: Renderer; texture: Texture;
+    srcrect: ptr Rect; dstrect: ptr FRect;
+    angle: cdouble; center: ptr FPoint; flip: RendererFlip): cint {.
+      cdecl, importc: "SDL_RenderCopyExF", dynlib: SDL2_LIB.}
+  ##  Copy a portion of the source texture to the current rendering target,
+  ##  rotating it by angle around the given center
+  ##
+  ##  ``renderer`` The renderer which should copy parts of a texture.
+  ##
+  ##  ``texture`` The source texture.
+  ##
+  ##  ``srcrect`` A pointer to the source rectangle,
+  ##  or ``nil`` for the entire texture.
+  ##
+  ##  ``dstrect`` A pointer to the destination rectangle,
+  ##  or ``nil`` for the entire rendering target.
+  ##
+  ##  ``angle`` An angle in degrees that indicates the rotation
+  ##  that will be applied to dstrect, rotating it in a clockwise direction.
+  ##
+  ##  ``center`` A pointer to a point indicating the point
+  ##  around which dstrect will be rotated
+  ##  (if ``nil``, rotation will be done around `dstrect.w/2`, `dstrect.h/2`).
+  ##
+  ##  ``flip`` A ``RendererFlip`` value stating which flipping actions should
+  ##  be performed on the texture.
+  ##
+  ##  ``Return`` `0` on success, or `-1` on error.
+
 proc renderReadPixels*(
     renderer: Renderer; rect: ptr Rect;
     format: uint32; pixels: pointer; pitch: cint): cint {.
@@ -968,6 +1122,30 @@ proc destroyRenderer*(renderer: Renderer) {.
   ##  See also:
   ##
   ##  ``createRenderer()``
+
+proc renderFlush*(renderer: Renderer): cint {.
+    cdecl, importc: "SDL_RenderFlush", dynlib: SDL2_LIB.}
+  ##  Force the rendering context to flush any pending commands to the
+  ##  underlying rendering API.
+  ##
+  ##  You do not need to (and in fact, shouldn't) call this function unless
+  ##  you are planning to call into OpenGL/Direct3D/Metal/whatever directly
+  ##  in addition to using an SDL_Renderer.
+  ##
+  ##  This is for a very-specific case: if you are using SDL's render API,
+  ##  you asked for a specific renderer backend (OpenGL, Direct3D, etc),
+  ##  you set ``sdl.HINT_RENDER_BATCHING`` to "1", and you plan to make
+  ##  OpenGL/D3D/whatever calls in addition to SDL render API calls. If all of
+  ##  this applies, you should call ``sdl.renderFlush()`` between calls to SDL's
+  ##  render API and the low-level API you're using in cooperation.
+  ##
+  ##  In all other cases, you can ignore this function. This is only here to
+  ##  get maximum performance out of a specific situation. In all other cases,
+  ##  SDL will do the right thing, perhaps at a performance loss.
+  ##
+  ##  This function is first available in SDL 2.0.10, and is not needed in
+  ##  2.0.9 and earlier, as earlier versions did not queue rendering commands
+  ##  at all, instead flushing them to the OS immediately.
 
 proc glBindTexture*(
     texture: Texture; texw: ptr cfloat; texh: ptr cfloat): cint {.

@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2018 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -91,6 +91,18 @@ proc composeCustomBlendMode*(
     cdecl, importc: "SDL_ComposeCustomBlendMode", dynlib: SDL2_LIB.}
   ##  Create a custom blend mode,
   ##  which may or may not be supported by a given renderer.
+  ##
+  ##  ``srcColorFactor`` source color factor
+  ##
+  ##  ``dstColorFactor`` destination color factor
+  ##
+  ##  ``colorOperation`` color operation
+  ##
+  ##  ``srcAlphaFactor`` source alpha factor
+  ##
+  ##  ``dstAlphaFactor`` destination alpha factor
+  ##
+  ##  ``alphaOperation`` alpha operation
   ##
   ##  The result of the blend mode operation will be:
   ##

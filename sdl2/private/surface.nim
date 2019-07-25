@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2018 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -29,10 +29,11 @@
 #
 # Used internally (read-only).
 const
-  SWSURFACE* = 0
-  PREALLOC* = 0x00000001
-  RLEACCEL* = 0x00000002
-  DONTFREE* = 0x00000004
+  SWSURFACE* = 0              ##  Just here for compatibility
+  PREALLOC* = 0x00000001      ##  Surface uses preallocated memory
+  RLEACCEL* = 0x00000002      ##  Surface is RLE encoded
+  DONTFREE* = 0x00000004      ##  Surface is referenced internally
+  SIMD_ALIGNED* = 0x00000008  ##  Surface uses aligned memory
 
 template mustLock*(s: untyped): untyped = ##  \
   ##  Evaluates to `true` if the surface needs t o be locked before access.

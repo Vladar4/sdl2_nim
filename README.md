@@ -1,5 +1,5 @@
-sdl2_nim 2.0.9.2
-================
+sdl2_nim 2.0.10.0
+=================
 
 sdl2_nim is a wrapper of the SDL 2 library for the Nim language.
 
@@ -12,7 +12,7 @@ You need to have SDL 2 dynamic libraries installed on your system.
 
 Includes:
 ---------
-* SDL 2.0.9
+* SDL 2.0.10
 * SDL_gfx 1.0.1 (fully 1.0.4 compatible)
 * SDL_gpu 0.11.0
 * SDL_image 2.0.4
@@ -63,6 +63,10 @@ FAQ:
 
 CHANGELOG:
 ==========
+
+**v2.0.10.0**
+* updated to SDL-2.0.10 (see [changelog](https://github.com/Vladar4/sdl2_nim/blob/master/CHANGELOG-2.0.10.md))
+* updated documentation
 
 **v2.0.9.2**
 * updated x11 includes (sdl_syswm)
