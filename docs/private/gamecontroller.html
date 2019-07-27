@@ -16,7 +16,7 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
-<title>Module gamecontroller</title>
+<title>gamecontroller</title>
 <style type="text/css" >
 /*
 Stylesheet for use with Docutils/rst2html.
@@ -27,232 +27,130 @@ customize this style sheet.
 Modified from Chad Skeeters' rst2html-style
 https://bitbucket.org/cskeeters/rst2html-style/
 
-Modified by Boyd Greenfield
+Modified by Boyd Greenfield and narimiran
 */
-/* SCSS variables */
-/* Text weights */
-/* Body colors */
-/* Text colors */
-/* Link colors */
-/* Syntax highlighting colors */
-/* Pct changes */
-/* Mixins */
-/* Body/layout */
+
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%; }
 
-/* Where we want fancier font if available */
-h1, h2, h3, h4, h5, h6, p.module-desc, table.docinfo + blockquote p, table.docinfo blockquote p, h1 + blockquote p {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important; }
-
-h1.title {
-  font-weight: 900; }
-
 body {
   font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
-  color: #444;
-  letter-spacing: 0.15px;
-  background-color: #FDFBFA; }
+  font-size: 1.125em;
+  line-height: 1.5;
+  color: #222;
+  background-color: #FCFCFC; }
 
 /* Skeleton grid */
 .container {
   position: relative;
   width: 100%;
-  max-width: 960px;
+  max-width: 1050px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
   box-sizing: border-box; }
 
 .column,
 .columns {
   width: 100%;
   float: left;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  margin-left: 1%;
+}
 
-/* For devices larger than 400px */
-@media (min-width: 400px) {
-  .container {
-    width: 100%;
-    padding: 0; } }
-/* For devices larger than 650px */
-@media (min-width: 650px) {
-  .container {
-    width: 100%; }
+.column:first-child,
+.columns:first-child {
+  margin-left: 0; }
 
-  .column,
-  .columns {
-    margin-left: 4%; }
+.three.columns {
+  width: 19%; }
 
-  .column:first-child,
-  .columns:first-child {
-    margin-left: 0; }
+.nine.columns {
+  width: 80.0%; }
 
-  .one.column,
-  .one.columns {
-    width: 4.66666666667%; }
+.twelve.columns {
+  width: 100%;
+  margin-left: 0; }
 
-  .two.columns {
-    width: 13.3333333333%; }
-
+@media screen and (max-width: 860px) {
   .three.columns {
-    width: 22%; }
-
-  .four.columns {
-    width: 30.6666666667%; }
-
-  .five.columns {
-    width: 39.3333333333%; }
-
-  .six.columns {
-    width: 48%; }
-
-  .seven.columns {
-    width: 56.6666666667%; }
-
-  .eight.columns {
-    width: 65.3333333333%; }
-
+    display: none;
+  }
   .nine.columns {
-    width: 74.0%; }
-
-  .ten.columns {
-    width: 82.6666666667%; }
-
-  .eleven.columns {
-    width: 91.3333333333%; }
-
-  .twelve.columns {
-    width: 100%;
-    margin-left: 0; }
-
-  .one-third.column {
-    width: 30.6666666667%; }
-
-  .two-thirds.column {
-    width: 65.3333333333%; } }
-/* Customer Overrides */
-.footer {
-  text-align: center;
-  color: #969696;
-  padding-top: 10%; }
-
-p.module-desc {
-  font-size: 1.1em;
-  color: #666666; }
-
-a.link-seesrc {
-  color: #aec7d2;
-  font-style: italic; }
-
-a.link-seesrc:hover {
-  color: #6c9aae; }
-
-#toc-list {
-  word-wrap: break-word; }
-
-ul.simple-toc {
-  list-style: none; }
-
-ul.simple-toc a.reference-toplevel {
-  font-weight: bold;
-  color: #0077b3; }
-
-ul.simple-toc-section {
-  list-style-type: circle;
-  color: #6c9aae; }
-
-ul.simple-toc-section a.reference {
-  color: #0077b3; }
+    width: 98.0%;
+  }
+  body {
+    font-size: 1em;
+    line-height: 1.35;
+  }
+}
 
 cite {
   font-style: italic !important; }
 
-dt > pre {
-  border-color: rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 0.3);
-  margin: 15px 0px 5px; }
-
-dd > pre {
-  border-color: rgba(0, 0, 0, 0.1);
-  background-color: whitesmoke;
-  margin-top: 8px; }
-
-.item > dd {
-  margin-left: 10px;
-  margin-bottom: 30px; }
-
-/* Nim line-numbered tables */
-.line-nums-table {
-  width: 100%;
-  table-layout: fixed; }
 
 /* Nim search input */
 div#searchInputDiv {
-  margin-bottom: 8px;
+  margin-bottom: 1em;
 }
-div#searchInputDiv input#searchInput {
-  width: 10em;
-}
-div.search-groupby {
-  margin-bottom: 8px;
+input#searchInput {
+  width: 80%;
 }
 
-table.line-nums-table {
-  border-radius: 4px;
-  border: 1px solid #cccccc;
-  background-color: whitesmoke;
-  border-collapse: separate;
-  margin-top: 15px;
-  margin-bottom: 25px; }
-
-.line-nums-table tbody {
-  border: none; }
-
-.line-nums-table td pre {
-  border: none;
-  background-color: transparent; }
-
-.line-nums-table td.blob-line-nums {
-  width: 28px; }
-
-.line-nums-table td.blob-line-nums pre {
-  color: #b0b0b0;
-  -webkit-filter: opacity(75%);
-  text-align: right;
-  border-color: transparent;
-  background-color: transparent;
-  padding-left: 0px;
-  margin-left: 0px;
-  padding-right: 0px;
-  margin-right: 0px; }
+/*
+ * Some custom formatting for input forms.
+ * This also fixes input form colors on Firefox with a dark system theme on Linux.
+ */
+input {
+  -moz-appearance: none;
+  color: #333;
+  background-color: #f8f8f8;
+  border: 1px solid #aaa;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-size: 0.9em;
+  padding: 6px;
+}
+input:focus {
+  border: 1px solid #1fa0eb;
+  box-shadow: 0 0 2px #1fa0eb;
+}
 
 /* Docgen styles */
 /* Links */
 a {
-  color: #0077b3;
-  text-decoration: none; }
+  color: #07b;
+  text-decoration: none;
+}
+
+a span.Identifier {
+  text-decoration: underline;
+  text-decoration-color: #aab;
+}
+
+a.reference-toplevel {
+  font-weight: bold;
+}
+
+a.toc-backref {
+  text-decoration: none;
+  color: #222; }
+
+a.link-seesrc {
+  color: #607c9f;
+  font-size: 0.9em;
+  font-style: italic; }
 
 a:hover,
 a:focus {
-  color: #00334d;
+  color: #607c9f;
   text-decoration: underline; }
 
-a:visited {
-  color: #00334d; }
+a:hover span.Identifier {
+  color: #607c9f;
+}
 
-a:focus {
-  outline: thin dotted #2d2d2d;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px; }
-
-a:hover,
-a:active {
-  outline: 0; }
 
 sub,
 sup {
@@ -329,379 +227,258 @@ img {
 
   h2,
   h3 {
-    page-break-after: avoid; } }
-.img-rounded {
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px; }
+    page-break-after: avoid; }
+}
 
-.img-polaroid {
-  padding: 4px;
-  background-color: rgba(252, 248, 244, 0.75);
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
 
 p {
-  margin: 0 0 8px; }
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
 
 small {
   font-size: 85%; }
 
 strong {
-  font-weight: 600; }
+  font-weight: 600;
+  font-size: 0.95em;
+  color: #3c3c3c;
+}
 
 em {
   font-style: italic; }
 
-cite {
-  font-style: normal; }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  line-height: 20px;
-  color: inherit;
-  text-rendering: optimizelegibility; }
-
 h1 {
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: 400;
-  padding-bottom: .15em;
-  border-bottom: 1px solid #aaaaaa;
-  margin-top: 1.0em;
+  padding-bottom: .25em;
+  border-bottom: 1px solid #aaa;
+  margin-top: 2.5em;
+  margin-bottom: 1em;
   line-height: 1.2em; }
 
 h1.title {
   padding-bottom: 1em;
   border-bottom: 0px;
-  font-size: 2.75em; }
+  font-size: 2.5em;
+  text-align: center;
+  font-weight: 900;
+  margin-top: 0.75em;
+  margin-bottom: 0em;
+}
 
 h2 {
-  font-size: 1.5em;
-  margin-top: 1.5em; }
+  font-size: 1.3em;
+  margin-top: 2em; }
+
+h2.subtitle {
+  text-align: center; }
 
 h3 {
-  font-size: 1.3em;
+  font-size: 1.125em;
   font-style: italic;
-  margin-top: 0.75em; }
+  margin-top: 1.5em; }
 
 h4 {
-  font-size: 1.3em;
-  margin-top: 0.5em; }
+  font-size: 1.125em;
+  margin-top: 1em; }
 
 h5 {
-  font-size: 1.2em;
-  margin-top: 0.25em; }
+  font-size: 1.125em;
+  margin-top: 0.75em; }
 
 h6 {
   font-size: 1.1em; }
 
+
 ul,
 ol {
   padding: 0;
-  margin: 0 0 0px 15px; }
+  margin-top: 0.5em;
+  margin-left: 0.75em; }
 
 ul ul,
 ul ol,
 ol ol,
 ol ul {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  margin-left: 1.25em; }
 
 li {
-  line-height: 20px; }
-
-dl {
-  margin-bottom: 20px; }
-
-dt,
-dd {
-  line-height: 20px; }
-
-dt {
-  font-weight: bold; }
-
-dd {
-  margin-left: 10px;
-  margin-bottom: 26px; }
-
-hr {
-  margin: 20px 0;
-  border: 0;
-  border-top: 1px solid #eeeeee;
-  border-bottom: 1px solid #ffffff; }
-
-abbr[title],
-abbr[data-original-title] {
-  cursor: help;
-  border-bottom: 1px dotted #999999; }
-
-abbr.initialism {
-  font-size: 90%;
-  text-transform: uppercase; }
-
-blockquote {
-  padding: 0 0 0 15px;
-  margin: 0 0 20px;
-  border-left: 5px solid #EFEBE0; }
-
-table.docinfo + blockquote, table.docinfo blockquote, h1 + blockquote {
-  border-left: 5px solid #c9c9c9;
+    list-style-type: circle;
 }
 
-table.docinfo + blockquote p, table.docinfo blockquote p, h1 + blockquote p {
-  margin-bottom: 0;
-  font-size: 15px;
-  font-weight: 200;
-  line-height: 1.5;
-  font-style: italic; }
+ul.simple-boot li {
+    list-style-type: none;
+    margin-left: 0em;
+    margin-bottom: 0.5em;
+}
 
-q:before,
-q:after,
-blockquote:before,
-blockquote:after {
-  content: ""; }
+ol.simple > li, ul.simple > li {
+  margin-bottom: 0.25em;
+  margin-left: 0.4em }
 
-address {
-  display: block;
-  margin-bottom: 20px;
-  font-style: normal;
-  line-height: 20px; }
+ul.simple.simple-toc > li {
+    margin-top: 1em;
+}
 
-code,
-pre {
-  font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
-  padding: 0 3px 2px;
-  font-weight: 500;
-  font-size: 12px;
-  color: #444444;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px; }
+ul.simple-toc {
+  list-style: none;
+  font-size: 0.9em;
+  margin-left: -0.3em;
+  margin-top: 1em; }
+
+ul.simple-toc > li {
+    list-style-type: none;
+}
+
+ul.simple-toc-section {
+  list-style-type: circle;
+  margin-left: 1em;
+  color: #6c9aae; }
+
+
+ol.arabic {
+  list-style: decimal; }
+
+ol.loweralpha {
+  list-style: lower-alpha; }
+
+ol.upperalpha {
+  list-style: upper-alpha; }
+
+ol.lowerroman {
+  list-style: lower-roman; }
+
+ol.upperroman {
+  list-style: upper-roman; }
+
+ul.auto-toc {
+  list-style-type: none; }
+
+
+dl {
+  margin-bottom: 1.5em; }
+
+dt {
+  margin-bottom: -0.5em;
+  margin-left: 0.0em; }
+
+dd {
+  margin-left: 2.0em;
+  margin-bottom: 3.0em;
+  margin-top: 0.5em; }
+
+
+hr {
+  margin: 2em 0;
+  border: 0;
+  border-top: 1px solid #aaa; }
+
+blockquote {
+  font-size: 0.9em;
+  font-style: italic;
+  padding-left: 0.5em;
+  margin-left: 0;
+  border-left: 5px solid #bbc;
+}
 
 .pre {
   font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
-  font-weight: 600;
-  /*color: #504da6;*/
+  font-weight: 500;
+  font-size: 0.85em;
+  background-color: #f0f3ff;
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 4px;
 }
 
-code {
-  padding: 2px 4px;
-  color: #444444;
-  white-space: nowrap;
-  background-color: white;
-  border: 1px solid #777777; }
-
 pre {
+  font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
+  color: #222;
+  font-weight: 500;
   display: inline-block;
   box-sizing: border-box;
-  min-width: calc(100% - 19.5px);
-  padding: 9.5px;
-  margin: 0.25em 10px 10px 10px;
-  font-size: 15px;
-  line-height: 20px;
+  min-width: 100%;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: 0.85em;
   white-space: pre !important;
   overflow-y: hidden;
   overflow-x: visible;
-  background-color: rgba(0, 0, 0, 0.01);
-  border: 1px solid #cccccc;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px; }
-
-pre.prettyprint {
-  margin-bottom: 20px; }
-
-pre code {
-  padding: 0;
-  color: inherit;
-  white-space: pre;
-  overflow-x: visible;
-  background-color: transparent;
-  border: 0; }
+  background-color: ghostwhite;
+  border: 1px solid #dde;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px; }
 
 .pre-scrollable {
   max-height: 340px;
   overflow-y: scroll; }
 
+
+/* Nim line-numbered tables */
+.line-nums-table {
+  width: 100%;
+  table-layout: fixed; }
+
+table.line-nums-table {
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  background-color: ghostwhite;
+  border-collapse: separate;
+  margin-top: 15px;
+  margin-bottom: 25px; }
+
+.line-nums-table tbody {
+  border: none; }
+
+.line-nums-table td pre {
+  border: none;
+  background-color: transparent; }
+
+.line-nums-table td.blob-line-nums {
+  width: 28px; }
+
+.line-nums-table td.blob-line-nums pre {
+  color: #b0b0b0;
+  -webkit-filter: opacity(75%);
+  text-align: right;
+  border-color: transparent;
+  background-color: transparent;
+  padding-left: 0px;
+  margin-left: 0px;
+  padding-right: 0px;
+  margin-right: 0px; }
+
+
 table {
   max-width: 100%;
   background-color: transparent;
+  margin-top: 0.5em;
+  margin-bottom: 1.5em;
   border-collapse: collapse;
-  border-spacing: 0; }
-
-table th, table td {
-  padding: 0px 8px 0px;
+  border-color: #ccc;
+  border-spacing: 0;
+  font-size: 0.9em;
 }
 
-.table {
-  width: 100%;
-  margin-bottom: 20px; }
+table th, table td {
+  padding: 0px 0.5em 0px;
+}
 
-.table th,
-.table td {
-  padding: 8px;
-  line-height: 20px;
-  text-align: left;
-  vertical-align: top;
-  border-top: 1px solid #444444; }
-
-.table th {
+table th {
+  background-color: #e8e8e8;
   font-weight: bold; }
 
-.table thead th {
-  vertical-align: bottom; }
+table th.docinfo-name {
+    background-color: transparent;
+}
 
-.table caption + thead tr:first-child th,
-.table caption + thead tr:first-child td,
-.table colgroup + thead tr:first-child th,
-.table colgroup + thead tr:first-child td,
-.table thead:first-child tr:first-child th,
-.table thead:first-child tr:first-child td {
-  border-top: 0; }
+table tr:hover {
+  background-color: ghostwhite; }
 
-.table tbody + tbody {
-  border-top: 2px solid #444444; }
-
-.table .table {
-  background-color: rgba(252, 248, 244, 0.75); }
-
-.table-condensed th,
-.table-condensed td {
-  padding: 4px 5px; }
-
-.table-bordered {
-  border: 1px solid #444444;
-  border-collapse: separate;
-  *border-collapse: collapse;
-  border-left: 0;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px; }
-
-.table-bordered th,
-.table-bordered td {
-  border-left: 1px solid #444444; }
-
-.table-bordered caption + thead tr:first-child th,
-.table-bordered caption + tbody tr:first-child th,
-.table-bordered caption + tbody tr:first-child td,
-.table-bordered colgroup + thead tr:first-child th,
-.table-bordered colgroup + tbody tr:first-child th,
-.table-bordered colgroup + tbody tr:first-child td,
-.table-bordered thead:first-child tr:first-child th,
-.table-bordered tbody:first-child tr:first-child th,
-.table-bordered tbody:first-child tr:first-child td {
-  border-top: 0; }
-
-.table-bordered thead:first-child tr:first-child > th:first-child,
-.table-bordered tbody:first-child tr:first-child > td:first-child,
-.table-bordered tbody:first-child tr:first-child > th:first-child {
-  -webkit-border-top-left-radius: 4px;
-  border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px; }
-
-.table-bordered thead:first-child tr:first-child > th:last-child,
-.table-bordered tbody:first-child tr:first-child > td:last-child,
-.table-bordered tbody:first-child tr:first-child > th:last-child {
-  -webkit-border-top-right-radius: 4px;
-  border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px; }
-
-.table-bordered thead:last-child tr:last-child > th:first-child,
-.table-bordered tbody:last-child tr:last-child > td:first-child,
-.table-bordered tbody:last-child tr:last-child > th:first-child,
-.table-bordered tfoot:last-child tr:last-child > td:first-child,
-.table-bordered tfoot:last-child tr:last-child > th:first-child {
-  -webkit-border-bottom-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomleft: 4px; }
-
-.table-bordered thead:last-child tr:last-child > th:last-child,
-.table-bordered tbody:last-child tr:last-child > td:last-child,
-.table-bordered tbody:last-child tr:last-child > th:last-child,
-.table-bordered tfoot:last-child tr:last-child > td:last-child,
-.table-bordered tfoot:last-child tr:last-child > th:last-child {
-  -webkit-border-bottom-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  -moz-border-radius-bottomright: 4px; }
-
-.table-bordered tfoot + tbody:last-child tr:last-child td:first-child {
-  -webkit-border-bottom-left-radius: 0;
-  border-bottom-left-radius: 0;
-  -moz-border-radius-bottomleft: 0; }
-
-.table-bordered tfoot + tbody:last-child tr:last-child td:last-child {
-  -webkit-border-bottom-right-radius: 0;
-  border-bottom-right-radius: 0;
-  -moz-border-radius-bottomright: 0; }
-
-.table-bordered caption + thead tr:first-child th:first-child,
-.table-bordered caption + tbody tr:first-child td:first-child,
-.table-bordered colgroup + thead tr:first-child th:first-child,
-.table-bordered colgroup + tbody tr:first-child td:first-child {
-  -webkit-border-top-left-radius: 4px;
-  border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px; }
-
-.table-bordered caption + thead tr:first-child th:last-child,
-.table-bordered caption + tbody tr:first-child td:last-child,
-.table-bordered colgroup + thead tr:first-child th:last-child,
-.table-bordered colgroup + tbody tr:first-child td:last-child {
-  -webkit-border-top-right-radius: 4px;
-  border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px; }
-
-table.docutils th {
-  background-color: #e8e8e8; }
-
-table.docutils tr:hover {
-  background-color: whitesmoke; }
-
-.table-striped tbody > tr:nth-child(odd) > td,
-.table-striped tbody > tr:nth-child(odd) > th {
-  background-color: rgba(252, 248, 244, 0.75); }
-
-.table-hover tbody tr:hover > td,
-.table-hover tbody tr:hover > th {
-  background-color: rgba(241, 222, 204, 0.75); }
-
-table td[class*="span"],
-table th[class*="span"],
-.row-fluid table td[class*="span"],
-.row-fluid table th[class*="span"] {
-  display: table-cell;
-  float: none;
-  margin-left: 0; }
-
-.hero-unit {
-  padding: 60px;
-  margin-bottom: 30px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  color: inherit;
-  background-color: rgba(230, 197, 164, 0.75);
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px; }
-
-.hero-unit h1 {
-  margin-bottom: 0;
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
-  color: inherit; }
-
-.hero-unit li {
-  line-height: 30px; }
 
 /* rst2html default used to remove borders from tables and images */
 .borderless, table.borderless td, table.borderless th {
@@ -722,10 +499,6 @@ table.borderless td, table.borderless th {
 .hidden {
   display: none; }
 
-a.toc-backref {
-  text-decoration: none;
-  color: #444444; }
-
 blockquote.epigraph {
   margin: 2em 5em; }
 
@@ -735,85 +508,6 @@ dl.docutils dd {
 object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
   overflow: hidden; }
 
-/* Uncomment (and remove this text!) to get bold-faced definition list terms
-dl.docutils dt {
-  font-weight: bold }
-*/
-div.abstract {
-  margin: 2em 5em; }
-
-div.abstract p.topic-title {
-  font-weight: bold;
-  text-align: center; }
-
-div.admonition, div.attention, div.caution, div.danger, div.error,
-div.hint, div.important, div.note, div.tip, div.warning {
-  margin: 2em;
-  border: medium outset;
-  padding: 1em; }
-
-div.note, div.warning {
-  margin: 1.5em 0px;
-  border: none; }
-
-div.note p.admonition-title,
-div.warning p.admonition-title {
-  display: none; }
-
-/* Clearfix
- * http://css-tricks.com/snippets/css/clear-fix/
- */
-div.note:after,
-div.warning:after {
-  content: "";
-  display: table;
-  clear: both; }
-
-div.note p:before,
-div.warning p:before {
-  display: block;
-  float: left;
-  font-size: 4em;
-  line-height: 1em;
-  margin-right: 20px;
-  margin-left: 0em;
-  margin-top: -10px;
-  content: '\0270D';
-  /*handwriting*/ }
-
-div.warning p:before {
-  content: '\026A0';
-  /*warning*/ }
-
-div.admonition p.admonition-title, div.hint p.admonition-title,
-div.important p.admonition-title, div.note p.admonition-title,
-div.tip p.admonition-title {
-  font-weight: bold;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
-
-div.attention p.admonition-title, div.caution p.admonition-title,
-div.danger p.admonition-title, div.error p.admonition-title,
-div.warning p.admonition-title, .code .error {
-  color: #b30000;
-  font-weight: bold;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
-
-/* Uncomment (and remove this text!) to get reduced vertical space in
-   compound paragraphs.
-div.compound .compound-first, div.compound .compound-middle {
-  margin-bottom: 0.5em }
-
-div.compound .compound-last, div.compound .compound-middle {
-  margin-top: 0.5em }
-*/
-div.dedication {
-  margin: 2em 5em;
-  text-align: center;
-  font-style: italic; }
-
-div.dedication p.topic-title {
-  font-weight: bold;
-  font-style: normal; }
 
 div.figure {
   margin-left: 2em;
@@ -821,7 +515,13 @@ div.figure {
 
 div.footer, div.header {
   clear: both;
+  text-align: center;
+  color: #666;
   font-size: smaller; }
+
+div.footer {
+    padding-top: 5em;
+}
 
 div.line-block {
   display: block;
@@ -833,45 +533,24 @@ div.line-block div.line-block {
   margin-bottom: 0;
   margin-left: 1.5em; }
 
-div.sidebar {
-  margin: 0 0 0.5em 1em;
-  border: medium outset;
-  padding: 1em;
-  background-color: rgba(252, 248, 244, 0.75);
-  width: 40%;
-  float: right;
-  clear: right; }
-
-div.sidebar p.rubric {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-size: medium; }
-
-div.system-messages {
-  margin: 5em; }
-
-div.system-messages h1 {
-  color: #b30000; }
-
-div.system-message {
-  border: medium outset;
-  padding: 1em; }
-
-div.system-message p.system-message-title {
-  color: #b30000;
-  font-weight: bold; }
-
 div.topic {
   margin: 2em; }
 
-h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
-h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
-  margin-top: 0.4em; }
+div.search_results {
+  background-color: antiquewhite;
+  margin: 3em;
+  padding: 1em;
+  border: 1px solid #4d4d4d;
+}
 
-h1.title {
-  text-align: center; }
+div#global-links ul {
+  margin-left: 0;
+  list-style-type: none;
+}
 
-h2.subtitle {
-  text-align: center; }
+div#global-links > simple-boot {
+    margin-left: 3em;
+}
 
 hr.docutils {
   width: 75%; }
@@ -905,30 +584,6 @@ img.align-center, .figure.align-center, object.align-center {
 div.align-right {
   text-align: inherit; }
 
-/* div.align-center * { */
-/*   text-align: left } */
-
-ul.simple > li {
-  margin-bottom: 0.5em }
-
-ol.simple, ul.simple {
-  margin-bottom: 1em; }
-
-ol.arabic {
-  list-style: decimal; }
-
-ol.loweralpha {
-  list-style: lower-alpha; }
-
-ol.upperalpha {
-  list-style: upper-alpha; }
-
-ol.lowerroman {
-  list-style: lower-roman; }
-
-ol.upperroman {
-  list-style: upper-roman; }
-
 p.attribution {
   text-align: right;
   margin-left: 50%; }
@@ -948,15 +603,6 @@ p.rubric {
   font-size: larger;
   color: maroon;
   text-align: center; }
-
-p.sidebar-title {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  font-size: larger; }
-
-p.sidebar-subtitle {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: bold; }
 
 p.topic-title {
   font-weight: bold; }
@@ -997,21 +643,13 @@ pre.code .inserted, code .inserted {
   background-color: #A3D289; }
 
 span.classifier {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-style: oblique; }
 
 span.classifier-delimiter {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: bold; }
-
-span.interpreted {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
 
 span.option {
   white-space: nowrap; }
-
-span.pre {
-  white-space: pre; }
 
 span.problematic {
   color: #b30000; }
@@ -1019,44 +657,6 @@ span.problematic {
 span.section-subtitle {
   /* font-size relative to parent (h1..h6 element) */
   font-size: 80%; }
-
-table.citation {
-  border-left: solid 1px #666666;
-  margin-left: 1px; }
-
-table.docinfo {
-  margin: 0em;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important;
-  color: #444444; }
-
-table.docutils {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em; }
-
-table.footnote {
-  border-left: solid 1px #2d2d2d;
-  margin-left: 1px; }
-
-table.docutils td, table.docutils th,
-table.docinfo td, table.docinfo th {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  vertical-align: top; }
-
-table.docutils th.field-name, table.docinfo th.docinfo-name {
-  font-weight: 700;
-  text-align: left;
-  white-space: nowrap;
-  padding-left: 0; }
-
-h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
-h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
-  font-size: 100%; }
-
-ul.auto-toc {
-  list-style-type: none; }
 
 span.DecNumber {
   color: #252dbe; }
@@ -1074,7 +674,7 @@ span.FloatNumber {
   color: #252dbe; }
 
 span.Identifier {
-  color: #3b3b3b; }
+  color: #222; }
 
 span.Keyword {
   font-weight: 600;
@@ -1139,37 +739,22 @@ dt pre > span.Identifier, dt pre > span.Operator {
   color: #155da4;
   font-weight: 700; }
 
-dt pre > span.Identifier ~ span.Identifier, dt pre > span.Operator ~ span.Identifier {
-  color: inherit;
-  font-weight: inherit; }
-
-dt pre > span.Operator ~ span.Identifier {
+dt pre > span.Keyword ~ span.Identifier, dt pre > span.Identifier ~ span.Identifier,
+dt pre > span.Operator ~ span.Identifier, dt pre > span.Other ~ span.Identifier {
   color: inherit;
   font-weight: inherit; }
 
 /* Nim sprite for the footer (taken from main page favicon) */
 .nim-sprite {
   display: inline-block;
-  height: 12px;
-  width: 12px;
+  height: 16px;
+  width: 16px;
   background-position: 0 0;
-  background-size: 12px 12px;
+  background-size: 16px 16px;
   -webkit-filter: opacity(50%);
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
-
-div.search_results {
-  background-color: antiquewhite;
-  margin: 3em;
-  padding: 1em;
-  border: 1px solid #4d4d4d;
-}
-
-div#global-links ul {
-  margin-left: 0;
-  list-style-type: none;
-}
 
 span.pragmadots {
   /* Position: relative frees us up to make the dots
@@ -1178,18 +763,14 @@ span.pragmadots {
   position: relative;
   /* 1px down looks slightly nicer */
   top: 1px;
-
   padding: 2px;
-  background-color: #D3D3D3;
+  background-color: #e8e8e8;
   border-radius: 4px;
   margin: 0 2px;
   cursor: pointer;
-
-  /* For some reason on Chrome, making the font size
-  smaller than 1em is causing the parent container to
-  bulge slightly. So, we're stuck with inheriting 1em,
-  which is sad, because 0.8em looks better... */
+  font-size: 0.8em;
 }
+
 span.pragmadots:hover {
   background-color: #DBDBDB;
 }
@@ -1197,9 +778,13 @@ span.pragmawrap {
   display: none;
 }
 
+span.attachedType {
+  display: none;
+  visibility: hidden;
+}
 </style>
 
-<script type="text/javascript" src="../dochack.js"></script>
+<script type="text/javascript" src="dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -1219,7 +804,7 @@ function main() {
 <body onload="main()">
 <div class="document" id="documentId">
   <div class="container">
-    <h1 class="title">Module gamecontroller</h1>
+    <h1 class="title">gamecontroller</h1>
     <div class="row">
   <div class="three columns">
   <div id="global-links">
@@ -1243,30 +828,30 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#GameController"
-    title="GameController = pointer"><wbr />Game<wbr />Controller<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="GameController = pointer"><wbr />Game<wbr />Controller<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#GameControllerBindType"
     title="GameControllerBindType {.size: 4.} = enum
   CONTROLLER_BINDTYPE_NONE = 0, CONTROLLER_BINDTYPE_BUTTON,
-  CONTROLLER_BINDTYPE_AXIS, CONTROLLER_BINDTYPE_HAT"><wbr />Game<wbr />Controller<wbr />Bind<wbr />Type<span class="attachedType" style="visibility:hidden"></span></a></li>
+  CONTROLLER_BINDTYPE_AXIS, CONTROLLER_BINDTYPE_HAT"><wbr />Game<wbr />Controller<wbr />Bind<wbr />Type<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#GameControllerButtonBindValueHat"
     title="GameControllerButtonBindValueHat = object
   hat*: cint
-  hat_mask*: cint"><wbr />Game<wbr />Controller<wbr />Button<wbr />Bind<wbr />Value<wbr />Hat<span class="attachedType" style="visibility:hidden"></span></a></li>
+  hat_mask*: cint"><wbr />Game<wbr />Controller<wbr />Button<wbr />Bind<wbr />Value<wbr />Hat<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#GameControllerButtonBindValue"
-    title="GameControllerButtonBindValue = object {.union.}
+    title="GameControllerButtonBindValue {.union.} = object
   button*: cint
   axis*: cint
-  hat*: GameControllerButtonBindValueHat"><wbr />Game<wbr />Controller<wbr />Button<wbr />Bind<wbr />Value<span class="attachedType" style="visibility:hidden"></span></a></li>
+  hat*: GameControllerButtonBindValueHat"><wbr />Game<wbr />Controller<wbr />Button<wbr />Bind<wbr />Value<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#GameControllerButtonBind"
     title="GameControllerButtonBind = object
   bindType*: GameControllerBindType
-  value*: GameControllerButtonBindValue"><wbr />Game<wbr />Controller<wbr />Button<wbr />Bind<span class="attachedType" style="visibility:hidden"></span></a></li>
+  value*: GameControllerButtonBindValue"><wbr />Game<wbr />Controller<wbr />Button<wbr />Bind<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#GameControllerAxis"
     title="GameControllerAxis {.size: 1.} = enum
   CONTROLLER_AXIS_LEFTX, CONTROLLER_AXIS_LEFTY, CONTROLLER_AXIS_RIGHTX,
   CONTROLLER_AXIS_RIGHTY, CONTROLLER_AXIS_TRIGGERLEFT,
   CONTROLLER_AXIS_TRIGGERRIGHT, CONTROLLER_AXIS_MAX,
-  CONTROLLER_AXIS_INVALID = uint8.high"><wbr />Game<wbr />Controller<wbr />Axis<span class="attachedType" style="visibility:hidden"></span></a></li>
+  CONTROLLER_AXIS_INVALID = uint8.high"><wbr />Game<wbr />Controller<wbr />Axis<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#GameControllerButton"
     title="GameControllerButton {.size: 1.} = enum
   CONTROLLER_BUTTON_A, CONTROLLER_BUTTON_B, CONTROLLER_BUTTON_X,
@@ -1276,85 +861,85 @@ function main() {
   CONTROLLER_BUTTON_RIGHTSHOULDER, CONTROLLER_BUTTON_DPAD_UP,
   CONTROLLER_BUTTON_DPAD_DOWN, CONTROLLER_BUTTON_DPAD_LEFT,
   CONTROLLER_BUTTON_DPAD_RIGHT, CONTROLLER_BUTTON_MAX,
-  CONTROLLER_BUTTON_INVALID = uint8.high"><wbr />Game<wbr />Controller<wbr />Button<span class="attachedType" style="visibility:hidden"></span></a></li>
+  CONTROLLER_BUTTON_INVALID = uint8.high"><wbr />Game<wbr />Controller<wbr />Button<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#gameControllerAddMappingsFromRW,ptr.RWops,cint"
-    title="gameControllerAddMappingsFromRW(rw: ptr RWops; freerw: cint): cint"><wbr />game<wbr />Controller<wbr />Add<wbr />Mappings<wbr />From<wbr />RW<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#gameControllerAddMapping,cstring"
-    title="gameControllerAddMapping(mappingString: cstring): cint"><wbr />game<wbr />Controller<wbr />Add<wbr />Mapping<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#gameControllerNumMappings,"
-    title="gameControllerNumMappings(): cint"><wbr />game<wbr />Controller<wbr />Num<wbr />Mappings<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#gameControllerMappingForIndex,cint"
-    title="gameControllerMappingForIndex(mapping_index: cint): cstring"><wbr />game<wbr />Controller<wbr />Mapping<wbr />For<wbr />Index<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#gameControllerMappingForGUID,JoystickGUID"
-    title="gameControllerMappingForGUID(guid: JoystickGUID): cstring"><wbr />game<wbr />Controller<wbr />Mapping<wbr />For<wbr />GUID<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#gameControllerMapping,GameController"
-    title="gameControllerMapping(gamecontroller: GameController): cstring"><wbr />game<wbr />Controller<wbr />Mapping<span class="attachedType" style="visibility:hidden">GameController</span></a></li>
-  <li><a class="reference" href="#isGameController,cint"
-    title="isGameController(joystick_index: cint): bool"><wbr />is<wbr />Game<wbr />Controller<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#gameControllerNameForIndex,cint"
-    title="gameControllerNameForIndex(joystick_index: cint): cstring"><wbr />game<wbr />Controller<wbr />Name<wbr />For<wbr />Index<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#gameControllerMappingForDeviceIndex,cint"
-    title="gameControllerMappingForDeviceIndex(joystick_index: cint): cstring"><wbr />game<wbr />Controller<wbr />Mapping<wbr />For<wbr />Device<wbr />Index<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#gameControllerOpen,cint"
-    title="gameControllerOpen(joystick_index: cint): GameController"><wbr />game<wbr />Controller<wbr />Open<span class="attachedType" style="visibility:hidden">GameController</span></a></li>
-  <li><a class="reference" href="#gameControllerFromInstanceID,JoystickID"
-    title="gameControllerFromInstanceID(joyid: JoystickID): GameController"><wbr />game<wbr />Controller<wbr />From<wbr />Instance<wbr />ID<span class="attachedType" style="visibility:hidden">GameController</span></a></li>
-  <li><a class="reference" href="#gameControllerName,GameController"
-    title="gameControllerName(gamecontroller: GameController): cstring"><wbr />game<wbr />Controller<wbr />Name<span class="attachedType" style="visibility:hidden">GameController</span></a></li>
-  <li><a class="reference" href="#gameControllerGetPlayerIndex,GameController"
-    title="gameControllerGetPlayerIndex(gamecontroller: GameController): cint"><wbr />game<wbr />Controller<wbr />Get<wbr />Player<wbr />Index<span class="attachedType" style="visibility:hidden">GameController</span></a></li>
-  <li><a class="reference" href="#gameControllerGetVendor,GameController"
-    title="gameControllerGetVendor(gamecontroller: GameController): uint16"><wbr />game<wbr />Controller<wbr />Get<wbr />Vendor<span class="attachedType" style="visibility:hidden">GameController</span></a></li>
-  <li><a class="reference" href="#gameControllerGetProduct,GameController"
-    title="gameControllerGetProduct(gamecontroller: GameController): uint16"><wbr />game<wbr />Controller<wbr />Get<wbr />Product<span class="attachedType" style="visibility:hidden">GameController</span></a></li>
-  <li><a class="reference" href="#gameControllerGetProductVersion,GameController"
-    title="gameControllerGetProductVersion(gamecontroller: GameController): uint16"><wbr />game<wbr />Controller<wbr />Get<wbr />Product<wbr />Version<span class="attachedType" style="visibility:hidden">GameController</span></a></li>
-  <li><a class="reference" href="#gameControllerGetAttached,GameController"
-    title="gameControllerGetAttached(gamecontroller: GameController): bool"><wbr />game<wbr />Controller<wbr />Get<wbr />Attached<span class="attachedType" style="visibility:hidden">GameController</span></a></li>
-  <li><a class="reference" href="#gameControllerGetJoystick,GameController"
-    title="gameControllerGetJoystick(gamecontroller: GameController): ptr Joystick"><wbr />game<wbr />Controller<wbr />Get<wbr />Joystick<span class="attachedType" style="visibility:hidden">GameController</span></a></li>
-  <li><a class="reference" href="#gameControllerEventState,cint"
-    title="gameControllerEventState(state: cint): cint"><wbr />game<wbr />Controller<wbr />Event<wbr />State<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#gameControllerUpdate,"
-    title="gameControllerUpdate()"><wbr />game<wbr />Controller<wbr />Update<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#gameControllerGetAxisFromString,cstring"
-    title="gameControllerGetAxisFromString(pchString: cstring): GameControllerAxis"><wbr />game<wbr />Controller<wbr />Get<wbr />Axis<wbr />From<wbr />String<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#gameControllerGetStringForAxis,GameControllerAxis"
-    title="gameControllerGetStringForAxis(axis: GameControllerAxis): cstring"><wbr />game<wbr />Controller<wbr />Get<wbr />String<wbr />For<wbr />Axis<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#gameControllerGetBindForAxis,GameController,GameControllerAxis"
+      <li><a class="reference" href="#gameControllerAddMappingsFromRW%2Cptr.RWops%2Ccint"
+    title="gameControllerAddMappingsFromRW(rw: ptr RWops; freerw: cint): cint"><wbr />game<wbr />Controller<wbr />Add<wbr />Mappings<wbr />From<wbr />RW<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gameControllerAddMapping%2Ccstring"
+    title="gameControllerAddMapping(mappingString: cstring): cint"><wbr />game<wbr />Controller<wbr />Add<wbr />Mapping<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gameControllerNumMappings"
+    title="gameControllerNumMappings(): cint"><wbr />game<wbr />Controller<wbr />Num<wbr />Mappings<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gameControllerMappingForIndex%2Ccint"
+    title="gameControllerMappingForIndex(mapping_index: cint): cstring"><wbr />game<wbr />Controller<wbr />Mapping<wbr />For<wbr />Index<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gameControllerMappingForGUID%2CJoystickGUID"
+    title="gameControllerMappingForGUID(guid: JoystickGUID): cstring"><wbr />game<wbr />Controller<wbr />Mapping<wbr />For<wbr />GUID<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gameControllerMapping%2CGameController"
+    title="gameControllerMapping(gamecontroller: GameController): cstring"><wbr />game<wbr />Controller<wbr />Mapping<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#isGameController%2Ccint"
+    title="isGameController(joystick_index: cint): bool"><wbr />is<wbr />Game<wbr />Controller<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gameControllerNameForIndex%2Ccint"
+    title="gameControllerNameForIndex(joystick_index: cint): cstring"><wbr />game<wbr />Controller<wbr />Name<wbr />For<wbr />Index<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gameControllerMappingForDeviceIndex%2Ccint"
+    title="gameControllerMappingForDeviceIndex(joystick_index: cint): cstring"><wbr />game<wbr />Controller<wbr />Mapping<wbr />For<wbr />Device<wbr />Index<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gameControllerOpen%2Ccint"
+    title="gameControllerOpen(joystick_index: cint): GameController"><wbr />game<wbr />Controller<wbr />Open<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerFromInstanceID%2CJoystickID"
+    title="gameControllerFromInstanceID(joyid: JoystickID): GameController"><wbr />game<wbr />Controller<wbr />From<wbr />Instance<wbr />ID<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerName%2CGameController"
+    title="gameControllerName(gamecontroller: GameController): cstring"><wbr />game<wbr />Controller<wbr />Name<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerGetPlayerIndex%2CGameController"
+    title="gameControllerGetPlayerIndex(gamecontroller: GameController): cint"><wbr />game<wbr />Controller<wbr />Get<wbr />Player<wbr />Index<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerGetVendor%2CGameController"
+    title="gameControllerGetVendor(gamecontroller: GameController): uint16"><wbr />game<wbr />Controller<wbr />Get<wbr />Vendor<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerGetProduct%2CGameController"
+    title="gameControllerGetProduct(gamecontroller: GameController): uint16"><wbr />game<wbr />Controller<wbr />Get<wbr />Product<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerGetProductVersion%2CGameController"
+    title="gameControllerGetProductVersion(gamecontroller: GameController): uint16"><wbr />game<wbr />Controller<wbr />Get<wbr />Product<wbr />Version<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerGetAttached%2CGameController"
+    title="gameControllerGetAttached(gamecontroller: GameController): bool"><wbr />game<wbr />Controller<wbr />Get<wbr />Attached<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerGetJoystick%2CGameController"
+    title="gameControllerGetJoystick(gamecontroller: GameController): ptr Joystick"><wbr />game<wbr />Controller<wbr />Get<wbr />Joystick<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerEventState%2Ccint"
+    title="gameControllerEventState(state: cint): cint"><wbr />game<wbr />Controller<wbr />Event<wbr />State<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gameControllerUpdate"
+    title="gameControllerUpdate()"><wbr />game<wbr />Controller<wbr />Update<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gameControllerGetAxisFromString%2Ccstring"
+    title="gameControllerGetAxisFromString(pchString: cstring): GameControllerAxis"><wbr />game<wbr />Controller<wbr />Get<wbr />Axis<wbr />From<wbr />String<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gameControllerGetStringForAxis%2CGameControllerAxis"
+    title="gameControllerGetStringForAxis(axis: GameControllerAxis): cstring"><wbr />game<wbr />Controller<wbr />Get<wbr />String<wbr />For<wbr />Axis<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gameControllerGetBindForAxis%2CGameController%2CGameControllerAxis"
     title="gameControllerGetBindForAxis(gamecontroller: GameController;
-                             axis: GameControllerAxis): GameControllerButtonBind"><wbr />game<wbr />Controller<wbr />Get<wbr />Bind<wbr />For<wbr />Axis<span class="attachedType" style="visibility:hidden">GameController</span></a></li>
-  <li><a class="reference" href="#gameControllerGetAxis,GameController,GameControllerAxis"
-    title="gameControllerGetAxis(gamecontroller: GameController; axis: GameControllerAxis): int16"><wbr />game<wbr />Controller<wbr />Get<wbr />Axis<span class="attachedType" style="visibility:hidden">GameController</span></a></li>
-  <li><a class="reference" href="#gameControllerGetButtonFromString,cstring"
-    title="gameControllerGetButtonFromString(pchString: cstring): GameControllerButton"><wbr />game<wbr />Controller<wbr />Get<wbr />Button<wbr />From<wbr />String<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#gameControllerGetStringForButton,GameControllerButton"
-    title="gameControllerGetStringForButton(button: GameControllerButton): cstring"><wbr />game<wbr />Controller<wbr />Get<wbr />String<wbr />For<wbr />Button<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#gameControllerGetBindForButton,GameController,GameControllerButton"
+                             axis: GameControllerAxis): GameControllerButtonBind"><wbr />game<wbr />Controller<wbr />Get<wbr />Bind<wbr />For<wbr />Axis<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerGetAxis%2CGameController%2CGameControllerAxis"
+    title="gameControllerGetAxis(gamecontroller: GameController; axis: GameControllerAxis): int16"><wbr />game<wbr />Controller<wbr />Get<wbr />Axis<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerGetButtonFromString%2Ccstring"
+    title="gameControllerGetButtonFromString(pchString: cstring): GameControllerButton"><wbr />game<wbr />Controller<wbr />Get<wbr />Button<wbr />From<wbr />String<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gameControllerGetStringForButton%2CGameControllerButton"
+    title="gameControllerGetStringForButton(button: GameControllerButton): cstring"><wbr />game<wbr />Controller<wbr />Get<wbr />String<wbr />For<wbr />Button<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gameControllerGetBindForButton%2CGameController%2CGameControllerButton"
     title="gameControllerGetBindForButton(gamecontroller: GameController;
-                               button: GameControllerButton): GameControllerButtonBind"><wbr />game<wbr />Controller<wbr />Get<wbr />Bind<wbr />For<wbr />Button<span class="attachedType" style="visibility:hidden">GameController</span></a></li>
-  <li><a class="reference" href="#gameControllerGetButton,GameController,GameControllerButton"
+                               button: GameControllerButton): GameControllerButtonBind"><wbr />game<wbr />Controller<wbr />Get<wbr />Bind<wbr />For<wbr />Button<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerGetButton%2CGameController%2CGameControllerButton"
     title="gameControllerGetButton(gamecontroller: GameController;
-                        button: GameControllerButton): uint8"><wbr />game<wbr />Controller<wbr />Get<wbr />Button<span class="attachedType" style="visibility:hidden">GameController</span></a></li>
-  <li><a class="reference" href="#gameControllerRumble,GameController,uint16,uint16,uint32"
+                        button: GameControllerButton): uint8"><wbr />game<wbr />Controller<wbr />Get<wbr />Button<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerRumble%2CGameController%2Cuint16%2Cuint16%2Cuint32"
     title="gameControllerRumble(gamecontroller: GameController; low_frequency_rumble: uint16;
-                     high_frequency_rumble: uint16; duration_ms: uint32): cint"><wbr />game<wbr />Controller<wbr />Rumble<span class="attachedType" style="visibility:hidden">GameController</span></a></li>
-  <li><a class="reference" href="#gameControllerClose,GameController"
-    title="gameControllerClose(gamecontroller: GameController)"><wbr />game<wbr />Controller<wbr />Close<span class="attachedType" style="visibility:hidden">GameController</span></a></li>
+                     high_frequency_rumble: uint16; duration_ms: uint32): cint"><wbr />game<wbr />Controller<wbr />Rumble<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerClose%2CGameController"
+    title="gameControllerClose(gamecontroller: GameController)"><wbr />game<wbr />Controller<wbr />Close<span class="attachedType">GameController</span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#gameControllerAddMappingsFromFile.t,untyped"
-    title="gameControllerAddMappingsFromFile(file: untyped): untyped"><wbr />game<wbr />Controller<wbr />Add<wbr />Mappings<wbr />From<wbr />File<span class="attachedType" style="visibility:hidden"></span></a></li>
+      <li><a class="reference" href="#gameControllerAddMappingsFromFile.t%2Cuntyped"
+    title="gameControllerAddMappingsFromFile(file: untyped): untyped"><wbr />game<wbr />Controller<wbr />Add<wbr />Mappings<wbr />From<wbr />File<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -1364,23 +949,24 @@ function main() {
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc">
 <h1><a class="toc-backref" id="gamecontrollerdotnim" href="#gamecontrollerdotnim">gamecontroller.nim</a></h1><p>Include file for SDL game controller event handling.</p>
-<p>In order to use these procedures, <tt class="docutils literal"><span class="pre">init()</span></tt> must have been called with the <cite>INIT_GAMECONTROLLER</cite> flag.  This causes SDL to scan the system for game controllers, and load appropriate drivers.</p>
-<p>If you would like to receive controller updates while the application is in the background, you should set the following hint before calling <tt class="docutils literal"><span class="pre">init()</span></tt>: <cite>HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS</cite></p>
+<p>In order to use these procedures, <tt class="docutils literal"><span class="pre">init()</span></tt> must have been called with the <tt class="docutils literal"><span class="pre">INIT_GAMECONTROLLER</span></tt> flag.  This causes SDL to scan the system for game controllers, and load appropriate drivers.</p>
+<p>If you would like to receive controller updates while the application is in the background, you should set the following hint before calling <tt class="docutils literal"><span class="pre">init()</span></tt>: <tt class="docutils literal"><span class="pre">HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS</span></tt></p>
 To count the number of game controllers in the system for the following:<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">nJoysticks</span><span class="Punctuation">:</span> <span class="Identifier">int</span> <span class="Operator">=</span> <span class="Identifier">numJoysticks</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
 <span class="Keyword">var</span> <span class="Identifier">nGameControllers</span><span class="Punctuation">:</span> <span class="Identifier">int</span> <span class="Operator">=</span> <span class="DecNumber">0</span>
 <span class="Keyword">for</span> <span class="Identifier">i</span> <span class="Keyword">in</span> <span class="FloatNumber">0.</span><span class="Operator">.</span><span class="Identifier">nJoysticks</span><span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">:</span>
   <span class="Keyword">if</span> <span class="Identifier">isGameController</span><span class="Punctuation">(</span><span class="Identifier">i</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
-    <span class="Identifier">inc</span><span class="Punctuation">(</span><span class="Identifier">nGameControllers</span><span class="Punctuation">)</span></pre><p>Using the <cite>HINT_GAMECONTROLLERCONFIG</cite> hint or the <tt class="docutils literal"><span class="pre">sdl.gameControllerAddMapping()</span></tt> you can add support for controllers SDL is unaware of or cause an existing controller to have a different binding.</p>
+    <span class="Identifier">inc</span><span class="Punctuation">(</span><span class="Identifier">nGameControllers</span><span class="Punctuation">)</span></pre><p>Using the <tt class="docutils literal"><span class="pre">HINT_GAMECONTROLLERCONFIG</span></tt> hint or the <tt class="docutils literal"><span class="pre">sdl.gameControllerAddMapping()</span></tt> you can add support for controllers SDL is unaware of or cause an existing controller to have a different binding.</p>
 <p>The format is:</p>
 <p>guid,name,mappings</p>
 <p>Where GUID is the string value from <tt class="docutils literal"><span class="pre">joystickGetGUIDString()</span></tt>, name is the human readable string for the device and mappings are controller mappings to joystick ones.</p>
 <p>Under Windows there is a reserved GUID of &quot;xinput&quot; that covers any XInput devices.</p>
 <p>The mapping format for joystick is:</p>
-<blockquote><p><p><cite>bX</cite> - a joystick button, index X</p>
-<p><cite>hX.Y</cite> - hat X with value Y</p>
-<p><cite>aX</cite> - axis X of the joystick</p>
+<blockquote><p><p><tt class="docutils literal"><span class="pre">bX</span></tt> - a joystick button, index X</p>
+<p><tt class="docutils literal"><span class="pre">hX.Y</span></tt> - hat X with value Y</p>
+<p><tt class="docutils literal"><span class="pre">aX</span></tt> - axis X of the joystick</p>
 </p></blockquote>
 <p>Buttons can be used as a controller axis and vice versa.</p>
 <p>This string shows an example of a valid mapping for a controller</p>
@@ -1389,28 +975,35 @@ To count the number of game controllers in the system for the following:<pre cla
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="GameController"><a name="GameController"></a><pre><a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
+<a id="GameController"></a>
+<dt><pre><a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
+
 
 The gamecontroller structure used to identify an SDL game controller.
 
 </dd>
-<dt id="GameControllerBindType"><a name="GameControllerBindType"></a><pre><a href="gamecontroller.html#GameControllerBindType"><span class="Identifier">GameControllerBindType</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<a id="GameControllerBindType"></a>
+<dt><pre><a href="gamecontroller.html#GameControllerBindType"><span class="Identifier">GameControllerBindType</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">CONTROLLER_BINDTYPE_NONE</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BINDTYPE_BUTTON</span><span class="Other">,</span>
   <span class="Identifier">CONTROLLER_BINDTYPE_AXIS</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BINDTYPE_HAT</span></pre></dt>
 <dd>
 
 
+
 </dd>
-<dt id="GameControllerButtonBindValueHat"><a name="GameControllerButtonBindValueHat"></a><pre><a href="gamecontroller.html#GameControllerButtonBindValueHat"><span class="Identifier">GameControllerButtonBindValueHat</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="GameControllerButtonBindValueHat"></a>
+<dt><pre><a href="gamecontroller.html#GameControllerButtonBindValueHat"><span class="Identifier">GameControllerButtonBindValueHat</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">hat</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
   <span class="Identifier">hat_mask</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
 </pre></dt>
 <dd>
 
 
+
 </dd>
-<dt id="GameControllerButtonBindValue"><a name="GameControllerButtonBindValue"></a><pre><a href="gamecontroller.html#GameControllerButtonBindValue"><span class="Identifier">GameControllerButtonBindValue</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">union</span></span><span class="Other">.}</span></span>
+<a id="GameControllerButtonBindValue"></a>
+<dt><pre><a href="gamecontroller.html#GameControllerButtonBindValue"><span class="Identifier">GameControllerButtonBindValue</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">union</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">button</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
   <span class="Identifier">axis</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
   <span class="Identifier">hat</span><span class="Operator">*</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerButtonBindValueHat"><span class="Identifier">GameControllerButtonBindValueHat</span></a>
@@ -1418,31 +1011,37 @@ The gamecontroller structure used to identify an SDL game controller.
 <dd>
 
 
+
 </dd>
-<dt id="GameControllerButtonBind"><a name="GameControllerButtonBind"></a><pre><a href="gamecontroller.html#GameControllerButtonBind"><span class="Identifier">GameControllerButtonBind</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="GameControllerButtonBind"></a>
+<dt><pre><a href="gamecontroller.html#GameControllerButtonBind"><span class="Identifier">GameControllerButtonBind</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">bindType</span><span class="Operator">*</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerBindType"><span class="Identifier">GameControllerBindType</span></a>
   <span class="Identifier">value</span><span class="Operator">*</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerButtonBindValue"><span class="Identifier">GameControllerButtonBindValue</span></a>
 </pre></dt>
 <dd>
 
+
 Get the SDL joystick layer binding 
 for this controller button/axis mapping
 
 </dd>
-<dt id="GameControllerAxis"><a name="GameControllerAxis"></a><pre><a href="gamecontroller.html#GameControllerAxis"><span class="Identifier">GameControllerAxis</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">1</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<a id="GameControllerAxis"></a>
+<dt><pre><a href="gamecontroller.html#GameControllerAxis"><span class="Identifier">GameControllerAxis</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">1</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">CONTROLLER_AXIS_LEFTX</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_LEFTY</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_RIGHTX</span><span class="Other">,</span>
   <span class="Identifier">CONTROLLER_AXIS_RIGHTY</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_TRIGGERLEFT</span><span class="Other">,</span>
   <span class="Identifier">CONTROLLER_AXIS_TRIGGERRIGHT</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_AXIS_MAX</span><span class="Other">,</span>
   <span class="Identifier">CONTROLLER_AXIS_INVALID</span> <span class="Other">=</span> <span class="Identifier">uint8</span><span class="Other">.</span><span class="Identifier">high</span></pre></dt>
 <dd>
+
 <p>
 The list of axes available from a controller.</p>
-<p>Thumbstick axis values range from <cite>JOYSTICK_AXIS_MIN</cite> to <cite>JOYSTICK_AXIS_MAX</cite>, and are centered within ~8000 of zero, though advanced UI will allow users to set or autodetect the dead zone, which varies between controllers.</p>
-<p>Trigger axis values range from <cite>0</cite> to <cite>JOYSTICK_AXIS_MAX</cite>.</p>
+<p>Thumbstick axis values range from <tt class="docutils literal"><span class="pre">JOYSTICK_AXIS_MIN</span></tt> to <tt class="docutils literal"><span class="pre">JOYSTICK_AXIS_MAX</span></tt>, and are centered within ~8000 of zero, though advanced UI will allow users to set or autodetect the dead zone, which varies between controllers.</p>
+<p>Trigger axis values range from <tt class="docutils literal"><span class="pre">0</span></tt> to <tt class="docutils literal"><span class="pre">JOYSTICK_AXIS_MAX</span></tt>.</p>
 
 
 </dd>
-<dt id="GameControllerButton"><a name="GameControllerButton"></a><pre><a href="gamecontroller.html#GameControllerButton"><span class="Identifier">GameControllerButton</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">1</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<a id="GameControllerButton"></a>
+<dt><pre><a href="gamecontroller.html#GameControllerButton"><span class="Identifier">GameControllerButton</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">1</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">CONTROLLER_BUTTON_A</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_B</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_X</span><span class="Other">,</span>
   <span class="Identifier">CONTROLLER_BUTTON_Y</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_BACK</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_GUIDE</span><span class="Other">,</span>
   <span class="Identifier">CONTROLLER_BUTTON_START</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_BUTTON_LEFTSTICK</span><span class="Other">,</span>
@@ -1453,6 +1052,7 @@ The list of axes available from a controller.</p>
   <span class="Identifier">CONTROLLER_BUTTON_INVALID</span> <span class="Other">=</span> <span class="Identifier">uint8</span><span class="Other">.</span><span class="Identifier">high</span></pre></dt>
 <dd>
 
+
 The list of buttons available from a controller
 
 </dd>
@@ -1461,229 +1061,289 @@ The list of buttons available from a controller
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="gameControllerAddMappingsFromRW"><a name="gameControllerAddMappingsFromRW,ptr.RWops,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerAddMappingsFromRW</span><span class="Other">(</span><span class="Identifier">rw</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freerw</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerAddMappingsFromRW,ptr.RWops,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerAddMappingsFromRW%2Cptr.RWops%2Ccint"><span class="Identifier">gameControllerAddMappingsFromRW</span></a><span class="Other">(</span><span class="Identifier">rw</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freerw</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerAddMappingsFromRW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Load a set of mappings from a seekable SDL data stream (memory or file), filtered by the current <tt class="docutils literal"><span class="pre">getPlatform()</span></tt>.</p>
 <p>A community sourced database of controllers is available at <a class="reference external" href="https://raw.github.com/gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt">https://raw.github.com/gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt</a></p>
 <p>If <tt class="docutils literal"><span class="pre">freerw</span></tt> is non-zero, the stream will be closed after being read.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> number of mappings added, <cite>-1</cite> on error</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> number of mappings added, <tt class="docutils literal"><span class="pre">-1</span></tt> on error</p>
 
 
 </dd>
-<dt id="gameControllerAddMapping"><a name="gameControllerAddMapping,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerAddMapping</span><span class="Other">(</span><span class="Identifier">mappingString</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerAddMapping,cstring"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerAddMapping%2Ccstring"><span class="Identifier">gameControllerAddMapping</span></a><span class="Other">(</span><span class="Identifier">mappingString</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerAddMapping&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Add or update an existing mapping configuration.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite> if mapping is added, <cite>0</cite> if updated, <cite>-1</cite> on error.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">1</span></tt> if mapping is added, <tt class="docutils literal"><span class="pre">0</span></tt> if updated, <tt class="docutils literal"><span class="pre">-1</span></tt> on error.</p>
 
 
 </dd>
-<dt id="gameControllerNumMappings"><a name="gameControllerNumMappings,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerNumMappings</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerNumMappings"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerNumMappings"><span class="Identifier">gameControllerNumMappings</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
                                       <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerNumMappings&quot;</span><span class="Other">,</span>
                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the number of mappings installed.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of mappings.</p>
 
 
 </dd>
-<dt id="gameControllerMappingForIndex"><a name="gameControllerMappingForIndex,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerMappingForIndex</span><span class="Other">(</span><span class="Identifier">mapping_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerMappingForIndex,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerMappingForIndex%2Ccint"><span class="Identifier">gameControllerMappingForIndex</span></a><span class="Other">(</span><span class="Identifier">mapping_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerMappingForIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Get the mapping at a particular index.<blockquote><p><tt class="docutils literal"><span class="pre">Return</span></tt> the mapping string. Must be freed with <tt class="docutils literal"><span class="pre">free()</span></tt>. Returns <tt class="docutils literal"><span class="pre">nil</span></tt> if the index is out of range.</p></blockquote>
 
 
 </dd>
-<dt id="gameControllerMappingForGUID"><a name="gameControllerMappingForGUID,JoystickGUID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerMappingForGUID</span><span class="Other">(</span><span class="Identifier">guid</span><span class="Other">:</span> <span class="Identifier">JoystickGUID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerMappingForGUID,JoystickGUID"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerMappingForGUID%2CJoystickGUID"><span class="Identifier">gameControllerMappingForGUID</span></a><span class="Other">(</span><span class="Identifier">guid</span><span class="Other">:</span> <span class="Identifier">JoystickGUID</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerMappingForGUID&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get a mapping string for a GUID.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> the mapping string.  Must be freed with <tt class="docutils literal"><span class="pre">sdl.free()</span></tt>. Returns <cite>nil</cite> if no mapping is available</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the mapping string.  Must be freed with <tt class="docutils literal"><span class="pre">sdl.free()</span></tt>. Returns <tt class="docutils literal"><span class="pre">nil</span></tt> if no mapping is available</p>
 
 
 </dd>
-<dt id="gameControllerMapping"><a name="gameControllerMapping,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerMapping</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerMapping,GameController"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerMapping%2CGameController"><span class="Identifier">gameControllerMapping</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerMapping&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get a mapping string for an open GameController.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> the mapping string.  Must be freed with <tt class="docutils literal"><span class="pre">sdl.free()</span></tt>. Returns <cite>nil</cite> if no mapping is available</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the mapping string.  Must be freed with <tt class="docutils literal"><span class="pre">sdl.free()</span></tt>. Returns <tt class="docutils literal"><span class="pre">nil</span></tt> if no mapping is available</p>
 
 
 </dd>
-<dt id="isGameController"><a name="isGameController,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">isGameController</span><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="isGameController,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#isGameController%2Ccint"><span class="Identifier">isGameController</span></a><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_IsGameController&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Is the joystick on this index supported by the game controller interface?
 
 </dd>
-<dt id="gameControllerNameForIndex"><a name="gameControllerNameForIndex,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerNameForIndex</span><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerNameForIndex,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerNameForIndex%2Ccint"><span class="Identifier">gameControllerNameForIndex</span></a><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerNameForIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the implementation dependent name of a game controller.</p>
-<p>This can be called before any controllers are opened. If no name can be found, this procedure returns <cite>nil</cite>.</p>
+<p>This can be called before any controllers are opened. If no name can be found, this procedure returns <tt class="docutils literal"><span class="pre">nil</span></tt>.</p>
 
 
 </dd>
-<dt id="gameControllerMappingForDeviceIndex"><a name="gameControllerMappingForDeviceIndex,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerMappingForDeviceIndex</span><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerMappingForDeviceIndex,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerMappingForDeviceIndex%2Ccint"><span class="Identifier">gameControllerMappingForDeviceIndex</span></a><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerMappingForDeviceIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the mapping of a game controller.</p>
 <p>This can be called before any controllers are opened.</p>
-<p><cite>Return</cite> the mapping string. Must be freed with <tt class="docutils literal"><span class="pre">sdl.free()</span></tt>. Returns <cite>nil</cite> if no mapping is available.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the mapping string. Must be freed with <tt class="docutils literal"><span class="pre">sdl.free()</span></tt>. Returns <tt class="docutils literal"><span class="pre">nil</span></tt> if no mapping is available.</p>
 
 
 </dd>
-<dt id="gameControllerOpen"><a name="gameControllerOpen,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerOpen</span><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerOpen,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerOpen%2Ccint"><span class="Identifier">gameControllerOpen</span></a><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerOpen&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Open a game controller for use.</p>
 <p>The index passed as an argument refers to the N'th game controller on the system.</p>
 <p>This index is not the value which will identify this controller in future controller events. The joystick's instance id (<tt class="docutils literal"><span class="pre">JoystickID</span></tt>) will be used there instead.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> a controller identifier, or <cite>nil</cite> if an error occurred.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> a controller identifier, or <tt class="docutils literal"><span class="pre">nil</span></tt> if an error occurred.</p>
 
 
 </dd>
-<dt id="gameControllerFromInstanceID"><a name="gameControllerFromInstanceID,JoystickID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerFromInstanceID</span><span class="Other">(</span><span class="Identifier">joyid</span><span class="Other">:</span> <span class="Identifier">JoystickID</span><span class="Other">)</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerFromInstanceID,JoystickID"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerFromInstanceID%2CJoystickID"><span class="Identifier">gameControllerFromInstanceID</span></a><span class="Other">(</span><span class="Identifier">joyid</span><span class="Other">:</span> <span class="Identifier">JoystickID</span><span class="Other">)</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerFromInstanceID&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <tt class="docutils literal"><span class="pre">Return</span></tt> the <tt class="docutils literal"><span class="pre">GameController</span></tt> associated with an instance id.
 
 </dd>
-<dt id="gameControllerName"><a name="gameControllerName,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerName</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerName,GameController"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerName%2CGameController"><span class="Identifier">gameControllerName</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerName&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <tt class="docutils literal"><span class="pre">Return</span></tt> the name for this currently opened controller.
 
 </dd>
-<dt id="gameControllerGetPlayerIndex"><a name="gameControllerGetPlayerIndex,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetPlayerIndex</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerGetPlayerIndex,GameController"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerGetPlayerIndex%2CGameController"><span class="Identifier">gameControllerGetPlayerIndex</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetPlayerIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-Get the player index of an opened game controller, or <cite>-1</cite> if it's not available.<blockquote><p>For XInput controllers this returns the XInput user index.</p></blockquote>
+
+Get the player index of an opened game controller, or <tt class="docutils literal"><span class="pre">-1</span></tt> if it's not available.<blockquote><p>For XInput controllers this returns the XInput user index.</p></blockquote>
 
 
 </dd>
-<dt id="gameControllerGetVendor"><a name="gameControllerGetVendor,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetVendor</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerGetVendor,GameController"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerGetVendor%2CGameController"><span class="Identifier">gameControllerGetVendor</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetVendor&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-<tt class="docutils literal"><span class="pre">Return</span></tt> the USB vendor ID of an opened controller, if available. If the vendor ID isn't available this function returns <cite>0</cite>.
+
+<tt class="docutils literal"><span class="pre">Return</span></tt> the USB vendor ID of an opened controller, if available. If the vendor ID isn't available this function returns <tt class="docutils literal"><span class="pre">0</span></tt>.
 
 </dd>
-<dt id="gameControllerGetProduct"><a name="gameControllerGetProduct,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetProduct</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerGetProduct,GameController"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerGetProduct%2CGameController"><span class="Identifier">gameControllerGetProduct</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetProduct&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-<tt class="docutils literal"><span class="pre">Return</span></tt> the USB product ID of an opened controller, if available. If the product ID isn't available this function returns <cite>0</cite>.
+
+<tt class="docutils literal"><span class="pre">Return</span></tt> the USB product ID of an opened controller, if available. If the product ID isn't available this function returns <tt class="docutils literal"><span class="pre">0</span></tt>.
 
 </dd>
-<dt id="gameControllerGetProductVersion"><a name="gameControllerGetProductVersion,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetProductVersion</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="gameControllerGetProductVersion,GameController"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerGetProductVersion%2CGameController"><span class="Identifier">gameControllerGetProductVersion</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetProductVersion&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-<tt class="docutils literal"><span class="pre">Return</span></tt> the product version of an opened controller, if available. If the product version isn't available this function returns <cite>0</cite>.
+
+<tt class="docutils literal"><span class="pre">Return</span></tt> the product version of an opened controller, if available. If the product version isn't available this function returns <tt class="docutils literal"><span class="pre">0</span></tt>.
 
 </dd>
-<dt id="gameControllerGetAttached"><a name="gameControllerGetAttached,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetAttached</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerGetAttached,GameController"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerGetAttached%2CGameController"><span class="Identifier">gameControllerGetAttached</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetAttached&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-<tt class="docutils literal"><span class="pre">Returns</span></tt> <cite>true</cite> if the controller has been opened and currently connected, or <cite>false</cite> if it has not.
+
+<tt class="docutils literal"><span class="pre">Returns</span></tt> <tt class="docutils literal"><span class="pre">true</span></tt> if the controller has been opened and currently connected, or <tt class="docutils literal"><span class="pre">false</span></tt> if it has not.
 
 </dd>
-<dt id="gameControllerGetJoystick"><a name="gameControllerGetJoystick,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetJoystick</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Joystick</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerGetJoystick,GameController"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerGetJoystick%2CGameController"><span class="Identifier">gameControllerGetJoystick</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Joystick</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetJoystick&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Get the underlying joystick object used by a controller.
 
 </dd>
-<dt id="gameControllerEventState"><a name="gameControllerEventState,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerEventState</span><span class="Other">(</span><span class="Identifier">state</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerEventState,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerEventState%2Ccint"><span class="Identifier">gameControllerEventState</span></a><span class="Other">(</span><span class="Identifier">state</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerEventState&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Enable/disable controller event polling.</p>
 <p>If controller events are disabled, you must call <tt class="docutils literal"><span class="pre">gameControllerUpdate()</span></tt> yourself and check the state of the controller when you want controller information.</p>
-<p>The state can be one of <cite>QUERY</cite>, <cite>ENABLE</cite> or <cite>IGNORE</cite>.</p>
+<p>The state can be one of <tt class="docutils literal"><span class="pre">QUERY</span></tt>, <tt class="docutils literal"><span class="pre">ENABLE</span></tt> or <tt class="docutils literal"><span class="pre">IGNORE</span></tt>.</p>
 
 
 </dd>
-<dt id="gameControllerUpdate"><a name="gameControllerUpdate,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerUpdate</span><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerUpdate&quot;</span><span class="Other">,</span>
+<a id="gameControllerUpdate"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerUpdate"><span class="Identifier">gameControllerUpdate</span></a><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerUpdate&quot;</span><span class="Other">,</span>
                             <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Update the current state of the open game controllers.</p>
 <p>This is called automatically by the event loop if any game controller events are enabled.</p>
 
 
 </dd>
-<dt id="gameControllerGetAxisFromString"><a name="gameControllerGetAxisFromString,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetAxisFromString</span><span class="Other">(</span><span class="Identifier">pchString</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerAxis"><span class="Identifier">GameControllerAxis</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="gameControllerGetAxisFromString,cstring"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerGetAxisFromString%2Ccstring"><span class="Identifier">gameControllerGetAxisFromString</span></a><span class="Other">(</span><span class="Identifier">pchString</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerAxis"><span class="Identifier">GameControllerAxis</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetAxisFromString&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Turn this string into a axis mapping.
 
 </dd>
-<dt id="gameControllerGetStringForAxis"><a name="gameControllerGetStringForAxis,GameControllerAxis"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetStringForAxis</span><span class="Other">(</span><span class="Identifier">axis</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerAxis"><span class="Identifier">GameControllerAxis</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerGetStringForAxis,GameControllerAxis"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerGetStringForAxis%2CGameControllerAxis"><span class="Identifier">gameControllerGetStringForAxis</span></a><span class="Other">(</span><span class="Identifier">axis</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerAxis"><span class="Identifier">GameControllerAxis</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetStringForAxis&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Turn this axis enum into a string mapping.
 
 </dd>
-<dt id="gameControllerGetBindForAxis"><a name="gameControllerGetBindForAxis,GameController,GameControllerAxis"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetBindForAxis</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">;</span>
+<a id="gameControllerGetBindForAxis,GameController,GameControllerAxis"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerGetBindForAxis%2CGameController%2CGameControllerAxis"><span class="Identifier">gameControllerGetBindForAxis</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">;</span>
                                  <span class="Identifier">axis</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerAxis"><span class="Identifier">GameControllerAxis</span></a><span class="Other">)</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerButtonBind"><span class="Identifier">GameControllerButtonBind</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetBindForAxis&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Get the SDL joystick layer binding for this controller button mapping.
 
 </dd>
-<dt id="gameControllerGetAxis"><a name="gameControllerGetAxis,GameController,GameControllerAxis"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetAxis</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerAxis"><span class="Identifier">GameControllerAxis</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="gameControllerGetAxis,GameController,GameControllerAxis"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerGetAxis%2CGameController%2CGameControllerAxis"><span class="Identifier">gameControllerGetAxis</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerAxis"><span class="Identifier">GameControllerAxis</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetAxis&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the current state of an axis control on a game controller.</p>
-<p>The state is a value ranging from <cite>-32768</cite> to <cite>32767</cite> (except for the triggers, which range from <cite>0</cite> to <cite>32767</cite>.</p>
-<p>The axis indices start at index <cite>0</cite>.</p>
+<p>The state is a value ranging from <tt class="docutils literal"><span class="pre">-32768</span></tt> to <tt class="docutils literal"><span class="pre">32767</span></tt> (except for the triggers, which range from <tt class="docutils literal"><span class="pre">0</span></tt> to <tt class="docutils literal"><span class="pre">32767</span></tt>.</p>
+<p>The axis indices start at index <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
 
 
 </dd>
-<dt id="gameControllerGetButtonFromString"><a name="gameControllerGetButtonFromString,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetButtonFromString</span><span class="Other">(</span><span class="Identifier">pchString</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerButton"><span class="Identifier">GameControllerButton</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="gameControllerGetButtonFromString,cstring"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerGetButtonFromString%2Ccstring"><span class="Identifier">gameControllerGetButtonFromString</span></a><span class="Other">(</span><span class="Identifier">pchString</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerButton"><span class="Identifier">GameControllerButton</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetButtonFromString&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Turn this string into a button mapping.
 
 </dd>
-<dt id="gameControllerGetStringForButton"><a name="gameControllerGetStringForButton,GameControllerButton"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetStringForButton</span><span class="Other">(</span><span class="Identifier">button</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerButton"><span class="Identifier">GameControllerButton</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="gameControllerGetStringForButton,GameControllerButton"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerGetStringForButton%2CGameControllerButton"><span class="Identifier">gameControllerGetStringForButton</span></a><span class="Other">(</span><span class="Identifier">button</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerButton"><span class="Identifier">GameControllerButton</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetStringForButton&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Turn this button enum into a string mapping.
 
 </dd>
-<dt id="gameControllerGetBindForButton"><a name="gameControllerGetBindForButton,GameController,GameControllerButton"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetBindForButton</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">;</span>
+<a id="gameControllerGetBindForButton,GameController,GameControllerButton"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerGetBindForButton%2CGameController%2CGameControllerButton"><span class="Identifier">gameControllerGetBindForButton</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">;</span>
                                    <span class="Identifier">button</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerButton"><span class="Identifier">GameControllerButton</span></a><span class="Other">)</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerButtonBind"><span class="Identifier">GameControllerButtonBind</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetBindForButton&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Get the SDL joystick layer binding for this controller button mapping.
 
 </dd>
-<dt id="gameControllerGetButton"><a name="gameControllerGetButton,GameController,GameControllerButton"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerGetButton</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">;</span>
+<a id="gameControllerGetButton,GameController,GameControllerButton"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerGetButton%2CGameController%2CGameControllerButton"><span class="Identifier">gameControllerGetButton</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">;</span>
                             <span class="Identifier">button</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerButton"><span class="Identifier">GameControllerButton</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetButton&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the current state of a button on a game controller.</p>
-<p>The button indices start at index <cite>0</cite>.</p>
+<p>The button indices start at index <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
 
 
 </dd>
-<dt id="gameControllerRumble"><a name="gameControllerRumble,GameController,uint16,uint16,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerRumble</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">;</span>
+<a id="gameControllerRumble,GameController,uint16,uint16,uint32"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerRumble%2CGameController%2Cuint16%2Cuint16%2Cuint32"><span class="Identifier">gameControllerRumble</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">;</span>
                          <span class="Identifier">low_frequency_rumble</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span>
                          <span class="Identifier">high_frequency_rumble</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">duration_ms</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerRumble&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Trigger a rumble effect</p>
-<p>Each call to this function cancels any previous rumble effect, and calling it with <cite>0</cite> intensity stops any rumbling.</p>
+<p>Each call to this function cancels any previous rumble effect, and calling it with <tt class="docutils literal"><span class="pre">0</span></tt> intensity stops any rumbling.</p>
 <p><tt class="docutils literal"><span class="pre">gamecontroller</span></tt>  The controller to vibrate</p>
 <p><tt class="docutils literal"><span class="pre">low_frequency_rumble</span></tt>  The intensity of the low frequency (left) rumble motor, from 0 to 0xFFFF</p>
-<p><tt class="docutils literal"><span class="pre">high_frequency_rumble</span></tt> The intensity of the high frequency (right) rumble motor, from <cite>0</cite> to <cite>0xFFFF</cite></p>
+<p><tt class="docutils literal"><span class="pre">high_frequency_rumble</span></tt> The intensity of the high frequency (right) rumble motor, from <tt class="docutils literal"><span class="pre">0</span></tt> to <tt class="docutils literal"><span class="pre">0xFFFF</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">duration_ms</span></tt> The duration of the rumble effect, in milliseconds</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite>, or <cite>-1</cite> if rumble isn't supported on this joystick.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt>, or <tt class="docutils literal"><span class="pre">-1</span></tt> if rumble isn't supported on this joystick.</p>
 
 
 </dd>
-<dt id="gameControllerClose"><a name="gameControllerClose,GameController"></a><pre><span class="Keyword">proc</span> <span class="Identifier">gameControllerClose</span><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="gameControllerClose,GameController"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerClose%2CGameController"><span class="Identifier">gameControllerClose</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerClose&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Close a controller previously opened with <tt class="docutils literal"><span class="pre">gameControllerOpen()</span></tt>.
 
 </dd>
@@ -1692,8 +1352,10 @@ Close a controller previously opened with <tt class="docutils literal"><span cla
 <div class="section" id="18">
 <h1><a class="toc-backref" href="#18">Templates</a></h1>
 <dl class="item">
-<dt id="gameControllerAddMappingsFromFile"><a name="gameControllerAddMappingsFromFile.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">gameControllerAddMappingsFromFile</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<a id="gameControllerAddMappingsFromFile.t,untyped"></a>
+<dt><pre><span class="Keyword">template</span> <a href="#gameControllerAddMappingsFromFile.t%2Cuntyped"><span class="Identifier">gameControllerAddMappingsFromFile</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
+
 
 Load a set of mappings from a file, 
 filtered by the current <tt class="docutils literal"><span class="pre">getPlatform()</span></tt>.
@@ -1709,7 +1371,7 @@ filtered by the current <tt class="docutils literal"><span class="pre">getPlatfo
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-11-02 19:11:01 UTC</small>
+        <small>Made with Nim. Generated: 2019-07-27 12:00:38 UTC</small>
       </div>
     </div>
   </div>

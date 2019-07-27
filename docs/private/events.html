@@ -16,7 +16,7 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
-<title>Module events</title>
+<title>events</title>
 <style type="text/css" >
 /*
 Stylesheet for use with Docutils/rst2html.
@@ -27,232 +27,130 @@ customize this style sheet.
 Modified from Chad Skeeters' rst2html-style
 https://bitbucket.org/cskeeters/rst2html-style/
 
-Modified by Boyd Greenfield
+Modified by Boyd Greenfield and narimiran
 */
-/* SCSS variables */
-/* Text weights */
-/* Body colors */
-/* Text colors */
-/* Link colors */
-/* Syntax highlighting colors */
-/* Pct changes */
-/* Mixins */
-/* Body/layout */
+
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%; }
 
-/* Where we want fancier font if available */
-h1, h2, h3, h4, h5, h6, p.module-desc, table.docinfo + blockquote p, table.docinfo blockquote p, h1 + blockquote p {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important; }
-
-h1.title {
-  font-weight: 900; }
-
 body {
   font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
-  color: #444;
-  letter-spacing: 0.15px;
-  background-color: #FDFBFA; }
+  font-size: 1.125em;
+  line-height: 1.5;
+  color: #222;
+  background-color: #FCFCFC; }
 
 /* Skeleton grid */
 .container {
   position: relative;
   width: 100%;
-  max-width: 960px;
+  max-width: 1050px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
   box-sizing: border-box; }
 
 .column,
 .columns {
   width: 100%;
   float: left;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  margin-left: 1%;
+}
 
-/* For devices larger than 400px */
-@media (min-width: 400px) {
-  .container {
-    width: 100%;
-    padding: 0; } }
-/* For devices larger than 650px */
-@media (min-width: 650px) {
-  .container {
-    width: 100%; }
+.column:first-child,
+.columns:first-child {
+  margin-left: 0; }
 
-  .column,
-  .columns {
-    margin-left: 4%; }
+.three.columns {
+  width: 19%; }
 
-  .column:first-child,
-  .columns:first-child {
-    margin-left: 0; }
+.nine.columns {
+  width: 80.0%; }
 
-  .one.column,
-  .one.columns {
-    width: 4.66666666667%; }
+.twelve.columns {
+  width: 100%;
+  margin-left: 0; }
 
-  .two.columns {
-    width: 13.3333333333%; }
-
+@media screen and (max-width: 860px) {
   .three.columns {
-    width: 22%; }
-
-  .four.columns {
-    width: 30.6666666667%; }
-
-  .five.columns {
-    width: 39.3333333333%; }
-
-  .six.columns {
-    width: 48%; }
-
-  .seven.columns {
-    width: 56.6666666667%; }
-
-  .eight.columns {
-    width: 65.3333333333%; }
-
+    display: none;
+  }
   .nine.columns {
-    width: 74.0%; }
-
-  .ten.columns {
-    width: 82.6666666667%; }
-
-  .eleven.columns {
-    width: 91.3333333333%; }
-
-  .twelve.columns {
-    width: 100%;
-    margin-left: 0; }
-
-  .one-third.column {
-    width: 30.6666666667%; }
-
-  .two-thirds.column {
-    width: 65.3333333333%; } }
-/* Customer Overrides */
-.footer {
-  text-align: center;
-  color: #969696;
-  padding-top: 10%; }
-
-p.module-desc {
-  font-size: 1.1em;
-  color: #666666; }
-
-a.link-seesrc {
-  color: #aec7d2;
-  font-style: italic; }
-
-a.link-seesrc:hover {
-  color: #6c9aae; }
-
-#toc-list {
-  word-wrap: break-word; }
-
-ul.simple-toc {
-  list-style: none; }
-
-ul.simple-toc a.reference-toplevel {
-  font-weight: bold;
-  color: #0077b3; }
-
-ul.simple-toc-section {
-  list-style-type: circle;
-  color: #6c9aae; }
-
-ul.simple-toc-section a.reference {
-  color: #0077b3; }
+    width: 98.0%;
+  }
+  body {
+    font-size: 1em;
+    line-height: 1.35;
+  }
+}
 
 cite {
   font-style: italic !important; }
 
-dt > pre {
-  border-color: rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 0.3);
-  margin: 15px 0px 5px; }
-
-dd > pre {
-  border-color: rgba(0, 0, 0, 0.1);
-  background-color: whitesmoke;
-  margin-top: 8px; }
-
-.item > dd {
-  margin-left: 10px;
-  margin-bottom: 30px; }
-
-/* Nim line-numbered tables */
-.line-nums-table {
-  width: 100%;
-  table-layout: fixed; }
 
 /* Nim search input */
 div#searchInputDiv {
-  margin-bottom: 8px;
+  margin-bottom: 1em;
 }
-div#searchInputDiv input#searchInput {
-  width: 10em;
-}
-div.search-groupby {
-  margin-bottom: 8px;
+input#searchInput {
+  width: 80%;
 }
 
-table.line-nums-table {
-  border-radius: 4px;
-  border: 1px solid #cccccc;
-  background-color: whitesmoke;
-  border-collapse: separate;
-  margin-top: 15px;
-  margin-bottom: 25px; }
-
-.line-nums-table tbody {
-  border: none; }
-
-.line-nums-table td pre {
-  border: none;
-  background-color: transparent; }
-
-.line-nums-table td.blob-line-nums {
-  width: 28px; }
-
-.line-nums-table td.blob-line-nums pre {
-  color: #b0b0b0;
-  -webkit-filter: opacity(75%);
-  text-align: right;
-  border-color: transparent;
-  background-color: transparent;
-  padding-left: 0px;
-  margin-left: 0px;
-  padding-right: 0px;
-  margin-right: 0px; }
+/*
+ * Some custom formatting for input forms.
+ * This also fixes input form colors on Firefox with a dark system theme on Linux.
+ */
+input {
+  -moz-appearance: none;
+  color: #333;
+  background-color: #f8f8f8;
+  border: 1px solid #aaa;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-size: 0.9em;
+  padding: 6px;
+}
+input:focus {
+  border: 1px solid #1fa0eb;
+  box-shadow: 0 0 2px #1fa0eb;
+}
 
 /* Docgen styles */
 /* Links */
 a {
-  color: #0077b3;
-  text-decoration: none; }
+  color: #07b;
+  text-decoration: none;
+}
+
+a span.Identifier {
+  text-decoration: underline;
+  text-decoration-color: #aab;
+}
+
+a.reference-toplevel {
+  font-weight: bold;
+}
+
+a.toc-backref {
+  text-decoration: none;
+  color: #222; }
+
+a.link-seesrc {
+  color: #607c9f;
+  font-size: 0.9em;
+  font-style: italic; }
 
 a:hover,
 a:focus {
-  color: #00334d;
+  color: #607c9f;
   text-decoration: underline; }
 
-a:visited {
-  color: #00334d; }
+a:hover span.Identifier {
+  color: #607c9f;
+}
 
-a:focus {
-  outline: thin dotted #2d2d2d;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px; }
-
-a:hover,
-a:active {
-  outline: 0; }
 
 sub,
 sup {
@@ -329,379 +227,258 @@ img {
 
   h2,
   h3 {
-    page-break-after: avoid; } }
-.img-rounded {
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px; }
+    page-break-after: avoid; }
+}
 
-.img-polaroid {
-  padding: 4px;
-  background-color: rgba(252, 248, 244, 0.75);
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
 
 p {
-  margin: 0 0 8px; }
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
 
 small {
   font-size: 85%; }
 
 strong {
-  font-weight: 600; }
+  font-weight: 600;
+  font-size: 0.95em;
+  color: #3c3c3c;
+}
 
 em {
   font-style: italic; }
 
-cite {
-  font-style: normal; }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  line-height: 20px;
-  color: inherit;
-  text-rendering: optimizelegibility; }
-
 h1 {
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: 400;
-  padding-bottom: .15em;
-  border-bottom: 1px solid #aaaaaa;
-  margin-top: 1.0em;
+  padding-bottom: .25em;
+  border-bottom: 1px solid #aaa;
+  margin-top: 2.5em;
+  margin-bottom: 1em;
   line-height: 1.2em; }
 
 h1.title {
   padding-bottom: 1em;
   border-bottom: 0px;
-  font-size: 2.75em; }
+  font-size: 2.5em;
+  text-align: center;
+  font-weight: 900;
+  margin-top: 0.75em;
+  margin-bottom: 0em;
+}
 
 h2 {
-  font-size: 1.5em;
-  margin-top: 1.5em; }
+  font-size: 1.3em;
+  margin-top: 2em; }
+
+h2.subtitle {
+  text-align: center; }
 
 h3 {
-  font-size: 1.3em;
+  font-size: 1.125em;
   font-style: italic;
-  margin-top: 0.75em; }
+  margin-top: 1.5em; }
 
 h4 {
-  font-size: 1.3em;
-  margin-top: 0.5em; }
+  font-size: 1.125em;
+  margin-top: 1em; }
 
 h5 {
-  font-size: 1.2em;
-  margin-top: 0.25em; }
+  font-size: 1.125em;
+  margin-top: 0.75em; }
 
 h6 {
   font-size: 1.1em; }
 
+
 ul,
 ol {
   padding: 0;
-  margin: 0 0 0px 15px; }
+  margin-top: 0.5em;
+  margin-left: 0.75em; }
 
 ul ul,
 ul ol,
 ol ol,
 ol ul {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  margin-left: 1.25em; }
 
 li {
-  line-height: 20px; }
-
-dl {
-  margin-bottom: 20px; }
-
-dt,
-dd {
-  line-height: 20px; }
-
-dt {
-  font-weight: bold; }
-
-dd {
-  margin-left: 10px;
-  margin-bottom: 26px; }
-
-hr {
-  margin: 20px 0;
-  border: 0;
-  border-top: 1px solid #eeeeee;
-  border-bottom: 1px solid #ffffff; }
-
-abbr[title],
-abbr[data-original-title] {
-  cursor: help;
-  border-bottom: 1px dotted #999999; }
-
-abbr.initialism {
-  font-size: 90%;
-  text-transform: uppercase; }
-
-blockquote {
-  padding: 0 0 0 15px;
-  margin: 0 0 20px;
-  border-left: 5px solid #EFEBE0; }
-
-table.docinfo + blockquote, table.docinfo blockquote, h1 + blockquote {
-  border-left: 5px solid #c9c9c9;
+    list-style-type: circle;
 }
 
-table.docinfo + blockquote p, table.docinfo blockquote p, h1 + blockquote p {
-  margin-bottom: 0;
-  font-size: 15px;
-  font-weight: 200;
-  line-height: 1.5;
-  font-style: italic; }
+ul.simple-boot li {
+    list-style-type: none;
+    margin-left: 0em;
+    margin-bottom: 0.5em;
+}
 
-q:before,
-q:after,
-blockquote:before,
-blockquote:after {
-  content: ""; }
+ol.simple > li, ul.simple > li {
+  margin-bottom: 0.25em;
+  margin-left: 0.4em }
 
-address {
-  display: block;
-  margin-bottom: 20px;
-  font-style: normal;
-  line-height: 20px; }
+ul.simple.simple-toc > li {
+    margin-top: 1em;
+}
 
-code,
-pre {
-  font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
-  padding: 0 3px 2px;
-  font-weight: 500;
-  font-size: 12px;
-  color: #444444;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px; }
+ul.simple-toc {
+  list-style: none;
+  font-size: 0.9em;
+  margin-left: -0.3em;
+  margin-top: 1em; }
+
+ul.simple-toc > li {
+    list-style-type: none;
+}
+
+ul.simple-toc-section {
+  list-style-type: circle;
+  margin-left: 1em;
+  color: #6c9aae; }
+
+
+ol.arabic {
+  list-style: decimal; }
+
+ol.loweralpha {
+  list-style: lower-alpha; }
+
+ol.upperalpha {
+  list-style: upper-alpha; }
+
+ol.lowerroman {
+  list-style: lower-roman; }
+
+ol.upperroman {
+  list-style: upper-roman; }
+
+ul.auto-toc {
+  list-style-type: none; }
+
+
+dl {
+  margin-bottom: 1.5em; }
+
+dt {
+  margin-bottom: -0.5em;
+  margin-left: 0.0em; }
+
+dd {
+  margin-left: 2.0em;
+  margin-bottom: 3.0em;
+  margin-top: 0.5em; }
+
+
+hr {
+  margin: 2em 0;
+  border: 0;
+  border-top: 1px solid #aaa; }
+
+blockquote {
+  font-size: 0.9em;
+  font-style: italic;
+  padding-left: 0.5em;
+  margin-left: 0;
+  border-left: 5px solid #bbc;
+}
 
 .pre {
   font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
-  font-weight: 600;
-  /*color: #504da6;*/
+  font-weight: 500;
+  font-size: 0.85em;
+  background-color: #f0f3ff;
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 4px;
 }
 
-code {
-  padding: 2px 4px;
-  color: #444444;
-  white-space: nowrap;
-  background-color: white;
-  border: 1px solid #777777; }
-
 pre {
+  font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
+  color: #222;
+  font-weight: 500;
   display: inline-block;
   box-sizing: border-box;
-  min-width: calc(100% - 19.5px);
-  padding: 9.5px;
-  margin: 0.25em 10px 10px 10px;
-  font-size: 15px;
-  line-height: 20px;
+  min-width: 100%;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: 0.85em;
   white-space: pre !important;
   overflow-y: hidden;
   overflow-x: visible;
-  background-color: rgba(0, 0, 0, 0.01);
-  border: 1px solid #cccccc;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px; }
-
-pre.prettyprint {
-  margin-bottom: 20px; }
-
-pre code {
-  padding: 0;
-  color: inherit;
-  white-space: pre;
-  overflow-x: visible;
-  background-color: transparent;
-  border: 0; }
+  background-color: ghostwhite;
+  border: 1px solid #dde;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px; }
 
 .pre-scrollable {
   max-height: 340px;
   overflow-y: scroll; }
 
+
+/* Nim line-numbered tables */
+.line-nums-table {
+  width: 100%;
+  table-layout: fixed; }
+
+table.line-nums-table {
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  background-color: ghostwhite;
+  border-collapse: separate;
+  margin-top: 15px;
+  margin-bottom: 25px; }
+
+.line-nums-table tbody {
+  border: none; }
+
+.line-nums-table td pre {
+  border: none;
+  background-color: transparent; }
+
+.line-nums-table td.blob-line-nums {
+  width: 28px; }
+
+.line-nums-table td.blob-line-nums pre {
+  color: #b0b0b0;
+  -webkit-filter: opacity(75%);
+  text-align: right;
+  border-color: transparent;
+  background-color: transparent;
+  padding-left: 0px;
+  margin-left: 0px;
+  padding-right: 0px;
+  margin-right: 0px; }
+
+
 table {
   max-width: 100%;
   background-color: transparent;
+  margin-top: 0.5em;
+  margin-bottom: 1.5em;
   border-collapse: collapse;
-  border-spacing: 0; }
-
-table th, table td {
-  padding: 0px 8px 0px;
+  border-color: #ccc;
+  border-spacing: 0;
+  font-size: 0.9em;
 }
 
-.table {
-  width: 100%;
-  margin-bottom: 20px; }
+table th, table td {
+  padding: 0px 0.5em 0px;
+}
 
-.table th,
-.table td {
-  padding: 8px;
-  line-height: 20px;
-  text-align: left;
-  vertical-align: top;
-  border-top: 1px solid #444444; }
-
-.table th {
+table th {
+  background-color: #e8e8e8;
   font-weight: bold; }
 
-.table thead th {
-  vertical-align: bottom; }
+table th.docinfo-name {
+    background-color: transparent;
+}
 
-.table caption + thead tr:first-child th,
-.table caption + thead tr:first-child td,
-.table colgroup + thead tr:first-child th,
-.table colgroup + thead tr:first-child td,
-.table thead:first-child tr:first-child th,
-.table thead:first-child tr:first-child td {
-  border-top: 0; }
+table tr:hover {
+  background-color: ghostwhite; }
 
-.table tbody + tbody {
-  border-top: 2px solid #444444; }
-
-.table .table {
-  background-color: rgba(252, 248, 244, 0.75); }
-
-.table-condensed th,
-.table-condensed td {
-  padding: 4px 5px; }
-
-.table-bordered {
-  border: 1px solid #444444;
-  border-collapse: separate;
-  *border-collapse: collapse;
-  border-left: 0;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px; }
-
-.table-bordered th,
-.table-bordered td {
-  border-left: 1px solid #444444; }
-
-.table-bordered caption + thead tr:first-child th,
-.table-bordered caption + tbody tr:first-child th,
-.table-bordered caption + tbody tr:first-child td,
-.table-bordered colgroup + thead tr:first-child th,
-.table-bordered colgroup + tbody tr:first-child th,
-.table-bordered colgroup + tbody tr:first-child td,
-.table-bordered thead:first-child tr:first-child th,
-.table-bordered tbody:first-child tr:first-child th,
-.table-bordered tbody:first-child tr:first-child td {
-  border-top: 0; }
-
-.table-bordered thead:first-child tr:first-child > th:first-child,
-.table-bordered tbody:first-child tr:first-child > td:first-child,
-.table-bordered tbody:first-child tr:first-child > th:first-child {
-  -webkit-border-top-left-radius: 4px;
-  border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px; }
-
-.table-bordered thead:first-child tr:first-child > th:last-child,
-.table-bordered tbody:first-child tr:first-child > td:last-child,
-.table-bordered tbody:first-child tr:first-child > th:last-child {
-  -webkit-border-top-right-radius: 4px;
-  border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px; }
-
-.table-bordered thead:last-child tr:last-child > th:first-child,
-.table-bordered tbody:last-child tr:last-child > td:first-child,
-.table-bordered tbody:last-child tr:last-child > th:first-child,
-.table-bordered tfoot:last-child tr:last-child > td:first-child,
-.table-bordered tfoot:last-child tr:last-child > th:first-child {
-  -webkit-border-bottom-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomleft: 4px; }
-
-.table-bordered thead:last-child tr:last-child > th:last-child,
-.table-bordered tbody:last-child tr:last-child > td:last-child,
-.table-bordered tbody:last-child tr:last-child > th:last-child,
-.table-bordered tfoot:last-child tr:last-child > td:last-child,
-.table-bordered tfoot:last-child tr:last-child > th:last-child {
-  -webkit-border-bottom-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  -moz-border-radius-bottomright: 4px; }
-
-.table-bordered tfoot + tbody:last-child tr:last-child td:first-child {
-  -webkit-border-bottom-left-radius: 0;
-  border-bottom-left-radius: 0;
-  -moz-border-radius-bottomleft: 0; }
-
-.table-bordered tfoot + tbody:last-child tr:last-child td:last-child {
-  -webkit-border-bottom-right-radius: 0;
-  border-bottom-right-radius: 0;
-  -moz-border-radius-bottomright: 0; }
-
-.table-bordered caption + thead tr:first-child th:first-child,
-.table-bordered caption + tbody tr:first-child td:first-child,
-.table-bordered colgroup + thead tr:first-child th:first-child,
-.table-bordered colgroup + tbody tr:first-child td:first-child {
-  -webkit-border-top-left-radius: 4px;
-  border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px; }
-
-.table-bordered caption + thead tr:first-child th:last-child,
-.table-bordered caption + tbody tr:first-child td:last-child,
-.table-bordered colgroup + thead tr:first-child th:last-child,
-.table-bordered colgroup + tbody tr:first-child td:last-child {
-  -webkit-border-top-right-radius: 4px;
-  border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px; }
-
-table.docutils th {
-  background-color: #e8e8e8; }
-
-table.docutils tr:hover {
-  background-color: whitesmoke; }
-
-.table-striped tbody > tr:nth-child(odd) > td,
-.table-striped tbody > tr:nth-child(odd) > th {
-  background-color: rgba(252, 248, 244, 0.75); }
-
-.table-hover tbody tr:hover > td,
-.table-hover tbody tr:hover > th {
-  background-color: rgba(241, 222, 204, 0.75); }
-
-table td[class*="span"],
-table th[class*="span"],
-.row-fluid table td[class*="span"],
-.row-fluid table th[class*="span"] {
-  display: table-cell;
-  float: none;
-  margin-left: 0; }
-
-.hero-unit {
-  padding: 60px;
-  margin-bottom: 30px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  color: inherit;
-  background-color: rgba(230, 197, 164, 0.75);
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px; }
-
-.hero-unit h1 {
-  margin-bottom: 0;
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
-  color: inherit; }
-
-.hero-unit li {
-  line-height: 30px; }
 
 /* rst2html default used to remove borders from tables and images */
 .borderless, table.borderless td, table.borderless th {
@@ -722,10 +499,6 @@ table.borderless td, table.borderless th {
 .hidden {
   display: none; }
 
-a.toc-backref {
-  text-decoration: none;
-  color: #444444; }
-
 blockquote.epigraph {
   margin: 2em 5em; }
 
@@ -735,85 +508,6 @@ dl.docutils dd {
 object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
   overflow: hidden; }
 
-/* Uncomment (and remove this text!) to get bold-faced definition list terms
-dl.docutils dt {
-  font-weight: bold }
-*/
-div.abstract {
-  margin: 2em 5em; }
-
-div.abstract p.topic-title {
-  font-weight: bold;
-  text-align: center; }
-
-div.admonition, div.attention, div.caution, div.danger, div.error,
-div.hint, div.important, div.note, div.tip, div.warning {
-  margin: 2em;
-  border: medium outset;
-  padding: 1em; }
-
-div.note, div.warning {
-  margin: 1.5em 0px;
-  border: none; }
-
-div.note p.admonition-title,
-div.warning p.admonition-title {
-  display: none; }
-
-/* Clearfix
- * http://css-tricks.com/snippets/css/clear-fix/
- */
-div.note:after,
-div.warning:after {
-  content: "";
-  display: table;
-  clear: both; }
-
-div.note p:before,
-div.warning p:before {
-  display: block;
-  float: left;
-  font-size: 4em;
-  line-height: 1em;
-  margin-right: 20px;
-  margin-left: 0em;
-  margin-top: -10px;
-  content: '\0270D';
-  /*handwriting*/ }
-
-div.warning p:before {
-  content: '\026A0';
-  /*warning*/ }
-
-div.admonition p.admonition-title, div.hint p.admonition-title,
-div.important p.admonition-title, div.note p.admonition-title,
-div.tip p.admonition-title {
-  font-weight: bold;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
-
-div.attention p.admonition-title, div.caution p.admonition-title,
-div.danger p.admonition-title, div.error p.admonition-title,
-div.warning p.admonition-title, .code .error {
-  color: #b30000;
-  font-weight: bold;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
-
-/* Uncomment (and remove this text!) to get reduced vertical space in
-   compound paragraphs.
-div.compound .compound-first, div.compound .compound-middle {
-  margin-bottom: 0.5em }
-
-div.compound .compound-last, div.compound .compound-middle {
-  margin-top: 0.5em }
-*/
-div.dedication {
-  margin: 2em 5em;
-  text-align: center;
-  font-style: italic; }
-
-div.dedication p.topic-title {
-  font-weight: bold;
-  font-style: normal; }
 
 div.figure {
   margin-left: 2em;
@@ -821,7 +515,13 @@ div.figure {
 
 div.footer, div.header {
   clear: both;
+  text-align: center;
+  color: #666;
   font-size: smaller; }
+
+div.footer {
+    padding-top: 5em;
+}
 
 div.line-block {
   display: block;
@@ -833,45 +533,24 @@ div.line-block div.line-block {
   margin-bottom: 0;
   margin-left: 1.5em; }
 
-div.sidebar {
-  margin: 0 0 0.5em 1em;
-  border: medium outset;
-  padding: 1em;
-  background-color: rgba(252, 248, 244, 0.75);
-  width: 40%;
-  float: right;
-  clear: right; }
-
-div.sidebar p.rubric {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-size: medium; }
-
-div.system-messages {
-  margin: 5em; }
-
-div.system-messages h1 {
-  color: #b30000; }
-
-div.system-message {
-  border: medium outset;
-  padding: 1em; }
-
-div.system-message p.system-message-title {
-  color: #b30000;
-  font-weight: bold; }
-
 div.topic {
   margin: 2em; }
 
-h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
-h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
-  margin-top: 0.4em; }
+div.search_results {
+  background-color: antiquewhite;
+  margin: 3em;
+  padding: 1em;
+  border: 1px solid #4d4d4d;
+}
 
-h1.title {
-  text-align: center; }
+div#global-links ul {
+  margin-left: 0;
+  list-style-type: none;
+}
 
-h2.subtitle {
-  text-align: center; }
+div#global-links > simple-boot {
+    margin-left: 3em;
+}
 
 hr.docutils {
   width: 75%; }
@@ -905,30 +584,6 @@ img.align-center, .figure.align-center, object.align-center {
 div.align-right {
   text-align: inherit; }
 
-/* div.align-center * { */
-/*   text-align: left } */
-
-ul.simple > li {
-  margin-bottom: 0.5em }
-
-ol.simple, ul.simple {
-  margin-bottom: 1em; }
-
-ol.arabic {
-  list-style: decimal; }
-
-ol.loweralpha {
-  list-style: lower-alpha; }
-
-ol.upperalpha {
-  list-style: upper-alpha; }
-
-ol.lowerroman {
-  list-style: lower-roman; }
-
-ol.upperroman {
-  list-style: upper-roman; }
-
 p.attribution {
   text-align: right;
   margin-left: 50%; }
@@ -948,15 +603,6 @@ p.rubric {
   font-size: larger;
   color: maroon;
   text-align: center; }
-
-p.sidebar-title {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  font-size: larger; }
-
-p.sidebar-subtitle {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: bold; }
 
 p.topic-title {
   font-weight: bold; }
@@ -997,21 +643,13 @@ pre.code .inserted, code .inserted {
   background-color: #A3D289; }
 
 span.classifier {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-style: oblique; }
 
 span.classifier-delimiter {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: bold; }
-
-span.interpreted {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
 
 span.option {
   white-space: nowrap; }
-
-span.pre {
-  white-space: pre; }
 
 span.problematic {
   color: #b30000; }
@@ -1019,44 +657,6 @@ span.problematic {
 span.section-subtitle {
   /* font-size relative to parent (h1..h6 element) */
   font-size: 80%; }
-
-table.citation {
-  border-left: solid 1px #666666;
-  margin-left: 1px; }
-
-table.docinfo {
-  margin: 0em;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important;
-  color: #444444; }
-
-table.docutils {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em; }
-
-table.footnote {
-  border-left: solid 1px #2d2d2d;
-  margin-left: 1px; }
-
-table.docutils td, table.docutils th,
-table.docinfo td, table.docinfo th {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  vertical-align: top; }
-
-table.docutils th.field-name, table.docinfo th.docinfo-name {
-  font-weight: 700;
-  text-align: left;
-  white-space: nowrap;
-  padding-left: 0; }
-
-h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
-h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
-  font-size: 100%; }
-
-ul.auto-toc {
-  list-style-type: none; }
 
 span.DecNumber {
   color: #252dbe; }
@@ -1074,7 +674,7 @@ span.FloatNumber {
   color: #252dbe; }
 
 span.Identifier {
-  color: #3b3b3b; }
+  color: #222; }
 
 span.Keyword {
   font-weight: 600;
@@ -1139,37 +739,22 @@ dt pre > span.Identifier, dt pre > span.Operator {
   color: #155da4;
   font-weight: 700; }
 
-dt pre > span.Identifier ~ span.Identifier, dt pre > span.Operator ~ span.Identifier {
-  color: inherit;
-  font-weight: inherit; }
-
-dt pre > span.Operator ~ span.Identifier {
+dt pre > span.Keyword ~ span.Identifier, dt pre > span.Identifier ~ span.Identifier,
+dt pre > span.Operator ~ span.Identifier, dt pre > span.Other ~ span.Identifier {
   color: inherit;
   font-weight: inherit; }
 
 /* Nim sprite for the footer (taken from main page favicon) */
 .nim-sprite {
   display: inline-block;
-  height: 12px;
-  width: 12px;
+  height: 16px;
+  width: 16px;
   background-position: 0 0;
-  background-size: 12px 12px;
+  background-size: 16px 16px;
   -webkit-filter: opacity(50%);
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
-
-div.search_results {
-  background-color: antiquewhite;
-  margin: 3em;
-  padding: 1em;
-  border: 1px solid #4d4d4d;
-}
-
-div#global-links ul {
-  margin-left: 0;
-  list-style-type: none;
-}
 
 span.pragmadots {
   /* Position: relative frees us up to make the dots
@@ -1178,18 +763,14 @@ span.pragmadots {
   position: relative;
   /* 1px down looks slightly nicer */
   top: 1px;
-
   padding: 2px;
-  background-color: #D3D3D3;
+  background-color: #e8e8e8;
   border-radius: 4px;
   margin: 0 2px;
   cursor: pointer;
-
-  /* For some reason on Chrome, making the font size
-  smaller than 1em is causing the parent container to
-  bulge slightly. So, we're stuck with inheriting 1em,
-  which is sad, because 0.8em looks better... */
+  font-size: 0.8em;
 }
+
 span.pragmadots:hover {
   background-color: #DBDBDB;
 }
@@ -1197,9 +778,13 @@ span.pragmawrap {
   display: none;
 }
 
+span.attachedType {
+  display: none;
+  visibility: hidden;
+}
 </style>
 
-<script type="text/javascript" src="../dochack.js"></script>
+<script type="text/javascript" src="dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -1219,7 +804,7 @@ function main() {
 <body onload="main()">
 <div class="document" id="documentId">
   <div class="container">
-    <h1 class="title">Module events</h1>
+    <h1 class="title">events</h1>
     <div class="row">
   <div class="three columns">
   <div id="global-links">
@@ -1313,7 +898,7 @@ function main() {
   FINGERDOWN = 0x00000700, FINGERUP, FINGERMOTION, DOLLARGESTURE = 0x00000800,
   DOLLARRECORD, MULTIGESTURE, CLIPBOARDUPDATE = 0x00000900, ## The clipboard changed
   DROPFILE = 0x00001000,        ## The system requests a file open
-  DROPTEXT,                   ## Text&#x2F;plain drag-and-drop event
+  DROPTEXT,                   ## Text/plain drag-and-drop event
   DROPBEGIN,                  ## A new set of drops is beginning (``nil`` filename)
   DROPCOMPLETE,               ## Current set of drops is now complete (``nil`` filename)
   AUDIODEVICEADDED = 0x00001100, ## A new audio device is available
@@ -1327,11 +912,11 @@ function main() {
                        ## Events `USEREVENT` through `LASTEVENT` are for your use,
                        ## and should be allocated with ``registerEvents()``
   LASTEVENT = 0x0000FFFF        ## \
-                      ## This last event is only for bounding internal arrays"><wbr />Event<wbr />Kind<span class="attachedType" style="visibility:hidden"></span></a></li>
+                      ## This last event is only for bounding internal arrays"><wbr />Event<wbr />Kind<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#CommonEventObj"
     title="CommonEventObj = object
   kind*: EventKind
-  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``"><wbr />Common<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``"><wbr />Common<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#DisplayEventObj"
     title="DisplayEventObj = object
   kind*: EventKind             ## `DISPLAYEVENT`
@@ -1341,7 +926,7 @@ function main() {
   padding1*: uint8
   padding2*: uint8
   padding3*: uint8
-  data1*: int32                ## Event dependent data"><wbr />Display<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  data1*: int32                ## Event dependent data"><wbr />Display<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#WindowEventObj"
     title="WindowEventObj = object
   kind*: EventKind             ## `WINDOWEVENT`
@@ -1352,7 +937,7 @@ function main() {
   padding2*: uint8
   padding3*: uint8
   data1*: int32                ## event dependent data
-  data2*: int32                ## event dependent data"><wbr />Window<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  data2*: int32                ## event dependent data"><wbr />Window<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#KeyboardEventObj"
     title="KeyboardEventObj = object
   kind*: EventKind             ## `KEYDOWN` or `KEYUP`
@@ -1362,7 +947,7 @@ function main() {
   repeat*: uint8               ## Non-zero if this is a key repeat
   padding2*: uint8
   padding3*: uint8
-  keysym*: Keysym              ## The key that was pressed or released"><wbr />Keyboard<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  keysym*: Keysym              ## The key that was pressed or released"><wbr />Keyboard<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#TextEditingEventObj"
     title="TextEditingEventObj = object
   kind*: EventKind             ## `TEXTEDITING`
@@ -1370,13 +955,13 @@ function main() {
   windowID*: uint32            ## The window with keyboard focus, if any
   text*: array[TEXTEDITINGEVENT_TEXT_SIZE, char] ## The editing text
   start*: int32                ## The start cursor of selected editing text
-  length*: int32               ## The length of selected editing text"><wbr />Text<wbr />Editing<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  length*: int32               ## The length of selected editing text"><wbr />Text<wbr />Editing<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#TextInputEventObj"
     title="TextInputEventObj = object
   kind*: EventKind             ## `TEXTINPUT`
   timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   windowID*: uint32            ## The window with keyboard focus, if any
-  text*: array[TEXTINPUTEVENT_TEXT_SIZE, char] ## The input text"><wbr />Text<wbr />Input<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  text*: array[TEXTINPUTEVENT_TEXT_SIZE, char] ## The input text"><wbr />Text<wbr />Input<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#MouseMotionEventObj"
     title="MouseMotionEventObj = object
   kind*: EventKind             ## `MOUSEMOTION`
@@ -1387,7 +972,7 @@ function main() {
   x*: int32                    ## X coordinate, relative to window
   y*: int32                    ## Y coordinate, relative to window
   xrel*: int32                 ## The relative motion in the X direction
-  yrel*: int32                 ## The relative motion in the Y direction"><wbr />Mouse<wbr />Motion<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  yrel*: int32                 ## The relative motion in the Y direction"><wbr />Mouse<wbr />Motion<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#MouseButtonEventObj"
     title="MouseButtonEventObj = object
   kind*: EventKind             ## `MOUSEBUTTONDOWN` or `MOUSEBUTTONUP`
@@ -1399,7 +984,7 @@ function main() {
   clicks*: uint8               ## `1` for single-click, `2` for double-click, etc.
   padding1*: uint8
   x*: int32                    ## X coordinate, relative to window
-  y*: int32                    ## Y coordinate, relative to window"><wbr />Mouse<wbr />Button<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  y*: int32                    ## Y coordinate, relative to window"><wbr />Mouse<wbr />Button<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#MouseWheelEventObj"
     title="MouseWheelEventObj = object
   kind*: EventKind             ## `MOUSEWHEEL`
@@ -1415,7 +1000,7 @@ function main() {
   direction*: MouseWheelDirection ## \
                                 ## Set to one of the `MOUSEWHEEL_*`.
                                 ## When `MOUSEWHEEL_FLIPPED` the values in X and Y will be opposite.
-                                ## Multiply by `-1` to change them back."><wbr />Mouse<wbr />Wheel<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+                                ## Multiply by `-1` to change them back."><wbr />Mouse<wbr />Wheel<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#JoyAxisEventObj"
     title="JoyAxisEventObj = object
   kind*: EventKind             ## `JOYAXISMOTION`
@@ -1426,7 +1011,7 @@ function main() {
   padding2*: uint8
   padding3*: uint8
   value*: int16                ## The axis value (range: `-32768` to `32767`)
-  padding4*: uint16"><wbr />Joy<wbr />Axis<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  padding4*: uint16"><wbr />Joy<wbr />Axis<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#JoyBallEventObj"
     title="JoyBallEventObj = object
   kind*: EventKind             ## `JOYBALLMOTION`
@@ -1437,7 +1022,7 @@ function main() {
   padding2*: uint8
   padding3*: uint8
   xrel*: int16                 ## The relative motion in the X direction
-  yrel*: int16                 ## The relative motion in the Y direction"><wbr />Joy<wbr />Ball<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  yrel*: int16                 ## The relative motion in the Y direction"><wbr />Joy<wbr />Ball<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#JoyHatEventObj"
     title="JoyHatEventObj = object
   kind*: EventKind             ## `JOYHATMOTION`
@@ -1456,7 +1041,7 @@ function main() {
                     ## 
                     ## Note that zero means the POV is centered.
   padding1*: uint8
-  padding2*: uint8"><wbr />Joy<wbr />Hat<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  padding2*: uint8"><wbr />Joy<wbr />Hat<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#JoyButtonEventObj"
     title="JoyButtonEventObj = object
   kind*: EventKind             ## `JOYBUTTONDOWN` or `JOYBUTTONUP`
@@ -1465,14 +1050,14 @@ function main() {
   button*: uint8               ## The joystick button index
   state*: uint8                ## `PRESSED` or `RELEASED`
   padding1*: uint8
-  padding2*: uint8"><wbr />Joy<wbr />Button<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  padding2*: uint8"><wbr />Joy<wbr />Button<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#JoyDeviceEventObj"
     title="JoyDeviceEventObj = object
   kind*: EventKind             ## `JOYDEVICEADDED` or `JOYDEVICEREMOVED`
   timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   which*: int32                ## \
               ## The joystick device index for the `ADDED` event,
-              ## instance id for the `REMOVED` event"><wbr />Joy<wbr />Device<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+              ## instance id for the `REMOVED` event"><wbr />Joy<wbr />Device<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#ControllerAxisEventObj"
     title="ControllerAxisEventObj = object
   kind*: EventKind             ## `CONTROLLERAXISMOTION`
@@ -1483,7 +1068,7 @@ function main() {
   padding2*: uint8
   padding3*: uint8
   value*: int16                ## The axis value (range: `-32768` to `32767`)
-  padding4*: uint16"><wbr />Controller<wbr />Axis<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  padding4*: uint16"><wbr />Controller<wbr />Axis<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#ControllerButtonEventObj"
     title="ControllerButtonEventObj = object
   kind*: EventKind             ## `CONTROLLERBUTTONDOWN` or `CONTROLLERBUTTONUP`
@@ -1492,7 +1077,7 @@ function main() {
   button*: GameControllerButton ## The controller button (``GameControllerButton``)
   state*: uint8                ## `PRESSED` or `RELEASED`
   padding1*: uint8
-  padding2*: uint8"><wbr />Controller<wbr />Button<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  padding2*: uint8"><wbr />Controller<wbr />Button<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#ControllerDeviceEventObj"
     title="ControllerDeviceEventObj = object
   kind*: EventKind             ## \
@@ -1502,7 +1087,7 @@ function main() {
   timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   which*: int32                ## \
               ## The joystick device index for the `ADDED` event,
-              ## instance id for the `REMOVED` or `REMAPPED` event"><wbr />Controller<wbr />Device<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+              ## instance id for the `REMOVED` or `REMAPPED` event"><wbr />Controller<wbr />Device<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#AudioDeviceEventObj"
     title="AudioDeviceEventObj = object
   kind*: EventKind             ## `AUDIODEVICEADDED`, or `AUDIODEVICEREMOVED`
@@ -1516,7 +1101,7 @@ function main() {
                   ## non-zero if a capture device.
   padding1*: uint8
   padding2*: uint8
-  padding3*: uint8"><wbr />Audio<wbr />Device<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  padding3*: uint8"><wbr />Audio<wbr />Device<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#TouchFingerEventObj"
     title="TouchFingerEventObj = object
   kind*: EventKind             ## `FINGERMOTION` or `FINGERDOWN` or `FINGERUP`
@@ -1527,7 +1112,7 @@ function main() {
   y*: cfloat                   ## Normalized in the range 0...1
   dx*: cfloat                  ## Normalized in the range -1...1
   dy*: cfloat                  ## Normalized in the range -1...1
-  pressure*: cfloat            ## Normalized in the range 0...1"><wbr />Touch<wbr />Finger<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  pressure*: cfloat            ## Normalized in the range 0...1"><wbr />Touch<wbr />Finger<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#MultiGestureEventObj"
     title="MultiGestureEventObj = object
   kind*: EventKind             ## `MULTIGESTURE`
@@ -1538,7 +1123,7 @@ function main() {
   x*: cfloat
   y*: cfloat
   numFingers*: uint16
-  padding*: uint16"><wbr />Multi<wbr />Gesture<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  padding*: uint16"><wbr />Multi<wbr />Gesture<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#DollarGestureEventObj"
     title="DollarGestureEventObj = object
   kind*: EventKind             ## `DOLLARGESTURE` or `DOLLARRECORD`
@@ -1548,30 +1133,30 @@ function main() {
   numFingers*: uint32
   error*: cfloat
   x*: cfloat                   ## Normalized center of gesture
-  y*: cfloat                   ## Normalized center of gesture"><wbr />Dollar<wbr />Gesture<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  y*: cfloat                   ## Normalized center of gesture"><wbr />Dollar<wbr />Gesture<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#DropEventObj"
     title="DropEventObj = object
   kind*: EventKind             ## `DROPBEGIN` or `DROPFILE`
                  ## or `DROPTEXT` or `DROPCOMPLETE`
   timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   file*: cstring ## The file name, which should be freed with ``free()``,
-               ## is ``nil`` on begin&#x2F;complete
-  windowID: uint32             ## The window that was dropped on, if any"><wbr />Drop<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+               ## is ``nil`` on begin/complete
+  windowID: uint32             ## The window that was dropped on, if any"><wbr />Drop<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#SensorEventObj"
     title="SensorEventObj = object
   kind*: EventKind             ## `SENSORUPDATE`
   timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
   which*: int32                ## The instance ID of the sensor
   data*: array[6, cfloat]       ## Up to 6 values from the sensor -  \
-                       ## additional values can be queried using ``sensorGetData()``"><wbr />Sensor<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+                       ## additional values can be queried using ``sensorGetData()``"><wbr />Sensor<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#QuitEventObj"
     title="QuitEventObj = object
   kind*: EventKind             ## `QUIT`
-  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``"><wbr />Quit<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``"><wbr />Quit<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#OSEventObj"
     title="OSEventObj = object
   kind*: EventKind             ## `QUIT`
-  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``"><wbr />OSEvent<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``"><wbr />OSEvent<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#UserEventObj"
     title="UserEventObj = object
   kind*: EventKind             ## `USEREVENT` through `LASTEVENT-1`
@@ -1579,16 +1164,16 @@ function main() {
   windowID*: uint32            ## The associated window if any
   code*: int32                 ## User defined event code
   data1*: pointer              ## User defined data pointer
-  data2*: pointer              ## User defined data pointer"><wbr />User<wbr />Event<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  data2*: pointer              ## User defined data pointer"><wbr />User<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#SysWMmsg"
-    title="SysWMmsg = pointer"><wbr />Sys<wbr />WMmsg<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="SysWMmsg = pointer"><wbr />Sys<wbr />WMmsg<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#SysWMEventObj"
     title="SysWMEventObj = object
   kind*: EventKind             ## `SYSWMEVENT`
   timestamp*: uint32           ## In milliseconds, populated using ``getTicks()``
-  msg*: SysWMmsg               ## driver dependent data, defined in ``syswm.nim``"><wbr />Sys<wbr />WMEvent<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  msg*: SysWMmsg               ## driver dependent data, defined in ``syswm.nim``"><wbr />Sys<wbr />WMEvent<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#Event"
-    title="Event = object {.union.}
+    title="Event {.union.} = object
   kind*: EventKind             ## Event type, shared with all events
   common*: CommonEventObj      ## Common event data
   display*: DisplayEventObj    ## Display event data
@@ -1622,12 +1207,12 @@ function main() {
                           ## this structure, and GCC will use the alignment of the largest
                           ## datatype within the union, which is 8 bytes.
                           ## 
-                          ## So... we&#x27;ll add padding to force the size to be 56 bytes for both."><wbr />Event<span class="attachedType" style="visibility:hidden"></span></a></li>
+                          ## So... we&apos;ll add padding to force the size to be 56 bytes for both."><wbr />Event<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#EventAction"
     title="EventAction {.size: 4.} = enum
-  ADDEVENT, PEEKEVENT, GETEVENT"><wbr />Event<wbr />Action<span class="attachedType" style="visibility:hidden"></span></a></li>
+  ADDEVENT, PEEKEVENT, GETEVENT"><wbr />Event<wbr />Action<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#EventFilter"
-    title="EventFilter = proc (userdata: pointer; event: ptr Event): cint {.cdecl.}"><wbr />Event<wbr />Filter<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="EventFilter = proc (userdata: pointer; event: ptr Event): cint {.cdecl.}"><wbr />Event<wbr />Filter<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -1635,82 +1220,82 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#RELEASED"
-    title="RELEASED = 0"><wbr />RELEASED<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="RELEASED = 0"><wbr />RELEASED<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#PRESSED"
-    title="PRESSED = 1"><wbr />PRESSED<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="PRESSED = 1"><wbr />PRESSED<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#TEXTEDITINGEVENT_TEXT_SIZE"
-    title="TEXTEDITINGEVENT_TEXT_SIZE = 32"><wbr />TEXTEDITINGEVENT_<wbr />TEXT_<wbr />SIZE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="TEXTEDITINGEVENT_TEXT_SIZE = 32"><wbr />TEXTEDITINGEVENT_<wbr />TEXT_<wbr />SIZE<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#TEXTINPUTEVENT_TEXT_SIZE"
-    title="TEXTINPUTEVENT_TEXT_SIZE = 32"><wbr />TEXTINPUTEVENT_<wbr />TEXT_<wbr />SIZE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="TEXTINPUTEVENT_TEXT_SIZE = 32"><wbr />TEXTINPUTEVENT_<wbr />TEXT_<wbr />SIZE<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#QUERY"
-    title="QUERY = -1"><wbr />QUERY<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="QUERY = -1"><wbr />QUERY<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#IGNORE"
-    title="IGNORE = 0"><wbr />IGNORE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="IGNORE = 0"><wbr />IGNORE<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#DISABLE"
-    title="DISABLE = 0"><wbr />DISABLE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="DISABLE = 0"><wbr />DISABLE<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#ENABLE"
-    title="ENABLE = 1"><wbr />ENABLE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="ENABLE = 1"><wbr />ENABLE<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#charArrayToString,openArray[char]"
-    title="charArrayToString(a: openArray[char]): string"><wbr />char<wbr />Array<wbr />To<wbr />String<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#pumpEvents,"
-    title="pumpEvents()"><wbr />pump<wbr />Events<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#peepEvents,ptr.Event,cint,EventAction,EventKind,EventKind"
+      <li><a class="reference" href="#charArrayToString%2CopenArray%5Bchar%5D"
+    title="charArrayToString(a: openArray[char]): string"><wbr />char<wbr />Array<wbr />To<wbr />String<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#pumpEvents"
+    title="pumpEvents()"><wbr />pump<wbr />Events<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#peepEvents%2Cptr.Event%2Ccint%2CEventAction%2CEventKind%2CEventKind"
     title="peepEvents(events: ptr Event; numevents: cint; action: EventAction; minKind: EventKind;
-           maxKind: EventKind): cint"><wbr />peep<wbr />Events<span class="attachedType" style="visibility:hidden">Event</span></a></li>
-  <li><a class="reference" href="#hasEvent,EventKind"
-    title="hasEvent(kind: EventKind): bool"><wbr />has<wbr />Event<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#hasEvents,EventKind,EventKind"
-    title="hasEvents(minKind: EventKind; maxKind: EventKind): bool"><wbr />has<wbr />Events<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#flushEvent,EventKind"
-    title="flushEvent(kind: EventKind)"><wbr />flush<wbr />Event<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#flushEvents,EventKind,EventKind"
-    title="flushEvents(minKind: EventKind; maxKind: EventKind)"><wbr />flush<wbr />Events<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#pollEvent,ptr.Event"
-    title="pollEvent(event: ptr Event): cint"><wbr />poll<wbr />Event<span class="attachedType" style="visibility:hidden">Event</span></a></li>
-  <li><a class="reference" href="#waitEvent,ptr.Event"
-    title="waitEvent(event: ptr Event): cint"><wbr />wait<wbr />Event<span class="attachedType" style="visibility:hidden">Event</span></a></li>
-  <li><a class="reference" href="#waitEventTimeout,ptr.Event,cint"
-    title="waitEventTimeout(event: ptr Event; timeout: cint): cint"><wbr />wait<wbr />Event<wbr />Timeout<span class="attachedType" style="visibility:hidden">Event</span></a></li>
-  <li><a class="reference" href="#pushEvent,ptr.Event"
-    title="pushEvent(event: ptr Event): cint"><wbr />push<wbr />Event<span class="attachedType" style="visibility:hidden">Event</span></a></li>
-  <li><a class="reference" href="#setEventFilter,EventFilter,pointer"
-    title="setEventFilter(filter: EventFilter; userdata: pointer)"><wbr />set<wbr />Event<wbr />Filter<span class="attachedType" style="visibility:hidden">EventFilter</span></a></li>
-  <li><a class="reference" href="#getEventFilter,ptr.EventFilter,ptr.pointer"
-    title="getEventFilter(filter: ptr EventFilter; userdata: ptr pointer): bool"><wbr />get<wbr />Event<wbr />Filter<span class="attachedType" style="visibility:hidden">EventFilter</span></a></li>
-  <li><a class="reference" href="#addEventWatch,EventFilter,pointer"
-    title="addEventWatch(filter: EventFilter; userdata: pointer)"><wbr />add<wbr />Event<wbr />Watch<span class="attachedType" style="visibility:hidden">EventFilter</span></a></li>
-  <li><a class="reference" href="#delEventWatch,EventFilter,pointer"
-    title="delEventWatch(filter: EventFilter; userdata: pointer)"><wbr />del<wbr />Event<wbr />Watch<span class="attachedType" style="visibility:hidden">EventFilter</span></a></li>
-  <li><a class="reference" href="#filterEvents,EventFilter,pointer"
-    title="filterEvents(filter: EventFilter; userdata: pointer)"><wbr />filter<wbr />Events<span class="attachedType" style="visibility:hidden">EventFilter</span></a></li>
-  <li><a class="reference" href="#eventState,EventKind,cint"
-    title="eventState(kind: EventKind; state: cint): uint8"><wbr />event<wbr />State<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#registerEvents,cint"
-    title="registerEvents(numevents: cint): uint32"><wbr />register<wbr />Events<span class="attachedType" style="visibility:hidden"></span></a></li>
+           maxKind: EventKind): cint"><wbr />peep<wbr />Events<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#hasEvent%2CEventKind"
+    title="hasEvent(kind: EventKind): bool"><wbr />has<wbr />Event<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#hasEvents%2CEventKind%2CEventKind"
+    title="hasEvents(minKind: EventKind; maxKind: EventKind): bool"><wbr />has<wbr />Events<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#flushEvent%2CEventKind"
+    title="flushEvent(kind: EventKind)"><wbr />flush<wbr />Event<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#flushEvents%2CEventKind%2CEventKind"
+    title="flushEvents(minKind: EventKind; maxKind: EventKind)"><wbr />flush<wbr />Events<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#pollEvent%2Cptr.Event"
+    title="pollEvent(event: ptr Event): cint"><wbr />poll<wbr />Event<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#waitEvent%2Cptr.Event"
+    title="waitEvent(event: ptr Event): cint"><wbr />wait<wbr />Event<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#waitEventTimeout%2Cptr.Event%2Ccint"
+    title="waitEventTimeout(event: ptr Event; timeout: cint): cint"><wbr />wait<wbr />Event<wbr />Timeout<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#pushEvent%2Cptr.Event"
+    title="pushEvent(event: ptr Event): cint"><wbr />push<wbr />Event<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#setEventFilter%2CEventFilter%2Cpointer"
+    title="setEventFilter(filter: EventFilter; userdata: pointer)"><wbr />set<wbr />Event<wbr />Filter<span class="attachedType">EventFilter</span></a></li>
+  <li><a class="reference" href="#getEventFilter%2Cptr.EventFilter%2Cptr.pointer"
+    title="getEventFilter(filter: ptr EventFilter; userdata: ptr pointer): bool"><wbr />get<wbr />Event<wbr />Filter<span class="attachedType">EventFilter</span></a></li>
+  <li><a class="reference" href="#addEventWatch%2CEventFilter%2Cpointer"
+    title="addEventWatch(filter: EventFilter; userdata: pointer)"><wbr />add<wbr />Event<wbr />Watch<span class="attachedType">EventFilter</span></a></li>
+  <li><a class="reference" href="#delEventWatch%2CEventFilter%2Cpointer"
+    title="delEventWatch(filter: EventFilter; userdata: pointer)"><wbr />del<wbr />Event<wbr />Watch<span class="attachedType">EventFilter</span></a></li>
+  <li><a class="reference" href="#filterEvents%2CEventFilter%2Cpointer"
+    title="filterEvents(filter: EventFilter; userdata: pointer)"><wbr />filter<wbr />Events<span class="attachedType">EventFilter</span></a></li>
+  <li><a class="reference" href="#eventState%2CEventKind%2Ccint"
+    title="eventState(kind: EventKind; state: cint): uint8"><wbr />event<wbr />State<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#registerEvents%2Ccint"
+    title="registerEvents(numevents: cint): uint32"><wbr />register<wbr />Events<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#15" id="65">Iterators</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#events.i,"
-    title="events(): Event"><wbr />events<span class="attachedType" style="visibility:hidden">Event</span></a></li>
+      <li><a class="reference" href="#events.i"
+    title="events(): Event"><wbr />events<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#$.t,array[TEXTINPUTEVENT_TEXT_SIZE,char]"
-    title="`$`(a: array[TEXTINPUTEVENT_TEXT_SIZE, char]): string"><wbr />`$`<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#getEventState.t,untyped"
-    title="getEventState(kind: untyped): untyped"><wbr />get<wbr />Event<wbr />State<span class="attachedType" style="visibility:hidden"></span></a></li>
+      <li><a class="reference" href="#%24.t%2Carray%5BTEXTINPUTEVENT_TEXT_SIZE%2Cchar%5D"
+    title="`$`(a: array[TEXTINPUTEVENT_TEXT_SIZE, char]): string"><wbr />`$`<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#getEventState.t%2Cuntyped"
+    title="getEventState(kind: untyped): untyped"><wbr />get<wbr />Event<wbr />State<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -1720,13 +1305,15 @@ function main() {
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc">
 <h1><a class="toc-backref" id="eventsdotnim" href="#eventsdotnim">events.nim</a></h1><p>Include file for SDL event handling.</p>
 </p>
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="EventKind"><a name="EventKind"></a><pre><a href="events.html#EventKind"><span class="Identifier">EventKind</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<a id="EventKind"></a>
+<dt><pre><a href="events.html#EventKind"><span class="Identifier">EventKind</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">FIRSTEVENT</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span>               <span class="Comment">## Unused (do not remove)</span>
   <span class="Identifier">QUIT</span> <span class="Other">=</span> <span class="DecNumber">0x00000100</span><span class="Other">,</span>            <span class="Comment">## User-requested quit</span>
   <span class="Identifier">APP_TERMINATING</span><span class="Other">,</span>            <span class="Comment">## \</span>
@@ -1813,19 +1400,23 @@ function main() {
                       <span class="Comment">## This last event is only for bounding internal arrays</span></pre></dt>
 <dd>
 
+
 The types of events that can be delivered.
 
 </dd>
-<dt id="CommonEventObj"><a name="CommonEventObj"></a><pre><a href="events.html#CommonEventObj"><span class="Identifier">CommonEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="CommonEventObj"></a>
+<dt><pre><a href="events.html#CommonEventObj"><span class="Identifier">CommonEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   </pre></dt>
 <dd>
 
+
 Fields shared by every event
 
 </dd>
-<dt id="DisplayEventObj"><a name="DisplayEventObj"></a><pre><a href="events.html#DisplayEventObj"><span class="Identifier">DisplayEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="DisplayEventObj"></a>
+<dt><pre><a href="events.html#DisplayEventObj"><span class="Identifier">DisplayEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `DISPLAYEVENT`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">display</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>             <span class="Comment">## The associated display index</span>
@@ -1837,10 +1428,12 @@ Fields shared by every event
   </pre></dt>
 <dd>
 
-Display state change event data (<cite>event.display.*</cite>)
+
+Display state change event data (<tt class="docutils literal"><span class="pre">event.display.*</span></tt>)
 
 </dd>
-<dt id="WindowEventObj"><a name="WindowEventObj"></a><pre><a href="events.html#WindowEventObj"><span class="Identifier">WindowEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="WindowEventObj"></a>
+<dt><pre><a href="events.html#WindowEventObj"><span class="Identifier">WindowEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `WINDOWEVENT`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The associated window</span>
@@ -1853,10 +1446,12 @@ Display state change event data (<cite>event.display.*</cite>)
   </pre></dt>
 <dd>
 
-Window state change event data (<cite>event.window.*</cite>)
+
+Window state change event data (<tt class="docutils literal"><span class="pre">event.window.*</span></tt>)
 
 </dd>
-<dt id="KeyboardEventObj"><a name="KeyboardEventObj"></a><pre><a href="events.html#KeyboardEventObj"><span class="Identifier">KeyboardEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="KeyboardEventObj"></a>
+<dt><pre><a href="events.html#KeyboardEventObj"><span class="Identifier">KeyboardEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `KEYDOWN` or `KEYUP`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with keyboard focus, if any</span>
@@ -1868,10 +1463,12 @@ Window state change event data (<cite>event.window.*</cite>)
   </pre></dt>
 <dd>
 
-Keyboard button event structure (<cite>event.key.*</cite>)
+
+Keyboard button event structure (<tt class="docutils literal"><span class="pre">event.key.*</span></tt>)
 
 </dd>
-<dt id="TextEditingEventObj"><a name="TextEditingEventObj"></a><pre><a href="events.html#TextEditingEventObj"><span class="Identifier">TextEditingEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="TextEditingEventObj"></a>
+<dt><pre><a href="events.html#TextEditingEventObj"><span class="Identifier">TextEditingEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `TEXTEDITING`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with keyboard focus, if any</span>
@@ -1881,10 +1478,12 @@ Keyboard button event structure (<cite>event.key.*</cite>)
   </pre></dt>
 <dd>
 
-Keyboard text editing event structure (<cite>event.edit.*</cite>)
+
+Keyboard text editing event structure (<tt class="docutils literal"><span class="pre">event.edit.*</span></tt>)
 
 </dd>
-<dt id="TextInputEventObj"><a name="TextInputEventObj"></a><pre><a href="events.html#TextInputEventObj"><span class="Identifier">TextInputEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="TextInputEventObj"></a>
+<dt><pre><a href="events.html#TextInputEventObj"><span class="Identifier">TextInputEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `TEXTINPUT`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with keyboard focus, if any</span>
@@ -1892,10 +1491,12 @@ Keyboard text editing event structure (<cite>event.edit.*</cite>)
   </pre></dt>
 <dd>
 
-Keyboard text input event structure (<cite>event.text.*</cite>)
+
+Keyboard text input event structure (<tt class="docutils literal"><span class="pre">event.text.*</span></tt>)
 
 </dd>
-<dt id="MouseMotionEventObj"><a name="MouseMotionEventObj"></a><pre><a href="events.html#MouseMotionEventObj"><span class="Identifier">MouseMotionEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="MouseMotionEventObj"></a>
+<dt><pre><a href="events.html#MouseMotionEventObj"><span class="Identifier">MouseMotionEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `MOUSEMOTION`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with mouse focus, if any</span>
@@ -1908,10 +1509,12 @@ Keyboard text input event structure (<cite>event.text.*</cite>)
   </pre></dt>
 <dd>
 
-Mouse motion event structure (<cite>event.motion.*</cite>)
+
+Mouse motion event structure (<tt class="docutils literal"><span class="pre">event.motion.*</span></tt>)
 
 </dd>
-<dt id="MouseButtonEventObj"><a name="MouseButtonEventObj"></a><pre><a href="events.html#MouseButtonEventObj"><span class="Identifier">MouseButtonEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="MouseButtonEventObj"></a>
+<dt><pre><a href="events.html#MouseButtonEventObj"><span class="Identifier">MouseButtonEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `MOUSEBUTTONDOWN` or `MOUSEBUTTONUP`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with mouse focus, if any</span>
@@ -1925,10 +1528,12 @@ Mouse motion event structure (<cite>event.motion.*</cite>)
   </pre></dt>
 <dd>
 
-Mouse button event structure (<cite>event.button.*</cite>)
+
+Mouse button event structure (<tt class="docutils literal"><span class="pre">event.button.*</span></tt>)
 
 </dd>
-<dt id="MouseWheelEventObj"><a name="MouseWheelEventObj"></a><pre><a href="events.html#MouseWheelEventObj"><span class="Identifier">MouseWheelEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="MouseWheelEventObj"></a>
+<dt><pre><a href="events.html#MouseWheelEventObj"><span class="Identifier">MouseWheelEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `MOUSEWHEEL`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window with mouse focus, if any</span>
@@ -1946,10 +1551,12 @@ Mouse button event structure (<cite>event.button.*</cite>)
   </pre></dt>
 <dd>
 
-Mouse wheel event structure (<cite>event.wheel.*</cite>)
+
+Mouse wheel event structure (<tt class="docutils literal"><span class="pre">event.wheel.*</span></tt>)
 
 </dd>
-<dt id="JoyAxisEventObj"><a name="JoyAxisEventObj"></a><pre><a href="events.html#JoyAxisEventObj"><span class="Identifier">JoyAxisEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="JoyAxisEventObj"></a>
+<dt><pre><a href="events.html#JoyAxisEventObj"><span class="Identifier">JoyAxisEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `JOYAXISMOTION`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
@@ -1962,10 +1569,12 @@ Mouse wheel event structure (<cite>event.wheel.*</cite>)
 </pre></dt>
 <dd>
 
-Joystick axis motion event structure (<cite>event.jaxis.*</cite>)
+
+Joystick axis motion event structure (<tt class="docutils literal"><span class="pre">event.jaxis.*</span></tt>)
 
 </dd>
-<dt id="JoyBallEventObj"><a name="JoyBallEventObj"></a><pre><a href="events.html#JoyBallEventObj"><span class="Identifier">JoyBallEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="JoyBallEventObj"></a>
+<dt><pre><a href="events.html#JoyBallEventObj"><span class="Identifier">JoyBallEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `JOYBALLMOTION`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
@@ -1978,10 +1587,12 @@ Joystick axis motion event structure (<cite>event.jaxis.*</cite>)
   </pre></dt>
 <dd>
 
-Joystick trackball motion event structure (<cite>event.jball.*</cite>)
+
+Joystick trackball motion event structure (<tt class="docutils literal"><span class="pre">event.jball.*</span></tt>)
 
 </dd>
-<dt id="JoyHatEventObj"><a name="JoyHatEventObj"></a><pre><a href="events.html#JoyHatEventObj"><span class="Identifier">JoyHatEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="JoyHatEventObj"></a>
+<dt><pre><a href="events.html#JoyHatEventObj"><span class="Identifier">JoyHatEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `JOYHATMOTION`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
@@ -2002,10 +1613,12 @@ Joystick trackball motion event structure (<cite>event.jball.*</cite>)
 </pre></dt>
 <dd>
 
-Joystick hat position change event structure (<cite>event.jhat.*</cite>)
+
+Joystick hat position change event structure (<tt class="docutils literal"><span class="pre">event.jhat.*</span></tt>)
 
 </dd>
-<dt id="JoyButtonEventObj"><a name="JoyButtonEventObj"></a><pre><a href="events.html#JoyButtonEventObj"><span class="Identifier">JoyButtonEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="JoyButtonEventObj"></a>
+<dt><pre><a href="events.html#JoyButtonEventObj"><span class="Identifier">JoyButtonEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `JOYBUTTONDOWN` or `JOYBUTTONUP`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
@@ -2016,10 +1629,12 @@ Joystick hat position change event structure (<cite>event.jhat.*</cite>)
 </pre></dt>
 <dd>
 
-Joystick button event structure (<cite>event.jbutton.*</cite>)
+
+Joystick button event structure (<tt class="docutils literal"><span class="pre">event.jbutton.*</span></tt>)
 
 </dd>
-<dt id="JoyDeviceEventObj"><a name="JoyDeviceEventObj"></a><pre><a href="events.html#JoyDeviceEventObj"><span class="Identifier">JoyDeviceEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="JoyDeviceEventObj"></a>
+<dt><pre><a href="events.html#JoyDeviceEventObj"><span class="Identifier">JoyDeviceEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `JOYDEVICEADDED` or `JOYDEVICEREMOVED`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                <span class="Comment">## \</span>
@@ -2028,10 +1643,12 @@ Joystick button event structure (<cite>event.jbutton.*</cite>)
   </pre></dt>
 <dd>
 
-Joystick device event structure (<cite>event.jdevice.*</cite>)
+
+Joystick device event structure (<tt class="docutils literal"><span class="pre">event.jdevice.*</span></tt>)
 
 </dd>
-<dt id="ControllerAxisEventObj"><a name="ControllerAxisEventObj"></a><pre><a href="events.html#ControllerAxisEventObj"><span class="Identifier">ControllerAxisEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="ControllerAxisEventObj"></a>
+<dt><pre><a href="events.html#ControllerAxisEventObj"><span class="Identifier">ControllerAxisEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `CONTROLLERAXISMOTION`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
@@ -2044,10 +1661,12 @@ Joystick device event structure (<cite>event.jdevice.*</cite>)
 </pre></dt>
 <dd>
 
-Game controller axis motion event structure (<cite>event.caxis.*</cite>)
+
+Game controller axis motion event structure (<tt class="docutils literal"><span class="pre">event.caxis.*</span></tt>)
 
 </dd>
-<dt id="ControllerButtonEventObj"><a name="ControllerButtonEventObj"></a><pre><a href="events.html#ControllerButtonEventObj"><span class="Identifier">ControllerButtonEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="ControllerButtonEventObj"></a>
+<dt><pre><a href="events.html#ControllerButtonEventObj"><span class="Identifier">ControllerButtonEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `CONTROLLERBUTTONDOWN` or `CONTROLLERBUTTONUP`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">JoystickID</span>           <span class="Comment">## The joystick instance id</span>
@@ -2058,10 +1677,12 @@ Game controller axis motion event structure (<cite>event.caxis.*</cite>)
 </pre></dt>
 <dd>
 
-Game controller button event structure (<cite>event.cbutton.*</cite>)
+
+Game controller button event structure (<tt class="docutils literal"><span class="pre">event.cbutton.*</span></tt>)
 
 </dd>
-<dt id="ControllerDeviceEventObj"><a name="ControllerDeviceEventObj"></a><pre><a href="events.html#ControllerDeviceEventObj"><span class="Identifier">ControllerDeviceEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="ControllerDeviceEventObj"></a>
+<dt><pre><a href="events.html#ControllerDeviceEventObj"><span class="Identifier">ControllerDeviceEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## \</span>
                  <span class="Comment">## `CONTROLLERDEVICEADDED`,</span>
                  <span class="Comment">## `CONTROLLERDEVICEREMOVED, or</span>
@@ -2073,10 +1694,12 @@ Game controller button event structure (<cite>event.cbutton.*</cite>)
   </pre></dt>
 <dd>
 
-Controller device event structure (<cite>event.cdevice.*</cite>)
+
+Controller device event structure (<tt class="docutils literal"><span class="pre">event.cdevice.*</span></tt>)
 
 </dd>
-<dt id="AudioDeviceEventObj"><a name="AudioDeviceEventObj"></a><pre><a href="events.html#AudioDeviceEventObj"><span class="Identifier">AudioDeviceEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="AudioDeviceEventObj"></a>
+<dt><pre><a href="events.html#AudioDeviceEventObj"><span class="Identifier">AudioDeviceEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `AUDIODEVICEADDED`, or `AUDIODEVICEREMOVED`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span class="Comment">## \</span>
@@ -2092,10 +1715,12 @@ Controller device event structure (<cite>event.cdevice.*</cite>)
 </pre></dt>
 <dd>
 
-Audio device event structure (<cite>event.adevice.*</cite>)
+
+Audio device event structure (<tt class="docutils literal"><span class="pre">event.adevice.*</span></tt>)
 
 </dd>
-<dt id="TouchFingerEventObj"><a name="TouchFingerEventObj"></a><pre><a href="events.html#TouchFingerEventObj"><span class="Identifier">TouchFingerEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="TouchFingerEventObj"></a>
+<dt><pre><a href="events.html#TouchFingerEventObj"><span class="Identifier">TouchFingerEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `FINGERMOTION` or `FINGERDOWN` or `FINGERUP`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">touchId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchID</span>            <span class="Comment">## The touch device id</span>
@@ -2108,10 +1733,12 @@ Audio device event structure (<cite>event.adevice.*</cite>)
   </pre></dt>
 <dd>
 
-Touch finger event structure (<cite>event.tfinger.*</cite>)
+
+Touch finger event structure (<tt class="docutils literal"><span class="pre">event.tfinger.*</span></tt>)
 
 </dd>
-<dt id="MultiGestureEventObj"><a name="MultiGestureEventObj"></a><pre><a href="events.html#MultiGestureEventObj"><span class="Identifier">MultiGestureEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="MultiGestureEventObj"></a>
+<dt><pre><a href="events.html#MultiGestureEventObj"><span class="Identifier">MultiGestureEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `MULTIGESTURE`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">touchId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchID</span>            <span class="Comment">## The touch device index</span>
@@ -2123,10 +1750,12 @@ Touch finger event structure (<cite>event.tfinger.*</cite>)
   <span class="Identifier">padding</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint16</span>
 </pre></dt>
 <dd>
-Multiple Finger Gesture Event (<cite>event.mgesture.*</cite>)
+
+Multiple Finger Gesture Event (<tt class="docutils literal"><span class="pre">event.mgesture.*</span></tt>)
 
 </dd>
-<dt id="DollarGestureEventObj"><a name="DollarGestureEventObj"></a><pre><a href="events.html#DollarGestureEventObj"><span class="Identifier">DollarGestureEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="DollarGestureEventObj"></a>
+<dt><pre><a href="events.html#DollarGestureEventObj"><span class="Identifier">DollarGestureEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `DOLLARGESTURE` or `DOLLARRECORD`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">touchId</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TouchID</span>            <span class="Comment">## The touch device id</span>
@@ -2137,10 +1766,12 @@ Multiple Finger Gesture Event (<cite>event.mgesture.*</cite>)
   <span class="Identifier">y</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>                   <span class="Comment">## Normalized center of gesture</span>
   </pre></dt>
 <dd>
-Dollar Gesture Event (<cite>event.dgesture.*</cite>)
+
+Dollar Gesture Event (<tt class="docutils literal"><span class="pre">event.dgesture.*</span></tt>)
 
 </dd>
-<dt id="DropEventObj"><a name="DropEventObj"></a><pre><a href="events.html#DropEventObj"><span class="Identifier">DropEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="DropEventObj"></a>
+<dt><pre><a href="events.html#DropEventObj"><span class="Identifier">DropEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `DROPBEGIN` or `DROPFILE`</span>
                  <span class="Comment">## or `DROPTEXT` or `DROPCOMPLETE`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
@@ -2149,14 +1780,16 @@ Dollar Gesture Event (<cite>event.dgesture.*</cite>)
   <span class="Identifier">windowID</span><span class="Other">:</span> <span class="Identifier">uint32</span>             <span class="Comment">## The window that was dropped on, if any</span>
   </pre></dt>
 <dd>
+
 <p>
-An event used to request a file open by the system (<cite>event.drop.*</cite>)</p>
+An event used to request a file open by the system (<tt class="docutils literal"><span class="pre">event.drop.*</span></tt>)</p>
 <p>This event is enabled by default, you can disable it with <tt class="docutils literal"><span class="pre">eventState()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> If this event is enabled, you must free the filename in the event.</p>
 
 
 </dd>
-<dt id="SensorEventObj"><a name="SensorEventObj"></a><pre><a href="events.html#SensorEventObj"><span class="Identifier">SensorEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="SensorEventObj"></a>
+<dt><pre><a href="events.html#SensorEventObj"><span class="Identifier">SensorEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `SENSORUPDATE`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">which</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int32</span>                <span class="Comment">## The instance ID of the sensor</span>
@@ -2165,28 +1798,34 @@ An event used to request a file open by the system (<cite>event.drop.*</cite>)</
   </pre></dt>
 <dd>
 
- Sensor event structure (<cite>event.sensor.*</cite>)
+
+ Sensor event structure (<tt class="docutils literal"><span class="pre">event.sensor.*</span></tt>)
 
 </dd>
-<dt id="QuitEventObj"><a name="QuitEventObj"></a><pre><a href="events.html#QuitEventObj"><span class="Identifier">QuitEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="QuitEventObj"></a>
+<dt><pre><a href="events.html#QuitEventObj"><span class="Identifier">QuitEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `QUIT`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   </pre></dt>
 <dd>
+
 
 The &quot;quit requested&quot; event
 
 </dd>
-<dt id="OSEventObj"><a name="OSEventObj"></a><pre><a href="events.html#OSEventObj"><span class="Identifier">OSEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="OSEventObj"></a>
+<dt><pre><a href="events.html#OSEventObj"><span class="Identifier">OSEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `QUIT`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   </pre></dt>
 <dd>
 
+
 OS Specific event
 
 </dd>
-<dt id="UserEventObj"><a name="UserEventObj"></a><pre><a href="events.html#UserEventObj"><span class="Identifier">UserEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="UserEventObj"></a>
+<dt><pre><a href="events.html#UserEventObj"><span class="Identifier">UserEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `USEREVENT` through `LASTEVENT-1`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The associated window if any</span>
@@ -2196,28 +1835,34 @@ OS Specific event
   </pre></dt>
 <dd>
 
-A user-defined event type (<cite>event.user.*</cite>)
+
+A user-defined event type (<tt class="docutils literal"><span class="pre">event.user.*</span></tt>)
 
 </dd>
-<dt id="SysWMmsg"><a name="SysWMmsg"></a><pre><a href="events.html#SysWMmsg"><span class="Identifier">SysWMmsg</span></a> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
+<a id="SysWMmsg"></a>
+<dt><pre><a href="events.html#SysWMmsg"><span class="Identifier">SysWMmsg</span></a> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
+
 declared in sdl_syswm.nim
 
 </dd>
-<dt id="SysWMEventObj"><a name="SysWMEventObj"></a><pre><a href="events.html#SysWMEventObj"><span class="Identifier">SysWMEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="SysWMEventObj"></a>
+<dt><pre><a href="events.html#SysWMEventObj"><span class="Identifier">SysWMEventObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## `SYSWMEVENT`</span>
   <span class="Identifier">timestamp</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>           <span class="Comment">## In milliseconds, populated using ``getTicks()``</span>
   <span class="Identifier">msg</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#SysWMmsg"><span class="Identifier">SysWMmsg</span></a>               <span class="Comment">## driver dependent data, defined in ``syswm.nim``</span>
   </pre></dt>
 <dd>
+
 <p>
-A video driver dependent system event (<cite>event.syswm.*</cite>)</p>
-<p>This event is disabled by default, you can enable it with <cite>eventState()</cite></p>
+A video driver dependent system event (<tt class="docutils literal"><span class="pre">event.syswm.*</span></tt>)</p>
+<p>This event is disabled by default, you can enable it with <tt class="docutils literal"><span class="pre">eventState()</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> If you want to use this event, you should include <tt class="docutils literal"><span class="pre">syswm.nim</span></tt>.</p>
 
 
 </dd>
-<dt id="Event"><a name="Event"></a><pre><a href="events.html#Event"><span class="Identifier">Event</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">union</span></span><span class="Other">.}</span></span>
+<a id="Event"></a>
+<dt><pre><a href="events.html#Event"><span class="Identifier">Event</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">union</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a>             <span class="Comment">## Event type, shared with all events</span>
   <span class="Identifier">common</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#CommonEventObj"><span class="Identifier">CommonEventObj</span></a>      <span class="Comment">## Common event data</span>
   <span class="Identifier">display</span><span class="Operator">*</span><span class="Other">:</span> <a href="events.html#DisplayEventObj"><span class="Identifier">DisplayEventObj</span></a>    <span class="Comment">## Display event data</span>
@@ -2255,17 +1900,22 @@ A video driver dependent system event (<cite>event.syswm.*</cite>)</p>
   </pre></dt>
 <dd>
 
+
 General event structure
 
 </dd>
-<dt id="EventAction"><a name="EventAction"></a><pre><a href="events.html#EventAction"><span class="Identifier">EventAction</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<a id="EventAction"></a>
+<dt><pre><a href="events.html#EventAction"><span class="Identifier">EventAction</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">ADDEVENT</span><span class="Other">,</span> <span class="Identifier">PEEKEVENT</span><span class="Other">,</span> <span class="Identifier">GETEVENT</span></pre></dt>
 <dd>
 
 
+
 </dd>
-<dt id="EventFilter"><a name="EventFilter"></a><pre><a href="events.html#EventFilter"><span class="Identifier">EventFilter</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="events.html#Event"><span class="Identifier">Event</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="EventFilter"></a>
+<dt><pre><a href="events.html#EventFilter"><span class="Identifier">EventFilter</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="events.html#Event"><span class="Identifier">Event</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 
 
 </dd>
@@ -2274,43 +1924,59 @@ General event structure
 <div class="section" id="10">
 <h1><a class="toc-backref" href="#10">Consts</a></h1>
 <dl class="item">
-<dt id="RELEASED"><a name="RELEASED"></a><pre><span class="Identifier">RELEASED</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
+<a id="RELEASED"></a>
+<dt><pre><a href="events.html#RELEASED"><span class="Identifier">RELEASED</span></a> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
+
 
 
 </dd>
-<dt id="PRESSED"><a name="PRESSED"></a><pre><span class="Identifier">PRESSED</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
+<a id="PRESSED"></a>
+<dt><pre><a href="events.html#PRESSED"><span class="Identifier">PRESSED</span></a> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
+
 
 
 </dd>
-<dt id="TEXTEDITINGEVENT_TEXT_SIZE"><a name="TEXTEDITINGEVENT_TEXT_SIZE"></a><pre><span class="Identifier">TEXTEDITINGEVENT_TEXT_SIZE</span> <span class="Other">=</span> <span class="DecNumber">32</span></pre></dt>
+<a id="TEXTEDITINGEVENT_TEXT_SIZE"></a>
+<dt><pre><a href="events.html#TEXTEDITINGEVENT_TEXT_SIZE"><span class="Identifier">TEXTEDITINGEVENT_TEXT_SIZE</span></a> <span class="Other">=</span> <span class="DecNumber">32</span></pre></dt>
 <dd>
+
 
 
 </dd>
-<dt id="TEXTINPUTEVENT_TEXT_SIZE"><a name="TEXTINPUTEVENT_TEXT_SIZE"></a><pre><span class="Identifier">TEXTINPUTEVENT_TEXT_SIZE</span> <span class="Other">=</span> <span class="DecNumber">32</span></pre></dt>
+<a id="TEXTINPUTEVENT_TEXT_SIZE"></a>
+<dt><pre><a href="events.html#TEXTINPUTEVENT_TEXT_SIZE"><span class="Identifier">TEXTINPUTEVENT_TEXT_SIZE</span></a> <span class="Other">=</span> <span class="DecNumber">32</span></pre></dt>
 <dd>
+
 
 
 </dd>
-<dt id="QUERY"><a name="QUERY"></a><pre><span class="Identifier">QUERY</span> <span class="Other">=</span> <span class="DecNumber">-1</span></pre></dt>
+<a id="QUERY"></a>
+<dt><pre><a href="events.html#QUERY"><span class="Identifier">QUERY</span></a> <span class="Other">=</span> <span class="DecNumber">-1</span></pre></dt>
 <dd>
+
 
 
 </dd>
-<dt id="IGNORE"><a name="IGNORE"></a><pre><span class="Identifier">IGNORE</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
+<a id="IGNORE"></a>
+<dt><pre><a href="events.html#IGNORE"><span class="Identifier">IGNORE</span></a> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
+
 
 
 </dd>
-<dt id="DISABLE"><a name="DISABLE"></a><pre><span class="Identifier">DISABLE</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
+<a id="DISABLE"></a>
+<dt><pre><a href="events.html#DISABLE"><span class="Identifier">DISABLE</span></a> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
+
 
 
 </dd>
-<dt id="ENABLE"><a name="ENABLE"></a><pre><span class="Identifier">ENABLE</span> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
+<a id="ENABLE"></a>
+<dt><pre><a href="events.html#ENABLE"><span class="Identifier">ENABLE</span></a> <span class="Other">=</span> <span class="DecNumber">1</span></pre></dt>
 <dd>
+
 
 
 </dd>
@@ -2319,146 +1985,182 @@ General event structure
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="charArrayToString"><a name="charArrayToString,openArray[char]"></a><pre><span class="Keyword">proc</span> <span class="Identifier">charArrayToString</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">char</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="charArrayToString,openArray[char]"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#charArrayToString%2CopenArray%5Bchar%5D"><span class="Identifier">charArrayToString</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">char</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Convert an array of char to a proper string. 
 
 </dd>
-<dt id="pumpEvents"><a name="pumpEvents,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pumpEvents</span><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PumpEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="pumpEvents"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#pumpEvents"><span class="Identifier">pumpEvents</span></a><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PumpEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Pumps the event loop, gathering events from the input devices.</p>
 <p>This procedure updates the event queue and internal input device state.</p>
 <p>This should only be run in the thread that sets the video mode.</p>
 
 
 </dd>
-<dt id="peepEvents"><a name="peepEvents,ptr.Event,cint,EventAction,EventKind,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">peepEvents</span><span class="Other">(</span><span class="Identifier">events</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="events.html#Event"><span class="Identifier">Event</span></a><span class="Other">;</span> <span class="Identifier">numevents</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">action</span><span class="Other">:</span> <a href="events.html#EventAction"><span class="Identifier">EventAction</span></a><span class="Other">;</span>
+<a id="peepEvents,ptr.Event,cint,EventAction,EventKind,EventKind"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#peepEvents%2Cptr.Event%2Ccint%2CEventAction%2CEventKind%2CEventKind"><span class="Identifier">peepEvents</span></a><span class="Other">(</span><span class="Identifier">events</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="events.html#Event"><span class="Identifier">Event</span></a><span class="Other">;</span> <span class="Identifier">numevents</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">action</span><span class="Other">:</span> <a href="events.html#EventAction"><span class="Identifier">EventAction</span></a><span class="Other">;</span>
                <span class="Identifier">minKind</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a><span class="Other">;</span> <span class="Identifier">maxKind</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PeepEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Checks the event queue for messages and optionally returns them.</p>
-<p>If <tt class="docutils literal"><span class="pre">action</span></tt> is <cite>ADDEVENT</cite>, up to <tt class="docutils literal"><span class="pre">numevents</span></tt> events will be added to the back of the event queue.</p>
-<p>If <tt class="docutils literal"><span class="pre">action</span></tt> is <cite>PEEKEVENT</cite>, up to <tt class="docutils literal"><span class="pre">numevents</span></tt> events at the front of the event queue, within the specified minimum and maximum type, will be returned and will not be removed from the queue.</p>
-<p>If <tt class="docutils literal"><span class="pre">action</span></tt> is <cite>GETEVENT</cite>, up to <tt class="docutils literal"><span class="pre">numevents</span></tt> events at the front of the event queue, within the specified minimum and maximum type, will be returned and will be removed from the queue.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of events actually stored, or <cite>-1</cite> if there was an error.</p>
+<p>If <tt class="docutils literal"><span class="pre">action</span></tt> is <tt class="docutils literal"><span class="pre">ADDEVENT</span></tt>, up to <tt class="docutils literal"><span class="pre">numevents</span></tt> events will be added to the back of the event queue.</p>
+<p>If <tt class="docutils literal"><span class="pre">action</span></tt> is <tt class="docutils literal"><span class="pre">PEEKEVENT</span></tt>, up to <tt class="docutils literal"><span class="pre">numevents</span></tt> events at the front of the event queue, within the specified minimum and maximum type, will be returned and will not be removed from the queue.</p>
+<p>If <tt class="docutils literal"><span class="pre">action</span></tt> is <tt class="docutils literal"><span class="pre">GETEVENT</span></tt>, up to <tt class="docutils literal"><span class="pre">numevents</span></tt> events at the front of the event queue, within the specified minimum and maximum type, will be returned and will be removed from the queue.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the number of events actually stored, or <tt class="docutils literal"><span class="pre">-1</span></tt> if there was an error.</p>
 <p>This procedure is thread-safe.</p>
 
 
 </dd>
-<dt id="hasEvent"><a name="hasEvent,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasEvent</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasEvent&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="hasEvent,EventKind"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#hasEvent%2CEventKind"><span class="Identifier">hasEvent</span></a><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasEvent&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Checks to see if certain event types are in the event queue.
 
 </dd>
-<dt id="hasEvents"><a name="hasEvents,EventKind,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasEvents</span><span class="Other">(</span><span class="Identifier">minKind</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a><span class="Other">;</span> <span class="Identifier">maxKind</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="hasEvents,EventKind,EventKind"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#hasEvents%2CEventKind%2CEventKind"><span class="Identifier">hasEvents</span></a><span class="Other">(</span><span class="Identifier">minKind</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a><span class="Other">;</span> <span class="Identifier">maxKind</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
+
 </dd>
-<dt id="flushEvent"><a name="flushEvent,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">flushEvent</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FlushEvent&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="flushEvent,EventKind"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#flushEvent%2CEventKind"><span class="Identifier">flushEvent</span></a><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FlushEvent&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>This procedure clears events from the event queue.</p>
 <p>This procedure only affects currently queued events. If you want to make sure that all pending OS events are flushed, you can call <tt class="docutils literal"><span class="pre">pumpEvents()</span></tt> on the main thread immediately before flush call.</p>
 
 
 </dd>
-<dt id="flushEvents"><a name="flushEvents,EventKind,EventKind"></a><pre><span class="Keyword">proc</span> <span class="Identifier">flushEvents</span><span class="Other">(</span><span class="Identifier">minKind</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a><span class="Other">;</span> <span class="Identifier">maxKind</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="flushEvents,EventKind,EventKind"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#flushEvents%2CEventKind%2CEventKind"><span class="Identifier">flushEvents</span></a><span class="Other">(</span><span class="Identifier">minKind</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a><span class="Other">;</span> <span class="Identifier">maxKind</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FlushEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
+
 </dd>
-<dt id="pollEvent"><a name="pollEvent,ptr.Event"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pollEvent</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="events.html#Event"><span class="Identifier">Event</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PollEvent&quot;</span><span class="Other">,</span>
+<a id="pollEvent,ptr.Event"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#pollEvent%2Cptr.Event"><span class="Identifier">pollEvent</span></a><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="events.html#Event"><span class="Identifier">Event</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PollEvent&quot;</span><span class="Other">,</span>
                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Polls for currently pending events.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite> if there are any pending events, or <cite>0</cite> if there are none available.</p>
-<p><tt class="docutils literal"><span class="pre">event</span></tt> If not <cite>nil</cite>, the next event is removed from the queue and stored in that area.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">1</span></tt> if there are any pending events, or <tt class="docutils literal"><span class="pre">0</span></tt> if there are none available.</p>
+<p><tt class="docutils literal"><span class="pre">event</span></tt> If not <tt class="docutils literal"><span class="pre">nil</span></tt>, the next event is removed from the queue and stored in that area.</p>
 
 
 </dd>
-<dt id="waitEvent"><a name="waitEvent,ptr.Event"></a><pre><span class="Keyword">proc</span> <span class="Identifier">waitEvent</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="events.html#Event"><span class="Identifier">Event</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WaitEvent&quot;</span><span class="Other">,</span>
+<a id="waitEvent,ptr.Event"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#waitEvent%2Cptr.Event"><span class="Identifier">waitEvent</span></a><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="events.html#Event"><span class="Identifier">Event</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WaitEvent&quot;</span><span class="Other">,</span>
                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Waits indefinitely for the next available event.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite>, or <cite>0</cite> if there was an error while waiting for events.</p>
-<p><tt class="docutils literal"><span class="pre">event</span></tt> If not <cite>nil</cite>, the next event is removed from the queue and stored in that area.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">1</span></tt>, or <tt class="docutils literal"><span class="pre">0</span></tt> if there was an error while waiting for events.</p>
+<p><tt class="docutils literal"><span class="pre">event</span></tt> If not <tt class="docutils literal"><span class="pre">nil</span></tt>, the next event is removed from the queue and stored in that area.</p>
 
 
 </dd>
-<dt id="waitEventTimeout"><a name="waitEventTimeout,ptr.Event,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">waitEventTimeout</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="events.html#Event"><span class="Identifier">Event</span></a><span class="Other">;</span> <span class="Identifier">timeout</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="waitEventTimeout,ptr.Event,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#waitEventTimeout%2Cptr.Event%2Ccint"><span class="Identifier">waitEventTimeout</span></a><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="events.html#Event"><span class="Identifier">Event</span></a><span class="Other">;</span> <span class="Identifier">timeout</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WaitEventTimeout&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Waits until the specified timeout (in milliseconds) for the next available event.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite>, or <cite>0</cite> if there was an error while waiting for events.</p>
-<p><tt class="docutils literal"><span class="pre">event</span></tt> If not <cite>nil</cite>, the next event is removed from the queue and stored in that area.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">1</span></tt>, or <tt class="docutils literal"><span class="pre">0</span></tt> if there was an error while waiting for events.</p>
+<p><tt class="docutils literal"><span class="pre">event</span></tt> If not <tt class="docutils literal"><span class="pre">nil</span></tt>, the next event is removed from the queue and stored in that area.</p>
 <p><tt class="docutils literal"><span class="pre">timeout</span></tt> The timeout (in milliseconds) to wait for next event.</p>
 
 
 </dd>
-<dt id="pushEvent"><a name="pushEvent,ptr.Event"></a><pre><span class="Keyword">proc</span> <span class="Identifier">pushEvent</span><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="events.html#Event"><span class="Identifier">Event</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PushEvent&quot;</span><span class="Other">,</span>
+<a id="pushEvent,ptr.Event"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#pushEvent%2Cptr.Event"><span class="Identifier">pushEvent</span></a><span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="events.html#Event"><span class="Identifier">Event</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_PushEvent&quot;</span><span class="Other">,</span>
                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Add an event to the event queue.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite> on success, <cite>0</cite> if the event was filtered, or <cite>-1</cite> if the event queue was full or there was some other error.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">1</span></tt> on success, <tt class="docutils literal"><span class="pre">0</span></tt> if the event was filtered, or <tt class="docutils literal"><span class="pre">-1</span></tt> if the event queue was full or there was some other error.</p>
 
 
 </dd>
-<dt id="setEventFilter"><a name="setEventFilter,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setEventFilter</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <a href="events.html#EventFilter"><span class="Identifier">EventFilter</span></a><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="setEventFilter,EventFilter,pointer"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setEventFilter%2CEventFilter%2Cpointer"><span class="Identifier">setEventFilter</span></a><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <a href="events.html#EventFilter"><span class="Identifier">EventFilter</span></a><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetEventFilter&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Sets up a filter to process all events before they change internal state and are posted to the internal event queue.</p>
 <p>The filter is prototyped as:</p>
 <blockquote><p>proc EventFilter(userdata: pointer; event: ptr Event): cint {.cdecl.}</p></blockquote>
-<p>If the filter returns <cite>1</cite>, then the event will be added to the internal queue. If it returns <cite>0</cite>, then the event will be dropped from the queue, but the internal state will still be updated.  This allows selective filtering of dynamically arriving events.</p>
+<p>If the filter returns <tt class="docutils literal"><span class="pre">1</span></tt>, then the event will be added to the internal queue. If it returns <tt class="docutils literal"><span class="pre">0</span></tt>, then the event will be dropped from the queue, but the internal state will still be updated.  This allows selective filtering of dynamically arriving events.</p>
 <p><tt class="docutils literal"><span class="pre">Warning:</span></tt> Be very careful of what you do in the event filter procedure, as it may run in a different thread!</p>
-<p>There is one caveat when dealing with the <tt class="docutils literal"><span class="pre">QuitEvent</span></tt> event type.  The event filter is only called when the window manager desires to close the application window.  If the event filter returns <cite>1</cite>, then the window will be closed, otherwise the window will remain open if possible.</p>
+<p>There is one caveat when dealing with the <tt class="docutils literal"><span class="pre">QuitEvent</span></tt> event type.  The event filter is only called when the window manager desires to close the application window.  If the event filter returns <tt class="docutils literal"><span class="pre">1</span></tt>, then the window will be closed, otherwise the window will remain open if possible.</p>
 <p>If the quit event is generated by an interrupt signal, it will bypass the internal queue and be delivered to the application at the next event poll.</p>
 
 
 </dd>
-<dt id="getEventFilter"><a name="getEventFilter,ptr.EventFilter,ptr.pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getEventFilter</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="events.html#EventFilter"><span class="Identifier">EventFilter</span></a><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="getEventFilter,ptr.EventFilter,ptr.pointer"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#getEventFilter%2Cptr.EventFilter%2Cptr.pointer"><span class="Identifier">getEventFilter</span></a><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="events.html#EventFilter"><span class="Identifier">EventFilter</span></a><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetEventFilter&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-Return the current event filter - can be used to &quot;chain&quot; filters. If there is no event filter set, this procedure returns <cite>false</cite>.
+
+Return the current event filter - can be used to &quot;chain&quot; filters. If there is no event filter set, this procedure returns <tt class="docutils literal"><span class="pre">false</span></tt>.
 
 </dd>
-<dt id="addEventWatch"><a name="addEventWatch,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">addEventWatch</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <a href="events.html#EventFilter"><span class="Identifier">EventFilter</span></a><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="addEventWatch,EventFilter,pointer"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#addEventWatch%2CEventFilter%2Cpointer"><span class="Identifier">addEventWatch</span></a><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <a href="events.html#EventFilter"><span class="Identifier">EventFilter</span></a><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AddEventWatch&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Add a procedure which is called when an event is added to the queue.
 
 </dd>
-<dt id="delEventWatch"><a name="delEventWatch,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">delEventWatch</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <a href="events.html#EventFilter"><span class="Identifier">EventFilter</span></a><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="delEventWatch,EventFilter,pointer"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#delEventWatch%2CEventFilter%2Cpointer"><span class="Identifier">delEventWatch</span></a><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <a href="events.html#EventFilter"><span class="Identifier">EventFilter</span></a><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DelEventWatch&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Remove an event watch procedure added with <tt class="docutils literal"><span class="pre">addEventWatch()</span></tt>
 
 </dd>
-<dt id="filterEvents"><a name="filterEvents,EventFilter,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">filterEvents</span><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <a href="events.html#EventFilter"><span class="Identifier">EventFilter</span></a><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="filterEvents,EventFilter,pointer"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#filterEvents%2CEventFilter%2Cpointer"><span class="Identifier">filterEvents</span></a><span class="Other">(</span><span class="Identifier">filter</span><span class="Other">:</span> <a href="events.html#EventFilter"><span class="Identifier">EventFilter</span></a><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FilterEvents&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-Run the filter procedure on the current event queue, removing any events for which the filter returns <cite>0</cite>.
+
+Run the filter procedure on the current event queue, removing any events for which the filter returns <tt class="docutils literal"><span class="pre">0</span></tt>.
 
 </dd>
-<dt id="eventState"><a name="eventState,EventKind,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">eventState</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a><span class="Other">;</span> <span class="Identifier">state</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="eventState,EventKind,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#eventState%2CEventKind%2Ccint"><span class="Identifier">eventState</span></a><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <a href="events.html#EventKind"><span class="Identifier">EventKind</span></a><span class="Other">;</span> <span class="Identifier">state</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_EventState&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-This procedure allows you to set the state of processing certain events.<ul class="simple"><li>If <tt class="docutils literal"><span class="pre">state</span></tt> is set to <cite>IGNORE</cite>, that event will be automatically 
+
+This procedure allows you to set the state of processing certain events.<ul class="simple"><li>If <tt class="docutils literal"><span class="pre">state</span></tt> is set to <tt class="docutils literal"><span class="pre">IGNORE</span></tt>, that event will be automatically 
 dropped from the event queue and will not be filtered.</li>
-<li>If <tt class="docutils literal"><span class="pre">state</span></tt> is set to <cite>ENABLE</cite>, that event will be processed normally.</li>
-<li>If <tt class="docutils literal"><span class="pre">state</span></tt> is set to <cite>QUERY</cite>, <tt class="docutils literal"><span class="pre">eventState()</span></tt> will return the 
+<li>If <tt class="docutils literal"><span class="pre">state</span></tt> is set to <tt class="docutils literal"><span class="pre">ENABLE</span></tt>, that event will be processed normally.</li>
+<li>If <tt class="docutils literal"><span class="pre">state</span></tt> is set to <tt class="docutils literal"><span class="pre">QUERY</span></tt>, <tt class="docutils literal"><span class="pre">eventState()</span></tt> will return the 
 current processing state of the specified event.</li>
 </ul>
 
 
 </dd>
-<dt id="registerEvents"><a name="registerEvents,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">registerEvents</span><span class="Other">(</span><span class="Identifier">numevents</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RegisterEvents&quot;</span><span class="Other">,</span>
+<a id="registerEvents,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#registerEvents%2Ccint"><span class="Identifier">registerEvents</span></a><span class="Other">(</span><span class="Identifier">numevents</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_RegisterEvents&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>This procedure allocates a set of user-defined events, and returns the beginning event number for that set of events.</p>
-<p>If there aren't enough user-defined events left, this procedure returns <cite>-1'u32</cite>.</p>
+<p>If there aren't enough user-defined events left, this procedure returns <tt class="docutils literal"><span class="pre">-1'u32</span></tt>.</p>
 
 
 </dd>
@@ -2467,8 +2169,10 @@ current processing state of the specified event.</li>
 <div class="section" id="15">
 <h1><a class="toc-backref" href="#15">Iterators</a></h1>
 <dl class="item">
-<dt id="events"><a name="events.i,"></a><pre><span class="Keyword">iterator</span> <span class="Identifier">events</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="events.html#Event"><span class="Identifier">Event</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="events.i"></a>
+<dt><pre><span class="Keyword">iterator</span> <a href="#events.i"><span class="Identifier">events</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="events.html#Event"><span class="Identifier">Event</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Iterate through and consume the event queue.
 
 </dd>
@@ -2477,13 +2181,17 @@ Iterate through and consume the event queue.
 <div class="section" id="18">
 <h1><a class="toc-backref" href="#18">Templates</a></h1>
 <dl class="item">
-<dt id="$"><a name="$.t,array[TEXTINPUTEVENT_TEXT_SIZE,char]"></a><pre><span class="Keyword">template</span> <span class="Identifier">`$`</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">TEXTINPUTEVENT_TEXT_SIZE</span><span class="Other">,</span> <span class="Identifier">char</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span></pre></dt>
+<a id="$.t,array[TEXTINPUTEVENT_TEXT_SIZE,char]"></a>
+<dt><pre><span class="Keyword">template</span> <a href="#%24.t%2Carray%5BTEXTINPUTEVENT_TEXT_SIZE%2Cchar%5D"><span class="Identifier">`$`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="Identifier">TEXTINPUTEVENT_TEXT_SIZE</span><span class="Other">,</span> <span class="Identifier">char</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span></pre></dt>
 <dd>
+
 Convert an array of char to a proper string. 
 
 </dd>
-<dt id="getEventState"><a name="getEventState.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">getEventState</span><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<a id="getEventState.t,untyped"></a>
+<dt><pre><span class="Keyword">template</span> <a href="#getEventState.t%2Cuntyped"><span class="Identifier">getEventState</span></a><span class="Other">(</span><span class="Identifier">kind</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
+
 
 
 </dd>
@@ -2497,7 +2205,7 @@ Convert an array of char to a proper string.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-11-02 19:11:01 UTC</small>
+        <small>Made with Nim. Generated: 2019-07-27 12:00:38 UTC</small>
       </div>
     </div>
   </div>

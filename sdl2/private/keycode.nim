@@ -24,11 +24,6 @@
 ##
 ##  Defines constants which identify keyboard keys and modifiers.
 
-
-
-
-
-
 const
   K_SCANCODE_MASK* = (1 shl 30)
 

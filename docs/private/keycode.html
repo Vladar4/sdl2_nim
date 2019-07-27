@@ -16,7 +16,7 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
-<title>Module keycode</title>
+<title>keycode</title>
 <style type="text/css" >
 /*
 Stylesheet for use with Docutils/rst2html.
@@ -27,232 +27,130 @@ customize this style sheet.
 Modified from Chad Skeeters' rst2html-style
 https://bitbucket.org/cskeeters/rst2html-style/
 
-Modified by Boyd Greenfield
+Modified by Boyd Greenfield and narimiran
 */
-/* SCSS variables */
-/* Text weights */
-/* Body colors */
-/* Text colors */
-/* Link colors */
-/* Syntax highlighting colors */
-/* Pct changes */
-/* Mixins */
-/* Body/layout */
+
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%; }
 
-/* Where we want fancier font if available */
-h1, h2, h3, h4, h5, h6, p.module-desc, table.docinfo + blockquote p, table.docinfo blockquote p, h1 + blockquote p {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important; }
-
-h1.title {
-  font-weight: 900; }
-
 body {
   font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
-  color: #444;
-  letter-spacing: 0.15px;
-  background-color: #FDFBFA; }
+  font-size: 1.125em;
+  line-height: 1.5;
+  color: #222;
+  background-color: #FCFCFC; }
 
 /* Skeleton grid */
 .container {
   position: relative;
   width: 100%;
-  max-width: 960px;
+  max-width: 1050px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
   box-sizing: border-box; }
 
 .column,
 .columns {
   width: 100%;
   float: left;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  margin-left: 1%;
+}
 
-/* For devices larger than 400px */
-@media (min-width: 400px) {
-  .container {
-    width: 100%;
-    padding: 0; } }
-/* For devices larger than 650px */
-@media (min-width: 650px) {
-  .container {
-    width: 100%; }
+.column:first-child,
+.columns:first-child {
+  margin-left: 0; }
 
-  .column,
-  .columns {
-    margin-left: 4%; }
+.three.columns {
+  width: 19%; }
 
-  .column:first-child,
-  .columns:first-child {
-    margin-left: 0; }
+.nine.columns {
+  width: 80.0%; }
 
-  .one.column,
-  .one.columns {
-    width: 4.66666666667%; }
+.twelve.columns {
+  width: 100%;
+  margin-left: 0; }
 
-  .two.columns {
-    width: 13.3333333333%; }
-
+@media screen and (max-width: 860px) {
   .three.columns {
-    width: 22%; }
-
-  .four.columns {
-    width: 30.6666666667%; }
-
-  .five.columns {
-    width: 39.3333333333%; }
-
-  .six.columns {
-    width: 48%; }
-
-  .seven.columns {
-    width: 56.6666666667%; }
-
-  .eight.columns {
-    width: 65.3333333333%; }
-
+    display: none;
+  }
   .nine.columns {
-    width: 74.0%; }
-
-  .ten.columns {
-    width: 82.6666666667%; }
-
-  .eleven.columns {
-    width: 91.3333333333%; }
-
-  .twelve.columns {
-    width: 100%;
-    margin-left: 0; }
-
-  .one-third.column {
-    width: 30.6666666667%; }
-
-  .two-thirds.column {
-    width: 65.3333333333%; } }
-/* Customer Overrides */
-.footer {
-  text-align: center;
-  color: #969696;
-  padding-top: 10%; }
-
-p.module-desc {
-  font-size: 1.1em;
-  color: #666666; }
-
-a.link-seesrc {
-  color: #aec7d2;
-  font-style: italic; }
-
-a.link-seesrc:hover {
-  color: #6c9aae; }
-
-#toc-list {
-  word-wrap: break-word; }
-
-ul.simple-toc {
-  list-style: none; }
-
-ul.simple-toc a.reference-toplevel {
-  font-weight: bold;
-  color: #0077b3; }
-
-ul.simple-toc-section {
-  list-style-type: circle;
-  color: #6c9aae; }
-
-ul.simple-toc-section a.reference {
-  color: #0077b3; }
+    width: 98.0%;
+  }
+  body {
+    font-size: 1em;
+    line-height: 1.35;
+  }
+}
 
 cite {
   font-style: italic !important; }
 
-dt > pre {
-  border-color: rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 0.3);
-  margin: 15px 0px 5px; }
-
-dd > pre {
-  border-color: rgba(0, 0, 0, 0.1);
-  background-color: whitesmoke;
-  margin-top: 8px; }
-
-.item > dd {
-  margin-left: 10px;
-  margin-bottom: 30px; }
-
-/* Nim line-numbered tables */
-.line-nums-table {
-  width: 100%;
-  table-layout: fixed; }
 
 /* Nim search input */
 div#searchInputDiv {
-  margin-bottom: 8px;
+  margin-bottom: 1em;
 }
-div#searchInputDiv input#searchInput {
-  width: 10em;
-}
-div.search-groupby {
-  margin-bottom: 8px;
+input#searchInput {
+  width: 80%;
 }
 
-table.line-nums-table {
-  border-radius: 4px;
-  border: 1px solid #cccccc;
-  background-color: whitesmoke;
-  border-collapse: separate;
-  margin-top: 15px;
-  margin-bottom: 25px; }
-
-.line-nums-table tbody {
-  border: none; }
-
-.line-nums-table td pre {
-  border: none;
-  background-color: transparent; }
-
-.line-nums-table td.blob-line-nums {
-  width: 28px; }
-
-.line-nums-table td.blob-line-nums pre {
-  color: #b0b0b0;
-  -webkit-filter: opacity(75%);
-  text-align: right;
-  border-color: transparent;
-  background-color: transparent;
-  padding-left: 0px;
-  margin-left: 0px;
-  padding-right: 0px;
-  margin-right: 0px; }
+/*
+ * Some custom formatting for input forms.
+ * This also fixes input form colors on Firefox with a dark system theme on Linux.
+ */
+input {
+  -moz-appearance: none;
+  color: #333;
+  background-color: #f8f8f8;
+  border: 1px solid #aaa;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-size: 0.9em;
+  padding: 6px;
+}
+input:focus {
+  border: 1px solid #1fa0eb;
+  box-shadow: 0 0 2px #1fa0eb;
+}
 
 /* Docgen styles */
 /* Links */
 a {
-  color: #0077b3;
-  text-decoration: none; }
+  color: #07b;
+  text-decoration: none;
+}
+
+a span.Identifier {
+  text-decoration: underline;
+  text-decoration-color: #aab;
+}
+
+a.reference-toplevel {
+  font-weight: bold;
+}
+
+a.toc-backref {
+  text-decoration: none;
+  color: #222; }
+
+a.link-seesrc {
+  color: #607c9f;
+  font-size: 0.9em;
+  font-style: italic; }
 
 a:hover,
 a:focus {
-  color: #00334d;
+  color: #607c9f;
   text-decoration: underline; }
 
-a:visited {
-  color: #00334d; }
+a:hover span.Identifier {
+  color: #607c9f;
+}
 
-a:focus {
-  outline: thin dotted #2d2d2d;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px; }
-
-a:hover,
-a:active {
-  outline: 0; }
 
 sub,
 sup {
@@ -329,379 +227,258 @@ img {
 
   h2,
   h3 {
-    page-break-after: avoid; } }
-.img-rounded {
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px; }
+    page-break-after: avoid; }
+}
 
-.img-polaroid {
-  padding: 4px;
-  background-color: rgba(252, 248, 244, 0.75);
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
 
 p {
-  margin: 0 0 8px; }
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
 
 small {
   font-size: 85%; }
 
 strong {
-  font-weight: 600; }
+  font-weight: 600;
+  font-size: 0.95em;
+  color: #3c3c3c;
+}
 
 em {
   font-style: italic; }
 
-cite {
-  font-style: normal; }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  line-height: 20px;
-  color: inherit;
-  text-rendering: optimizelegibility; }
-
 h1 {
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: 400;
-  padding-bottom: .15em;
-  border-bottom: 1px solid #aaaaaa;
-  margin-top: 1.0em;
+  padding-bottom: .25em;
+  border-bottom: 1px solid #aaa;
+  margin-top: 2.5em;
+  margin-bottom: 1em;
   line-height: 1.2em; }
 
 h1.title {
   padding-bottom: 1em;
   border-bottom: 0px;
-  font-size: 2.75em; }
+  font-size: 2.5em;
+  text-align: center;
+  font-weight: 900;
+  margin-top: 0.75em;
+  margin-bottom: 0em;
+}
 
 h2 {
-  font-size: 1.5em;
-  margin-top: 1.5em; }
+  font-size: 1.3em;
+  margin-top: 2em; }
+
+h2.subtitle {
+  text-align: center; }
 
 h3 {
-  font-size: 1.3em;
+  font-size: 1.125em;
   font-style: italic;
-  margin-top: 0.75em; }
+  margin-top: 1.5em; }
 
 h4 {
-  font-size: 1.3em;
-  margin-top: 0.5em; }
+  font-size: 1.125em;
+  margin-top: 1em; }
 
 h5 {
-  font-size: 1.2em;
-  margin-top: 0.25em; }
+  font-size: 1.125em;
+  margin-top: 0.75em; }
 
 h6 {
   font-size: 1.1em; }
 
+
 ul,
 ol {
   padding: 0;
-  margin: 0 0 0px 15px; }
+  margin-top: 0.5em;
+  margin-left: 0.75em; }
 
 ul ul,
 ul ol,
 ol ol,
 ol ul {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  margin-left: 1.25em; }
 
 li {
-  line-height: 20px; }
-
-dl {
-  margin-bottom: 20px; }
-
-dt,
-dd {
-  line-height: 20px; }
-
-dt {
-  font-weight: bold; }
-
-dd {
-  margin-left: 10px;
-  margin-bottom: 26px; }
-
-hr {
-  margin: 20px 0;
-  border: 0;
-  border-top: 1px solid #eeeeee;
-  border-bottom: 1px solid #ffffff; }
-
-abbr[title],
-abbr[data-original-title] {
-  cursor: help;
-  border-bottom: 1px dotted #999999; }
-
-abbr.initialism {
-  font-size: 90%;
-  text-transform: uppercase; }
-
-blockquote {
-  padding: 0 0 0 15px;
-  margin: 0 0 20px;
-  border-left: 5px solid #EFEBE0; }
-
-table.docinfo + blockquote, table.docinfo blockquote, h1 + blockquote {
-  border-left: 5px solid #c9c9c9;
+    list-style-type: circle;
 }
 
-table.docinfo + blockquote p, table.docinfo blockquote p, h1 + blockquote p {
-  margin-bottom: 0;
-  font-size: 15px;
-  font-weight: 200;
-  line-height: 1.5;
-  font-style: italic; }
+ul.simple-boot li {
+    list-style-type: none;
+    margin-left: 0em;
+    margin-bottom: 0.5em;
+}
 
-q:before,
-q:after,
-blockquote:before,
-blockquote:after {
-  content: ""; }
+ol.simple > li, ul.simple > li {
+  margin-bottom: 0.25em;
+  margin-left: 0.4em }
 
-address {
-  display: block;
-  margin-bottom: 20px;
-  font-style: normal;
-  line-height: 20px; }
+ul.simple.simple-toc > li {
+    margin-top: 1em;
+}
 
-code,
-pre {
-  font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
-  padding: 0 3px 2px;
-  font-weight: 500;
-  font-size: 12px;
-  color: #444444;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px; }
+ul.simple-toc {
+  list-style: none;
+  font-size: 0.9em;
+  margin-left: -0.3em;
+  margin-top: 1em; }
+
+ul.simple-toc > li {
+    list-style-type: none;
+}
+
+ul.simple-toc-section {
+  list-style-type: circle;
+  margin-left: 1em;
+  color: #6c9aae; }
+
+
+ol.arabic {
+  list-style: decimal; }
+
+ol.loweralpha {
+  list-style: lower-alpha; }
+
+ol.upperalpha {
+  list-style: upper-alpha; }
+
+ol.lowerroman {
+  list-style: lower-roman; }
+
+ol.upperroman {
+  list-style: upper-roman; }
+
+ul.auto-toc {
+  list-style-type: none; }
+
+
+dl {
+  margin-bottom: 1.5em; }
+
+dt {
+  margin-bottom: -0.5em;
+  margin-left: 0.0em; }
+
+dd {
+  margin-left: 2.0em;
+  margin-bottom: 3.0em;
+  margin-top: 0.5em; }
+
+
+hr {
+  margin: 2em 0;
+  border: 0;
+  border-top: 1px solid #aaa; }
+
+blockquote {
+  font-size: 0.9em;
+  font-style: italic;
+  padding-left: 0.5em;
+  margin-left: 0;
+  border-left: 5px solid #bbc;
+}
 
 .pre {
   font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
-  font-weight: 600;
-  /*color: #504da6;*/
+  font-weight: 500;
+  font-size: 0.85em;
+  background-color: #f0f3ff;
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 4px;
 }
 
-code {
-  padding: 2px 4px;
-  color: #444444;
-  white-space: nowrap;
-  background-color: white;
-  border: 1px solid #777777; }
-
 pre {
+  font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
+  color: #222;
+  font-weight: 500;
   display: inline-block;
   box-sizing: border-box;
-  min-width: calc(100% - 19.5px);
-  padding: 9.5px;
-  margin: 0.25em 10px 10px 10px;
-  font-size: 15px;
-  line-height: 20px;
+  min-width: 100%;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: 0.85em;
   white-space: pre !important;
   overflow-y: hidden;
   overflow-x: visible;
-  background-color: rgba(0, 0, 0, 0.01);
-  border: 1px solid #cccccc;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px; }
-
-pre.prettyprint {
-  margin-bottom: 20px; }
-
-pre code {
-  padding: 0;
-  color: inherit;
-  white-space: pre;
-  overflow-x: visible;
-  background-color: transparent;
-  border: 0; }
+  background-color: ghostwhite;
+  border: 1px solid #dde;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px; }
 
 .pre-scrollable {
   max-height: 340px;
   overflow-y: scroll; }
 
+
+/* Nim line-numbered tables */
+.line-nums-table {
+  width: 100%;
+  table-layout: fixed; }
+
+table.line-nums-table {
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  background-color: ghostwhite;
+  border-collapse: separate;
+  margin-top: 15px;
+  margin-bottom: 25px; }
+
+.line-nums-table tbody {
+  border: none; }
+
+.line-nums-table td pre {
+  border: none;
+  background-color: transparent; }
+
+.line-nums-table td.blob-line-nums {
+  width: 28px; }
+
+.line-nums-table td.blob-line-nums pre {
+  color: #b0b0b0;
+  -webkit-filter: opacity(75%);
+  text-align: right;
+  border-color: transparent;
+  background-color: transparent;
+  padding-left: 0px;
+  margin-left: 0px;
+  padding-right: 0px;
+  margin-right: 0px; }
+
+
 table {
   max-width: 100%;
   background-color: transparent;
+  margin-top: 0.5em;
+  margin-bottom: 1.5em;
   border-collapse: collapse;
-  border-spacing: 0; }
-
-table th, table td {
-  padding: 0px 8px 0px;
+  border-color: #ccc;
+  border-spacing: 0;
+  font-size: 0.9em;
 }
 
-.table {
-  width: 100%;
-  margin-bottom: 20px; }
+table th, table td {
+  padding: 0px 0.5em 0px;
+}
 
-.table th,
-.table td {
-  padding: 8px;
-  line-height: 20px;
-  text-align: left;
-  vertical-align: top;
-  border-top: 1px solid #444444; }
-
-.table th {
+table th {
+  background-color: #e8e8e8;
   font-weight: bold; }
 
-.table thead th {
-  vertical-align: bottom; }
+table th.docinfo-name {
+    background-color: transparent;
+}
 
-.table caption + thead tr:first-child th,
-.table caption + thead tr:first-child td,
-.table colgroup + thead tr:first-child th,
-.table colgroup + thead tr:first-child td,
-.table thead:first-child tr:first-child th,
-.table thead:first-child tr:first-child td {
-  border-top: 0; }
+table tr:hover {
+  background-color: ghostwhite; }
 
-.table tbody + tbody {
-  border-top: 2px solid #444444; }
-
-.table .table {
-  background-color: rgba(252, 248, 244, 0.75); }
-
-.table-condensed th,
-.table-condensed td {
-  padding: 4px 5px; }
-
-.table-bordered {
-  border: 1px solid #444444;
-  border-collapse: separate;
-  *border-collapse: collapse;
-  border-left: 0;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px; }
-
-.table-bordered th,
-.table-bordered td {
-  border-left: 1px solid #444444; }
-
-.table-bordered caption + thead tr:first-child th,
-.table-bordered caption + tbody tr:first-child th,
-.table-bordered caption + tbody tr:first-child td,
-.table-bordered colgroup + thead tr:first-child th,
-.table-bordered colgroup + tbody tr:first-child th,
-.table-bordered colgroup + tbody tr:first-child td,
-.table-bordered thead:first-child tr:first-child th,
-.table-bordered tbody:first-child tr:first-child th,
-.table-bordered tbody:first-child tr:first-child td {
-  border-top: 0; }
-
-.table-bordered thead:first-child tr:first-child > th:first-child,
-.table-bordered tbody:first-child tr:first-child > td:first-child,
-.table-bordered tbody:first-child tr:first-child > th:first-child {
-  -webkit-border-top-left-radius: 4px;
-  border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px; }
-
-.table-bordered thead:first-child tr:first-child > th:last-child,
-.table-bordered tbody:first-child tr:first-child > td:last-child,
-.table-bordered tbody:first-child tr:first-child > th:last-child {
-  -webkit-border-top-right-radius: 4px;
-  border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px; }
-
-.table-bordered thead:last-child tr:last-child > th:first-child,
-.table-bordered tbody:last-child tr:last-child > td:first-child,
-.table-bordered tbody:last-child tr:last-child > th:first-child,
-.table-bordered tfoot:last-child tr:last-child > td:first-child,
-.table-bordered tfoot:last-child tr:last-child > th:first-child {
-  -webkit-border-bottom-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomleft: 4px; }
-
-.table-bordered thead:last-child tr:last-child > th:last-child,
-.table-bordered tbody:last-child tr:last-child > td:last-child,
-.table-bordered tbody:last-child tr:last-child > th:last-child,
-.table-bordered tfoot:last-child tr:last-child > td:last-child,
-.table-bordered tfoot:last-child tr:last-child > th:last-child {
-  -webkit-border-bottom-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  -moz-border-radius-bottomright: 4px; }
-
-.table-bordered tfoot + tbody:last-child tr:last-child td:first-child {
-  -webkit-border-bottom-left-radius: 0;
-  border-bottom-left-radius: 0;
-  -moz-border-radius-bottomleft: 0; }
-
-.table-bordered tfoot + tbody:last-child tr:last-child td:last-child {
-  -webkit-border-bottom-right-radius: 0;
-  border-bottom-right-radius: 0;
-  -moz-border-radius-bottomright: 0; }
-
-.table-bordered caption + thead tr:first-child th:first-child,
-.table-bordered caption + tbody tr:first-child td:first-child,
-.table-bordered colgroup + thead tr:first-child th:first-child,
-.table-bordered colgroup + tbody tr:first-child td:first-child {
-  -webkit-border-top-left-radius: 4px;
-  border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px; }
-
-.table-bordered caption + thead tr:first-child th:last-child,
-.table-bordered caption + tbody tr:first-child td:last-child,
-.table-bordered colgroup + thead tr:first-child th:last-child,
-.table-bordered colgroup + tbody tr:first-child td:last-child {
-  -webkit-border-top-right-radius: 4px;
-  border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px; }
-
-table.docutils th {
-  background-color: #e8e8e8; }
-
-table.docutils tr:hover {
-  background-color: whitesmoke; }
-
-.table-striped tbody > tr:nth-child(odd) > td,
-.table-striped tbody > tr:nth-child(odd) > th {
-  background-color: rgba(252, 248, 244, 0.75); }
-
-.table-hover tbody tr:hover > td,
-.table-hover tbody tr:hover > th {
-  background-color: rgba(241, 222, 204, 0.75); }
-
-table td[class*="span"],
-table th[class*="span"],
-.row-fluid table td[class*="span"],
-.row-fluid table th[class*="span"] {
-  display: table-cell;
-  float: none;
-  margin-left: 0; }
-
-.hero-unit {
-  padding: 60px;
-  margin-bottom: 30px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  color: inherit;
-  background-color: rgba(230, 197, 164, 0.75);
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px; }
-
-.hero-unit h1 {
-  margin-bottom: 0;
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
-  color: inherit; }
-
-.hero-unit li {
-  line-height: 30px; }
 
 /* rst2html default used to remove borders from tables and images */
 .borderless, table.borderless td, table.borderless th {
@@ -722,10 +499,6 @@ table.borderless td, table.borderless th {
 .hidden {
   display: none; }
 
-a.toc-backref {
-  text-decoration: none;
-  color: #444444; }
-
 blockquote.epigraph {
   margin: 2em 5em; }
 
@@ -735,85 +508,6 @@ dl.docutils dd {
 object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
   overflow: hidden; }
 
-/* Uncomment (and remove this text!) to get bold-faced definition list terms
-dl.docutils dt {
-  font-weight: bold }
-*/
-div.abstract {
-  margin: 2em 5em; }
-
-div.abstract p.topic-title {
-  font-weight: bold;
-  text-align: center; }
-
-div.admonition, div.attention, div.caution, div.danger, div.error,
-div.hint, div.important, div.note, div.tip, div.warning {
-  margin: 2em;
-  border: medium outset;
-  padding: 1em; }
-
-div.note, div.warning {
-  margin: 1.5em 0px;
-  border: none; }
-
-div.note p.admonition-title,
-div.warning p.admonition-title {
-  display: none; }
-
-/* Clearfix
- * http://css-tricks.com/snippets/css/clear-fix/
- */
-div.note:after,
-div.warning:after {
-  content: "";
-  display: table;
-  clear: both; }
-
-div.note p:before,
-div.warning p:before {
-  display: block;
-  float: left;
-  font-size: 4em;
-  line-height: 1em;
-  margin-right: 20px;
-  margin-left: 0em;
-  margin-top: -10px;
-  content: '\0270D';
-  /*handwriting*/ }
-
-div.warning p:before {
-  content: '\026A0';
-  /*warning*/ }
-
-div.admonition p.admonition-title, div.hint p.admonition-title,
-div.important p.admonition-title, div.note p.admonition-title,
-div.tip p.admonition-title {
-  font-weight: bold;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
-
-div.attention p.admonition-title, div.caution p.admonition-title,
-div.danger p.admonition-title, div.error p.admonition-title,
-div.warning p.admonition-title, .code .error {
-  color: #b30000;
-  font-weight: bold;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
-
-/* Uncomment (and remove this text!) to get reduced vertical space in
-   compound paragraphs.
-div.compound .compound-first, div.compound .compound-middle {
-  margin-bottom: 0.5em }
-
-div.compound .compound-last, div.compound .compound-middle {
-  margin-top: 0.5em }
-*/
-div.dedication {
-  margin: 2em 5em;
-  text-align: center;
-  font-style: italic; }
-
-div.dedication p.topic-title {
-  font-weight: bold;
-  font-style: normal; }
 
 div.figure {
   margin-left: 2em;
@@ -821,7 +515,13 @@ div.figure {
 
 div.footer, div.header {
   clear: both;
+  text-align: center;
+  color: #666;
   font-size: smaller; }
+
+div.footer {
+    padding-top: 5em;
+}
 
 div.line-block {
   display: block;
@@ -833,45 +533,24 @@ div.line-block div.line-block {
   margin-bottom: 0;
   margin-left: 1.5em; }
 
-div.sidebar {
-  margin: 0 0 0.5em 1em;
-  border: medium outset;
-  padding: 1em;
-  background-color: rgba(252, 248, 244, 0.75);
-  width: 40%;
-  float: right;
-  clear: right; }
-
-div.sidebar p.rubric {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-size: medium; }
-
-div.system-messages {
-  margin: 5em; }
-
-div.system-messages h1 {
-  color: #b30000; }
-
-div.system-message {
-  border: medium outset;
-  padding: 1em; }
-
-div.system-message p.system-message-title {
-  color: #b30000;
-  font-weight: bold; }
-
 div.topic {
   margin: 2em; }
 
-h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
-h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
-  margin-top: 0.4em; }
+div.search_results {
+  background-color: antiquewhite;
+  margin: 3em;
+  padding: 1em;
+  border: 1px solid #4d4d4d;
+}
 
-h1.title {
-  text-align: center; }
+div#global-links ul {
+  margin-left: 0;
+  list-style-type: none;
+}
 
-h2.subtitle {
-  text-align: center; }
+div#global-links > simple-boot {
+    margin-left: 3em;
+}
 
 hr.docutils {
   width: 75%; }
@@ -905,30 +584,6 @@ img.align-center, .figure.align-center, object.align-center {
 div.align-right {
   text-align: inherit; }
 
-/* div.align-center * { */
-/*   text-align: left } */
-
-ul.simple > li {
-  margin-bottom: 0.5em }
-
-ol.simple, ul.simple {
-  margin-bottom: 1em; }
-
-ol.arabic {
-  list-style: decimal; }
-
-ol.loweralpha {
-  list-style: lower-alpha; }
-
-ol.upperalpha {
-  list-style: upper-alpha; }
-
-ol.lowerroman {
-  list-style: lower-roman; }
-
-ol.upperroman {
-  list-style: upper-roman; }
-
 p.attribution {
   text-align: right;
   margin-left: 50%; }
@@ -948,15 +603,6 @@ p.rubric {
   font-size: larger;
   color: maroon;
   text-align: center; }
-
-p.sidebar-title {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  font-size: larger; }
-
-p.sidebar-subtitle {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: bold; }
 
 p.topic-title {
   font-weight: bold; }
@@ -997,21 +643,13 @@ pre.code .inserted, code .inserted {
   background-color: #A3D289; }
 
 span.classifier {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-style: oblique; }
 
 span.classifier-delimiter {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: bold; }
-
-span.interpreted {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
 
 span.option {
   white-space: nowrap; }
-
-span.pre {
-  white-space: pre; }
 
 span.problematic {
   color: #b30000; }
@@ -1019,44 +657,6 @@ span.problematic {
 span.section-subtitle {
   /* font-size relative to parent (h1..h6 element) */
   font-size: 80%; }
-
-table.citation {
-  border-left: solid 1px #666666;
-  margin-left: 1px; }
-
-table.docinfo {
-  margin: 0em;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important;
-  color: #444444; }
-
-table.docutils {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em; }
-
-table.footnote {
-  border-left: solid 1px #2d2d2d;
-  margin-left: 1px; }
-
-table.docutils td, table.docutils th,
-table.docinfo td, table.docinfo th {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  vertical-align: top; }
-
-table.docutils th.field-name, table.docinfo th.docinfo-name {
-  font-weight: 700;
-  text-align: left;
-  white-space: nowrap;
-  padding-left: 0; }
-
-h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
-h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
-  font-size: 100%; }
-
-ul.auto-toc {
-  list-style-type: none; }
 
 span.DecNumber {
   color: #252dbe; }
@@ -1074,7 +674,7 @@ span.FloatNumber {
   color: #252dbe; }
 
 span.Identifier {
-  color: #3b3b3b; }
+  color: #222; }
 
 span.Keyword {
   font-weight: 600;
@@ -1139,37 +739,22 @@ dt pre > span.Identifier, dt pre > span.Operator {
   color: #155da4;
   font-weight: 700; }
 
-dt pre > span.Identifier ~ span.Identifier, dt pre > span.Operator ~ span.Identifier {
-  color: inherit;
-  font-weight: inherit; }
-
-dt pre > span.Operator ~ span.Identifier {
+dt pre > span.Keyword ~ span.Identifier, dt pre > span.Identifier ~ span.Identifier,
+dt pre > span.Operator ~ span.Identifier, dt pre > span.Other ~ span.Identifier {
   color: inherit;
   font-weight: inherit; }
 
 /* Nim sprite for the footer (taken from main page favicon) */
 .nim-sprite {
   display: inline-block;
-  height: 12px;
-  width: 12px;
+  height: 16px;
+  width: 16px;
   background-position: 0 0;
-  background-size: 12px 12px;
+  background-size: 16px 16px;
   -webkit-filter: opacity(50%);
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
-
-div.search_results {
-  background-color: antiquewhite;
-  margin: 3em;
-  padding: 1em;
-  border: 1px solid #4d4d4d;
-}
-
-div#global-links ul {
-  margin-left: 0;
-  list-style-type: none;
-}
 
 span.pragmadots {
   /* Position: relative frees us up to make the dots
@@ -1178,18 +763,14 @@ span.pragmadots {
   position: relative;
   /* 1px down looks slightly nicer */
   top: 1px;
-
   padding: 2px;
-  background-color: #D3D3D3;
+  background-color: #e8e8e8;
   border-radius: 4px;
   margin: 0 2px;
   cursor: pointer;
-
-  /* For some reason on Chrome, making the font size
-  smaller than 1em is causing the parent container to
-  bulge slightly. So, we're stuck with inheriting 1em,
-  which is sad, because 0.8em looks better... */
+  font-size: 0.8em;
 }
+
 span.pragmadots:hover {
   background-color: #DBDBDB;
 }
@@ -1197,9 +778,13 @@ span.pragmawrap {
   display: none;
 }
 
+span.attachedType {
+  display: none;
+  visibility: hidden;
+}
 </style>
 
-<script type="text/javascript" src="../dochack.js"></script>
+<script type="text/javascript" src="dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -1219,7 +804,7 @@ function main() {
 <body onload="main()">
 <div class="document" id="documentId">
   <div class="container">
-    <h1 class="title">Module keycode</h1>
+    <h1 class="title">keycode</h1>
     <div class="row">
   <div class="three columns">
   <div id="global-links">
@@ -1240,22 +825,211 @@ function main() {
   <ul class="simple simple-toc" id="toc-list">
 <li><a class="reference" id="keycodedotnim_toc" href="#keycodedotnim">keycode.nim</a></li>
 <li>
+  <a class="reference reference-toplevel" href="#7" id="57">Types</a>
+  <ul class="simple simple-toc-section">
+      <li><a class="reference" href="#Keycode"
+    title="Keycode {.size: 4.} = enum
+  K_UNKNOWN = 0, K_BACKSPACE = ord &apos;\b&apos;, K_TAB = ord &apos;\t&apos;, K_RETURN = ord &apos;\c&apos;,
+  K_ESCAPE = ord &apos;\e&apos;, K_SPACE = ord &apos; &apos;, K_EXCLAIM = ord &apos;!&apos;, K_QUOTEDBL = ord &apos;\&quot;&apos;,
+  K_HASH = ord &apos;#&apos;, K_DOLLAR = ord &apos;$&apos;, K_PERCENT = ord &apos;%&apos;, K_AMPERSAND = ord &apos;&amp;&apos;,
+  K_QUOTE = ord &apos;\&apos;&apos;, K_LEFTPAREN = ord &apos;(&apos;, K_RIGHTPAREN = ord &apos;)&apos;, K_ASTERISK = ord &apos;*&apos;,
+  K_PLUS = ord &apos;+&apos;, K_COMMA = ord &apos;,&apos;, K_MINUS = ord &apos;-&apos;, K_PERIOD = ord &apos;.&apos;, K_SLASH = ord &apos;/&apos;,
+  K_0 = ord &apos;0&apos;, K_1 = ord &apos;1&apos;, K_2 = ord &apos;2&apos;, K_3 = ord &apos;3&apos;, K_4 = ord &apos;4&apos;, K_5 = ord &apos;5&apos;,
+  K_6 = ord &apos;6&apos;, K_7 = ord &apos;7&apos;, K_8 = ord &apos;8&apos;, K_9 = ord &apos;9&apos;, K_COLON = ord &apos;:&apos;,
+  K_SEMICOLON = ord &apos;;&apos;, K_LESS = ord &apos;&lt;&apos;, K_EQUALS = ord &apos;=&apos;, K_GREATER = ord &apos;&gt;&apos;,
+  K_QUESTION = ord &apos;?&apos;, K_AT = ord &apos;@&apos;, K_LEFTBRACKET = ord &apos;[&apos;, K_BACKSLASH = ord &apos;\\&apos;,
+  K_RIGHTBRACKET = ord &apos;]&apos;, K_CARET = ord &apos;^&apos;, K_UNDERSCORE = ord &apos;_&apos;,
+  K_BACKQUOTE = ord &apos;`&apos;, K_a = ord &apos;a&apos;, K_b = ord &apos;b&apos;, K_c = ord &apos;c&apos;, K_d = ord &apos;d&apos;, K_e = ord &apos;e&apos;,
+  K_f = ord &apos;f&apos;, K_g = ord &apos;g&apos;, K_h = ord &apos;h&apos;, K_i = ord &apos;i&apos;, K_j = ord &apos;j&apos;, K_k = ord &apos;k&apos;,
+  K_l = ord &apos;l&apos;, K_m = ord &apos;m&apos;, K_n = ord &apos;n&apos;, K_o = ord &apos;o&apos;, K_p = ord &apos;p&apos;, K_q = ord &apos;q&apos;,
+  K_r = ord &apos;r&apos;, K_s = ord &apos;s&apos;, K_t = ord &apos;t&apos;, K_u = ord &apos;u&apos;, K_v = ord &apos;v&apos;, K_w = ord &apos;w&apos;,
+  K_x = ord &apos;x&apos;, K_y = ord &apos;y&apos;, K_z = ord &apos;z&apos;, K_DELETE = 127,
+  K_CAPSLOCK = scancodeToKeycode(SCANCODE_CAPSLOCK),
+  K_F1 = scancodeToKeycode(SCANCODE_F1), K_F2 = scancodeToKeycode(SCANCODE_F2),
+  K_F3 = scancodeToKeycode(SCANCODE_F3), K_F4 = scancodeToKeycode(SCANCODE_F4),
+  K_F5 = scancodeToKeycode(SCANCODE_F5), K_F6 = scancodeToKeycode(SCANCODE_F6),
+  K_F7 = scancodeToKeycode(SCANCODE_F7), K_F8 = scancodeToKeycode(SCANCODE_F8),
+  K_F9 = scancodeToKeycode(SCANCODE_F9), K_F10 = scancodeToKeycode(SCANCODE_F10),
+  K_F11 = scancodeToKeycode(SCANCODE_F11), K_F12 = scancodeToKeycode(SCANCODE_F12),
+  K_PRINTSCREEN = scancodeToKeycode(SCANCODE_PRINTSCREEN),
+  K_SCROLLLOCK = scancodeToKeycode(SCANCODE_SCROLLLOCK),
+  K_PAUSE = scancodeToKeycode(SCANCODE_PAUSE),
+  K_INSERT = scancodeToKeycode(SCANCODE_INSERT),
+  K_HOME = scancodeToKeycode(SCANCODE_HOME),
+  K_PAGEUP = scancodeToKeycode(SCANCODE_PAGEUP),
+  K_END = scancodeToKeycode(SCANCODE_END),
+  K_PAGEDOWN = scancodeToKeycode(SCANCODE_PAGEDOWN),
+  K_RIGHT = scancodeToKeycode(SCANCODE_RIGHT),
+  K_LEFT = scancodeToKeycode(SCANCODE_LEFT),
+  K_DOWN = scancodeToKeycode(SCANCODE_DOWN), K_UP = scancodeToKeycode(SCANCODE_UP),
+  K_NUMLOCKCLEAR = scancodeToKeycode(SCANCODE_NUMLOCKCLEAR),
+  K_KP_DIVIDE = scancodeToKeycode(SCANCODE_KP_DIVIDE),
+  K_KP_MULTIPLY = scancodeToKeycode(SCANCODE_KP_MULTIPLY),
+  K_KP_MINUS = scancodeToKeycode(SCANCODE_KP_MINUS),
+  K_KP_PLUS = scancodeToKeycode(SCANCODE_KP_PLUS),
+  K_KP_ENTER = scancodeToKeycode(SCANCODE_KP_ENTER),
+  K_KP_1 = scancodeToKeycode(SCANCODE_KP_1),
+  K_KP_2 = scancodeToKeycode(SCANCODE_KP_2),
+  K_KP_3 = scancodeToKeycode(SCANCODE_KP_3),
+  K_KP_4 = scancodeToKeycode(SCANCODE_KP_4),
+  K_KP_5 = scancodeToKeycode(SCANCODE_KP_5),
+  K_KP_6 = scancodeToKeycode(SCANCODE_KP_6),
+  K_KP_7 = scancodeToKeycode(SCANCODE_KP_7),
+  K_KP_8 = scancodeToKeycode(SCANCODE_KP_8),
+  K_KP_9 = scancodeToKeycode(SCANCODE_KP_9),
+  K_KP_0 = scancodeToKeycode(SCANCODE_KP_0),
+  K_KP_PERIOD = scancodeToKeycode(SCANCODE_KP_PERIOD),
+  K_APPLICATION = scancodeToKeycode(SCANCODE_APPLICATION),
+  K_POWER = scancodeToKeycode(SCANCODE_POWER),
+  K_KP_EQUALS = scancodeToKeycode(SCANCODE_KP_EQUALS),
+  K_F13 = scancodeToKeycode(SCANCODE_F13), K_F14 = scancodeToKeycode(SCANCODE_F14),
+  K_F15 = scancodeToKeycode(SCANCODE_F15), K_F16 = scancodeToKeycode(SCANCODE_F16),
+  K_F17 = scancodeToKeycode(SCANCODE_F17), K_F18 = scancodeToKeycode(SCANCODE_F18),
+  K_F19 = scancodeToKeycode(SCANCODE_F19), K_F20 = scancodeToKeycode(SCANCODE_F20),
+  K_F21 = scancodeToKeycode(SCANCODE_F21), K_F22 = scancodeToKeycode(SCANCODE_F22),
+  K_F23 = scancodeToKeycode(SCANCODE_F23), K_F24 = scancodeToKeycode(SCANCODE_F24),
+  K_EXECUTE = scancodeToKeycode(SCANCODE_EXECUTE),
+  K_HELP = scancodeToKeycode(SCANCODE_HELP),
+  K_MENU = scancodeToKeycode(SCANCODE_MENU),
+  K_SELECT = scancodeToKeycode(SCANCODE_SELECT),
+  K_STOP = scancodeToKeycode(SCANCODE_STOP),
+  K_AGAIN = scancodeToKeycode(SCANCODE_AGAIN),
+  K_UNDO = scancodeToKeycode(SCANCODE_UNDO),
+  K_CUT = scancodeToKeycode(SCANCODE_CUT),
+  K_COPY = scancodeToKeycode(SCANCODE_COPY),
+  K_PASTE = scancodeToKeycode(SCANCODE_PASTE),
+  K_FIND = scancodeToKeycode(SCANCODE_FIND),
+  K_MUTE = scancodeToKeycode(SCANCODE_MUTE),
+  K_VOLUMEUP = scancodeToKeycode(SCANCODE_VOLUMEUP),
+  K_VOLUMEDOWN = scancodeToKeycode(SCANCODE_VOLUMEDOWN),
+  K_KP_COMMA = scancodeToKeycode(SCANCODE_KP_COMMA),
+  K_KP_EQUALSAS400 = scancodeToKeycode(SCANCODE_KP_EQUALSAS400),
+  K_ALTERASE = scancodeToKeycode(SCANCODE_ALTERASE),
+  K_SYSREQ = scancodeToKeycode(SCANCODE_SYSREQ),
+  K_CANCEL = scancodeToKeycode(SCANCODE_CANCEL),
+  K_CLEAR = scancodeToKeycode(SCANCODE_CLEAR),
+  K_PRIOR = scancodeToKeycode(SCANCODE_PRIOR),
+  K_RETURN2 = scancodeToKeycode(SCANCODE_RETURN2),
+  K_SEPARATOR = scancodeToKeycode(SCANCODE_SEPARATOR),
+  K_OUT = scancodeToKeycode(SCANCODE_OUT),
+  K_OPER = scancodeToKeycode(SCANCODE_OPER),
+  K_CLEARAGAIN = scancodeToKeycode(SCANCODE_CLEARAGAIN),
+  K_CRSEL = scancodeToKeycode(SCANCODE_CRSEL),
+  K_EXSEL = scancodeToKeycode(SCANCODE_EXSEL),
+  K_KP_00 = scancodeToKeycode(SCANCODE_KP_00),
+  K_KP_000 = scancodeToKeycode(SCANCODE_KP_000),
+  K_THOUSANDSSEPARATOR = scancodeToKeycode(SCANCODE_THOUSANDSSEPARATOR),
+  K_DECIMALSEPARATOR = scancodeToKeycode(SCANCODE_DECIMALSEPARATOR),
+  K_CURRENCYUNIT = scancodeToKeycode(SCANCODE_CURRENCYUNIT),
+  K_CURRENCYSUBUNIT = scancodeToKeycode(SCANCODE_CURRENCYSUBUNIT),
+  K_KP_LEFTPAREN = scancodeToKeycode(SCANCODE_KP_LEFTPAREN),
+  K_KP_RIGHTPAREN = scancodeToKeycode(SCANCODE_KP_RIGHTPAREN),
+  K_KP_LEFTBRACE = scancodeToKeycode(SCANCODE_KP_LEFTBRACE),
+  K_KP_RIGHTBRACE = scancodeToKeycode(SCANCODE_KP_RIGHTBRACE),
+  K_KP_TAB = scancodeToKeycode(SCANCODE_KP_TAB),
+  K_KP_BACKSPACE = scancodeToKeycode(SCANCODE_KP_BACKSPACE),
+  K_KP_A = scancodeToKeycode(SCANCODE_KP_A),
+  K_KP_B = scancodeToKeycode(SCANCODE_KP_B),
+  K_KP_C = scancodeToKeycode(SCANCODE_KP_C),
+  K_KP_D = scancodeToKeycode(SCANCODE_KP_D),
+  K_KP_E = scancodeToKeycode(SCANCODE_KP_E),
+  K_KP_F = scancodeToKeycode(SCANCODE_KP_F),
+  K_KP_XOR = scancodeToKeycode(SCANCODE_KP_XOR),
+  K_KP_POWER = scancodeToKeycode(SCANCODE_KP_POWER),
+  K_KP_PERCENT = scancodeToKeycode(SCANCODE_KP_PERCENT),
+  K_KP_LESS = scancodeToKeycode(SCANCODE_KP_LESS),
+  K_KP_GREATER = scancodeToKeycode(SCANCODE_KP_GREATER),
+  K_KP_AMPERSAND = scancodeToKeycode(SCANCODE_KP_AMPERSAND),
+  K_KP_DBLAMPERSAND = scancodeToKeycode(SCANCODE_KP_DBLAMPERSAND),
+  K_KP_VERTICALBAR = scancodeToKeycode(SCANCODE_KP_VERTICALBAR),
+  K_KP_DBLVERTICALBAR = scancodeToKeycode(SCANCODE_KP_DBLVERTICALBAR),
+  K_KP_COLON = scancodeToKeycode(SCANCODE_KP_COLON),
+  K_KP_HASH = scancodeToKeycode(SCANCODE_KP_HASH),
+  K_KP_SPACE = scancodeToKeycode(SCANCODE_KP_SPACE),
+  K_KP_AT = scancodeToKeycode(SCANCODE_KP_AT),
+  K_KP_EXCLAM = scancodeToKeycode(SCANCODE_KP_EXCLAM),
+  K_KP_MEMSTORE = scancodeToKeycode(SCANCODE_KP_MEMSTORE),
+  K_KP_MEMRECALL = scancodeToKeycode(SCANCODE_KP_MEMRECALL),
+  K_KP_MEMCLEAR = scancodeToKeycode(SCANCODE_KP_MEMCLEAR),
+  K_KP_MEMADD = scancodeToKeycode(SCANCODE_KP_MEMADD),
+  K_KP_MEMSUBTRACT = scancodeToKeycode(SCANCODE_KP_MEMSUBTRACT),
+  K_KP_MEMMULTIPLY = scancodeToKeycode(SCANCODE_KP_MEMMULTIPLY),
+  K_KP_MEMDIVIDE = scancodeToKeycode(SCANCODE_KP_MEMDIVIDE),
+  K_KP_PLUSMINUS = scancodeToKeycode(SCANCODE_KP_PLUSMINUS),
+  K_KP_CLEAR = scancodeToKeycode(SCANCODE_KP_CLEAR),
+  K_KP_CLEARENTRY = scancodeToKeycode(SCANCODE_KP_CLEARENTRY),
+  K_KP_BINARY = scancodeToKeycode(SCANCODE_KP_BINARY),
+  K_KP_OCTAL = scancodeToKeycode(SCANCODE_KP_OCTAL),
+  K_KP_DECIMAL = scancodeToKeycode(SCANCODE_KP_DECIMAL),
+  K_KP_HEXADECIMAL = scancodeToKeycode(SCANCODE_KP_HEXADECIMAL),
+  K_LCTRL = scancodeToKeycode(SCANCODE_LCTRL),
+  K_LSHIFT = scancodeToKeycode(SCANCODE_LSHIFT),
+  K_LALT = scancodeToKeycode(SCANCODE_LALT),
+  K_LGUI = scancodeToKeycode(SCANCODE_LGUI),
+  K_RCTRL = scancodeToKeycode(SCANCODE_RCTRL),
+  K_RSHIFT = scancodeToKeycode(SCANCODE_RSHIFT),
+  K_RALT = scancodeToKeycode(SCANCODE_RALT),
+  K_RGUI = scancodeToKeycode(SCANCODE_RGUI),
+  K_MODE = scancodeToKeycode(SCANCODE_MODE),
+  K_AUDIONEXT = scancodeToKeycode(SCANCODE_AUDIONEXT),
+  K_AUDIOPREV = scancodeToKeycode(SCANCODE_AUDIOPREV),
+  K_AUDIOSTOP = scancodeToKeycode(SCANCODE_AUDIOSTOP),
+  K_AUDIOPLAY = scancodeToKeycode(SCANCODE_AUDIOPLAY),
+  K_AUDIOMUTE = scancodeToKeycode(SCANCODE_AUDIOMUTE),
+  K_MEDIASELECT = scancodeToKeycode(SCANCODE_MEDIASELECT),
+  K_WWW = scancodeToKeycode(SCANCODE_WWW),
+  K_MAIL = scancodeToKeycode(SCANCODE_MAIL),
+  K_CALCULATOR = scancodeToKeycode(SCANCODE_CALCULATOR),
+  K_COMPUTER = scancodeToKeycode(SCANCODE_COMPUTER),
+  K_AC_SEARCH = scancodeToKeycode(SCANCODE_AC_SEARCH),
+  K_AC_HOME = scancodeToKeycode(SCANCODE_AC_HOME),
+  K_AC_BACK = scancodeToKeycode(SCANCODE_AC_BACK),
+  K_AC_FORWARD = scancodeToKeycode(SCANCODE_AC_FORWARD),
+  K_AC_STOP = scancodeToKeycode(SCANCODE_AC_STOP),
+  K_AC_REFRESH = scancodeToKeycode(SCANCODE_AC_REFRESH),
+  K_AC_BOOKMARKS = scancodeToKeycode(SCANCODE_AC_BOOKMARKS),
+  K_BRIGHTNESSDOWN = scancodeToKeycode(SCANCODE_BRIGHTNESSDOWN),
+  K_BRIGHTNESSUP = scancodeToKeycode(SCANCODE_BRIGHTNESSUP),
+  K_DISPLAYSWITCH = scancodeToKeycode(SCANCODE_DISPLAYSWITCH),
+  K_KBDILLUMTOGGLE = scancodeToKeycode(SCANCODE_KBDILLUMTOGGLE),
+  K_KBDILLUMDOWN = scancodeToKeycode(SCANCODE_KBDILLUMDOWN),
+  K_KBDILLUMUP = scancodeToKeycode(SCANCODE_KBDILLUMUP),
+  K_EJECT = scancodeToKeycode(SCANCODE_EJECT),
+  K_SLEEP = scancodeToKeycode(SCANCODE_SLEEP),
+  K_APP1 = scancodeToKeycode(SCANCODE_APP1),
+  K_APP2 = scancodeToKeycode(SCANCODE_APP2),
+  K_AUDIOREWIND = scancodeToKeycode(SCANCODE_AUDIOREWIND),
+  K_AUDIOFASTFORWARD = scancodeToKeycode(SCANCODE_AUDIOFASTFORWARD)"><wbr />Keycode<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#Keymod"
+    title="Keymod {.size: 4.} = enum
+  KMOD_NONE = 0x00000000, KMOD_LSHIFT = 0x00000001, KMOD_RSHIFT = 0x00000002,
+  KMOD_SHIFT = cint(KMOD_LSHIFT) or cint(KMOD_RSHIFT), KMOD_LCTRL = 0x00000040,
+  KMOD_RCTRL = 0x00000080, KMOD_CTRL = cint(KMOD_LCTRL) or cint(KMOD_RCTRL),
+  KMOD_LALT = 0x00000100, KMOD_RALT = 0x00000200,
+  KMOD_ALT = cint(KMOD_LALT) or cint(KMOD_RALT), KMOD_LGUI = 0x00000400,
+  KMOD_RGUI = 0x00000800, KMOD_GUI = cint(KMOD_LGUI) or cint(KMOD_RGUI),
+  KMOD_NUM = 0x00001000, KMOD_CAPS = 0x00002000, KMOD_MODE = 0x00004000,
+  KMOD_RESERVED = 0x00008000"><wbr />Keymod<span class="attachedType"></span></a></li>
+
+  </ul>
+</li>
+<li>
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#K_SCANCODE_MASK"
-    title="K_SCANCODE_MASK = 1073741824"><wbr />K_<wbr />SCANCODE_<wbr />MASK<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="K_SCANCODE_MASK = 1073741824"><wbr />K_<wbr />SCANCODE_<wbr />MASK<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#scancodeToKeycode.t,untyped"
-    title="scancodeToKeycode(x: untyped): cint"><wbr />scancode<wbr />To<wbr />Keycode<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#or.t,Keymod,Keymod"
-    title="`or`(a, b: Keymod): Keymod"><wbr />`or`<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#and.t,Keymod,Keymod"
-    title="`and`(a, b: Keymod): bool"><wbr />`and`<span class="attachedType" style="visibility:hidden"></span></a></li>
+      <li><a class="reference" href="#scancodeToKeycode.t%2Cuntyped"
+    title="scancodeToKeycode(x: untyped): cint"><wbr />scancode<wbr />To<wbr />Keycode<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#or.t%2CKeymod%2CKeymod"
+    title="`or`(a, b: Keymod): Keymod"><wbr />`or`<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#and.t%2CKeymod%2CKeymod"
+    title="`and`(a, b: Keymod): bool"><wbr />`and`<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -1265,14 +1039,220 @@ function main() {
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc">
 <h1><a class="toc-backref" id="keycodedotnim" href="#keycodedotnim">keycode.nim</a></h1><p>Defines constants which identify keyboard keys and modifiers.</p>
 </p>
-  <div class="section" id="10">
+<div class="section" id="7">
+<h1><a class="toc-backref" href="#7">Types</a></h1>
+<dl class="item">
+<a id="Keycode"></a>
+<dt><pre><a href="keycode.html#Keycode"><span class="Identifier">Keycode</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">K_UNKNOWN</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">K_BACKSPACE</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'\b'</span><span class="Other">,</span> <span class="Identifier">K_TAB</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'\t'</span><span class="Other">,</span> <span class="Identifier">K_RETURN</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'\c'</span><span class="Other">,</span>
+  <span class="Identifier">K_ESCAPE</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'\e'</span><span class="Other">,</span> <span class="Identifier">K_SPACE</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">' '</span><span class="Other">,</span> <span class="Identifier">K_EXCLAIM</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'!'</span><span class="Other">,</span> <span class="Identifier">K_QUOTEDBL</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'\&quot;'</span><span class="Other">,</span>
+  <span class="Identifier">K_HASH</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'#'</span><span class="Other">,</span> <span class="Identifier">K_DOLLAR</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'$'</span><span class="Other">,</span> <span class="Identifier">K_PERCENT</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'%'</span><span class="Other">,</span> <span class="Identifier">K_AMPERSAND</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'&amp;'</span><span class="Other">,</span>
+  <span class="Identifier">K_QUOTE</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'\''</span><span class="Other">,</span> <span class="Identifier">K_LEFTPAREN</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'('</span><span class="Other">,</span> <span class="Identifier">K_RIGHTPAREN</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">')'</span><span class="Other">,</span> <span class="Identifier">K_ASTERISK</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'*'</span><span class="Other">,</span>
+  <span class="Identifier">K_PLUS</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'+'</span><span class="Other">,</span> <span class="Identifier">K_COMMA</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">','</span><span class="Other">,</span> <span class="Identifier">K_MINUS</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'-'</span><span class="Other">,</span> <span class="Identifier">K_PERIOD</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'.'</span><span class="Other">,</span> <span class="Identifier">K_SLASH</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'/'</span><span class="Other">,</span>
+  <span class="Identifier">K_0</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'0'</span><span class="Other">,</span> <span class="Identifier">K_1</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'1'</span><span class="Other">,</span> <span class="Identifier">K_2</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'2'</span><span class="Other">,</span> <span class="Identifier">K_3</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'3'</span><span class="Other">,</span> <span class="Identifier">K_4</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'4'</span><span class="Other">,</span> <span class="Identifier">K_5</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'5'</span><span class="Other">,</span>
+  <span class="Identifier">K_6</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'6'</span><span class="Other">,</span> <span class="Identifier">K_7</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'7'</span><span class="Other">,</span> <span class="Identifier">K_8</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'8'</span><span class="Other">,</span> <span class="Identifier">K_9</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'9'</span><span class="Other">,</span> <span class="Identifier">K_COLON</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">':'</span><span class="Other">,</span>
+  <span class="Identifier">K_SEMICOLON</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">';'</span><span class="Other">,</span> <span class="Identifier">K_LESS</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'&lt;'</span><span class="Other">,</span> <span class="Identifier">K_EQUALS</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'='</span><span class="Other">,</span> <span class="Identifier">K_GREATER</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'&gt;'</span><span class="Other">,</span>
+  <span class="Identifier">K_QUESTION</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'?'</span><span class="Other">,</span> <span class="Identifier">K_AT</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'@'</span><span class="Other">,</span> <span class="Identifier">K_LEFTBRACKET</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'['</span><span class="Other">,</span> <span class="Identifier">K_BACKSLASH</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'\\'</span><span class="Other">,</span>
+  <span class="Identifier">K_RIGHTBRACKET</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">']'</span><span class="Other">,</span> <span class="Identifier">K_CARET</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'^'</span><span class="Other">,</span> <span class="Identifier">K_UNDERSCORE</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'_'</span><span class="Other">,</span>
+  <span class="Identifier">K_BACKQUOTE</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'`'</span><span class="Other">,</span> <span class="Identifier">K_a</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'a'</span><span class="Other">,</span> <span class="Identifier">K_b</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'b'</span><span class="Other">,</span> <span class="Identifier">K_c</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'c'</span><span class="Other">,</span> <span class="Identifier">K_d</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'d'</span><span class="Other">,</span> <span class="Identifier">K_e</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'e'</span><span class="Other">,</span>
+  <span class="Identifier">K_f</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'f'</span><span class="Other">,</span> <span class="Identifier">K_g</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'g'</span><span class="Other">,</span> <span class="Identifier">K_h</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'h'</span><span class="Other">,</span> <span class="Identifier">K_i</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'i'</span><span class="Other">,</span> <span class="Identifier">K_j</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'j'</span><span class="Other">,</span> <span class="Identifier">K_k</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'k'</span><span class="Other">,</span>
+  <span class="Identifier">K_l</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'l'</span><span class="Other">,</span> <span class="Identifier">K_m</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'m'</span><span class="Other">,</span> <span class="Identifier">K_n</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'n'</span><span class="Other">,</span> <span class="Identifier">K_o</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'o'</span><span class="Other">,</span> <span class="Identifier">K_p</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'p'</span><span class="Other">,</span> <span class="Identifier">K_q</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'q'</span><span class="Other">,</span>
+  <span class="Identifier">K_r</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'r'</span><span class="Other">,</span> <span class="Identifier">K_s</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'s'</span><span class="Other">,</span> <span class="Identifier">K_t</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'t'</span><span class="Other">,</span> <span class="Identifier">K_u</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'u'</span><span class="Other">,</span> <span class="Identifier">K_v</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'v'</span><span class="Other">,</span> <span class="Identifier">K_w</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'w'</span><span class="Other">,</span>
+  <span class="Identifier">K_x</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'x'</span><span class="Other">,</span> <span class="Identifier">K_y</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'y'</span><span class="Other">,</span> <span class="Identifier">K_z</span> <span class="Other">=</span> <span class="Identifier">ord</span> <span class="CharLit">'z'</span><span class="Other">,</span> <span class="Identifier">K_DELETE</span> <span class="Other">=</span> <span class="DecNumber">127</span><span class="Other">,</span>
+  <span class="Identifier">K_CAPSLOCK</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_CAPSLOCK</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_F1</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F1</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">K_F2</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F2</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_F3</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F3</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">K_F4</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F4</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_F5</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F5</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">K_F6</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F6</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_F7</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F7</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">K_F8</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F8</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_F9</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F9</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">K_F10</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F10</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_F11</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F11</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">K_F12</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F12</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_PRINTSCREEN</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_PRINTSCREEN</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_SCROLLLOCK</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_SCROLLLOCK</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_PAUSE</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_PAUSE</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_INSERT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_INSERT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_HOME</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_HOME</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_PAGEUP</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_PAGEUP</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_END</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_END</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_PAGEDOWN</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_PAGEDOWN</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_RIGHT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_RIGHT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_LEFT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_LEFT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_DOWN</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_DOWN</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">K_UP</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_UP</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_NUMLOCKCLEAR</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_NUMLOCKCLEAR</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_DIVIDE</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_DIVIDE</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_MULTIPLY</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_MULTIPLY</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_MINUS</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_MINUS</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_PLUS</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_PLUS</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_ENTER</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_ENTER</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_1</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_1</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_2</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_2</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_3</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_3</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_4</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_4</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_5</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_5</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_6</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_6</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_7</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_7</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_8</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_8</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_9</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_9</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_0</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_0</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_PERIOD</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_PERIOD</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_APPLICATION</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_APPLICATION</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_POWER</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_POWER</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_EQUALS</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_EQUALS</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_F13</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F13</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">K_F14</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F14</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_F15</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F15</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">K_F16</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F16</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_F17</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F17</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">K_F18</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F18</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_F19</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F19</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">K_F20</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F20</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_F21</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F21</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">K_F22</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F22</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_F23</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F23</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">K_F24</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_F24</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_EXECUTE</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_EXECUTE</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_HELP</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_HELP</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_MENU</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_MENU</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_SELECT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_SELECT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_STOP</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_STOP</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AGAIN</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AGAIN</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_UNDO</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_UNDO</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_CUT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_CUT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_COPY</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_COPY</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_PASTE</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_PASTE</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_FIND</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_FIND</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_MUTE</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_MUTE</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_VOLUMEUP</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_VOLUMEUP</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_VOLUMEDOWN</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_VOLUMEDOWN</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_COMMA</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_COMMA</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_EQUALSAS400</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_EQUALSAS400</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_ALTERASE</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_ALTERASE</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_SYSREQ</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_SYSREQ</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_CANCEL</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_CANCEL</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_CLEAR</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_CLEAR</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_PRIOR</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_PRIOR</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_RETURN2</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_RETURN2</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_SEPARATOR</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_SEPARATOR</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_OUT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_OUT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_OPER</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_OPER</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_CLEARAGAIN</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_CLEARAGAIN</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_CRSEL</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_CRSEL</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_EXSEL</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_EXSEL</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_00</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_00</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_000</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_000</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_THOUSANDSSEPARATOR</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_THOUSANDSSEPARATOR</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_DECIMALSEPARATOR</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_DECIMALSEPARATOR</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_CURRENCYUNIT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_CURRENCYUNIT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_CURRENCYSUBUNIT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_CURRENCYSUBUNIT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_LEFTPAREN</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_LEFTPAREN</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_RIGHTPAREN</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_RIGHTPAREN</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_LEFTBRACE</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_LEFTBRACE</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_RIGHTBRACE</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_RIGHTBRACE</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_TAB</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_TAB</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_BACKSPACE</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_BACKSPACE</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_A</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_A</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_B</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_B</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_C</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_C</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_D</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_D</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_E</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_E</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_F</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_F</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_XOR</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_XOR</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_POWER</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_POWER</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_PERCENT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_PERCENT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_LESS</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_LESS</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_GREATER</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_GREATER</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_AMPERSAND</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_AMPERSAND</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_DBLAMPERSAND</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_DBLAMPERSAND</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_VERTICALBAR</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_VERTICALBAR</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_DBLVERTICALBAR</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_DBLVERTICALBAR</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_COLON</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_COLON</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_HASH</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_HASH</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_SPACE</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_SPACE</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_AT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_AT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_EXCLAM</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_EXCLAM</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_MEMSTORE</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_MEMSTORE</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_MEMRECALL</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_MEMRECALL</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_MEMCLEAR</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_MEMCLEAR</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_MEMADD</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_MEMADD</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_MEMSUBTRACT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_MEMSUBTRACT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_MEMMULTIPLY</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_MEMMULTIPLY</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_MEMDIVIDE</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_MEMDIVIDE</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_PLUSMINUS</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_PLUSMINUS</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_CLEAR</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_CLEAR</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_CLEARENTRY</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_CLEARENTRY</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_BINARY</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_BINARY</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_OCTAL</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_OCTAL</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_DECIMAL</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_DECIMAL</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KP_HEXADECIMAL</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KP_HEXADECIMAL</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_LCTRL</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_LCTRL</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_LSHIFT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_LSHIFT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_LALT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_LALT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_LGUI</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_LGUI</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_RCTRL</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_RCTRL</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_RSHIFT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_RSHIFT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_RALT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_RALT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_RGUI</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_RGUI</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_MODE</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_MODE</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AUDIONEXT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AUDIONEXT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AUDIOPREV</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AUDIOPREV</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AUDIOSTOP</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AUDIOSTOP</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AUDIOPLAY</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AUDIOPLAY</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AUDIOMUTE</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AUDIOMUTE</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_MEDIASELECT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_MEDIASELECT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_WWW</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_WWW</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_MAIL</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_MAIL</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_CALCULATOR</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_CALCULATOR</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_COMPUTER</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_COMPUTER</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AC_SEARCH</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AC_SEARCH</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AC_HOME</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AC_HOME</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AC_BACK</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AC_BACK</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AC_FORWARD</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AC_FORWARD</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AC_STOP</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AC_STOP</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AC_REFRESH</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AC_REFRESH</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AC_BOOKMARKS</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AC_BOOKMARKS</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_BRIGHTNESSDOWN</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_BRIGHTNESSDOWN</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_BRIGHTNESSUP</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_BRIGHTNESSUP</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_DISPLAYSWITCH</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_DISPLAYSWITCH</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KBDILLUMTOGGLE</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KBDILLUMTOGGLE</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KBDILLUMDOWN</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KBDILLUMDOWN</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_KBDILLUMUP</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_KBDILLUMUP</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_EJECT</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_EJECT</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_SLEEP</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_SLEEP</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_APP1</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_APP1</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_APP2</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_APP2</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AUDIOREWIND</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AUDIOREWIND</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">K_AUDIOFASTFORWARD</span> <span class="Other">=</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">SCANCODE_AUDIOFASTFORWARD</span><span class="Other">)</span></pre></dt>
+<dd>
+
+<p>
+The SDL virtual key representation.</p>
+<p>Values of this type are used to represent keyboard keys using the current layout of the keyboard.  These values include Unicode values representing  the unmodified character that would be generated by pressing the key, or an K_* constant for those keys that do not generate characters.</p>
+<p>A special exception is the number keys at the top of the keyboard which always map to K_0...K_9, regardless of layout.</p>
+
+
+</dd>
+<a id="Keymod"></a>
+<dt><pre><a href="keycode.html#Keymod"><span class="Identifier">Keymod</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">KMOD_NONE</span> <span class="Other">=</span> <span class="DecNumber">0x00000000</span><span class="Other">,</span> <span class="Identifier">KMOD_LSHIFT</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span><span class="Other">,</span> <span class="Identifier">KMOD_RSHIFT</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span><span class="Other">,</span>
+  <span class="Identifier">KMOD_SHIFT</span> <span class="Other">=</span> <span class="Identifier">cint</span><span class="Other">(</span><span class="Identifier">KMOD_LSHIFT</span><span class="Other">)</span> <span class="Keyword">or</span> <span class="Identifier">cint</span><span class="Other">(</span><span class="Identifier">KMOD_RSHIFT</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">KMOD_LCTRL</span> <span class="Other">=</span> <span class="DecNumber">0x00000040</span><span class="Other">,</span>
+  <span class="Identifier">KMOD_RCTRL</span> <span class="Other">=</span> <span class="DecNumber">0x00000080</span><span class="Other">,</span> <span class="Identifier">KMOD_CTRL</span> <span class="Other">=</span> <span class="Identifier">cint</span><span class="Other">(</span><span class="Identifier">KMOD_LCTRL</span><span class="Other">)</span> <span class="Keyword">or</span> <span class="Identifier">cint</span><span class="Other">(</span><span class="Identifier">KMOD_RCTRL</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">KMOD_LALT</span> <span class="Other">=</span> <span class="DecNumber">0x00000100</span><span class="Other">,</span> <span class="Identifier">KMOD_RALT</span> <span class="Other">=</span> <span class="DecNumber">0x00000200</span><span class="Other">,</span>
+  <span class="Identifier">KMOD_ALT</span> <span class="Other">=</span> <span class="Identifier">cint</span><span class="Other">(</span><span class="Identifier">KMOD_LALT</span><span class="Other">)</span> <span class="Keyword">or</span> <span class="Identifier">cint</span><span class="Other">(</span><span class="Identifier">KMOD_RALT</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">KMOD_LGUI</span> <span class="Other">=</span> <span class="DecNumber">0x00000400</span><span class="Other">,</span>
+  <span class="Identifier">KMOD_RGUI</span> <span class="Other">=</span> <span class="DecNumber">0x00000800</span><span class="Other">,</span> <span class="Identifier">KMOD_GUI</span> <span class="Other">=</span> <span class="Identifier">cint</span><span class="Other">(</span><span class="Identifier">KMOD_LGUI</span><span class="Other">)</span> <span class="Keyword">or</span> <span class="Identifier">cint</span><span class="Other">(</span><span class="Identifier">KMOD_RGUI</span><span class="Other">)</span><span class="Other">,</span>
+  <span class="Identifier">KMOD_NUM</span> <span class="Other">=</span> <span class="DecNumber">0x00001000</span><span class="Other">,</span> <span class="Identifier">KMOD_CAPS</span> <span class="Other">=</span> <span class="DecNumber">0x00002000</span><span class="Other">,</span> <span class="Identifier">KMOD_MODE</span> <span class="Other">=</span> <span class="DecNumber">0x00004000</span><span class="Other">,</span>
+  <span class="Identifier">KMOD_RESERVED</span> <span class="Other">=</span> <span class="DecNumber">0x00008000</span></pre></dt>
+<dd>
+
+
+Enumeration of valid key mods (possibly OR'd together).
+
+</dd>
+
+</dl></div>
+<div class="section" id="10">
 <h1><a class="toc-backref" href="#10">Consts</a></h1>
 <dl class="item">
-<dt id="K_SCANCODE_MASK"><a name="K_SCANCODE_MASK"></a><pre><span class="Identifier">K_SCANCODE_MASK</span> <span class="Other">=</span> <span class="DecNumber">1073741824</span></pre></dt>
+<a id="K_SCANCODE_MASK"></a>
+<dt><pre><a href="keycode.html#K_SCANCODE_MASK"><span class="Identifier">K_SCANCODE_MASK</span></a> <span class="Other">=</span> <span class="DecNumber">1073741824</span></pre></dt>
 <dd>
+
 
 
 </dd>
@@ -1281,18 +1261,24 @@ function main() {
 <div class="section" id="18">
 <h1><a class="toc-backref" href="#18">Templates</a></h1>
 <dl class="item">
-<dt id="scancodeToKeycode"><a name="scancodeToKeycode.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">scancodeToKeycode</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<a id="scancodeToKeycode.t,untyped"></a>
+<dt><pre><span class="Keyword">template</span> <a href="#scancodeToKeycode.t%2Cuntyped"><span class="Identifier">scancodeToKeycode</span></a><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
 <dd>
+
 
 
 </dd>
-<dt id="or"><a name="or.t,Keymod,Keymod"></a><pre><span class="Keyword">template</span> <span class="Identifier">`or`</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Keymod</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Keymod</span></pre></dt>
+<a id="or.t,Keymod,Keymod"></a>
+<dt><pre><span class="Keyword">template</span> <a href="#or.t%2CKeymod%2CKeymod"><span class="Identifier">`or`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="keycode.html#Keymod"><span class="Identifier">Keymod</span></a><span class="Other">)</span><span class="Other">:</span> <a href="keycode.html#Keymod"><span class="Identifier">Keymod</span></a></pre></dt>
 <dd>
+
 
 
 </dd>
-<dt id="and"><a name="and.t,Keymod,Keymod"></a><pre><span class="Keyword">template</span> <span class="Identifier">`and`</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Keymod</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span></pre></dt>
+<a id="and.t,Keymod,Keymod"></a>
+<dt><pre><span class="Keyword">template</span> <a href="#and.t%2CKeymod%2CKeymod"><span class="Identifier">`and`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="keycode.html#Keymod"><span class="Identifier">Keymod</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span></pre></dt>
 <dd>
+
 
 
 </dd>
@@ -1306,7 +1292,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-11-02 19:11:02 UTC</small>
+        <small>Made with Nim. Generated: 2019-07-27 12:13:09 UTC</small>
       </div>
     </div>
   </div>

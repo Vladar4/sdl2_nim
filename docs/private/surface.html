@@ -16,7 +16,7 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
-<title>Module surface</title>
+<title>surface</title>
 <style type="text/css" >
 /*
 Stylesheet for use with Docutils/rst2html.
@@ -27,232 +27,130 @@ customize this style sheet.
 Modified from Chad Skeeters' rst2html-style
 https://bitbucket.org/cskeeters/rst2html-style/
 
-Modified by Boyd Greenfield
+Modified by Boyd Greenfield and narimiran
 */
-/* SCSS variables */
-/* Text weights */
-/* Body colors */
-/* Text colors */
-/* Link colors */
-/* Syntax highlighting colors */
-/* Pct changes */
-/* Mixins */
-/* Body/layout */
+
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%; }
 
-/* Where we want fancier font if available */
-h1, h2, h3, h4, h5, h6, p.module-desc, table.docinfo + blockquote p, table.docinfo blockquote p, h1 + blockquote p {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important; }
-
-h1.title {
-  font-weight: 900; }
-
 body {
   font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
-  color: #444;
-  letter-spacing: 0.15px;
-  background-color: #FDFBFA; }
+  font-size: 1.125em;
+  line-height: 1.5;
+  color: #222;
+  background-color: #FCFCFC; }
 
 /* Skeleton grid */
 .container {
   position: relative;
   width: 100%;
-  max-width: 960px;
+  max-width: 1050px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
   box-sizing: border-box; }
 
 .column,
 .columns {
   width: 100%;
   float: left;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  margin-left: 1%;
+}
 
-/* For devices larger than 400px */
-@media (min-width: 400px) {
-  .container {
-    width: 100%;
-    padding: 0; } }
-/* For devices larger than 650px */
-@media (min-width: 650px) {
-  .container {
-    width: 100%; }
+.column:first-child,
+.columns:first-child {
+  margin-left: 0; }
 
-  .column,
-  .columns {
-    margin-left: 4%; }
+.three.columns {
+  width: 19%; }
 
-  .column:first-child,
-  .columns:first-child {
-    margin-left: 0; }
+.nine.columns {
+  width: 80.0%; }
 
-  .one.column,
-  .one.columns {
-    width: 4.66666666667%; }
+.twelve.columns {
+  width: 100%;
+  margin-left: 0; }
 
-  .two.columns {
-    width: 13.3333333333%; }
-
+@media screen and (max-width: 860px) {
   .three.columns {
-    width: 22%; }
-
-  .four.columns {
-    width: 30.6666666667%; }
-
-  .five.columns {
-    width: 39.3333333333%; }
-
-  .six.columns {
-    width: 48%; }
-
-  .seven.columns {
-    width: 56.6666666667%; }
-
-  .eight.columns {
-    width: 65.3333333333%; }
-
+    display: none;
+  }
   .nine.columns {
-    width: 74.0%; }
-
-  .ten.columns {
-    width: 82.6666666667%; }
-
-  .eleven.columns {
-    width: 91.3333333333%; }
-
-  .twelve.columns {
-    width: 100%;
-    margin-left: 0; }
-
-  .one-third.column {
-    width: 30.6666666667%; }
-
-  .two-thirds.column {
-    width: 65.3333333333%; } }
-/* Customer Overrides */
-.footer {
-  text-align: center;
-  color: #969696;
-  padding-top: 10%; }
-
-p.module-desc {
-  font-size: 1.1em;
-  color: #666666; }
-
-a.link-seesrc {
-  color: #aec7d2;
-  font-style: italic; }
-
-a.link-seesrc:hover {
-  color: #6c9aae; }
-
-#toc-list {
-  word-wrap: break-word; }
-
-ul.simple-toc {
-  list-style: none; }
-
-ul.simple-toc a.reference-toplevel {
-  font-weight: bold;
-  color: #0077b3; }
-
-ul.simple-toc-section {
-  list-style-type: circle;
-  color: #6c9aae; }
-
-ul.simple-toc-section a.reference {
-  color: #0077b3; }
+    width: 98.0%;
+  }
+  body {
+    font-size: 1em;
+    line-height: 1.35;
+  }
+}
 
 cite {
   font-style: italic !important; }
 
-dt > pre {
-  border-color: rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 0.3);
-  margin: 15px 0px 5px; }
-
-dd > pre {
-  border-color: rgba(0, 0, 0, 0.1);
-  background-color: whitesmoke;
-  margin-top: 8px; }
-
-.item > dd {
-  margin-left: 10px;
-  margin-bottom: 30px; }
-
-/* Nim line-numbered tables */
-.line-nums-table {
-  width: 100%;
-  table-layout: fixed; }
 
 /* Nim search input */
 div#searchInputDiv {
-  margin-bottom: 8px;
+  margin-bottom: 1em;
 }
-div#searchInputDiv input#searchInput {
-  width: 10em;
-}
-div.search-groupby {
-  margin-bottom: 8px;
+input#searchInput {
+  width: 80%;
 }
 
-table.line-nums-table {
-  border-radius: 4px;
-  border: 1px solid #cccccc;
-  background-color: whitesmoke;
-  border-collapse: separate;
-  margin-top: 15px;
-  margin-bottom: 25px; }
-
-.line-nums-table tbody {
-  border: none; }
-
-.line-nums-table td pre {
-  border: none;
-  background-color: transparent; }
-
-.line-nums-table td.blob-line-nums {
-  width: 28px; }
-
-.line-nums-table td.blob-line-nums pre {
-  color: #b0b0b0;
-  -webkit-filter: opacity(75%);
-  text-align: right;
-  border-color: transparent;
-  background-color: transparent;
-  padding-left: 0px;
-  margin-left: 0px;
-  padding-right: 0px;
-  margin-right: 0px; }
+/*
+ * Some custom formatting for input forms.
+ * This also fixes input form colors on Firefox with a dark system theme on Linux.
+ */
+input {
+  -moz-appearance: none;
+  color: #333;
+  background-color: #f8f8f8;
+  border: 1px solid #aaa;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-size: 0.9em;
+  padding: 6px;
+}
+input:focus {
+  border: 1px solid #1fa0eb;
+  box-shadow: 0 0 2px #1fa0eb;
+}
 
 /* Docgen styles */
 /* Links */
 a {
-  color: #0077b3;
-  text-decoration: none; }
+  color: #07b;
+  text-decoration: none;
+}
+
+a span.Identifier {
+  text-decoration: underline;
+  text-decoration-color: #aab;
+}
+
+a.reference-toplevel {
+  font-weight: bold;
+}
+
+a.toc-backref {
+  text-decoration: none;
+  color: #222; }
+
+a.link-seesrc {
+  color: #607c9f;
+  font-size: 0.9em;
+  font-style: italic; }
 
 a:hover,
 a:focus {
-  color: #00334d;
+  color: #607c9f;
   text-decoration: underline; }
 
-a:visited {
-  color: #00334d; }
+a:hover span.Identifier {
+  color: #607c9f;
+}
 
-a:focus {
-  outline: thin dotted #2d2d2d;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px; }
-
-a:hover,
-a:active {
-  outline: 0; }
 
 sub,
 sup {
@@ -329,379 +227,258 @@ img {
 
   h2,
   h3 {
-    page-break-after: avoid; } }
-.img-rounded {
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px; }
+    page-break-after: avoid; }
+}
 
-.img-polaroid {
-  padding: 4px;
-  background-color: rgba(252, 248, 244, 0.75);
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
 
 p {
-  margin: 0 0 8px; }
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
 
 small {
   font-size: 85%; }
 
 strong {
-  font-weight: 600; }
+  font-weight: 600;
+  font-size: 0.95em;
+  color: #3c3c3c;
+}
 
 em {
   font-style: italic; }
 
-cite {
-  font-style: normal; }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  line-height: 20px;
-  color: inherit;
-  text-rendering: optimizelegibility; }
-
 h1 {
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: 400;
-  padding-bottom: .15em;
-  border-bottom: 1px solid #aaaaaa;
-  margin-top: 1.0em;
+  padding-bottom: .25em;
+  border-bottom: 1px solid #aaa;
+  margin-top: 2.5em;
+  margin-bottom: 1em;
   line-height: 1.2em; }
 
 h1.title {
   padding-bottom: 1em;
   border-bottom: 0px;
-  font-size: 2.75em; }
+  font-size: 2.5em;
+  text-align: center;
+  font-weight: 900;
+  margin-top: 0.75em;
+  margin-bottom: 0em;
+}
 
 h2 {
-  font-size: 1.5em;
-  margin-top: 1.5em; }
+  font-size: 1.3em;
+  margin-top: 2em; }
+
+h2.subtitle {
+  text-align: center; }
 
 h3 {
-  font-size: 1.3em;
+  font-size: 1.125em;
   font-style: italic;
-  margin-top: 0.75em; }
+  margin-top: 1.5em; }
 
 h4 {
-  font-size: 1.3em;
-  margin-top: 0.5em; }
+  font-size: 1.125em;
+  margin-top: 1em; }
 
 h5 {
-  font-size: 1.2em;
-  margin-top: 0.25em; }
+  font-size: 1.125em;
+  margin-top: 0.75em; }
 
 h6 {
   font-size: 1.1em; }
 
+
 ul,
 ol {
   padding: 0;
-  margin: 0 0 0px 15px; }
+  margin-top: 0.5em;
+  margin-left: 0.75em; }
 
 ul ul,
 ul ol,
 ol ol,
 ol ul {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  margin-left: 1.25em; }
 
 li {
-  line-height: 20px; }
-
-dl {
-  margin-bottom: 20px; }
-
-dt,
-dd {
-  line-height: 20px; }
-
-dt {
-  font-weight: bold; }
-
-dd {
-  margin-left: 10px;
-  margin-bottom: 26px; }
-
-hr {
-  margin: 20px 0;
-  border: 0;
-  border-top: 1px solid #eeeeee;
-  border-bottom: 1px solid #ffffff; }
-
-abbr[title],
-abbr[data-original-title] {
-  cursor: help;
-  border-bottom: 1px dotted #999999; }
-
-abbr.initialism {
-  font-size: 90%;
-  text-transform: uppercase; }
-
-blockquote {
-  padding: 0 0 0 15px;
-  margin: 0 0 20px;
-  border-left: 5px solid #EFEBE0; }
-
-table.docinfo + blockquote, table.docinfo blockquote, h1 + blockquote {
-  border-left: 5px solid #c9c9c9;
+    list-style-type: circle;
 }
 
-table.docinfo + blockquote p, table.docinfo blockquote p, h1 + blockquote p {
-  margin-bottom: 0;
-  font-size: 15px;
-  font-weight: 200;
-  line-height: 1.5;
-  font-style: italic; }
+ul.simple-boot li {
+    list-style-type: none;
+    margin-left: 0em;
+    margin-bottom: 0.5em;
+}
 
-q:before,
-q:after,
-blockquote:before,
-blockquote:after {
-  content: ""; }
+ol.simple > li, ul.simple > li {
+  margin-bottom: 0.25em;
+  margin-left: 0.4em }
 
-address {
-  display: block;
-  margin-bottom: 20px;
-  font-style: normal;
-  line-height: 20px; }
+ul.simple.simple-toc > li {
+    margin-top: 1em;
+}
 
-code,
-pre {
-  font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
-  padding: 0 3px 2px;
-  font-weight: 500;
-  font-size: 12px;
-  color: #444444;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px; }
+ul.simple-toc {
+  list-style: none;
+  font-size: 0.9em;
+  margin-left: -0.3em;
+  margin-top: 1em; }
+
+ul.simple-toc > li {
+    list-style-type: none;
+}
+
+ul.simple-toc-section {
+  list-style-type: circle;
+  margin-left: 1em;
+  color: #6c9aae; }
+
+
+ol.arabic {
+  list-style: decimal; }
+
+ol.loweralpha {
+  list-style: lower-alpha; }
+
+ol.upperalpha {
+  list-style: upper-alpha; }
+
+ol.lowerroman {
+  list-style: lower-roman; }
+
+ol.upperroman {
+  list-style: upper-roman; }
+
+ul.auto-toc {
+  list-style-type: none; }
+
+
+dl {
+  margin-bottom: 1.5em; }
+
+dt {
+  margin-bottom: -0.5em;
+  margin-left: 0.0em; }
+
+dd {
+  margin-left: 2.0em;
+  margin-bottom: 3.0em;
+  margin-top: 0.5em; }
+
+
+hr {
+  margin: 2em 0;
+  border: 0;
+  border-top: 1px solid #aaa; }
+
+blockquote {
+  font-size: 0.9em;
+  font-style: italic;
+  padding-left: 0.5em;
+  margin-left: 0;
+  border-left: 5px solid #bbc;
+}
 
 .pre {
   font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
-  font-weight: 600;
-  /*color: #504da6;*/
+  font-weight: 500;
+  font-size: 0.85em;
+  background-color: #f0f3ff;
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 4px;
 }
 
-code {
-  padding: 2px 4px;
-  color: #444444;
-  white-space: nowrap;
-  background-color: white;
-  border: 1px solid #777777; }
-
 pre {
+  font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
+  color: #222;
+  font-weight: 500;
   display: inline-block;
   box-sizing: border-box;
-  min-width: calc(100% - 19.5px);
-  padding: 9.5px;
-  margin: 0.25em 10px 10px 10px;
-  font-size: 15px;
-  line-height: 20px;
+  min-width: 100%;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: 0.85em;
   white-space: pre !important;
   overflow-y: hidden;
   overflow-x: visible;
-  background-color: rgba(0, 0, 0, 0.01);
-  border: 1px solid #cccccc;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px; }
-
-pre.prettyprint {
-  margin-bottom: 20px; }
-
-pre code {
-  padding: 0;
-  color: inherit;
-  white-space: pre;
-  overflow-x: visible;
-  background-color: transparent;
-  border: 0; }
+  background-color: ghostwhite;
+  border: 1px solid #dde;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px; }
 
 .pre-scrollable {
   max-height: 340px;
   overflow-y: scroll; }
 
+
+/* Nim line-numbered tables */
+.line-nums-table {
+  width: 100%;
+  table-layout: fixed; }
+
+table.line-nums-table {
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  background-color: ghostwhite;
+  border-collapse: separate;
+  margin-top: 15px;
+  margin-bottom: 25px; }
+
+.line-nums-table tbody {
+  border: none; }
+
+.line-nums-table td pre {
+  border: none;
+  background-color: transparent; }
+
+.line-nums-table td.blob-line-nums {
+  width: 28px; }
+
+.line-nums-table td.blob-line-nums pre {
+  color: #b0b0b0;
+  -webkit-filter: opacity(75%);
+  text-align: right;
+  border-color: transparent;
+  background-color: transparent;
+  padding-left: 0px;
+  margin-left: 0px;
+  padding-right: 0px;
+  margin-right: 0px; }
+
+
 table {
   max-width: 100%;
   background-color: transparent;
+  margin-top: 0.5em;
+  margin-bottom: 1.5em;
   border-collapse: collapse;
-  border-spacing: 0; }
-
-table th, table td {
-  padding: 0px 8px 0px;
+  border-color: #ccc;
+  border-spacing: 0;
+  font-size: 0.9em;
 }
 
-.table {
-  width: 100%;
-  margin-bottom: 20px; }
+table th, table td {
+  padding: 0px 0.5em 0px;
+}
 
-.table th,
-.table td {
-  padding: 8px;
-  line-height: 20px;
-  text-align: left;
-  vertical-align: top;
-  border-top: 1px solid #444444; }
-
-.table th {
+table th {
+  background-color: #e8e8e8;
   font-weight: bold; }
 
-.table thead th {
-  vertical-align: bottom; }
+table th.docinfo-name {
+    background-color: transparent;
+}
 
-.table caption + thead tr:first-child th,
-.table caption + thead tr:first-child td,
-.table colgroup + thead tr:first-child th,
-.table colgroup + thead tr:first-child td,
-.table thead:first-child tr:first-child th,
-.table thead:first-child tr:first-child td {
-  border-top: 0; }
+table tr:hover {
+  background-color: ghostwhite; }
 
-.table tbody + tbody {
-  border-top: 2px solid #444444; }
-
-.table .table {
-  background-color: rgba(252, 248, 244, 0.75); }
-
-.table-condensed th,
-.table-condensed td {
-  padding: 4px 5px; }
-
-.table-bordered {
-  border: 1px solid #444444;
-  border-collapse: separate;
-  *border-collapse: collapse;
-  border-left: 0;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px; }
-
-.table-bordered th,
-.table-bordered td {
-  border-left: 1px solid #444444; }
-
-.table-bordered caption + thead tr:first-child th,
-.table-bordered caption + tbody tr:first-child th,
-.table-bordered caption + tbody tr:first-child td,
-.table-bordered colgroup + thead tr:first-child th,
-.table-bordered colgroup + tbody tr:first-child th,
-.table-bordered colgroup + tbody tr:first-child td,
-.table-bordered thead:first-child tr:first-child th,
-.table-bordered tbody:first-child tr:first-child th,
-.table-bordered tbody:first-child tr:first-child td {
-  border-top: 0; }
-
-.table-bordered thead:first-child tr:first-child > th:first-child,
-.table-bordered tbody:first-child tr:first-child > td:first-child,
-.table-bordered tbody:first-child tr:first-child > th:first-child {
-  -webkit-border-top-left-radius: 4px;
-  border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px; }
-
-.table-bordered thead:first-child tr:first-child > th:last-child,
-.table-bordered tbody:first-child tr:first-child > td:last-child,
-.table-bordered tbody:first-child tr:first-child > th:last-child {
-  -webkit-border-top-right-radius: 4px;
-  border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px; }
-
-.table-bordered thead:last-child tr:last-child > th:first-child,
-.table-bordered tbody:last-child tr:last-child > td:first-child,
-.table-bordered tbody:last-child tr:last-child > th:first-child,
-.table-bordered tfoot:last-child tr:last-child > td:first-child,
-.table-bordered tfoot:last-child tr:last-child > th:first-child {
-  -webkit-border-bottom-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomleft: 4px; }
-
-.table-bordered thead:last-child tr:last-child > th:last-child,
-.table-bordered tbody:last-child tr:last-child > td:last-child,
-.table-bordered tbody:last-child tr:last-child > th:last-child,
-.table-bordered tfoot:last-child tr:last-child > td:last-child,
-.table-bordered tfoot:last-child tr:last-child > th:last-child {
-  -webkit-border-bottom-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  -moz-border-radius-bottomright: 4px; }
-
-.table-bordered tfoot + tbody:last-child tr:last-child td:first-child {
-  -webkit-border-bottom-left-radius: 0;
-  border-bottom-left-radius: 0;
-  -moz-border-radius-bottomleft: 0; }
-
-.table-bordered tfoot + tbody:last-child tr:last-child td:last-child {
-  -webkit-border-bottom-right-radius: 0;
-  border-bottom-right-radius: 0;
-  -moz-border-radius-bottomright: 0; }
-
-.table-bordered caption + thead tr:first-child th:first-child,
-.table-bordered caption + tbody tr:first-child td:first-child,
-.table-bordered colgroup + thead tr:first-child th:first-child,
-.table-bordered colgroup + tbody tr:first-child td:first-child {
-  -webkit-border-top-left-radius: 4px;
-  border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px; }
-
-.table-bordered caption + thead tr:first-child th:last-child,
-.table-bordered caption + tbody tr:first-child td:last-child,
-.table-bordered colgroup + thead tr:first-child th:last-child,
-.table-bordered colgroup + tbody tr:first-child td:last-child {
-  -webkit-border-top-right-radius: 4px;
-  border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px; }
-
-table.docutils th {
-  background-color: #e8e8e8; }
-
-table.docutils tr:hover {
-  background-color: whitesmoke; }
-
-.table-striped tbody > tr:nth-child(odd) > td,
-.table-striped tbody > tr:nth-child(odd) > th {
-  background-color: rgba(252, 248, 244, 0.75); }
-
-.table-hover tbody tr:hover > td,
-.table-hover tbody tr:hover > th {
-  background-color: rgba(241, 222, 204, 0.75); }
-
-table td[class*="span"],
-table th[class*="span"],
-.row-fluid table td[class*="span"],
-.row-fluid table th[class*="span"] {
-  display: table-cell;
-  float: none;
-  margin-left: 0; }
-
-.hero-unit {
-  padding: 60px;
-  margin-bottom: 30px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  color: inherit;
-  background-color: rgba(230, 197, 164, 0.75);
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px; }
-
-.hero-unit h1 {
-  margin-bottom: 0;
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
-  color: inherit; }
-
-.hero-unit li {
-  line-height: 30px; }
 
 /* rst2html default used to remove borders from tables and images */
 .borderless, table.borderless td, table.borderless th {
@@ -722,10 +499,6 @@ table.borderless td, table.borderless th {
 .hidden {
   display: none; }
 
-a.toc-backref {
-  text-decoration: none;
-  color: #444444; }
-
 blockquote.epigraph {
   margin: 2em 5em; }
 
@@ -735,85 +508,6 @@ dl.docutils dd {
 object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
   overflow: hidden; }
 
-/* Uncomment (and remove this text!) to get bold-faced definition list terms
-dl.docutils dt {
-  font-weight: bold }
-*/
-div.abstract {
-  margin: 2em 5em; }
-
-div.abstract p.topic-title {
-  font-weight: bold;
-  text-align: center; }
-
-div.admonition, div.attention, div.caution, div.danger, div.error,
-div.hint, div.important, div.note, div.tip, div.warning {
-  margin: 2em;
-  border: medium outset;
-  padding: 1em; }
-
-div.note, div.warning {
-  margin: 1.5em 0px;
-  border: none; }
-
-div.note p.admonition-title,
-div.warning p.admonition-title {
-  display: none; }
-
-/* Clearfix
- * http://css-tricks.com/snippets/css/clear-fix/
- */
-div.note:after,
-div.warning:after {
-  content: "";
-  display: table;
-  clear: both; }
-
-div.note p:before,
-div.warning p:before {
-  display: block;
-  float: left;
-  font-size: 4em;
-  line-height: 1em;
-  margin-right: 20px;
-  margin-left: 0em;
-  margin-top: -10px;
-  content: '\0270D';
-  /*handwriting*/ }
-
-div.warning p:before {
-  content: '\026A0';
-  /*warning*/ }
-
-div.admonition p.admonition-title, div.hint p.admonition-title,
-div.important p.admonition-title, div.note p.admonition-title,
-div.tip p.admonition-title {
-  font-weight: bold;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
-
-div.attention p.admonition-title, div.caution p.admonition-title,
-div.danger p.admonition-title, div.error p.admonition-title,
-div.warning p.admonition-title, .code .error {
-  color: #b30000;
-  font-weight: bold;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
-
-/* Uncomment (and remove this text!) to get reduced vertical space in
-   compound paragraphs.
-div.compound .compound-first, div.compound .compound-middle {
-  margin-bottom: 0.5em }
-
-div.compound .compound-last, div.compound .compound-middle {
-  margin-top: 0.5em }
-*/
-div.dedication {
-  margin: 2em 5em;
-  text-align: center;
-  font-style: italic; }
-
-div.dedication p.topic-title {
-  font-weight: bold;
-  font-style: normal; }
 
 div.figure {
   margin-left: 2em;
@@ -821,7 +515,13 @@ div.figure {
 
 div.footer, div.header {
   clear: both;
+  text-align: center;
+  color: #666;
   font-size: smaller; }
+
+div.footer {
+    padding-top: 5em;
+}
 
 div.line-block {
   display: block;
@@ -833,45 +533,24 @@ div.line-block div.line-block {
   margin-bottom: 0;
   margin-left: 1.5em; }
 
-div.sidebar {
-  margin: 0 0 0.5em 1em;
-  border: medium outset;
-  padding: 1em;
-  background-color: rgba(252, 248, 244, 0.75);
-  width: 40%;
-  float: right;
-  clear: right; }
-
-div.sidebar p.rubric {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-size: medium; }
-
-div.system-messages {
-  margin: 5em; }
-
-div.system-messages h1 {
-  color: #b30000; }
-
-div.system-message {
-  border: medium outset;
-  padding: 1em; }
-
-div.system-message p.system-message-title {
-  color: #b30000;
-  font-weight: bold; }
-
 div.topic {
   margin: 2em; }
 
-h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
-h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
-  margin-top: 0.4em; }
+div.search_results {
+  background-color: antiquewhite;
+  margin: 3em;
+  padding: 1em;
+  border: 1px solid #4d4d4d;
+}
 
-h1.title {
-  text-align: center; }
+div#global-links ul {
+  margin-left: 0;
+  list-style-type: none;
+}
 
-h2.subtitle {
-  text-align: center; }
+div#global-links > simple-boot {
+    margin-left: 3em;
+}
 
 hr.docutils {
   width: 75%; }
@@ -905,30 +584,6 @@ img.align-center, .figure.align-center, object.align-center {
 div.align-right {
   text-align: inherit; }
 
-/* div.align-center * { */
-/*   text-align: left } */
-
-ul.simple > li {
-  margin-bottom: 0.5em }
-
-ol.simple, ul.simple {
-  margin-bottom: 1em; }
-
-ol.arabic {
-  list-style: decimal; }
-
-ol.loweralpha {
-  list-style: lower-alpha; }
-
-ol.upperalpha {
-  list-style: upper-alpha; }
-
-ol.lowerroman {
-  list-style: lower-roman; }
-
-ol.upperroman {
-  list-style: upper-roman; }
-
 p.attribution {
   text-align: right;
   margin-left: 50%; }
@@ -948,15 +603,6 @@ p.rubric {
   font-size: larger;
   color: maroon;
   text-align: center; }
-
-p.sidebar-title {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  font-size: larger; }
-
-p.sidebar-subtitle {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: bold; }
 
 p.topic-title {
   font-weight: bold; }
@@ -997,21 +643,13 @@ pre.code .inserted, code .inserted {
   background-color: #A3D289; }
 
 span.classifier {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-style: oblique; }
 
 span.classifier-delimiter {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: bold; }
-
-span.interpreted {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
 
 span.option {
   white-space: nowrap; }
-
-span.pre {
-  white-space: pre; }
 
 span.problematic {
   color: #b30000; }
@@ -1019,44 +657,6 @@ span.problematic {
 span.section-subtitle {
   /* font-size relative to parent (h1..h6 element) */
   font-size: 80%; }
-
-table.citation {
-  border-left: solid 1px #666666;
-  margin-left: 1px; }
-
-table.docinfo {
-  margin: 0em;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important;
-  color: #444444; }
-
-table.docutils {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em; }
-
-table.footnote {
-  border-left: solid 1px #2d2d2d;
-  margin-left: 1px; }
-
-table.docutils td, table.docutils th,
-table.docinfo td, table.docinfo th {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  vertical-align: top; }
-
-table.docutils th.field-name, table.docinfo th.docinfo-name {
-  font-weight: 700;
-  text-align: left;
-  white-space: nowrap;
-  padding-left: 0; }
-
-h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
-h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
-  font-size: 100%; }
-
-ul.auto-toc {
-  list-style-type: none; }
 
 span.DecNumber {
   color: #252dbe; }
@@ -1074,7 +674,7 @@ span.FloatNumber {
   color: #252dbe; }
 
 span.Identifier {
-  color: #3b3b3b; }
+  color: #222; }
 
 span.Keyword {
   font-weight: 600;
@@ -1139,37 +739,22 @@ dt pre > span.Identifier, dt pre > span.Operator {
   color: #155da4;
   font-weight: 700; }
 
-dt pre > span.Identifier ~ span.Identifier, dt pre > span.Operator ~ span.Identifier {
-  color: inherit;
-  font-weight: inherit; }
-
-dt pre > span.Operator ~ span.Identifier {
+dt pre > span.Keyword ~ span.Identifier, dt pre > span.Identifier ~ span.Identifier,
+dt pre > span.Operator ~ span.Identifier, dt pre > span.Other ~ span.Identifier {
   color: inherit;
   font-weight: inherit; }
 
 /* Nim sprite for the footer (taken from main page favicon) */
 .nim-sprite {
   display: inline-block;
-  height: 12px;
-  width: 12px;
+  height: 16px;
+  width: 16px;
   background-position: 0 0;
-  background-size: 12px 12px;
+  background-size: 16px 16px;
   -webkit-filter: opacity(50%);
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
-
-div.search_results {
-  background-color: antiquewhite;
-  margin: 3em;
-  padding: 1em;
-  border: 1px solid #4d4d4d;
-}
-
-div#global-links ul {
-  margin-left: 0;
-  list-style-type: none;
-}
 
 span.pragmadots {
   /* Position: relative frees us up to make the dots
@@ -1178,18 +763,14 @@ span.pragmadots {
   position: relative;
   /* 1px down looks slightly nicer */
   top: 1px;
-
   padding: 2px;
-  background-color: #D3D3D3;
+  background-color: #e8e8e8;
   border-radius: 4px;
   margin: 0 2px;
   cursor: pointer;
-
-  /* For some reason on Chrome, making the font size
-  smaller than 1em is causing the parent container to
-  bulge slightly. So, we're stuck with inheriting 1em,
-  which is sad, because 0.8em looks better... */
+  font-size: 0.8em;
 }
+
 span.pragmadots:hover {
   background-color: #DBDBDB;
 }
@@ -1197,9 +778,13 @@ span.pragmawrap {
   display: none;
 }
 
+span.attachedType {
+  display: none;
+  visibility: hidden;
+}
 </style>
 
-<script type="text/javascript" src="../dochack.js"></script>
+<script type="text/javascript" src="dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -1219,7 +804,7 @@ function main() {
 <body onload="main()">
 <div class="document" id="documentId">
   <div class="container">
-    <h1 class="title">Module surface</h1>
+    <h1 class="title">surface</h1>
     <div class="row">
   <div class="three columns">
   <div id="global-links">
@@ -1243,7 +828,7 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Surface"
-    title="Surface = ptr SurfaceObj"><wbr />Surface<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="Surface = ptr SurfaceObj"><wbr />Surface<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#SurfaceObj"
     title="SurfaceObj = object
   flags*: uint32               ## Read-only 
@@ -1262,15 +847,15 @@ function main() {
                  ## info for fast blit mapping to other surfaces
   map*: pointer                ## Private \
               ## Reference count -- used when freeing surface
-  refcount*: cint              ## Read-mostly"><wbr />Surface<wbr />Obj<span class="attachedType" style="visibility:hidden"></span></a></li>
+  refcount*: cint              ## Read-mostly"><wbr />Surface<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#blit"
-    title="blit = proc (src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint {.cdecl.}"><wbr />blit<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="blit = proc (src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint {.cdecl.}"><wbr />blit<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#YUVConversionMode"
     title="YUVConversionMode {.size: 4.} = enum
   YUV_CONVERSION_JPEG,        ## Full range JPEG
   YUV_CONVERSION_BT601,       ## BT.601 (the default)
   YUV_CONVERSION_BT709,       ## BT.709
-  YUV_CONVERSION_AUTOMATIC    ## BT.601 for SD content, BT.709 for HD content"><wbr />YUVConversion<wbr />Mode<span class="attachedType" style="visibility:hidden"></span></a></li>
+  YUV_CONVERSION_AUTOMATIC    ## BT.601 for SD content, BT.709 for HD content"><wbr />YUVConversion<wbr />Mode<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -1278,115 +863,117 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#SWSURFACE"
-    title="SWSURFACE = 0"><wbr />SWSURFACE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="SWSURFACE = 0"><wbr />SWSURFACE<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#PREALLOC"
-    title="PREALLOC = 0x00000001"><wbr />PREALLOC<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="PREALLOC = 0x00000001"><wbr />PREALLOC<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#RLEACCEL"
-    title="RLEACCEL = 0x00000002"><wbr />RLEACCEL<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="RLEACCEL = 0x00000002"><wbr />RLEACCEL<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#DONTFREE"
-    title="DONTFREE = 0x00000004"><wbr />DONTFREE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="DONTFREE = 0x00000004"><wbr />DONTFREE<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#SIMD_ALIGNED"
+    title="SIMD_ALIGNED = 0x00000008"><wbr />SIMD_<wbr />ALIGNED<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#createRGBSurface,uint32,cint,cint,cint,uint32,uint32,uint32,uint32"
+      <li><a class="reference" href="#createRGBSurface%2Cuint32%2Ccint%2Ccint%2Ccint%2Cuint32%2Cuint32%2Cuint32%2Cuint32"
     title="createRGBSurface(flags: uint32; width: cint; height: cint; depth: cint; rMask: uint32;
-                 gMask: uint32; bMask: uint32; aMask: uint32): Surface"><wbr />create<wbr />RGBSurface<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#createRGBSurfaceWithFormat,uint32,cint,cint,cint,uint32"
+                 gMask: uint32; bMask: uint32; aMask: uint32): Surface"><wbr />create<wbr />RGBSurface<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#createRGBSurfaceWithFormat%2Cuint32%2Ccint%2Ccint%2Ccint%2Cuint32"
     title="createRGBSurfaceWithFormat(flags: uint32; width: cint; height: cint; depth: cint;
-                           format: uint32): Surface"><wbr />create<wbr />RGBSurface<wbr />With<wbr />Format<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#createRGBSurfaceFrom,pointer,cint,cint,cint,cint,uint32,uint32,uint32,uint32"
+                           format: uint32): Surface"><wbr />create<wbr />RGBSurface<wbr />With<wbr />Format<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#createRGBSurfaceFrom%2Cpointer%2Ccint%2Ccint%2Ccint%2Ccint%2Cuint32%2Cuint32%2Cuint32%2Cuint32"
     title="createRGBSurfaceFrom(pixels: pointer; width: cint; height: cint; depth: cint;
                      pitch: cint; rMask: uint32; gMask: uint32; bMask: uint32;
-                     aMask: uint32): Surface"><wbr />create<wbr />RGBSurface<wbr />From<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#createRGBSurfaceWithFormatFrom,pointer,cint,cint,cint,cint,uint32"
+                     aMask: uint32): Surface"><wbr />create<wbr />RGBSurface<wbr />From<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#createRGBSurfaceWithFormatFrom%2Cpointer%2Ccint%2Ccint%2Ccint%2Ccint%2Cuint32"
     title="createRGBSurfaceWithFormatFrom(pixels: pointer; width: cint; height: cint;
-                               depth: cint; pitch: cint; format: uint32): Surface"><wbr />create<wbr />RGBSurface<wbr />With<wbr />Format<wbr />From<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#freeSurface,Surface"
-    title="freeSurface(surface: Surface)"><wbr />free<wbr />Surface<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#setSurfacePalette,Surface,ptr.Palette"
-    title="setSurfacePalette(surface: Surface; palette: ptr Palette): cint"><wbr />set<wbr />Surface<wbr />Palette<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#lockSurface,Surface"
-    title="lockSurface(surface: Surface): cint"><wbr />lock<wbr />Surface<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#unlockSurface,Surface"
-    title="unlockSurface(surface: Surface)"><wbr />unlock<wbr />Surface<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#loadBMP_RW,ptr.RWops,cint"
-    title="loadBMP_RW(src: ptr RWops; freesrc: cint): Surface"><wbr />load<wbr />BMP_<wbr />RW<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#saveBMP_RW,Surface,ptr.RWops,cint"
-    title="saveBMP_RW(surface: Surface; dst: ptr RWops; freedst: cint): cint"><wbr />save<wbr />BMP_<wbr />RW<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#setSurfaceRLE,Surface,cint"
-    title="setSurfaceRLE(surface: Surface; flag: cint): cint"><wbr />set<wbr />Surface<wbr />RLE<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#setColorKey,Surface,cint,uint32"
-    title="setColorKey(surface: Surface; flag: cint; key: uint32): cint"><wbr />set<wbr />Color<wbr />Key<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#hasColorKey,Surface"
-    title="hasColorKey(surface: Surface): bool"><wbr />has<wbr />Color<wbr />Key<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#getColorKey,Surface,ptr.uint32"
-    title="getColorKey(surface: Surface; key: ptr uint32): cint"><wbr />get<wbr />Color<wbr />Key<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#setSurfaceColorMod,Surface,uint8,uint8,uint8"
-    title="setSurfaceColorMod(surface: Surface; r: uint8; g: uint8; b: uint8): cint"><wbr />set<wbr />Surface<wbr />Color<wbr />Mod<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#getSurfaceColorMod,Surface,ptr.uint8,ptr.uint8,ptr.uint8"
-    title="getSurfaceColorMod(surface: Surface; r: ptr uint8; g: ptr uint8; b: ptr uint8): cint"><wbr />get<wbr />Surface<wbr />Color<wbr />Mod<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#setSurfaceAlphaMod,Surface,uint8"
-    title="setSurfaceAlphaMod(surface: Surface; alpha: uint8): cint"><wbr />set<wbr />Surface<wbr />Alpha<wbr />Mod<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#getSurfaceAlphaMod,Surface,ptr.uint8"
-    title="getSurfaceAlphaMod(surface: Surface; alpha: ptr uint8): cint"><wbr />get<wbr />Surface<wbr />Alpha<wbr />Mod<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#setSurfaceBlendMode,Surface,BlendMode"
-    title="setSurfaceBlendMode(surface: Surface; blendMode: BlendMode): cint"><wbr />set<wbr />Surface<wbr />Blend<wbr />Mode<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#getSurfaceBlendMode,Surface,ptr.BlendMode"
-    title="getSurfaceBlendMode(surface: Surface; blendMode: ptr BlendMode): cint"><wbr />get<wbr />Surface<wbr />Blend<wbr />Mode<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#setClipRect,Surface,ptr.Rect"
-    title="setClipRect(surface: Surface; rect: ptr Rect): bool"><wbr />set<wbr />Clip<wbr />Rect<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#getClipRect,Surface,ptr.Rect"
-    title="getClipRect(surface: Surface; rect: ptr Rect)"><wbr />get<wbr />Clip<wbr />Rect<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#duplicateSurface,Surface"
-    title="duplicateSurface(surface: Surface): Surface"><wbr />duplicate<wbr />Surface<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#convertSurface,Surface,ptr.PixelFormat,uint32"
-    title="convertSurface(src: Surface; fmt: ptr PixelFormat; flags: uint32): Surface"><wbr />convert<wbr />Surface<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#convertSurfaceFormat,Surface,uint32,uint32"
-    title="convertSurfaceFormat(src: Surface; pixel_format: uint32; flags: uint32): Surface"><wbr />convert<wbr />Surface<wbr />Format<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#convertPixels,cint,cint,uint32,pointer,cint,uint32,pointer,cint"
+                               depth: cint; pitch: cint; format: uint32): Surface"><wbr />create<wbr />RGBSurface<wbr />With<wbr />Format<wbr />From<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#freeSurface%2CSurface"
+    title="freeSurface(surface: Surface)"><wbr />free<wbr />Surface<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#setSurfacePalette%2CSurface%2Cptr.Palette"
+    title="setSurfacePalette(surface: Surface; palette: ptr Palette): cint"><wbr />set<wbr />Surface<wbr />Palette<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#lockSurface%2CSurface"
+    title="lockSurface(surface: Surface): cint"><wbr />lock<wbr />Surface<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#unlockSurface%2CSurface"
+    title="unlockSurface(surface: Surface)"><wbr />unlock<wbr />Surface<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#loadBMP_RW%2Cptr.RWops%2Ccint"
+    title="loadBMP_RW(src: ptr RWops; freesrc: cint): Surface"><wbr />load<wbr />BMP_<wbr />RW<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#saveBMP_RW%2CSurface%2Cptr.RWops%2Ccint"
+    title="saveBMP_RW(surface: Surface; dst: ptr RWops; freedst: cint): cint"><wbr />save<wbr />BMP_<wbr />RW<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#setSurfaceRLE%2CSurface%2Ccint"
+    title="setSurfaceRLE(surface: Surface; flag: cint): cint"><wbr />set<wbr />Surface<wbr />RLE<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#setColorKey%2CSurface%2Ccint%2Cuint32"
+    title="setColorKey(surface: Surface; flag: cint; key: uint32): cint"><wbr />set<wbr />Color<wbr />Key<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#hasColorKey%2CSurface"
+    title="hasColorKey(surface: Surface): bool"><wbr />has<wbr />Color<wbr />Key<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#getColorKey%2CSurface%2Cptr.uint32"
+    title="getColorKey(surface: Surface; key: ptr uint32): cint"><wbr />get<wbr />Color<wbr />Key<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#setSurfaceColorMod%2CSurface%2Cuint8%2Cuint8%2Cuint8"
+    title="setSurfaceColorMod(surface: Surface; r: uint8; g: uint8; b: uint8): cint"><wbr />set<wbr />Surface<wbr />Color<wbr />Mod<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#getSurfaceColorMod%2CSurface%2Cptr.uint8%2Cptr.uint8%2Cptr.uint8"
+    title="getSurfaceColorMod(surface: Surface; r: ptr uint8; g: ptr uint8; b: ptr uint8): cint"><wbr />get<wbr />Surface<wbr />Color<wbr />Mod<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#setSurfaceAlphaMod%2CSurface%2Cuint8"
+    title="setSurfaceAlphaMod(surface: Surface; alpha: uint8): cint"><wbr />set<wbr />Surface<wbr />Alpha<wbr />Mod<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#getSurfaceAlphaMod%2CSurface%2Cptr.uint8"
+    title="getSurfaceAlphaMod(surface: Surface; alpha: ptr uint8): cint"><wbr />get<wbr />Surface<wbr />Alpha<wbr />Mod<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#setSurfaceBlendMode%2CSurface%2CBlendMode"
+    title="setSurfaceBlendMode(surface: Surface; blendMode: BlendMode): cint"><wbr />set<wbr />Surface<wbr />Blend<wbr />Mode<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#getSurfaceBlendMode%2CSurface%2Cptr.BlendMode"
+    title="getSurfaceBlendMode(surface: Surface; blendMode: ptr BlendMode): cint"><wbr />get<wbr />Surface<wbr />Blend<wbr />Mode<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#setClipRect%2CSurface%2Cptr.Rect"
+    title="setClipRect(surface: Surface; rect: ptr Rect): bool"><wbr />set<wbr />Clip<wbr />Rect<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#getClipRect%2CSurface%2Cptr.Rect"
+    title="getClipRect(surface: Surface; rect: ptr Rect)"><wbr />get<wbr />Clip<wbr />Rect<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#duplicateSurface%2CSurface"
+    title="duplicateSurface(surface: Surface): Surface"><wbr />duplicate<wbr />Surface<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#convertSurface%2CSurface%2Cptr.PixelFormat%2Cuint32"
+    title="convertSurface(src: Surface; fmt: ptr PixelFormat; flags: uint32): Surface"><wbr />convert<wbr />Surface<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#convertSurfaceFormat%2CSurface%2Cuint32%2Cuint32"
+    title="convertSurfaceFormat(src: Surface; pixel_format: uint32; flags: uint32): Surface"><wbr />convert<wbr />Surface<wbr />Format<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#convertPixels%2Ccint%2Ccint%2Cuint32%2Cpointer%2Ccint%2Cuint32%2Cpointer%2Ccint"
     title="convertPixels(width: cint; height: cint; src_format: uint32; src: pointer;
-              src_pitch: cint; dst_format: uint32; dst: pointer; dst_pitch: cint): cint"><wbr />convert<wbr />Pixels<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#fillRect,Surface,ptr.Rect,uint32"
-    title="fillRect(dst: Surface; rect: ptr Rect; color: uint32): cint"><wbr />fill<wbr />Rect<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#fillRects,Surface,ptr.Rect,cint,uint32"
-    title="fillRects(dst: Surface; rects: ptr Rect; count: cint; color: uint32): cint"><wbr />fill<wbr />Rects<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#upperBlit,Surface,ptr.Rect,Surface,ptr.Rect"
-    title="upperBlit(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />upper<wbr />Blit<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#lowerBlit,Surface,ptr.Rect,Surface,ptr.Rect"
-    title="lowerBlit(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />lower<wbr />Blit<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#softStretch,Surface,ptr.Rect,Surface,ptr.Rect"
-    title="softStretch(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />soft<wbr />Stretch<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#upperBlitScaled,Surface,ptr.Rect,Surface,ptr.Rect"
-    title="upperBlitScaled(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />upper<wbr />Blit<wbr />Scaled<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#lowerBlitScaled,Surface,ptr.Rect,Surface,ptr.Rect"
-    title="lowerBlitScaled(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />lower<wbr />Blit<wbr />Scaled<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#setYUVConversionMode,YUVConversionMode"
-    title="setYUVConversionMode(mode: YUVConversionMode)"><wbr />set<wbr />YUVConversion<wbr />Mode<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#getYUVConversionMode,"
-    title="getYUVConversionMode(): YUVConversionMode"><wbr />get<wbr />YUVConversion<wbr />Mode<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#getYUVConversionModeForResolution,cint,cint"
-    title="getYUVConversionModeForResolution(width: cint; height: cint): YUVConversionMode"><wbr />get<wbr />YUVConversion<wbr />Mode<wbr />For<wbr />Resolution<span class="attachedType" style="visibility:hidden"></span></a></li>
+              src_pitch: cint; dst_format: uint32; dst: pointer; dst_pitch: cint): cint"><wbr />convert<wbr />Pixels<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#fillRect%2CSurface%2Cptr.Rect%2Cuint32"
+    title="fillRect(dst: Surface; rect: ptr Rect; color: uint32): cint"><wbr />fill<wbr />Rect<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#fillRects%2CSurface%2Cptr.Rect%2Ccint%2Cuint32"
+    title="fillRects(dst: Surface; rects: ptr Rect; count: cint; color: uint32): cint"><wbr />fill<wbr />Rects<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#upperBlit%2CSurface%2Cptr.Rect%2CSurface%2Cptr.Rect"
+    title="upperBlit(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />upper<wbr />Blit<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#lowerBlit%2CSurface%2Cptr.Rect%2CSurface%2Cptr.Rect"
+    title="lowerBlit(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />lower<wbr />Blit<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#softStretch%2CSurface%2Cptr.Rect%2CSurface%2Cptr.Rect"
+    title="softStretch(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />soft<wbr />Stretch<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#upperBlitScaled%2CSurface%2Cptr.Rect%2CSurface%2Cptr.Rect"
+    title="upperBlitScaled(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />upper<wbr />Blit<wbr />Scaled<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#lowerBlitScaled%2CSurface%2Cptr.Rect%2CSurface%2Cptr.Rect"
+    title="lowerBlitScaled(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />lower<wbr />Blit<wbr />Scaled<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#setYUVConversionMode%2CYUVConversionMode"
+    title="setYUVConversionMode(mode: YUVConversionMode)"><wbr />set<wbr />YUVConversion<wbr />Mode<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#getYUVConversionMode"
+    title="getYUVConversionMode(): YUVConversionMode"><wbr />get<wbr />YUVConversion<wbr />Mode<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#getYUVConversionModeForResolution%2Ccint%2Ccint"
+    title="getYUVConversionModeForResolution(width: cint; height: cint): YUVConversionMode"><wbr />get<wbr />YUVConversion<wbr />Mode<wbr />For<wbr />Resolution<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#mustLock.t,untyped"
-    title="mustLock(s: untyped): untyped"><wbr />must<wbr />Lock<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#loadBMP_RW.t,ptr.RWops,bool"
-    title="loadBMP_RW(src: ptr RWops; freesrc: bool): Surface"><wbr />load<wbr />BMP_<wbr />RW<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#loadBMP.t,untyped"
-    title="loadBMP(file: untyped): untyped"><wbr />load<wbr />BMP<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#saveBMP.t,untyped,untyped"
-    title="saveBMP(surface, file: untyped): untyped"><wbr />save<wbr />BMP<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#blitSurface.t,Surface,ptr.Rect,Surface,ptr.Rect"
-    title="blitSurface(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />blit<wbr />Surface<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
-  <li><a class="reference" href="#blitScaled.t,Surface,ptr.Rect,Surface,ptr.Rect"
-    title="blitScaled(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />blit<wbr />Scaled<span class="attachedType" style="visibility:hidden">Surface</span></a></li>
+      <li><a class="reference" href="#mustLock.t%2Cuntyped"
+    title="mustLock(s: untyped): untyped"><wbr />must<wbr />Lock<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#loadBMP_RW.t%2Cptr.RWops%2Cbool"
+    title="loadBMP_RW(src: ptr RWops; freesrc: bool): Surface"><wbr />load<wbr />BMP_<wbr />RW<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#loadBMP.t%2Cuntyped"
+    title="loadBMP(file: untyped): untyped"><wbr />load<wbr />BMP<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#saveBMP.t%2Cuntyped%2Cuntyped"
+    title="saveBMP(surface, file: untyped): untyped"><wbr />save<wbr />BMP<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#blitSurface.t%2CSurface%2Cptr.Rect%2CSurface%2Cptr.Rect"
+    title="blitSurface(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />blit<wbr />Surface<span class="attachedType">Surface</span></a></li>
+  <li><a class="reference" href="#blitScaled.t%2CSurface%2Cptr.Rect%2CSurface%2Cptr.Rect"
+    title="blitScaled(src: Surface; srcrect: ptr Rect; dst: Surface; dstrect: ptr Rect): cint"><wbr />blit<wbr />Scaled<span class="attachedType">Surface</span></a></li>
 
   </ul>
 </li>
@@ -1396,18 +983,22 @@ function main() {
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc">
 <h1><a class="toc-backref" id="surfacedotnim" href="#surfacedotnim">surface.nim</a></h1><p>Header file for Surface definition and management procedures.</p>
 </p>
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="Surface"><a name="Surface"></a><pre><a href="surface.html#Surface"><span class="Identifier">Surface</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <a href="surface.html#SurfaceObj"><span class="Identifier">SurfaceObj</span></a></pre></dt>
+<a id="Surface"></a>
+<dt><pre><a href="surface.html#Surface"><span class="Identifier">Surface</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <a href="surface.html#SurfaceObj"><span class="Identifier">SurfaceObj</span></a></pre></dt>
 <dd>
 
 
+
 </dd>
-<dt id="SurfaceObj"><a name="SurfaceObj"></a><pre><a href="surface.html#SurfaceObj"><span class="Identifier">SurfaceObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="SurfaceObj"></a>
+<dt><pre><a href="surface.html#SurfaceObj"><span class="Identifier">SurfaceObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">flags</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>               <span class="Comment">## Read-only </span>
   <span class="Identifier">format</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span>      <span class="Comment">## Read-only </span>
   <span class="Identifier">w</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
@@ -1427,24 +1018,29 @@ function main() {
   <span class="Identifier">refcount</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>              <span class="Comment">## Read-mostly</span>
   </pre></dt>
 <dd>
+
 <p>
 A collection of pixels used in software blitting.</p>
-<p><tt class="docutils literal"><span class="pre">Note:</span></tt> This object should be treated as read-only, except for <tt class="docutils literal"><span class="pre">pixels</span></tt>, which, if not <cite>nil</cite>, contains the raw pixel data for the surface.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> This object should be treated as read-only, except for <tt class="docutils literal"><span class="pre">pixels</span></tt>, which, if not <tt class="docutils literal"><span class="pre">nil</span></tt>, contains the raw pixel data for the surface.</p>
 
 
 </dd>
-<dt id="blit"><a name="blit"></a><pre><a href="surface.html#blit"><span class="Identifier">blit</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="blit"></a>
+<dt><pre><a href="surface.html#blit"><span class="Identifier">blit</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 
 The type of procedure used for surface blitting procedures.
 
 </dd>
-<dt id="YUVConversionMode"><a name="YUVConversionMode"></a><pre><a href="surface.html#YUVConversionMode"><span class="Identifier">YUVConversionMode</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<a id="YUVConversionMode"></a>
+<dt><pre><a href="surface.html#YUVConversionMode"><span class="Identifier">YUVConversionMode</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">YUV_CONVERSION_JPEG</span><span class="Other">,</span>        <span class="Comment">## Full range JPEG</span>
   <span class="Identifier">YUV_CONVERSION_BT601</span><span class="Other">,</span>       <span class="Comment">## BT.601 (the default)</span>
   <span class="Identifier">YUV_CONVERSION_BT709</span><span class="Other">,</span>       <span class="Comment">## BT.709</span>
   <span class="Identifier">YUV_CONVERSION_AUTOMATIC</span>    <span class="Comment">## BT.601 for SD content, BT.709 for HD content</span></pre></dt>
 <dd>
+
 
 The formula used for converting between YUV and RGB
 
@@ -1454,24 +1050,39 @@ The formula used for converting between YUV and RGB
 <div class="section" id="10">
 <h1><a class="toc-backref" href="#10">Consts</a></h1>
 <dl class="item">
-<dt id="SWSURFACE"><a name="SWSURFACE"></a><pre><span class="Identifier">SWSURFACE</span> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
+<a id="SWSURFACE"></a>
+<dt><pre><a href="surface.html#SWSURFACE"><span class="Identifier">SWSURFACE</span></a> <span class="Other">=</span> <span class="DecNumber">0</span></pre></dt>
 <dd>
 
+Just here for compatibility
 
 </dd>
-<dt id="PREALLOC"><a name="PREALLOC"></a><pre><span class="Identifier">PREALLOC</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span></pre></dt>
+<a id="PREALLOC"></a>
+<dt><pre><a href="surface.html#PREALLOC"><span class="Identifier">PREALLOC</span></a> <span class="Other">=</span> <span class="DecNumber">0x00000001</span></pre></dt>
 <dd>
 
+Surface uses preallocated memory
 
 </dd>
-<dt id="RLEACCEL"><a name="RLEACCEL"></a><pre><span class="Identifier">RLEACCEL</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span></pre></dt>
+<a id="RLEACCEL"></a>
+<dt><pre><a href="surface.html#RLEACCEL"><span class="Identifier">RLEACCEL</span></a> <span class="Other">=</span> <span class="DecNumber">0x00000002</span></pre></dt>
 <dd>
 
+Surface is RLE encoded
 
 </dd>
-<dt id="DONTFREE"><a name="DONTFREE"></a><pre><span class="Identifier">DONTFREE</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
+<a id="DONTFREE"></a>
+<dt><pre><a href="surface.html#DONTFREE"><span class="Identifier">DONTFREE</span></a> <span class="Other">=</span> <span class="DecNumber">0x00000004</span></pre></dt>
 <dd>
 
+Surface is referenced internally
+
+</dd>
+<a id="SIMD_ALIGNED"></a>
+<dt><pre><a href="surface.html#SIMD_ALIGNED"><span class="Identifier">SIMD_ALIGNED</span></a> <span class="Other">=</span> <span class="DecNumber">0x00000008</span></pre></dt>
+<dd>
+
+Surface uses aligned memory
 
 </dd>
 
@@ -1479,14 +1090,16 @@ The formula used for converting between YUV and RGB
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="createRGBSurface"><a name="createRGBSurface,uint32,cint,cint,cint,uint32,uint32,uint32,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createRGBSurface</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">depth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
+<a id="createRGBSurface,uint32,cint,cint,cint,uint32,uint32,uint32,uint32"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#createRGBSurface%2Cuint32%2Ccint%2Ccint%2Ccint%2Cuint32%2Cuint32%2Cuint32%2Cuint32"><span class="Identifier">createRGBSurface</span></a><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">depth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
                      <span class="Identifier">rMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">gMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">bMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">aMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateRGBSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Allocate and free an RGB surface.</p>
 <p>If the depth is 4 or 8 bits, an empty palette is allocated for the surface. If the depth is greater than 8 bits, the pixel format is set using the flags <tt class="docutils literal"><span class="pre">[rgb]Mask</span></tt>.</p>
-<p>If the procedure runs out of memory, it will return <cite>nil</cite>.</p>
-<p><tt class="docutils literal"><span class="pre">flags</span></tt> The <tt class="docutils literal"><span class="pre">flags</span></tt> are obsolete and should be set to <cite>0</cite>.</p>
+<p>If the procedure runs out of memory, it will return <tt class="docutils literal"><span class="pre">nil</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">flags</span></tt> The <tt class="docutils literal"><span class="pre">flags</span></tt> are obsolete and should be set to <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">width</span></tt> The width in pixels of the surface to create.</p>
 <p><tt class="docutils literal"><span class="pre">height</span></tt> The height in pixels of the surface to create.</p>
 <p><tt class="docutils literal"><span class="pre">depth</span></tt> The depth in bits of the surface to create.</p>
@@ -1497,310 +1110,380 @@ The formula used for converting between YUV and RGB
 
 
 </dd>
-<dt id="createRGBSurfaceWithFormat"><a name="createRGBSurfaceWithFormat,uint32,cint,cint,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createRGBSurfaceWithFormat</span><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">depth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
+<a id="createRGBSurfaceWithFormat,uint32,cint,cint,cint,uint32"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#createRGBSurfaceWithFormat%2Cuint32%2Ccint%2Ccint%2Ccint%2Cuint32"><span class="Identifier">createRGBSurfaceWithFormat</span></a><span class="Other">(</span><span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">depth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
                                <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateRGBSurfaceWithFormat&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
+
 </dd>
-<dt id="createRGBSurfaceFrom"><a name="createRGBSurfaceFrom,pointer,cint,cint,cint,cint,uint32,uint32,uint32,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createRGBSurfaceFrom</span><span class="Other">(</span><span class="Identifier">pixels</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">depth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
+<a id="createRGBSurfaceFrom,pointer,cint,cint,cint,cint,uint32,uint32,uint32,uint32"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#createRGBSurfaceFrom%2Cpointer%2Ccint%2Ccint%2Ccint%2Ccint%2Cuint32%2Cuint32%2Cuint32%2Cuint32"><span class="Identifier">createRGBSurfaceFrom</span></a><span class="Other">(</span><span class="Identifier">pixels</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">depth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
                          <span class="Identifier">pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">rMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">gMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">bMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span>
                          <span class="Identifier">aMask</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateRGBSurfaceFrom&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
+
 </dd>
-<dt id="createRGBSurfaceWithFormatFrom"><a name="createRGBSurfaceWithFormatFrom,pointer,cint,cint,cint,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">createRGBSurfaceWithFormatFrom</span><span class="Other">(</span><span class="Identifier">pixels</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
+<a id="createRGBSurfaceWithFormatFrom,pointer,cint,cint,cint,cint,uint32"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#createRGBSurfaceWithFormatFrom%2Cpointer%2Ccint%2Ccint%2Ccint%2Ccint%2Cuint32"><span class="Identifier">createRGBSurfaceWithFormatFrom</span></a><span class="Other">(</span><span class="Identifier">pixels</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
                                    <span class="Identifier">depth</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateRGBSurfaceWithFormatFrom&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
+
 </dd>
-<dt id="freeSurface"><a name="freeSurface,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">freeSurface</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FreeSurface&quot;</span><span class="Other">,</span>
+<a id="freeSurface,Surface"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#freeSurface%2CSurface"><span class="Identifier">freeSurface</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FreeSurface&quot;</span><span class="Other">,</span>
                                   <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
+
 </dd>
-<dt id="setSurfacePalette"><a name="setSurfacePalette,Surface,ptr.Palette"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfacePalette</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">palette</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Palette</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="setSurfacePalette,Surface,ptr.Palette"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setSurfacePalette%2CSurface%2Cptr.Palette"><span class="Identifier">setSurfacePalette</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">palette</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Palette</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetSurfacePalette&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Set the palette used by a surface.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite>, or <cite>-1</cite> if the surface format doesn't use a palette.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt>, or <tt class="docutils literal"><span class="pre">-1</span></tt> if the surface format doesn't use a palette.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> A single palette can be shared with many surfaces.</p>
 
 
 </dd>
-<dt id="lockSurface"><a name="lockSurface,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockSurface</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockSurface&quot;</span><span class="Other">,</span>
+<a id="lockSurface,Surface"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#lockSurface%2CSurface"><span class="Identifier">lockSurface</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockSurface&quot;</span><span class="Other">,</span>
                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Sets up a surface for directly accessing the pixels.</p>
 <p>Between calls to <tt class="docutils literal"><span class="pre">lockSurface()</span></tt> / <tt class="docutils literal"><span class="pre">unlockSurface()</span></tt>, you can write to and read from <tt class="docutils literal"><span class="pre">surface-&gt;pixels</span></tt>, using the pixel format stored in <tt class="docutils literal"><span class="pre">surface-&gt;format</span></tt>.  Once you are done accessing the surface, you should use <tt class="docutils literal"><span class="pre">unlockSurface()</span></tt> to release it.</p>
-<p>Not all surfaces require locking.  If <tt class="docutils literal"><span class="pre">mustLock(surface)</span></tt> evaluates to <cite>0</cite>, then you can read and write to the surface at any time, and the pixel format of the surface will not change.</p>
+<p>Not all surfaces require locking.  If <tt class="docutils literal"><span class="pre">mustLock(surface)</span></tt> evaluates to <tt class="docutils literal"><span class="pre">0</span></tt>, then you can read and write to the surface at any time, and the pixel format of the surface will not change.</p>
 <p>No operating system or library calls should be made between lock/unlock pairs, as critical system locks may be held during this time.</p>
-<p><tt class="docutils literal"><span class="pre">lockSurface()</span></tt> returns <cite>0</cite>, or <cite>-1</cite> if the surface couldn't be locked.</p>
+<p><tt class="docutils literal"><span class="pre">lockSurface()</span></tt> returns <tt class="docutils literal"><span class="pre">0</span></tt>, or <tt class="docutils literal"><span class="pre">-1</span></tt> if the surface couldn't be locked.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">unlockSurface()</span></tt></p>
 
 
 </dd>
-<dt id="unlockSurface"><a name="unlockSurface,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockSurface</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockSurface&quot;</span><span class="Other">,</span>
+<a id="unlockSurface,Surface"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#unlockSurface%2CSurface"><span class="Identifier">unlockSurface</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockSurface&quot;</span><span class="Other">,</span>
                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">lockSurface()</span></tt></p>
 
 
 </dd>
-<dt id="loadBMP_RW"><a name="loadBMP_RW,ptr.RWops,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">loadBMP_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="loadBMP_RW,ptr.RWops,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#loadBMP_RW%2Cptr.RWops%2Ccint"><span class="Identifier">loadBMP_RW</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LoadBMP_RW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Load a surface from a seekable SDL data stream (memory or file).</p>
 <p>If <tt class="docutils literal"><span class="pre">freesrc</span></tt> is non-zero, the stream will be closed after being read.</p>
 <p>The new surface should be freed with <tt class="docutils literal"><span class="pre">freeSurface()</span></tt>.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> the new surface, or <cite>nil</cite> if there was an error.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> the new surface, or <tt class="docutils literal"><span class="pre">nil</span></tt> if there was an error.</p>
 
 
 </dd>
-<dt id="saveBMP_RW"><a name="saveBMP_RW,Surface,ptr.RWops,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">saveBMP_RW</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freedst</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="saveBMP_RW,Surface,ptr.RWops,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#saveBMP_RW%2CSurface%2Cptr.RWops%2Ccint"><span class="Identifier">saveBMP_RW</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freedst</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SaveBMP_RW&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Save a surface to a seekable SDL data stream (memory or file).</p>
 <p>Surfaces with a 24-bit, 32-bit and paletted 8-bit format get saved in the BMP directly. Other RGB formats with 8-bit or higher get converted to a 24-bit surface or, if they have an alpha mask or a colorkey, to a 32-bit surface before they are saved. YUV and paletted 1-bit and 4-bit formats are not supported.</p>
 <p>If <tt class="docutils literal"><span class="pre">freedst</span></tt> is non-zero, the stream will be closed after being written.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> if successful or <cite>-1</cite> if there was an error.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt> if successful or <tt class="docutils literal"><span class="pre">-1</span></tt> if there was an error.</p>
 
 
 </dd>
-<dt id="setSurfaceRLE"><a name="setSurfaceRLE,Surface,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfaceRLE</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">flag</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="setSurfaceRLE,Surface,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setSurfaceRLE%2CSurface%2Ccint"><span class="Identifier">setSurfaceRLE</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">flag</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetSurfaceRLE&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Sets the RLE acceleration hint for a surface.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the surface is not valid.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt> on success, or <tt class="docutils literal"><span class="pre">-1</span></tt> if the surface is not valid.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> If RLE is enabled, colorkey and alpha blending blits are much faster, but the surface must be locked before directly accessing the pixels.</p>
 
 
 </dd>
-<dt id="setColorKey"><a name="setColorKey,Surface,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setColorKey</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">flag</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="setColorKey,Surface,cint,uint32"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setColorKey%2CSurface%2Ccint%2Cuint32"><span class="Identifier">setColorKey</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">flag</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetColorKey&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Sets the color key (transparent pixel) in a blittable surface.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt> The surface to update.</p>
-<p><tt class="docutils literal"><span class="pre">flag</span></tt> Non-zero to enable colorkey and <cite>0</cite> to disable colorkey.</p>
+<p><tt class="docutils literal"><span class="pre">flag</span></tt> Non-zero to enable colorkey and <tt class="docutils literal"><span class="pre">0</span></tt> to disable colorkey.</p>
 <p><tt class="docutils literal"><span class="pre">key</span></tt> The transparent pixel in the native surface format.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the surface is not valid.</p>
-<p>You can pass <cite>RLEACCEL</cite> to enable RLE accelerated blits.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt> on success, or <tt class="docutils literal"><span class="pre">-1</span></tt> if the surface is not valid.</p>
+<p>You can pass <tt class="docutils literal"><span class="pre">RLEACCEL</span></tt> to enable RLE accelerated blits.</p>
 
 
 </dd>
-<dt id="hasColorKey"><a name="hasColorKey,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">hasColorKey</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasColorKey&quot;</span><span class="Other">,</span>
+<a id="hasColorKey,Surface"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#hasColorKey%2CSurface"><span class="Identifier">hasColorKey</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasColorKey&quot;</span><span class="Other">,</span>
                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Whether the surface has a color key.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if the surface has a color key, or <cite>false</cite> if the surface is <cite>nil</cite> or has no color key.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">true</span></tt> if the surface has a color key, or <tt class="docutils literal"><span class="pre">false</span></tt> if the surface is <tt class="docutils literal"><span class="pre">nil</span></tt> or has no color key.</p>
 
 
 </dd>
-<dt id="getColorKey"><a name="getColorKey,Surface,ptr.uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getColorKey</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="getColorKey,Surface,ptr.uint32"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#getColorKey%2CSurface%2Cptr.uint32"><span class="Identifier">getColorKey</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">key</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetColorKey&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Gets the color key (transparent pixel) in a blittable surface.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt> The surface to update.</p>
 <p><tt class="docutils literal"><span class="pre">key</span></tt> A pointer filled in with the transparent pixel in the native surface format.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the surface is not valid or colorkey is not enabled.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt> on success, or <tt class="docutils literal"><span class="pre">-1</span></tt> if the surface is not valid or colorkey is not enabled.</p>
 
 
 </dd>
-<dt id="setSurfaceColorMod"><a name="setSurfaceColorMod,Surface,uint8,uint8,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfaceColorMod</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="setSurfaceColorMod,Surface,uint8,uint8,uint8"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setSurfaceColorMod%2CSurface%2Cuint8%2Cuint8%2Cuint8"><span class="Identifier">setSurfaceColorMod</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetSurfaceColorMod&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Set an additional color value used in blit operations.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt> The surface to update.</p>
 <p><tt class="docutils literal"><span class="pre">r</span></tt> The red color value multiplied into blit operations.</p>
 <p><tt class="docutils literal"><span class="pre">g</span></tt> The green color value multiplied into blit operations.</p>
 <p><tt class="docutils literal"><span class="pre">b</span></tt> The blue color value multiplied into blit operations.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the surface is not valid.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt> on success, or <tt class="docutils literal"><span class="pre">-1</span></tt> if the surface is not valid.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getSurfaceColorMod()</span></tt></p>
 
 
 </dd>
-<dt id="getSurfaceColorMod"><a name="getSurfaceColorMod,Surface,ptr.uint8,ptr.uint8,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getSurfaceColorMod</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="getSurfaceColorMod,Surface,ptr.uint8,ptr.uint8,ptr.uint8"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#getSurfaceColorMod%2CSurface%2Cptr.uint8%2Cptr.uint8%2Cptr.uint8"><span class="Identifier">getSurfaceColorMod</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">g</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetSurfaceColorMod&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the additional color value used in blit operations.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt> The surface to query.</p>
 <p><tt class="docutils literal"><span class="pre">r</span></tt> A pointer filled in with the current red color value.</p>
 <p><tt class="docutils literal"><span class="pre">g</span></tt> A pointer filled in with the current green color value.</p>
 <p><tt class="docutils literal"><span class="pre">b</span></tt> A pointer filled in with the current blue color value.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the surface is not valid.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt> on success, or <tt class="docutils literal"><span class="pre">-1</span></tt> if the surface is not valid.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setSurfaceColorMod()</span></tt></p>
 
 
 </dd>
-<dt id="setSurfaceAlphaMod"><a name="setSurfaceAlphaMod,Surface,uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfaceAlphaMod</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="setSurfaceAlphaMod,Surface,uint8"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setSurfaceAlphaMod%2CSurface%2Cuint8"><span class="Identifier">setSurfaceAlphaMod</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetSurfaceAlphaMod&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Set an additional alpha value used in blit operations.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt> The surface to update.</p>
 <p><tt class="docutils literal"><span class="pre">alpha</span></tt> The alpha value multiplied into blit operations.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the surface is not valid.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt> on success, or <tt class="docutils literal"><span class="pre">-1</span></tt> if the surface is not valid.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getSurfaceAlphaMod()</span></tt></p>
 
 
 </dd>
-<dt id="getSurfaceAlphaMod"><a name="getSurfaceAlphaMod,Surface,ptr.uint8"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getSurfaceAlphaMod</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="getSurfaceAlphaMod,Surface,ptr.uint8"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#getSurfaceAlphaMod%2CSurface%2Cptr.uint8"><span class="Identifier">getSurfaceAlphaMod</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">alpha</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetSurfaceAlphaMod&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the additional alpha value used in blit operations.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt> The surface to query.</p>
 <p><tt class="docutils literal"><span class="pre">alpha</span></tt> A pointer filled in with the current alpha value.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the surface is not valid.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt> on success, or <tt class="docutils literal"><span class="pre">-1</span></tt> if the surface is not valid.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setSurfaceAlphaMod()</span></tt></p>
 
 
 </dd>
-<dt id="setSurfaceBlendMode"><a name="setSurfaceBlendMode,Surface,BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setSurfaceBlendMode</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="setSurfaceBlendMode,Surface,BlendMode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setSurfaceBlendMode%2CSurface%2CBlendMode"><span class="Identifier">setSurfaceBlendMode</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetSurfaceBlendMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Set the blend mode used for blit operations.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt> The surface to update.</p>
 <p><tt class="docutils literal"><span class="pre">blendMode</span></tt> BlendMode to use for blit blending.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the parameters are not valid.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt> on success, or <tt class="docutils literal"><span class="pre">-1</span></tt> if the parameters are not valid.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">getSurfaceBlendMode()</span></tt></p>
 
 
 </dd>
-<dt id="getSurfaceBlendMode"><a name="getSurfaceBlendMode,Surface,ptr.BlendMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getSurfaceBlendMode</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="getSurfaceBlendMode,Surface,ptr.BlendMode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#getSurfaceBlendMode%2CSurface%2Cptr.BlendMode"><span class="Identifier">getSurfaceBlendMode</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">blendMode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">BlendMode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetSurfaceBlendMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the blend mode used for blit operations.</p>
 <p><tt class="docutils literal"><span class="pre">surface</span></tt>   The surface to query.</p>
 <p><tt class="docutils literal"><span class="pre">blendMode</span></tt> A pointer filled in with the current blend mode.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if the surface is not valid.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt> on success, or <tt class="docutils literal"><span class="pre">-1</span></tt> if the surface is not valid.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">setSurfaceBlendMode()</span></tt></p>
 
 
 </dd>
-<dt id="setClipRect"><a name="setClipRect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setClipRect</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="setClipRect,Surface,ptr.Rect"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setClipRect%2CSurface%2Cptr.Rect"><span class="Identifier">setClipRect</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetClipRect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Sets the clipping rectangle for the destination surface in a blit.</p>
-<p>If the clip rectangle is <cite>nil</cite>, clipping will be disabled.</p>
-<p>If the clip rectangle doesn't intersect the surface, the procedure will return <cite>false</cite> and blits will be completely clipped.  Otherwise the procedure returns <cite>true</cite> and blits to the surface will be clipped to the intersection of the surface area and the clipping rectangle.</p>
+<p>If the clip rectangle is <tt class="docutils literal"><span class="pre">nil</span></tt>, clipping will be disabled.</p>
+<p>If the clip rectangle doesn't intersect the surface, the procedure will return <tt class="docutils literal"><span class="pre">false</span></tt> and blits will be completely clipped.  Otherwise the procedure returns <tt class="docutils literal"><span class="pre">true</span></tt> and blits to the surface will be clipped to the intersection of the surface area and the clipping rectangle.</p>
 <p>Note that blits are automatically clipped to the edges of the source and destination surfaces.</p>
 
 
 </dd>
-<dt id="getClipRect"><a name="getClipRect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getClipRect</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetClipRect&quot;</span><span class="Other">,</span>
+<a id="getClipRect,Surface,ptr.Rect"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#getClipRect%2CSurface%2Cptr.Rect"><span class="Identifier">getClipRect</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetClipRect&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Gets the clipping rectangle for the destination surface in a blit.</p>
 <p><tt class="docutils literal"><span class="pre">rect</span></tt> must be a pointer to a valid rectangle which will be filled with the correct values.</p>
 
 
 </dd>
-<dt id="duplicateSurface"><a name="duplicateSurface,Surface"></a><pre><span class="Keyword">proc</span> <span class="Identifier">duplicateSurface</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="duplicateSurface,Surface"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#duplicateSurface%2CSurface"><span class="Identifier">duplicateSurface</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DuplicateSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Creates a new surface identical to the existing surface.
 
 </dd>
-<dt id="convertSurface"><a name="convertSurface,Surface,ptr.PixelFormat,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">convertSurface</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="convertSurface,Surface,ptr.PixelFormat,uint32"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#convertSurface%2CSurface%2Cptr.PixelFormat%2Cuint32"><span class="Identifier">convertSurface</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">fmt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">PixelFormat</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ConvertSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-<p>Creates a new surface of the specified format, and then copies and maps the given surface to it so the blit of the converted surface will be as fast as possible.  If this procedure fails, it returns <cite>nil</cite>.</p>
-<p>The <cite>flags</cite> parameter is passed to <tt class="docutils literal"><span class="pre">createRGBSurface()</span></tt> and has those semantics.  You can also pass <cite>RLEACCEL</cite> in the flags parameter and SDL will try to RLE accelerate colorkey and alpha blits in the resulting surface.</p>
+
+<p>Creates a new surface of the specified format, and then copies and maps the given surface to it so the blit of the converted surface will be as fast as possible.  If this procedure fails, it returns <tt class="docutils literal"><span class="pre">nil</span></tt>.</p>
+<p>The <tt class="docutils literal"><span class="pre">flags</span></tt> parameter is passed to <tt class="docutils literal"><span class="pre">createRGBSurface()</span></tt> and has those semantics.  You can also pass <tt class="docutils literal"><span class="pre">RLEACCEL</span></tt> in the flags parameter and SDL will try to RLE accelerate colorkey and alpha blits in the resulting surface.</p>
 
 
 </dd>
-<dt id="convertSurfaceFormat"><a name="convertSurfaceFormat,Surface,uint32,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">convertSurfaceFormat</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">pixel_format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="convertSurfaceFormat,Surface,uint32,uint32"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#convertSurfaceFormat%2CSurface%2Cuint32%2Cuint32"><span class="Identifier">convertSurfaceFormat</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">pixel_format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">flags</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ConvertSurfaceFormat&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
+
 </dd>
-<dt id="convertPixels"><a name="convertPixels,cint,cint,uint32,pointer,cint,uint32,pointer,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">convertPixels</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">src_format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span>
+<a id="convertPixels,cint,cint,uint32,pointer,cint,uint32,pointer,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#convertPixels%2Ccint%2Ccint%2Cuint32%2Cpointer%2Ccint%2Cuint32%2Cpointer%2Ccint"><span class="Identifier">convertPixels</span></a><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">src_format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span>
                   <span class="Identifier">src_pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dst_format</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">dst_pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ConvertPixels&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Copy a block of pixels of one format to another format.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> if there was an error.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt> on success, or <tt class="docutils literal"><span class="pre">-1</span></tt> if there was an error.</p>
 
 
 </dd>
-<dt id="fillRect"><a name="fillRect,Surface,ptr.Rect,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fillRect</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="fillRect,Surface,ptr.Rect,uint32"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#fillRect%2CSurface%2Cptr.Rect%2Cuint32"><span class="Identifier">fillRect</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FillRect&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Performs a fast fill of the given rectangle with <tt class="docutils literal"><span class="pre">color</span></tt>.</p>
-<p>If <tt class="docutils literal"><span class="pre">rect</span></tt> is <cite>nil</cite>, the whole surface will be filled with <tt class="docutils literal"><span class="pre">color</span></tt>.</p>
+<p>If <tt class="docutils literal"><span class="pre">rect</span></tt> is <tt class="docutils literal"><span class="pre">nil</span></tt>, the whole surface will be filled with <tt class="docutils literal"><span class="pre">color</span></tt>.</p>
 <p>The color should be a pixel of the format used by the surface, and can be generated by the <tt class="docutils literal"><span class="pre">mapRGB()</span></tt> procedure.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite> on success, or <cite>-1</cite> on error.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt> on success, or <tt class="docutils literal"><span class="pre">-1</span></tt> on error.</p>
 
 
 </dd>
-<dt id="fillRects"><a name="fillRects,Surface,ptr.Rect,cint,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">fillRects</span><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">rects</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="fillRects,Surface,ptr.Rect,cint,uint32"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#fillRects%2CSurface%2Cptr.Rect%2Ccint%2Cuint32"><span class="Identifier">fillRects</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">rects</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">count</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_FillRects&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
+
 </dd>
-<dt id="upperBlit"><a name="upperBlit,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">upperBlit</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="upperBlit,Surface,ptr.Rect,Surface,ptr.Rect"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#upperBlit%2CSurface%2Cptr.Rect%2CSurface%2Cptr.Rect"><span class="Identifier">upperBlit</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UpperBlit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 This is the public blit procedure, <tt class="docutils literal"><span class="pre">blitSurface()</span></tt>, and it performs rectangle validation and clipping before passing it to <tt class="docutils literal"><span class="pre">lowerBlit()</span></tt>.
 
 </dd>
-<dt id="lowerBlit"><a name="lowerBlit,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lowerBlit</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="lowerBlit,Surface,ptr.Rect,Surface,ptr.Rect"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#lowerBlit%2CSurface%2Cptr.Rect%2CSurface%2Cptr.Rect"><span class="Identifier">lowerBlit</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LowerBlit&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 This is a semi-private blit procedure and it performs low-level surface blitting only.
 
 </dd>
-<dt id="softStretch"><a name="softStretch,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">softStretch</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="softStretch,Surface,ptr.Rect,Surface,ptr.Rect"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#softStretch%2CSurface%2Cptr.Rect%2CSurface%2Cptr.Rect"><span class="Identifier">softStretch</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SoftStretch&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Perform a fast, low quality, stretch blit between two surfaces of the same pixel format.</p>
 <p><tt class="docutils literal"><span class="pre">Note:</span></tt> This procedure uses a static buffer, and is not thread-safe.</p>
 
 
 </dd>
-<dt id="upperBlitScaled"><a name="upperBlitScaled,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">upperBlitScaled</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="upperBlitScaled,Surface,ptr.Rect,Surface,ptr.Rect"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#upperBlitScaled%2CSurface%2Cptr.Rect%2CSurface%2Cptr.Rect"><span class="Identifier">upperBlitScaled</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UpperBlitScaled&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 This is the public scaled blit procedure, <tt class="docutils literal"><span class="pre">blitScaled()</span></tt>, and it performs rectangle validation and clipping before passing it to <tt class="docutils literal"><span class="pre">lowerBlitScaled()</span></tt>.
 
 </dd>
-<dt id="lowerBlitScaled"><a name="lowerBlitScaled,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lowerBlitScaled</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="lowerBlitScaled,Surface,ptr.Rect,Surface,ptr.Rect"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#lowerBlitScaled%2CSurface%2Cptr.Rect%2CSurface%2Cptr.Rect"><span class="Identifier">lowerBlitScaled</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LowerBlitScaled&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 This is a semi-private blit procedure and it performs low-level surface scaled blitting only.
 
 </dd>
-<dt id="setYUVConversionMode"><a name="setYUVConversionMode,YUVConversionMode"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setYUVConversionMode</span><span class="Other">(</span><span class="Identifier">mode</span><span class="Other">:</span> <a href="surface.html#YUVConversionMode"><span class="Identifier">YUVConversionMode</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="setYUVConversionMode,YUVConversionMode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setYUVConversionMode%2CYUVConversionMode"><span class="Identifier">setYUVConversionMode</span></a><span class="Other">(</span><span class="Identifier">mode</span><span class="Other">:</span> <a href="surface.html#YUVConversionMode"><span class="Identifier">YUVConversionMode</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetYUVConversionMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Set the YUV conversion mode.
 
 </dd>
-<dt id="getYUVConversionMode"><a name="getYUVConversionMode,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getYUVConversionMode</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#YUVConversionMode"><span class="Identifier">YUVConversionMode</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="getYUVConversionMode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#getYUVConversionMode"><span class="Identifier">getYUVConversionMode</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#YUVConversionMode"><span class="Identifier">YUVConversionMode</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetYUVConversionMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Get the YUV conversion mode.
 
 </dd>
-<dt id="getYUVConversionModeForResolution"><a name="getYUVConversionModeForResolution,cint,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getYUVConversionModeForResolution</span><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#YUVConversionMode"><span class="Identifier">YUVConversionMode</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="getYUVConversionModeForResolution,cint,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#getYUVConversionModeForResolution%2Ccint%2Ccint"><span class="Identifier">getYUVConversionModeForResolution</span></a><span class="Other">(</span><span class="Identifier">width</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">height</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#YUVConversionMode"><span class="Identifier">YUVConversionMode</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetYUVConversionModeForResolution&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-Get the YUV conversion mode, returning the correct mode for the resolution when the current conversion mode is <cite>YUV_CONVERSION_AUTOMATIC</cite>.
+
+Get the YUV conversion mode, returning the correct mode for the resolution when the current conversion mode is <tt class="docutils literal"><span class="pre">YUV_CONVERSION_AUTOMATIC</span></tt>.
 
 </dd>
 
@@ -1808,75 +1491,87 @@ Get the YUV conversion mode, returning the correct mode for the resolution when 
 <div class="section" id="18">
 <h1><a class="toc-backref" href="#18">Templates</a></h1>
 <dl class="item">
-<dt id="mustLock"><a name="mustLock.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">mustLock</span><span class="Other">(</span><span class="Identifier">s</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<a id="mustLock.t,untyped"></a>
+<dt><pre><span class="Keyword">template</span> <a href="#mustLock.t%2Cuntyped"><span class="Identifier">mustLock</span></a><span class="Other">(</span><span class="Identifier">s</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-Evaluates to <cite>true</cite> if the surface needs t o be locked before access.
+
+Evaluates to <tt class="docutils literal"><span class="pre">true</span></tt> if the surface needs t o be locked before access.
 
 </dd>
-<dt id="loadBMP_RW"><a name="loadBMP_RW.t,ptr.RWops,bool"></a><pre><span class="Keyword">template</span> <span class="Identifier">loadBMP_RW</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a></pre></dt>
+<a id="loadBMP_RW.t,ptr.RWops,bool"></a>
+<dt><pre><span class="Keyword">template</span> <a href="#loadBMP_RW.t%2Cptr.RWops%2Cbool"><span class="Identifier">loadBMP_RW</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">RWops</span><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a></pre></dt>
 <dd>
+
 
 
 </dd>
-<dt id="loadBMP"><a name="loadBMP.t,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">loadBMP</span><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<a id="loadBMP.t,untyped"></a>
+<dt><pre><span class="Keyword">template</span> <a href="#loadBMP.t%2Cuntyped"><span class="Identifier">loadBMP</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
+
 <p>
 Load a surface from a file.</p>
 <p>Convenience macro.</p>
 
 
 </dd>
-<dt id="saveBMP"><a name="saveBMP.t,untyped,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">saveBMP</span><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">,</span> <span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<a id="saveBMP.t,untyped,untyped"></a>
+<dt><pre><span class="Keyword">template</span> <a href="#saveBMP.t%2Cuntyped%2Cuntyped"><span class="Identifier">saveBMP</span></a><span class="Other">(</span><span class="Identifier">surface</span><span class="Other">,</span> <span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
+
 <p>
 Save a surface to a file.</p>
 <p>Convenience macro.</p>
 
 
 </dd>
-<dt id="blitSurface"><a name="blitSurface.t,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">template</span> <span class="Identifier">blitSurface</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<a id="blitSurface.t,Surface,ptr.Rect,Surface,ptr.Rect"></a>
+<dt><pre><span class="Keyword">template</span> <a href="#blitSurface.t%2CSurface%2Cptr.Rect%2CSurface%2Cptr.Rect"><span class="Identifier">blitSurface</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
 <dd>
+
 <p>
 Performs a fast blit from the source surface to the destination surface.</p>
-<p>This assumes that the source and destination rectangles are the same size.  If either <tt class="docutils literal"><span class="pre">srcrect</span></tt> or <tt class="docutils literal"><span class="pre">dstrect</span></tt> are <cite>nil</cite>, the entire surface (<tt class="docutils literal"><span class="pre">src</span></tt> or <tt class="docutils literal"><span class="pre">dst</span></tt>) is copied. The final blit rectangles are saved in <tt class="docutils literal"><span class="pre">srcrect</span></tt> and <tt class="docutils literal"><span class="pre">dstrect</span></tt> after all clipping is performed.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> If the blit is successful, it returns <cite>0</cite>, otherwise it returns <cite>-1</cite>.</p>
+<p>This assumes that the source and destination rectangles are the same size.  If either <tt class="docutils literal"><span class="pre">srcrect</span></tt> or <tt class="docutils literal"><span class="pre">dstrect</span></tt> are <tt class="docutils literal"><span class="pre">nil</span></tt>, the entire surface (<tt class="docutils literal"><span class="pre">src</span></tt> or <tt class="docutils literal"><span class="pre">dst</span></tt>) is copied. The final blit rectangles are saved in <tt class="docutils literal"><span class="pre">srcrect</span></tt> and <tt class="docutils literal"><span class="pre">dstrect</span></tt> after all clipping is performed.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> If the blit is successful, it returns <tt class="docutils literal"><span class="pre">0</span></tt>, otherwise it returns <tt class="docutils literal"><span class="pre">-1</span></tt>.</p>
 <p>The blit procedure should not be called on a locked surface.</p>
 <p>The blit semantics for surfaces with and without blending and colorkey are defined as follows:</p>
 <p><tt class="docutils literal"><span class="pre">RGBA-&gt;RGB</span></tt>:</p>
-<blockquote><p>Source surface blend mode set to <cite>BLENDMODE_BLEND</cite>:<blockquote><p>alpha-blend (using the source alpha-channel and per-surface alpha) <cite>SRCCOLORKEY</cite> ignored.</p></blockquote>
-<p>Source surface blend mode set to <cite>BLENDMODE_NONE</cite>:</p>
+<blockquote><p>Source surface blend mode set to <tt class="docutils literal"><span class="pre">BLENDMODE_BLEND</span></tt>:<blockquote><p>alpha-blend (using the source alpha-channel and per-surface alpha) <tt class="docutils literal"><span class="pre">SRCCOLORKEY</span></tt> ignored.</p></blockquote>
+<p>Source surface blend mode set to <tt class="docutils literal"><span class="pre">BLENDMODE_NONE</span></tt>:</p>
 <blockquote><p><p>copy RGB.</p>
-<p>if <cite>SRCCOLORKEY</cite> set, only copy the pixels matching the RGB values of the source color key, ignoring alpha in the comparison.</p>
+<p>if <tt class="docutils literal"><span class="pre">SRCCOLORKEY</span></tt> set, only copy the pixels matching the RGB values of the source color key, ignoring alpha in the comparison.</p>
 </p></blockquote>
 </p></blockquote>
 <p><tt class="docutils literal"><span class="pre">RGB-&gt;RGBA</span></tt>:</p>
-<blockquote><p>Source surface blend mode set to <cite>BLENDMODE_BLEND</cite>:<blockquote><p>alpha-blend (using the source per-surface alpha)</p></blockquote>
-<p>Source surface blend mode set to <cite>BLENDMODE_NONE</cite>:</p>
+<blockquote><p>Source surface blend mode set to <tt class="docutils literal"><span class="pre">BLENDMODE_BLEND</span></tt>:<blockquote><p>alpha-blend (using the source per-surface alpha)</p></blockquote>
+<p>Source surface blend mode set to <tt class="docutils literal"><span class="pre">BLENDMODE_NONE</span></tt>:</p>
 <blockquote><p>copy RGB, set destination alpha to source per-surface alpha value.</p></blockquote>
 <p>both:</p>
-<blockquote><p>if <cite>SRCCOLORKEY</cite> set, only copy the pixels matching the source color key.</p></blockquote>
+<blockquote><p>if <tt class="docutils literal"><span class="pre">SRCCOLORKEY</span></tt> set, only copy the pixels matching the source color key.</p></blockquote>
 </p></blockquote>
 <p><tt class="docutils literal"><span class="pre">RGBA-&gt;RGBA</span></tt>:</p>
-<blockquote><p>Source surface blend mode set to <cite>BLENDMODE_BLEND</cite>:<blockquote><p>alpha-blend (using the source alpha-channel and per-surface alpha) <cite>SRCCOLORKEY</cite> ignored.</p></blockquote>
-<p>Source surface blend mode set to <cite>BLENDMODE_NONE</cite>:</p>
+<blockquote><p>Source surface blend mode set to <tt class="docutils literal"><span class="pre">BLENDMODE_BLEND</span></tt>:<blockquote><p>alpha-blend (using the source alpha-channel and per-surface alpha) <tt class="docutils literal"><span class="pre">SRCCOLORKEY</span></tt> ignored.</p></blockquote>
+<p>Source surface blend mode set to <tt class="docutils literal"><span class="pre">BLENDMODE_NONE</span></tt>:</p>
 <blockquote><p><p>copy all of RGBA to the destination.</p>
-<p>if <cite>SRCCOLORKEY</cite> set, only copy the pixels matching the RGB values of the source color key, ignoring alpha in the comparison.</p>
+<p>if <tt class="docutils literal"><span class="pre">SRCCOLORKEY</span></tt> set, only copy the pixels matching the RGB values of the source color key, ignoring alpha in the comparison.</p>
 </p></blockquote>
 </p></blockquote>
 <p><tt class="docutils literal"><span class="pre">RGB-&gt;RGB</span></tt>:</p>
-<blockquote><p>Source surface blend mode set to <cite>BLENDMODE_BLEND</cite>:<blockquote><p>alpha-blend (using the source per-surface alpha)</p></blockquote>
-<p>Source surface blend mode set to <cite>BLENDMODE_NONE</cite>:</p>
+<blockquote><p>Source surface blend mode set to <tt class="docutils literal"><span class="pre">BLENDMODE_BLEND</span></tt>:<blockquote><p>alpha-blend (using the source per-surface alpha)</p></blockquote>
+<p>Source surface blend mode set to <tt class="docutils literal"><span class="pre">BLENDMODE_NONE</span></tt>:</p>
 <blockquote><p>copy RGB.</p></blockquote>
 <p>both:</p>
-<blockquote><p>if <cite>SRCCOLORKEY</cite> set, only copy the pixels matching the source color key.</p></blockquote>
+<blockquote><p>if <tt class="docutils literal"><span class="pre">SRCCOLORKEY</span></tt> set, only copy the pixels matching the source color key.</p></blockquote>
 </p></blockquote>
 <p>You should call <tt class="docutils literal"><span class="pre">blitSurface()</span></tt> unless you know exactly how SDL blitting works internally and how to use the other blit procedures.</p>
 
 
 </dd>
-<dt id="blitScaled"><a name="blitScaled.t,Surface,ptr.Rect,Surface,ptr.Rect"></a><pre><span class="Keyword">template</span> <span class="Identifier">blitScaled</span><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
+<a id="blitScaled.t,Surface,ptr.Rect,Surface,ptr.Rect"></a>
+<dt><pre><span class="Keyword">template</span> <a href="#blitScaled.t%2CSurface%2Cptr.Rect%2CSurface%2Cptr.Rect"><span class="Identifier">blitScaled</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">srcrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">dst</span><span class="Other">:</span> <a href="surface.html#Surface"><span class="Identifier">Surface</span></a><span class="Other">;</span> <span class="Identifier">dstrect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span></pre></dt>
 <dd>
+
 
 
 </dd>
@@ -1890,7 +1585,7 @@ Performs a fast blit from the source surface to the destination surface.</p>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-11-02 19:11:04 UTC</small>
+        <small>Made with Nim. Generated: 2019-07-27 12:00:42 UTC</small>
       </div>
     </div>
   </div>

@@ -16,7 +16,7 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
-<title>Module joystick</title>
+<title>joystick</title>
 <style type="text/css" >
 /*
 Stylesheet for use with Docutils/rst2html.
@@ -27,232 +27,130 @@ customize this style sheet.
 Modified from Chad Skeeters' rst2html-style
 https://bitbucket.org/cskeeters/rst2html-style/
 
-Modified by Boyd Greenfield
+Modified by Boyd Greenfield and narimiran
 */
-/* SCSS variables */
-/* Text weights */
-/* Body colors */
-/* Text colors */
-/* Link colors */
-/* Syntax highlighting colors */
-/* Pct changes */
-/* Mixins */
-/* Body/layout */
+
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%; }
 
-/* Where we want fancier font if available */
-h1, h2, h3, h4, h5, h6, p.module-desc, table.docinfo + blockquote p, table.docinfo blockquote p, h1 + blockquote p {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important; }
-
-h1.title {
-  font-weight: 900; }
-
 body {
   font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
-  color: #444;
-  letter-spacing: 0.15px;
-  background-color: #FDFBFA; }
+  font-size: 1.125em;
+  line-height: 1.5;
+  color: #222;
+  background-color: #FCFCFC; }
 
 /* Skeleton grid */
 .container {
   position: relative;
   width: 100%;
-  max-width: 960px;
+  max-width: 1050px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
   box-sizing: border-box; }
 
 .column,
 .columns {
   width: 100%;
   float: left;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  margin-left: 1%;
+}
 
-/* For devices larger than 400px */
-@media (min-width: 400px) {
-  .container {
-    width: 100%;
-    padding: 0; } }
-/* For devices larger than 650px */
-@media (min-width: 650px) {
-  .container {
-    width: 100%; }
+.column:first-child,
+.columns:first-child {
+  margin-left: 0; }
 
-  .column,
-  .columns {
-    margin-left: 4%; }
+.three.columns {
+  width: 19%; }
 
-  .column:first-child,
-  .columns:first-child {
-    margin-left: 0; }
+.nine.columns {
+  width: 80.0%; }
 
-  .one.column,
-  .one.columns {
-    width: 4.66666666667%; }
+.twelve.columns {
+  width: 100%;
+  margin-left: 0; }
 
-  .two.columns {
-    width: 13.3333333333%; }
-
+@media screen and (max-width: 860px) {
   .three.columns {
-    width: 22%; }
-
-  .four.columns {
-    width: 30.6666666667%; }
-
-  .five.columns {
-    width: 39.3333333333%; }
-
-  .six.columns {
-    width: 48%; }
-
-  .seven.columns {
-    width: 56.6666666667%; }
-
-  .eight.columns {
-    width: 65.3333333333%; }
-
+    display: none;
+  }
   .nine.columns {
-    width: 74.0%; }
-
-  .ten.columns {
-    width: 82.6666666667%; }
-
-  .eleven.columns {
-    width: 91.3333333333%; }
-
-  .twelve.columns {
-    width: 100%;
-    margin-left: 0; }
-
-  .one-third.column {
-    width: 30.6666666667%; }
-
-  .two-thirds.column {
-    width: 65.3333333333%; } }
-/* Customer Overrides */
-.footer {
-  text-align: center;
-  color: #969696;
-  padding-top: 10%; }
-
-p.module-desc {
-  font-size: 1.1em;
-  color: #666666; }
-
-a.link-seesrc {
-  color: #aec7d2;
-  font-style: italic; }
-
-a.link-seesrc:hover {
-  color: #6c9aae; }
-
-#toc-list {
-  word-wrap: break-word; }
-
-ul.simple-toc {
-  list-style: none; }
-
-ul.simple-toc a.reference-toplevel {
-  font-weight: bold;
-  color: #0077b3; }
-
-ul.simple-toc-section {
-  list-style-type: circle;
-  color: #6c9aae; }
-
-ul.simple-toc-section a.reference {
-  color: #0077b3; }
+    width: 98.0%;
+  }
+  body {
+    font-size: 1em;
+    line-height: 1.35;
+  }
+}
 
 cite {
   font-style: italic !important; }
 
-dt > pre {
-  border-color: rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 0.3);
-  margin: 15px 0px 5px; }
-
-dd > pre {
-  border-color: rgba(0, 0, 0, 0.1);
-  background-color: whitesmoke;
-  margin-top: 8px; }
-
-.item > dd {
-  margin-left: 10px;
-  margin-bottom: 30px; }
-
-/* Nim line-numbered tables */
-.line-nums-table {
-  width: 100%;
-  table-layout: fixed; }
 
 /* Nim search input */
 div#searchInputDiv {
-  margin-bottom: 8px;
+  margin-bottom: 1em;
 }
-div#searchInputDiv input#searchInput {
-  width: 10em;
-}
-div.search-groupby {
-  margin-bottom: 8px;
+input#searchInput {
+  width: 80%;
 }
 
-table.line-nums-table {
-  border-radius: 4px;
-  border: 1px solid #cccccc;
-  background-color: whitesmoke;
-  border-collapse: separate;
-  margin-top: 15px;
-  margin-bottom: 25px; }
-
-.line-nums-table tbody {
-  border: none; }
-
-.line-nums-table td pre {
-  border: none;
-  background-color: transparent; }
-
-.line-nums-table td.blob-line-nums {
-  width: 28px; }
-
-.line-nums-table td.blob-line-nums pre {
-  color: #b0b0b0;
-  -webkit-filter: opacity(75%);
-  text-align: right;
-  border-color: transparent;
-  background-color: transparent;
-  padding-left: 0px;
-  margin-left: 0px;
-  padding-right: 0px;
-  margin-right: 0px; }
+/*
+ * Some custom formatting for input forms.
+ * This also fixes input form colors on Firefox with a dark system theme on Linux.
+ */
+input {
+  -moz-appearance: none;
+  color: #333;
+  background-color: #f8f8f8;
+  border: 1px solid #aaa;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-size: 0.9em;
+  padding: 6px;
+}
+input:focus {
+  border: 1px solid #1fa0eb;
+  box-shadow: 0 0 2px #1fa0eb;
+}
 
 /* Docgen styles */
 /* Links */
 a {
-  color: #0077b3;
-  text-decoration: none; }
+  color: #07b;
+  text-decoration: none;
+}
+
+a span.Identifier {
+  text-decoration: underline;
+  text-decoration-color: #aab;
+}
+
+a.reference-toplevel {
+  font-weight: bold;
+}
+
+a.toc-backref {
+  text-decoration: none;
+  color: #222; }
+
+a.link-seesrc {
+  color: #607c9f;
+  font-size: 0.9em;
+  font-style: italic; }
 
 a:hover,
 a:focus {
-  color: #00334d;
+  color: #607c9f;
   text-decoration: underline; }
 
-a:visited {
-  color: #00334d; }
+a:hover span.Identifier {
+  color: #607c9f;
+}
 
-a:focus {
-  outline: thin dotted #2d2d2d;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px; }
-
-a:hover,
-a:active {
-  outline: 0; }
 
 sub,
 sup {
@@ -329,379 +227,258 @@ img {
 
   h2,
   h3 {
-    page-break-after: avoid; } }
-.img-rounded {
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px; }
+    page-break-after: avoid; }
+}
 
-.img-polaroid {
-  padding: 4px;
-  background-color: rgba(252, 248, 244, 0.75);
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
 
 p {
-  margin: 0 0 8px; }
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
 
 small {
   font-size: 85%; }
 
 strong {
-  font-weight: 600; }
+  font-weight: 600;
+  font-size: 0.95em;
+  color: #3c3c3c;
+}
 
 em {
   font-style: italic; }
 
-cite {
-  font-style: normal; }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  line-height: 20px;
-  color: inherit;
-  text-rendering: optimizelegibility; }
-
 h1 {
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: 400;
-  padding-bottom: .15em;
-  border-bottom: 1px solid #aaaaaa;
-  margin-top: 1.0em;
+  padding-bottom: .25em;
+  border-bottom: 1px solid #aaa;
+  margin-top: 2.5em;
+  margin-bottom: 1em;
   line-height: 1.2em; }
 
 h1.title {
   padding-bottom: 1em;
   border-bottom: 0px;
-  font-size: 2.75em; }
+  font-size: 2.5em;
+  text-align: center;
+  font-weight: 900;
+  margin-top: 0.75em;
+  margin-bottom: 0em;
+}
 
 h2 {
-  font-size: 1.5em;
-  margin-top: 1.5em; }
+  font-size: 1.3em;
+  margin-top: 2em; }
+
+h2.subtitle {
+  text-align: center; }
 
 h3 {
-  font-size: 1.3em;
+  font-size: 1.125em;
   font-style: italic;
-  margin-top: 0.75em; }
+  margin-top: 1.5em; }
 
 h4 {
-  font-size: 1.3em;
-  margin-top: 0.5em; }
+  font-size: 1.125em;
+  margin-top: 1em; }
 
 h5 {
-  font-size: 1.2em;
-  margin-top: 0.25em; }
+  font-size: 1.125em;
+  margin-top: 0.75em; }
 
 h6 {
   font-size: 1.1em; }
 
+
 ul,
 ol {
   padding: 0;
-  margin: 0 0 0px 15px; }
+  margin-top: 0.5em;
+  margin-left: 0.75em; }
 
 ul ul,
 ul ol,
 ol ol,
 ol ul {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  margin-left: 1.25em; }
 
 li {
-  line-height: 20px; }
-
-dl {
-  margin-bottom: 20px; }
-
-dt,
-dd {
-  line-height: 20px; }
-
-dt {
-  font-weight: bold; }
-
-dd {
-  margin-left: 10px;
-  margin-bottom: 26px; }
-
-hr {
-  margin: 20px 0;
-  border: 0;
-  border-top: 1px solid #eeeeee;
-  border-bottom: 1px solid #ffffff; }
-
-abbr[title],
-abbr[data-original-title] {
-  cursor: help;
-  border-bottom: 1px dotted #999999; }
-
-abbr.initialism {
-  font-size: 90%;
-  text-transform: uppercase; }
-
-blockquote {
-  padding: 0 0 0 15px;
-  margin: 0 0 20px;
-  border-left: 5px solid #EFEBE0; }
-
-table.docinfo + blockquote, table.docinfo blockquote, h1 + blockquote {
-  border-left: 5px solid #c9c9c9;
+    list-style-type: circle;
 }
 
-table.docinfo + blockquote p, table.docinfo blockquote p, h1 + blockquote p {
-  margin-bottom: 0;
-  font-size: 15px;
-  font-weight: 200;
-  line-height: 1.5;
-  font-style: italic; }
+ul.simple-boot li {
+    list-style-type: none;
+    margin-left: 0em;
+    margin-bottom: 0.5em;
+}
 
-q:before,
-q:after,
-blockquote:before,
-blockquote:after {
-  content: ""; }
+ol.simple > li, ul.simple > li {
+  margin-bottom: 0.25em;
+  margin-left: 0.4em }
 
-address {
-  display: block;
-  margin-bottom: 20px;
-  font-style: normal;
-  line-height: 20px; }
+ul.simple.simple-toc > li {
+    margin-top: 1em;
+}
 
-code,
-pre {
-  font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
-  padding: 0 3px 2px;
-  font-weight: 500;
-  font-size: 12px;
-  color: #444444;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px; }
+ul.simple-toc {
+  list-style: none;
+  font-size: 0.9em;
+  margin-left: -0.3em;
+  margin-top: 1em; }
+
+ul.simple-toc > li {
+    list-style-type: none;
+}
+
+ul.simple-toc-section {
+  list-style-type: circle;
+  margin-left: 1em;
+  color: #6c9aae; }
+
+
+ol.arabic {
+  list-style: decimal; }
+
+ol.loweralpha {
+  list-style: lower-alpha; }
+
+ol.upperalpha {
+  list-style: upper-alpha; }
+
+ol.lowerroman {
+  list-style: lower-roman; }
+
+ol.upperroman {
+  list-style: upper-roman; }
+
+ul.auto-toc {
+  list-style-type: none; }
+
+
+dl {
+  margin-bottom: 1.5em; }
+
+dt {
+  margin-bottom: -0.5em;
+  margin-left: 0.0em; }
+
+dd {
+  margin-left: 2.0em;
+  margin-bottom: 3.0em;
+  margin-top: 0.5em; }
+
+
+hr {
+  margin: 2em 0;
+  border: 0;
+  border-top: 1px solid #aaa; }
+
+blockquote {
+  font-size: 0.9em;
+  font-style: italic;
+  padding-left: 0.5em;
+  margin-left: 0;
+  border-left: 5px solid #bbc;
+}
 
 .pre {
   font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
-  font-weight: 600;
-  /*color: #504da6;*/
+  font-weight: 500;
+  font-size: 0.85em;
+  background-color: #f0f3ff;
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 4px;
 }
 
-code {
-  padding: 2px 4px;
-  color: #444444;
-  white-space: nowrap;
-  background-color: white;
-  border: 1px solid #777777; }
-
 pre {
+  font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
+  color: #222;
+  font-weight: 500;
   display: inline-block;
   box-sizing: border-box;
-  min-width: calc(100% - 19.5px);
-  padding: 9.5px;
-  margin: 0.25em 10px 10px 10px;
-  font-size: 15px;
-  line-height: 20px;
+  min-width: 100%;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: 0.85em;
   white-space: pre !important;
   overflow-y: hidden;
   overflow-x: visible;
-  background-color: rgba(0, 0, 0, 0.01);
-  border: 1px solid #cccccc;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px; }
-
-pre.prettyprint {
-  margin-bottom: 20px; }
-
-pre code {
-  padding: 0;
-  color: inherit;
-  white-space: pre;
-  overflow-x: visible;
-  background-color: transparent;
-  border: 0; }
+  background-color: ghostwhite;
+  border: 1px solid #dde;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px; }
 
 .pre-scrollable {
   max-height: 340px;
   overflow-y: scroll; }
 
+
+/* Nim line-numbered tables */
+.line-nums-table {
+  width: 100%;
+  table-layout: fixed; }
+
+table.line-nums-table {
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  background-color: ghostwhite;
+  border-collapse: separate;
+  margin-top: 15px;
+  margin-bottom: 25px; }
+
+.line-nums-table tbody {
+  border: none; }
+
+.line-nums-table td pre {
+  border: none;
+  background-color: transparent; }
+
+.line-nums-table td.blob-line-nums {
+  width: 28px; }
+
+.line-nums-table td.blob-line-nums pre {
+  color: #b0b0b0;
+  -webkit-filter: opacity(75%);
+  text-align: right;
+  border-color: transparent;
+  background-color: transparent;
+  padding-left: 0px;
+  margin-left: 0px;
+  padding-right: 0px;
+  margin-right: 0px; }
+
+
 table {
   max-width: 100%;
   background-color: transparent;
+  margin-top: 0.5em;
+  margin-bottom: 1.5em;
   border-collapse: collapse;
-  border-spacing: 0; }
-
-table th, table td {
-  padding: 0px 8px 0px;
+  border-color: #ccc;
+  border-spacing: 0;
+  font-size: 0.9em;
 }
 
-.table {
-  width: 100%;
-  margin-bottom: 20px; }
+table th, table td {
+  padding: 0px 0.5em 0px;
+}
 
-.table th,
-.table td {
-  padding: 8px;
-  line-height: 20px;
-  text-align: left;
-  vertical-align: top;
-  border-top: 1px solid #444444; }
-
-.table th {
+table th {
+  background-color: #e8e8e8;
   font-weight: bold; }
 
-.table thead th {
-  vertical-align: bottom; }
+table th.docinfo-name {
+    background-color: transparent;
+}
 
-.table caption + thead tr:first-child th,
-.table caption + thead tr:first-child td,
-.table colgroup + thead tr:first-child th,
-.table colgroup + thead tr:first-child td,
-.table thead:first-child tr:first-child th,
-.table thead:first-child tr:first-child td {
-  border-top: 0; }
+table tr:hover {
+  background-color: ghostwhite; }
 
-.table tbody + tbody {
-  border-top: 2px solid #444444; }
-
-.table .table {
-  background-color: rgba(252, 248, 244, 0.75); }
-
-.table-condensed th,
-.table-condensed td {
-  padding: 4px 5px; }
-
-.table-bordered {
-  border: 1px solid #444444;
-  border-collapse: separate;
-  *border-collapse: collapse;
-  border-left: 0;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px; }
-
-.table-bordered th,
-.table-bordered td {
-  border-left: 1px solid #444444; }
-
-.table-bordered caption + thead tr:first-child th,
-.table-bordered caption + tbody tr:first-child th,
-.table-bordered caption + tbody tr:first-child td,
-.table-bordered colgroup + thead tr:first-child th,
-.table-bordered colgroup + tbody tr:first-child th,
-.table-bordered colgroup + tbody tr:first-child td,
-.table-bordered thead:first-child tr:first-child th,
-.table-bordered tbody:first-child tr:first-child th,
-.table-bordered tbody:first-child tr:first-child td {
-  border-top: 0; }
-
-.table-bordered thead:first-child tr:first-child > th:first-child,
-.table-bordered tbody:first-child tr:first-child > td:first-child,
-.table-bordered tbody:first-child tr:first-child > th:first-child {
-  -webkit-border-top-left-radius: 4px;
-  border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px; }
-
-.table-bordered thead:first-child tr:first-child > th:last-child,
-.table-bordered tbody:first-child tr:first-child > td:last-child,
-.table-bordered tbody:first-child tr:first-child > th:last-child {
-  -webkit-border-top-right-radius: 4px;
-  border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px; }
-
-.table-bordered thead:last-child tr:last-child > th:first-child,
-.table-bordered tbody:last-child tr:last-child > td:first-child,
-.table-bordered tbody:last-child tr:last-child > th:first-child,
-.table-bordered tfoot:last-child tr:last-child > td:first-child,
-.table-bordered tfoot:last-child tr:last-child > th:first-child {
-  -webkit-border-bottom-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomleft: 4px; }
-
-.table-bordered thead:last-child tr:last-child > th:last-child,
-.table-bordered tbody:last-child tr:last-child > td:last-child,
-.table-bordered tbody:last-child tr:last-child > th:last-child,
-.table-bordered tfoot:last-child tr:last-child > td:last-child,
-.table-bordered tfoot:last-child tr:last-child > th:last-child {
-  -webkit-border-bottom-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  -moz-border-radius-bottomright: 4px; }
-
-.table-bordered tfoot + tbody:last-child tr:last-child td:first-child {
-  -webkit-border-bottom-left-radius: 0;
-  border-bottom-left-radius: 0;
-  -moz-border-radius-bottomleft: 0; }
-
-.table-bordered tfoot + tbody:last-child tr:last-child td:last-child {
-  -webkit-border-bottom-right-radius: 0;
-  border-bottom-right-radius: 0;
-  -moz-border-radius-bottomright: 0; }
-
-.table-bordered caption + thead tr:first-child th:first-child,
-.table-bordered caption + tbody tr:first-child td:first-child,
-.table-bordered colgroup + thead tr:first-child th:first-child,
-.table-bordered colgroup + tbody tr:first-child td:first-child {
-  -webkit-border-top-left-radius: 4px;
-  border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px; }
-
-.table-bordered caption + thead tr:first-child th:last-child,
-.table-bordered caption + tbody tr:first-child td:last-child,
-.table-bordered colgroup + thead tr:first-child th:last-child,
-.table-bordered colgroup + tbody tr:first-child td:last-child {
-  -webkit-border-top-right-radius: 4px;
-  border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px; }
-
-table.docutils th {
-  background-color: #e8e8e8; }
-
-table.docutils tr:hover {
-  background-color: whitesmoke; }
-
-.table-striped tbody > tr:nth-child(odd) > td,
-.table-striped tbody > tr:nth-child(odd) > th {
-  background-color: rgba(252, 248, 244, 0.75); }
-
-.table-hover tbody tr:hover > td,
-.table-hover tbody tr:hover > th {
-  background-color: rgba(241, 222, 204, 0.75); }
-
-table td[class*="span"],
-table th[class*="span"],
-.row-fluid table td[class*="span"],
-.row-fluid table th[class*="span"] {
-  display: table-cell;
-  float: none;
-  margin-left: 0; }
-
-.hero-unit {
-  padding: 60px;
-  margin-bottom: 30px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  color: inherit;
-  background-color: rgba(230, 197, 164, 0.75);
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px; }
-
-.hero-unit h1 {
-  margin-bottom: 0;
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
-  color: inherit; }
-
-.hero-unit li {
-  line-height: 30px; }
 
 /* rst2html default used to remove borders from tables and images */
 .borderless, table.borderless td, table.borderless th {
@@ -722,10 +499,6 @@ table.borderless td, table.borderless th {
 .hidden {
   display: none; }
 
-a.toc-backref {
-  text-decoration: none;
-  color: #444444; }
-
 blockquote.epigraph {
   margin: 2em 5em; }
 
@@ -735,85 +508,6 @@ dl.docutils dd {
 object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
   overflow: hidden; }
 
-/* Uncomment (and remove this text!) to get bold-faced definition list terms
-dl.docutils dt {
-  font-weight: bold }
-*/
-div.abstract {
-  margin: 2em 5em; }
-
-div.abstract p.topic-title {
-  font-weight: bold;
-  text-align: center; }
-
-div.admonition, div.attention, div.caution, div.danger, div.error,
-div.hint, div.important, div.note, div.tip, div.warning {
-  margin: 2em;
-  border: medium outset;
-  padding: 1em; }
-
-div.note, div.warning {
-  margin: 1.5em 0px;
-  border: none; }
-
-div.note p.admonition-title,
-div.warning p.admonition-title {
-  display: none; }
-
-/* Clearfix
- * http://css-tricks.com/snippets/css/clear-fix/
- */
-div.note:after,
-div.warning:after {
-  content: "";
-  display: table;
-  clear: both; }
-
-div.note p:before,
-div.warning p:before {
-  display: block;
-  float: left;
-  font-size: 4em;
-  line-height: 1em;
-  margin-right: 20px;
-  margin-left: 0em;
-  margin-top: -10px;
-  content: '\0270D';
-  /*handwriting*/ }
-
-div.warning p:before {
-  content: '\026A0';
-  /*warning*/ }
-
-div.admonition p.admonition-title, div.hint p.admonition-title,
-div.important p.admonition-title, div.note p.admonition-title,
-div.tip p.admonition-title {
-  font-weight: bold;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
-
-div.attention p.admonition-title, div.caution p.admonition-title,
-div.danger p.admonition-title, div.error p.admonition-title,
-div.warning p.admonition-title, .code .error {
-  color: #b30000;
-  font-weight: bold;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
-
-/* Uncomment (and remove this text!) to get reduced vertical space in
-   compound paragraphs.
-div.compound .compound-first, div.compound .compound-middle {
-  margin-bottom: 0.5em }
-
-div.compound .compound-last, div.compound .compound-middle {
-  margin-top: 0.5em }
-*/
-div.dedication {
-  margin: 2em 5em;
-  text-align: center;
-  font-style: italic; }
-
-div.dedication p.topic-title {
-  font-weight: bold;
-  font-style: normal; }
 
 div.figure {
   margin-left: 2em;
@@ -821,7 +515,13 @@ div.figure {
 
 div.footer, div.header {
   clear: both;
+  text-align: center;
+  color: #666;
   font-size: smaller; }
+
+div.footer {
+    padding-top: 5em;
+}
 
 div.line-block {
   display: block;
@@ -833,45 +533,24 @@ div.line-block div.line-block {
   margin-bottom: 0;
   margin-left: 1.5em; }
 
-div.sidebar {
-  margin: 0 0 0.5em 1em;
-  border: medium outset;
-  padding: 1em;
-  background-color: rgba(252, 248, 244, 0.75);
-  width: 40%;
-  float: right;
-  clear: right; }
-
-div.sidebar p.rubric {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-size: medium; }
-
-div.system-messages {
-  margin: 5em; }
-
-div.system-messages h1 {
-  color: #b30000; }
-
-div.system-message {
-  border: medium outset;
-  padding: 1em; }
-
-div.system-message p.system-message-title {
-  color: #b30000;
-  font-weight: bold; }
-
 div.topic {
   margin: 2em; }
 
-h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
-h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
-  margin-top: 0.4em; }
+div.search_results {
+  background-color: antiquewhite;
+  margin: 3em;
+  padding: 1em;
+  border: 1px solid #4d4d4d;
+}
 
-h1.title {
-  text-align: center; }
+div#global-links ul {
+  margin-left: 0;
+  list-style-type: none;
+}
 
-h2.subtitle {
-  text-align: center; }
+div#global-links > simple-boot {
+    margin-left: 3em;
+}
 
 hr.docutils {
   width: 75%; }
@@ -905,30 +584,6 @@ img.align-center, .figure.align-center, object.align-center {
 div.align-right {
   text-align: inherit; }
 
-/* div.align-center * { */
-/*   text-align: left } */
-
-ul.simple > li {
-  margin-bottom: 0.5em }
-
-ol.simple, ul.simple {
-  margin-bottom: 1em; }
-
-ol.arabic {
-  list-style: decimal; }
-
-ol.loweralpha {
-  list-style: lower-alpha; }
-
-ol.upperalpha {
-  list-style: upper-alpha; }
-
-ol.lowerroman {
-  list-style: lower-roman; }
-
-ol.upperroman {
-  list-style: upper-roman; }
-
 p.attribution {
   text-align: right;
   margin-left: 50%; }
@@ -948,15 +603,6 @@ p.rubric {
   font-size: larger;
   color: maroon;
   text-align: center; }
-
-p.sidebar-title {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  font-size: larger; }
-
-p.sidebar-subtitle {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: bold; }
 
 p.topic-title {
   font-weight: bold; }
@@ -997,21 +643,13 @@ pre.code .inserted, code .inserted {
   background-color: #A3D289; }
 
 span.classifier {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-style: oblique; }
 
 span.classifier-delimiter {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: bold; }
-
-span.interpreted {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
 
 span.option {
   white-space: nowrap; }
-
-span.pre {
-  white-space: pre; }
 
 span.problematic {
   color: #b30000; }
@@ -1019,44 +657,6 @@ span.problematic {
 span.section-subtitle {
   /* font-size relative to parent (h1..h6 element) */
   font-size: 80%; }
-
-table.citation {
-  border-left: solid 1px #666666;
-  margin-left: 1px; }
-
-table.docinfo {
-  margin: 0em;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important;
-  color: #444444; }
-
-table.docutils {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em; }
-
-table.footnote {
-  border-left: solid 1px #2d2d2d;
-  margin-left: 1px; }
-
-table.docutils td, table.docutils th,
-table.docinfo td, table.docinfo th {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  vertical-align: top; }
-
-table.docutils th.field-name, table.docinfo th.docinfo-name {
-  font-weight: 700;
-  text-align: left;
-  white-space: nowrap;
-  padding-left: 0; }
-
-h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
-h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
-  font-size: 100%; }
-
-ul.auto-toc {
-  list-style-type: none; }
 
 span.DecNumber {
   color: #252dbe; }
@@ -1074,7 +674,7 @@ span.FloatNumber {
   color: #252dbe; }
 
 span.Identifier {
-  color: #3b3b3b; }
+  color: #222; }
 
 span.Keyword {
   font-weight: 600;
@@ -1139,37 +739,22 @@ dt pre > span.Identifier, dt pre > span.Operator {
   color: #155da4;
   font-weight: 700; }
 
-dt pre > span.Identifier ~ span.Identifier, dt pre > span.Operator ~ span.Identifier {
-  color: inherit;
-  font-weight: inherit; }
-
-dt pre > span.Operator ~ span.Identifier {
+dt pre > span.Keyword ~ span.Identifier, dt pre > span.Identifier ~ span.Identifier,
+dt pre > span.Operator ~ span.Identifier, dt pre > span.Other ~ span.Identifier {
   color: inherit;
   font-weight: inherit; }
 
 /* Nim sprite for the footer (taken from main page favicon) */
 .nim-sprite {
   display: inline-block;
-  height: 12px;
-  width: 12px;
+  height: 16px;
+  width: 16px;
   background-position: 0 0;
-  background-size: 12px 12px;
+  background-size: 16px 16px;
   -webkit-filter: opacity(50%);
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
-
-div.search_results {
-  background-color: antiquewhite;
-  margin: 3em;
-  padding: 1em;
-  border: 1px solid #4d4d4d;
-}
-
-div#global-links ul {
-  margin-left: 0;
-  list-style-type: none;
-}
 
 span.pragmadots {
   /* Position: relative frees us up to make the dots
@@ -1178,18 +763,14 @@ span.pragmadots {
   position: relative;
   /* 1px down looks slightly nicer */
   top: 1px;
-
   padding: 2px;
-  background-color: #D3D3D3;
+  background-color: #e8e8e8;
   border-radius: 4px;
   margin: 0 2px;
   cursor: pointer;
-
-  /* For some reason on Chrome, making the font size
-  smaller than 1em is causing the parent container to
-  bulge slightly. So, we're stuck with inheriting 1em,
-  which is sad, because 0.8em looks better... */
+  font-size: 0.8em;
 }
+
 span.pragmadots:hover {
   background-color: #DBDBDB;
 }
@@ -1197,9 +778,13 @@ span.pragmawrap {
   display: none;
 }
 
+span.attachedType {
+  display: none;
+  visibility: hidden;
+}
 </style>
 
-<script type="text/javascript" src="../dochack.js"></script>
+<script type="text/javascript" src="dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -1219,7 +804,7 @@ function main() {
 <body onload="main()">
 <div class="document" id="documentId">
   <div class="container">
-    <h1 class="title">Module joystick</h1>
+    <h1 class="title">joystick</h1>
     <div class="row">
   <div class="three columns">
   <div id="global-links">
@@ -1243,32 +828,32 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Joystick"
-    title="Joystick = pointer"><wbr />Joystick<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="Joystick = pointer"><wbr />Joystick<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#JoystickGUID"
     title="JoystickGUID = object
-  data*: array[16, uint8]"><wbr />Joystick<wbr />GUID<span class="attachedType" style="visibility:hidden"></span></a></li>
+  data*: array[16, uint8]"><wbr />Joystick<wbr />GUID<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#JoystickID"
-    title="JoystickID = int32"><wbr />Joystick<wbr />ID<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="JoystickID = int32"><wbr />Joystick<wbr />ID<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#JoystickType"
     title="JoystickType {.size: 4.} = enum
   JOYSTICK_TYPE_UNKNOWN, JOYSTICK_TYPE_GAMECONTROLLER, JOYSTICK_TYPE_WHEEL,
   JOYSTICK_TYPE_ARCADE_STICK, JOYSTICK_TYPE_FLIGHT_STICK, JOYSTICK_TYPE_DANCE_PAD,
   JOYSTICK_TYPE_GUITAR, JOYSTICK_TYPE_DRUM_KIT, JOYSTICK_TYPE_ARCADE_PAD,
-  JOYSTICK_TYPE_THROTTLE"><wbr />Joystick<wbr />Type<span class="attachedType" style="visibility:hidden"></span></a></li>
+  JOYSTICK_TYPE_THROTTLE"><wbr />Joystick<wbr />Type<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#JoystickPowerLevel"
     title="JoystickPowerLevel {.size: 4.} = enum
   JOYSTICK_POWER_UNKNOWN = -1, JOYSTICK_POWER_EMPTY, ## &lt;= 5%
   JOYSTICK_POWER_LOW,         ## &lt;= 20%
   JOYSTICK_POWER_MEDIUM,      ## &lt;= 70%
   JOYSTICK_POWER_FULL,        ## &lt;= 100%
-  JOYSTICK_POWER_WIRED, JOYSTICK_POWER_MAX"><wbr />Joystick<wbr />Power<wbr />Level<span class="attachedType" style="visibility:hidden"></span></a></li>
+  JOYSTICK_POWER_WIRED, JOYSTICK_POWER_MAX"><wbr />Joystick<wbr />Power<wbr />Level<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HatPosition"
     title="HatPosition {.size: 1.} = enum
   HAT_CENTERED = 0x00000000, HAT_UP = 0x00000001, HAT_RIGHT = 0x00000002,
   HAT_RIGHTUP = (uint8(HAT_RIGHT) or uint8(HAT_UP)), HAT_DOWN = 0x00000004,
   HAT_RIGHTDOWN = (uint8(HAT_RIGHT) or uint8(HAT_DOWN)), HAT_LEFT = 0x00000008,
   HAT_LEFTUP = (uint8(HAT_LEFT) or uint8(HAT_UP)),
-  HAT_LEFTDOWN = (uint8(HAT_LEFT) or uint8(HAT_DOWN))"><wbr />Hat<wbr />Position<span class="attachedType" style="visibility:hidden"></span></a></li>
+  HAT_LEFTDOWN = (uint8(HAT_LEFT) or uint8(HAT_DOWN))"><wbr />Hat<wbr />Position<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -1276,92 +861,92 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#JOYSTICK_AXIS_MAX"
-    title="JOYSTICK_AXIS_MAX = 32767"><wbr />JOYSTICK_<wbr />AXIS_<wbr />MAX<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="JOYSTICK_AXIS_MAX = 32767"><wbr />JOYSTICK_<wbr />AXIS_<wbr />MAX<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#JOYSTICK_AXIS_MIN"
-    title="JOYSTICK_AXIS_MIN = -32768"><wbr />JOYSTICK_<wbr />AXIS_<wbr />MIN<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="JOYSTICK_AXIS_MIN = -32768"><wbr />JOYSTICK_<wbr />AXIS_<wbr />MIN<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#lockJoysticks,"
-    title="lockJoysticks()"><wbr />lock<wbr />Joysticks<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#unlockJoysticks,"
-    title="unlockJoysticks()"><wbr />unlock<wbr />Joysticks<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#numJoysticks,"
-    title="numJoysticks(): cint"><wbr />num<wbr />Joysticks<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#joystickNameForIndex,cint"
-    title="joystickNameForIndex(device_index: cint): cstring"><wbr />joystick<wbr />Name<wbr />For<wbr />Index<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#joystickGetDevicePlayerIndex,cint"
-    title="joystickGetDevicePlayerIndex(device_index: cint): cint"><wbr />joystick<wbr />Get<wbr />Device<wbr />Player<wbr />Index<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#joystickGetDeviceGUID,cint"
-    title="joystickGetDeviceGUID(device_index: cint): JoystickGUID"><wbr />joystick<wbr />Get<wbr />Device<wbr />GUID<span class="attachedType" style="visibility:hidden">JoystickGUID</span></a></li>
-  <li><a class="reference" href="#joystickGetDeviceVendor,cint"
-    title="joystickGetDeviceVendor(device_index: cint): uint16"><wbr />joystick<wbr />Get<wbr />Device<wbr />Vendor<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#joystickGetDeviceProduct,cint"
-    title="joystickGetDeviceProduct(device_index: cint): uint16"><wbr />joystick<wbr />Get<wbr />Device<wbr />Product<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#joystickGetDeviceProductVersion,cint"
-    title="joystickGetDeviceProductVersion(device_index: cint): uint16"><wbr />joystick<wbr />Get<wbr />Device<wbr />Product<wbr />Version<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#joystickGetDeviceType,cint"
-    title="joystickGetDeviceType(device_index: cint): JoystickType"><wbr />joystick<wbr />Get<wbr />Device<wbr />Type<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#joystickGetDeviceInstanceID,cint"
-    title="joystickGetDeviceInstanceID(device_index: cint): JoystickID"><wbr />joystick<wbr />Get<wbr />Device<wbr />Instance<wbr />ID<span class="attachedType" style="visibility:hidden">JoystickID</span></a></li>
-  <li><a class="reference" href="#joystickOpen,cint"
-    title="joystickOpen(device_index: cint): Joystick"><wbr />joystick<wbr />Open<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickFromInstanceID,JoystickID"
-    title="joystickFromInstanceID(joyid: JoystickID): Joystick"><wbr />joystick<wbr />From<wbr />Instance<wbr />ID<span class="attachedType" style="visibility:hidden">JoystickID</span></a></li>
-  <li><a class="reference" href="#joystickName,Joystick"
-    title="joystickName(joystick: Joystick): cstring"><wbr />joystick<wbr />Name<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickGetPlayerIndex,Joystick"
-    title="joystickGetPlayerIndex(joystick: Joystick): cint"><wbr />joystick<wbr />Get<wbr />Player<wbr />Index<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickGetGUID,Joystick"
-    title="joystickGetGUID(joystick: Joystick): JoystickGUID"><wbr />joystick<wbr />Get<wbr />GUID<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickGetVendor,Joystick"
-    title="joystickGetVendor(joystick: Joystick): uint16"><wbr />joystick<wbr />Get<wbr />Vendor<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickGetProduct,Joystick"
-    title="joystickGetProduct(joystick: Joystick): uint16"><wbr />joystick<wbr />Get<wbr />Product<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickGetProductVersion,Joystick"
-    title="joystickGetProductVersion(joystick: Joystick): uint16"><wbr />joystick<wbr />Get<wbr />Product<wbr />Version<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickGetType,Joystick"
-    title="joystickGetType(joystick: Joystick): JoystickType"><wbr />joystick<wbr />Get<wbr />Type<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickGetGUIDString,JoystickGUID,cstring,cint"
-    title="joystickGetGUIDString(guid: JoystickGUID; pszGUID: cstring; cbGUID: cint)"><wbr />joystick<wbr />Get<wbr />GUIDString<span class="attachedType" style="visibility:hidden">JoystickGUID</span></a></li>
-  <li><a class="reference" href="#joystickGetGUIDFromString,cstring"
-    title="joystickGetGUIDFromString(pchGUID: cstring): JoystickGUID"><wbr />joystick<wbr />Get<wbr />GUIDFrom<wbr />String<span class="attachedType" style="visibility:hidden">JoystickGUID</span></a></li>
-  <li><a class="reference" href="#joystickGetAttached,Joystick"
-    title="joystickGetAttached(joystick: Joystick): bool"><wbr />joystick<wbr />Get<wbr />Attached<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickInstanceID,Joystick"
-    title="joystickInstanceID(joystick: Joystick): JoystickID"><wbr />joystick<wbr />Instance<wbr />ID<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickNumAxes,Joystick"
-    title="joystickNumAxes(joystick: Joystick): cint"><wbr />joystick<wbr />Num<wbr />Axes<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickNumBalls,Joystick"
-    title="joystickNumBalls(joystick: Joystick): cint"><wbr />joystick<wbr />Num<wbr />Balls<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickNumHats,Joystick"
-    title="joystickNumHats(joystick: Joystick): cint"><wbr />joystick<wbr />Num<wbr />Hats<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickNumButtons,Joystick"
-    title="joystickNumButtons(joystick: Joystick): cint"><wbr />joystick<wbr />Num<wbr />Buttons<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickUpdate,"
-    title="joystickUpdate()"><wbr />joystick<wbr />Update<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#joystickEventState,cint"
-    title="joystickEventState(state: cint): cint"><wbr />joystick<wbr />Event<wbr />State<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#joystickGetAxis,Joystick,cint"
-    title="joystickGetAxis(joystick: Joystick; axis: cint): int16"><wbr />joystick<wbr />Get<wbr />Axis<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickGetAxisInitialState,Joystick,cint,ptr.int16"
-    title="joystickGetAxisInitialState(joystick: Joystick; axis: cint; state: ptr int16): cint"><wbr />joystick<wbr />Get<wbr />Axis<wbr />Initial<wbr />State<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickGetHat,Joystick,cint"
-    title="joystickGetHat(joystick: Joystick; hat: cint): HatPosition"><wbr />joystick<wbr />Get<wbr />Hat<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickGetBall,Joystick,cint,ptr.cint,ptr.cint"
-    title="joystickGetBall(joystick: Joystick; ball: cint; dx: ptr cint; dy: ptr cint): cint"><wbr />joystick<wbr />Get<wbr />Ball<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickGetButton,Joystick,cint"
-    title="joystickGetButton(joystick: Joystick; button: cint): uint8"><wbr />joystick<wbr />Get<wbr />Button<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickRumble,Joystick,uint16,uint16,uint32"
+      <li><a class="reference" href="#lockJoysticks"
+    title="lockJoysticks()"><wbr />lock<wbr />Joysticks<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#unlockJoysticks"
+    title="unlockJoysticks()"><wbr />unlock<wbr />Joysticks<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#numJoysticks"
+    title="numJoysticks(): cint"><wbr />num<wbr />Joysticks<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#joystickNameForIndex%2Ccint"
+    title="joystickNameForIndex(device_index: cint): cstring"><wbr />joystick<wbr />Name<wbr />For<wbr />Index<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#joystickGetDevicePlayerIndex%2Ccint"
+    title="joystickGetDevicePlayerIndex(device_index: cint): cint"><wbr />joystick<wbr />Get<wbr />Device<wbr />Player<wbr />Index<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#joystickGetDeviceGUID%2Ccint"
+    title="joystickGetDeviceGUID(device_index: cint): JoystickGUID"><wbr />joystick<wbr />Get<wbr />Device<wbr />GUID<span class="attachedType">JoystickGUID</span></a></li>
+  <li><a class="reference" href="#joystickGetDeviceVendor%2Ccint"
+    title="joystickGetDeviceVendor(device_index: cint): uint16"><wbr />joystick<wbr />Get<wbr />Device<wbr />Vendor<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#joystickGetDeviceProduct%2Ccint"
+    title="joystickGetDeviceProduct(device_index: cint): uint16"><wbr />joystick<wbr />Get<wbr />Device<wbr />Product<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#joystickGetDeviceProductVersion%2Ccint"
+    title="joystickGetDeviceProductVersion(device_index: cint): uint16"><wbr />joystick<wbr />Get<wbr />Device<wbr />Product<wbr />Version<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#joystickGetDeviceType%2Ccint"
+    title="joystickGetDeviceType(device_index: cint): JoystickType"><wbr />joystick<wbr />Get<wbr />Device<wbr />Type<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#joystickGetDeviceInstanceID%2Ccint"
+    title="joystickGetDeviceInstanceID(device_index: cint): JoystickID"><wbr />joystick<wbr />Get<wbr />Device<wbr />Instance<wbr />ID<span class="attachedType">JoystickID</span></a></li>
+  <li><a class="reference" href="#joystickOpen%2Ccint"
+    title="joystickOpen(device_index: cint): Joystick"><wbr />joystick<wbr />Open<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickFromInstanceID%2CJoystickID"
+    title="joystickFromInstanceID(joyid: JoystickID): Joystick"><wbr />joystick<wbr />From<wbr />Instance<wbr />ID<span class="attachedType">JoystickID</span></a></li>
+  <li><a class="reference" href="#joystickName%2CJoystick"
+    title="joystickName(joystick: Joystick): cstring"><wbr />joystick<wbr />Name<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickGetPlayerIndex%2CJoystick"
+    title="joystickGetPlayerIndex(joystick: Joystick): cint"><wbr />joystick<wbr />Get<wbr />Player<wbr />Index<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickGetGUID%2CJoystick"
+    title="joystickGetGUID(joystick: Joystick): JoystickGUID"><wbr />joystick<wbr />Get<wbr />GUID<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickGetVendor%2CJoystick"
+    title="joystickGetVendor(joystick: Joystick): uint16"><wbr />joystick<wbr />Get<wbr />Vendor<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickGetProduct%2CJoystick"
+    title="joystickGetProduct(joystick: Joystick): uint16"><wbr />joystick<wbr />Get<wbr />Product<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickGetProductVersion%2CJoystick"
+    title="joystickGetProductVersion(joystick: Joystick): uint16"><wbr />joystick<wbr />Get<wbr />Product<wbr />Version<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickGetType%2CJoystick"
+    title="joystickGetType(joystick: Joystick): JoystickType"><wbr />joystick<wbr />Get<wbr />Type<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickGetGUIDString%2CJoystickGUID%2Ccstring%2Ccint"
+    title="joystickGetGUIDString(guid: JoystickGUID; pszGUID: cstring; cbGUID: cint)"><wbr />joystick<wbr />Get<wbr />GUIDString<span class="attachedType">JoystickGUID</span></a></li>
+  <li><a class="reference" href="#joystickGetGUIDFromString%2Ccstring"
+    title="joystickGetGUIDFromString(pchGUID: cstring): JoystickGUID"><wbr />joystick<wbr />Get<wbr />GUIDFrom<wbr />String<span class="attachedType">JoystickGUID</span></a></li>
+  <li><a class="reference" href="#joystickGetAttached%2CJoystick"
+    title="joystickGetAttached(joystick: Joystick): bool"><wbr />joystick<wbr />Get<wbr />Attached<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickInstanceID%2CJoystick"
+    title="joystickInstanceID(joystick: Joystick): JoystickID"><wbr />joystick<wbr />Instance<wbr />ID<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickNumAxes%2CJoystick"
+    title="joystickNumAxes(joystick: Joystick): cint"><wbr />joystick<wbr />Num<wbr />Axes<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickNumBalls%2CJoystick"
+    title="joystickNumBalls(joystick: Joystick): cint"><wbr />joystick<wbr />Num<wbr />Balls<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickNumHats%2CJoystick"
+    title="joystickNumHats(joystick: Joystick): cint"><wbr />joystick<wbr />Num<wbr />Hats<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickNumButtons%2CJoystick"
+    title="joystickNumButtons(joystick: Joystick): cint"><wbr />joystick<wbr />Num<wbr />Buttons<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickUpdate"
+    title="joystickUpdate()"><wbr />joystick<wbr />Update<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#joystickEventState%2Ccint"
+    title="joystickEventState(state: cint): cint"><wbr />joystick<wbr />Event<wbr />State<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#joystickGetAxis%2CJoystick%2Ccint"
+    title="joystickGetAxis(joystick: Joystick; axis: cint): int16"><wbr />joystick<wbr />Get<wbr />Axis<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickGetAxisInitialState%2CJoystick%2Ccint%2Cptr.int16"
+    title="joystickGetAxisInitialState(joystick: Joystick; axis: cint; state: ptr int16): cint"><wbr />joystick<wbr />Get<wbr />Axis<wbr />Initial<wbr />State<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickGetHat%2CJoystick%2Ccint"
+    title="joystickGetHat(joystick: Joystick; hat: cint): HatPosition"><wbr />joystick<wbr />Get<wbr />Hat<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickGetBall%2CJoystick%2Ccint%2Cptr.cint%2Cptr.cint"
+    title="joystickGetBall(joystick: Joystick; ball: cint; dx: ptr cint; dy: ptr cint): cint"><wbr />joystick<wbr />Get<wbr />Ball<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickGetButton%2CJoystick%2Ccint"
+    title="joystickGetButton(joystick: Joystick; button: cint): uint8"><wbr />joystick<wbr />Get<wbr />Button<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickRumble%2CJoystick%2Cuint16%2Cuint16%2Cuint32"
     title="joystickRumble(joystick: Joystick; low_frequency_rumble: uint16;
-               high_frequency_rumble: uint16; duration_ms: uint32): cint"><wbr />joystick<wbr />Rumble<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickClose,Joystick"
-    title="joystickClose(joystick: Joystick)"><wbr />joystick<wbr />Close<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
-  <li><a class="reference" href="#joystickCurrentPowerLevel,Joystick"
-    title="joystickCurrentPowerLevel(joystick: Joystick): JoystickPowerLevel"><wbr />joystick<wbr />Current<wbr />Power<wbr />Level<span class="attachedType" style="visibility:hidden">Joystick</span></a></li>
+               high_frequency_rumble: uint16; duration_ms: uint32): cint"><wbr />joystick<wbr />Rumble<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickClose%2CJoystick"
+    title="joystickClose(joystick: Joystick)"><wbr />joystick<wbr />Close<span class="attachedType">Joystick</span></a></li>
+  <li><a class="reference" href="#joystickCurrentPowerLevel%2CJoystick"
+    title="joystickCurrentPowerLevel(joystick: Joystick): JoystickPowerLevel"><wbr />joystick<wbr />Current<wbr />Power<wbr />Level<span class="attachedType">Joystick</span></a></li>
 
   </ul>
 </li>
@@ -1371,39 +956,47 @@ function main() {
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc">
 <h1><a class="toc-backref" id="joystickdotnim" href="#joystickdotnim">joystick.nim</a></h1><p>Include file for SDL joystick event handling.</p>
-<p>The term &quot;device_index&quot; identifies currently plugged in joystick devices between <cite>0</cite> and <tt class="docutils literal"><span class="pre">numJoysticks()</span></tt>, with the exact joystick behind a device_index changing as joysticks are plugged and unplugged.</p>
+<p>The term &quot;device_index&quot; identifies currently plugged in joystick devices between <tt class="docutils literal"><span class="pre">0</span></tt> and <tt class="docutils literal"><span class="pre">numJoysticks()</span></tt>, with the exact joystick behind a device_index changing as joysticks are plugged and unplugged.</p>
 <p>The term &quot;instance_id&quot; is the current instantiation of a joystick device in the system, if the joystick is removed and then re-inserted then it will get a new instance_id, instance_id's are monotonically increasing identifiers of a joystick plugged in.</p>
 <p>The term <tt class="docutils literal"><span class="pre">JoystickGUID</span></tt> is a stable 128-bit identifier for a joystick device that does not change over time, it identifies class of the device (a X360 wired controller for example). This identifier is platform dependent.</p>
-<p>In order to use these procedures, <tt class="docutils literal"><span class="pre">init()</span></tt> must have been called with the <cite>INIT_JOYSTICK</cite> flag.  This causes SDL to scan the system for joysticks, and load appropriate drivers.</p>
-<p>If you would like to receive joystick updates while the application is in the background, you should set the following hint before calling <tt class="docutils literal"><span class="pre">init()</span></tt>: <cite>HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS</cite></p>
+<p>In order to use these procedures, <tt class="docutils literal"><span class="pre">init()</span></tt> must have been called with the <tt class="docutils literal"><span class="pre">INIT_JOYSTICK</span></tt> flag.  This causes SDL to scan the system for joysticks, and load appropriate drivers.</p>
+<p>If you would like to receive joystick updates while the application is in the background, you should set the following hint before calling <tt class="docutils literal"><span class="pre">init()</span></tt>: <tt class="docutils literal"><span class="pre">HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS</span></tt></p>
 </p>
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="Joystick"><a name="Joystick"></a><pre><a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
+<a id="Joystick"></a>
+<dt><pre><a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
+
 
 An object that encodes the stable unique id for a joystick device
 
 </dd>
-<dt id="JoystickGUID"><a name="JoystickGUID"></a><pre><a href="joystick.html#JoystickGUID"><span class="Identifier">JoystickGUID</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<a id="JoystickGUID"></a>
+<dt><pre><a href="joystick.html#JoystickGUID"><span class="Identifier">JoystickGUID</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">data</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">16</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span>
 </pre></dt>
 <dd>
 
 
+
 </dd>
-<dt id="JoystickID"><a name="JoystickID"></a><pre><a href="joystick.html#JoystickID"><span class="Identifier">JoystickID</span></a> <span class="Other">=</span> <span class="Identifier">int32</span></pre></dt>
+<a id="JoystickID"></a>
+<dt><pre><a href="joystick.html#JoystickID"><span class="Identifier">JoystickID</span></a> <span class="Other">=</span> <span class="Identifier">int32</span></pre></dt>
 <dd>
+
 <p>
 This is a unique ID for a joystick for the time it is connected to the system, and is never reused for the lifetime of the application. If the joystick is disconnected and reconnected, it will get a new ID.</p>
-<p>The ID value starts at <cite>0</cite> and increments from there. The value <cite>-1</cite> is an invalid ID.</p>
+<p>The ID value starts at <tt class="docutils literal"><span class="pre">0</span></tt> and increments from there. The value <tt class="docutils literal"><span class="pre">-1</span></tt> is an invalid ID.</p>
 
 
 </dd>
-<dt id="JoystickType"><a name="JoystickType"></a><pre><a href="joystick.html#JoystickType"><span class="Identifier">JoystickType</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<a id="JoystickType"></a>
+<dt><pre><a href="joystick.html#JoystickType"><span class="Identifier">JoystickType</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">JOYSTICK_TYPE_UNKNOWN</span><span class="Other">,</span> <span class="Identifier">JOYSTICK_TYPE_GAMECONTROLLER</span><span class="Other">,</span> <span class="Identifier">JOYSTICK_TYPE_WHEEL</span><span class="Other">,</span>
   <span class="Identifier">JOYSTICK_TYPE_ARCADE_STICK</span><span class="Other">,</span> <span class="Identifier">JOYSTICK_TYPE_FLIGHT_STICK</span><span class="Other">,</span> <span class="Identifier">JOYSTICK_TYPE_DANCE_PAD</span><span class="Other">,</span>
   <span class="Identifier">JOYSTICK_TYPE_GUITAR</span><span class="Other">,</span> <span class="Identifier">JOYSTICK_TYPE_DRUM_KIT</span><span class="Other">,</span> <span class="Identifier">JOYSTICK_TYPE_ARCADE_PAD</span><span class="Other">,</span>
@@ -1411,8 +1004,10 @@ This is a unique ID for a joystick for the time it is connected to the system, a
 <dd>
 
 
+
 </dd>
-<dt id="JoystickPowerLevel"><a name="JoystickPowerLevel"></a><pre><a href="joystick.html#JoystickPowerLevel"><span class="Identifier">JoystickPowerLevel</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<a id="JoystickPowerLevel"></a>
+<dt><pre><a href="joystick.html#JoystickPowerLevel"><span class="Identifier">JoystickPowerLevel</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">JOYSTICK_POWER_UNKNOWN</span> <span class="Other">=</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">JOYSTICK_POWER_EMPTY</span><span class="Other">,</span> <span class="Comment">## &lt;= 5%</span>
   <span class="Identifier">JOYSTICK_POWER_LOW</span><span class="Other">,</span>         <span class="Comment">## &lt;= 20%</span>
   <span class="Identifier">JOYSTICK_POWER_MEDIUM</span><span class="Other">,</span>      <span class="Comment">## &lt;= 70%</span>
@@ -1421,8 +1016,10 @@ This is a unique ID for a joystick for the time it is connected to the system, a
 <dd>
 
 
+
 </dd>
-<dt id="HatPosition"><a name="HatPosition"></a><pre><a href="joystick.html#HatPosition"><span class="Identifier">HatPosition</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">1</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<a id="HatPosition"></a>
+<dt><pre><a href="joystick.html#HatPosition"><span class="Identifier">HatPosition</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">1</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">HAT_CENTERED</span> <span class="Other">=</span> <span class="DecNumber">0x00000000</span><span class="Other">,</span> <span class="Identifier">HAT_UP</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span><span class="Other">,</span> <span class="Identifier">HAT_RIGHT</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span><span class="Other">,</span>
   <span class="Identifier">HAT_RIGHTUP</span> <span class="Other">=</span> <span class="Other">(</span><span class="Identifier">uint8</span><span class="Other">(</span><span class="Identifier">HAT_RIGHT</span><span class="Other">)</span> <span class="Keyword">or</span> <span class="Identifier">uint8</span><span class="Other">(</span><span class="Identifier">HAT_UP</span><span class="Other">)</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">HAT_DOWN</span> <span class="Other">=</span> <span class="DecNumber">0x00000004</span><span class="Other">,</span>
   <span class="Identifier">HAT_RIGHTDOWN</span> <span class="Other">=</span> <span class="Other">(</span><span class="Identifier">uint8</span><span class="Other">(</span><span class="Identifier">HAT_RIGHT</span><span class="Other">)</span> <span class="Keyword">or</span> <span class="Identifier">uint8</span><span class="Other">(</span><span class="Identifier">HAT_DOWN</span><span class="Other">)</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">HAT_LEFT</span> <span class="Other">=</span> <span class="DecNumber">0x00000008</span><span class="Other">,</span>
@@ -1431,19 +1028,24 @@ This is a unique ID for a joystick for the time it is connected to the system, a
 <dd>
 
 
+
 </dd>
 
 </dl></div>
 <div class="section" id="10">
 <h1><a class="toc-backref" href="#10">Consts</a></h1>
 <dl class="item">
-<dt id="JOYSTICK_AXIS_MAX"><a name="JOYSTICK_AXIS_MAX"></a><pre><span class="Identifier">JOYSTICK_AXIS_MAX</span> <span class="Other">=</span> <span class="DecNumber">32767</span></pre></dt>
+<a id="JOYSTICK_AXIS_MAX"></a>
+<dt><pre><a href="joystick.html#JOYSTICK_AXIS_MAX"><span class="Identifier">JOYSTICK_AXIS_MAX</span></a> <span class="Other">=</span> <span class="DecNumber">32767</span></pre></dt>
 <dd>
+
 
 
 </dd>
-<dt id="JOYSTICK_AXIS_MIN"><a name="JOYSTICK_AXIS_MIN"></a><pre><span class="Identifier">JOYSTICK_AXIS_MIN</span> <span class="Other">=</span> <span class="DecNumber">-32768</span></pre></dt>
+<a id="JOYSTICK_AXIS_MIN"></a>
+<dt><pre><a href="joystick.html#JOYSTICK_AXIS_MIN"><span class="Identifier">JOYSTICK_AXIS_MIN</span></a> <span class="Other">=</span> <span class="DecNumber">-32768</span></pre></dt>
 <dd>
+
 
 
 </dd>
@@ -1452,237 +1054,303 @@ This is a unique ID for a joystick for the time it is connected to the system, a
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="lockJoysticks"><a name="lockJoysticks,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">lockJoysticks</span><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockJoysticks&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="lockJoysticks"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#lockJoysticks"><span class="Identifier">lockJoysticks</span></a><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockJoysticks&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Locking for multi-threaded access to the joystick API.</p>
 <p>If you are using the joystick API or handling events from multiple threads you should use these locking functions to protect access to the joysticks.</p>
 <p>In particular, you are guaranteed that the joystick list won't change, so the API functions that take a joystick index will be valid, and joystick and game controller events will not be delivered.</p>
 
 
 </dd>
-<dt id="unlockJoysticks"><a name="unlockJoysticks,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">unlockJoysticks</span><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockJoysticks&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="unlockJoysticks"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#unlockJoysticks"><span class="Identifier">unlockJoysticks</span></a><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockJoysticks&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 
 
 </dd>
-<dt id="numJoysticks"><a name="numJoysticks,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">numJoysticks</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_NumJoysticks&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="numJoysticks"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#numJoysticks"><span class="Identifier">numJoysticks</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_NumJoysticks&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Count the number of joysticks attached to the system right now.
 
 </dd>
-<dt id="joystickNameForIndex"><a name="joystickNameForIndex,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickNameForIndex</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickNameForIndex,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickNameForIndex%2Ccint"><span class="Identifier">joystickNameForIndex</span></a><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickNameForIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the implementation dependent name of a joystick.</p>
-<p>This can be called before any joysticks are opened. If no name can be found, this procedure returns <cite>nil</cite>.</p>
+<p>This can be called before any joysticks are opened. If no name can be found, this procedure returns <tt class="docutils literal"><span class="pre">nil</span></tt>.</p>
 
 
 </dd>
-<dt id="joystickGetDevicePlayerIndex"><a name="joystickGetDevicePlayerIndex,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetDevicePlayerIndex</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetDevicePlayerIndex,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetDevicePlayerIndex%2Ccint"><span class="Identifier">joystickGetDevicePlayerIndex</span></a><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetDevicePlayerIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-Get the player index of a joystick, or <cite>-1</cite> if it's not available This can be called before any joysticks are opened.
+
+Get the player index of a joystick, or <tt class="docutils literal"><span class="pre">-1</span></tt> if it's not available This can be called before any joysticks are opened.
 
 </dd>
-<dt id="joystickGetDeviceGUID"><a name="joystickGetDeviceGUID,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetDeviceGUID</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#JoystickGUID"><span class="Identifier">JoystickGUID</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetDeviceGUID,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetDeviceGUID%2Ccint"><span class="Identifier">joystickGetDeviceGUID</span></a><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#JoystickGUID"><span class="Identifier">JoystickGUID</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetDeviceGUID&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Return the GUID for the joystick at this index.</p>
 <p>This can be called before any joysticks are opened.</p>
 
 
 </dd>
-<dt id="joystickGetDeviceVendor"><a name="joystickGetDeviceVendor,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetDeviceVendor</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetDeviceVendor,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetDeviceVendor%2Ccint"><span class="Identifier">joystickGetDeviceVendor</span></a><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetDeviceVendor&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the USB vendor ID of a joystick, if available.</p>
-<p>This can be called before any joysticks are opened. If the vendor ID isn't available this function returns <cite>0</cite>.</p>
+<p>This can be called before any joysticks are opened. If the vendor ID isn't available this function returns <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
 
 
 </dd>
-<dt id="joystickGetDeviceProduct"><a name="joystickGetDeviceProduct,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetDeviceProduct</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetDeviceProduct,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetDeviceProduct%2Ccint"><span class="Identifier">joystickGetDeviceProduct</span></a><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetDeviceProduct&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the USB product ID of a joystick, if available.</p>
-<p>This can be called before any joysticks are opened. If the product ID isn't available this function returns <cite>0</cite>.</p>
+<p>This can be called before any joysticks are opened. If the product ID isn't available this function returns <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
 
 
 </dd>
-<dt id="joystickGetDeviceProductVersion"><a name="joystickGetDeviceProductVersion,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetDeviceProductVersion</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetDeviceProductVersion,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetDeviceProductVersion%2Ccint"><span class="Identifier">joystickGetDeviceProductVersion</span></a><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetDeviceProductVersion&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the product version of a joystick, if available.</p>
-<p>This can be called before any joysticks are opened. If the product version isn't available this function returns <cite>0</cite>.</p>
+<p>This can be called before any joysticks are opened. If the product version isn't available this function returns <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
 
 
 </dd>
-<dt id="joystickGetDeviceType"><a name="joystickGetDeviceType,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetDeviceType</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#JoystickType"><span class="Identifier">JoystickType</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetDeviceType,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetDeviceType%2Ccint"><span class="Identifier">joystickGetDeviceType</span></a><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#JoystickType"><span class="Identifier">JoystickType</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetDeviceType&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the type of a joystick, if available.</p>
 <p>This can be called before any joysticks are opened.</p>
 
 
 </dd>
-<dt id="joystickGetDeviceInstanceID"><a name="joystickGetDeviceInstanceID,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetDeviceInstanceID</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#JoystickID"><span class="Identifier">JoystickID</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetDeviceInstanceID,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetDeviceInstanceID%2Ccint"><span class="Identifier">joystickGetDeviceInstanceID</span></a><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#JoystickID"><span class="Identifier">JoystickID</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetDeviceInstanceID&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the instance ID of a joystick.</p>
-<p>This can be called before any joysticks are opened. If the index is out of range, this function will return <cite>-1</cite>.</p>
+<p>This can be called before any joysticks are opened. If the index is out of range, this function will return <tt class="docutils literal"><span class="pre">-1</span></tt>.</p>
 
 
 </dd>
-<dt id="joystickOpen"><a name="joystickOpen,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickOpen</span><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickOpen&quot;</span><span class="Other">,</span>
+<a id="joystickOpen,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickOpen%2Ccint"><span class="Identifier">joystickOpen</span></a><span class="Other">(</span><span class="Identifier">device_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickOpen&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Open a joystick for use.</p>
 <p>The index passed as an argument refers to the N'th joystick on the system. This index is not the value which will identify this joystick in future joystick events. The joystick's instance id (<tt class="docutils literal"><span class="pre">JoystickID</span></tt>) will be used there instead.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> a joystick identifier, or <cite>nil</cite> if an error occurred.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> a joystick identifier, or <tt class="docutils literal"><span class="pre">nil</span></tt> if an error occurred.</p>
 
 
 </dd>
-<dt id="joystickFromInstanceID"><a name="joystickFromInstanceID,JoystickID"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickFromInstanceID</span><span class="Other">(</span><span class="Identifier">joyid</span><span class="Other">:</span> <a href="joystick.html#JoystickID"><span class="Identifier">JoystickID</span></a><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickFromInstanceID,JoystickID"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickFromInstanceID%2CJoystickID"><span class="Identifier">joystickFromInstanceID</span></a><span class="Other">(</span><span class="Identifier">joyid</span><span class="Other">:</span> <a href="joystick.html#JoystickID"><span class="Identifier">JoystickID</span></a><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickFromInstanceID&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <tt class="docutils literal"><span class="pre">Return</span></tt> the <tt class="docutils literal"><span class="pre">Joystick</span></tt> associated with an instance id.
 
 </dd>
-<dt id="joystickName"><a name="joystickName,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickName</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickName&quot;</span><span class="Other">,</span>
+<a id="joystickName,Joystick"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickName%2CJoystick"><span class="Identifier">joystickName</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickName&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-<tt class="docutils literal"><span class="pre">Return</span></tt> the name for this currently opened joystick. If no name can be found, this procedure returns <cite>nil</cite>.
+
+<tt class="docutils literal"><span class="pre">Return</span></tt> the name for this currently opened joystick. If no name can be found, this procedure returns <tt class="docutils literal"><span class="pre">nil</span></tt>.
 
 </dd>
-<dt id="joystickGetPlayerIndex"><a name="joystickGetPlayerIndex,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetPlayerIndex</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetPlayerIndex,Joystick"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetPlayerIndex%2CJoystick"><span class="Identifier">joystickGetPlayerIndex</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetPlayerIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-<p>Get the player index of an opened joystick, or <cite>-1</cite> if it's not available</p>
+
+<p>Get the player index of an opened joystick, or <tt class="docutils literal"><span class="pre">-1</span></tt> if it's not available</p>
 <p>For XInput controllers this returns the XInput user index.</p>
 
 
 </dd>
-<dt id="joystickGetGUID"><a name="joystickGetGUID,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetGUID</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#JoystickGUID"><span class="Identifier">JoystickGUID</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetGUID,Joystick"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetGUID%2CJoystick"><span class="Identifier">joystickGetGUID</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#JoystickGUID"><span class="Identifier">JoystickGUID</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetGUID&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <tt class="docutils literal"><span class="pre">Return</span></tt> the GUID for this opened joystick.
 
 </dd>
-<dt id="joystickGetVendor"><a name="joystickGetVendor,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetVendor</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetVendor,Joystick"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetVendor%2CJoystick"><span class="Identifier">joystickGetVendor</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetVendor&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-<tt class="docutils literal"><span class="pre">Return</span></tt> the USB vendor ID of an opened joystick, if available. If the vendor ID isn't available this function returns <cite>0</cite>.
+
+<tt class="docutils literal"><span class="pre">Return</span></tt> the USB vendor ID of an opened joystick, if available. If the vendor ID isn't available this function returns <tt class="docutils literal"><span class="pre">0</span></tt>.
 
 </dd>
-<dt id="joystickGetProduct"><a name="joystickGetProduct,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetProduct</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetProduct,Joystick"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetProduct%2CJoystick"><span class="Identifier">joystickGetProduct</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetProduct&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-<tt class="docutils literal"><span class="pre">Return</span></tt> the USB product ID of an opened joystick, if available. If the product ID isn't available this function returns <cite>0</cite>.
+
+<tt class="docutils literal"><span class="pre">Return</span></tt> the USB product ID of an opened joystick, if available. If the product ID isn't available this function returns <tt class="docutils literal"><span class="pre">0</span></tt>.
 
 </dd>
-<dt id="joystickGetProductVersion"><a name="joystickGetProductVersion,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetProductVersion</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetProductVersion,Joystick"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetProductVersion%2CJoystick"><span class="Identifier">joystickGetProductVersion</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetProductVersion&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-<tt class="docutils literal"><span class="pre">Return</span></tt> the product version of an opened joystick, if available. If the product version isn't available this function returns <cite>0</cite>.
+
+<tt class="docutils literal"><span class="pre">Return</span></tt> the product version of an opened joystick, if available. If the product version isn't available this function returns <tt class="docutils literal"><span class="pre">0</span></tt>.
 
 </dd>
-<dt id="joystickGetType"><a name="joystickGetType,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetType</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#JoystickType"><span class="Identifier">JoystickType</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetType,Joystick"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetType%2CJoystick"><span class="Identifier">joystickGetType</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#JoystickType"><span class="Identifier">JoystickType</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetType&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <tt class="docutils literal"><span class="pre">Return</span></tt> the type of an opened joystick.
 
 </dd>
-<dt id="joystickGetGUIDString"><a name="joystickGetGUIDString,JoystickGUID,cstring,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetGUIDString</span><span class="Other">(</span><span class="Identifier">guid</span><span class="Other">:</span> <a href="joystick.html#JoystickGUID"><span class="Identifier">JoystickGUID</span></a><span class="Other">;</span> <span class="Identifier">pszGUID</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">cbGUID</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetGUIDString,JoystickGUID,cstring,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetGUIDString%2CJoystickGUID%2Ccstring%2Ccint"><span class="Identifier">joystickGetGUIDString</span></a><span class="Other">(</span><span class="Identifier">guid</span><span class="Other">:</span> <a href="joystick.html#JoystickGUID"><span class="Identifier">JoystickGUID</span></a><span class="Other">;</span> <span class="Identifier">pszGUID</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">cbGUID</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetGUIDString&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> a string representation for this guid.</p>
-<p><tt class="docutils literal"><span class="pre">pszGUID</span></tt> must point to at least 33 bytes (32 for the string plus a <cite>nil</cite> terminator).</p>
+<p><tt class="docutils literal"><span class="pre">pszGUID</span></tt> must point to at least 33 bytes (32 for the string plus a <tt class="docutils literal"><span class="pre">nil</span></tt> terminator).</p>
 
 
 </dd>
-<dt id="joystickGetGUIDFromString"><a name="joystickGetGUIDFromString,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetGUIDFromString</span><span class="Other">(</span><span class="Identifier">pchGUID</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#JoystickGUID"><span class="Identifier">JoystickGUID</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetGUIDFromString,cstring"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetGUIDFromString%2Ccstring"><span class="Identifier">joystickGetGUIDFromString</span></a><span class="Other">(</span><span class="Identifier">pchGUID</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#JoystickGUID"><span class="Identifier">JoystickGUID</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetGUIDFromString&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Convert a string into a joystick GUID.
 
 </dd>
-<dt id="joystickGetAttached"><a name="joystickGetAttached,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetAttached</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetAttached,Joystick"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetAttached%2CJoystick"><span class="Identifier">joystickGetAttached</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetAttached&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-<tt class="docutils literal"><span class="pre">Returns</span></tt> <cite>true</cite> if the joystick has been opened and currently connected, or <cite>false</cite> if it has not.
+
+<tt class="docutils literal"><span class="pre">Returns</span></tt> <tt class="docutils literal"><span class="pre">true</span></tt> if the joystick has been opened and currently connected, or <tt class="docutils literal"><span class="pre">false</span></tt> if it has not.
 
 </dd>
-<dt id="joystickInstanceID"><a name="joystickInstanceID,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickInstanceID</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#JoystickID"><span class="Identifier">JoystickID</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickInstanceID,Joystick"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickInstanceID%2CJoystick"><span class="Identifier">joystickInstanceID</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#JoystickID"><span class="Identifier">JoystickID</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickInstanceID&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-Get the instance ID of an opened joystick, or <cite>-1</cite> if the joystick is invalid.
+
+Get the instance ID of an opened joystick, or <tt class="docutils literal"><span class="pre">-1</span></tt> if the joystick is invalid.
 
 </dd>
-<dt id="joystickNumAxes"><a name="joystickNumAxes,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickNumAxes</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickNumAxes,Joystick"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickNumAxes%2CJoystick"><span class="Identifier">joystickNumAxes</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickNumAxes&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Get the number of general axis controls on a joystick.
 
 </dd>
-<dt id="joystickNumBalls"><a name="joystickNumBalls,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickNumBalls</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickNumBalls,Joystick"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickNumBalls%2CJoystick"><span class="Identifier">joystickNumBalls</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickNumBalls&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the number of trackballs on a joystick.</p>
 <p>Joystick trackballs have only relative motion events associated with them and their state cannot be polled.</p>
 
 
 </dd>
-<dt id="joystickNumHats"><a name="joystickNumHats,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickNumHats</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickNumHats,Joystick"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickNumHats%2CJoystick"><span class="Identifier">joystickNumHats</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickNumHats&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Get the number of POV hats on a joystick.
 
 </dd>
-<dt id="joystickNumButtons"><a name="joystickNumButtons,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickNumButtons</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickNumButtons,Joystick"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickNumButtons%2CJoystick"><span class="Identifier">joystickNumButtons</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickNumButtons&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Get the number of buttons on a joystick.
 
 </dd>
-<dt id="joystickUpdate"><a name="joystickUpdate,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickUpdate</span><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickUpdate&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="joystickUpdate"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickUpdate"><span class="Identifier">joystickUpdate</span></a><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickUpdate&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Update the current state of the open joysticks.</p>
 <p>This is called automatically by the event loop if any joystick events are enabled.</p>
 
 
 </dd>
-<dt id="joystickEventState"><a name="joystickEventState,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickEventState</span><span class="Other">(</span><span class="Identifier">state</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickEventState,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickEventState%2Ccint"><span class="Identifier">joystickEventState</span></a><span class="Other">(</span><span class="Identifier">state</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickEventState&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Enable/disable joystick event polling.</p>
 <p>If joystick events are disabled, you must call <tt class="docutils literal"><span class="pre">joystickUpdate()</span></tt> yourself and check the state of the joystick when you want joystick information.</p>
-<p>The <tt class="docutils literal"><span class="pre">state</span></tt> can be one of <cite>QUERY</cite>, <cite>ENABLE</cite> or <cite>IGNORE</cite>.</p>
+<p>The <tt class="docutils literal"><span class="pre">state</span></tt> can be one of <tt class="docutils literal"><span class="pre">QUERY</span></tt>, <tt class="docutils literal"><span class="pre">ENABLE</span></tt> or <tt class="docutils literal"><span class="pre">IGNORE</span></tt>.</p>
 
 
 </dd>
-<dt id="joystickGetAxis"><a name="joystickGetAxis,Joystick,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetAxis</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetAxis,Joystick,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetAxis%2CJoystick%2Ccint"><span class="Identifier">joystickGetAxis</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int16</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetAxis&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the current state of an axis control on a joystick.</p>
-<p>The state is a value ranging from <cite>-32768</cite> to <cite>32767</cite>.</p>
-<p>The axis indices start at index <cite>0</cite>.</p>
+<p>The state is a value ranging from <tt class="docutils literal"><span class="pre">-32768</span></tt> to <tt class="docutils literal"><span class="pre">32767</span></tt>.</p>
+<p>The axis indices start at index <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
 
 
 </dd>
-<dt id="joystickGetAxisInitialState"><a name="joystickGetAxisInitialState,Joystick,cint,ptr.int16"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetAxisInitialState</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">state</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">int16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="joystickGetAxisInitialState,Joystick,cint,ptr.int16"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetAxisInitialState%2CJoystick%2Ccint%2Cptr.int16"><span class="Identifier">joystickGetAxisInitialState</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">state</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">int16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetAxisInitialState&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the initial state of an axis control on a joystick.</p>
-<p>The state is a value ranging from <cite>-32768</cite> to <cite>32767</cite>.</p>
-<p>The axis indices start at index <cite>0</cite>.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>1</cite> if this axis has any initial value, or <cite>0</cite> if not.</p>
+<p>The state is a value ranging from <tt class="docutils literal"><span class="pre">-32768</span></tt> to <tt class="docutils literal"><span class="pre">32767</span></tt>.</p>
+<p>The axis indices start at index <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">1</span></tt> if this axis has any initial value, or <tt class="docutils literal"><span class="pre">0</span></tt> if not.</p>
 
 
 </dd>
-<dt id="joystickGetHat"><a name="joystickGetHat,Joystick,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetHat</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">;</span> <span class="Identifier">hat</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#HatPosition"><span class="Identifier">HatPosition</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetHat,Joystick,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetHat%2CJoystick%2Ccint"><span class="Identifier">joystickGetHat</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">;</span> <span class="Identifier">hat</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#HatPosition"><span class="Identifier">HatPosition</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetHat&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the current state of a POV hat on a joystick.</p>
-<p>The hat indices start at index <cite>0</cite>.</p>
+<p>The hat indices start at index <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> The return value is one of the following positions:</p>
 <ul class="simple"><li>HAT_CENTERED</li>
 <li>HAT_UP</li>
@@ -1697,46 +1365,56 @@ Get the number of buttons on a joystick.
 
 
 </dd>
-<dt id="joystickGetBall"><a name="joystickGetBall,Joystick,cint,ptr.cint,ptr.cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetBall</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">;</span> <span class="Identifier">ball</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dx</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dy</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="joystickGetBall,Joystick,cint,ptr.cint,ptr.cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetBall%2CJoystick%2Ccint%2Cptr.cint%2Cptr.cint"><span class="Identifier">joystickGetBall</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">;</span> <span class="Identifier">ball</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dx</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dy</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetBall&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the ball axis change since the last poll.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite>, or <cite>-1</cite> if you passed it invalid parameters.</p>
-<p>The ball indices start at index <cite>0</cite>.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt>, or <tt class="docutils literal"><span class="pre">-1</span></tt> if you passed it invalid parameters.</p>
+<p>The ball indices start at index <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
 
 
 </dd>
-<dt id="joystickGetButton"><a name="joystickGetButton,Joystick,cint"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickGetButton</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">;</span> <span class="Identifier">button</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickGetButton,Joystick,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickGetButton%2CJoystick%2Ccint"><span class="Identifier">joystickGetButton</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">;</span> <span class="Identifier">button</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint8</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickGetButton&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get the current state of a button on a joystick.</p>
-<p>The button indices start at index <cite>0</cite>.</p>
+<p>The button indices start at index <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
 
 
 </dd>
-<dt id="joystickRumble"><a name="joystickRumble,Joystick,uint16,uint16,uint32"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickRumble</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">;</span> <span class="Identifier">low_frequency_rumble</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span>
+<a id="joystickRumble,Joystick,uint16,uint16,uint32"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickRumble%2CJoystick%2Cuint16%2Cuint16%2Cuint32"><span class="Identifier">joystickRumble</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">;</span> <span class="Identifier">low_frequency_rumble</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span>
                    <span class="Identifier">high_frequency_rumble</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">duration_ms</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickRumble&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Trigger a rumble effect.</p>
-<p>Each call to this function cancels any previous rumble effect, and calling it with <cite>0</cite> intensity stops any rumbling.</p>
+<p>Each call to this function cancels any previous rumble effect, and calling it with <tt class="docutils literal"><span class="pre">0</span></tt> intensity stops any rumbling.</p>
 <p><tt class="docutils literal"><span class="pre">joystick</span></tt> The joystick to vibrate</p>
-<p><tt class="docutils literal"><span class="pre">low_frequency_rumble</span></tt> The intensity of the low frequency (left) rumble motor, from <cite>0</cite> to <cite>0xFFFF</cite></p>
-<p><tt class="docutils literal"><span class="pre">high_frequency_rumble</span></tt> The intensity of the high frequency (right) rumble motor, from <cite>0</cite> to <cite>0xFFFF</cite></p>
+<p><tt class="docutils literal"><span class="pre">low_frequency_rumble</span></tt> The intensity of the low frequency (left) rumble motor, from <tt class="docutils literal"><span class="pre">0</span></tt> to <tt class="docutils literal"><span class="pre">0xFFFF</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">high_frequency_rumble</span></tt> The intensity of the high frequency (right) rumble motor, from <tt class="docutils literal"><span class="pre">0</span></tt> to <tt class="docutils literal"><span class="pre">0xFFFF</span></tt></p>
 <p><tt class="docutils literal"><span class="pre">duration_ms</span></tt> The duration of the rumble effect, in milliseconds</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>0</cite>, or <cite>-1</cite> if rumble isn't supported on this joystick.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt>, or <tt class="docutils literal"><span class="pre">-1</span></tt> if rumble isn't supported on this joystick.</p>
 
 
 </dd>
-<dt id="joystickClose"><a name="joystickClose,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickClose</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickClose&quot;</span><span class="Other">,</span>
+<a id="joystickClose,Joystick"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickClose%2CJoystick"><span class="Identifier">joystickClose</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickClose&quot;</span><span class="Other">,</span>
                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Close a joystick previously opened with <tt class="docutils literal"><span class="pre">joystickOpen()</span></tt>.
 
 </dd>
-<dt id="joystickCurrentPowerLevel"><a name="joystickCurrentPowerLevel,Joystick"></a><pre><span class="Keyword">proc</span> <span class="Identifier">joystickCurrentPowerLevel</span><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#JoystickPowerLevel"><span class="Identifier">JoystickPowerLevel</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="joystickCurrentPowerLevel,Joystick"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickCurrentPowerLevel%2CJoystick"><span class="Identifier">joystickCurrentPowerLevel</span></a><span class="Other">(</span><span class="Identifier">joystick</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#JoystickPowerLevel"><span class="Identifier">JoystickPowerLevel</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickCurrentPowerLevel&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Return the battery level of this <tt class="docutils literal"><span class="pre">joystick</span></tt>.
 
 </dd>
@@ -1750,7 +1428,7 @@ Return the battery level of this <tt class="docutils literal"><span class="pre">
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-11-02 19:11:02 UTC</small>
+        <small>Made with Nim. Generated: 2019-07-27 12:00:39 UTC</small>
       </div>
     </div>
   </div>

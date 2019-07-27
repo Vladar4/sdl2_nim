@@ -16,7 +16,7 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
-<title>Module hints</title>
+<title>hints</title>
 <style type="text/css" >
 /*
 Stylesheet for use with Docutils/rst2html.
@@ -27,232 +27,130 @@ customize this style sheet.
 Modified from Chad Skeeters' rst2html-style
 https://bitbucket.org/cskeeters/rst2html-style/
 
-Modified by Boyd Greenfield
+Modified by Boyd Greenfield and narimiran
 */
-/* SCSS variables */
-/* Text weights */
-/* Body colors */
-/* Text colors */
-/* Link colors */
-/* Syntax highlighting colors */
-/* Pct changes */
-/* Mixins */
-/* Body/layout */
+
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%; }
 
-/* Where we want fancier font if available */
-h1, h2, h3, h4, h5, h6, p.module-desc, table.docinfo + blockquote p, table.docinfo blockquote p, h1 + blockquote p {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important; }
-
-h1.title {
-  font-weight: 900; }
-
 body {
   font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
-  color: #444;
-  letter-spacing: 0.15px;
-  background-color: #FDFBFA; }
+  font-size: 1.125em;
+  line-height: 1.5;
+  color: #222;
+  background-color: #FCFCFC; }
 
 /* Skeleton grid */
 .container {
   position: relative;
   width: 100%;
-  max-width: 960px;
+  max-width: 1050px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
   box-sizing: border-box; }
 
 .column,
 .columns {
   width: 100%;
   float: left;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  margin-left: 1%;
+}
 
-/* For devices larger than 400px */
-@media (min-width: 400px) {
-  .container {
-    width: 100%;
-    padding: 0; } }
-/* For devices larger than 650px */
-@media (min-width: 650px) {
-  .container {
-    width: 100%; }
+.column:first-child,
+.columns:first-child {
+  margin-left: 0; }
 
-  .column,
-  .columns {
-    margin-left: 4%; }
+.three.columns {
+  width: 19%; }
 
-  .column:first-child,
-  .columns:first-child {
-    margin-left: 0; }
+.nine.columns {
+  width: 80.0%; }
 
-  .one.column,
-  .one.columns {
-    width: 4.66666666667%; }
+.twelve.columns {
+  width: 100%;
+  margin-left: 0; }
 
-  .two.columns {
-    width: 13.3333333333%; }
-
+@media screen and (max-width: 860px) {
   .three.columns {
-    width: 22%; }
-
-  .four.columns {
-    width: 30.6666666667%; }
-
-  .five.columns {
-    width: 39.3333333333%; }
-
-  .six.columns {
-    width: 48%; }
-
-  .seven.columns {
-    width: 56.6666666667%; }
-
-  .eight.columns {
-    width: 65.3333333333%; }
-
+    display: none;
+  }
   .nine.columns {
-    width: 74.0%; }
-
-  .ten.columns {
-    width: 82.6666666667%; }
-
-  .eleven.columns {
-    width: 91.3333333333%; }
-
-  .twelve.columns {
-    width: 100%;
-    margin-left: 0; }
-
-  .one-third.column {
-    width: 30.6666666667%; }
-
-  .two-thirds.column {
-    width: 65.3333333333%; } }
-/* Customer Overrides */
-.footer {
-  text-align: center;
-  color: #969696;
-  padding-top: 10%; }
-
-p.module-desc {
-  font-size: 1.1em;
-  color: #666666; }
-
-a.link-seesrc {
-  color: #aec7d2;
-  font-style: italic; }
-
-a.link-seesrc:hover {
-  color: #6c9aae; }
-
-#toc-list {
-  word-wrap: break-word; }
-
-ul.simple-toc {
-  list-style: none; }
-
-ul.simple-toc a.reference-toplevel {
-  font-weight: bold;
-  color: #0077b3; }
-
-ul.simple-toc-section {
-  list-style-type: circle;
-  color: #6c9aae; }
-
-ul.simple-toc-section a.reference {
-  color: #0077b3; }
+    width: 98.0%;
+  }
+  body {
+    font-size: 1em;
+    line-height: 1.35;
+  }
+}
 
 cite {
   font-style: italic !important; }
 
-dt > pre {
-  border-color: rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 0.3);
-  margin: 15px 0px 5px; }
-
-dd > pre {
-  border-color: rgba(0, 0, 0, 0.1);
-  background-color: whitesmoke;
-  margin-top: 8px; }
-
-.item > dd {
-  margin-left: 10px;
-  margin-bottom: 30px; }
-
-/* Nim line-numbered tables */
-.line-nums-table {
-  width: 100%;
-  table-layout: fixed; }
 
 /* Nim search input */
 div#searchInputDiv {
-  margin-bottom: 8px;
+  margin-bottom: 1em;
 }
-div#searchInputDiv input#searchInput {
-  width: 10em;
-}
-div.search-groupby {
-  margin-bottom: 8px;
+input#searchInput {
+  width: 80%;
 }
 
-table.line-nums-table {
-  border-radius: 4px;
-  border: 1px solid #cccccc;
-  background-color: whitesmoke;
-  border-collapse: separate;
-  margin-top: 15px;
-  margin-bottom: 25px; }
-
-.line-nums-table tbody {
-  border: none; }
-
-.line-nums-table td pre {
-  border: none;
-  background-color: transparent; }
-
-.line-nums-table td.blob-line-nums {
-  width: 28px; }
-
-.line-nums-table td.blob-line-nums pre {
-  color: #b0b0b0;
-  -webkit-filter: opacity(75%);
-  text-align: right;
-  border-color: transparent;
-  background-color: transparent;
-  padding-left: 0px;
-  margin-left: 0px;
-  padding-right: 0px;
-  margin-right: 0px; }
+/*
+ * Some custom formatting for input forms.
+ * This also fixes input form colors on Firefox with a dark system theme on Linux.
+ */
+input {
+  -moz-appearance: none;
+  color: #333;
+  background-color: #f8f8f8;
+  border: 1px solid #aaa;
+  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-size: 0.9em;
+  padding: 6px;
+}
+input:focus {
+  border: 1px solid #1fa0eb;
+  box-shadow: 0 0 2px #1fa0eb;
+}
 
 /* Docgen styles */
 /* Links */
 a {
-  color: #0077b3;
-  text-decoration: none; }
+  color: #07b;
+  text-decoration: none;
+}
+
+a span.Identifier {
+  text-decoration: underline;
+  text-decoration-color: #aab;
+}
+
+a.reference-toplevel {
+  font-weight: bold;
+}
+
+a.toc-backref {
+  text-decoration: none;
+  color: #222; }
+
+a.link-seesrc {
+  color: #607c9f;
+  font-size: 0.9em;
+  font-style: italic; }
 
 a:hover,
 a:focus {
-  color: #00334d;
+  color: #607c9f;
   text-decoration: underline; }
 
-a:visited {
-  color: #00334d; }
+a:hover span.Identifier {
+  color: #607c9f;
+}
 
-a:focus {
-  outline: thin dotted #2d2d2d;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px; }
-
-a:hover,
-a:active {
-  outline: 0; }
 
 sub,
 sup {
@@ -329,379 +227,258 @@ img {
 
   h2,
   h3 {
-    page-break-after: avoid; } }
-.img-rounded {
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px; }
+    page-break-after: avoid; }
+}
 
-.img-polaroid {
-  padding: 4px;
-  background-color: rgba(252, 248, 244, 0.75);
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
 
 p {
-  margin: 0 0 8px; }
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
 
 small {
   font-size: 85%; }
 
 strong {
-  font-weight: 600; }
+  font-weight: 600;
+  font-size: 0.95em;
+  color: #3c3c3c;
+}
 
 em {
   font-style: italic; }
 
-cite {
-  font-style: normal; }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  line-height: 20px;
-  color: inherit;
-  text-rendering: optimizelegibility; }
-
 h1 {
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: 400;
-  padding-bottom: .15em;
-  border-bottom: 1px solid #aaaaaa;
-  margin-top: 1.0em;
+  padding-bottom: .25em;
+  border-bottom: 1px solid #aaa;
+  margin-top: 2.5em;
+  margin-bottom: 1em;
   line-height: 1.2em; }
 
 h1.title {
   padding-bottom: 1em;
   border-bottom: 0px;
-  font-size: 2.75em; }
+  font-size: 2.5em;
+  text-align: center;
+  font-weight: 900;
+  margin-top: 0.75em;
+  margin-bottom: 0em;
+}
 
 h2 {
-  font-size: 1.5em;
-  margin-top: 1.5em; }
+  font-size: 1.3em;
+  margin-top: 2em; }
+
+h2.subtitle {
+  text-align: center; }
 
 h3 {
-  font-size: 1.3em;
+  font-size: 1.125em;
   font-style: italic;
-  margin-top: 0.75em; }
+  margin-top: 1.5em; }
 
 h4 {
-  font-size: 1.3em;
-  margin-top: 0.5em; }
+  font-size: 1.125em;
+  margin-top: 1em; }
 
 h5 {
-  font-size: 1.2em;
-  margin-top: 0.25em; }
+  font-size: 1.125em;
+  margin-top: 0.75em; }
 
 h6 {
   font-size: 1.1em; }
 
+
 ul,
 ol {
   padding: 0;
-  margin: 0 0 0px 15px; }
+  margin-top: 0.5em;
+  margin-left: 0.75em; }
 
 ul ul,
 ul ol,
 ol ol,
 ol ul {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  margin-left: 1.25em; }
 
 li {
-  line-height: 20px; }
-
-dl {
-  margin-bottom: 20px; }
-
-dt,
-dd {
-  line-height: 20px; }
-
-dt {
-  font-weight: bold; }
-
-dd {
-  margin-left: 10px;
-  margin-bottom: 26px; }
-
-hr {
-  margin: 20px 0;
-  border: 0;
-  border-top: 1px solid #eeeeee;
-  border-bottom: 1px solid #ffffff; }
-
-abbr[title],
-abbr[data-original-title] {
-  cursor: help;
-  border-bottom: 1px dotted #999999; }
-
-abbr.initialism {
-  font-size: 90%;
-  text-transform: uppercase; }
-
-blockquote {
-  padding: 0 0 0 15px;
-  margin: 0 0 20px;
-  border-left: 5px solid #EFEBE0; }
-
-table.docinfo + blockquote, table.docinfo blockquote, h1 + blockquote {
-  border-left: 5px solid #c9c9c9;
+    list-style-type: circle;
 }
 
-table.docinfo + blockquote p, table.docinfo blockquote p, h1 + blockquote p {
-  margin-bottom: 0;
-  font-size: 15px;
-  font-weight: 200;
-  line-height: 1.5;
-  font-style: italic; }
+ul.simple-boot li {
+    list-style-type: none;
+    margin-left: 0em;
+    margin-bottom: 0.5em;
+}
 
-q:before,
-q:after,
-blockquote:before,
-blockquote:after {
-  content: ""; }
+ol.simple > li, ul.simple > li {
+  margin-bottom: 0.25em;
+  margin-left: 0.4em }
 
-address {
-  display: block;
-  margin-bottom: 20px;
-  font-style: normal;
-  line-height: 20px; }
+ul.simple.simple-toc > li {
+    margin-top: 1em;
+}
 
-code,
-pre {
-  font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
-  padding: 0 3px 2px;
-  font-weight: 500;
-  font-size: 12px;
-  color: #444444;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px; }
+ul.simple-toc {
+  list-style: none;
+  font-size: 0.9em;
+  margin-left: -0.3em;
+  margin-top: 1em; }
+
+ul.simple-toc > li {
+    list-style-type: none;
+}
+
+ul.simple-toc-section {
+  list-style-type: circle;
+  margin-left: 1em;
+  color: #6c9aae; }
+
+
+ol.arabic {
+  list-style: decimal; }
+
+ol.loweralpha {
+  list-style: lower-alpha; }
+
+ol.upperalpha {
+  list-style: upper-alpha; }
+
+ol.lowerroman {
+  list-style: lower-roman; }
+
+ol.upperroman {
+  list-style: upper-roman; }
+
+ul.auto-toc {
+  list-style-type: none; }
+
+
+dl {
+  margin-bottom: 1.5em; }
+
+dt {
+  margin-bottom: -0.5em;
+  margin-left: 0.0em; }
+
+dd {
+  margin-left: 2.0em;
+  margin-bottom: 3.0em;
+  margin-top: 0.5em; }
+
+
+hr {
+  margin: 2em 0;
+  border: 0;
+  border-top: 1px solid #aaa; }
+
+blockquote {
+  font-size: 0.9em;
+  font-style: italic;
+  padding-left: 0.5em;
+  margin-left: 0;
+  border-left: 5px solid #bbc;
+}
 
 .pre {
   font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
-  font-weight: 600;
-  /*color: #504da6;*/
+  font-weight: 500;
+  font-size: 0.85em;
+  background-color: #f0f3ff;
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 4px;
 }
 
-code {
-  padding: 2px 4px;
-  color: #444444;
-  white-space: nowrap;
-  background-color: white;
-  border: 1px solid #777777; }
-
 pre {
+  font-family: "Source Code Pro", Monaco, Menlo, Consolas, "Courier New", monospace;
+  color: #222;
+  font-weight: 500;
   display: inline-block;
   box-sizing: border-box;
-  min-width: calc(100% - 19.5px);
-  padding: 9.5px;
-  margin: 0.25em 10px 10px 10px;
-  font-size: 15px;
-  line-height: 20px;
+  min-width: 100%;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: 0.85em;
   white-space: pre !important;
   overflow-y: hidden;
   overflow-x: visible;
-  background-color: rgba(0, 0, 0, 0.01);
-  border: 1px solid #cccccc;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px; }
-
-pre.prettyprint {
-  margin-bottom: 20px; }
-
-pre code {
-  padding: 0;
-  color: inherit;
-  white-space: pre;
-  overflow-x: visible;
-  background-color: transparent;
-  border: 0; }
+  background-color: ghostwhite;
+  border: 1px solid #dde;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px; }
 
 .pre-scrollable {
   max-height: 340px;
   overflow-y: scroll; }
 
+
+/* Nim line-numbered tables */
+.line-nums-table {
+  width: 100%;
+  table-layout: fixed; }
+
+table.line-nums-table {
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  background-color: ghostwhite;
+  border-collapse: separate;
+  margin-top: 15px;
+  margin-bottom: 25px; }
+
+.line-nums-table tbody {
+  border: none; }
+
+.line-nums-table td pre {
+  border: none;
+  background-color: transparent; }
+
+.line-nums-table td.blob-line-nums {
+  width: 28px; }
+
+.line-nums-table td.blob-line-nums pre {
+  color: #b0b0b0;
+  -webkit-filter: opacity(75%);
+  text-align: right;
+  border-color: transparent;
+  background-color: transparent;
+  padding-left: 0px;
+  margin-left: 0px;
+  padding-right: 0px;
+  margin-right: 0px; }
+
+
 table {
   max-width: 100%;
   background-color: transparent;
+  margin-top: 0.5em;
+  margin-bottom: 1.5em;
   border-collapse: collapse;
-  border-spacing: 0; }
-
-table th, table td {
-  padding: 0px 8px 0px;
+  border-color: #ccc;
+  border-spacing: 0;
+  font-size: 0.9em;
 }
 
-.table {
-  width: 100%;
-  margin-bottom: 20px; }
+table th, table td {
+  padding: 0px 0.5em 0px;
+}
 
-.table th,
-.table td {
-  padding: 8px;
-  line-height: 20px;
-  text-align: left;
-  vertical-align: top;
-  border-top: 1px solid #444444; }
-
-.table th {
+table th {
+  background-color: #e8e8e8;
   font-weight: bold; }
 
-.table thead th {
-  vertical-align: bottom; }
+table th.docinfo-name {
+    background-color: transparent;
+}
 
-.table caption + thead tr:first-child th,
-.table caption + thead tr:first-child td,
-.table colgroup + thead tr:first-child th,
-.table colgroup + thead tr:first-child td,
-.table thead:first-child tr:first-child th,
-.table thead:first-child tr:first-child td {
-  border-top: 0; }
+table tr:hover {
+  background-color: ghostwhite; }
 
-.table tbody + tbody {
-  border-top: 2px solid #444444; }
-
-.table .table {
-  background-color: rgba(252, 248, 244, 0.75); }
-
-.table-condensed th,
-.table-condensed td {
-  padding: 4px 5px; }
-
-.table-bordered {
-  border: 1px solid #444444;
-  border-collapse: separate;
-  *border-collapse: collapse;
-  border-left: 0;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px; }
-
-.table-bordered th,
-.table-bordered td {
-  border-left: 1px solid #444444; }
-
-.table-bordered caption + thead tr:first-child th,
-.table-bordered caption + tbody tr:first-child th,
-.table-bordered caption + tbody tr:first-child td,
-.table-bordered colgroup + thead tr:first-child th,
-.table-bordered colgroup + tbody tr:first-child th,
-.table-bordered colgroup + tbody tr:first-child td,
-.table-bordered thead:first-child tr:first-child th,
-.table-bordered tbody:first-child tr:first-child th,
-.table-bordered tbody:first-child tr:first-child td {
-  border-top: 0; }
-
-.table-bordered thead:first-child tr:first-child > th:first-child,
-.table-bordered tbody:first-child tr:first-child > td:first-child,
-.table-bordered tbody:first-child tr:first-child > th:first-child {
-  -webkit-border-top-left-radius: 4px;
-  border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px; }
-
-.table-bordered thead:first-child tr:first-child > th:last-child,
-.table-bordered tbody:first-child tr:first-child > td:last-child,
-.table-bordered tbody:first-child tr:first-child > th:last-child {
-  -webkit-border-top-right-radius: 4px;
-  border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px; }
-
-.table-bordered thead:last-child tr:last-child > th:first-child,
-.table-bordered tbody:last-child tr:last-child > td:first-child,
-.table-bordered tbody:last-child tr:last-child > th:first-child,
-.table-bordered tfoot:last-child tr:last-child > td:first-child,
-.table-bordered tfoot:last-child tr:last-child > th:first-child {
-  -webkit-border-bottom-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomleft: 4px; }
-
-.table-bordered thead:last-child tr:last-child > th:last-child,
-.table-bordered tbody:last-child tr:last-child > td:last-child,
-.table-bordered tbody:last-child tr:last-child > th:last-child,
-.table-bordered tfoot:last-child tr:last-child > td:last-child,
-.table-bordered tfoot:last-child tr:last-child > th:last-child {
-  -webkit-border-bottom-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  -moz-border-radius-bottomright: 4px; }
-
-.table-bordered tfoot + tbody:last-child tr:last-child td:first-child {
-  -webkit-border-bottom-left-radius: 0;
-  border-bottom-left-radius: 0;
-  -moz-border-radius-bottomleft: 0; }
-
-.table-bordered tfoot + tbody:last-child tr:last-child td:last-child {
-  -webkit-border-bottom-right-radius: 0;
-  border-bottom-right-radius: 0;
-  -moz-border-radius-bottomright: 0; }
-
-.table-bordered caption + thead tr:first-child th:first-child,
-.table-bordered caption + tbody tr:first-child td:first-child,
-.table-bordered colgroup + thead tr:first-child th:first-child,
-.table-bordered colgroup + tbody tr:first-child td:first-child {
-  -webkit-border-top-left-radius: 4px;
-  border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px; }
-
-.table-bordered caption + thead tr:first-child th:last-child,
-.table-bordered caption + tbody tr:first-child td:last-child,
-.table-bordered colgroup + thead tr:first-child th:last-child,
-.table-bordered colgroup + tbody tr:first-child td:last-child {
-  -webkit-border-top-right-radius: 4px;
-  border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px; }
-
-table.docutils th {
-  background-color: #e8e8e8; }
-
-table.docutils tr:hover {
-  background-color: whitesmoke; }
-
-.table-striped tbody > tr:nth-child(odd) > td,
-.table-striped tbody > tr:nth-child(odd) > th {
-  background-color: rgba(252, 248, 244, 0.75); }
-
-.table-hover tbody tr:hover > td,
-.table-hover tbody tr:hover > th {
-  background-color: rgba(241, 222, 204, 0.75); }
-
-table td[class*="span"],
-table th[class*="span"],
-.row-fluid table td[class*="span"],
-.row-fluid table th[class*="span"] {
-  display: table-cell;
-  float: none;
-  margin-left: 0; }
-
-.hero-unit {
-  padding: 60px;
-  margin-bottom: 30px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  color: inherit;
-  background-color: rgba(230, 197, 164, 0.75);
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px; }
-
-.hero-unit h1 {
-  margin-bottom: 0;
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
-  color: inherit; }
-
-.hero-unit li {
-  line-height: 30px; }
 
 /* rst2html default used to remove borders from tables and images */
 .borderless, table.borderless td, table.borderless th {
@@ -722,10 +499,6 @@ table.borderless td, table.borderless th {
 .hidden {
   display: none; }
 
-a.toc-backref {
-  text-decoration: none;
-  color: #444444; }
-
 blockquote.epigraph {
   margin: 2em 5em; }
 
@@ -735,85 +508,6 @@ dl.docutils dd {
 object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
   overflow: hidden; }
 
-/* Uncomment (and remove this text!) to get bold-faced definition list terms
-dl.docutils dt {
-  font-weight: bold }
-*/
-div.abstract {
-  margin: 2em 5em; }
-
-div.abstract p.topic-title {
-  font-weight: bold;
-  text-align: center; }
-
-div.admonition, div.attention, div.caution, div.danger, div.error,
-div.hint, div.important, div.note, div.tip, div.warning {
-  margin: 2em;
-  border: medium outset;
-  padding: 1em; }
-
-div.note, div.warning {
-  margin: 1.5em 0px;
-  border: none; }
-
-div.note p.admonition-title,
-div.warning p.admonition-title {
-  display: none; }
-
-/* Clearfix
- * http://css-tricks.com/snippets/css/clear-fix/
- */
-div.note:after,
-div.warning:after {
-  content: "";
-  display: table;
-  clear: both; }
-
-div.note p:before,
-div.warning p:before {
-  display: block;
-  float: left;
-  font-size: 4em;
-  line-height: 1em;
-  margin-right: 20px;
-  margin-left: 0em;
-  margin-top: -10px;
-  content: '\0270D';
-  /*handwriting*/ }
-
-div.warning p:before {
-  content: '\026A0';
-  /*warning*/ }
-
-div.admonition p.admonition-title, div.hint p.admonition-title,
-div.important p.admonition-title, div.note p.admonition-title,
-div.tip p.admonition-title {
-  font-weight: bold;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
-
-div.attention p.admonition-title, div.caution p.admonition-title,
-div.danger p.admonition-title, div.error p.admonition-title,
-div.warning p.admonition-title, .code .error {
-  color: #b30000;
-  font-weight: bold;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
-
-/* Uncomment (and remove this text!) to get reduced vertical space in
-   compound paragraphs.
-div.compound .compound-first, div.compound .compound-middle {
-  margin-bottom: 0.5em }
-
-div.compound .compound-last, div.compound .compound-middle {
-  margin-top: 0.5em }
-*/
-div.dedication {
-  margin: 2em 5em;
-  text-align: center;
-  font-style: italic; }
-
-div.dedication p.topic-title {
-  font-weight: bold;
-  font-style: normal; }
 
 div.figure {
   margin-left: 2em;
@@ -821,7 +515,13 @@ div.figure {
 
 div.footer, div.header {
   clear: both;
+  text-align: center;
+  color: #666;
   font-size: smaller; }
+
+div.footer {
+    padding-top: 5em;
+}
 
 div.line-block {
   display: block;
@@ -833,45 +533,24 @@ div.line-block div.line-block {
   margin-bottom: 0;
   margin-left: 1.5em; }
 
-div.sidebar {
-  margin: 0 0 0.5em 1em;
-  border: medium outset;
-  padding: 1em;
-  background-color: rgba(252, 248, 244, 0.75);
-  width: 40%;
-  float: right;
-  clear: right; }
-
-div.sidebar p.rubric {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-size: medium; }
-
-div.system-messages {
-  margin: 5em; }
-
-div.system-messages h1 {
-  color: #b30000; }
-
-div.system-message {
-  border: medium outset;
-  padding: 1em; }
-
-div.system-message p.system-message-title {
-  color: #b30000;
-  font-weight: bold; }
-
 div.topic {
   margin: 2em; }
 
-h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
-h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
-  margin-top: 0.4em; }
+div.search_results {
+  background-color: antiquewhite;
+  margin: 3em;
+  padding: 1em;
+  border: 1px solid #4d4d4d;
+}
 
-h1.title {
-  text-align: center; }
+div#global-links ul {
+  margin-left: 0;
+  list-style-type: none;
+}
 
-h2.subtitle {
-  text-align: center; }
+div#global-links > simple-boot {
+    margin-left: 3em;
+}
 
 hr.docutils {
   width: 75%; }
@@ -905,30 +584,6 @@ img.align-center, .figure.align-center, object.align-center {
 div.align-right {
   text-align: inherit; }
 
-/* div.align-center * { */
-/*   text-align: left } */
-
-ul.simple > li {
-  margin-bottom: 0.5em }
-
-ol.simple, ul.simple {
-  margin-bottom: 1em; }
-
-ol.arabic {
-  list-style: decimal; }
-
-ol.loweralpha {
-  list-style: lower-alpha; }
-
-ol.upperalpha {
-  list-style: upper-alpha; }
-
-ol.lowerroman {
-  list-style: lower-roman; }
-
-ol.upperroman {
-  list-style: upper-roman; }
-
 p.attribution {
   text-align: right;
   margin-left: 50%; }
@@ -948,15 +603,6 @@ p.rubric {
   font-size: larger;
   color: maroon;
   text-align: center; }
-
-p.sidebar-title {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  font-size: larger; }
-
-p.sidebar-subtitle {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-  font-weight: bold; }
 
 p.topic-title {
   font-weight: bold; }
@@ -997,21 +643,13 @@ pre.code .inserted, code .inserted {
   background-color: #A3D289; }
 
 span.classifier {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-style: oblique; }
 
 span.classifier-delimiter {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-weight: bold; }
-
-span.interpreted {
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif; }
 
 span.option {
   white-space: nowrap; }
-
-span.pre {
-  white-space: pre; }
 
 span.problematic {
   color: #b30000; }
@@ -1019,44 +657,6 @@ span.problematic {
 span.section-subtitle {
   /* font-size relative to parent (h1..h6 element) */
   font-size: 80%; }
-
-table.citation {
-  border-left: solid 1px #666666;
-  margin-left: 1px; }
-
-table.docinfo {
-  margin: 0em;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  font-family: "Lato", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important;
-  color: #444444; }
-
-table.docutils {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em; }
-
-table.footnote {
-  border-left: solid 1px #2d2d2d;
-  margin-left: 1px; }
-
-table.docutils td, table.docutils th,
-table.docinfo td, table.docinfo th {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  vertical-align: top; }
-
-table.docutils th.field-name, table.docinfo th.docinfo-name {
-  font-weight: 700;
-  text-align: left;
-  white-space: nowrap;
-  padding-left: 0; }
-
-h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
-h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
-  font-size: 100%; }
-
-ul.auto-toc {
-  list-style-type: none; }
 
 span.DecNumber {
   color: #252dbe; }
@@ -1074,7 +674,7 @@ span.FloatNumber {
   color: #252dbe; }
 
 span.Identifier {
-  color: #3b3b3b; }
+  color: #222; }
 
 span.Keyword {
   font-weight: 600;
@@ -1139,37 +739,22 @@ dt pre > span.Identifier, dt pre > span.Operator {
   color: #155da4;
   font-weight: 700; }
 
-dt pre > span.Identifier ~ span.Identifier, dt pre > span.Operator ~ span.Identifier {
-  color: inherit;
-  font-weight: inherit; }
-
-dt pre > span.Operator ~ span.Identifier {
+dt pre > span.Keyword ~ span.Identifier, dt pre > span.Identifier ~ span.Identifier,
+dt pre > span.Operator ~ span.Identifier, dt pre > span.Other ~ span.Identifier {
   color: inherit;
   font-weight: inherit; }
 
 /* Nim sprite for the footer (taken from main page favicon) */
 .nim-sprite {
   display: inline-block;
-  height: 12px;
-  width: 12px;
+  height: 16px;
+  width: 16px;
   background-position: 0 0;
-  background-size: 12px 12px;
+  background-size: 16px 16px;
   -webkit-filter: opacity(50%);
   background-repeat: no-repeat;
   background-image: url("data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAUAAAAF////AP///wD///8A////AP///wD///8A////AP///wD///8A////AAAAAAIAAABbAAAAlQAAAKIAAACbAAAAmwAAAKIAAACVAAAAWwAAAAL///8A////AP///wD///8A////AAAAABQAAADAAAAAYwAAAA3///8A////AP///wD///8AAAAADQAAAGMAAADAAAAAFP///wD///8A////AP///wAAAACdAAAAOv///wD///8A////AP///wD///8A////AP///wD///8AAAAAOgAAAJ3///8A////AP///wAAAAAnAAAAcP///wAAAAAoAAAASv///wD///8A////AP///wAAAABKAAAAKP///wAAAABwAAAAJ////wD///8AAAAAgQAAABwAAACIAAAAkAAAAJMAAACtAAAAFQAAABUAAACtAAAAkwAAAJAAAACIAAAAHAAAAIH///8A////AAAAAKQAAACrAAAAaP///wD///8AAAAARQAAANIAAADSAAAARf///wD///8AAAAAaAAAAKsAAACk////AAAAADMAAACcAAAAnQAAABj///8A////AP///wAAAAAYAAAAGP///wD///8A////AAAAABgAAACdAAAAnAAAADMAAAB1AAAAwwAAAP8AAADpAAAAsQAAAE4AAAAb////AP///wAAAAAbAAAATgAAALEAAADpAAAA/wAAAMMAAAB1AAAAtwAAAOkAAAD/AAAA/wAAAP8AAADvAAAA3gAAAN4AAADeAAAA3gAAAO8AAAD/AAAA/wAAAP8AAADpAAAAtwAAAGUAAAA/AAAA3wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAADfAAAAPwAAAGX///8A////AAAAAEgAAADtAAAAvwAAAL0AAADGAAAA7wAAAO8AAADGAAAAvQAAAL8AAADtAAAASP///wD///8A////AP///wD///8AAAAAO////wD///8A////AAAAAIcAAACH////AP///wD///8AAAAAO////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAP//AAD4HwAA7/cAAN/7AAD//wAAoYUAAJ55AACf+QAAh+EAAAAAAADAAwAA4AcAAP5/AAD//wAA//8AAA==");
   margin-bottom: -5px; }
-
-div.search_results {
-  background-color: antiquewhite;
-  margin: 3em;
-  padding: 1em;
-  border: 1px solid #4d4d4d;
-}
-
-div#global-links ul {
-  margin-left: 0;
-  list-style-type: none;
-}
 
 span.pragmadots {
   /* Position: relative frees us up to make the dots
@@ -1178,18 +763,14 @@ span.pragmadots {
   position: relative;
   /* 1px down looks slightly nicer */
   top: 1px;
-
   padding: 2px;
-  background-color: #D3D3D3;
+  background-color: #e8e8e8;
   border-radius: 4px;
   margin: 0 2px;
   cursor: pointer;
-
-  /* For some reason on Chrome, making the font size
-  smaller than 1em is causing the parent container to
-  bulge slightly. So, we're stuck with inheriting 1em,
-  which is sad, because 0.8em looks better... */
+  font-size: 0.8em;
 }
+
 span.pragmadots:hover {
   background-color: #DBDBDB;
 }
@@ -1197,9 +778,13 @@ span.pragmawrap {
   display: none;
 }
 
+span.attachedType {
+  display: none;
+  visibility: hidden;
+}
 </style>
 
-<script type="text/javascript" src="../dochack.js"></script>
+<script type="text/javascript" src="dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -1219,7 +804,7 @@ function main() {
 <body onload="main()">
 <div class="document" id="documentId">
   <div class="container">
-    <h1 class="title">Module hints</h1>
+    <h1 class="title">hints</h1>
     <div class="row">
   <div class="three columns">
   <div id="global-links">
@@ -1244,10 +829,10 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#HintPriority"
     title="HintPriority {.size: 4.} = enum
-  HINT_DEFAULT, HINT_NORMAL, HINT_OVERRIDE"><wbr />Hint<wbr />Priority<span class="attachedType" style="visibility:hidden"></span></a></li>
+  HINT_DEFAULT, HINT_NORMAL, HINT_OVERRIDE"><wbr />Hint<wbr />Priority<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HintCallback"
     title="HintCallback = proc (userdata: pointer; name: cstring; oldValue: cstring;
-                  newValue: cstring) {.cdecl.}"><wbr />Hint<wbr />Callback<span class="attachedType" style="visibility:hidden"></span></a></li>
+                  newValue: cstring) {.cdecl.}"><wbr />Hint<wbr />Callback<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -1255,179 +840,195 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#HINT_FRAMEBUFFER_ACCELERATION"
-    title="HINT_FRAMEBUFFER_ACCELERATION = &quot;SDL_FRAMEBUFFER_ACCELERATION&quot;"><wbr />HINT_<wbr />FRAMEBUFFER_<wbr />ACCELERATION<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_FRAMEBUFFER_ACCELERATION = &quot;SDL_FRAMEBUFFER_ACCELERATION&quot;"><wbr />HINT_<wbr />FRAMEBUFFER_<wbr />ACCELERATION<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_RENDER_DRIVER"
-    title="HINT_RENDER_DRIVER = &quot;SDL_RENDER_DRIVER&quot;"><wbr />HINT_<wbr />RENDER_<wbr />DRIVER<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_RENDER_DRIVER = &quot;SDL_RENDER_DRIVER&quot;"><wbr />HINT_<wbr />RENDER_<wbr />DRIVER<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_RENDER_OPENGL_SHADERS"
-    title="HINT_RENDER_OPENGL_SHADERS = &quot;SDL_RENDER_OPENGL_SHADERS&quot;"><wbr />HINT_<wbr />RENDER_<wbr />OPENGL_<wbr />SHADERS<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_RENDER_OPENGL_SHADERS = &quot;SDL_RENDER_OPENGL_SHADERS&quot;"><wbr />HINT_<wbr />RENDER_<wbr />OPENGL_<wbr />SHADERS<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_RENDER_DIRECT3D_THREADSAFE"
-    title="HINT_RENDER_DIRECT3D_THREADSAFE = &quot;SDL_RENDER_DIRECT3D_THREADSAFE&quot;"><wbr />HINT_<wbr />RENDER_<wbr />DIRECT3D_<wbr />THREADSAFE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_RENDER_DIRECT3D_THREADSAFE = &quot;SDL_RENDER_DIRECT3D_THREADSAFE&quot;"><wbr />HINT_<wbr />RENDER_<wbr />DIRECT3D_<wbr />THREADSAFE<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_RENDER_DIRECT3D11_DEBUG"
-    title="HINT_RENDER_DIRECT3D11_DEBUG = &quot;SDL_RENDER_DIRECT3D11_DEBUG&quot;"><wbr />HINT_<wbr />RENDER_<wbr />DIRECT3D11_<wbr />DEBUG<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_RENDER_DIRECT3D11_DEBUG = &quot;SDL_RENDER_DIRECT3D11_DEBUG&quot;"><wbr />HINT_<wbr />RENDER_<wbr />DIRECT3D11_<wbr />DEBUG<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_RENDER_LOGICAL_SIZE_MODE"
-    title="HINT_RENDER_LOGICAL_SIZE_MODE = &quot;SDL_RENDER_LOGICAL_SIZE_MODE&quot;"><wbr />HINT_<wbr />RENDER_<wbr />LOGICAL_<wbr />SIZE_<wbr />MODE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_RENDER_LOGICAL_SIZE_MODE = &quot;SDL_RENDER_LOGICAL_SIZE_MODE&quot;"><wbr />HINT_<wbr />RENDER_<wbr />LOGICAL_<wbr />SIZE_<wbr />MODE<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_RENDER_SCALE_QUALITY"
-    title="HINT_RENDER_SCALE_QUALITY = &quot;SDL_RENDER_SCALE_QUALITY&quot;"><wbr />HINT_<wbr />RENDER_<wbr />SCALE_<wbr />QUALITY<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_RENDER_SCALE_QUALITY = &quot;SDL_RENDER_SCALE_QUALITY&quot;"><wbr />HINT_<wbr />RENDER_<wbr />SCALE_<wbr />QUALITY<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_RENDER_VSYNC"
-    title="HINT_RENDER_VSYNC = &quot;SDL_RENDER_VSYNC&quot;"><wbr />HINT_<wbr />RENDER_<wbr />VSYNC<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_RENDER_VSYNC = &quot;SDL_RENDER_VSYNC&quot;"><wbr />HINT_<wbr />RENDER_<wbr />VSYNC<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_VIDEO_ALLOW_SCREENSAVER"
-    title="HINT_VIDEO_ALLOW_SCREENSAVER = &quot;SDL_VIDEO_ALLOW_SCREENSAVER&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />ALLOW_<wbr />SCREENSAVER<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_VIDEO_ALLOW_SCREENSAVER = &quot;SDL_VIDEO_ALLOW_SCREENSAVER&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />ALLOW_<wbr />SCREENSAVER<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_VIDEO_X11_XVIDMODE"
-    title="HINT_VIDEO_X11_XVIDMODE = &quot;SDL_VIDEO_X11_XVIDMODE&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />X11_<wbr />XVIDMODE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_VIDEO_X11_XVIDMODE = &quot;SDL_VIDEO_X11_XVIDMODE&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />X11_<wbr />XVIDMODE<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_VIDEO_X11_XINERAMA"
-    title="HINT_VIDEO_X11_XINERAMA = &quot;SDL_VIDEO_X11_XINERAMA&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />X11_<wbr />XINERAMA<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_VIDEO_X11_XINERAMA = &quot;SDL_VIDEO_X11_XINERAMA&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />X11_<wbr />XINERAMA<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_VIDEO_X11_XRANDR"
-    title="HINT_VIDEO_X11_XRANDR = &quot;SDL_VIDEO_X11_XRANDR&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />X11_<wbr />XRANDR<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_VIDEO_X11_XRANDR = &quot;SDL_VIDEO_X11_XRANDR&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />X11_<wbr />XRANDR<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_VIDEO_X11_NET_WM_PING"
-    title="HINT_VIDEO_X11_NET_WM_PING = &quot;SDL_VIDEO_X11_NET_WM_PING&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />X11_<wbr />NET_<wbr />WM_<wbr />PING<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_VIDEO_X11_NET_WM_PING = &quot;SDL_VIDEO_X11_NET_WM_PING&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />X11_<wbr />NET_<wbr />WM_<wbr />PING<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR"
-    title="HINT_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR = &quot;SDL_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />X11_<wbr />NET_<wbr />WM_<wbr />BYPASS_<wbr />COMPOSITOR<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR = &quot;SDL_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />X11_<wbr />NET_<wbr />WM_<wbr />BYPASS_<wbr />COMPOSITOR<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN"
-    title="HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN = &quot;SDL_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN&quot;"><wbr />HINT_<wbr />WINDOW_<wbr />FRAME_<wbr />USABLE_<wbr />WHILE_<wbr />CURSOR_<wbr />HIDDEN<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN = &quot;SDL_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN&quot;"><wbr />HINT_<wbr />WINDOW_<wbr />FRAME_<wbr />USABLE_<wbr />WHILE_<wbr />CURSOR_<wbr />HIDDEN<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_WINDOWS_INTRESOURCE_ICON"
-    title="HINT_WINDOWS_INTRESOURCE_ICON = &quot;SDL_WINDOWS_INTRESOURCE_ICON&quot;"><wbr />HINT_<wbr />WINDOWS_<wbr />INTRESOURCE_<wbr />ICON<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_WINDOWS_INTRESOURCE_ICON = &quot;SDL_WINDOWS_INTRESOURCE_ICON&quot;"><wbr />HINT_<wbr />WINDOWS_<wbr />INTRESOURCE_<wbr />ICON<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_WINDOWS_INTRESOURCE_ICON_SMALL"
-    title="HINT_WINDOWS_INTRESOURCE_ICON_SMALL = &quot;SDL_WINDOWS_INTRESOURCE_ICON_SMALL&quot;"><wbr />HINT_<wbr />WINDOWS_<wbr />INTRESOURCE_<wbr />ICON_<wbr />SMALL<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_WINDOWS_INTRESOURCE_ICON_SMALL = &quot;SDL_WINDOWS_INTRESOURCE_ICON_SMALL&quot;"><wbr />HINT_<wbr />WINDOWS_<wbr />INTRESOURCE_<wbr />ICON_<wbr />SMALL<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_WINDOWS_ENABLE_MESSAGELOOP"
-    title="HINT_WINDOWS_ENABLE_MESSAGELOOP = &quot;SDL_WINDOWS_ENABLE_MESSAGELOOP&quot;"><wbr />HINT_<wbr />WINDOWS_<wbr />ENABLE_<wbr />MESSAGELOOP<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_WINDOWS_ENABLE_MESSAGELOOP = &quot;SDL_WINDOWS_ENABLE_MESSAGELOOP&quot;"><wbr />HINT_<wbr />WINDOWS_<wbr />ENABLE_<wbr />MESSAGELOOP<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_GRAB_KEYBOARD"
-    title="HINT_GRAB_KEYBOARD = &quot;SDL_GRAB_KEYBOARD&quot;"><wbr />HINT_<wbr />GRAB_<wbr />KEYBOARD<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_GRAB_KEYBOARD = &quot;SDL_GRAB_KEYBOARD&quot;"><wbr />HINT_<wbr />GRAB_<wbr />KEYBOARD<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_MOUSE_DOUBLE_CLICK_TIME"
-    title="HINT_MOUSE_DOUBLE_CLICK_TIME = &quot;SDL_MOUSE_DOUBLE_CLICK_TIME&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />DOUBLE_<wbr />CLICK_<wbr />TIME<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_MOUSE_DOUBLE_CLICK_TIME = &quot;SDL_MOUSE_DOUBLE_CLICK_TIME&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />DOUBLE_<wbr />CLICK_<wbr />TIME<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_MOUSE_DOUBLE_CLICK_RADIUS"
-    title="HINT_MOUSE_DOUBLE_CLICK_RADIUS = &quot;SDL_MOUSE_DOUBLE_CLICK_RADIUS&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />DOUBLE_<wbr />CLICK_<wbr />RADIUS<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_MOUSE_DOUBLE_CLICK_RADIUS = &quot;SDL_MOUSE_DOUBLE_CLICK_RADIUS&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />DOUBLE_<wbr />CLICK_<wbr />RADIUS<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_MOUSE_NORMAL_SPEED_SCALE"
-    title="HINT_MOUSE_NORMAL_SPEED_SCALE = &quot;SDL_MOUSE_NORMAL_SPEED_SCALE&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />NORMAL_<wbr />SPEED_<wbr />SCALE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_MOUSE_NORMAL_SPEED_SCALE = &quot;SDL_MOUSE_NORMAL_SPEED_SCALE&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />NORMAL_<wbr />SPEED_<wbr />SCALE<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_MOUSE_RELATIVE_SPEED_SCALE"
-    title="HINT_MOUSE_RELATIVE_SPEED_SCALE = &quot;SDL_MOUSE_RELATIVE_SPEED_SCALE&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />RELATIVE_<wbr />SPEED_<wbr />SCALE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_MOUSE_RELATIVE_SPEED_SCALE = &quot;SDL_MOUSE_RELATIVE_SPEED_SCALE&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />RELATIVE_<wbr />SPEED_<wbr />SCALE<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_MOUSE_RELATIVE_MODE_WARP"
-    title="HINT_MOUSE_RELATIVE_MODE_WARP = &quot;SDL_MOUSE_RELATIVE_MODE_WARP&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />RELATIVE_<wbr />MODE_<wbr />WARP<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_MOUSE_RELATIVE_MODE_WARP = &quot;SDL_MOUSE_RELATIVE_MODE_WARP&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />RELATIVE_<wbr />MODE_<wbr />WARP<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_MOUSE_FOCUS_CLICKTHROUGH"
-    title="HINT_MOUSE_FOCUS_CLICKTHROUGH = &quot;SDL_MOUSE_FOCUS_CLICKTHROUGH&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />FOCUS_<wbr />CLICKTHROUGH<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_MOUSE_FOCUS_CLICKTHROUGH = &quot;SDL_MOUSE_FOCUS_CLICKTHROUGH&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />FOCUS_<wbr />CLICKTHROUGH<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_TOUCH_MOUSE_EVENTS"
-    title="HINT_TOUCH_MOUSE_EVENTS = &quot;SDL_TOUCH_MOUSE_EVENTS&quot;"><wbr />HINT_<wbr />TOUCH_<wbr />MOUSE_<wbr />EVENTS<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_TOUCH_MOUSE_EVENTS = &quot;SDL_TOUCH_MOUSE_EVENTS&quot;"><wbr />HINT_<wbr />TOUCH_<wbr />MOUSE_<wbr />EVENTS<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#HINT_MOUSE_TOUCH_EVENTS"
+    title="HINT_MOUSE_TOUCH_EVENTS = &quot;SDL_MOUSE_TOUCH_EVENTS&quot;"><wbr />HINT_<wbr />MOUSE_<wbr />TOUCH_<wbr />EVENTS<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS"
-    title="HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS = &quot;SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />MINIMIZE_<wbr />ON_<wbr />FOCUS_<wbr />LOSS<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS = &quot;SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />MINIMIZE_<wbr />ON_<wbr />FOCUS_<wbr />LOSS<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_IDLE_TIMER_DISABLED"
-    title="HINT_IDLE_TIMER_DISABLED = &quot;SDL_IOS_IDLE_TIMER_DISABLED&quot;"><wbr />HINT_<wbr />IDLE_<wbr />TIMER_<wbr />DISABLED<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_IDLE_TIMER_DISABLED = &quot;SDL_IOS_IDLE_TIMER_DISABLED&quot;"><wbr />HINT_<wbr />IDLE_<wbr />TIMER_<wbr />DISABLED<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_ORIENTATIONS"
-    title="HINT_ORIENTATIONS = &quot;SDL_IOS_ORIENTATIONS&quot;"><wbr />HINT_<wbr />ORIENTATIONS<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_ORIENTATIONS = &quot;SDL_IOS_ORIENTATIONS&quot;"><wbr />HINT_<wbr />ORIENTATIONS<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_APPLE_TV_CONTROLLER_UI_EVENTS"
-    title="HINT_APPLE_TV_CONTROLLER_UI_EVENTS = &quot;SDL_APPLE_TV_CONTROLLER_UI_EVENTS&quot;"><wbr />HINT_<wbr />APPLE_<wbr />TV_<wbr />CONTROLLER_<wbr />UI_<wbr />EVENTS<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_APPLE_TV_CONTROLLER_UI_EVENTS = &quot;SDL_APPLE_TV_CONTROLLER_UI_EVENTS&quot;"><wbr />HINT_<wbr />APPLE_<wbr />TV_<wbr />CONTROLLER_<wbr />UI_<wbr />EVENTS<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_APPLE_TV_REMOTE_ALLOW_ROTATION"
-    title="HINT_APPLE_TV_REMOTE_ALLOW_ROTATION = &quot;SDL_APPLE_TV_REMOTE_ALLOW_ROTATION&quot;"><wbr />HINT_<wbr />APPLE_<wbr />TV_<wbr />REMOTE_<wbr />ALLOW_<wbr />ROTATION<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_APPLE_TV_REMOTE_ALLOW_ROTATION = &quot;SDL_APPLE_TV_REMOTE_ALLOW_ROTATION&quot;"><wbr />HINT_<wbr />APPLE_<wbr />TV_<wbr />REMOTE_<wbr />ALLOW_<wbr />ROTATION<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_IOS_HIDE_HOME_INDICATOR"
-    title="HINT_IOS_HIDE_HOME_INDICATOR = &quot;SDL_IOS_HIDE_HOME_INDICATOR&quot;"><wbr />HINT_<wbr />IOS_<wbr />HIDE_<wbr />HOME_<wbr />INDICATOR<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_IOS_HIDE_HOME_INDICATOR = &quot;SDL_IOS_HIDE_HOME_INDICATOR&quot;"><wbr />HINT_<wbr />IOS_<wbr />HIDE_<wbr />HOME_<wbr />INDICATOR<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_ACCELEROMETER_AS_JOYSTICK"
-    title="HINT_ACCELEROMETER_AS_JOYSTICK = &quot;SDL_ACCELEROMETER_AS_JOYSTICK&quot;"><wbr />HINT_<wbr />ACCELEROMETER_<wbr />AS_<wbr />JOYSTICK<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_ACCELEROMETER_AS_JOYSTICK = &quot;SDL_ACCELEROMETER_AS_JOYSTICK&quot;"><wbr />HINT_<wbr />ACCELEROMETER_<wbr />AS_<wbr />JOYSTICK<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_TV_REMOTE_AS_JOYSTICK"
-    title="HINT_TV_REMOTE_AS_JOYSTICK = &quot;SDL_TV_REMOTE_AS_JOYSTICK&quot;"><wbr />HINT_<wbr />TV_<wbr />REMOTE_<wbr />AS_<wbr />JOYSTICK<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_TV_REMOTE_AS_JOYSTICK = &quot;SDL_TV_REMOTE_AS_JOYSTICK&quot;"><wbr />HINT_<wbr />TV_<wbr />REMOTE_<wbr />AS_<wbr />JOYSTICK<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_XINPUT_ENABLED"
-    title="HINT_XINPUT_ENABLED = &quot;SDL_XINPUT_ENABLED&quot;"><wbr />HINT_<wbr />XINPUT_<wbr />ENABLED<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_XINPUT_ENABLED = &quot;SDL_XINPUT_ENABLED&quot;"><wbr />HINT_<wbr />XINPUT_<wbr />ENABLED<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING"
-    title="HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING = &quot;SDL_XINPUT_USE_OLD_JOYSTICK_MAPPING&quot;"><wbr />HINT_<wbr />XINPUT_<wbr />USE_<wbr />OLD_<wbr />JOYSTICK_<wbr />MAPPING<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING = &quot;SDL_XINPUT_USE_OLD_JOYSTICK_MAPPING&quot;"><wbr />HINT_<wbr />XINPUT_<wbr />USE_<wbr />OLD_<wbr />JOYSTICK_<wbr />MAPPING<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_GAMECONTROLLERCONFIG"
-    title="HINT_GAMECONTROLLERCONFIG = &quot;SDL_GAMECONTROLLERCONFIG&quot;"><wbr />HINT_<wbr />GAMECONTROLLERCONFIG<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_GAMECONTROLLERCONFIG = &quot;SDL_GAMECONTROLLERCONFIG&quot;"><wbr />HINT_<wbr />GAMECONTROLLERCONFIG<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#HINT_GAMECONTROLLERCONFIG_FILE"
+    title="HINT_GAMECONTROLLERCONFIG_FILE = &quot;SDL_GAMECONTROLLERCONFIG_FILE&quot;"><wbr />HINT_<wbr />GAMECONTROLLERCONFIG_<wbr />FILE<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_GAMECONTROLLER_IGNORE_DEVICES"
-    title="HINT_GAMECONTROLLER_IGNORE_DEVICES = &quot;SDL_GAMECONTROLLER_IGNORE_DEVICES&quot;"><wbr />HINT_<wbr />GAMECONTROLLER_<wbr />IGNORE_<wbr />DEVICES<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_GAMECONTROLLER_IGNORE_DEVICES = &quot;SDL_GAMECONTROLLER_IGNORE_DEVICES&quot;"><wbr />HINT_<wbr />GAMECONTROLLER_<wbr />IGNORE_<wbr />DEVICES<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT"
-    title="HINT_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT = &quot;SDL_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT&quot;"><wbr />HINT_<wbr />GAMECONTROLLER_<wbr />IGNORE_<wbr />DEVICES_<wbr />EXCEPT<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT = &quot;SDL_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT&quot;"><wbr />HINT_<wbr />GAMECONTROLLER_<wbr />IGNORE_<wbr />DEVICES_<wbr />EXCEPT<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS"
-    title="HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS = &quot;SDL_JOYSTICK_ALLOW_BACKGROUND_EVENTS&quot;"><wbr />HINT_<wbr />JOYSTICK_<wbr />ALLOW_<wbr />BACKGROUND_<wbr />EVENTS<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS = &quot;SDL_JOYSTICK_ALLOW_BACKGROUND_EVENTS&quot;"><wbr />HINT_<wbr />JOYSTICK_<wbr />ALLOW_<wbr />BACKGROUND_<wbr />EVENTS<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_JOYSTICK_HIDAPI"
-    title="HINT_JOYSTICK_HIDAPI = &quot;SDL_JOYSTICK_HIDAPI&quot;"><wbr />HINT_<wbr />JOYSTICK_<wbr />HIDAPI<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_JOYSTICK_HIDAPI = &quot;SDL_JOYSTICK_HIDAPI&quot;"><wbr />HINT_<wbr />JOYSTICK_<wbr />HIDAPI<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_JOYSTICK_HIDAPI_PS4"
-    title="HINT_JOYSTICK_HIDAPI_PS4 = &quot;SDL_JOYSTICK_HIDAPI_PS4&quot;"><wbr />HINT_<wbr />JOYSTICK_<wbr />HIDAPI_<wbr />PS4<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_JOYSTICK_HIDAPI_PS4 = &quot;SDL_JOYSTICK_HIDAPI_PS4&quot;"><wbr />HINT_<wbr />JOYSTICK_<wbr />HIDAPI_<wbr />PS4<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_JOYSTICK_HIDAPI_PS4_RUMBLE"
-    title="HINT_JOYSTICK_HIDAPI_PS4_RUMBLE = &quot;SDL_JOYSTICK_HIDAPI_PS4_RUMBLE&quot;"><wbr />HINT_<wbr />JOYSTICK_<wbr />HIDAPI_<wbr />PS4_<wbr />RUMBLE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_JOYSTICK_HIDAPI_PS4_RUMBLE = &quot;SDL_JOYSTICK_HIDAPI_PS4_RUMBLE&quot;"><wbr />HINT_<wbr />JOYSTICK_<wbr />HIDAPI_<wbr />PS4_<wbr />RUMBLE<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_JOYSTICK_HIDAPI_STEAM"
-    title="HINT_JOYSTICK_HIDAPI_STEAM = &quot;SDL_JOYSTICK_HIDAPI_STEAM&quot;"><wbr />HINT_<wbr />JOYSTICK_<wbr />HIDAPI_<wbr />STEAM<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_JOYSTICK_HIDAPI_STEAM = &quot;SDL_JOYSTICK_HIDAPI_STEAM&quot;"><wbr />HINT_<wbr />JOYSTICK_<wbr />HIDAPI_<wbr />STEAM<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_JOYSTICK_HIDAPI_SWITCH"
-    title="HINT_JOYSTICK_HIDAPI_SWITCH = &quot;SDL_JOYSTICK_HIDAPI_SWITCH&quot;"><wbr />HINT_<wbr />JOYSTICK_<wbr />HIDAPI_<wbr />SWITCH<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_JOYSTICK_HIDAPI_SWITCH = &quot;SDL_JOYSTICK_HIDAPI_SWITCH&quot;"><wbr />HINT_<wbr />JOYSTICK_<wbr />HIDAPI_<wbr />SWITCH<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_JOYSTICK_HIDAPI_XBOX"
-    title="HINT_JOYSTICK_HIDAPI_XBOX = &quot;SDL_JOYSTICK_HIDAPI_XBOX&quot;"><wbr />HINT_<wbr />JOYSTICK_<wbr />HIDAPI_<wbr />XBOX<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_JOYSTICK_HIDAPI_XBOX = &quot;SDL_JOYSTICK_HIDAPI_XBOX&quot;"><wbr />HINT_<wbr />JOYSTICK_<wbr />HIDAPI_<wbr />XBOX<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_ENABLE_STEAM_CONTROLLERS"
-    title="HINT_ENABLE_STEAM_CONTROLLERS = &quot;SDL_ENABLE_STEAM_CONTROLLERS&quot;"><wbr />HINT_<wbr />ENABLE_<wbr />STEAM_<wbr />CONTROLLERS<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_ENABLE_STEAM_CONTROLLERS = &quot;SDL_ENABLE_STEAM_CONTROLLERS&quot;"><wbr />HINT_<wbr />ENABLE_<wbr />STEAM_<wbr />CONTROLLERS<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_ALLOW_TOPMOST"
-    title="HINT_ALLOW_TOPMOST = &quot;SDL_ALLOW_TOPMOST&quot;"><wbr />HINT_<wbr />ALLOW_<wbr />TOPMOST<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_ALLOW_TOPMOST = &quot;SDL_ALLOW_TOPMOST&quot;"><wbr />HINT_<wbr />ALLOW_<wbr />TOPMOST<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_TIMER_RESOLUTION"
-    title="HINT_TIMER_RESOLUTION = &quot;SDL_TIMER_RESOLUTION&quot;"><wbr />HINT_<wbr />TIMER_<wbr />RESOLUTION<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_TIMER_RESOLUTION = &quot;SDL_TIMER_RESOLUTION&quot;"><wbr />HINT_<wbr />TIMER_<wbr />RESOLUTION<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_QTWAYLAND_CONTENT_ORIENTATION"
-    title="HINT_QTWAYLAND_CONTENT_ORIENTATION = &quot;SDL_QTWAYLAND_CONTENT_ORIENTATION&quot;"><wbr />HINT_<wbr />QTWAYLAND_<wbr />CONTENT_<wbr />ORIENTATION<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_QTWAYLAND_CONTENT_ORIENTATION = &quot;SDL_QTWAYLAND_CONTENT_ORIENTATION&quot;"><wbr />HINT_<wbr />QTWAYLAND_<wbr />CONTENT_<wbr />ORIENTATION<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_QTWAYLAND_WINDOW_FLAGS"
-    title="HINT_QTWAYLAND_WINDOW_FLAGS = &quot;SDL_QTWAYLAND_WINDOW_FLAGS&quot;"><wbr />HINT_<wbr />QTWAYLAND_<wbr />WINDOW_<wbr />FLAGS<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_QTWAYLAND_WINDOW_FLAGS = &quot;SDL_QTWAYLAND_WINDOW_FLAGS&quot;"><wbr />HINT_<wbr />QTWAYLAND_<wbr />WINDOW_<wbr />FLAGS<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_THREAD_STACK_SIZE"
-    title="HINT_THREAD_STACK_SIZE = &quot;SDL_THREAD_STACK_SIZE&quot;"><wbr />HINT_<wbr />THREAD_<wbr />STACK_<wbr />SIZE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_THREAD_STACK_SIZE = &quot;SDL_THREAD_STACK_SIZE&quot;"><wbr />HINT_<wbr />THREAD_<wbr />STACK_<wbr />SIZE<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_VIDEO_HIGHDPI_DISABLED"
-    title="HINT_VIDEO_HIGHDPI_DISABLED = &quot;SDL_VIDEO_HIGHDPI_DISABLED&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />HIGHDPI_<wbr />DISABLED<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_VIDEO_HIGHDPI_DISABLED = &quot;SDL_VIDEO_HIGHDPI_DISABLED&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />HIGHDPI_<wbr />DISABLED<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK"
-    title="HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK = &quot;SDL_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK&quot;"><wbr />HINT_<wbr />MAC_<wbr />CTRL_<wbr />CLICK_<wbr />EMULATE_<wbr />RIGHT_<wbr />CLICK<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK = &quot;SDL_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK&quot;"><wbr />HINT_<wbr />MAC_<wbr />CTRL_<wbr />CLICK_<wbr />EMULATE_<wbr />RIGHT_<wbr />CLICK<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_VIDEO_WIN_D3DCOMPILER"
-    title="HINT_VIDEO_WIN_D3DCOMPILER = &quot;SDL_VIDEO_WIN_D3DCOMPILER&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />WIN_<wbr />D3DCOMPILER<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_VIDEO_WIN_D3DCOMPILER = &quot;SDL_VIDEO_WIN_D3DCOMPILER&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />WIN_<wbr />D3DCOMPILER<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT"
-    title="HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT = &quot;SDL_VIDEO_WINDOW_SHARE_PIXEL_FORMAT&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />WINDOW_<wbr />SHARE_<wbr />PIXEL_<wbr />FORMAT<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT = &quot;SDL_VIDEO_WINDOW_SHARE_PIXEL_FORMAT&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />WINDOW_<wbr />SHARE_<wbr />PIXEL_<wbr />FORMAT<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_WINRT_PRIVACY_POLICY_URL"
-    title="HINT_WINRT_PRIVACY_POLICY_URL = &quot;SDL_WINRT_PRIVACY_POLICY_URL&quot;"><wbr />HINT_<wbr />WINRT_<wbr />PRIVACY_<wbr />POLICY_<wbr />URL<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_WINRT_PRIVACY_POLICY_URL = &quot;SDL_WINRT_PRIVACY_POLICY_URL&quot;"><wbr />HINT_<wbr />WINRT_<wbr />PRIVACY_<wbr />POLICY_<wbr />URL<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_WINRT_PRIVACY_POLICY_LABEL"
-    title="HINT_WINRT_PRIVACY_POLICY_LABEL = &quot;SDL_WINRT_PRIVACY_POLICY_LABEL&quot;"><wbr />HINT_<wbr />WINRT_<wbr />PRIVACY_<wbr />POLICY_<wbr />LABEL<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_WINRT_PRIVACY_POLICY_LABEL = &quot;SDL_WINRT_PRIVACY_POLICY_LABEL&quot;"><wbr />HINT_<wbr />WINRT_<wbr />PRIVACY_<wbr />POLICY_<wbr />LABEL<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_WINRT_HANDLE_BACK_BUTTON"
-    title="HINT_WINRT_HANDLE_BACK_BUTTON = &quot;SDL_WINRT_HANDLE_BACK_BUTTON&quot;"><wbr />HINT_<wbr />WINRT_<wbr />HANDLE_<wbr />BACK_<wbr />BUTTON<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_WINRT_HANDLE_BACK_BUTTON = &quot;SDL_WINRT_HANDLE_BACK_BUTTON&quot;"><wbr />HINT_<wbr />WINRT_<wbr />HANDLE_<wbr />BACK_<wbr />BUTTON<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_VIDEO_MAC_FULLSCREEN_SPACES"
-    title="HINT_VIDEO_MAC_FULLSCREEN_SPACES = &quot;SDL_VIDEO_MAC_FULLSCREEN_SPACES&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />MAC_<wbr />FULLSCREEN_<wbr />SPACES<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_VIDEO_MAC_FULLSCREEN_SPACES = &quot;SDL_VIDEO_MAC_FULLSCREEN_SPACES&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />MAC_<wbr />FULLSCREEN_<wbr />SPACES<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_MAC_BACKGROUND_APP"
-    title="HINT_MAC_BACKGROUND_APP = &quot;SDL_MAC_BACKGROUND_APP&quot;"><wbr />HINT_<wbr />MAC_<wbr />BACKGROUND_<wbr />APP<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_MAC_BACKGROUND_APP = &quot;SDL_MAC_BACKGROUND_APP&quot;"><wbr />HINT_<wbr />MAC_<wbr />BACKGROUND_<wbr />APP<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION"
-    title="HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION = &quot;SDL_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION&quot;"><wbr />HINT_<wbr />ANDROID_<wbr />APK_<wbr />EXPANSION_<wbr />MAIN_<wbr />FILE_<wbr />VERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION = &quot;SDL_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION&quot;"><wbr />HINT_<wbr />ANDROID_<wbr />APK_<wbr />EXPANSION_<wbr />MAIN_<wbr />FILE_<wbr />VERSION<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION"
-    title="HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION = &quot;SDL_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION&quot;"><wbr />HINT_<wbr />ANDROID_<wbr />APK_<wbr />EXPANSION_<wbr />PATCH_<wbr />FILE_<wbr />VERSION<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION = &quot;SDL_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION&quot;"><wbr />HINT_<wbr />ANDROID_<wbr />APK_<wbr />EXPANSION_<wbr />PATCH_<wbr />FILE_<wbr />VERSION<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HIND_IME_INTERNAL_EDITING"
-    title="HIND_IME_INTERNAL_EDITING = &quot;SDL_IME_INTERNAL_EDITING&quot;"><wbr />HIND_<wbr />IME_<wbr />INTERNAL_<wbr />EDITING<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HIND_IME_INTERNAL_EDITING = &quot;SDL_IME_INTERNAL_EDITING&quot;"><wbr />HIND_<wbr />IME_<wbr />INTERNAL_<wbr />EDITING<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH"
-    title="HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH = &quot;SDL_ANDROID_SEPARATE_MOUSE_AND_TOUCH&quot;"><wbr />HINT_<wbr />ANDROID_<wbr />SEPARATE_<wbr />MOUSE_<wbr />AND_<wbr />TOUCH<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH = &quot;SDL_ANDROID_SEPARATE_MOUSE_AND_TOUCH&quot;"><wbr />HINT_<wbr />ANDROID_<wbr />SEPARATE_<wbr />MOUSE_<wbr />AND_<wbr />TOUCH<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_ANDROID_TRAP_BACK_BUTTON"
-    title="HINT_ANDROID_TRAP_BACK_BUTTON = &quot;SDL_ANDROID_TRAP_BACK_BUTTON&quot;"><wbr />HINT_<wbr />ANDROID_<wbr />TRAP_<wbr />BACK_<wbr />BUTTON<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_ANDROID_TRAP_BACK_BUTTON = &quot;SDL_ANDROID_TRAP_BACK_BUTTON&quot;"><wbr />HINT_<wbr />ANDROID_<wbr />TRAP_<wbr />BACK_<wbr />BUTTON<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#HINT_ANDROID_BLOCK_ON_PAUSE"
+    title="HINT_ANDROID_BLOCK_ON_PAUSE = &quot;SDL_ANDROID_BLOCK_ON_PAUSE&quot;"><wbr />HINT_<wbr />ANDROID_<wbr />BLOCK_<wbr />ON_<wbr />PAUSE<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_RETURN_KEY_HIDES_IME"
-    title="HINT_RETURN_KEY_HIDES_IME = &quot;SDL_RETURN_KEY_HIDES_IME&quot;"><wbr />HINT_<wbr />RETURN_<wbr />KEY_<wbr />HIDES_<wbr />IME<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_RETURN_KEY_HIDES_IME = &quot;SDL_RETURN_KEY_HIDES_IME&quot;"><wbr />HINT_<wbr />RETURN_<wbr />KEY_<wbr />HIDES_<wbr />IME<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_EMSCRIPTEN_KEYBOARD_ELEMENT"
-    title="HINT_EMSCRIPTEN_KEYBOARD_ELEMENT = &quot;SDL_EMSCRIPTEN_KEYBOARD_ELEMENT&quot;"><wbr />HINT_<wbr />EMSCRIPTEN_<wbr />KEYBOARD_<wbr />ELEMENT<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_EMSCRIPTEN_KEYBOARD_ELEMENT = &quot;SDL_EMSCRIPTEN_KEYBOARD_ELEMENT&quot;"><wbr />HINT_<wbr />EMSCRIPTEN_<wbr />KEYBOARD_<wbr />ELEMENT<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_NO_SIGNAL_HANDLERS"
-    title="HINT_NO_SIGNAL_HANDLERS = &quot;SDL_NO_SIGNAL_HANDLERS&quot;"><wbr />HINT_<wbr />NO_<wbr />SIGNAL_<wbr />HANDLERS<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_NO_SIGNAL_HANDLERS = &quot;SDL_NO_SIGNAL_HANDLERS&quot;"><wbr />HINT_<wbr />NO_<wbr />SIGNAL_<wbr />HANDLERS<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_WINDOWS_NO_CLOSE_ON_ALT_F4"
-    title="HINT_WINDOWS_NO_CLOSE_ON_ALT_F4 = &quot;SDL_WINDOWS_NO_CLOSE_ON_ALT_F4&quot;"><wbr />HINT_<wbr />WINDOWS_<wbr />NO_<wbr />CLOSE_<wbr />ON_<wbr />ALT_<wbr />F4<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_WINDOWS_NO_CLOSE_ON_ALT_F4 = &quot;SDL_WINDOWS_NO_CLOSE_ON_ALT_F4&quot;"><wbr />HINT_<wbr />WINDOWS_<wbr />NO_<wbr />CLOSE_<wbr />ON_<wbr />ALT_<wbr />F4<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_BMP_SAVE_LEGACY_FORMAT"
-    title="HINT_BMP_SAVE_LEGACY_FORMAT = &quot;SDL_BMP_SAVE_LEGACY_FORMAT&quot;"><wbr />HINT_<wbr />BMP_<wbr />SAVE_<wbr />LEGACY_<wbr />FORMAT<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_BMP_SAVE_LEGACY_FORMAT = &quot;SDL_BMP_SAVE_LEGACY_FORMAT&quot;"><wbr />HINT_<wbr />BMP_<wbr />SAVE_<wbr />LEGACY_<wbr />FORMAT<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_WINDOWS_DISABLE_THREAD_NAMING"
-    title="HINT_WINDOWS_DISABLE_THREAD_NAMING = &quot;SDL_WINDOWS_DISABLE_THREAD_NAMING&quot;"><wbr />HINT_<wbr />WINDOWS_<wbr />DISABLE_<wbr />THREAD_<wbr />NAMING<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_WINDOWS_DISABLE_THREAD_NAMING = &quot;SDL_WINDOWS_DISABLE_THREAD_NAMING&quot;"><wbr />HINT_<wbr />WINDOWS_<wbr />DISABLE_<wbr />THREAD_<wbr />NAMING<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_RPI_VIDEO_LAYER"
-    title="HINT_RPI_VIDEO_LAYER = &quot;SDL_RPI_VIDEO_LAYER&quot;"><wbr />HINT_<wbr />RPI_<wbr />VIDEO_<wbr />LAYER<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_RPI_VIDEO_LAYER = &quot;SDL_RPI_VIDEO_LAYER&quot;"><wbr />HINT_<wbr />RPI_<wbr />VIDEO_<wbr />LAYER<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_VIDEO_DOUBLE_BUFFER"
-    title="HINT_VIDEO_DOUBLE_BUFFER = &quot;SDL_VIDEO_DOUBLE_BUFFER&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />DOUBLE_<wbr />BUFFER<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_VIDEO_DOUBLE_BUFFER = &quot;SDL_VIDEO_DOUBLE_BUFFER&quot;"><wbr />HINT_<wbr />VIDEO_<wbr />DOUBLE_<wbr />BUFFER<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_OPENGL_ES_DRIVER"
-    title="HINT_OPENGL_ES_DRIVER = &quot;SDL_OPENGL_ES_DRIVER&quot;"><wbr />HINT_<wbr />OPENGL_<wbr />ES_<wbr />DRIVER<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_OPENGL_ES_DRIVER = &quot;SDL_OPENGL_ES_DRIVER&quot;"><wbr />HINT_<wbr />OPENGL_<wbr />ES_<wbr />DRIVER<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_AUDIO_RESAMPLING_MODE"
-    title="HINT_AUDIO_RESAMPLING_MODE = &quot;SDL_AUDIO_RESAMPLING_MODE&quot;"><wbr />HINT_<wbr />AUDIO_<wbr />RESAMPLING_<wbr />MODE<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_AUDIO_RESAMPLING_MODE = &quot;SDL_AUDIO_RESAMPLING_MODE&quot;"><wbr />HINT_<wbr />AUDIO_<wbr />RESAMPLING_<wbr />MODE<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#HINT_AUDIO_CATEGORY"
-    title="HINT_AUDIO_CATEGORY = &quot;SDL_AUDIO_CATEGORY&quot;"><wbr />HINT_<wbr />AUDIO_<wbr />CATEGORY<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="HINT_AUDIO_CATEGORY = &quot;SDL_AUDIO_CATEGORY&quot;"><wbr />HINT_<wbr />AUDIO_<wbr />CATEGORY<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#HINT_RENDER_BATCHING"
+    title="HINT_RENDER_BATCHING = &quot;SDL_RENDER_BATCHING&quot;"><wbr />HINT_<wbr />RENDER_<wbr />BATCHING<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#HINT_EVENT_LOGGING"
+    title="HINT_EVENT_LOGGING = &quot;SDL_EVENT_LOGGING&quot;"><wbr />HINT_<wbr />EVENT_<wbr />LOGGING<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#HINT_WAVE_RIFF_CHUNK_SIZE"
+    title="HINT_WAVE_RIFF_CHUNK_SIZE = &quot;SDL_WAVE_RIFF_CHUNK_SIZE&quot;"><wbr />HINT_<wbr />WAVE_<wbr />RIFF_<wbr />CHUNK_<wbr />SIZE<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#HINT_WAVE_TRUNCATION"
+    title="HINT_WAVE_TRUNCATION = &quot;SDL_WAVE_TRUNCATION&quot;"><wbr />HINT_<wbr />WAVE_<wbr />TRUNCATION<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#HINT_WAVE_FACT_CHUNK"
+    title="HINT_WAVE_FACT_CHUNK = &quot;SDL_WAVE_FACT_CHUNK&quot;"><wbr />HINT_<wbr />WAVE_<wbr />FACT_<wbr />CHUNK<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#setHintWithPriority,cstring,cstring,HintPriority"
-    title="setHintWithPriority(name: cstring; value: cstring; priority: HintPriority): bool"><wbr />set<wbr />Hint<wbr />With<wbr />Priority<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#setHint,cstring,cstring"
-    title="setHint(name: cstring; value: cstring): bool"><wbr />set<wbr />Hint<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#getHint,cstring"
-    title="getHint(name: cstring): cstring"><wbr />get<wbr />Hint<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#getHintBoolean,cstring,bool"
-    title="getHintBoolean(name: cstring; default_value: bool): bool"><wbr />get<wbr />Hint<wbr />Boolean<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#addHintCallback,cstring,HintCallback,pointer"
-    title="addHintCallback(name: cstring; callback: HintCallback; userdata: pointer)"><wbr />add<wbr />Hint<wbr />Callback<span class="attachedType" style="visibility:hidden">HintCallback</span></a></li>
-  <li><a class="reference" href="#delHintCallback,cstring,HintCallback,pointer"
-    title="delHintCallback(name: cstring; callback: HintCallback; userdata: pointer)"><wbr />del<wbr />Hint<wbr />Callback<span class="attachedType" style="visibility:hidden">HintCallback</span></a></li>
-  <li><a class="reference" href="#clearHints,"
-    title="clearHints()"><wbr />clear<wbr />Hints<span class="attachedType" style="visibility:hidden"></span></a></li>
+      <li><a class="reference" href="#setHintWithPriority%2Ccstring%2Ccstring%2CHintPriority"
+    title="setHintWithPriority(name: cstring; value: cstring; priority: HintPriority): bool"><wbr />set<wbr />Hint<wbr />With<wbr />Priority<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#setHint%2Ccstring%2Ccstring"
+    title="setHint(name: cstring; value: cstring): bool"><wbr />set<wbr />Hint<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#getHint%2Ccstring"
+    title="getHint(name: cstring): cstring"><wbr />get<wbr />Hint<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#getHintBoolean%2Ccstring%2Cbool"
+    title="getHintBoolean(name: cstring; default_value: bool): bool"><wbr />get<wbr />Hint<wbr />Boolean<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#addHintCallback%2Ccstring%2CHintCallback%2Cpointer"
+    title="addHintCallback(name: cstring; callback: HintCallback; userdata: pointer)"><wbr />add<wbr />Hint<wbr />Callback<span class="attachedType">HintCallback</span></a></li>
+  <li><a class="reference" href="#delHintCallback%2Ccstring%2CHintCallback%2Cpointer"
+    title="delHintCallback(name: cstring; callback: HintCallback; userdata: pointer)"><wbr />del<wbr />Hint<wbr />Callback<span class="attachedType">HintCallback</span></a></li>
+  <li><a class="reference" href="#clearHints"
+    title="clearHints()"><wbr />clear<wbr />Hints<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -1437,25 +1038,30 @@ function main() {
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc">
 <h1><a class="toc-backref" id="hintsdotnim" href="#hintsdotnim">hints.nim</a></h1><p>Official documentation for SDL configuration variables.</p>
 <p>This file contains procedures to set and get configuration hints, as well as listing each of them alphabetically.</p>
-<p>The convention for naming hints is <cite>HINT_X</cite>, where &quot;X&quot; is the environment variable that can be used to override the default.</p>
+<p>The convention for naming hints is <tt class="docutils literal"><span class="pre">HINT_X</span></tt>, where &quot;X&quot; is the environment variable that can be used to override the default.</p>
 <p>In general these hints are just that - they may or may not be supported or applicable on any given platform, but they provide a way for an application or user to give the library a hint as to how they would like the library to work.</p>
 </p>
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="HintPriority"><a name="HintPriority"></a><pre><a href="hints.html#HintPriority"><span class="Identifier">HintPriority</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<a id="HintPriority"></a>
+<dt><pre><a href="hints.html#HintPriority"><span class="Identifier">HintPriority</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">HINT_DEFAULT</span><span class="Other">,</span> <span class="Identifier">HINT_NORMAL</span><span class="Other">,</span> <span class="Identifier">HINT_OVERRIDE</span></pre></dt>
 <dd>
+
 
 An enumeration of hint priorities
 
 </dd>
-<dt id="HintCallback"><a name="HintCallback"></a><pre><a href="hints.html#HintCallback"><span class="Identifier">HintCallback</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">oldValue</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span>
+<a id="HintCallback"></a>
+<dt><pre><a href="hints.html#HintCallback"><span class="Identifier">HintCallback</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">oldValue</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span>
                   <span class="Identifier">newValue</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 
 Type definition of the hint callback function.
 
@@ -1465,8 +1071,10 @@ Type definition of the hint callback function.
 <div class="section" id="10">
 <h1><a class="toc-backref" href="#10">Consts</a></h1>
 <dl class="item">
-<dt id="HINT_FRAMEBUFFER_ACCELERATION"><a name="HINT_FRAMEBUFFER_ACCELERATION"></a><pre><span class="Identifier">HINT_FRAMEBUFFER_ACCELERATION</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_FRAMEBUFFER_ACCELERATION&quot;</span></pre></dt>
+<a id="HINT_FRAMEBUFFER_ACCELERATION"></a>
+<dt><pre><a href="hints.html#HINT_FRAMEBUFFER_ACCELERATION"><span class="Identifier">HINT_FRAMEBUFFER_ACCELERATION</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_FRAMEBUFFER_ACCELERATION&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling how 3D acceleration is used  to accelerate the SDL screen surface.</p>
 <p>SDL can try to accelerate the SDL screen surface by using streaming textures with a 3D rendering engine.  This variable controls whether and how this is done.</p>
@@ -1480,8 +1088,10 @@ A variable controlling how 3D acceleration is used  to accelerate the SDL screen
 
 
 </dd>
-<dt id="HINT_RENDER_DRIVER"><a name="HINT_RENDER_DRIVER"></a><pre><span class="Identifier">HINT_RENDER_DRIVER</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_DRIVER&quot;</span></pre></dt>
+<a id="HINT_RENDER_DRIVER"></a>
+<dt><pre><a href="hints.html#HINT_RENDER_DRIVER"><span class="Identifier">HINT_RENDER_DRIVER</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_DRIVER&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable specifying which render driver to use.</p>
 <p>If the application doesn't pick a specific renderer to use, this variable specifies the name of the preferred renderer.  If the preferred renderer can't be initialized, the normal default renderer is used.</p>
@@ -1497,8 +1107,10 @@ A variable specifying which render driver to use.</p>
 
 
 </dd>
-<dt id="HINT_RENDER_OPENGL_SHADERS"><a name="HINT_RENDER_OPENGL_SHADERS"></a><pre><span class="Identifier">HINT_RENDER_OPENGL_SHADERS</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_OPENGL_SHADERS&quot;</span></pre></dt>
+<a id="HINT_RENDER_OPENGL_SHADERS"></a>
+<dt><pre><a href="hints.html#HINT_RENDER_OPENGL_SHADERS"><span class="Identifier">HINT_RENDER_OPENGL_SHADERS</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_OPENGL_SHADERS&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the OpenGL render driver uses shaders if they are available.</p>
 <p>This variable can be set to the following values:</p>
@@ -1509,8 +1121,10 @@ A variable controlling whether the OpenGL render driver uses shaders if they are
 
 
 </dd>
-<dt id="HINT_RENDER_DIRECT3D_THREADSAFE"><a name="HINT_RENDER_DIRECT3D_THREADSAFE"></a><pre><span class="Identifier">HINT_RENDER_DIRECT3D_THREADSAFE</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_DIRECT3D_THREADSAFE&quot;</span></pre></dt>
+<a id="HINT_RENDER_DIRECT3D_THREADSAFE"></a>
+<dt><pre><a href="hints.html#HINT_RENDER_DIRECT3D_THREADSAFE"><span class="Identifier">HINT_RENDER_DIRECT3D_THREADSAFE</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_DIRECT3D_THREADSAFE&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the Direct3D device is initialized for thread-safe operations.</p>
 <p>This variable can be set to the following values:</p>
@@ -1521,8 +1135,10 @@ A variable controlling whether the Direct3D device is initialized for thread-saf
 
 
 </dd>
-<dt id="HINT_RENDER_DIRECT3D11_DEBUG"><a name="HINT_RENDER_DIRECT3D11_DEBUG"></a><pre><span class="Identifier">HINT_RENDER_DIRECT3D11_DEBUG</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_DIRECT3D11_DEBUG&quot;</span></pre></dt>
+<a id="HINT_RENDER_DIRECT3D11_DEBUG"></a>
+<dt><pre><a href="hints.html#HINT_RENDER_DIRECT3D11_DEBUG"><span class="Identifier">HINT_RENDER_DIRECT3D11_DEBUG</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_DIRECT3D11_DEBUG&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether to enable Direct3D 11+'s Debug Layer.</p>
 <p>This variable does not have any effect on the Direct3D 9 based renderer.</p>
@@ -1534,8 +1150,10 @@ A variable controlling whether to enable Direct3D 11+'s Debug Layer.</p>
 
 
 </dd>
-<dt id="HINT_RENDER_LOGICAL_SIZE_MODE"><a name="HINT_RENDER_LOGICAL_SIZE_MODE"></a><pre><span class="Identifier">HINT_RENDER_LOGICAL_SIZE_MODE</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_LOGICAL_SIZE_MODE&quot;</span></pre></dt>
+<a id="HINT_RENDER_LOGICAL_SIZE_MODE"></a>
+<dt><pre><a href="hints.html#HINT_RENDER_LOGICAL_SIZE_MODE"><span class="Identifier">HINT_RENDER_LOGICAL_SIZE_MODE</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_LOGICAL_SIZE_MODE&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling the scaling policy for <tt class="docutils literal"><span class="pre">renderSetLogicalSize</span></tt>.</p>
 <p>This variable can be set to the following values:</p>
@@ -1546,8 +1164,10 @@ A variable controlling the scaling policy for <tt class="docutils literal"><span
 
 
 </dd>
-<dt id="HINT_RENDER_SCALE_QUALITY"><a name="HINT_RENDER_SCALE_QUALITY"></a><pre><span class="Identifier">HINT_RENDER_SCALE_QUALITY</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_SCALE_QUALITY&quot;</span></pre></dt>
+<a id="HINT_RENDER_SCALE_QUALITY"></a>
+<dt><pre><a href="hints.html#HINT_RENDER_SCALE_QUALITY"><span class="Identifier">HINT_RENDER_SCALE_QUALITY</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_SCALE_QUALITY&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling the scaling quality</p>
 <p>This variable can be set to the following values:</p>
@@ -1559,8 +1179,10 @@ A variable controlling the scaling quality</p>
 
 
 </dd>
-<dt id="HINT_RENDER_VSYNC"><a name="HINT_RENDER_VSYNC"></a><pre><span class="Identifier">HINT_RENDER_VSYNC</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_VSYNC&quot;</span></pre></dt>
+<a id="HINT_RENDER_VSYNC"></a>
+<dt><pre><a href="hints.html#HINT_RENDER_VSYNC"><span class="Identifier">HINT_RENDER_VSYNC</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_VSYNC&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether updates to the SDL screen surface should be synchronized with the vertical refresh, to avoid tearing.</p>
 <p>This variable can be set to the following values:</p>
@@ -1571,8 +1193,10 @@ A variable controlling whether updates to the SDL screen surface should be synch
 
 
 </dd>
-<dt id="HINT_VIDEO_ALLOW_SCREENSAVER"><a name="HINT_VIDEO_ALLOW_SCREENSAVER"></a><pre><span class="Identifier">HINT_VIDEO_ALLOW_SCREENSAVER</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_ALLOW_SCREENSAVER&quot;</span></pre></dt>
+<a id="HINT_VIDEO_ALLOW_SCREENSAVER"></a>
+<dt><pre><a href="hints.html#HINT_VIDEO_ALLOW_SCREENSAVER"><span class="Identifier">HINT_VIDEO_ALLOW_SCREENSAVER</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_ALLOW_SCREENSAVER&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the screensaver is enabled.</p>
 <p>This variable can be set to the following values:</p>
@@ -1583,8 +1207,10 @@ A variable controlling whether the screensaver is enabled.</p>
 
 
 </dd>
-<dt id="HINT_VIDEO_X11_XVIDMODE"><a name="HINT_VIDEO_X11_XVIDMODE"></a><pre><span class="Identifier">HINT_VIDEO_X11_XVIDMODE</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_X11_XVIDMODE&quot;</span></pre></dt>
+<a id="HINT_VIDEO_X11_XVIDMODE"></a>
+<dt><pre><a href="hints.html#HINT_VIDEO_X11_XVIDMODE"><span class="Identifier">HINT_VIDEO_X11_XVIDMODE</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_X11_XVIDMODE&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the X11 VidMode extension should be used.</p>
 <p>This variable can be set to the following values:</p>
@@ -1595,8 +1221,10 @@ A variable controlling whether the X11 VidMode extension should be used.</p>
 
 
 </dd>
-<dt id="HINT_VIDEO_X11_XINERAMA"><a name="HINT_VIDEO_X11_XINERAMA"></a><pre><span class="Identifier">HINT_VIDEO_X11_XINERAMA</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_X11_XINERAMA&quot;</span></pre></dt>
+<a id="HINT_VIDEO_X11_XINERAMA"></a>
+<dt><pre><a href="hints.html#HINT_VIDEO_X11_XINERAMA"><span class="Identifier">HINT_VIDEO_X11_XINERAMA</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_X11_XINERAMA&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the X11 Xinerama extension should be used.</p>
 <p>This variable can be set to the following values:</p>
@@ -1607,8 +1235,10 @@ A variable controlling whether the X11 Xinerama extension should be used.</p>
 
 
 </dd>
-<dt id="HINT_VIDEO_X11_XRANDR"><a name="HINT_VIDEO_X11_XRANDR"></a><pre><span class="Identifier">HINT_VIDEO_X11_XRANDR</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_X11_XRANDR&quot;</span></pre></dt>
+<a id="HINT_VIDEO_X11_XRANDR"></a>
+<dt><pre><a href="hints.html#HINT_VIDEO_X11_XRANDR"><span class="Identifier">HINT_VIDEO_X11_XRANDR</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_X11_XRANDR&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the X11 XRandR extension should be used.</p>
 <p>This variable can be set to the following values:</p>
@@ -1619,8 +1249,10 @@ A variable controlling whether the X11 XRandR extension should be used.</p>
 
 
 </dd>
-<dt id="HINT_VIDEO_X11_NET_WM_PING"><a name="HINT_VIDEO_X11_NET_WM_PING"></a><pre><span class="Identifier">HINT_VIDEO_X11_NET_WM_PING</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_X11_NET_WM_PING&quot;</span></pre></dt>
+<a id="HINT_VIDEO_X11_NET_WM_PING"></a>
+<dt><pre><a href="hints.html#HINT_VIDEO_X11_NET_WM_PING"><span class="Identifier">HINT_VIDEO_X11_NET_WM_PING</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_X11_NET_WM_PING&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the X11 _NET_WM_PING protocol should be supported.</p>
 <p>This variable can be set to the following values:</p>
@@ -1632,8 +1264,10 @@ A variable controlling whether the X11 _NET_WM_PING protocol should be supported
 
 
 </dd>
-<dt id="HINT_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR"><a name="HINT_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR"></a><pre><span class="Identifier">HINT_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR&quot;</span></pre></dt>
+<a id="HINT_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR"></a>
+<dt><pre><a href="hints.html#HINT_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR"><span class="Identifier">HINT_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the X11 _NET_WM_BYPASS_COMPOSITOR hint should be used.</p>
 <p>This variable can be set to the following values:</p>
@@ -1644,8 +1278,10 @@ A variable controlling whether the X11 _NET_WM_BYPASS_COMPOSITOR hint should be 
 
 
 </dd>
-<dt id="HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN"><a name="HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN"></a><pre><span class="Identifier">HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN&quot;</span></pre></dt>
+<a id="HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN"></a>
+<dt><pre><a href="hints.html#HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN"><span class="Identifier">HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the window frame and title bar are interactive when the cursor is hidden.</p>
 <p>This variable can be set to the following values:</p>
@@ -1656,19 +1292,25 @@ A variable controlling whether the window frame and title bar are interactive wh
 
 
 </dd>
-<dt id="HINT_WINDOWS_INTRESOURCE_ICON"><a name="HINT_WINDOWS_INTRESOURCE_ICON"></a><pre><span class="Identifier">HINT_WINDOWS_INTRESOURCE_ICON</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_INTRESOURCE_ICON&quot;</span></pre></dt>
+<a id="HINT_WINDOWS_INTRESOURCE_ICON"></a>
+<dt><pre><a href="hints.html#HINT_WINDOWS_INTRESOURCE_ICON"><span class="Identifier">HINT_WINDOWS_INTRESOURCE_ICON</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_INTRESOURCE_ICON&quot;</span></pre></dt>
 <dd>
+
 
 A variable to specify custom icon resource id from RC file on Windows platform.
 
 </dd>
-<dt id="HINT_WINDOWS_INTRESOURCE_ICON_SMALL"><a name="HINT_WINDOWS_INTRESOURCE_ICON_SMALL"></a><pre><span class="Identifier">HINT_WINDOWS_INTRESOURCE_ICON_SMALL</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_INTRESOURCE_ICON_SMALL&quot;</span></pre></dt>
+<a id="HINT_WINDOWS_INTRESOURCE_ICON_SMALL"></a>
+<dt><pre><a href="hints.html#HINT_WINDOWS_INTRESOURCE_ICON_SMALL"><span class="Identifier">HINT_WINDOWS_INTRESOURCE_ICON_SMALL</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_INTRESOURCE_ICON_SMALL&quot;</span></pre></dt>
 <dd>
+
 
 
 </dd>
-<dt id="HINT_WINDOWS_ENABLE_MESSAGELOOP"><a name="HINT_WINDOWS_ENABLE_MESSAGELOOP"></a><pre><span class="Identifier">HINT_WINDOWS_ENABLE_MESSAGELOOP</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_ENABLE_MESSAGELOOP&quot;</span></pre></dt>
+<a id="HINT_WINDOWS_ENABLE_MESSAGELOOP"></a>
+<dt><pre><a href="hints.html#HINT_WINDOWS_ENABLE_MESSAGELOOP"><span class="Identifier">HINT_WINDOWS_ENABLE_MESSAGELOOP</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_ENABLE_MESSAGELOOP&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the windows message loop is processed by SDL</p>
 <p>This variable can be set to the following values:</p>
@@ -1679,8 +1321,10 @@ A variable controlling whether the windows message loop is processed by SDL</p>
 
 
 </dd>
-<dt id="HINT_GRAB_KEYBOARD"><a name="HINT_GRAB_KEYBOARD"></a><pre><span class="Identifier">HINT_GRAB_KEYBOARD</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_GRAB_KEYBOARD&quot;</span></pre></dt>
+<a id="HINT_GRAB_KEYBOARD"></a>
+<dt><pre><a href="hints.html#HINT_GRAB_KEYBOARD"><span class="Identifier">HINT_GRAB_KEYBOARD</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_GRAB_KEYBOARD&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether grabbing input grabs the keyboard</p>
 <p>This variable can be set to the following values:</p>
@@ -1691,32 +1335,42 @@ A variable controlling whether grabbing input grabs the keyboard</p>
 
 
 </dd>
-<dt id="HINT_MOUSE_DOUBLE_CLICK_TIME"><a name="HINT_MOUSE_DOUBLE_CLICK_TIME"></a><pre><span class="Identifier">HINT_MOUSE_DOUBLE_CLICK_TIME</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_DOUBLE_CLICK_TIME&quot;</span></pre></dt>
+<a id="HINT_MOUSE_DOUBLE_CLICK_TIME"></a>
+<dt><pre><a href="hints.html#HINT_MOUSE_DOUBLE_CLICK_TIME"><span class="Identifier">HINT_MOUSE_DOUBLE_CLICK_TIME</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_DOUBLE_CLICK_TIME&quot;</span></pre></dt>
 <dd>
+
 
 A variable setting the double click time, in milliseconds.
 
 </dd>
-<dt id="HINT_MOUSE_DOUBLE_CLICK_RADIUS"><a name="HINT_MOUSE_DOUBLE_CLICK_RADIUS"></a><pre><span class="Identifier">HINT_MOUSE_DOUBLE_CLICK_RADIUS</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_DOUBLE_CLICK_RADIUS&quot;</span></pre></dt>
+<a id="HINT_MOUSE_DOUBLE_CLICK_RADIUS"></a>
+<dt><pre><a href="hints.html#HINT_MOUSE_DOUBLE_CLICK_RADIUS"><span class="Identifier">HINT_MOUSE_DOUBLE_CLICK_RADIUS</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_DOUBLE_CLICK_RADIUS&quot;</span></pre></dt>
 <dd>
+
 
 A variable setting the double click radius, in pixels.
 
 </dd>
-<dt id="HINT_MOUSE_NORMAL_SPEED_SCALE"><a name="HINT_MOUSE_NORMAL_SPEED_SCALE"></a><pre><span class="Identifier">HINT_MOUSE_NORMAL_SPEED_SCALE</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_NORMAL_SPEED_SCALE&quot;</span></pre></dt>
+<a id="HINT_MOUSE_NORMAL_SPEED_SCALE"></a>
+<dt><pre><a href="hints.html#HINT_MOUSE_NORMAL_SPEED_SCALE"><span class="Identifier">HINT_MOUSE_NORMAL_SPEED_SCALE</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_NORMAL_SPEED_SCALE&quot;</span></pre></dt>
 <dd>
+
 
 A variable setting the speed scale for mouse motion, in floating point, when the mouse is not in relative mode.
 
 </dd>
-<dt id="HINT_MOUSE_RELATIVE_SPEED_SCALE"><a name="HINT_MOUSE_RELATIVE_SPEED_SCALE"></a><pre><span class="Identifier">HINT_MOUSE_RELATIVE_SPEED_SCALE</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_RELATIVE_SPEED_SCALE&quot;</span></pre></dt>
+<a id="HINT_MOUSE_RELATIVE_SPEED_SCALE"></a>
+<dt><pre><a href="hints.html#HINT_MOUSE_RELATIVE_SPEED_SCALE"><span class="Identifier">HINT_MOUSE_RELATIVE_SPEED_SCALE</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_RELATIVE_SPEED_SCALE&quot;</span></pre></dt>
 <dd>
+
 
 A variable setting the scale for mouse motion, in floating point, when the mouse is in relative mode.
 
 </dd>
-<dt id="HINT_MOUSE_RELATIVE_MODE_WARP"><a name="HINT_MOUSE_RELATIVE_MODE_WARP"></a><pre><span class="Identifier">HINT_MOUSE_RELATIVE_MODE_WARP</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_RELATIVE_MODE_WARP&quot;</span></pre></dt>
+<a id="HINT_MOUSE_RELATIVE_MODE_WARP"></a>
+<dt><pre><a href="hints.html#HINT_MOUSE_RELATIVE_MODE_WARP"><span class="Identifier">HINT_MOUSE_RELATIVE_MODE_WARP</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_RELATIVE_MODE_WARP&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether relative mouse mode is implemented using mouse warping</p>
 <p>This variable can be set to the following values:</p>
@@ -1727,8 +1381,10 @@ A variable controlling whether relative mouse mode is implemented using mouse wa
 
 
 </dd>
-<dt id="HINT_MOUSE_FOCUS_CLICKTHROUGH"><a name="HINT_MOUSE_FOCUS_CLICKTHROUGH"></a><pre><span class="Identifier">HINT_MOUSE_FOCUS_CLICKTHROUGH</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_FOCUS_CLICKTHROUGH&quot;</span></pre></dt>
+<a id="HINT_MOUSE_FOCUS_CLICKTHROUGH"></a>
+<dt><pre><a href="hints.html#HINT_MOUSE_FOCUS_CLICKTHROUGH"><span class="Identifier">HINT_MOUSE_FOCUS_CLICKTHROUGH</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_FOCUS_CLICKTHROUGH&quot;</span></pre></dt>
 <dd>
+
 <p>
 Allow mouse click events when clicking to focus an SDL window</p>
 <p>This variable can be set to the following values:</p>
@@ -1739,8 +1395,10 @@ Allow mouse click events when clicking to focus an SDL window</p>
 
 
 </dd>
-<dt id="HINT_TOUCH_MOUSE_EVENTS"><a name="HINT_TOUCH_MOUSE_EVENTS"></a><pre><span class="Identifier">HINT_TOUCH_MOUSE_EVENTS</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_TOUCH_MOUSE_EVENTS&quot;</span></pre></dt>
+<a id="HINT_TOUCH_MOUSE_EVENTS"></a>
+<dt><pre><a href="hints.html#HINT_TOUCH_MOUSE_EVENTS"><span class="Identifier">HINT_TOUCH_MOUSE_EVENTS</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_TOUCH_MOUSE_EVENTS&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether touch events should generate synthetic mouse events.</p>
 <p>This variable can be set to the following values:</p>
@@ -1751,14 +1409,31 @@ A variable controlling whether touch events should generate synthetic mouse even
 
 
 </dd>
-<dt id="HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS"><a name="HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS"></a><pre><span class="Identifier">HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS&quot;</span></pre></dt>
+<a id="HINT_MOUSE_TOUCH_EVENTS"></a>
+<dt><pre><a href="hints.html#HINT_MOUSE_TOUCH_EVENTS"><span class="Identifier">HINT_MOUSE_TOUCH_EVENTS</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MOUSE_TOUCH_EVENTS&quot;</span></pre></dt>
 <dd>
 
-Minimize your <tt class="docutils literal"><span class="pre">Window</span></tt> if it loses key focus when in fullscreen mode. Defaults to <cite>true</cite>.
+<p>
+A variable controlling whether mouse events should generate synthetic touch events.</p>
+<p>This variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;0&quot;       - Mouse events will not generate touch events (default for desktop platforms)</li>
+<li>&quot;1&quot;       - Mouse events will generate touch events (default for mobile platforms, such as Android and iOS)</li>
+</ul>
+
 
 </dd>
-<dt id="HINT_IDLE_TIMER_DISABLED"><a name="HINT_IDLE_TIMER_DISABLED"></a><pre><span class="Identifier">HINT_IDLE_TIMER_DISABLED</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_IOS_IDLE_TIMER_DISABLED&quot;</span></pre></dt>
+<a id="HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS"></a>
+<dt><pre><a href="hints.html#HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS"><span class="Identifier">HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS&quot;</span></pre></dt>
 <dd>
+
+
+Minimize your <tt class="docutils literal"><span class="pre">Window</span></tt> if it loses key focus when in fullscreen mode. Defaults to <tt class="docutils literal"><span class="pre">true</span></tt>.
+
+</dd>
+<a id="HINT_IDLE_TIMER_DISABLED"></a>
+<dt><pre><a href="hints.html#HINT_IDLE_TIMER_DISABLED"><span class="Identifier">HINT_IDLE_TIMER_DISABLED</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_IOS_IDLE_TIMER_DISABLED&quot;</span></pre></dt>
+<dd>
+
 <p>
 A variable controlling whether the idle timer is disabled on iOS.</p>
 <p>When an iOS app does not receive touches for some time, the screen is dimmed automatically. For games where the accelerometer is the only input  this is problematic. This functionality can be disabled by setting this hint.</p>
@@ -1770,8 +1445,10 @@ A variable controlling whether the idle timer is disabled on iOS.</p>
 
 
 </dd>
-<dt id="HINT_ORIENTATIONS"><a name="HINT_ORIENTATIONS"></a><pre><span class="Identifier">HINT_ORIENTATIONS</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_IOS_ORIENTATIONS&quot;</span></pre></dt>
+<a id="HINT_ORIENTATIONS"></a>
+<dt><pre><a href="hints.html#HINT_ORIENTATIONS"><span class="Identifier">HINT_ORIENTATIONS</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_IOS_ORIENTATIONS&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling which orientations are allowed on iOS/Android.</p>
 <p>In some circumstances it is necessary to be able to explicitly control which UI orientations are allowed.</p>
@@ -1784,8 +1461,10 @@ A variable controlling which orientations are allowed on iOS/Android.</p>
 
 
 </dd>
-<dt id="HINT_APPLE_TV_CONTROLLER_UI_EVENTS"><a name="HINT_APPLE_TV_CONTROLLER_UI_EVENTS"></a><pre><span class="Identifier">HINT_APPLE_TV_CONTROLLER_UI_EVENTS</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_APPLE_TV_CONTROLLER_UI_EVENTS&quot;</span></pre></dt>
+<a id="HINT_APPLE_TV_CONTROLLER_UI_EVENTS"></a>
+<dt><pre><a href="hints.html#HINT_APPLE_TV_CONTROLLER_UI_EVENTS"><span class="Identifier">HINT_APPLE_TV_CONTROLLER_UI_EVENTS</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_APPLE_TV_CONTROLLER_UI_EVENTS&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether controllers used with the Apple TV generate UI events.</p>
 <p>When UI events are generated by controller input, the app will be backgrounded when the Apple TV remote's menu button is pressed, and when the pause or B buttons on gamepads are pressed.</p>
@@ -1797,8 +1476,10 @@ A variable controlling whether controllers used with the Apple TV generate UI ev
 
 
 </dd>
-<dt id="HINT_APPLE_TV_REMOTE_ALLOW_ROTATION"><a name="HINT_APPLE_TV_REMOTE_ALLOW_ROTATION"></a><pre><span class="Identifier">HINT_APPLE_TV_REMOTE_ALLOW_ROTATION</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_APPLE_TV_REMOTE_ALLOW_ROTATION&quot;</span></pre></dt>
+<a id="HINT_APPLE_TV_REMOTE_ALLOW_ROTATION"></a>
+<dt><pre><a href="hints.html#HINT_APPLE_TV_REMOTE_ALLOW_ROTATION"><span class="Identifier">HINT_APPLE_TV_REMOTE_ALLOW_ROTATION</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_APPLE_TV_REMOTE_ALLOW_ROTATION&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the Apple TV remote's joystick axes will automatically match the rotation of the remote.</p>
 <p>This variable can be set to the following values:</p>
@@ -1808,8 +1489,10 @@ A variable controlling whether the Apple TV remote's joystick axes will automati
 
 
 </dd>
-<dt id="HINT_IOS_HIDE_HOME_INDICATOR"><a name="HINT_IOS_HIDE_HOME_INDICATOR"></a><pre><span class="Identifier">HINT_IOS_HIDE_HOME_INDICATOR</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_IOS_HIDE_HOME_INDICATOR&quot;</span></pre></dt>
+<a id="HINT_IOS_HIDE_HOME_INDICATOR"></a>
+<dt><pre><a href="hints.html#HINT_IOS_HIDE_HOME_INDICATOR"><span class="Identifier">HINT_IOS_HIDE_HOME_INDICATOR</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_IOS_HIDE_HOME_INDICATOR&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the home indicator bar on iPhone X should be hidden.</p>
 <p>This variable can be set to the following values:</p>
@@ -1820,8 +1503,10 @@ A variable controlling whether the home indicator bar on iPhone X should be hidd
 
 
 </dd>
-<dt id="HINT_ACCELEROMETER_AS_JOYSTICK"><a name="HINT_ACCELEROMETER_AS_JOYSTICK"></a><pre><span class="Identifier">HINT_ACCELEROMETER_AS_JOYSTICK</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ACCELEROMETER_AS_JOYSTICK&quot;</span></pre></dt>
+<a id="HINT_ACCELEROMETER_AS_JOYSTICK"></a>
+<dt><pre><a href="hints.html#HINT_ACCELEROMETER_AS_JOYSTICK"><span class="Identifier">HINT_ACCELEROMETER_AS_JOYSTICK</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ACCELEROMETER_AS_JOYSTICK&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether an Android / iOS built-in accelerometer should be listed as a joystick device.</p>
 <p>This variable can be set to the following values:</p>
@@ -1831,8 +1516,10 @@ A variable controlling whether an Android / iOS built-in accelerometer should be
 
 
 </dd>
-<dt id="HINT_TV_REMOTE_AS_JOYSTICK"><a name="HINT_TV_REMOTE_AS_JOYSTICK"></a><pre><span class="Identifier">HINT_TV_REMOTE_AS_JOYSTICK</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_TV_REMOTE_AS_JOYSTICK&quot;</span></pre></dt>
+<a id="HINT_TV_REMOTE_AS_JOYSTICK"></a>
+<dt><pre><a href="hints.html#HINT_TV_REMOTE_AS_JOYSTICK"><span class="Identifier">HINT_TV_REMOTE_AS_JOYSTICK</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_TV_REMOTE_AS_JOYSTICK&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the Android / tvOS remotes should be listed as joystick devices, instead of sending keyboard events.</p>
 <p>This variable can be set to the following values:</p>
@@ -1842,8 +1529,10 @@ A variable controlling whether the Android / tvOS remotes should be listed as jo
 
 
 </dd>
-<dt id="HINT_XINPUT_ENABLED"><a name="HINT_XINPUT_ENABLED"></a><pre><span class="Identifier">HINT_XINPUT_ENABLED</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_XINPUT_ENABLED&quot;</span></pre></dt>
+<a id="HINT_XINPUT_ENABLED"></a>
+<dt><pre><a href="hints.html#HINT_XINPUT_ENABLED"><span class="Identifier">HINT_XINPUT_ENABLED</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_XINPUT_ENABLED&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable that lets you disable the detection and use of Xinput gamepad devices</p>
 <p>The variable can be set to the following values:</p>
@@ -1853,26 +1542,44 @@ A variable that lets you disable the detection and use of Xinput gamepad devices
 
 
 </dd>
-<dt id="HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING"><a name="HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING"></a><pre><span class="Identifier">HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_XINPUT_USE_OLD_JOYSTICK_MAPPING&quot;</span></pre></dt>
+<a id="HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING"></a>
+<dt><pre><a href="hints.html#HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING"><span class="Identifier">HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_XINPUT_USE_OLD_JOYSTICK_MAPPING&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable that causes SDL to use the old axis and button mapping for XInput devices.</p>
 <p>This hint is for backwards compatibility only and will be removed in SDL 2.1.</p>
-<p>The default value is <cite>0</cite>.  This hint must be set before <tt class="docutils literal"><span class="pre">sdl.init()</span></tt>.</p>
+<p>The default value is <tt class="docutils literal"><span class="pre">0</span></tt>.  This hint must be set before <tt class="docutils literal"><span class="pre">sdl.init()</span></tt>.</p>
 
 
 </dd>
-<dt id="HINT_GAMECONTROLLERCONFIG"><a name="HINT_GAMECONTROLLERCONFIG"></a><pre><span class="Identifier">HINT_GAMECONTROLLERCONFIG</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_GAMECONTROLLERCONFIG&quot;</span></pre></dt>
+<a id="HINT_GAMECONTROLLERCONFIG"></a>
+<dt><pre><a href="hints.html#HINT_GAMECONTROLLERCONFIG"><span class="Identifier">HINT_GAMECONTROLLERCONFIG</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_GAMECONTROLLERCONFIG&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable that lets you manually hint extra gamecontroller db entries.</p>
-<p>The variable should be newline delimited rows of gamecontroller config data, see <cite>gamecontroller.nim</cite></p>
+<p>The variable should be newline delimited rows of gamecontroller config data, see <tt class="docutils literal"><span class="pre">gamecontroller.nim</span></tt></p>
 <p>This hint must be set before calling <tt class="docutils literal"><span class="pre">init(INIT_GAMECONTROLLER)</span></tt> You can update mappings after the system is initialized with <tt class="docutils literal"><span class="pre">gameControllerMappingForGUID()</span></tt> and <tt class="docutils literal"><span class="pre">gameControllerAddMapping()</span></tt></p>
 
 
 </dd>
-<dt id="HINT_GAMECONTROLLER_IGNORE_DEVICES"><a name="HINT_GAMECONTROLLER_IGNORE_DEVICES"></a><pre><span class="Identifier">HINT_GAMECONTROLLER_IGNORE_DEVICES</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_GAMECONTROLLER_IGNORE_DEVICES&quot;</span></pre></dt>
+<a id="HINT_GAMECONTROLLERCONFIG_FILE"></a>
+<dt><pre><a href="hints.html#HINT_GAMECONTROLLERCONFIG_FILE"><span class="Identifier">HINT_GAMECONTROLLERCONFIG_FILE</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_GAMECONTROLLERCONFIG_FILE&quot;</span></pre></dt>
 <dd>
+
+<p>
+A variable that lets you provide a file with extra gamecontroller db entries.</p>
+<p>The file should contain lines of gamecontroller config data, see gamecontroller.nim</p>
+<p>This hint must be set before calling <tt class="docutils literal"><span class="pre">sdl.init(sdl.INIT_GAMECONTROLLER)</span></tt></p>
+<p>You can update mappings after the system is initialized with <tt class="docutils literal"><span class="pre">sdl.gameControllerMappingForGUID()</span></tt> and <tt class="docutils literal"><span class="pre">sdl.gameControllerAddMapping()</span></tt>.</p>
+
+
+</dd>
+<a id="HINT_GAMECONTROLLER_IGNORE_DEVICES"></a>
+<dt><pre><a href="hints.html#HINT_GAMECONTROLLER_IGNORE_DEVICES"><span class="Identifier">HINT_GAMECONTROLLER_IGNORE_DEVICES</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_GAMECONTROLLER_IGNORE_DEVICES&quot;</span></pre></dt>
+<dd>
+
 <p>
 A variable containing a list of devices to skip when scanning for game controllers.</p>
 <p>The format of the string is a comma separated list of USB VID/PID pairs in hexadecimal form, e.g.</p>
@@ -1881,8 +1588,10 @@ A variable containing a list of devices to skip when scanning for game controlle
 
 
 </dd>
-<dt id="HINT_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT"><a name="HINT_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT"></a><pre><span class="Identifier">HINT_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT&quot;</span></pre></dt>
+<a id="HINT_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT"></a>
+<dt><pre><a href="hints.html#HINT_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT"><span class="Identifier">HINT_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT&quot;</span></pre></dt>
 <dd>
+
 <p>
 If set, all devices will be skipped when scanning for game controllers except for the ones listed in this variable.</p>
 <p>The format of the string is a comma separated list of USB VID/PID pairs in hexadecimal form, e.g.</p>
@@ -1891,8 +1600,10 @@ If set, all devices will be skipped when scanning for game controllers except fo
 
 
 </dd>
-<dt id="HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS"><a name="HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS"></a><pre><span class="Identifier">HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_JOYSTICK_ALLOW_BACKGROUND_EVENTS&quot;</span></pre></dt>
+<a id="HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS"></a>
+<dt><pre><a href="hints.html#HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS"><span class="Identifier">HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_JOYSTICK_ALLOW_BACKGROUND_EVENTS&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable that lets you enable joystick (and gamecontroller) events even when your app is in the background.</p>
 <p>The variable can be set to the following values:</p>
@@ -1903,8 +1614,10 @@ A variable that lets you enable joystick (and gamecontroller) events even when y
 
 
 </dd>
-<dt id="HINT_JOYSTICK_HIDAPI"><a name="HINT_JOYSTICK_HIDAPI"></a><pre><span class="Identifier">HINT_JOYSTICK_HIDAPI</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_JOYSTICK_HIDAPI&quot;</span></pre></dt>
+<a id="HINT_JOYSTICK_HIDAPI"></a>
+<dt><pre><a href="hints.html#HINT_JOYSTICK_HIDAPI"><span class="Identifier">HINT_JOYSTICK_HIDAPI</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_JOYSTICK_HIDAPI&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the HIDAPI joystick drivers should be used.</p>
 <p>This variable can be set to the following values:</p>
@@ -1915,20 +1628,24 @@ A variable controlling whether the HIDAPI joystick drivers should be used.</p>
 
 
 </dd>
-<dt id="HINT_JOYSTICK_HIDAPI_PS4"><a name="HINT_JOYSTICK_HIDAPI_PS4"></a><pre><span class="Identifier">HINT_JOYSTICK_HIDAPI_PS4</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_JOYSTICK_HIDAPI_PS4&quot;</span></pre></dt>
+<a id="HINT_JOYSTICK_HIDAPI_PS4"></a>
+<dt><pre><a href="hints.html#HINT_JOYSTICK_HIDAPI_PS4"><span class="Identifier">HINT_JOYSTICK_HIDAPI_PS4</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_JOYSTICK_HIDAPI_PS4&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the HIDAPI driver for PS4 controllers should be used.</p>
 <p>This variable can be set to the following values:</p>
 <ul class="simple"><li>&quot;0&quot;       - HIDAPI driver is not used</li>
 <li>&quot;1&quot;       - HIDAPI driver is used</li>
 </ul>
-<p>The default is the value of <cite>HINT_JOYSTICK_HIDAPI</cite>.</p>
+<p>The default is the value of <tt class="docutils literal"><span class="pre">HINT_JOYSTICK_HIDAPI</span></tt>.</p>
 
 
 </dd>
-<dt id="HINT_JOYSTICK_HIDAPI_PS4_RUMBLE"><a name="HINT_JOYSTICK_HIDAPI_PS4_RUMBLE"></a><pre><span class="Identifier">HINT_JOYSTICK_HIDAPI_PS4_RUMBLE</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_JOYSTICK_HIDAPI_PS4_RUMBLE&quot;</span></pre></dt>
+<a id="HINT_JOYSTICK_HIDAPI_PS4_RUMBLE"></a>
+<dt><pre><a href="hints.html#HINT_JOYSTICK_HIDAPI_PS4_RUMBLE"><span class="Identifier">HINT_JOYSTICK_HIDAPI_PS4_RUMBLE</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_JOYSTICK_HIDAPI_PS4_RUMBLE&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether extended input reports should be used for PS4 controllers when using the HIDAPI driver.</p>
 <p>This variable can be set to the following values:</p>
@@ -1940,44 +1657,52 @@ A variable controlling whether extended input reports should be used for PS4 con
 
 
 </dd>
-<dt id="HINT_JOYSTICK_HIDAPI_STEAM"><a name="HINT_JOYSTICK_HIDAPI_STEAM"></a><pre><span class="Identifier">HINT_JOYSTICK_HIDAPI_STEAM</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_JOYSTICK_HIDAPI_STEAM&quot;</span></pre></dt>
+<a id="HINT_JOYSTICK_HIDAPI_STEAM"></a>
+<dt><pre><a href="hints.html#HINT_JOYSTICK_HIDAPI_STEAM"><span class="Identifier">HINT_JOYSTICK_HIDAPI_STEAM</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_JOYSTICK_HIDAPI_STEAM&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the HIDAPI driver for Steam Controllers should be used.</p>
 <p>This variable can be set to the following values:</p>
 <ul class="simple"><li>&quot;0&quot;       - HIDAPI driver is not used</li>
 <li>&quot;1&quot;       - HIDAPI driver is used</li>
 </ul>
-<p>The default is the value of <cite>HINT_JOYSTICK_HIDAPI</cite>.</p>
+<p>The default is the value of <tt class="docutils literal"><span class="pre">HINT_JOYSTICK_HIDAPI</span></tt>.</p>
 
 
 </dd>
-<dt id="HINT_JOYSTICK_HIDAPI_SWITCH"><a name="HINT_JOYSTICK_HIDAPI_SWITCH"></a><pre><span class="Identifier">HINT_JOYSTICK_HIDAPI_SWITCH</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_JOYSTICK_HIDAPI_SWITCH&quot;</span></pre></dt>
+<a id="HINT_JOYSTICK_HIDAPI_SWITCH"></a>
+<dt><pre><a href="hints.html#HINT_JOYSTICK_HIDAPI_SWITCH"><span class="Identifier">HINT_JOYSTICK_HIDAPI_SWITCH</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_JOYSTICK_HIDAPI_SWITCH&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the HIDAPI driver for Nintendo Switch controllers should be used.</p>
 <p>This variable can be set to the following values:</p>
 <ul class="simple"><li>&quot;0&quot;       - HIDAPI driver is not used</li>
 <li>&quot;1&quot;       - HIDAPI driver is used</li>
 </ul>
-<p>The default is the value of <cite>HINT_JOYSTICK_HIDAPI</cite>.</p>
+<p>The default is the value of <tt class="docutils literal"><span class="pre">HINT_JOYSTICK_HIDAPI</span></tt>.</p>
 
 
 </dd>
-<dt id="HINT_JOYSTICK_HIDAPI_XBOX"><a name="HINT_JOYSTICK_HIDAPI_XBOX"></a><pre><span class="Identifier">HINT_JOYSTICK_HIDAPI_XBOX</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_JOYSTICK_HIDAPI_XBOX&quot;</span></pre></dt>
+<a id="HINT_JOYSTICK_HIDAPI_XBOX"></a>
+<dt><pre><a href="hints.html#HINT_JOYSTICK_HIDAPI_XBOX"><span class="Identifier">HINT_JOYSTICK_HIDAPI_XBOX</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_JOYSTICK_HIDAPI_XBOX&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling whether the HIDAPI driver for XBox controllers should be used.</p>
 <p>This variable can be set to the following values:</p>
 <ul class="simple"><li>&quot;0&quot;       - HIDAPI driver is not used</li>
 <li>&quot;1&quot;       - HIDAPI driver is used</li>
 </ul>
-<p>The default is the value of <cite>HINT_JOYSTICK_HIDAPI</cite>.</p>
+<p>The default is the value of <tt class="docutils literal"><span class="pre">HINT_JOYSTICK_HIDAPI</span></tt>.</p>
 
 
 </dd>
-<dt id="HINT_ENABLE_STEAM_CONTROLLERS"><a name="HINT_ENABLE_STEAM_CONTROLLERS"></a><pre><span class="Identifier">HINT_ENABLE_STEAM_CONTROLLERS</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ENABLE_STEAM_CONTROLLERS&quot;</span></pre></dt>
+<a id="HINT_ENABLE_STEAM_CONTROLLERS"></a>
+<dt><pre><a href="hints.html#HINT_ENABLE_STEAM_CONTROLLERS"><span class="Identifier">HINT_ENABLE_STEAM_CONTROLLERS</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ENABLE_STEAM_CONTROLLERS&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable that controls whether Steam Controllers should be exposed using the <tt class="docutils literal"><span class="pre">sdl.Joystick</span></tt> and game controller APIs.</p>
 <p>The variable can be set to the following values:</p>
@@ -1988,10 +1713,12 @@ A variable that controls whether Steam Controllers should be exposed using the <
 
 
 </dd>
-<dt id="HINT_ALLOW_TOPMOST"><a name="HINT_ALLOW_TOPMOST"></a><pre><span class="Identifier">HINT_ALLOW_TOPMOST</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ALLOW_TOPMOST&quot;</span></pre></dt>
+<a id="HINT_ALLOW_TOPMOST"></a>
+<dt><pre><a href="hints.html#HINT_ALLOW_TOPMOST"><span class="Identifier">HINT_ALLOW_TOPMOST</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ALLOW_TOPMOST&quot;</span></pre></dt>
 <dd>
+
 <p>
-If set to <cite>0</cite> then never set the top most bit on a <tt class="docutils literal"><span class="pre">Window</span></tt>, even if the video mode expects it.</p>
+If set to <tt class="docutils literal"><span class="pre">0</span></tt> then never set the top most bit on a <tt class="docutils literal"><span class="pre">Window</span></tt>, even if the video mode expects it.</p>
 <p>This is a debugging aid for developers and not expected to be used by end users. The default is &quot;1&quot;</p>
 <p>This variable can be set to the following values:</p>
 <ul class="simple"><li>&quot;0&quot;       - don't allow topmost</li>
@@ -2000,8 +1727,10 @@ If set to <cite>0</cite> then never set the top most bit on a <tt class="docutil
 
 
 </dd>
-<dt id="HINT_TIMER_RESOLUTION"><a name="HINT_TIMER_RESOLUTION"></a><pre><span class="Identifier">HINT_TIMER_RESOLUTION</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_TIMER_RESOLUTION&quot;</span></pre></dt>
+<a id="HINT_TIMER_RESOLUTION"></a>
+<dt><pre><a href="hints.html#HINT_TIMER_RESOLUTION"><span class="Identifier">HINT_TIMER_RESOLUTION</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_TIMER_RESOLUTION&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable that controls the timer resolution, in milliseconds.</p>
 <p>The higher resolution the timer, the more frequently the CPU services timer interrupts, and the more precise delays are, but this takes up power and CPU time.  This hint is only used on Windows 7 and earlier.</p>
@@ -2011,8 +1740,10 @@ A variable that controls the timer resolution, in milliseconds.</p>
 
 
 </dd>
-<dt id="HINT_QTWAYLAND_CONTENT_ORIENTATION"><a name="HINT_QTWAYLAND_CONTENT_ORIENTATION"></a><pre><span class="Identifier">HINT_QTWAYLAND_CONTENT_ORIENTATION</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_QTWAYLAND_CONTENT_ORIENTATION&quot;</span></pre></dt>
+<a id="HINT_QTWAYLAND_CONTENT_ORIENTATION"></a>
+<dt><pre><a href="hints.html#HINT_QTWAYLAND_CONTENT_ORIENTATION"><span class="Identifier">HINT_QTWAYLAND_CONTENT_ORIENTATION</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_QTWAYLAND_CONTENT_ORIENTATION&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable describing the content orientation on QtWayland-based platforms.</p>
 <p>On QtWayland platforms, windows are rotated client-side to allow for custom transitions. In order to correctly position overlays (e.g. volume bar) and gestures (e.g. events view, close/minimize gestures), the system needs to know in which orientation the application is currently drawing its contents.</p>
@@ -2022,8 +1753,10 @@ A variable describing the content orientation on QtWayland-based platforms.</p>
 
 
 </dd>
-<dt id="HINT_QTWAYLAND_WINDOW_FLAGS"><a name="HINT_QTWAYLAND_WINDOW_FLAGS"></a><pre><span class="Identifier">HINT_QTWAYLAND_WINDOW_FLAGS</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_QTWAYLAND_WINDOW_FLAGS&quot;</span></pre></dt>
+<a id="HINT_QTWAYLAND_WINDOW_FLAGS"></a>
+<dt><pre><a href="hints.html#HINT_QTWAYLAND_WINDOW_FLAGS"><span class="Identifier">HINT_QTWAYLAND_WINDOW_FLAGS</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_QTWAYLAND_WINDOW_FLAGS&quot;</span></pre></dt>
 <dd>
+
 <p>
 Flags to set on QtWayland windows to integrate with the native window manager.</p>
 <p>On QtWayland platforms, this hint controls the flags to set on the windows. For example, on Sailfish OS &quot;OverridesSystemGestures&quot; disables swipe gestures.</p>
@@ -2032,10 +1765,12 @@ Flags to set on QtWayland windows to integrate with the native window manager.</
 
 
 </dd>
-<dt id="HINT_THREAD_STACK_SIZE"><a name="HINT_THREAD_STACK_SIZE"></a><pre><span class="Identifier">HINT_THREAD_STACK_SIZE</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_THREAD_STACK_SIZE&quot;</span></pre></dt>
+<a id="HINT_THREAD_STACK_SIZE"></a>
+<dt><pre><a href="hints.html#HINT_THREAD_STACK_SIZE"><span class="Identifier">HINT_THREAD_STACK_SIZE</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_THREAD_STACK_SIZE&quot;</span></pre></dt>
 <dd>
+
 <p>
-A string specifying SDL's threads stack size in bytes or <cite>0</cite> for the backend's default size.</p>
+A string specifying SDL's threads stack size in bytes or <tt class="docutils literal"><span class="pre">0</span></tt> for the backend's default size.</p>
 <p>Use this hint in case you need to set SDL's threads stack size to other than the default.</p>
 <p>This is specially useful if you build SDL against a non glibc libc library (such as musl) which provides a relatively small default thread stack size (a few kilobytes versus the default 8MB glibc uses).</p>
 <p>Support for this hint is currently available only in the pthread, Windows, and PSP backend.</p>
@@ -2043,22 +1778,28 @@ A string specifying SDL's threads stack size in bytes or <cite>0</cite> for the 
 
 
 </dd>
-<dt id="HINT_VIDEO_HIGHDPI_DISABLED"><a name="HINT_VIDEO_HIGHDPI_DISABLED"></a><pre><span class="Identifier">HINT_VIDEO_HIGHDPI_DISABLED</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_HIGHDPI_DISABLED&quot;</span></pre></dt>
+<a id="HINT_VIDEO_HIGHDPI_DISABLED"></a>
+<dt><pre><a href="hints.html#HINT_VIDEO_HIGHDPI_DISABLED"><span class="Identifier">HINT_VIDEO_HIGHDPI_DISABLED</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_HIGHDPI_DISABLED&quot;</span></pre></dt>
 <dd>
+
 
 If set to 1, then do not allow high-DPI windows. (&quot;Retina&quot; on Mac and iOS)
 
 </dd>
-<dt id="HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK"><a name="HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK"></a><pre><span class="Identifier">HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK&quot;</span></pre></dt>
+<a id="HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK"></a>
+<dt><pre><a href="hints.html#HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK"><span class="Identifier">HINT_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MAC_CTRL_CLICK_EMULATE_RIGHT_CLICK&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable that determines whether ctrl+click should generate a right-click event on Mac</p>
 <p>If present, holding ctrl while left clicking will generate a right click event when on Mac.</p>
 
 
 </dd>
-<dt id="HINT_VIDEO_WIN_D3DCOMPILER"><a name="HINT_VIDEO_WIN_D3DCOMPILER"></a><pre><span class="Identifier">HINT_VIDEO_WIN_D3DCOMPILER</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_WIN_D3DCOMPILER&quot;</span></pre></dt>
+<a id="HINT_VIDEO_WIN_D3DCOMPILER"></a>
+<dt><pre><a href="hints.html#HINT_VIDEO_WIN_D3DCOMPILER"><span class="Identifier">HINT_VIDEO_WIN_D3DCOMPILER</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_WIN_D3DCOMPILER&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable specifying which shader compiler to preload when using the Chrome ANGLE binaries</p>
 <p>SDL has EGL and OpenGL ES2 support on Windows via the ANGLE project. It can use two different sets of binaries, those compiled by the user from source or those provided by the Chrome browser. In the later case, these binaries require that SDL loads a DLL providing the shader compiler.</p>
@@ -2070,113 +1811,133 @@ A variable specifying which shader compiler to preload when using the Chrome ANG
 
 
 </dd>
-<dt id="HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT"><a name="HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT"></a><pre><span class="Identifier">HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_WINDOW_SHARE_PIXEL_FORMAT&quot;</span></pre></dt>
+<a id="HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT"></a>
+<dt><pre><a href="hints.html#HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT"><span class="Identifier">HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_WINDOW_SHARE_PIXEL_FORMAT&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable that is the address of another <tt class="docutils literal"><span class="pre">Window</span></tt> (as a hex string formatted with &quot;%p&quot;).</p>
-<p>If this hint is set before <tt class="docutils literal"><span class="pre">createWindowFrom()</span></tt> and the <tt class="docutils literal"><span class="pre">Window</span></tt> it is set to has <cite>WINDOW_OPENGL</cite> set (and running on WGL only, currently), then two things will occur on the newly created <tt class="docutils literal"><span class="pre">Window</span></tt>:</p>
+<p>If this hint is set before <tt class="docutils literal"><span class="pre">createWindowFrom()</span></tt> and the <tt class="docutils literal"><span class="pre">Window</span></tt> it is set to has <tt class="docutils literal"><span class="pre">WINDOW_OPENGL</span></tt> set (and running on WGL only, currently), then two things will occur on the newly created <tt class="docutils literal"><span class="pre">Window</span></tt>:</p>
 <p>1. Its pixel format will be set to the same pixel format as this <tt class="docutils literal"><span class="pre">Window</span></tt>.  This is needed for example when sharing an OpenGL context across multiple windows.</p>
-<p>2. The flag <cite>WINDOW_OPENGL</cite> will be set on the new window so it can be used for OpenGL rendering.</p>
+<p>2. The flag <tt class="docutils literal"><span class="pre">WINDOW_OPENGL</span></tt> will be set on the new window so it can be used for OpenGL rendering.</p>
 <p>This variable can be set to the following values:</p>
 <p>The address (as a string &quot;%p&quot;) of the <tt class="docutils literal"><span class="pre">Window</span></tt> that new windows created with <tt class="docutils literal"><span class="pre">createWindowFrom()</span></tt> should share a pixel format with.</p>
 
 
 </dd>
-<dt id="HINT_WINRT_PRIVACY_POLICY_URL"><a name="HINT_WINRT_PRIVACY_POLICY_URL"></a><pre><span class="Identifier">HINT_WINRT_PRIVACY_POLICY_URL</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINRT_PRIVACY_POLICY_URL&quot;</span></pre></dt>
+<a id="HINT_WINRT_PRIVACY_POLICY_URL"></a>
+<dt><pre><a href="hints.html#HINT_WINRT_PRIVACY_POLICY_URL"><span class="Identifier">HINT_WINRT_PRIVACY_POLICY_URL</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINRT_PRIVACY_POLICY_URL&quot;</span></pre></dt>
 <dd>
+
 <p>
 A URL to a WinRT app's privacy policy</p>
 <p>All network-enabled WinRT apps must make a privacy policy available to its users.  On Windows 8, 8.1, and RT, Microsoft mandates that this policy be be available in the Windows Settings charm, as accessed from within the app. SDL provides code to add a URL-based link there, which can point to the app's privacy policy.</p>
-<p>To setup a URL to an app's privacy policy, set <cite>HINT_WINRT_PRIVACY_POLICY_URL</cite> before calling any <tt class="docutils literal"><span class="pre">sdl.init()</span></tt> procedures. The contents of the hint should be a valid URL. For example, &quot;<a class="reference external" href="http://www.example.com&quot;">http://www.example.com&quot;</a>.</p>
+<p>To setup a URL to an app's privacy policy, set <tt class="docutils literal"><span class="pre">HINT_WINRT_PRIVACY_POLICY_URL</span></tt> before calling any <tt class="docutils literal"><span class="pre">sdl.init()</span></tt> procedures. The contents of the hint should be a valid URL. For example, &quot;<a class="reference external" href="http://www.example.com&quot;">http://www.example.com&quot;</a>.</p>
 <p>The default value is &quot;&quot;, which will prevent SDL from adding a privacy policy link to the Settings charm.  This hint should only be set during app init.</p>
-<p>The label text of an app's &quot;Privacy Policy&quot; link may be customized via another hint, <cite>HINT_WINRT_PRIVACY_POLICY_LABEL</cite>.</p>
-<p>Please note that on Windows Phone, Microsoft does not provide standard UI for displaying a privacy policy link, and as such, <cite>HINT_WINRT_PRIVACY_POLICY_URL</cite> will not get used on that platform. Network-enabled phone apps should display their privacy policy through some other, in-app means.</p>
+<p>The label text of an app's &quot;Privacy Policy&quot; link may be customized via another hint, <tt class="docutils literal"><span class="pre">HINT_WINRT_PRIVACY_POLICY_LABEL</span></tt>.</p>
+<p>Please note that on Windows Phone, Microsoft does not provide standard UI for displaying a privacy policy link, and as such, <tt class="docutils literal"><span class="pre">HINT_WINRT_PRIVACY_POLICY_URL</span></tt> will not get used on that platform. Network-enabled phone apps should display their privacy policy through some other, in-app means.</p>
 
 
 </dd>
-<dt id="HINT_WINRT_PRIVACY_POLICY_LABEL"><a name="HINT_WINRT_PRIVACY_POLICY_LABEL"></a><pre><span class="Identifier">HINT_WINRT_PRIVACY_POLICY_LABEL</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINRT_PRIVACY_POLICY_LABEL&quot;</span></pre></dt>
+<a id="HINT_WINRT_PRIVACY_POLICY_LABEL"></a>
+<dt><pre><a href="hints.html#HINT_WINRT_PRIVACY_POLICY_LABEL"><span class="Identifier">HINT_WINRT_PRIVACY_POLICY_LABEL</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINRT_PRIVACY_POLICY_LABEL&quot;</span></pre></dt>
 <dd>
+
 <p>
 Label text for a WinRT app's privacy policy link</p>
-<p>Network-enabled WinRT apps must include a privacy policy. On Windows 8, 8.1, and RT, Microsoft mandates that this policy be available via the Windows Settings charm. SDL provides code to add a link there, with its label text being set via the optional hint, <cite>HINT_WINRT_PRIVACY_POLICY_LABEL</cite>.</p>
-<p>Please note that a privacy policy's contents are not set via this hint. A separate hint, <cite>HINT_WINRT_PRIVACY_POLICY_URL</cite>, is used to link to the actual text of the policy.</p>
+<p>Network-enabled WinRT apps must include a privacy policy. On Windows 8, 8.1, and RT, Microsoft mandates that this policy be available via the Windows Settings charm. SDL provides code to add a link there, with its label text being set via the optional hint, <tt class="docutils literal"><span class="pre">HINT_WINRT_PRIVACY_POLICY_LABEL</span></tt>.</p>
+<p>Please note that a privacy policy's contents are not set via this hint. A separate hint, <tt class="docutils literal"><span class="pre">HINT_WINRT_PRIVACY_POLICY_URL</span></tt>, is used to link to the actual text of the policy.</p>
 <p>The contents of this hint should be encoded as a UTF8 string.</p>
 <p>The default value is &quot;Privacy Policy&quot;.  This hint should only be set during app initialization, preferably before any calls to <tt class="docutils literal"><span class="pre">sdl.init()</span></tt>.</p>
-<p>For additional information on linking to a privacy policy, see the documentation for <cite>HINT_WINRT_PRIVACY_POLICY_URL</cite>.</p>
+<p>For additional information on linking to a privacy policy, see the documentation for <tt class="docutils literal"><span class="pre">HINT_WINRT_PRIVACY_POLICY_URL</span></tt>.</p>
 
 
 </dd>
-<dt id="HINT_WINRT_HANDLE_BACK_BUTTON"><a name="HINT_WINRT_HANDLE_BACK_BUTTON"></a><pre><span class="Identifier">HINT_WINRT_HANDLE_BACK_BUTTON</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINRT_HANDLE_BACK_BUTTON&quot;</span></pre></dt>
+<a id="HINT_WINRT_HANDLE_BACK_BUTTON"></a>
+<dt><pre><a href="hints.html#HINT_WINRT_HANDLE_BACK_BUTTON"><span class="Identifier">HINT_WINRT_HANDLE_BACK_BUTTON</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINRT_HANDLE_BACK_BUTTON&quot;</span></pre></dt>
 <dd>
+
 <p>
 Allows back-button-press events on Windows Phone to be marked as handled.</p>
 <p>Windows Phone devices typically feature a Back button. When pressed, the OS will emit back-button-press events, which apps are expected to handle in an appropriate manner. If apps do not explicitly mark these events as 'Handled', then the OS will invoke its default behavior for unhandled back-button-press events, which on Windows Phone 8 and 8.1 is to terminate the app (and attempt to switch to the previous app, or to the device's home screen).</p>
-<p>Setting the <cite>HINT_WINRT_HANDLE_BACK_BUTTON</cite> hint to <cite>1</cite> will cause SDL to mark back-button-press events as 'Handled', if and when one is sent to the app.</p>
+<p>Setting the <tt class="docutils literal"><span class="pre">HINT_WINRT_HANDLE_BACK_BUTTON</span></tt> hint to <tt class="docutils literal"><span class="pre">1</span></tt> will cause SDL to mark back-button-press events as 'Handled', if and when one is sent to the app.</p>
 <p>Internally, Windows Phone sends back button events as parameters to special back-button-press callback procedures. Apps that need to respond to back-button-press events are expected to register one or more callback procedures for such, shortly after being launched (during the app's initialization phase). After the back button is pressed, the OS will invoke these callbacks. If the app's callback(s) do not explicitly mark the event as handled by the time they return, or if the app never registers one of these callback, the OS will consider the event un-handled, and it will apply its default back button behavior (terminate the app).</p>
-<p>SDL registers its own back-button-press callback with the Windows Phone OS.  This callback will emit a pair of SDL key-press events (<cite>sdl.KEYDOWN</cite> and <cite>sdl.KEYUP</cite>), each with a scancode of <cite>SCANCODE_AC_BACK</cite>, after which it will check the contents of the hint, <cite>HINT_WINRT_HANDLE_BACK_BUTTON</cite>.</p>
-<p>If the hint's value is set to <cite>1</cite>, the back button event's 'Handled' property will get set to <cite>true</cite>.  If the hint's value is set to something else, or if it is unset, SDL will leave the event's 'Handled' property alone. (By default, the OS sets this property to <cite>false</cite>, to note.)</p>
-<p>SDL apps can either set <cite>HINT_WINRT_HANDLE_BACK_BUTTON</cite> well before a back button is pressed, or can set it in direct-response to a back button being pressed.</p>
-<p>In order to get notified when a back button is pressed, SDL apps should register a callback procedure with <tt class="docutils literal"><span class="pre">addEventWatch()</span></tt>, and have it listen for <cite>sdl.KEYDOWN</cite> events that have a scancode of <cite>SCANCODE_AC_BACK</cite>.</p>
-<p>(Alternatively, <cite>sdl.KEYUP</cite> events can be listened-for. Listening for either event type is suitable.) Any value of <cite>HINT_WINRT_HANDLE_BACK_BUTTON</cite> set by such a callback, will be applied to the OS' current back-button-press event.</p>
+<p>SDL registers its own back-button-press callback with the Windows Phone OS.  This callback will emit a pair of SDL key-press events (<tt class="docutils literal"><span class="pre">sdl.KEYDOWN</span></tt> and <tt class="docutils literal"><span class="pre">sdl.KEYUP</span></tt>), each with a scancode of <tt class="docutils literal"><span class="pre">SCANCODE_AC_BACK</span></tt>, after which it will check the contents of the hint, <tt class="docutils literal"><span class="pre">HINT_WINRT_HANDLE_BACK_BUTTON</span></tt>.</p>
+<p>If the hint's value is set to <tt class="docutils literal"><span class="pre">1</span></tt>, the back button event's 'Handled' property will get set to <tt class="docutils literal"><span class="pre">true</span></tt>.  If the hint's value is set to something else, or if it is unset, SDL will leave the event's 'Handled' property alone. (By default, the OS sets this property to <tt class="docutils literal"><span class="pre">false</span></tt>, to note.)</p>
+<p>SDL apps can either set <tt class="docutils literal"><span class="pre">HINT_WINRT_HANDLE_BACK_BUTTON</span></tt> well before a back button is pressed, or can set it in direct-response to a back button being pressed.</p>
+<p>In order to get notified when a back button is pressed, SDL apps should register a callback procedure with <tt class="docutils literal"><span class="pre">addEventWatch()</span></tt>, and have it listen for <tt class="docutils literal"><span class="pre">sdl.KEYDOWN</span></tt> events that have a scancode of <tt class="docutils literal"><span class="pre">SCANCODE_AC_BACK</span></tt>.</p>
+<p>(Alternatively, <tt class="docutils literal"><span class="pre">sdl.KEYUP</span></tt> events can be listened-for. Listening for either event type is suitable.) Any value of <tt class="docutils literal"><span class="pre">HINT_WINRT_HANDLE_BACK_BUTTON</span></tt> set by such a callback, will be applied to the OS' current back-button-press event.</p>
 <p>More details on back button behavior in Windows Phone apps can be found at the following page, on Microsoft's developer site:</p>
 <p><a class="reference external" href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj247550(v=vs.105).aspx">http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj247550(v=vs.105).aspx</a></p>
 
 
 </dd>
-<dt id="HINT_VIDEO_MAC_FULLSCREEN_SPACES"><a name="HINT_VIDEO_MAC_FULLSCREEN_SPACES"></a><pre><span class="Identifier">HINT_VIDEO_MAC_FULLSCREEN_SPACES</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_MAC_FULLSCREEN_SPACES&quot;</span></pre></dt>
+<a id="HINT_VIDEO_MAC_FULLSCREEN_SPACES"></a>
+<dt><pre><a href="hints.html#HINT_VIDEO_MAC_FULLSCREEN_SPACES"><span class="Identifier">HINT_VIDEO_MAC_FULLSCREEN_SPACES</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_MAC_FULLSCREEN_SPACES&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable that dictates policy for fullscreen Spaces on Mac OS X.</p>
 <p>This hint only applies to Mac OS X.</p>
 <p>The variable can be set to the following values:</p>
-<ul class="simple"><li>&quot;0&quot;       - Disable Spaces support (<cite>FULLSCREEN_DESKTOP</cite> won't use them and <cite>WINDOW_RESIZABLE</cite> windows won't offer the &quot;fullscreen&quot; button on their titlebars).</li>
-<li>&quot;1&quot;       - Enable Spaces support (<cite>FULLSCREEN_DESKTOP</cite> will use them and <cite>WINDOW_RESIZABLE</cite> windows will offer the &quot;fullscreen&quot; button on their titlebars).</li>
+<ul class="simple"><li>&quot;0&quot;       - Disable Spaces support (<tt class="docutils literal"><span class="pre">FULLSCREEN_DESKTOP</span></tt> won't use them and <tt class="docutils literal"><span class="pre">WINDOW_RESIZABLE</span></tt> windows won't offer the &quot;fullscreen&quot; button on their titlebars).</li>
+<li>&quot;1&quot;       - Enable Spaces support (<tt class="docutils literal"><span class="pre">FULLSCREEN_DESKTOP</span></tt> will use them and <tt class="docutils literal"><span class="pre">WINDOW_RESIZABLE</span></tt> windows will offer the &quot;fullscreen&quot; button on their titlebars).</li>
 </ul>
 <p>The default value is &quot;1&quot;. Spaces are disabled regardless of this hint if the OS isn't at least Mac OS X Lion (10.7). This hint must be set before any windows are created.</p>
 
 
 </dd>
-<dt id="HINT_MAC_BACKGROUND_APP"><a name="HINT_MAC_BACKGROUND_APP"></a><pre><span class="Identifier">HINT_MAC_BACKGROUND_APP</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MAC_BACKGROUND_APP&quot;</span></pre></dt>
+<a id="HINT_MAC_BACKGROUND_APP"></a>
+<dt><pre><a href="hints.html#HINT_MAC_BACKGROUND_APP"><span class="Identifier">HINT_MAC_BACKGROUND_APP</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_MAC_BACKGROUND_APP&quot;</span></pre></dt>
 <dd>
+
 <p>
 When set don't force the SDL app to become a foreground process</p>
 <p>This hint only applies to Mac OS X.</p>
 
 
 </dd>
-<dt id="HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION"><a name="HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION"></a><pre><span class="Identifier">HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION&quot;</span></pre></dt>
+<a id="HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION"></a>
+<dt><pre><a href="hints.html#HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION"><span class="Identifier">HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION&quot;</span></pre></dt>
 <dd>
+
 <p>
 Android APK expansion main file version. Should be a string number like &quot;1&quot;, &quot;2&quot; etc.</p>
-<p>Must be set together with <cite>HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION</cite>.</p>
+<p>Must be set together with <tt class="docutils literal"><span class="pre">HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION</span></tt>.</p>
 <p>If both hints were set then <tt class="docutils literal"><span class="pre">rwFromFile()</span></tt> will look into expansion files after a given relative path was not found in the internal storage and assets.</p>
 <p>By default this hint is not set and the APK expansion files are not searched.</p>
 
 
 </dd>
-<dt id="HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION"><a name="HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION"></a><pre><span class="Identifier">HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION&quot;</span></pre></dt>
+<a id="HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION"></a>
+<dt><pre><a href="hints.html#HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION"><span class="Identifier">HINT_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION&quot;</span></pre></dt>
 <dd>
+
 <p>
 Android APK expansion patch file version. Should be a string number like &quot;1&quot;, &quot;2&quot; etc.</p>
-<p>Must be set together with <cite>HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION</cite>.</p>
+<p>Must be set together with <tt class="docutils literal"><span class="pre">HINT_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION</span></tt>.</p>
 <p>If both hints were set then <tt class="docutils literal"><span class="pre">rwFromFile()</span></tt> will look into expansion files after a given relative path was not found in the internal storage and assets.</p>
 <p>By default this hint is not set and the APK expansion files are not searched.</p>
 
 
 </dd>
-<dt id="HIND_IME_INTERNAL_EDITING"><a name="HIND_IME_INTERNAL_EDITING"></a><pre><span class="Identifier">HIND_IME_INTERNAL_EDITING</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_IME_INTERNAL_EDITING&quot;</span></pre></dt>
+<a id="HIND_IME_INTERNAL_EDITING"></a>
+<dt><pre><a href="hints.html#HIND_IME_INTERNAL_EDITING"><span class="Identifier">HIND_IME_INTERNAL_EDITING</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_IME_INTERNAL_EDITING&quot;</span></pre></dt>
 <dd>
+
 <p>
-A variable to control whether certain IMEs should handle text editing internally instead of sending <cite>sdl.TEXTEDITING</cite> events.</p>
+A variable to control whether certain IMEs should handle text editing internally instead of sending <tt class="docutils literal"><span class="pre">sdl.TEXTEDITING</span></tt> events.</p>
 <p>The variable can be set to the following values:</p>
-<ul class="simple"><li>&quot;0&quot;       - <cite>sdl.TEXTEDITING</cite> events are sent, and it is the application's responsibility to render the text from these events and differentiate it somehow from committed text. (default)</li>
-<li>&quot;1&quot;       - If supported by the IME then <cite>sdl.TEXTEDITING</cite> events are not sent, and text that is being composed will be rendered in its own UI.</li>
+<ul class="simple"><li>&quot;0&quot;       - <tt class="docutils literal"><span class="pre">sdl.TEXTEDITING</span></tt> events are sent, and it is the application's responsibility to render the text from these events and differentiate it somehow from committed text. (default)</li>
+<li>&quot;1&quot;       - If supported by the IME then <tt class="docutils literal"><span class="pre">sdl.TEXTEDITING</span></tt> events are not sent, and text that is being composed will be rendered in its own UI.</li>
 </ul>
 
 
 </dd>
-<dt id="HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH"><a name="HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH"></a><pre><span class="Identifier">HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ANDROID_SEPARATE_MOUSE_AND_TOUCH&quot;</span></pre></dt>
+<a id="HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH"></a>
+<dt><pre><a href="hints.html#HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH"><span class="Identifier">HINT_ANDROID_SEPARATE_MOUSE_AND_TOUCH</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ANDROID_SEPARATE_MOUSE_AND_TOUCH&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable to control whether mouse and touch events are to be treated together or separately.</p>
 <p>The variable can be set to the following values:</p>
@@ -2187,11 +1948,13 @@ A variable to control whether mouse and touch events are to be treated together 
 
 
 </dd>
-<dt id="HINT_ANDROID_TRAP_BACK_BUTTON"><a name="HINT_ANDROID_TRAP_BACK_BUTTON"></a><pre><span class="Identifier">HINT_ANDROID_TRAP_BACK_BUTTON</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ANDROID_TRAP_BACK_BUTTON&quot;</span></pre></dt>
+<a id="HINT_ANDROID_TRAP_BACK_BUTTON"></a>
+<dt><pre><a href="hints.html#HINT_ANDROID_TRAP_BACK_BUTTON"><span class="Identifier">HINT_ANDROID_TRAP_BACK_BUTTON</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ANDROID_TRAP_BACK_BUTTON&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable to control whether we trap the Android back button to handle it manually.</p>
-<p>This is necessary for the right mouse button to work on some Android devices, or to be able to trap the back button for use in your code reliably.  If set to <cite>true</cite>, the back button will show up as an <cite>sdl.KEYDOWN</cite> / <cite>sdl.KEYUP</cite> pair with a keycode of <cite>sdl.SCANCODE_AC_BACK</cite>.</p>
+<p>This is necessary for the right mouse button to work on some Android devices, or to be able to trap the back button for use in your code reliably.  If set to <tt class="docutils literal"><span class="pre">true</span></tt>, the back button will show up as an <tt class="docutils literal"><span class="pre">sdl.KEYDOWN</span></tt> / <tt class="docutils literal"><span class="pre">sdl.KEYUP</span></tt> pair with a keycode of <tt class="docutils literal"><span class="pre">sdl.SCANCODE_AC_BACK</span></tt>.</p>
 <p>The variable can be set to the following values:</p>
 <ul class="simple"><li>&quot;0&quot;       - Back button will be handled as usual for system.</li>
 </ul>
@@ -2203,8 +1966,24 @@ A variable to control whether we trap the Android back button to handle it manua
 
 
 </dd>
-<dt id="HINT_RETURN_KEY_HIDES_IME"><a name="HINT_RETURN_KEY_HIDES_IME"></a><pre><span class="Identifier">HINT_RETURN_KEY_HIDES_IME</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RETURN_KEY_HIDES_IME&quot;</span></pre></dt>
+<a id="HINT_ANDROID_BLOCK_ON_PAUSE"></a>
+<dt><pre><a href="hints.html#HINT_ANDROID_BLOCK_ON_PAUSE"><span class="Identifier">HINT_ANDROID_BLOCK_ON_PAUSE</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_ANDROID_BLOCK_ON_PAUSE&quot;</span></pre></dt>
 <dd>
+
+<p>
+A variable to control whether the event loop will block itself when the app is paused.</p>
+<p>The variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;0&quot;       - Non blocking.</li>
+<li>&quot;1&quot;       - Blocking. (default)</li>
+</ul>
+<p>The value should be set before SDL is initialized.</p>
+
+
+</dd>
+<a id="HINT_RETURN_KEY_HIDES_IME"></a>
+<dt><pre><a href="hints.html#HINT_RETURN_KEY_HIDES_IME"><span class="Identifier">HINT_RETURN_KEY_HIDES_IME</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RETURN_KEY_HIDES_IME&quot;</span></pre></dt>
+<dd>
+
 <p>
  A variable to control whether the return key on the soft keyboard should hide the soft keyboard on Android and iOS.</p>
 <p>The variable can be set to the following values:</p>
@@ -2215,8 +1994,10 @@ A variable to control whether we trap the Android back button to handle it manua
 
 
 </dd>
-<dt id="HINT_EMSCRIPTEN_KEYBOARD_ELEMENT"><a name="HINT_EMSCRIPTEN_KEYBOARD_ELEMENT"></a><pre><span class="Identifier">HINT_EMSCRIPTEN_KEYBOARD_ELEMENT</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_EMSCRIPTEN_KEYBOARD_ELEMENT&quot;</span></pre></dt>
+<a id="HINT_EMSCRIPTEN_KEYBOARD_ELEMENT"></a>
+<dt><pre><a href="hints.html#HINT_EMSCRIPTEN_KEYBOARD_ELEMENT"><span class="Identifier">HINT_EMSCRIPTEN_KEYBOARD_ELEMENT</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_EMSCRIPTEN_KEYBOARD_ELEMENT&quot;</span></pre></dt>
 <dd>
+
 <p>
 Override the binding element for keyboard inputs for Emscripten builds.</p>
 <p>This hint only applies to the emscripten platform</p>
@@ -2225,25 +2006,29 @@ Override the binding element for keyboard inputs for Emscripten builds.</p>
 <li>&quot;#document&quot;    - The javascript document object</li>
 <li>&quot;#screen&quot;      - the javascript window.screen object</li>
 <li>&quot;#canvas&quot;      - the WebGL canvas element</li>
-<li>any other string without a leading <cite>#</cite> sign applies to the element on the page with that ID.</li>
+<li>any other string without a leading <tt class="docutils literal"><span class="pre">#</span></tt> sign applies to the element on the page with that ID.</li>
 </ul>
 
 
 </dd>
-<dt id="HINT_NO_SIGNAL_HANDLERS"><a name="HINT_NO_SIGNAL_HANDLERS"></a><pre><span class="Identifier">HINT_NO_SIGNAL_HANDLERS</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_NO_SIGNAL_HANDLERS&quot;</span></pre></dt>
+<a id="HINT_NO_SIGNAL_HANDLERS"></a>
+<dt><pre><a href="hints.html#HINT_NO_SIGNAL_HANDLERS"><span class="Identifier">HINT_NO_SIGNAL_HANDLERS</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_NO_SIGNAL_HANDLERS&quot;</span></pre></dt>
 <dd>
+
 <p>
 Tell SDL not to catch the SIGINT or SIGTERM signals.</p>
 <p>This hint only applies to Unix-like platforms.</p>
 <p>The variable can be set to the following values:</p>
-<ul class="simple"><li>&quot;0&quot;       - SDL will install a SIGINT and SIGTERM handler, and when it catches a signal, convert it into an <cite>sdl.QUIT</cite> event.</li>
+<ul class="simple"><li>&quot;0&quot;       - SDL will install a SIGINT and SIGTERM handler, and when it catches a signal, convert it into an <tt class="docutils literal"><span class="pre">sdl.QUIT</span></tt> event.</li>
 <li>&quot;1&quot;       - SDL will not install a signal handler at all.</li>
 </ul>
 
 
 </dd>
-<dt id="HINT_WINDOWS_NO_CLOSE_ON_ALT_F4"><a name="HINT_WINDOWS_NO_CLOSE_ON_ALT_F4"></a><pre><span class="Identifier">HINT_WINDOWS_NO_CLOSE_ON_ALT_F4</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_NO_CLOSE_ON_ALT_F4&quot;</span></pre></dt>
+<a id="HINT_WINDOWS_NO_CLOSE_ON_ALT_F4"></a>
+<dt><pre><a href="hints.html#HINT_WINDOWS_NO_CLOSE_ON_ALT_F4"><span class="Identifier">HINT_WINDOWS_NO_CLOSE_ON_ALT_F4</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_NO_CLOSE_ON_ALT_F4&quot;</span></pre></dt>
 <dd>
+
 <p>
 Tell SDL not to generate window-close events for Alt+F4 on Windows.</p>
 <p>The variable can be set to the following values:</p>
@@ -2253,8 +2038,10 @@ Tell SDL not to generate window-close events for Alt+F4 on Windows.</p>
 
 
 </dd>
-<dt id="HINT_BMP_SAVE_LEGACY_FORMAT"><a name="HINT_BMP_SAVE_LEGACY_FORMAT"></a><pre><span class="Identifier">HINT_BMP_SAVE_LEGACY_FORMAT</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_BMP_SAVE_LEGACY_FORMAT&quot;</span></pre></dt>
+<a id="HINT_BMP_SAVE_LEGACY_FORMAT"></a>
+<dt><pre><a href="hints.html#HINT_BMP_SAVE_LEGACY_FORMAT"><span class="Identifier">HINT_BMP_SAVE_LEGACY_FORMAT</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_BMP_SAVE_LEGACY_FORMAT&quot;</span></pre></dt>
 <dd>
+
 <p>
 Prevent SDL from using version 4 of the bitmap header when saving BMPs.</p>
 <p>The bitmap header version 4 is required for proper alpha channel support and SDL will use it when required. Should this not be desired, this hint can force the use of the 40 byte header version which is supported everywhere.</p>
@@ -2266,8 +2053,10 @@ Prevent SDL from using version 4 of the bitmap header when saving BMPs.</p>
 
 
 </dd>
-<dt id="HINT_WINDOWS_DISABLE_THREAD_NAMING"><a name="HINT_WINDOWS_DISABLE_THREAD_NAMING"></a><pre><span class="Identifier">HINT_WINDOWS_DISABLE_THREAD_NAMING</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_DISABLE_THREAD_NAMING&quot;</span></pre></dt>
+<a id="HINT_WINDOWS_DISABLE_THREAD_NAMING"></a>
+<dt><pre><a href="hints.html#HINT_WINDOWS_DISABLE_THREAD_NAMING"><span class="Identifier">HINT_WINDOWS_DISABLE_THREAD_NAMING</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WINDOWS_DISABLE_THREAD_NAMING&quot;</span></pre></dt>
 <dd>
+
 <p>
 Tell SDL not to name threads on Windows with the 0x406D1388 Exception. The 0x406D1388 Exception is a trick used to inform Visual Studio of a thread's name, but it tends to cause problems with other debuggers, and the .NET runtime. Note that SDL 2.0.6 and later will still use the (safer) SetThreadDescription API, introduced in the Windows 10 Creators Update, if available.</p>
 <p>The variable can be set to the following values:</p>
@@ -2277,16 +2066,20 @@ Tell SDL not to name threads on Windows with the 0x406D1388 Exception. The 0x406
 
 
 </dd>
-<dt id="HINT_RPI_VIDEO_LAYER"><a name="HINT_RPI_VIDEO_LAYER"></a><pre><span class="Identifier">HINT_RPI_VIDEO_LAYER</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RPI_VIDEO_LAYER&quot;</span></pre></dt>
+<a id="HINT_RPI_VIDEO_LAYER"></a>
+<dt><pre><a href="hints.html#HINT_RPI_VIDEO_LAYER"><span class="Identifier">HINT_RPI_VIDEO_LAYER</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RPI_VIDEO_LAYER&quot;</span></pre></dt>
 <dd>
+
 <p>
 Tell SDL which Dispmanx layer to use on a Raspberry PI</p>
-<p>Also known as Z-order. The variable can take a negative or positive value. The default is <cite>10000</cite>.</p>
+<p>Also known as Z-order. The variable can take a negative or positive value. The default is <tt class="docutils literal"><span class="pre">10000</span></tt>.</p>
 
 
 </dd>
-<dt id="HINT_VIDEO_DOUBLE_BUFFER"><a name="HINT_VIDEO_DOUBLE_BUFFER"></a><pre><span class="Identifier">HINT_VIDEO_DOUBLE_BUFFER</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_DOUBLE_BUFFER&quot;</span></pre></dt>
+<a id="HINT_VIDEO_DOUBLE_BUFFER"></a>
+<dt><pre><a href="hints.html#HINT_VIDEO_DOUBLE_BUFFER"><span class="Identifier">HINT_VIDEO_DOUBLE_BUFFER</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_VIDEO_DOUBLE_BUFFER&quot;</span></pre></dt>
 <dd>
+
 <p>Tell the video driver that we only want a double buffer.</p>
 <p>By default, most lowlevel 2D APIs will use a triple buffer scheme that wastes no CPU time on waiting for vsync after issuing a flip, but introduces a frame of latency. On the other hand, using a double buffer scheme instead is recommended for cases where low latency is an important factor because we save a whole frame of latency. We do so by waiting for vsync immediately after issuing a flip, usually just after <tt class="docutils literal"><span class="pre">eglSwapBuffers</span></tt> call in the backend's <tt class="docutils literal"><span class="pre">*_SwapWindow</span></tt> procedure.</p>
 <p>Since it's driver-specific, it's only supported where possible and implemented. Currently supported the following drivers:</p>
@@ -2296,8 +2089,10 @@ Tell SDL which Dispmanx layer to use on a Raspberry PI</p>
 
 
 </dd>
-<dt id="HINT_OPENGL_ES_DRIVER"><a name="HINT_OPENGL_ES_DRIVER"></a><pre><span class="Identifier">HINT_OPENGL_ES_DRIVER</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_OPENGL_ES_DRIVER&quot;</span></pre></dt>
+<a id="HINT_OPENGL_ES_DRIVER"></a>
+<dt><pre><a href="hints.html#HINT_OPENGL_ES_DRIVER"><span class="Identifier">HINT_OPENGL_ES_DRIVER</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_OPENGL_ES_DRIVER&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling what driver to use for OpenGL ES contexts.</p>
 <p>On some platforms, currently Windows and X11, OpenGL drivers may support creating contexts with an OpenGL ES profile. By default SDL uses these profiles, when available, otherwise it attempts to load an OpenGL ES library, e.g. that provided by the ANGLE project. This variable controls whether SDL follows this default behaviour or will always load an OpenGL ES library.</p>
@@ -2314,8 +2109,10 @@ A variable controlling what driver to use for OpenGL ES contexts.</p>
 
 
 </dd>
-<dt id="HINT_AUDIO_RESAMPLING_MODE"><a name="HINT_AUDIO_RESAMPLING_MODE"></a><pre><span class="Identifier">HINT_AUDIO_RESAMPLING_MODE</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_AUDIO_RESAMPLING_MODE&quot;</span></pre></dt>
+<a id="HINT_AUDIO_RESAMPLING_MODE"></a>
+<dt><pre><a href="hints.html#HINT_AUDIO_RESAMPLING_MODE"><span class="Identifier">HINT_AUDIO_RESAMPLING_MODE</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_AUDIO_RESAMPLING_MODE&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling speed/quality tradeoff of audio resampling.</p>
 <p>If available, SDL can use libsamplerate ( <a class="reference external" href="http://www.mega-nerd.com/SRC">http://www.mega-nerd.com/SRC</a>/ ) to handle audio resampling. There are different resampling modes available that produce different levels of quality, using more CPU.</p>
@@ -2331,8 +2128,10 @@ A variable controlling speed/quality tradeoff of audio resampling.</p>
 
 
 </dd>
-<dt id="HINT_AUDIO_CATEGORY"><a name="HINT_AUDIO_CATEGORY"></a><pre><span class="Identifier">HINT_AUDIO_CATEGORY</span> <span class="Other">=</span> <span class="StringLit">&quot;SDL_AUDIO_CATEGORY&quot;</span></pre></dt>
+<a id="HINT_AUDIO_CATEGORY"></a>
+<dt><pre><a href="hints.html#HINT_AUDIO_CATEGORY"><span class="Identifier">HINT_AUDIO_CATEGORY</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_AUDIO_CATEGORY&quot;</span></pre></dt>
 <dd>
+
 <p>
 A variable controlling the audio category on iOS and Mac OS X</p>
 <p>This variable can be set to the following values:</p>
@@ -2344,46 +2143,133 @@ A variable controlling the audio category on iOS and Mac OS X</p>
 
 
 </dd>
+<a id="HINT_RENDER_BATCHING"></a>
+<dt><pre><a href="hints.html#HINT_RENDER_BATCHING"><span class="Identifier">HINT_RENDER_BATCHING</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_RENDER_BATCHING&quot;</span></pre></dt>
+<dd>
+
+<p>
+A variable controlling whether the 2D render API is compatible or efficient.</p>
+<p>This variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;0&quot;     - Don't use batching to make rendering more efficient.</li>
+<li>&quot;1&quot;     - Use batching, but might cause problems if app makes its own direct OpenGL calls.</li>
+</ul>
+<p>Up to SDL 2.0.9, the render API would draw immediately when requested. Now it batches up draw requests and sends them all to the GPU only when forced to (during SDL_RenderPresent, when changing render targets, by updating a texture that the batch needs, etc). This is significantly more efficient, but it can cause problems for apps that expect to render on top of the render API's output. As such, SDL will disable batching if a specific render backend is requested (since this might indicate that the app is planning to use the underlying graphics API directly). This hint can be used to explicitly request batching in this instance. It is a contract that you will either never use the underlying graphics API directly, or if you do, you will call SDL_RenderFlush() before you do so any current batch goes to the GPU before your work begins. Not following this contract will result in undefined behavior.</p>
+
+
+</dd>
+<a id="HINT_EVENT_LOGGING"></a>
+<dt><pre><a href="hints.html#HINT_EVENT_LOGGING"><span class="Identifier">HINT_EVENT_LOGGING</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_EVENT_LOGGING&quot;</span></pre></dt>
+<dd>
+
+<p>
+A variable controlling whether SDL logs all events pushed onto its internal queue.</p>
+<p>This variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;0&quot;     - Don't log any events (default)</li>
+<li>&quot;1&quot;     - Log all events except mouse and finger motion, which are pretty spammy.</li>
+<li>&quot;2&quot;     - Log all events.</li>
+</ul>
+<p>This is generally meant to be used to debug SDL itself, but can be useful for application developers that need better visibility into what is going on in the event queue. Logged events are sent through <tt class="docutils literal"><span class="pre">sdl.log()</span></tt>, which means by default they appear on stdout on most platforms or maybe <tt class="docutils literal"><span class="pre">outputDebugString()</span></tt> on Windows, and can be funneled by the app with <tt class="docutils literal"><span class="pre">sdl.logSetOutputFunction()</span></tt>, etc.</p>
+<p>This hint can be toggled on and off at runtime, if you only need to log events for a small subset of program execution.</p>
+
+
+</dd>
+<a id="HINT_WAVE_RIFF_CHUNK_SIZE"></a>
+<dt><pre><a href="hints.html#HINT_WAVE_RIFF_CHUNK_SIZE"><span class="Identifier">HINT_WAVE_RIFF_CHUNK_SIZE</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WAVE_RIFF_CHUNK_SIZE&quot;</span></pre></dt>
+<dd>
+
+<p>Controls how the size of the RIFF chunk affects the loading of a WAVE file.</p>
+<p>The size of the RIFF chunk (which includes all the sub-chunks of the WAVE file) is not always reliable. In case the size is wrong, it's possible to just ignore it and step through the chunks until a fixed limit is reached.</p>
+<p>Note that files that have trailing data unrelated to the WAVE file or corrupt files may slow down the loading process without a reliable boundary. By default, SDL stops after 10000 chunks to prevent wasting time. Use the environment variable <tt class="docutils literal"><span class="pre">sdl.WAVE_CHUNK_LIMIT</span></tt> to adjust this value.</p>
+<p>This variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;force&quot;        - Always use the RIFF chunk size as a boundary for the chunk search</li>
+<li>&quot;ignorezero&quot;   - Like &quot;force&quot;, but a zero size searches up to 4 GiB (default)</li>
+<li>&quot;ignore&quot;       - Ignore the RIFF chunk size and always search up to 4 GiB</li>
+<li>&quot;maximum&quot;      - Search for chunks until the end of file (not recommended)</li>
+</ul>
+
+
+</dd>
+<a id="HINT_WAVE_TRUNCATION"></a>
+<dt><pre><a href="hints.html#HINT_WAVE_TRUNCATION"><span class="Identifier">HINT_WAVE_TRUNCATION</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WAVE_TRUNCATION&quot;</span></pre></dt>
+<dd>
+
+<p>Controls how a truncated WAVE file is handled.</p>
+<p>A WAVE file is considered truncated if any of the chunks are incomplete or the data chunk size is not a multiple of the block size. By default, SDL decodes until the first incomplete block, as most applications seem to do.</p>
+<p>This variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;verystrict&quot; - Raise an error if the file is truncated</li>
+<li>&quot;strict&quot;     - Like &quot;verystrict&quot;, but the size of the RIFF chunk is ignored</li>
+<li>&quot;dropframe&quot;  - Decode until the first incomplete sample frame</li>
+<li>&quot;dropblock&quot;  - Decode until the first incomplete block (default)</li>
+</ul>
+
+
+</dd>
+<a id="HINT_WAVE_FACT_CHUNK"></a>
+<dt><pre><a href="hints.html#HINT_WAVE_FACT_CHUNK"><span class="Identifier">HINT_WAVE_FACT_CHUNK</span></a> <span class="Other">=</span> <span class="StringLit">&quot;SDL_WAVE_FACT_CHUNK&quot;</span></pre></dt>
+<dd>
+
+<p>Controls how the fact chunk affects the loading of a WAVE file.</p>
+<p>The fact chunk stores information about the number of samples of a WAVE file. The Standards Update from Microsoft notes that this value can be used to 'determine the length of the data in seconds'. This is especially useful for compressed formats (for which this is a mandatory chunk) if they produce multiple sample frames per block and truncating the block is not allowed. The fact chunk can exactly specify how many sample frames there should be in this case.</p>
+<p>Unfortunately, most application seem to ignore the fact chunk and so SDL ignores it by default as well.</p>
+<p>This variable can be set to the following values:</p>
+<ul class="simple"><li>&quot;truncate&quot;    - Use the number of samples to truncate the wave data if the fact chunk is present and valid</li>
+<li>&quot;strict&quot;      - Like &quot;truncate&quot;, but raise an error if the fact chunk is invalid, not present for non-PCM formats, or if the data chunk doesn't have that many samples</li>
+<li>&quot;ignorezero&quot;  - Like &quot;truncate&quot;, but ignore fact chunk if the number of samples is zero</li>
+<li>&quot;ignore&quot;      - Ignore fact chunk entirely (default)</li>
+</ul>
+
+
+</dd>
 
 </dl></div>
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="setHintWithPriority"><a name="setHintWithPriority,cstring,cstring,HintPriority"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setHintWithPriority</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">priority</span><span class="Other">:</span> <a href="hints.html#HintPriority"><span class="Identifier">HintPriority</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="setHintWithPriority,cstring,cstring,HintPriority"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setHintWithPriority%2Ccstring%2Ccstring%2CHintPriority"><span class="Identifier">setHintWithPriority</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">priority</span><span class="Other">:</span> <a href="hints.html#HintPriority"><span class="Identifier">HintPriority</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetHintWithPriority&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Set a hint with a specific priority.</p>
 <p>The priority controls the behavior when setting a hint that already has a value.  Hints will replace existing hints of their priority and lower.  Environment variables are considered to have override priority.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if the hint was set, <cite>false</cite> otherwise.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">true</span></tt> if the hint was set, <tt class="docutils literal"><span class="pre">false</span></tt> otherwise.</p>
 
 
 </dd>
-<dt id="setHint"><a name="setHint,cstring,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">setHint</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetHint&quot;</span><span class="Other">,</span>
+<a id="setHint,cstring,cstring"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setHint%2Ccstring%2Ccstring"><span class="Identifier">setHint</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetHint&quot;</span><span class="Other">,</span>
     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Set a hint with normal priority.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <cite>true</cite> if the hint was set, <cite>false</cite> otherwise.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">true</span></tt> if the hint was set, <tt class="docutils literal"><span class="pre">false</span></tt> otherwise.</p>
 
 
 </dd>
-<dt id="getHint"><a name="getHint,cstring"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getHint</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetHint&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="getHint,cstring"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#getHint%2Ccstring"><span class="Identifier">getHint</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetHint&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get a hint.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the string value of a hint variable.</p>
 
 
 </dd>
-<dt id="getHintBoolean"><a name="getHintBoolean,cstring,bool"></a><pre><span class="Keyword">proc</span> <span class="Identifier">getHintBoolean</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">default_value</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="getHintBoolean,cstring,bool"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#getHintBoolean%2Ccstring%2Cbool"><span class="Identifier">getHintBoolean</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">default_value</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetHintBoolean&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Get a hint.</p>
 <p><tt class="docutils literal"><span class="pre">Return</span></tt> the boolean value of a hint variable.</p>
 
 
 </dd>
-<dt id="addHintCallback"><a name="addHintCallback,cstring,HintCallback,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">addHintCallback</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">callback</span><span class="Other">:</span> <a href="hints.html#HintCallback"><span class="Identifier">HintCallback</span></a><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="addHintCallback,cstring,HintCallback,pointer"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#addHintCallback%2Ccstring%2CHintCallback%2Cpointer"><span class="Identifier">addHintCallback</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">callback</span><span class="Other">:</span> <a href="hints.html#HintCallback"><span class="Identifier">HintCallback</span></a><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AddHintCallback&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Add a procedure to watch a particular hint.</p>
 <p><tt class="docutils literal"><span class="pre">name</span></tt> The hint to watch.</p>
 <p><tt class="docutils literal"><span class="pre">callback</span></tt> The procedure to call when the hint value changes.</p>
@@ -2391,9 +2277,11 @@ A variable controlling the audio category on iOS and Mac OS X</p>
 
 
 </dd>
-<dt id="delHintCallback"><a name="delHintCallback,cstring,HintCallback,pointer"></a><pre><span class="Keyword">proc</span> <span class="Identifier">delHintCallback</span><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">callback</span><span class="Other">:</span> <a href="hints.html#HintCallback"><span class="Identifier">HintCallback</span></a><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<a id="delHintCallback,cstring,HintCallback,pointer"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#delHintCallback%2Ccstring%2CHintCallback%2Cpointer"><span class="Identifier">delHintCallback</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">callback</span><span class="Other">:</span> <a href="hints.html#HintCallback"><span class="Identifier">HintCallback</span></a><span class="Other">;</span> <span class="Identifier">userdata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_DelHintCallback&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Remove a procedure watching a particular hint.</p>
 <p><tt class="docutils literal"><span class="pre">name</span></tt> The hint being watched.</p>
 <p><tt class="docutils literal"><span class="pre">callback</span></tt> The procedure being called when the hint value changes.</p>
@@ -2401,8 +2289,10 @@ A variable controlling the audio category on iOS and Mac OS X</p>
 
 
 </dd>
-<dt id="clearHints"><a name="clearHints,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">clearHints</span><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ClearHints&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="clearHints"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#clearHints"><span class="Identifier">clearHints</span></a><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_ClearHints&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Clear all hints.</p>
 <p>This procedure is called during <tt class="docutils literal"><span class="pre">quit()</span></tt> to free stored hints.</p>
 
@@ -2418,7 +2308,7 @@ A variable controlling the audio category on iOS and Mac OS X</p>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-11-02 19:11:02 UTC</small>
+        <small>Made with Nim. Generated: 2019-07-27 12:00:39 UTC</small>
       </div>
     </div>
   </div>
