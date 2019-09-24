@@ -5,6 +5,7 @@
 
 
 import sdl2/sdl, sdl2/sdl_net as net
+import strutils
 
 
 # Initialization sequence
@@ -79,10 +80,10 @@ if init():
       var receiving = true
       while receiving:
         if net.tcpRecv(clientSocket, addr(buffer[0]), BufMax) > 0:
-          echo "Client send: ", buffer
-          if cmp($buffer, "exit") == 0:
+          echo "Client send: ", buffer.join
+          if buffer[0..3] == @"exit":
             receiving = false
-          elif cmp($buffer, "quit") == 0:
+          elif buffer[0..3] == @"quit":
             receiving = false
             done = true
 

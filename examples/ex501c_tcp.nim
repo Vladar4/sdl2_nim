@@ -76,8 +76,10 @@ if init():
 
     write(stdout, Invite)
     let line = readLine(stdin)
-    for i in 0..line.high+1:
+    for i in 0..line.high:
       msg[i] = line[i]
+    for i in line.len..msg.high:
+      msg[i] = 0.char
 
     if net.tcpSend(socket, addr(msg), msg.len) < msg.len:
       sdl.logError(sdl.LogCategoryError,

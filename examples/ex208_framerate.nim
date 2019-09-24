@@ -301,11 +301,11 @@ if init(app):
 
   # Init entities
   for i in 0..entities.high:
-    entities[i].pos.x = (random(ScreenW - image.w div 2) + image.w div 2).float
-    entities[i].pos.y = (random(ScreenH - image.h div 2) + image.h div 2).float
-    entities[i].speed.x = (random(7) - 3).float * Speed
-    entities[i].speed.y = (random(7) - 3).float * Speed
-    entities[i].rotation = (random(7) - 3).float * Rotation
+    entities[i].pos.x = (rand(ScreenW - image.w div 2) + image.w div 2).float
+    entities[i].pos.y = (rand(ScreenH - image.h div 2) + image.h div 2).float
+    entities[i].speed.x = (rand(7) - 3).float * Speed
+    entities[i].speed.y = (rand(7) - 3).float * Speed
+    entities[i].rotation = (rand(7) - 3).float * Rotation
 
   # Init FPS manager
   var

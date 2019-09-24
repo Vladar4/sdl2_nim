@@ -248,8 +248,8 @@ if init(app):
     const numPoints = 100
     var points: array[numPoints, sdl.Point]
     for i in 0..numPoints-1:
-      points[i].x = rect.x + 1 + random(rect.w - 2)
-      points[i].y = rect.y + 1 + random(rect.h - 2)
+      points[i].x = rect.x + 1 + rand(rect.w - 2)
+      points[i].y = rect.y + 1 + rand(rect.h - 2)
     discard app.renderer.renderDrawPoints(addr(points[0]), numPoints)
 
     # Connected lines

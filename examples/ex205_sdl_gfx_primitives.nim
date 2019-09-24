@@ -213,9 +213,9 @@ if init(app):
   # Generate random colors palette
   var rnd: array[256, sdl.Color]
   for i in 0..255:
-    rnd[i].r = random(255).uint8
-    rnd[i].g = random(255).uint8
-    rnd[i].b = random(255).uint8
+    rnd[i].r = rand(255).uint8
+    rnd[i].g = rand(255).uint8
+    rnd[i].b = rand(255).uint8
     rnd[i].a = 255
     if rnd[i].r < 32 and rnd[i].g < 32 and rnd[i].b < 32:
       rnd[i].r = uint8(255 - rnd[i].r)
