@@ -134,7 +134,7 @@ template bytesPerPixel*(x: untyped): untyped =
     else:
       1
   else:
-    (((x) shr 0) and 0x000000FF)
+    (((x) shr 0) and 0x000000FF).cint
 
 template isPixelFormatIndexed*(format: untyped): bool =
   isfalse(isPixelFormatFourCC(format).toInt and
