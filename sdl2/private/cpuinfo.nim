@@ -102,7 +102,7 @@ proc getSystemRAM*(): cint {.
     cdecl, importc: "SDL_GetSystemRAM", dynlib: SDL2_LIB.}
   ##  This procedure returns the amount of RAM configured in the system, in MB.
 
-proc simdGetAlignment*(): csize {.
+proc simdGetAlignment*(): csize_t {.
     cdecl, importc: "SDL_SIMDGetAlignment", dynlib: SDL2_LIB.}
   ##  Report the alignment this system needs for SIMD allocations.
   ##
@@ -115,7 +115,7 @@ proc simdGetAlignment*(): csize {.
   ##  sees and not 64 for the AVX-512 instructions that exist but SDL doesn't
   ##  know about. Plan accordingly.
 
-proc simdAlloc*(len: csize): pointer {.
+proc simdAlloc*(len: csize_t): pointer {.
     cdecl, importc: "SDL_SIMDAlloc", dynlib: SDL2_LIB.}
   ##  Allocate memory in a SIMD-friendly way.
   ##

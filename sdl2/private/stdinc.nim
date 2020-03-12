@@ -23,14 +23,14 @@
 ##  ==========
 ##
 
-proc malloc*(size: csize): pointer {.
+proc malloc*(size: csize_t): pointer {.
     cdecl, importc: "SDL_malloc", dynlib: SDL2_LIB.}
   ## Allocate memory with the same memory allocater that SDL uses.
 
-proc calloc*(nmemb: csize; size: csize): pointer {.
+proc calloc*(nmemb: csize_t; size: csize_t): pointer {.
     cdecl, importc: "SDL_calloc", dynlib: SDL2_LIB.}
 
-proc realloc*(mem: pointer; size: csize): pointer {.
+proc realloc*(mem: pointer; size: csize_t): pointer {.
     cdecl, importc: "SDL_realloc", dynlib: SDL2_LIB.}
 
 proc free*(mem: pointer) {.cdecl, importc: "SDL_free", dynlib: SDL2_LIB.}

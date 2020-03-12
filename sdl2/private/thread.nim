@@ -100,13 +100,13 @@ when hostOS == "windows":
     return createThread_internal(fn, name, data, beginThreadEx, endThreadEx)
 
   proc createThreadWithStackSize_internal(
-      fn: ThreadFunction; name: cstring; stacksize: csize; data: pointer;
+      fn: ThreadFunction; name: cstring; stacksize: csize_t; data: pointer;
       cbegin: CurrentBeginThread; cend: CurrentEndThread): Thread {.
         cdecl, importc: "SDL_CreateThreadWithStackSize".}
 
   proc createThreadWithStackSize*(
       fn: ThreadFunction;
-      name: cstring; stacksize: csize; data: pointer): Thread {.cdecl.} =
+      name: cstring; stacksize: csize_t; data: pointer): Thread {.cdecl.} =
     return createThreadWithStackSize_internal(
       fn, name, stacksize, data, beginThreadEx, endThreadEx)
 
@@ -129,7 +129,7 @@ else:
 
   proc createThreadWithStackSize*(
       fn: ThreadFunction;
-      name: cstring; stacksize: csize; data: pointer): Thread {.
+      name: cstring; stacksize: csize_t; data: pointer): Thread {.
         cdecl, importc: "SDL_CreateThreadWithStackSize", dynlib: SDL2_LIB.}
     ##  Create a thread.
     ##

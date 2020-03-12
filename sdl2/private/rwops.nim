@@ -48,8 +48,8 @@ type
 
   RWopsWindowsioBuffer* = object
     data*: pointer
-    size*: csize
-    left*: csize
+    size*: csize_t
+    left*: csize_t
 
   RWopsWindowsio* = object
     append*: bool
@@ -92,14 +92,14 @@ type
       ##  ``Return`` the final offset in the data stream, or `-1` on error.
 
     read*: proc (context: ptr RWops;
-        p: pointer; size: csize; maxnum: csize): csize {.cdecl.} ##  \
+        p: pointer; size: csize_t; maxnum: csize_t): csize_t {.cdecl.} ##  \
       ##  Read up to ``maxnum`` objects each of size ``size`` from the data
       ##  stream to the area pointed at by ``p``.
       ##
       ##  ``Return`` the number of objects read, or `0` at error or end of file.
 
     write*: proc (context: ptr RWops;
-        p: pointer; size: csize; num: csize): csize {.cdecl.} ##  \
+        p: pointer; size: csize_t; num: csize_t): csize_t {.cdecl.} ##  \
       ##  Write exactly ``num`` objects each of size ``size`` from the area
       ##  pointed at by ``p`` to data stream.
       ##
@@ -190,7 +190,7 @@ proc rwTell*(context: ptr RWops): int64 {.
   ##  ``Return`` the current offset in the data stream, or `-1` on error.
 
 proc rwRead*(
-    context: ptr RWops; p: pointer; size: csize; maxnum: csize): csize {.
+    context: ptr RWops; p: pointer; size: csize_t; maxnum: csize_t): csize_t {.
       cdecl, importc: "SDL_RWread", dynlib: SDL2_LIB.}
   ##  Read up to ``maxnum`` objects each of size ``size`` from the data
   ##  stream to the area pointed at by ``p``.
@@ -198,7 +198,7 @@ proc rwRead*(
   ##  ``Return`` the number of objects read, or `0` at error or end of file.
 
 proc rwWrite*(
-    context: ptr RWops; p: pointer; size: csize; num: csize): csize {.
+    context: ptr RWops; p: pointer; size: csize_t; num: csize_t): csize_t {.
       cdecl, importc: "SDL_RWwrite", dynlib: SDL2_LIB.}
   ##  Write exactly ``num`` objects each of size ``size`` from the area
   ##  pointed at by ``p`` to data stream.
@@ -211,7 +211,7 @@ proc rwClose*(context: ptr RWops): cint {.
   ##
   ##  ``Return`` `0` if successful or `-1` on write error when flushing data.
 
-proc loadFileRW*(src: ptr RWops, datasize: ptr csize, freesrc: cint): pointer {.
+proc loadFileRW*(src: ptr RWops, datasize: ptr csize_t, freesrc: cint): pointer {.
     cdecl, importc: "SDL_LoadFile_RW", dynlib: SDL2_LIB.}
   ##  Load all the data from an SDL data stream.
   ##
@@ -227,7 +227,7 @@ proc loadFileRW*(src: ptr RWops, datasize: ptr csize, freesrc: cint): pointer {.
   ##  ``Return`` the data, or ``nil`` if there was an error.
 
 template loadFileRW*(
-    src: ptr RWops, datasize: ptr csize, freesrc: bool): pointer =
+    src: ptr RWops, datasize: ptr csize_t, freesrc: bool): pointer =
   loadFileRW(src, datasize, freesrc.cint)
 
 # (deprecated since 2.0.10)
@@ -239,7 +239,7 @@ template loadFile*(file, datasize: untyped) : untyped = ##  \
   loadFileRW(rwFromFile(file, "rb"), datasize, 1)
 ]#
 
-proc loadFile*(file: cstring, datasize: ptr csize): pointer {.
+proc loadFile*(file: cstring, datasize: ptr csize_t): pointer {.
     cdecl, importc: "SDL_LoadFile", dynlib: SDL2_LIB.} =
   ##  Load an entire file.
   ##
@@ -286,23 +286,23 @@ proc readBE64*(src: ptr RWops): uint64 {.
 #
 #   Write an item of native format to the specified endianness.
 
-proc writeU8*(dst: ptr RWops; value: uint8): csize {.
+proc writeU8*(dst: ptr RWops; value: uint8): csize_t {.
     cdecl, importc: "SDL_WriteU8", dynlib: SDL2_LIB.}
 
-proc writeLE16*(dst: ptr RWops; value: uint16): csize {.
+proc writeLE16*(dst: ptr RWops; value: uint16): csize_t {.
     cdecl, importc: "SDL_WriteLE16", dynlib: SDL2_LIB.}
 
-proc writeBE16*(dst: ptr RWops; value: uint16): csize {.
+proc writeBE16*(dst: ptr RWops; value: uint16): csize_t {.
     cdecl, importc: "SDL_WriteBE16", dynlib: SDL2_LIB.}
 
-proc writeLE32*(dst: ptr RWops; value: uint32): csize {.
+proc writeLE32*(dst: ptr RWops; value: uint32): csize_t {.
     cdecl, importc: "SDL_WriteLE32", dynlib: SDL2_LIB.}
 
-proc writeBE32*(dst: ptr RWops; value: uint32): csize {.
+proc writeBE32*(dst: ptr RWops; value: uint32): csize_t {.
     cdecl, importc: "SDL_WriteBE32", dynlib: SDL2_LIB.}
 
-proc writeLE64*(dst: ptr RWops; value: uint64): csize {.
+proc writeLE64*(dst: ptr RWops; value: uint64): csize_t {.
     cdecl, importc: "SDL_WriteLE64", dynlib: SDL2_LIB.}
 
-proc writeBE64*(dst: ptr RWops; value: uint64): csize {.
+proc writeBE64*(dst: ptr RWops; value: uint64): csize_t {.
     cdecl, importc: "SDL_WriteBE64", dynlib: SDL2_LIB.}

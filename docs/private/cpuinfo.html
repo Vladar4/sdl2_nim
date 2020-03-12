@@ -870,9 +870,9 @@ function main() {
   <li><a class="reference" href="#getSystemRAM"
     title="getSystemRAM(): cint"><wbr />get<wbr />System<wbr />RAM<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#simdGetAlignment"
-    title="simdGetAlignment(): csize"><wbr />simd<wbr />Get<wbr />Alignment<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#simdAlloc%2Ccsize"
-    title="simdAlloc(len: csize): pointer"><wbr />simd<wbr />Alloc<span class="attachedType"></span></a></li>
+    title="simdGetAlignment(): csize_t"><wbr />simd<wbr />Get<wbr />Alignment<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#simdAlloc%2Ccsize_t"
+    title="simdAlloc(len: csize_t): pointer"><wbr />simd<wbr />Alloc<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#simdFree%2Cpointer"
     title="simdFree(p: pointer)"><wbr />simd<wbr />Free<span class="attachedType"></span></a></li>
 
@@ -1027,8 +1027,8 @@ This procedure returns the amount of RAM configured in the system, in MB.
 
 </dd>
 <a id="simdGetAlignment"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#simdGetAlignment"><span class="Identifier">simdGetAlignment</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SIMDGetAlignment&quot;</span><span class="Other">,</span>
-                              <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#simdGetAlignment"><span class="Identifier">simdGetAlignment</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize_t</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SIMDGetAlignment&quot;</span><span class="Other">,</span>
+                                <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Report the alignment this system needs for SIMD allocations.</p>
@@ -1036,8 +1036,9 @@ This procedure returns the amount of RAM configured in the system, in MB.
 
 
 </dd>
-<a id="simdAlloc,csize"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#simdAlloc%2Ccsize"><span class="Identifier">simdAlloc</span></a><span class="Other">(</span><span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SIMDAlloc&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="simdAlloc,csize_t"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#simdAlloc%2Ccsize_t"><span class="Identifier">simdAlloc</span></a><span class="Other">(</span><span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">pointer</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SIMDAlloc&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Allocate memory in a SIMD-friendly way.</p>
@@ -1076,7 +1077,7 @@ This procedure returns the amount of RAM configured in the system, in MB.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2020-03-12 15:14:19 UTC</small>
+        <small>Made with Nim. Generated: 2020-03-12 16:43:15 UTC</small>
       </div>
     </div>
   </div>

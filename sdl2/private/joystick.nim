@@ -185,7 +185,7 @@ proc joystickGetPlayerIndex*(joystick: Joystick): cint {.
   ##  For XInput controllers this returns the XInput user index.
 
 proc joystickSetPlayerIndex*(joystick: Joystick, player_index: cint) {.
-    cdecl, "SDL_JoystickSetPlayerIndex", dynlib: SDL2_LIB.}
+    cdecl, importc: "SDL_JoystickSetPlayerIndex", dynlib: SDL2_LIB.}
   ##  Set the player index of an opened joystick.
 
 proc joystickGetGUID*(joystick: Joystick): JoystickGUID {.

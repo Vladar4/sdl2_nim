@@ -847,8 +847,8 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#createThread%2CThreadFunction%2Ccstring%2Cpointer"
     title="createThread(fn: ThreadFunction; name: cstring; data: pointer): Thread"><wbr />create<wbr />Thread<span class="attachedType">ThreadFunction</span></a></li>
-  <li><a class="reference" href="#createThreadWithStackSize%2CThreadFunction%2Ccstring%2Ccsize%2Cpointer"
-    title="createThreadWithStackSize(fn: ThreadFunction; name: cstring; stacksize: csize;
+  <li><a class="reference" href="#createThreadWithStackSize%2CThreadFunction%2Ccstring%2Ccsize_t%2Cpointer"
+    title="createThreadWithStackSize(fn: ThreadFunction; name: cstring; stacksize: csize_t;
                           data: pointer): Thread"><wbr />create<wbr />Thread<wbr />With<wbr />Stack<wbr />Size<span class="attachedType">ThreadFunction</span></a></li>
   <li><a class="reference" href="#getThreadName%2CThread"
     title="getThreadName(thread: Thread): cstring"><wbr />get<wbr />Thread<wbr />Name<span class="attachedType">Thread</span></a></li>
@@ -939,8 +939,8 @@ The procedure passed to <tt class="docutils literal"><span class="pre">createThr
 
 
 </dd>
-<a id="createThreadWithStackSize,ThreadFunction,cstring,csize,pointer"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#createThreadWithStackSize%2CThreadFunction%2Ccstring%2Ccsize%2Cpointer"><span class="Identifier">createThreadWithStackSize</span></a><span class="Other">(</span><span class="Identifier">fn</span><span class="Other">:</span> <a href="thread.html#ThreadFunction"><span class="Identifier">ThreadFunction</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">stacksize</span><span class="Other">:</span> <span class="Identifier">csize</span><span class="Other">;</span>
+<a id="createThreadWithStackSize,ThreadFunction,cstring,csize_t,pointer"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#createThreadWithStackSize%2CThreadFunction%2Ccstring%2Ccsize_t%2Cpointer"><span class="Identifier">createThreadWithStackSize</span></a><span class="Other">(</span><span class="Identifier">fn</span><span class="Other">:</span> <a href="thread.html#ThreadFunction"><span class="Identifier">ThreadFunction</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">stacksize</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">;</span>
                               <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <a href="thread.html#Thread"><span class="Identifier">Thread</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_CreateThreadWithStackSize&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -1079,7 +1079,7 @@ Set the priority for the current thread.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2020-03-12 15:14:25 UTC</small>
+        <small>Made with Nim. Generated: 2020-03-12 16:43:56 UTC</small>
       </div>
     </div>
   </div>
