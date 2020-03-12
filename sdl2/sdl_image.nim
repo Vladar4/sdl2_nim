@@ -1,6 +1,6 @@
 #
 #  SDL_image:  An example image loading library for use with SDL
-#  Copyright (C) 1997-2017 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -33,7 +33,7 @@ import
 const
   MAJOR_VERSION* = 2
   MINOR_VERSION* = 0
-  PATCHLEVEL* = 4
+  PATCHLEVEL* = 5
   COMPILEDVERSION* = versionNum(MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL) ##  \
     ##  This is the version number const for the current SDL_image version.
 

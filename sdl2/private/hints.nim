@@ -552,18 +552,20 @@ const
     ##  For example, on Nintendo Switch controllers, normally you'd get:
     ##
     ##  ::
-    ##
+    ##    ‎
     ##        (Y)
     ##    (X)     (B)
     ##        (A)
+    ##    ‎
     ##
     ##  but if this hint is set, you'll get:
     ##
     ##  ::
-    ##
+    ##    ‎
     ##        (X)
     ##    (Y)     (A)
     ##        (B)
+    ##    ‎
     ##
     ##  The variable can be set to the following values:
     ##  * "0"     - Report the face buttons by position,
