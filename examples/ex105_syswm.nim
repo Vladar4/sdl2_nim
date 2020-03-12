@@ -21,6 +21,7 @@ proc subsys(kind: SysWMKind): string =
   of SysWM_Android: "Android"
   of SysWM_Vivante: "Vivante"
   of SysWM_OS2: "OS/2"
+  of SysWM_Haiku: "Haiku"
 
 
 

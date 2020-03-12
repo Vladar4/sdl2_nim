@@ -215,16 +215,16 @@ if init(app):
   if not image2.load(app.renderer, "img/img2.png"):
     done = true
 
-  echo "-----------------------"
-  echo "|      Controls:      |"
-  echo "|---------------------|"
-  echo "| Q/A: change width   |"
-  echo "| W/S: change height  |"
-  echo "| E/D: rotate         |"
-  echo "| R/F: flip           |"
-  echo "| Z/X/C/V: blend mode |"
-  echo "| T/G: change alpha   |"
-  echo "-----------------------"
+  echo "-------------------------"
+  echo "|      Controls:        |"
+  echo "|-----------------------|"
+  echo "| Q/A: change width     |"
+  echo "| W/S: change height    |"
+  echo "| E/D: rotate           |"
+  echo "| R/F: flip             |"
+  echo "| Z/X/C/V/B: blend mode |"
+  echo "| T/G: change alpha     |"
+  echo "-------------------------"
 
   # Transformations
   const
@@ -286,6 +286,7 @@ if init(app):
     if K_x in pressed: image1.blend = BlendModeBlend
     if K_c in pressed: image1.blend = BlendModeAdd
     if K_v in pressed: image1.blend = BlendModeMod
+    if K_b in pressed: image1.blend = BlendModeMul
     if K_t in pressed: alpha += alphaStep
     if K_g in pressed: alpha -= alphaStep
 

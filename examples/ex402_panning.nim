@@ -435,7 +435,7 @@ if init(app):
     # Update
     for i in 3..text.high:
       text[i] = ""
-    text[3] = "Left: " & $left.int & " Right: " & $(254 - left)
+    text[3] = "Left: " & $left.int & " Right: " & $(254 - left.int)
     text[4] = "Distance: " & $(254 - 127 * imageScale)
 
   # Free assets
