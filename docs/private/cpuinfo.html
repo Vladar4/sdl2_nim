@@ -863,6 +863,8 @@ function main() {
     title="hasAVX2(): bool"><wbr />has<wbr />AVX2<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#hasAVX512F"
     title="hasAVX512F(): bool"><wbr />has<wbr />AVX512F<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#hasARMSIMD"
+    title="hasARMSIMD(): bool"><wbr />has<wbr />ARMSIMD<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#hasNEON"
     title="hasNEON(): bool"><wbr />has<wbr />NEON<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#getSystemRAM"
@@ -1003,6 +1005,13 @@ This procedure returns true if the CPU has AVX2 features.
 This function returns true if the CPU has AVX-512F (foundation) features.
 
 </dd>
+<a id="hasARMSIMD"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#hasARMSIMD"><span class="Identifier">hasARMSIMD</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasARMSIMD&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+This function returns true if the CPU has ARM SIMD (ARMv6) features.
+
+</dd>
 <a id="hasNEON"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#hasNEON"><span class="Identifier">hasNEON</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_HasNEON&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -1067,7 +1076,7 @@ This procedure returns the amount of RAM configured in the system, in MB.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2019-07-27 12:00:38 UTC</small>
+        <small>Made with Nim. Generated: 2020-03-12 15:14:19 UTC</small>
       </div>
     </div>
   </div>

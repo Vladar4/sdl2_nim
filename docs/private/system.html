@@ -831,6 +831,18 @@ function main() {
     title="linuxSetThreadPriority(threadID: int64; priority: cint): cint"><wbr />linux<wbr />Set<wbr />Thread<wbr />Priority<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#isTablet"
     title="isTablet(): bool"><wbr />is<wbr />Tablet<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#onApplicationWillTerminate"
+    title="onApplicationWillTerminate()"><wbr />on<wbr />Application<wbr />Will<wbr />Terminate<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#onApplicationDidReceiveMemoryWarning"
+    title="onApplicationDidReceiveMemoryWarning()"><wbr />on<wbr />Application<wbr />Did<wbr />Receive<wbr />Memory<wbr />Warning<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#onApplicationWillResignActive"
+    title="onApplicationWillResignActive()"><wbr />on<wbr />Application<wbr />Will<wbr />Resign<wbr />Active<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#onApplicationDidEnterBackground"
+    title="onApplicationDidEnterBackground()"><wbr />on<wbr />Application<wbr />Did<wbr />Enter<wbr />Background<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#onApplicationWillEnterForeground"
+    title="onApplicationWillEnterForeground()"><wbr />on<wbr />Application<wbr />Will<wbr />Enter<wbr />Foreground<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#onApplicationDidBecomeActive"
+    title="onApplicationDidBecomeActive()"><wbr />on<wbr />Application<wbr />Did<wbr />Become<wbr />Active<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -864,6 +876,55 @@ function main() {
 <tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">true</span></tt> if the current device is a tablet.
 
 </dd>
+<a id="onApplicationWillTerminate"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#onApplicationWillTerminate"><span class="Identifier">onApplicationWillTerminate</span></a><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+                                  <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_OnApplicationWillTerminate&quot;</span><span class="Other">,</span>
+                                  <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="onApplicationDidReceiveMemoryWarning"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#onApplicationDidReceiveMemoryWarning"><span class="Identifier">onApplicationDidReceiveMemoryWarning</span></a><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_OnApplicationDidReceiveMemoryWarning&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="onApplicationWillResignActive"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#onApplicationWillResignActive"><span class="Identifier">onApplicationWillResignActive</span></a><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_OnApplicationWillResignActive&quot;</span><span class="Other">,</span>
+                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="onApplicationDidEnterBackground"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#onApplicationDidEnterBackground"><span class="Identifier">onApplicationDidEnterBackground</span></a><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_OnApplicationDidEnterBackground&quot;</span><span class="Other">,</span>
+                                       <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="onApplicationWillEnterForeground"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#onApplicationWillEnterForeground"><span class="Identifier">onApplicationWillEnterForeground</span></a><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_OnApplicationWillEnterForeground&quot;</span><span class="Other">,</span>
+                                        <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="onApplicationDidBecomeActive"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#onApplicationDidBecomeActive"><span class="Identifier">onApplicationDidBecomeActive</span></a><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_OnApplicationDidBecomeActive&quot;</span><span class="Other">,</span>
+                                    <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 
 </dl></div>
 
@@ -874,7 +935,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2019-07-27 12:00:43 UTC</small>
+        <small>Made with Nim. Generated: 2020-03-12 15:14:24 UTC</small>
       </div>
     </div>
   </div>

@@ -16,7 +16,7 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
-<title>sdl_syswm</title>
+<title>sdl_libname</title>
 <style type="text/css" >
 /*
 Stylesheet for use with Docutils/rst2html.
@@ -804,7 +804,7 @@ function main() {
 <body onload="main()">
 <div class="document" id="documentId">
   <div class="container">
-    <h1 class="title">sdl_syswm</h1>
+    <h1 class="title">sdl_libname</h1>
     <div class="row">
   <div class="three columns">
   <div id="global-links">
@@ -823,49 +823,25 @@ function main() {
     </select>
   </div>
   <ul class="simple simple-toc" id="toc-list">
-<li><a class="reference" id="syswmdotnim_toc" href="#syswmdotnim">syswm.nim</a></li>
 <li>
-  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
+  <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
-    
-  </ul>
-</li>
-<li>
-  <a class="reference reference-toplevel" href="#7" id="57">Types</a>
-  <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#SysWMKind"
-    title="SysWMKind {.size: 4.} = enum
-  SYSWM_UNKNOWN, SYSWM_WINDOWS, SYSWM_X11, SYSWM_DIRECTFB, SYSWM_COCOA, SYSWM_UIKIT,
-  SYSWM_WAYLAND, SYSWM_MIR, SYSWM_WINRT, SYSWM_ANDROID, SYSWM_VIVANTE, SYSWM_OS2,
-  SYSWM_HAIKU"><wbr />Sys<wbr />WMKind<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#SysWMMsgKindObj"
-    title="SysWMMsgKindObj = object
-  dummy*: cint"><wbr />Sys<wbr />WMMsg<wbr />Kind<wbr />Obj<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#SysWMMsg"
-    title="SysWMMsg = ptr SysWMMsgObj"><wbr />Sys<wbr />WMMsg<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#SysWMMsgObj"
-    title="SysWMMsgObj = object
-  version*: Version
-  subsystem*: SysWMKind
-  msg*: SysWMMsgKindObj"><wbr />Sys<wbr />WMMsg<wbr />Obj<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#SysWMinfoKindObj"
-    title="SysWMinfoKindObj = object
-  dummy*: array[64, uint8] ## \
-                        ## Make sure this union is always 64 bytes (8 64-bit pointers).
-                        ## Be careful not to overflow this if you add a new target!"><wbr />Sys<wbr />WMinfo<wbr />Kind<wbr />Obj<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#SysWMinfo"
-    title="SysWMinfo = object
-  version*: Version
-  subsystem*: SysWMKind
-  info*: SysWMinfoKindObj"><wbr />Sys<wbr />WMinfo<span class="attachedType"></span></a></li>
-
-  </ul>
-</li>
-<li>
-  <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
-  <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#getWindowWMInfo%2CWindow%2Cptr.SysWMinfo"
-    title="getWindowWMInfo(window: Window; info: ptr SysWMinfo): bool"><wbr />get<wbr />Window<wbr />WMInfo<span class="attachedType">SysWMinfo</span></a></li>
+      <li><a class="reference" href="#SDL2_LIB"
+    title="SDL2_LIB = &quot;libSDL2(|-2.0).so(|.0.10.0|.0)&quot;"><wbr />SDL2_<wbr />LIB<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#SDL2_GFX_LIB"
+    title="SDL2_GFX_LIB = &quot;libSDL2_gfx(|-1.0).so(|.0.0.2|.0)&quot;"><wbr />SDL2_<wbr />GFX_<wbr />LIB<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#SDL2_IMG_LIB"
+    title="SDL2_IMG_LIB = &quot;libSDL2_image(|-2.0).so(|.0.2.2|.0)&quot;"><wbr />SDL2_<wbr />IMG_<wbr />LIB<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#SDL2_MIX_LIB"
+    title="SDL2_MIX_LIB = &quot;libSDL2_mixer(|-2.0).so(|.0.2.2|.0)&quot;"><wbr />SDL2_<wbr />MIX_<wbr />LIB<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#SDL2_NET_LIB"
+    title="SDL2_NET_LIB = &quot;libSDL2_net(|-2.0).so(|.0.0.1|.0)&quot;"><wbr />SDL2_<wbr />NET_<wbr />LIB<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#SDL2_TTF_LIB"
+    title="SDL2_TTF_LIB = &quot;libSDL2_ttf(|-2.0).so(|.0.15.0|.0)&quot;"><wbr />SDL2_<wbr />TTF_<wbr />LIB<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#SDL2_GPU_LIB"
+    title="SDL2_GPU_LIB = &quot;libSDL2_gpu(|-2.0).so(|.0.11.0|.0)&quot;"><wbr />SDL2_<wbr />GPU_<wbr />LIB<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#SMPEG2_LIB"
+    title="SMPEG2_LIB = &quot;libsmpeg2(|-2.0).so(|.0.0.0|.0)&quot;"><wbr />SMPEG2_<wbr />LIB<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -876,100 +852,64 @@ function main() {
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   
-  <p class="module-desc">
-<h1><a class="toc-backref" id="syswmdotnim" href="#syswmdotnim">syswm.nim</a></h1><p>Include file for SDL custom system window manager hooks.</p>
-<p>Your application has access to a special type of event <tt class="docutils literal"><span class="pre">SYSWMEVENT</span></tt>, which contains window-manager specific information and arrives whenever an unhandled window event occurs.  This event is ignored by default, but you can enable it with <tt class="docutils literal"><span class="pre">eventState()</span></tt>.</p>
-</p>
-  <div class="section" id="6">
-<h1><a class="toc-backref" href="#6">Imports</a></h1>
+  <p class="module-desc"></p>
+  <div class="section" id="10">
+<h1><a class="toc-backref" href="#10">Consts</a></h1>
 <dl class="item">
-<a class="reference external" href="sdl.html">sdl</a>
-</dl></div>
-<div class="section" id="7">
-<h1><a class="toc-backref" href="#7">Types</a></h1>
-<dl class="item">
-<a id="SysWMKind"></a>
-<dt><pre><a href="sdl_syswm.html#SysWMKind"><span class="Identifier">SysWMKind</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">SYSWM_UNKNOWN</span><span class="Other">,</span> <span class="Identifier">SYSWM_WINDOWS</span><span class="Other">,</span> <span class="Identifier">SYSWM_X11</span><span class="Other">,</span> <span class="Identifier">SYSWM_DIRECTFB</span><span class="Other">,</span> <span class="Identifier">SYSWM_COCOA</span><span class="Other">,</span> <span class="Identifier">SYSWM_UIKIT</span><span class="Other">,</span>
-  <span class="Identifier">SYSWM_WAYLAND</span><span class="Other">,</span> <span class="Identifier">SYSWM_MIR</span><span class="Other">,</span> <span class="Identifier">SYSWM_WINRT</span><span class="Other">,</span> <span class="Identifier">SYSWM_ANDROID</span><span class="Other">,</span> <span class="Identifier">SYSWM_VIVANTE</span><span class="Other">,</span> <span class="Identifier">SYSWM_OS2</span><span class="Other">,</span>
-  <span class="Identifier">SYSWM_HAIKU</span></pre></dt>
-<dd>
-
-
-These are the various supported windowing subsystems
-
-</dd>
-<a id="SysWMMsgKindObj"></a>
-<dt><pre><a href="sdl_syswm.html#SysWMMsgKindObj"><span class="Identifier">SysWMMsgKindObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">dummy</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
-</pre></dt>
+<a id="SDL2_LIB"></a>
+<dt><pre><a href="sdl_libname.html#SDL2_LIB"><span class="Identifier">SDL2_LIB</span></a> <span class="Other">=</span> <span class="StringLit">&quot;libSDL2(|-2.0).so(|.0.10.0|.0)&quot;</span></pre></dt>
 <dd>
 
 
 
 </dd>
-<a id="SysWMMsg"></a>
-<dt><pre><a href="sdl_syswm.html#SysWMMsg"><span class="Identifier">SysWMMsg</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <a href="sdl_syswm.html#SysWMMsgObj"><span class="Identifier">SysWMMsgObj</span></a></pre></dt>
+<a id="SDL2_GFX_LIB"></a>
+<dt><pre><a href="sdl_libname.html#SDL2_GFX_LIB"><span class="Identifier">SDL2_GFX_LIB</span></a> <span class="Other">=</span> <span class="StringLit">&quot;libSDL2_gfx(|-1.0).so(|.0.0.2|.0)&quot;</span></pre></dt>
 <dd>
 
 
 
 </dd>
-<a id="SysWMMsgObj"></a>
-<dt><pre><a href="sdl_syswm.html#SysWMMsgObj"><span class="Identifier">SysWMMsgObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">version</span><span class="Operator">*</span><span class="Other">:</span> <a href="sdl.html#Version"><span class="Identifier">Version</span></a>
-  <span class="Identifier">subsystem</span><span class="Operator">*</span><span class="Other">:</span> <a href="sdl_syswm.html#SysWMKind"><span class="Identifier">SysWMKind</span></a>
-  <span class="Identifier">msg</span><span class="Operator">*</span><span class="Other">:</span> <a href="sdl_syswm.html#SysWMMsgKindObj"><span class="Identifier">SysWMMsgKindObj</span></a>
-</pre></dt>
-<dd>
-
-The custom event structure.
-
-</dd>
-<a id="SysWMinfoKindObj"></a>
-<dt><pre><a href="sdl_syswm.html#SysWMinfoKindObj"><span class="Identifier">SysWMinfoKindObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">dummy</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">64</span><span class="Other">,</span> <span class="Identifier">uint8</span><span class="Other">]</span> <span class="Comment">## \</span>
-                        <span class="Comment">## Make sure this union is always 64 bytes (8 64-bit pointers).</span>
-                        <span class="Comment">## Be careful not to overflow this if you add a new target!</span>
-  </pre></dt>
+<a id="SDL2_IMG_LIB"></a>
+<dt><pre><a href="sdl_libname.html#SDL2_IMG_LIB"><span class="Identifier">SDL2_IMG_LIB</span></a> <span class="Other">=</span> <span class="StringLit">&quot;libSDL2_image(|-2.0).so(|.0.2.2|.0)&quot;</span></pre></dt>
 <dd>
 
 
 
 </dd>
-<a id="SysWMinfo"></a>
-<dt><pre><a href="sdl_syswm.html#SysWMinfo"><span class="Identifier">SysWMinfo</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">version</span><span class="Operator">*</span><span class="Other">:</span> <a href="sdl.html#Version"><span class="Identifier">Version</span></a>
-  <span class="Identifier">subsystem</span><span class="Operator">*</span><span class="Other">:</span> <a href="sdl_syswm.html#SysWMKind"><span class="Identifier">SysWMKind</span></a>
-  <span class="Identifier">info</span><span class="Operator">*</span><span class="Other">:</span> <a href="sdl_syswm.html#SysWMinfoKindObj"><span class="Identifier">SysWMinfoKindObj</span></a>
-</pre></dt>
+<a id="SDL2_MIX_LIB"></a>
+<dt><pre><a href="sdl_libname.html#SDL2_MIX_LIB"><span class="Identifier">SDL2_MIX_LIB</span></a> <span class="Other">=</span> <span class="StringLit">&quot;libSDL2_mixer(|-2.0).so(|.0.2.2|.0)&quot;</span></pre></dt>
 <dd>
 
-<p>
-The custom window manager information structure.</p>
-<p>When this structure is returned, it holds information about which low level system it is using, and will be one of <tt class="docutils literal"><span class="pre">SysWMKind</span></tt>.</p>
 
 
 </dd>
-
-</dl></div>
-<div class="section" id="12">
-<h1><a class="toc-backref" href="#12">Procs</a></h1>
-<dl class="item">
-<a id="getWindowWMInfo,Window,ptr.SysWMinfo"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#getWindowWMInfo%2CWindow%2Cptr.SysWMinfo"><span class="Identifier">getWindowWMInfo</span></a><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <a href="sdl.html#Window"><span class="Identifier">Window</span></a><span class="Other">;</span> <span class="Identifier">info</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="sdl_syswm.html#SysWMinfo"><span class="Identifier">SysWMinfo</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetWindowWMInfo&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="SDL2_NET_LIB"></a>
+<dt><pre><a href="sdl_libname.html#SDL2_NET_LIB"><span class="Identifier">SDL2_NET_LIB</span></a> <span class="Other">=</span> <span class="StringLit">&quot;libSDL2_net(|-2.0).so(|.0.0.1|.0)&quot;</span></pre></dt>
 <dd>
 
-<p>This procedure allows access to driver-dependent window information.</p>
-<p><tt class="docutils literal"><span class="pre">window</span></tt> The window about which information is being requested</p>
-<p><tt class="docutils literal"><span class="pre">info</span></tt> This object must be initialized with the SDL version, and is then filled in with information about the given window.</p>
-<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">true</span></tt> if the procedure is implemented and the version member of the <tt class="docutils literal"><span class="pre">info</span></tt> object is valid, <tt class="docutils literal"><span class="pre">false</span></tt> otherwise.</p>
-<p>You typically use this procedure like this:</p>
-<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">info</span><span class="Punctuation">:</span> <span class="Identifier">SysWMinfo</span>
-<span class="Identifier">version</span><span class="Punctuation">(</span><span class="Identifier">info</span><span class="Operator">.</span><span class="Identifier">version</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
-<span class="Keyword">if</span> <span class="Identifier">getWindowWMInfo</span><span class="Punctuation">(</span><span class="Identifier">window</span><span class="Punctuation">,</span> <span class="Keyword">addr</span><span class="Punctuation">(</span><span class="Identifier">info</span><span class="Punctuation">)</span><span class="Punctuation">)</span><span class="StringLit">&quot;</span>
-  <span class="Operator">...</span></pre>
+
+
+</dd>
+<a id="SDL2_TTF_LIB"></a>
+<dt><pre><a href="sdl_libname.html#SDL2_TTF_LIB"><span class="Identifier">SDL2_TTF_LIB</span></a> <span class="Other">=</span> <span class="StringLit">&quot;libSDL2_ttf(|-2.0).so(|.0.15.0|.0)&quot;</span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="SDL2_GPU_LIB"></a>
+<dt><pre><a href="sdl_libname.html#SDL2_GPU_LIB"><span class="Identifier">SDL2_GPU_LIB</span></a> <span class="Other">=</span> <span class="StringLit">&quot;libSDL2_gpu(|-2.0).so(|.0.11.0|.0)&quot;</span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="SMPEG2_LIB"></a>
+<dt><pre><a href="sdl_libname.html#SMPEG2_LIB"><span class="Identifier">SMPEG2_LIB</span></a> <span class="Other">=</span> <span class="StringLit">&quot;libsmpeg2(|-2.0).so(|.0.0.0|.0)&quot;</span></pre></dt>
+<dd>
+
+
 
 </dd>
 
@@ -982,7 +922,7 @@ The custom window manager information structure.</p>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2020-03-12 15:02:34 UTC</small>
+        <small>Made with Nim. Generated: 2020-03-12 15:14:24 UTC</small>
       </div>
     </div>
   </div>

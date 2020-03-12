@@ -851,6 +851,12 @@ function main() {
                            ## dstRGB = srcRGB * dstRGB
                            ## 
                            ## dstA = dstA
+  BLENDMODE_MUL = 0x00000008,   ## \
+                           ## color multiply
+                           ## 
+                           ## dstRGB = (srcRGB * dstRGB) + (dstRGB * (1-srcA))
+                           ## 
+                           ## dstA = (srcA * dstA) + (dstA * (1-srcA))
   BLENDMODE_INVALID = 0x7FFFFFFF"><wbr />Blend<wbr />Mode<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#BlendOperation"
     title="BlendOperation {.size: 4.} = enum
@@ -927,6 +933,12 @@ function main() {
                            <span class="Comment">## dstRGB = srcRGB * dstRGB</span>
                            <span class="Comment">## </span>
                            <span class="Comment">## dstA = dstA</span>
+  <span class="Identifier">BLENDMODE_MUL</span> <span class="Other">=</span> <span class="DecNumber">0x00000008</span><span class="Other">,</span>   <span class="Comment">## \</span>
+                           <span class="Comment">## color multiply</span>
+                           <span class="Comment">## </span>
+                           <span class="Comment">## dstRGB = (srcRGB * dstRGB) + (dstRGB * (1-srcA))</span>
+                           <span class="Comment">## </span>
+                           <span class="Comment">## dstA = (srcA * dstA) + (dstA * (1-srcA))</span>
   <span class="Identifier">BLENDMODE_INVALID</span> <span class="Other">=</span> <span class="DecNumber">0x7FFFFFFF</span></pre></dt>
 <dd>
 
@@ -1011,7 +1023,7 @@ The normalized factor used to multiply pixel components.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2019-07-27 12:00:37 UTC</small>
+        <small>Made with Nim. Generated: 2020-03-12 15:14:19 UTC</small>
       </div>
     </div>
   </div>

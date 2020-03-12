@@ -829,6 +829,10 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#GameController"
     title="GameController = pointer"><wbr />Game<wbr />Controller<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#GameControllerType"
+    title="GameControllerType {.size: 4.} = enum
+  CONTROLLER_TYPE_UNKNOWN = 0, CONTROLLER_TYPE_XBOX360, CONTROLLER_TYPE_XBOXONE,
+  CONTROLLER_TYPE_PS3, CONTROLLER_TYPE_PS4, CONTROLLER_TYPE_NINTENDO_SWITCH_PRO"><wbr />Game<wbr />Controller<wbr />Type<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#GameControllerBindType"
     title="GameControllerBindType {.size: 4.} = enum
   CONTROLLER_BINDTYPE_NONE = 0, CONTROLLER_BINDTYPE_BUTTON,
@@ -884,16 +888,24 @@ function main() {
     title="isGameController(joystick_index: cint): bool"><wbr />is<wbr />Game<wbr />Controller<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#gameControllerNameForIndex%2Ccint"
     title="gameControllerNameForIndex(joystick_index: cint): cstring"><wbr />game<wbr />Controller<wbr />Name<wbr />For<wbr />Index<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gameControllerTypeForIndex%2Ccint"
+    title="gameControllerTypeForIndex(joystick_index: cint): GameControllerType"><wbr />game<wbr />Controller<wbr />Type<wbr />For<wbr />Index<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#gameControllerMappingForDeviceIndex%2Ccint"
     title="gameControllerMappingForDeviceIndex(joystick_index: cint): cstring"><wbr />game<wbr />Controller<wbr />Mapping<wbr />For<wbr />Device<wbr />Index<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#gameControllerOpen%2Ccint"
     title="gameControllerOpen(joystick_index: cint): GameController"><wbr />game<wbr />Controller<wbr />Open<span class="attachedType">GameController</span></a></li>
   <li><a class="reference" href="#gameControllerFromInstanceID%2CJoystickID"
     title="gameControllerFromInstanceID(joyid: JoystickID): GameController"><wbr />game<wbr />Controller<wbr />From<wbr />Instance<wbr />ID<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerFromPlayerIndex%2Ccint"
+    title="gameControllerFromPlayerIndex(player_index: cint): GameController"><wbr />game<wbr />Controller<wbr />From<wbr />Player<wbr />Index<span class="attachedType">GameController</span></a></li>
   <li><a class="reference" href="#gameControllerName%2CGameController"
     title="gameControllerName(gamecontroller: GameController): cstring"><wbr />game<wbr />Controller<wbr />Name<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerGetType%2CGameController"
+    title="gameControllerGetType(gamecontroller: GameController): GameControllerType"><wbr />game<wbr />Controller<wbr />Get<wbr />Type<span class="attachedType">GameController</span></a></li>
   <li><a class="reference" href="#gameControllerGetPlayerIndex%2CGameController"
     title="gameControllerGetPlayerIndex(gamecontroller: GameController): cint"><wbr />game<wbr />Controller<wbr />Get<wbr />Player<wbr />Index<span class="attachedType">GameController</span></a></li>
+  <li><a class="reference" href="#gameControllerSetPlayerIndex%2CGameController%2Ccint"
+    title="gameControllerSetPlayerIndex(gamecontroller: GameController; player_index: cint)"><wbr />game<wbr />Controller<wbr />Set<wbr />Player<wbr />Index<span class="attachedType">GameController</span></a></li>
   <li><a class="reference" href="#gameControllerGetVendor%2CGameController"
     title="gameControllerGetVendor(gamecontroller: GameController): uint16"><wbr />game<wbr />Controller<wbr />Get<wbr />Vendor<span class="attachedType">GameController</span></a></li>
   <li><a class="reference" href="#gameControllerGetProduct%2CGameController"
@@ -981,6 +993,15 @@ To count the number of game controllers in the system for the following:<pre cla
 
 
 The gamecontroller structure used to identify an SDL game controller.
+
+</dd>
+<a id="GameControllerType"></a>
+<dt><pre><a href="gamecontroller.html#GameControllerType"><span class="Identifier">GameControllerType</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">CONTROLLER_TYPE_UNKNOWN</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_TYPE_XBOX360</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_TYPE_XBOXONE</span><span class="Other">,</span>
+  <span class="Identifier">CONTROLLER_TYPE_PS3</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_TYPE_PS4</span><span class="Other">,</span> <span class="Identifier">CONTROLLER_TYPE_NINTENDO_SWITCH_PRO</span></pre></dt>
+<dd>
+
+
 
 </dd>
 <a id="GameControllerBindType"></a>
@@ -1141,6 +1162,16 @@ Is the joystick on this index supported by the game controller interface?
 
 
 </dd>
+<a id="gameControllerTypeForIndex,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerTypeForIndex%2Ccint"><span class="Identifier">gameControllerTypeForIndex</span></a><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerType"><span class="Identifier">GameControllerType</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerTypeForIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Get the type of a game controller.</p>
+<p>This can be called before any controllers are opened.</p>
+
+
+</dd>
 <a id="gameControllerMappingForDeviceIndex,cint"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#gameControllerMappingForDeviceIndex%2Ccint"><span class="Identifier">gameControllerMappingForDeviceIndex</span></a><span class="Other">(</span><span class="Identifier">joystick_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerMappingForDeviceIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
@@ -1172,12 +1203,28 @@ Is the joystick on this index supported by the game controller interface?
 <tt class="docutils literal"><span class="pre">Return</span></tt> the <tt class="docutils literal"><span class="pre">GameController</span></tt> associated with an instance id.
 
 </dd>
+<a id="gameControllerFromPlayerIndex,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerFromPlayerIndex%2Ccint"><span class="Identifier">gameControllerFromPlayerIndex</span></a><span class="Other">(</span><span class="Identifier">player_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerFromPlayerIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<tt class="docutils literal"><span class="pre">Return</span></tt> the <tt class="docutils literal"><span class="pre">GameController</span></tt> associated with a player index.
+
+</dd>
 <a id="gameControllerName,GameController"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#gameControllerName%2CGameController"><span class="Identifier">gameControllerName</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerName&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <tt class="docutils literal"><span class="pre">Return</span></tt> the name for this currently opened controller.
+
+</dd>
+<a id="gameControllerGetType,GameController"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerGetType%2CGameController"><span class="Identifier">gameControllerGetType</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">)</span><span class="Other">:</span> <a href="gamecontroller.html#GameControllerType"><span class="Identifier">GameControllerType</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerGetType&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<tt class="docutils literal"><span class="pre">Return</span></tt> the type of this currently opened controller.
 
 </dd>
 <a id="gameControllerGetPlayerIndex,GameController"></a>
@@ -1187,6 +1234,15 @@ Is the joystick on this index supported by the game controller interface?
 
 Get the player index of an opened game controller, or <tt class="docutils literal"><span class="pre">-1</span></tt> if it's not available.<blockquote><p>For XInput controllers this returns the XInput user index.</p></blockquote>
 
+
+</dd>
+<a id="gameControllerSetPlayerIndex,GameController,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gameControllerSetPlayerIndex%2CGameController%2Ccint"><span class="Identifier">gameControllerSetPlayerIndex</span></a><span class="Other">(</span><span class="Identifier">gamecontroller</span><span class="Other">:</span> <a href="gamecontroller.html#GameController"><span class="Identifier">GameController</span></a><span class="Other">;</span>
+                                 <span class="Identifier">player_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GameControllerSetPlayerIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Set the player index of an opened game controller.
 
 </dd>
 <a id="gameControllerGetVendor,GameController"></a>
@@ -1371,7 +1427,7 @@ filtered by the current <tt class="docutils literal"><span class="pre">getPlatfo
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2019-07-27 12:00:38 UTC</small>
+        <small>Made with Nim. Generated: 2020-03-12 15:14:20 UTC</small>
       </div>
     </div>
   </div>

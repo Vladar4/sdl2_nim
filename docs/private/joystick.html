@@ -895,7 +895,9 @@ function main() {
   <li><a class="reference" href="#joystickOpen%2Ccint"
     title="joystickOpen(device_index: cint): Joystick"><wbr />joystick<wbr />Open<span class="attachedType">Joystick</span></a></li>
   <li><a class="reference" href="#joystickFromInstanceID%2CJoystickID"
-    title="joystickFromInstanceID(joyid: JoystickID): Joystick"><wbr />joystick<wbr />From<wbr />Instance<wbr />ID<span class="attachedType">JoystickID</span></a></li>
+    title="joystickFromInstanceID(instance_id: JoystickID): Joystick"><wbr />joystick<wbr />From<wbr />Instance<wbr />ID<span class="attachedType">JoystickID</span></a></li>
+  <li><a class="reference" href="#joystickFromPlayerIndex%2Ccint"
+    title="joystickFromPlayerIndex(player_index: cint): Joystick"><wbr />joystick<wbr />From<wbr />Player<wbr />Index<span class="attachedType">Joystick</span></a></li>
   <li><a class="reference" href="#joystickName%2CJoystick"
     title="joystickName(joystick: Joystick): cstring"><wbr />joystick<wbr />Name<span class="attachedType">Joystick</span></a></li>
   <li><a class="reference" href="#joystickGetPlayerIndex%2CJoystick"
@@ -1168,11 +1170,19 @@ Get the player index of a joystick, or <tt class="docutils literal"><span class=
 
 </dd>
 <a id="joystickFromInstanceID,JoystickID"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#joystickFromInstanceID%2CJoystickID"><span class="Identifier">joystickFromInstanceID</span></a><span class="Other">(</span><span class="Identifier">joyid</span><span class="Other">:</span> <a href="joystick.html#JoystickID"><span class="Identifier">JoystickID</span></a><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickFromInstanceID%2CJoystickID"><span class="Identifier">joystickFromInstanceID</span></a><span class="Other">(</span><span class="Identifier">instance_id</span><span class="Other">:</span> <a href="joystick.html#JoystickID"><span class="Identifier">JoystickID</span></a><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickFromInstanceID&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <tt class="docutils literal"><span class="pre">Return</span></tt> the <tt class="docutils literal"><span class="pre">Joystick</span></tt> associated with an instance id.
+
+</dd>
+<a id="joystickFromPlayerIndex,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#joystickFromPlayerIndex%2Ccint"><span class="Identifier">joystickFromPlayerIndex</span></a><span class="Other">(</span><span class="Identifier">player_index</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="joystick.html#Joystick"><span class="Identifier">Joystick</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_JoystickFromPlayerIndex&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<tt class="docutils literal"><span class="pre">Return</span></tt> the <tt class="docutils literal"><span class="pre">Joystick</span></tt> associated with a player index.
 
 </dd>
 <a id="joystickName,Joystick"></a>
@@ -1428,7 +1438,7 @@ Return the battery level of this <tt class="docutils literal"><span class="pre">
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2019-07-27 12:00:39 UTC</small>
+        <small>Made with Nim. Generated: 2020-03-12 15:14:21 UTC</small>
       </div>
     </div>
   </div>

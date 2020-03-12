@@ -1112,7 +1112,8 @@ function main() {
   y*: cfloat                   ## Normalized in the range 0...1
   dx*: cfloat                  ## Normalized in the range -1...1
   dy*: cfloat                  ## Normalized in the range -1...1
-  pressure*: cfloat            ## Normalized in the range 0...1"><wbr />Touch<wbr />Finger<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
+  pressure*: cfloat            ## Normalized in the range 0...1
+  windowID*: uint32            ## The window underneath the finger, if any"><wbr />Touch<wbr />Finger<wbr />Event<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#MultiGestureEventObj"
     title="MultiGestureEventObj = object
   kind*: EventKind             ## `MULTIGESTURE`
@@ -1730,6 +1731,7 @@ Audio device event structure (<tt class="docutils literal"><span class="pre">eve
   <span class="Identifier">dx</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>                  <span class="Comment">## Normalized in the range -1...1</span>
   <span class="Identifier">dy</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>                  <span class="Comment">## Normalized in the range -1...1</span>
   <span class="Identifier">pressure</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cfloat</span>            <span class="Comment">## Normalized in the range 0...1</span>
+  <span class="Identifier">windowID</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint32</span>            <span class="Comment">## The window underneath the finger, if any</span>
   </pre></dt>
 <dd>
 
@@ -2205,7 +2207,7 @@ Convert an array of char to a proper string.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2019-07-27 12:00:38 UTC</small>
+        <small>Made with Nim. Generated: 2020-03-12 15:14:20 UTC</small>
       </div>
     </div>
   </div>

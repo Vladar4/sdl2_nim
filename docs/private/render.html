@@ -835,6 +835,11 @@ function main() {
   texture_formats*: array[16, uint32] ## The available texture formats
   max_texture_width*: cint     ## The maximum texture width
   max_texture_height*: cint    ## The maximum texture height"><wbr />Renderer<wbr />Info<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#ScaleMode"
+    title="ScaleMode {.size: 4.} = enum
+  ScaleModeNearest,           ## Nearest pixel sampling
+  ScaleModeLinear,            ## Linear filtering
+  ScaleModeBest               ## Anisotropic filtering"><wbr />Scale<wbr />Mode<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#TextureAccess"
     title="TextureAccess {.size: 4.} = enum
   TEXTUREACCESS_STATIC = 0x00000000, ## Changes rarely, not lockable
@@ -912,6 +917,10 @@ function main() {
     title="setTextureBlendMode(texture: Texture; blendMode: BlendMode): cint"><wbr />set<wbr />Texture<wbr />Blend<wbr />Mode<span class="attachedType">Texture</span></a></li>
   <li><a class="reference" href="#getTextureBlendMode%2CTexture%2Cptr.BlendMode"
     title="getTextureBlendMode(texture: Texture; blendMode: ptr BlendMode): cint"><wbr />get<wbr />Texture<wbr />Blend<wbr />Mode<span class="attachedType">Texture</span></a></li>
+  <li><a class="reference" href="#setTextureScaleMode%2CTexture%2CScaleMode"
+    title="setTextureScaleMode(texture: Texture; scaleMode: ScaleMode): cint"><wbr />set<wbr />Texture<wbr />Scale<wbr />Mode<span class="attachedType">Texture</span></a></li>
+  <li><a class="reference" href="#getTextureScaleMode%2CTexture%2Cptr.ScaleMode"
+    title="getTextureScaleMode(texture: Texture; scaleMode: ptr ScaleMode): cint"><wbr />get<wbr />Texture<wbr />Scale<wbr />Mode<span class="attachedType">Texture</span></a></li>
   <li><a class="reference" href="#updateTexture%2CTexture%2Cptr.Rect%2Cpointer%2Ccint"
     title="updateTexture(texture: Texture; rect: ptr Rect; pixels: pointer; pitch: cint): cint"><wbr />update<wbr />Texture<span class="attachedType">Texture</span></a></li>
   <li><a class="reference" href="#updateYUVTexture%2CTexture%2Cptr.Rect%2Cptr.uint8%2Ccint%2Cptr.uint8%2Ccint%2Cptr.uint8%2Ccint"
@@ -919,6 +928,8 @@ function main() {
                  uPlane: ptr uint8; uPitch: cint; vPlane: ptr uint8; vPitch: cint): cint"><wbr />update<wbr />YUVTexture<span class="attachedType">Texture</span></a></li>
   <li><a class="reference" href="#lockTexture%2CTexture%2Cptr.Rect%2Cptr.pointer%2Cptr.cint"
     title="lockTexture(texture: Texture; rect: ptr Rect; pixels: ptr pointer; pitch: ptr cint): cint"><wbr />lock<wbr />Texture<span class="attachedType">Texture</span></a></li>
+  <li><a class="reference" href="#lockTextureToSurface%2CTexture%2Cptr.Rect%2Cptr.Surface"
+    title="lockTextureToSurface(texture: Texture; rect: ptr Rect; surface: ptr Surface): cint"><wbr />lock<wbr />Texture<wbr />To<wbr />Surface<span class="attachedType">Texture</span></a></li>
   <li><a class="reference" href="#unlockTexture%2CTexture"
     title="unlockTexture(texture: Texture)"><wbr />unlock<wbr />Texture<span class="attachedType">Texture</span></a></li>
   <li><a class="reference" href="#renderTargetSupported%2CRenderer"
@@ -1078,6 +1089,17 @@ This API supports the following features:<ul class="simple"><li>single pixel poi
 
 
 Information on the capabilities of a render driver or context
+
+</dd>
+<a id="ScaleMode"></a>
+<dt><pre><a href="render.html#ScaleMode"><span class="Identifier">ScaleMode</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">ScaleModeNearest</span><span class="Other">,</span>           <span class="Comment">## Nearest pixel sampling</span>
+  <span class="Identifier">ScaleModeLinear</span><span class="Other">,</span>            <span class="Comment">## Linear filtering</span>
+  <span class="Identifier">ScaleModeBest</span>               <span class="Comment">## Anisotropic filtering</span></pre></dt>
+<dd>
+
+
+The scaling mode for a texture
 
 </dd>
 <a id="TextureAccess"></a>
@@ -1412,6 +1434,35 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
+<a id="setTextureScaleMode,Texture,ScaleMode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setTextureScaleMode%2CTexture%2CScaleMode"><span class="Identifier">setTextureScaleMode</span></a><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <a href="render.html#Texture"><span class="Identifier">Texture</span></a><span class="Other">;</span> <span class="Identifier">scaleMode</span><span class="Other">:</span> <a href="render.html#ScaleMode"><span class="Identifier">ScaleMode</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetTextureScaleMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Set the scale mode used for texture scale operations.</p>
+<p><tt class="docutils literal"><span class="pre">texture</span></tt> The texture to update.</p>
+<p><tt class="docutils literal"><span class="pre">scaleMode</span></tt> <tt class="docutils literal"><span class="pre">sdl.ScaleMode</span></tt> to use for texture scaling.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt> on success, or <tt class="docutils literal"><span class="pre">-1</span></tt> if the texture is not valid.</p>
+<p><tt class="docutils literal"><span class="pre">Note:</span></tt> If the scale mode is not supported, the closest supported mode is chosen.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">getTextureScaleMode()</span></tt></p>
+
+
+</dd>
+<a id="getTextureScaleMode,Texture,ptr.ScaleMode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#getTextureScaleMode%2CTexture%2Cptr.ScaleMode"><span class="Identifier">getTextureScaleMode</span></a><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <a href="render.html#Texture"><span class="Identifier">Texture</span></a><span class="Other">;</span> <span class="Identifier">scaleMode</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="render.html#ScaleMode"><span class="Identifier">ScaleMode</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetTextureScaleMode&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Get the scale mode used for texture scale operations.</p>
+<p><tt class="docutils literal"><span class="pre">texture</span></tt> The texture to query.</p>
+<p><tt class="docutils literal"><span class="pre">scaleMode</span></tt> A pointer filled in with the current scale mode.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt> on success, or <tt class="docutils literal"><span class="pre">-1</span></tt> if the texture is not valid.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">setTextureScaleMode()</span></tt></p>
+
+
+</dd>
 <a id="updateTexture,Texture,ptr.Rect,pointer,cint"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#updateTexture%2CTexture%2Cptr.Rect%2Cpointer%2Ccint"><span class="Identifier">updateTexture</span></a><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <a href="render.html#Texture"><span class="Identifier">Texture</span></a><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">pixels</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">pitch</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UpdateTexture&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
@@ -1464,14 +1515,31 @@ Get the output size in pixels of a rendering context.
 
 
 </dd>
+<a id="lockTextureToSurface,Texture,ptr.Rect,ptr.Surface"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#lockTextureToSurface%2CTexture%2Cptr.Rect%2Cptr.Surface"><span class="Identifier">lockTextureToSurface</span></a><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <a href="render.html#Texture"><span class="Identifier">Texture</span></a><span class="Other">;</span> <span class="Identifier">rect</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Rect</span><span class="Other">;</span> <span class="Identifier">surface</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">Surface</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LockTextureToSurface&quot;</span><span class="Other">,</span> <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Lock a portion of the texture for write-only pixel access. Expose it as a SDL surface.</p>
+<p><tt class="docutils literal"><span class="pre">texture</span></tt> The texture to lock for access, which was created with <tt class="docutils literal"><span class="pre">TEXTUREACCESS_STREAMING</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">rect</span></tt>  A pointer to the rectangle to lock for access. If the rect is <tt class="docutils literal"><span class="pre">nil</span></tt>, the entire texture will be locked.</p>
+<p><tt class="docutils literal"><span class="pre">surface</span></tt> This is filled in with a SDL surface representing the locked area.</p>
+<p>Surface is freed internally after calling <tt class="docutils literal"><span class="pre">sdl.unlockTexture()</span></tt> or <tt class="docutils literal"><span class="pre">sdl.destroyTexture()</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">Return</span></tt> <tt class="docutils literal"><span class="pre">0</span></tt> on success, or <tt class="docutils literal"><span class="pre">-1</span></tt> if the texture is not valid or was not created with <tt class="docutils literal"><span class="pre">TEXTUREACCESS_STREAMING</span></tt>.</p>
+<p>See also:</p>
+<p><tt class="docutils literal"><span class="pre">unlockTexture()</span></tt></p>
+
+
+</dd>
 <a id="unlockTexture,Texture"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#unlockTexture%2CTexture"><span class="Identifier">unlockTexture</span></a><span class="Other">(</span><span class="Identifier">texture</span><span class="Other">:</span> <a href="render.html#Texture"><span class="Identifier">Texture</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_UnlockTexture&quot;</span><span class="Other">,</span>
                                     <span class="Identifier">dynlib</span><span class="Other">:</span> <span class="Identifier">SDL2_LIB</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Unlock a texture, uploading the changes to video memory, if needed.</p>
+<p>If <tt class="docutils literal"><span class="pre">lockTextureToSurface()</span></tt> was called for locking, the SDL surface is freed.</p>
 <p>See also:</p>
-<p><tt class="docutils literal"><span class="pre">lockTexture()</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">lockTexture()</span></tt> <tt class="docutils literal"><span class="pre">lockTextureToSurface()</span></tt></p>
 
 
 </dd>
@@ -1621,7 +1689,7 @@ Get the output size in pixels of a rendering context.
 
 <p>Get the clip rectangle for the current target.</p>
 <p><tt class="docutils literal"><span class="pre">renderer</span></tt> The renderer from which clip rectangle should be queried.</p>
-<p><tt class="docutils literal"><span class="pre">rect</span></tt> A pointer filled in with the current clip rectangle, or an empty rectangle if clipping is disabled.</p>
+<p><tt class="docutils literal"><span class="pre">rect</span></tt> A pointer filled in with the current clip rectangle, relative to the viewport, or <tt class="docutils literal"><span class="pre">nil</span></tt> to disable clipping.</p>
 <p>See also:</p>
 <p><tt class="docutils literal"><span class="pre">renderSetClipRect()</span></tt></p>
 
@@ -2166,7 +2234,7 @@ Update the screen with rendering performed.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2019-07-27 12:00:41 UTC</small>
+        <small>Made with Nim. Generated: 2020-03-12 15:14:23 UTC</small>
       </div>
     </div>
   </div>
