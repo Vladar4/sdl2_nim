@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2020 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -189,6 +189,8 @@ const
       PACKEDORDER_XRGB, PACKEDLAYOUT_332, 8, 1)
   PIXELFORMAT_RGB444* = definePixelFormat(PIXELTYPE_PACKED16,
       PACKEDORDER_XRGB, PACKEDLAYOUT_4444, 12, 2)
+  PIXELFORMAT_BGR444* = definePixelFormat(PIXELTYPE_PACKED16,
+      PACKEDORDER_XBGR, PACKEDLAYOUT_4444, 12, 2)
   PIXELFORMAT_RGB555* = definePixelFormat(PIXELTYPE_PACKED16,
       PACKEDORDER_XRGB, PACKEDLAYOUT_1555, 15, 2)
   PIXELFORMAT_BGR555* = definePixelFormat(PIXELTYPE_PACKED16,

@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2020 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -154,6 +154,24 @@ const
     ##  By default SDL will disable the screensaver.
 
 const
+  HINT_VIDEO_EXTERNAL_CONTEXT* = "SDL_VIDEO_EXTERNAL_CONTEXT" ##  \
+    ##  A variable controlling whether the graphics context
+    ##  is externally managed.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - SDL will manage graphics contexts
+    ##    that are attached to windows.
+    ##  *  "1"      - Disable graphics context management on windows.
+    ##
+    ##  By default SDL will manage OpenGL contexts in certain situations.
+    ##  For example, on Android the context will be automatically saved and
+    ##  restored when pausing the application. Additionally, some platforms will
+    ##  assume usage of OpenGL if Vulkan isn't used. Setting this to "1" will
+    ##  prevent this behavior, which is desireable when the application manages
+    ##  the graphics context, such as an externally managed OpenGL context or
+    ##  attaching a Vulkan surface to the window.
+
+const
   HINT_VIDEO_X11_XVIDMODE* = "SDL_VIDEO_X11_XVIDMODE" ##  \
     ##  A variable controlling whether the X11 VidMode extension
     ##  should be used.
@@ -187,6 +205,10 @@ const
     ##  By default SDL will not use XRandR because of window manager issues.
 
 const
+  HINT_VIDEO_X11_WINDOW_VISUALID* = "SDL_VIDEO_X11_WINDOW_VISUALID" ##  \
+    ##  A variable forcing the visual ID chosen for new X11 windows.
+
+const
   HINT_VIDEO_X11_NET_WM_PING* = "SDL_VIDEO_X11_NET_WM_PING" ##  \
     ##  A variable controlling whether the X11 _NET_WM_PING protocol
     ##  should be supported.
@@ -213,6 +235,16 @@ const
     ##  * "1" - Enable _NET_WM_BYPASS_COMPOSITOR
     ##
     ##  By default SDL will use _NET_WM_BYPASS_COMPOSITOR.
+
+const
+  HINT_VIDEO_X11_FORCE_EGL* = "SDL_VIDEO_X11_FORCE_EGL" ##  \
+    ##  A variable controlling whether X11 should use GLX or EGL by default.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0" - Use GLX
+    ##  * "1" - Use EGL
+    ##
+    ##  By default SDL will use GLX when both are present.
 
 const
   HINT_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN* =
@@ -426,7 +458,8 @@ const
     ##  * "1"       - Enable XInput detection (the default)
 
 const
-  HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING* = "SDL_XINPUT_USE_OLD_JOYSTICK_MAPPING"  ##  \
+  HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING* =
+    "SDL_XINPUT_USE_OLD_JOYSTICK_MAPPING"  ##  \
     ## A variable that causes SDL to use the old axis and button mapping for
     ## XInput devices.
     ##
@@ -434,6 +467,27 @@ const
     ##  SDL 2.1.
     ##
     ##  The default value is `0`.  This hint must be set before ``sdl.init()``.
+
+const
+  HINT_GAMECONTROLLERTYPE* = "SDL_GAMECONTROLLERTYPE" ##  \
+    ##  A variable that overrides the automatic controller type detection.
+    ##
+    ##  The variable should be comma separated entries,
+    ##  in the form: VID/PID=type
+    ##
+    ##  The VID and PID should be hexadecimal with exactly 4 digits,
+    ##  e.g. 0x00fd
+    ##
+    ##  The type should be one of:
+    ##  * Xbox360
+    ##  * XboxOne
+    ##  * PS3
+    ##  * PS4
+    ##  * SwitchPro
+    ##
+    ##  This hint affects what driver is used, and must be set before calling
+    ##  ``sdl.init(sdl.INIT_GAMECONTROLLER)``.
+
 
 const
   HINT_GAMECONTROLLERCONFIG* = "SDL_GAMECONTROLLERCONFIG" ##  \
@@ -488,6 +542,35 @@ const
     ##
     ##  The variable can also take the form of @file, in which case the named
     ##  file will be loaded and interpreted as the value of the variable.
+
+const
+  HINT_GAMECONTROLLER_USE_BUTTON_LABELS* =
+    "SDL_GAMECONTROLLER_USE_BUTTON_LABELS"  ##  \
+    ##  If set, game controller face buttons report their values according to
+    ##  their labels instead of their positional layout.
+    ##
+    ##  For example, on Nintendo Switch controllers, normally you'd get:
+    ##
+    ##  ::
+    ##
+    ##        (Y)
+    ##    (X)     (B)
+    ##        (A)
+    ##
+    ##  but if this hint is set, you'll get:
+    ##
+    ##  ::
+    ##
+    ##        (X)
+    ##    (Y)     (A)
+    ##        (B)
+    ##
+    ##  The variable can be set to the following values:
+    ##  * "0"     - Report the face buttons by position,
+    ##    as though they were on an Xbox controller.
+    ##  * "1"     - Report the face buttons by label instead of position
+    ##
+    ##  The default value is "1".  This hint may be set at any time.
 
 const
   HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS* =
@@ -567,6 +650,17 @@ const
   HINT_JOYSTICK_HIDAPI_XBOX* = "SDL_JOYSTICK_HIDAPI_XBOX" ##  \
     ##  A variable controlling whether the HIDAPI driver
     ##  for XBox controllers should be used.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - HIDAPI driver is not used
+    ##  * "1"       - HIDAPI driver is used
+    ##
+    ##  The default is the value of `HINT_JOYSTICK_HIDAPI`.
+
+const
+  HINT_JOYSTICK_HIDAPI_GAMECUBE* = "SDL_JOYSTICK_HIDAPI_GAMECUBE" ##  \
+    ##  A variable controlling whether the HIDAPI driver
+    ##  for Nintendo GameCube controllers should be used.
     ##
     ##  This variable can be set to the following values:
     ##  * "0"       - HIDAPI driver is not used
@@ -1039,7 +1133,7 @@ const
     ##  The default is `10000`.
 
 const
-  HINT_VIDEO_DOUBLE_BUFFER* = "SDL_VIDEO_DOUBLE_BUFFER"
+  HINT_VIDEO_DOUBLE_BUFFER* = "SDL_VIDEO_DOUBLE_BUFFER" ##  \
     ##  Tell the video driver that we only want a double buffer.
     ##
     ##  By default, most lowlevel 2D APIs will use a triple buffer scheme that
@@ -1173,7 +1267,7 @@ const
     ##  events for a small subset of program execution.
 
 const
-  HINT_WAVE_RIFF_CHUNK_SIZE* = "SDL_WAVE_RIFF_CHUNK_SIZE"
+  HINT_WAVE_RIFF_CHUNK_SIZE* = "SDL_WAVE_RIFF_CHUNK_SIZE" ##  \
     ##  Controls how the size of the RIFF chunk
     ##  affects the loading of a WAVE file.
     ##
@@ -1200,7 +1294,7 @@ const
     ##    (not recommended)
 
 const
-  HINT_WAVE_TRUNCATION* = "SDL_WAVE_TRUNCATION"
+  HINT_WAVE_TRUNCATION* = "SDL_WAVE_TRUNCATION" ##  \
     ##  Controls how a truncated WAVE file is handled.
     ##
     ##  A WAVE file is considered truncated if any of the chunks are incomplete
@@ -1217,7 +1311,7 @@ const
     ##  * "dropblock"  - Decode until the first incomplete block (default)
 
 const
-  HINT_WAVE_FACT_CHUNK* = "SDL_WAVE_FACT_CHUNK"
+  HINT_WAVE_FACT_CHUNK* = "SDL_WAVE_FACT_CHUNK" ##  \
     ##  Controls how the fact chunk affects the loading of a WAVE file.
     ##
     ##  The fact chunk stores information about the number of samples of a WAVE
@@ -1241,6 +1335,20 @@ const
     ##  * "ignorezero"  - Like "truncate", but ignore fact chunk if the number
     ##    of samples is zero
     ##  * "ignore"      - Ignore fact chunk entirely (default)
+
+const
+  HINT_DISPLAY_USABLE_BOUNDS* = "SDL_DISPLAY_USABLE_BOUNDS" ##  \
+    ##  Override for ``sdl.getDisplayUsableBounds()``.
+    ##
+    ##  If set, this hint will override the expected results for
+    ##  ``sdl.getDisplayUsableBounds()`` for display index `0`.
+    ##  Generally you don't want to do this, but this allows an embedded system
+    ##  to request that some of the screen be reserved for other uses when
+    ##  paired with a well-behaved application.
+    ##
+    ##  The contents of this hint must be 4 comma-separated integers,
+    ##  the first is the bounds ``x``, then ``y``, ``width`` and ``height``,
+    ##  in that order.
 
 
 type

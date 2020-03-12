@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2020 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -36,11 +36,20 @@ type
   GameController* = pointer ##  \
     ##  The gamecontroller structure used to identify an SDL game controller.
 
+  GameControllerType* {.size: sizeof(cint).} = enum
+    CONTROLLER_TYPE_UNKNOWN = 0,
+    CONTROLLER_TYPE_XBOX360,
+    CONTROLLER_TYPE_XBOXONE,
+    CONTROLLER_TYPE_PS3,
+    CONTROLLER_TYPE_PS4,
+    CONTROLLER_TYPE_NINTENDO_SWITCH_PRO
+
   GameControllerBindType* {.size: sizeof(cint).} = enum
     CONTROLLER_BINDTYPE_NONE = 0,
     CONTROLLER_BINDTYPE_BUTTON,
     CONTROLLER_BINDTYPE_AXIS,
     CONTROLLER_BINDTYPE_HAT
+
 type
   GameControllerButtonBindValueHat* = object
     hat*: cint
@@ -158,6 +167,12 @@ proc gameControllerNameForIndex*(joystick_index: cint): cstring {.
   ##  This can be called before any controllers are opened.
   ##  If no name can be found, this procedure returns `nil`.
 
+proc gameControllerTypeForIndex*(joystick_index: cint): GameControllerType {.
+    cdecl, importc: "SDL_GameControllerTypeForIndex", dynlib: SDL2_LIB.}
+  ##  Get the type of a game controller.
+  ##
+  ##  This can be called before any controllers are opened.
+
 proc gameControllerMappingForDeviceIndex*(joystick_index: cint): cstring {.
     cdecl, importc: "SDL_GameControllerMappingForDeviceIndex", dynlib: SDL2_LIB.}
   ##  Get the mapping of a game controller.
@@ -185,9 +200,17 @@ proc gameControllerFromInstanceID*(joyid: JoystickID): GameController {.
     cdecl, importc: "SDL_GameControllerFromInstanceID", dynlib: SDL2_LIB.}
   ##  ``Return`` the ``GameController`` associated with an instance id.
 
+proc gameControllerFromPlayerIndex*(player_index: cint): GameController {.
+    cdecl, importc: "SDL_GameControllerFromPlayerIndex", dynlib: SDL2_LIB.}
+  ##  ``Return`` the ``GameController`` associated with a player index.
+
 proc gameControllerName*(gamecontroller: GameController): cstring {.
     cdecl, importc: "SDL_GameControllerName", dynlib: SDL2_LIB.}
   ##  ``Return`` the name for this currently opened controller.
+
+proc gameControllerGetType*(gamecontroller: GameController): GameControllerType {.
+    cdecl, importc: "SDL_GameControllerGetType", dynlib: SDL2_LIB.}
+  ##  ``Return`` the type of this currently opened controller.
 
 proc gameControllerGetPlayerIndex*(gamecontroller: GameController): cint {.
     cdecl, importc: "SDL_GameControllerGetPlayerIndex", dynlib: SDL2_LIB.}
@@ -195,6 +218,11 @@ proc gameControllerGetPlayerIndex*(gamecontroller: GameController): cint {.
   ## or `-1` if it's not available.
   ##
   ##  For XInput controllers this returns the XInput user index.
+
+proc gameControllerSetPlayerIndex*(
+  gamecontroller: GameController, player_index: cint) {.
+    cdecl, importc: "SDL_GameControllerSetPlayerIndex", dynlib: SDL2_LIB.}
+  ##  Set the player index of an opened game controller.
 
 proc gameControllerGetVendor*(gamecontroller: GameController): uint16 {.
     cdecl, importc: "SDL_GameControllerGetVendor", dynlib: SDL2_LIB.}

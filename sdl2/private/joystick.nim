@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2020 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -165,9 +165,13 @@ proc joystickOpen*(device_index: cint): Joystick {.
   ##
   ##  ``Return`` a joystick identifier, or `nil` if an error occurred.
 
-proc joystickFromInstanceID*(joyid: JoystickID): Joystick {.
+proc joystickFromInstanceID*(instance_id: JoystickID): Joystick {.
     cdecl, importc: "SDL_JoystickFromInstanceID", dynlib: SDL2_LIB.}
   ##  ``Return`` the ``Joystick`` associated with an instance id.
+
+proc joystickFromPlayerIndex*(player_index: cint): Joystick {.
+    cdecl, importc: "SDL_JoystickFromPlayerIndex", dynlib: SDL2_LIB.}
+  ##  ``Return`` the ``Joystick`` associated with a player index.
 
 proc joystickName*(joystick: Joystick): cstring {.
     cdecl, importc: "SDL_JoystickName", dynlib: SDL2_LIB.}
@@ -179,6 +183,10 @@ proc joystickGetPlayerIndex*(joystick: Joystick): cint {.
   ##  Get the player index of an opened joystick, or `-1` if it's not available
   ##
   ##  For XInput controllers this returns the XInput user index.
+
+proc joystickSetPlayerIndex*(joystick: Joystick, player_index: cint) {.
+    cdecl, "SDL_JoystickSetPlayerIndex", dynlib: SDL2_LIB.}
+  ##  Set the player index of an opened joystick.
 
 proc joystickGetGUID*(joystick: Joystick): JoystickGUID {.
     cdecl, importc: "SDL_JoystickGetGUID", dynlib: SDL2_LIB.}

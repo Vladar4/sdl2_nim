@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2020 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -91,7 +91,7 @@ when false:
     proc iPhoneSetEventPump*(enabled: bool) {.
         cdecl, importc: "SDL_iPhoneSetEventPump", dynlib: SDL2_LIB.}
 
-  # Platform specific procedures for Android 
+  # Platform specific procedures for Android
   when defined android:
 
     proc androidGetJNIEnv*(): pointer {.
@@ -111,6 +111,30 @@ when false:
       ##
       ##  See the official Android developer guide for more information:
       ##  http://developer.android.com/guide/topics/data/data-storage.html
+
+    proc getAndroidSDKVersion*(): cint {.
+        cdecl, importc: "SDL_GetAndroidSDKVersion", dynlib: SDL2_LIB.}
+      ##  Return API level of the current device:
+      ##  * API level 29: Android 10
+      ##  * API level 28: Android 9
+      ##  * API level 27: Android 8.1
+      ##  * API level 26: Android 8.0
+      ##  * API level 25: Android 7.1
+      ##  * API level 24: Android 7.0
+      ##  * API level 23: Android 6.0
+      ##  * API level 22: Android 5.1
+      ##  * API level 21: Android 5.0
+      ##  * API level 20: Android 4.4W
+      ##  * API level 19: Android 4.4
+      ##  * API level 18: Android 4.3
+      ##  * API level 17: Android 4.2
+      ##  * API level 16: Android 4.1
+      ##  * API level 15: Android 4.0.3
+      ##  * API level 14: Android 4.0
+      ##  * API level 13: Android 3.2
+      ##  * API level 12: Android 3.1
+      ##  * API level 11: Android 3.0
+      ##  * API level 10: Android 2.3.3
 
     proc isAndroidTV*(): bool {.
         cdecl, importc: "SDL_IsAndroidTV", dynlib: SDL2_LIB.}
@@ -226,3 +250,28 @@ proc isTablet*(): bool {.
     cdecl, importc: "SDL_IsTablet", dynlib: SDL2_LIB.}
   ##  ``Return`` `true` if the current device is a tablet.
 
+
+# Functions used by iOS application delegates to notify SDL about state changes
+
+proc onApplicationWillTerminate*() {.
+  cdecl, importc: "SDL_OnApplicationWillTerminate", dynlib: SDL2_LIB.}
+
+proc onApplicationDidReceiveMemoryWarning*() {.
+  cdecl, importc: "SDL_OnApplicationDidReceiveMemoryWarning", dynlib: SDL2_LIB.}
+
+proc onApplicationWillResignActive*() {.
+  cdecl, importc: "SDL_OnApplicationWillResignActive", dynlib: SDL2_LIB.}
+
+proc onApplicationDidEnterBackground*() {.
+  cdecl, importc: "SDL_OnApplicationDidEnterBackground", dynlib: SDL2_LIB.}
+
+proc onApplicationWillEnterForeground*() {.
+  cdecl, importc: "SDL_OnApplicationWillEnterForeground", dynlib: SDL2_LIB.}
+
+proc onApplicationDidBecomeActive*() {.
+  cdecl, importc: "SDL_OnApplicationDidBecomeActive", dynlib: SDL2_LIB.}
+
+when defined iphoneos:
+  proc onApplicationDidChangeStatusBarOrientation*() {.
+    cdecl, importc: "SDL_OnApplicationDidChangeStatusBarOrientation",
+    dynlib: SDL2_LIB.}

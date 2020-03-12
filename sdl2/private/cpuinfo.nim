@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2020 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -89,6 +89,10 @@ proc hasAVX2*(): bool {.
 proc hasAVX512F*(): bool {.
     cdecl, importc: "SDL_HasAVX512F", dynlib: SDL2_LIB.}
   ##  This function returns true if the CPU has AVX-512F (foundation) features.
+
+proc hasARMSIMD*(): bool {.
+    cdecl, importc: "SDL_HasARMSIMD", dynlib: SDL2_LIB.}
+  ##  This function returns true if the CPU has ARM SIMD (ARMv6) features.
 
 proc hasNEON*(): bool {.
     cdecl, importc: "SDL_HasNEON", dynlib: SDL2_LIB.}

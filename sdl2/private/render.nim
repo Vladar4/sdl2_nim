@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2020 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -78,15 +78,13 @@ type
     max_texture_width*: cint      ## The maximum texture width
     max_texture_height*: cint     ## The maximum texture height
 
-#type
-#  TextureAccess* {.size: sizeof(cint).} = enum ##  \
-#    ##  The access pattern allowed for a texture
-#    TEXTUREACCESS_STATIC,    ## Changes rarely, not lockable
-#    TEXTUREACCESS_STREAMING, ## Changes frequently, lockable
-#    TEXTUREACCESS_TARGET     ## Texture can be used as a render target
+type
+  ScaleMode* {.size: sizeof(cint).} = enum  ##  \
+    ##  The scaling mode for a texture
+    ScaleModeNearest  ##  Nearest pixel sampling
+    ScaleModeLinear   ##  Linear filtering
+    ScaleModeBest     ##  Anisotropic filtering
 
-# TextureAccess
-# The access pattern allowed for a texture
 type
   TextureAccess* {.size: sizeof(cint).} = enum ##  \
     ##  The access pattern allowed for a texture
@@ -389,6 +387,37 @@ proc getTextureBlendMode*(texture: Texture; blendMode: ptr BlendMode): cint {.
   ##
   ##  ``setTextureBlendMode()``
 
+proc setTextureScaleMode*(texture: Texture; scaleMode: ScaleMode): cint {.
+    cdecl, importc: "SDL_SetTextureScaleMode", dynlib: SDL2_LIB.}
+  ##  Set the scale mode used for texture scale operations.
+  ##
+  ##  ``texture`` The texture to update.
+  ##
+  ##  ``scaleMode`` ``sdl.ScaleMode`` to use for texture scaling.
+  ##
+  ##  ``Return`` `0` on success, or `-1` if the texture is not valid.
+  ##
+  ##  ``Note:`` If the scale mode is not supported,
+  ##  the closest supported mode is chosen.
+  ##
+  ##  See also:
+  ##
+  ##  ``getTextureScaleMode()``
+
+proc getTextureScaleMode*(texture: Texture; scaleMode: ptr ScaleMode): cint {.
+    cdecl, importc: "SDL_GetTextureScaleMode", dynlib: SDL2_LIB.}
+  ##  Get the scale mode used for texture scale operations.
+  ##
+  ##  ``texture`` The texture to query.
+  ##
+  ##  ``scaleMode`` A pointer filled in with the current scale mode.
+  ##
+  ##  ``Return`` `0` on success, or `-1` if the texture is not valid.
+  ##
+  ##  See also:
+  ##
+  ##  ``setTextureScaleMode()``
+
 proc updateTexture*(
     texture: Texture; rect: ptr Rect; pixels: pointer; pitch: cint): cint {.
       cdecl, importc: "SDL_UpdateTexture", dynlib: SDL2_LIB.}
@@ -467,13 +496,43 @@ proc lockTexture*(
   ##
   ##  ``unlockTexture()``
 
+proc lockTextureToSurface*(
+    texture: Texture; rect: ptr Rect;
+    surface: ptr Surface): cint {.
+      cdecl, importc: "SDL_LockTextureToSurface", dynlib: SDL2_LIB.}
+  ##  Lock a portion of the texture for write-only pixel access.
+  ##  Expose it as a SDL surface.
+  ##
+  ##  ``texture`` The texture to lock for access, which was created with
+  ##  `TEXTUREACCESS_STREAMING`.
+  ##
+  ##  ``rect``  A pointer to the rectangle to lock for access.
+  ##  If the rect is `nil`, the entire texture will be locked.
+  ##
+  ##  ``surface`` This is filled in with a SDL surface
+  ##  representing the locked area.
+  ##
+  ##  Surface is freed internally after calling
+  ##  ``sdl.unlockTexture()`` or ``sdl.destroyTexture()``.
+  ##
+  ##  ``Return`` `0` on success, or `-1` if the texture is not valid
+  ##  or was not created with `TEXTUREACCESS_STREAMING`.
+  ##
+  ##  See also:
+  ##
+  ##  ``unlockTexture()``
+
 proc unlockTexture*(texture: Texture) {.
     cdecl, importc: "SDL_UnlockTexture", dynlib: SDL2_LIB.}
   ##  Unlock a texture, uploading the changes to video memory, if needed.
   ##
+  ##  If ``lockTextureToSurface()`` was called for locking,
+  ##  the SDL surface is freed.
+  ##
   ##  See also:
   ##
   ##  ``lockTexture()``
+  ##  ``lockTextureToSurface()``
 
 proc renderTargetSupported*(renderer: Renderer): bool {.
     cdecl, importc: "SDL_RenderTargetSupported", dynlib: SDL2_LIB.}
@@ -632,7 +691,7 @@ proc renderGetClipRect*(renderer: Renderer; rect: ptr Rect) {.
   ##  ``renderer`` The renderer from which clip rectangle should be queried.
   ##
   ##  ``rect`` A pointer filled in with the current clip rectangle,
-  ##  or an empty rectangle if clipping is disabled.
+  ##  relative to the viewport, or `nil` to disable clipping.
   ##
   ##  See also:
   ##

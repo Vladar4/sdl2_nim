@@ -1,6 +1,6 @@
 #
 #  Simple DirectMedia Layer
-#  Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
+#  Copyright (C) 1997-2020 Sam Lantinga <slouken@libsdl.org>
 #
 #  This software is provided 'as-is', without any express or implied
 #  warranty.  In no event will the authors be held liable for any damages
@@ -33,9 +33,11 @@
 # MessageBoxFlags
 # If supported will display warning icon, etc.
 const
-  MESSAGEBOX_ERROR* = 0x00000010       ##  error dialog
-  MESSAGEBOX_WARNING* = 0x00000020     ##  warning dialog
+  MESSAGEBOX_ERROR*       = 0x00000010 ##  error dialog
+  MESSAGEBOX_WARNING*     = 0x00000020 ##  warning dialog
   MESSAGEBOX_INFORMATION* = 0x00000040 ##  informational dialog
+  MESSAGEBOX_BUTTONS_LEFT_TO_RIGHT* = 0x00000080 ## buttons placed left to right
+  MESSAGEBOX_BUTTONS_RIGHT_TO_LEFT* = 0x00000100 ## buttons placed right to left
 
 #type
 #  MessageBoxButtonFlags* {.size: sizeof(cint).} = enum ##  \

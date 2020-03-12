@@ -30,6 +30,7 @@ include
   private/loadso,
   private/log,
   private/messagebox,
+  private/metal,
   private/mutex,
   private/platform,
   private/power,
