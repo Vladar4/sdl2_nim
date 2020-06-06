@@ -79,20 +79,19 @@ type
     h*: cfloat
 
 
-template pointInRect*(p, r: untyped): bool = ##  \
+template pointInRect*(p: Point, r: Rect): bool = ##  \
   ##  ``Return`` `true` if point resides inside a rectangle.
   ((p.x >= r.x) and (p.x < (r.x + r.w)) and
    (p.y >= r.y) and (p.y < (r.y + r.h)))
 
-template rectEmpty*(r: untyped): bool = ##  \
+template rectEmpty*(r: Rect): bool = ##  \
   ##  ``Return`` `true` if the rectangle has no area.
-  ((not r) or (r.w <= 0) or (r.h <= 0))
+  ((r.w <= 0) or (r.h <= 0))
 
-template rectEquals*(a, b: untyped): bool = ##  \
+template rectEquals*(a, b: Rect): bool = ##  \
   ##  ``Return`` `true` if the two rectangles are equal.
-  (a and b and
-    (a.x == b.x) and (a.y == b.y) and
-    (a.w == b.w) and (a.h == b.h))
+  ((a.x == b.x) and (a.y == b.y) and
+   (a.w == b.w) and (a.h == b.h))
 
 proc hasIntersection*(a: ptr Rect; b: ptr Rect): bool {.
     cdecl, importc: "SDL_HasIntersection", dynlib: SDL2_LIB.}
