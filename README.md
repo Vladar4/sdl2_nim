@@ -63,6 +63,9 @@ FAQ:
 
 CHANGELOG:
 ==========
+**v2.0.12.1**
+* fixed rect templates
+* fixed nimble warnings
 
 **v2.0.12.0**
 * updated to SDL-2.0.12 (see [changelog](https://github.com/Vladar4/sdl2_nim/blob/master/CHANGELOG-2.0.12.md))
