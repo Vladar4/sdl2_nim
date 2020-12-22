@@ -307,6 +307,20 @@ const
     ##  when the mouse is in relative mode.
 
 const
+  HINT_MOUSE_RELATIVE_SCALING* = "SDL_MOUSE_RELATIVE_SCALING" ##  \
+    ##  A variable controlling whether relative mouse motion
+    ##  is affected by renderer scaling
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - Relative motion is unaffected by DPI or renderer's
+    ##    logical size
+    ##  * "1"       - Relative motion is scaled according to DPI scaling
+    ##    and logical size
+    ##
+    ##  By default relative mouse deltas are affected by DPI
+    ##  and renderer scaling
+
+const
   HINT_MOUSE_RELATIVE_MODE_WARP* = "SDL_MOUSE_RELATIVE_MODE_WARP" ##  \
     ##  A variable controlling whether relative mouse mode is implemented
     ##  using mouse warping
@@ -352,7 +366,11 @@ const
 const
   HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS* = "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS" ##  \
     ##  Minimize your ``Window`` if it loses key focus when in fullscreen mode.
-    ##  Defaults to `true`.
+    ##  Defaults to "false".
+    ##
+    ##  ``WARNING:`` Before SDL `2.0.14`, this defaulted to "true"!
+    ##  In 2.0.14, we're seeing if "true" causes more problems than it solves in modern times.
+
 
 const
   HINT_IDLE_TIMER_DISABLED* = "SDL_IOS_IDLE_TIMER_DISABLED" ##  \
@@ -466,7 +484,7 @@ const
     ##  This hint is for backwards compatibility only and will be removed in
     ##  SDL 2.1.
     ##
-    ##  The default value is `0`.  This hint must be set before ``sdl.init()``.
+    ##  The default value is "0".  This hint must be set before ``sdl.init()``.
 
 const
   HINT_GAMECONTROLLERTYPE* = "SDL_GAMECONTROLLERTYPE" ##  \
@@ -483,6 +501,7 @@ const
     ##  * XboxOne
     ##  * PS3
     ##  * PS4
+    ##  * PS5
     ##  * SwitchPro
     ##
     ##  This hint affects what driver is used, and must be set before calling
@@ -494,7 +513,7 @@ const
     ##  A variable that lets you manually hint extra gamecontroller db entries.
     ##
     ##  The variable should be newline delimited rows of gamecontroller config
-    ##  data, see `gamecontroller.nim`
+    ##  data, see ``gamecontroller.nim``.
     ##
     ##  This hint must be set before calling ``init(INIT_GAMECONTROLLER)``
     ##  You can update mappings after the system is initialized with
@@ -612,6 +631,17 @@ const
     ##  The default is the value of `HINT_JOYSTICK_HIDAPI`.
 
 const
+  HINT_JOYSTICK_HIDAPI_PS5* = "SDL_JOYSTICK_HIDAPI_PS5"
+    ##  A variable controlling whether the HIDAPI driver
+    ##  for PS5 controllers should be used.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - HIDAPI driver is not used
+    ##  * "1"       - HIDAPI driver is used
+    ##
+    ##  The default is the value of `SDL_HINT_JOYSTICK_HIDAPI`.
+
+const
   HINT_JOYSTICK_HIDAPI_PS4_RUMBLE* = "SDL_JOYSTICK_HIDAPI_PS4_RUMBLE" ##  \
     ##  A variable controlling whether extended input reports should be used
     ##  for PS4 controllers when using the HIDAPI driver.
@@ -660,6 +690,21 @@ const
     ##  The default is the value of `HINT_JOYSTICK_HIDAPI`.
 
 const
+  HINT_JOYSTICK_HIDAPI_CORRELATE_XINPUT* =
+    "SDL_JOYSTICK_HIDAPI_CORRELATE_XINPUT"  ##  \
+    ##  A variable controlling whether the HIDAPI driver for XBox controllers
+    ##  on Windows should pull correlated data from XInput.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - HIDAPI Xbox driver will only use HIDAPI data
+    ##  * "1"       - HIDAPI Xbox driver will also pull data from XInput,
+    ##    providing better trigger axes, guide button presses,
+    ##    and rumble support
+    ##
+    ##  The default is "1".
+    ##  This hint applies to any joysticks opened after setting the hint.
+
+const
   HINT_JOYSTICK_HIDAPI_GAMECUBE* = "SDL_JOYSTICK_HIDAPI_GAMECUBE" ##  \
     ##  A variable controlling whether the HIDAPI driver
     ##  for Nintendo GameCube controllers should be used.
@@ -668,7 +713,8 @@ const
     ##  * "0"       - HIDAPI driver is not used
     ##  * "1"       - HIDAPI driver is used
     ##
-    ##  The default is the value of `HINT_JOYSTICK_HIDAPI`.
+    ##  The default is "0" on Windows,
+    ##  otherwise the value of `HINT_JOYSTICK_HIDAPI`.
 
 const
   HINT_ENABLE_STEAM_CONTROLLERS* = "SDL_ENABLE_STEAM_CONTROLLERS" ##  \
@@ -683,8 +729,35 @@ const
     ##  This hint must be set before initializing the joystick subsystem.
 
 const
+  HINT_JOYSTICK_RAWINPUT* = "SDL_JOYSTICK_RAWINPUT" ##  \
+    ##  A variable controlling whether the RAWINPUT joystick drivers
+    ##  should be used for better handling XInput-capable devices.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - RAWINPUT drivers are not used
+    ##  * "1"       - RAWINPUT drivers are used (the default)
+
+const
+  HINT_JOYSTICK_THREAD* = "SDL_JOYSTICK_THREAD" ##  \
+    ##  A variable controlling whether a separate thread should be used
+    ##  for handling joystick detection and raw input messages on Windows.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - A separate thread is not used (the default)
+    ##  * "1"       - A separate thread is used for handling raw input messages
+
+const
+  HINT_LINUX_JOYSTICK_DEADZONES* = "SDL_LINUX_JOYSTICK_DEADZONES" ##  \
+    ##  A variable controlling whether joysticks on Linux
+    ##  adhere to their HID-defined deadzones or return unfiltered values.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - Return unfiltered joystick axis values (the default)
+    ##  * "1"       - Return axis values with deadzones taken into account
+
+const
   HINT_ALLOW_TOPMOST* = "SDL_ALLOW_TOPMOST" ##  \
-    ##  If set to `0` then never set the top most bit on a ``Window``,
+    ##  If set to "0" then never set the top most bit on a ``Window``,
     ##  even if the video mode expects it.
     ##
     ##  This is a debugging aid for developers and not expected to be used
@@ -747,7 +820,7 @@ const
 const
   HINT_THREAD_STACK_SIZE* = "SDL_THREAD_STACK_SIZE" ##  \
     ##  A string specifying SDL's threads stack size in bytes
-    ##  or `0` for the backend's default size.
+    ##  or "0" for the backend's default size.
     ##
     ##  Use this hint in case you need to set SDL's threads stack size to other
     ##  than the default.
@@ -762,6 +835,51 @@ const
     ##  ``NOTE:`` Instead of this hint, in 2.0.9 and later you can use
     ##  ``sdl.CreateThreadWithStackSize()``. This hint only works with
     ##  the classic ``sdl.CreateThread()``.
+
+const
+  HINT_THREAD_PRIORITY_POLICY* = "SDL_THREAD_PRIORITY_POLICY" ##  \
+    ##  A string specifying additional information
+    ##  to use with ``sdl.setThreadPriority()``.
+    ##
+    ##  By default ``sdl.setThreadPriority()`` will make appropriate
+    ##  system changes in order to apply a thread priority.
+    ##  For example on systems using pthreads the scheduler policy is changed
+    ##  automatically to a policy that works well with a given priority.
+    ##  Code which has specific requirements can override SDL's default behavior
+    ##  with this hint.
+    ##
+    ##  pthread hint values are "current", "other", "fifo" and "rr".
+    ##  Currently no other platform hint values are defined but may be in the future.
+    ##
+    ##  ``NOTE:`` On Linux, the kernel may send `SIGKILL` to realtime tasks
+    ##  which exceed the distro configured execution budget for rtkit.
+    ##  This budget can be queried through `RLIMIT_RTTIME` after calling
+    ##  ``sdl.setThreadPriority()``.
+
+const
+  HINT_THREAD_FORCE_REALTIME_TIME_CRITICAL* =
+    "SDL_THREAD_FORCE_REALTIME_TIME_CRITICAL" ##  \
+    ##  Specifies whether `THREAD_PRIORITY_TIME_CRITICAL` should be treated
+    ##  as realtime.
+    ##
+    ##  On some platforms, like Linux, a realtime priority thread may be subject
+    ##  to restrictions that require special handling by the application.
+    ##  This hint exists to let SDL know that the app is prepared to handle
+    ##  said restrictions.
+    ##
+    ##  On Linux, SDL will apply the following configuration to any thread that
+    ##  becomes realtime:
+    ##  * The `SCHED_RESET_ON_FORK` bit will be set on the scheduling policy,
+    ##  * An `RLIMIT_RTTIME budget will be configured to the rtkit
+    ##    specified limit.
+    ##    * Exceeding this limit will result in the kernel sending `SIGKILL`
+    ##      to the app,
+    ##    * Refer to the man pages for more information.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"       - default platform specific behaviour
+    ##  * "1"       - Force `THREAD_PRIORITY_TIME_CRITICAL`
+    ##    to a realtime scheduling policy
 
 const
   HINT_VIDEO_HIGHDPI_DISABLED* = "SDL_VIDEO_HIGHDPI_DISABLED" ##  \
@@ -881,7 +999,7 @@ const
     ##  to terminate the app (and attempt to switch to the previous app, or to
     ##  the device's home screen).
     ##
-    ##  Setting the `HINT_WINRT_HANDLE_BACK_BUTTON` hint to `1` will cause SDL
+    ##  Setting the `HINT_WINRT_HANDLE_BACK_BUTTON` hint to "1" will cause SDL
     ##  to mark back-button-press events as 'Handled', if and when one is sent
     ##  to the app.
     ##
@@ -902,10 +1020,10 @@ const
     ##  `SCANCODE_AC_BACK`, after which it will check the contents of the hint,
     ##  `HINT_WINRT_HANDLE_BACK_BUTTON`.
     ##
-    ##  If the hint's value is set to `1`, the back button event's 'Handled'
-    ##  property will get set to `true`.  If the hint's value is set to
+    ##  If the hint's value is set to "1", the back button event's 'Handled'
+    ##  property will get set to "true".  If the hint's value is set to
     ##  something else, or if it is unset, SDL will leave the event's 'Handled'
-    ##  property alone. (By default, the OS sets this property to `false`,
+    ##  property alone. (By default, the OS sets this property to "false",
     ##  to note.)
     ##
     ##  SDL apps can either set `HINT_WINRT_HANDLE_BACK_BUTTON` well before a
@@ -1018,7 +1136,7 @@ const
     ##
     ##  This is necessary for the right mouse button to work on some
     ##  Android devices, or to be able to trap the back button for use
-    ##  in your code reliably.  If set to `true`, the back button will
+    ##  in your code reliably.  If set to "true", the back button will
     ##  show up as an `sdl.KEYDOWN` / `sdl.KEYUP` pair with a keycode
     ##  of `sdl.SCANCODE_AC_BACK`.
     ##
@@ -1044,6 +1162,18 @@ const
     ##  The value should be set before SDL is initialized.
 
 const
+  HINT_ANDROID_BLOCK_ON_PAUSE_PAUSEAUDIO* =
+    "SDL_ANDROID_BLOCK_ON_PAUSE_PAUSEAUDIO" ##  \
+    ##  A variable to control whether SDL will pause audio in background
+    ##  (Requires `ANDROID_BLOCK_ON_PAUSE` as "Non blocking")
+    ##
+    ##  The variable can be set to the following values:
+    ##  * "0"       - Non paused.
+    ##  * "1"       - Paused. (default)
+    ##
+    ##  The value should be set before SDL is initialized.
+
+const
   HINT_RETURN_KEY_HIDES_IME* = "SDL_RETURN_KEY_HIDES_IME" ##  \
     ##
     ##  A variable to control whether the return key on the soft keyboard
@@ -1061,7 +1191,7 @@ const
   HINT_EMSCRIPTEN_KEYBOARD_ELEMENT* = "SDL_EMSCRIPTEN_KEYBOARD_ELEMENT" ##  \
     ##  Override the binding element for keyboard inputs for Emscripten builds.
     ##
-    ##  This hint only applies to the emscripten platform
+    ##  This hint only applies to the emscripten platform.
     ##
     ##  The variable can be one of
     ##  * "#window"      - The javascript window object (this is the default)
@@ -1072,10 +1202,26 @@ const
     ##    on the page with that ID.
 
 const
+  HINT_EMSCRIPTEN_ASYNCIFY* = "SDL_EMSCRIPTEN_ASYNCIFY" ##  \
+    ##  Disable giving back control to the browser automatically
+    ##  when running with asyncify.
+    ##
+    ##  With -s ASYNCIFY, SDL2 calls ``emscripten_sleep`` during operations
+    ##  such as refreshing the screen or polling events.
+    ##
+    ##  This hint only applies to the emscripten platform.
+    ##
+    ##  The variable can be set to the following values:
+    ##  * "0"       - Disable emscripten_sleep calls (if you give back browser
+    ##    control manually or use asyncify for other purposes)
+    ##  * "1"       - Enable emscripten_sleep calls (the default)
+
+const
   HINT_NO_SIGNAL_HANDLERS* = "SDL_NO_SIGNAL_HANDLERS" ##  \
     ##  Tell SDL not to catch the SIGINT or SIGTERM signals.
     ##
-    ##  This hint only applies to Unix-like platforms.
+    ##  This hint only applies to Unix-like platforms,
+    ##  and should set before any calls to ``sdl.init()``.
     ##
     ##  The variable can be set to the following values:
     ##  * "0"       - SDL will install a SIGINT and SIGTERM handler,
@@ -1132,7 +1278,7 @@ const
     ##
     ##  Also known as Z-order.
     ##  The variable can take a negative or positive value.
-    ##  The default is `10000`.
+    ##  The default is "10000".
 
 const
   HINT_VIDEO_DOUBLE_BUFFER* = "SDL_VIDEO_DOUBLE_BUFFER" ##  \
@@ -1247,6 +1393,30 @@ const
     ##  this contract will result in undefined behavior.
 
 const
+  HINT_AUTO_UPDATE_JOYSTICKS* = "SDL_AUTO_UPDATE_JOYSTICKS" ##  \
+    ##  A variable controlling whether SDL updates joystick state
+    ##  when getting input events.
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"     - You'll call ``sdl.joystickUpdate()`` manually
+    ##  * "1"     - SDL will automatically call ``sdl.hoystickUpdate()``
+    ##    (default)
+    ##
+    ##  This hint can be toggled on and off at runtime.
+
+const
+  HINT_AUTO_UPDATE_SENSORS* = "SDL_AUTO_UPDATE_SENSORS" ##  \
+    ##  A variable controlling whether SDL updates sensor state
+    ##  when getting input events
+    ##
+    ##  This variable can be set to the following values:
+    ##  * "0"     - You'll call ``sdl.sensorUpdate()`` manually
+    ##  * "1"     - SDL will automatically call ``sdl.sensorUpdate()``
+    ##    (default)
+    ##
+    ##  This hint can be toggled on and off at runtime.
+
+const
   HINT_EVENT_LOGGING* = "SDL_EVENT_LOGGING" ##  \
     ##  A variable controlling whether SDL logs all events
     ##  pushed onto its internal queue.
@@ -1351,6 +1521,60 @@ const
     ##  The contents of this hint must be 4 comma-separated integers,
     ##  the first is the bounds ``x``, then ``y``, ``width`` and ``height``,
     ##  in that order.
+
+const
+  HINT_AUDIO_DEVICE_APP_NAME* = "SDL_AUDIO_DEVICE_APP_NAME" ##  \
+    ##  Specify an application name for an audio device.
+    ##
+    ##  Some audio backends (such as PulseAudio) allow you to describe your
+    ##  audio stream. Among other things, this description might show up in
+    ##  a system control panel that lets the user adjust the volume on specific
+    ##  audio streams instead of using one giant master volume slider.
+    ##
+    ##  This hints lets you transmit that information to the OS. The contents
+    ##  of this hint are used while opening an audio device. You should use
+    ##  a string that describes your program ("My Game 2: The Revenge")
+    ##
+    ##  Setting this to "" or leaving it unset will have SDL use a reasonable
+    ##  default: probably the application's name or "SDL Application" if SDL
+    ##  doesn't have any better information.
+    ##
+    ##  On targets where this is not supported, this hint does nothing.
+
+const
+  HINT_AUDIO_DEVICE_STREAM_NAME* = "SDL_AUDIO_DEVICE_STREAM_NAME" ##  \
+    ##  Specify an application name for an audio device.
+    ##
+    ##  Some audio backends (such as PulseAudio) allow you to describe your
+    ##  audio stream. Among other things, this description might show up in
+    ##  a system control panel that lets the user adjust the volume on specific
+    ##  audio streams instead of using one giant master volume slider.
+    ##
+    ##  This hints lets you transmit that information to the OS. The contents
+    ##  of this hint are used while opening an audio device. You should use
+    ##  a string that describes your what your program is playing
+    ##  ("audio stream" is probably sufficient in many cases, but this could be
+    ##  useful for something like "team chat" if you have a headset playing VoIP
+    ##  audio separately).
+    ##
+    ##  Setting this to "" or leaving it unset will have SDL use a reasonable
+    ##  default: "audio stream" or something similar.
+    ##
+    ##  On targets where this is not supported, this hint does nothing.
+
+const
+  HINT_PREFERRED_LOCALES* = "SDL_PREFERRED_LOCALES" ##  \
+    ##  Override for ``sdl.getPreferredLocales()``.
+    ##
+    ##  If set, this will be favored over anything the OS might report for the
+    ##  user's preferred locales. Changing this hint at runtime will not
+    ##  generate a `LOCALECHANGED` event (but if you can change the hint,
+    ##  you can push your own event, if you want).
+    ##
+    ##  The format of this hint is a comma-separated list of language and
+    ##  locale, combined with an underscore, as is a common format: "en_GB".
+    ##  Locale is optional: "en". So you might have a list like this:
+    ##  "en_GB,jp,es_PT"
 
 
 type
