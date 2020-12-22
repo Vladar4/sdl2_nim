@@ -240,17 +240,33 @@ const
   HAPTIC_POLAR* = 0 ##  \
     ##  Uses polar coordinates for the direction.
     ##
+    ##  See also:
+    ##
     ##  ``HapticDirection``
 
 const
   HAPTIC_CARTESIAN* = 1 ##  \
     ##  Uses cartesian coordinates for the direction.
     ##
+    ##  See also:
+    ##
     ##  ``HapticDirection``
 
 const
   HAPTIC_SPHERICAL* = 2 ##  \
     ##  Uses spherical coordinates for the direction.
+    ##
+    ##  See also:
+    ##
+    ##  ``HapticDirection``
+
+const
+  HAPTIC_STEERING_AXIS* = 3 ## \
+    ##  Use this value to play an effect on the steering wheel axis.
+    ##  This provides better compatibility across platforms and devices
+    ##  as SDL will guess the correct axis.
+    ##
+    ##  See also:
     ##
     ##  ``HapticDirection``
 
@@ -364,6 +380,8 @@ type
     ##  `HAPTIC_CARTESIAN`
     ##
     ##  `HAPTIC_SPHERICAL`
+    ##
+    ##  `HAPTIC_STEERING_AXIS`
     ##
     ##  ``HapticEffect``
     ##
