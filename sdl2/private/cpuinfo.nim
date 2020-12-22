@@ -151,6 +151,34 @@ proc simdAlloc*(len: csize_t): pointer {.
   ##
   ##  ``sdl.simdAlignment()``
   ##
+  ##  ``sdl.simdRealloc()``
+  ##
+  ##  ``sdl.simdFree()``
+
+proc simdRealloc*(mem: pointer, len: csize_t): pointer {.
+    cdecl, importc: "SDL_SIMDRealloc", dynlib: SDL2_LIB.}
+  ##  Reallocate memory obtained from ``sdl.simdAlloc()``
+  ##
+  ##  It is not valid to use this function on a pointer from anything but
+  ##  ``sdl.simdAlloc()``. It can't be used on pointers from ``malloc()``,
+  ##  ``realloc()``,  ``sdl.malloc()``, ``memalign()``, ``new``, etc.
+  ##
+  ##  ``mem`` The pointer obtained from ``sdl.simdAlloc()``. This function also
+  ##  accepts ``nil``, at which point this function is the same as
+  ##  calling ``sdl.realloc()`` with a ``nil`` pointer.
+  ##
+  ##  ``len`` The length, in bytes, of the block to allocated. The actual
+  ##  allocated block might be larger due to padding, etc. Passing `0` will
+  ##  return a non-``nil`` pointer, assuming the system isn't out of memory.
+  ##
+  ##  ``Return`` pointer to newly-reallocated block, ``nil`` if out of memory.
+  ##
+  ##  See also:
+  ##
+  ##  ``sdl.simdAlignment()``
+  ##
+  ##  ``sdl.simdAlloc()``
+  ##
   ##  ``sdl.simdFree()``
 
 proc simdFree*(p: pointer) {.
@@ -166,4 +194,6 @@ proc simdFree*(p: pointer) {.
   ##  See also:
   ##
   ##  ``sdl.simdAlloc()``
+  ##
+  ##  ``sdl.simdRealloc()``
 
