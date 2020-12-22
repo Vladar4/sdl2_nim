@@ -30,6 +30,7 @@ const
   PRESSED*  = 1
 
 type
+  EventType* = EventKind
   EventKind* {.size: sizeof(uint32).} = enum ##  \
     ##  The types of events that can be delivered.
 
@@ -80,6 +81,8 @@ type
       ##
       ##  Called on Android ``in onResume()``
 
+    LOCALECHANGED,  ##  The user's locale preferences have changed.
+
     # Display events
     DISPLAYEVENT = 0x00000150,##  Display state change
 
@@ -123,6 +126,10 @@ type
       ##  A new Game controller has been inserted into the system
     CONTROLLERDEVICEREMOVED,  ##  An opened Game controller has been removed
     CONTROLLERDEVICEREMAPPED, ##  The controller mapping was updated
+    CONTROLLERTOUCHPADDOWN,   ##  Game controller touchpad was touched
+    CONTROLLERTOUCHPADMOTION, ##  Game controller touchpad finger was moved
+    CONTROLLERTOUCHPADUP,     ##  Game controller touchpad finger was lifted
+    CONTROLLERSENSORUPDATE,   ##  Game controller sensor was updated
 
     # Touch events
 
@@ -403,7 +410,35 @@ type
     timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     which*: int32           ##  \
       ##  The joystick device index for the `ADDED` event,
-      ##  instance id for the `REMOVED` or `REMAPPED` event 
+      ##  instance id for the `REMOVED` or `REMAPPED` event
+
+type
+  ControllerTouchpadEventObj* = object ## \
+    ##  Game controller touchpad event structure (`event.ctouchpad.*`)
+    kind*: EventKind        ##  \
+      ##  `CONTROLLERTOUCHPADDOWN`,
+      ##  `CONTROLLERTOUCHPADMOTION`, or
+      ##  `CONTROLLERTOUCHPADUP`
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
+    which*: JoystickID      ##  The joystick instance id
+    touchpad*: int32        ##  The index of the touchpad
+    finger*: int32          ##  The index of the finger on the touchpad
+    x*: cfloat              ##  \
+      ##  Normalized in the range 0...1 with 0 being on the left
+    y*: cfloat              ##  \
+      ##  Normalized in the range 0...1 with 0 being at the top
+    pressure*: cfloat       ##  Normalized in the range 0...1
+
+type
+  ControllerSensorEventObj* = object ## \
+    ##  Game controller sensor event structure (`event.csensor.*`)
+    kind*: EventKind        ##  `CONTROLLERSENSORUPDATE`
+    timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
+    which*: JoystickID      ##  The joystick instance id
+    sensor*: int32          ##  \
+      ##  The type of the sensor, one of the values of ``sdl.SensorType``
+    data*: array[3, cfloat] ##  \
+      ##  Up to `3` values from the sensor, as defined in ``sensor.nim``
 
 type
   AudioDeviceEventObj* = object ##  \
@@ -544,6 +579,8 @@ type
     caxis*: ControllerAxisEventObj      ##  Game Controller axis event data
     cbutton*: ControllerButtonEventObj  ##  Game Controller button event data
     cdevice*: ControllerDeviceEventObj  ##  Game Controller device event data
+    ctouchpad*: ControllerTouchpadEventObj  ##  Game Controller touchpad event data
+    csensor*: ControllerSensorEventObj  ##  Game Controller sensor event data
     adevice*: AudioDeviceEventObj       ##  Audio device event data
     sensor*: SensorEventObj             ##  Sensor event data
     quit*: QuitEventObj                 ##  Quit request event data
