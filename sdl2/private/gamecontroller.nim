@@ -42,7 +42,9 @@ type
     CONTROLLER_TYPE_XBOXONE,
     CONTROLLER_TYPE_PS3,
     CONTROLLER_TYPE_PS4,
-    CONTROLLER_TYPE_NINTENDO_SWITCH_PRO
+    CONTROLLER_TYPE_NINTENDO_SWITCH_PRO,
+    CONTROLLER_TYPE_VIRTUAL,
+    CONTROLLER_TYPE_PS5
 
   GameControllerBindType* {.size: sizeof(cint).} = enum
     CONTROLLER_BINDTYPE_NONE = 0,
@@ -239,6 +241,13 @@ proc gameControllerGetProductVersion*(gamecontroller: GameController): uint16 {.
   ##  ``Return`` the product version of an opened controller, if available.
   ##  If the product version isn't available this function returns `0`.
 
+proc gameControllerGetSerial*(gamecontroller: GameController): cstring {.
+    cdecl, importc: "SDL_GameControllerGetSerial", dynlib: SDL2_LIB.}
+  ##  Get the serial number of an opened controller, if available.
+  ##
+  ##  ``Return`` the serial number of the controller,
+  ##  or ``nil`` if it is not available.
+
 proc gameControllerGetAttached*(gamecontroller: GameController): bool {.
     cdecl, importc: "SDL_GameControllerGetAttached", dynlib: SDL2_LIB.}
   ##  ``Returns`` `true` if the controller has been opened and currently
@@ -296,6 +305,12 @@ proc gameControllerGetBindForAxis*(
       cdecl, importc: "SDL_GameControllerGetBindForAxis", dynlib: SDL2_LIB.}
   ##  Get the SDL joystick layer binding for this controller button mapping.
 
+proc gameControllerHasAxis*(
+    gamecontroller: GameController;
+    axis: GameControllerAxis): bool {.
+      cdecl, importc: "SDL_GameControllerHasAxis", dynlib: SDL2_LIB.}
+  ##  ``Return`` whether a game controller has a given axis.
+
 proc gameControllerGetAxis*(gamecontroller: GameController; 
                             axis: GameControllerAxis): int16 {.cdecl, 
     importc: "SDL_GameControllerGetAxis", dynlib: SDL2_LIB.}
@@ -318,6 +333,15 @@ type
     CONTROLLER_BUTTON_LEFTSHOULDER, CONTROLLER_BUTTON_RIGHTSHOULDER,
     CONTROLLER_BUTTON_DPAD_UP,      CONTROLLER_BUTTON_DPAD_DOWN,
     CONTROLLER_BUTTON_DPAD_LEFT,    CONTROLLER_BUTTON_DPAD_RIGHT,
+    CONTROLLER_BUTTON_MISC1,        ##  \
+      ##  Xbox Series X share button,
+      ##  PS5 microphone button,
+      ##  Nintendo Switch Pro capture button
+    SDL_CONTROLLER_BUTTON_PADDLE1,  ##  Xbox Elite paddle P1
+    SDL_CONTROLLER_BUTTON_PADDLE2,  ##  Xbox Elite paddle P3
+    SDL_CONTROLLER_BUTTON_PADDLE3,  ##  Xbox Elite paddle P2
+    SDL_CONTROLLER_BUTTON_PADDLE4,  ##  Xbox Elite paddle P4
+    SDL_CONTROLLER_BUTTON_TOUCHPAD, ##  PS4/PS5 touchpad button
     CONTROLLER_BUTTON_MAX,
     CONTROLLER_BUTTON_INVALID = uint8.high
 
@@ -336,6 +360,11 @@ proc gameControllerGetBindForButton*(
       cdecl, importc: "SDL_GameControllerGetBindForButton", dynlib: SDL2_LIB.}
   ##  Get the SDL joystick layer binding for this controller button mapping.
 
+proc gameControllerHasButton*(
+    gamecontroller: GameController; button: GameControllerButton): bool {.
+      cdecl, importc: "SDL_GameControllerHasButton", dynlib: SDL2_LIB.}
+  ##  ``Return`` whether a game controller has a given button.
+
 proc gameControllerGetButton*(
     gamecontroller: GameController; button: GameControllerButton): uint8 {.
       cdecl, importc: "SDL_GameControllerGetButton", dynlib: SDL2_LIB.}
@@ -343,11 +372,85 @@ proc gameControllerGetButton*(
   ##
   ##  The button indices start at index `0`.
 
+proc gameControllerGetNumTouchpads*(gamecontroller: GameController): cint {.
+    cdecl, importc: "SDL_GameControllerGetNumTouchpads", dynlib: SDL2_LIB.}
+  ##  Get the number of touchpads on a game controller.
+
+proc gameControllerGetNumTouchpadFingers*(
+    gamecontroller: GameController; touchpad: cint): cint {.
+      cdecl, importc: "SDL_GameControllerGetNumTouchpadFingers", dynlib: SDL2_LIB.}
+  ##  Get the number of supported simultaneous fingers
+  ##  on a touchpad on a game controller.
+
+proc gameControllerGetTouchpadFinger*(
+    gamecontroller: GameController;
+    touchpad, finger: cint;
+    state: ptr uint8; x, y, pressure: ptr cfloat): cint {.
+      cdecl, importc: "SDL_GameControllerGetTouchpadFinger", dynlib: SDL2_LIB.}
+  ##  Get the current state of a finger on a touchpad on a game controller.
+
+
+proc gameControllerHasSensor*(
+    gamecontroller: GameController; sensorType: SensorType): bool {.
+      cdecl, importc: "SDL_GameControllerHasSensor", dynlib: SDL2_LIB.}
+  ##  Return whether a game controller has a particular sensor.
+  ##
+  ##  ``gamecontroller`` The controller to query
+  ##
+  ##  ``sensorType`` The type of sensor to query
+  ##
+  ##  ``Return`` `true` if the sensor exists, `false` otherwise.
+
+proc gameControllerSetSensorEnabled*(
+    gamecontroller: GameController;
+    sensorType: SensorType; enabled: bool): cint {.
+      cdecl, importc: "SDL_GameControllerSetSensorEnabled", dynlib: SDL2_LIB.}
+  ##  Set whether data reporting for a game controller sensor is enabled.
+  ##
+  ##  ``gamecontroller`` The controller to update
+  ##
+  ##  ``sensorType`` The type of sensor to enable/disable
+  ##
+  ##  ``enabled`` Whether data reporting should be enabled
+  ##
+  ##  ``Return`` `0` or `-1` if an error occurred.
+
+
+proc gameControllerIsSensorEnabled*(
+    gamecontroller: GameController; sensorType: SensorType): bool {.
+      cdecl, importc: "SDL_GameControllerIsSensorEnabled", dynlib: SDL2_LIB.}
+  ##  Query whether sensor data reporting is enabled for a game controller.
+  ##
+  ##  ``gamecontroller`` The controller to query
+  ##
+  ##  ``sensorType`` The type of sensor to query
+  ##
+  ##  ``Return`` `true` if the sensor is enabled, `false` otherwise.
+
+proc gameControllerGetSensorData*(
+    gamecontroller: GameController; sensorType: SensorType,
+    data: ptr cfloat, num_values: cint): cint {.
+      cdecl, importc: "SDL_GameControllerGetSensorData", dynlib: SDL2_LIB.}
+  ##  Get the current state of a game controller sensor.
+  ##
+  ##  The number of values and interpretation of the data is sensor dependent.
+  ##  See ``sensor.nim`` for the details for each type of sensor.
+  ##
+  ##  ``gamecontroller`` The controller to query
+  ##
+  ##  ``SensorType`` The type of sensor to query
+  ##
+  ##  ``data`` A pointer filled with the current sensor state
+  ##
+  ##  ``num_values`` The number of values to write to data
+  ##
+  ##  ``Return`` `0` or `-1` if an error occurred.
+
 proc gameControllerRumble*(
   gamecontroller: GameController; low_frequency_rumble: uint16;
   high_frequency_rumble: uint16; duration_ms: uint32): cint {.
     cdecl, importc: "SDL_GameControllerRumble", dynlib: SDL2_LIB.}
-  ##  Trigger a rumble effect
+  ##  Start a rumble effect.
   ##
   ##  Each call to this function cancels any previous rumble effect,
   ##  and calling it with `0` intensity stops any rumbling.
@@ -362,7 +465,51 @@ proc gameControllerRumble*(
   ##
   ##  ``duration_ms`` The duration of the rumble effect, in milliseconds
   ##
-  ##  ``Return`` `0`, or `-1` if rumble isn't supported on this joystick.
+  ##  ``Return`` `0`, or `-1` if rumble isn't supported on this controller.
+
+proc gameControllerRumbleTriggers*(
+    gamecontroller: GameController *gamecontroller;
+    left_rumble, right_rumble: uint16; duration_ms: uint32): cint {.
+      cdecl, importc: "SDL_GameControllerRumbleTriggers", dynlib: SDL2_LIB.}
+  ##  Start a rumble effect in the game controller's triggers.
+  ##  Each call to this function cancels any previous trigger rumble effect,
+  ##  and calling it with `0` intensity stops any rumbling.
+  ##
+  ##  ``gamecontroller`` The controller to vibrate
+  ##
+  ##  ``left_rumble`` The intensity of the left trigger rumble motor,
+  ##  from `0` to `0xFFFF`
+  ##
+  ##  ``right_rumble`` The intensity of the right trigger rumble motor,
+  ##  from `0` to `0xFFFF`
+  ##
+  ##  ``duration_ms`` The duration of the rumble effect, in milliseconds
+  ##
+  ##  ``Return`` `0`, or `-1` if rumble isn't supported on this controller.
+
+proc gameControllerHasLED*(gamecontroller: GameController): bool {.
+    cdecl, importc: "SDL_GameControllerHasLED", dynlib: SDL2_LIB.}
+  ##  Return whether a controller has an LED.
+  ##
+  ##  ``gamecontroller`` The controller to query
+  ##
+  ##  ``Return`` `true`,
+  ##  or `false` if this controller does not have a modifiable LED.
+
+proc gameControllerSetLED*(
+    gamecontroller: GameController; red, green, blue: uint8): cint {.
+      cint, importc: "SDL_GameControllerSetLED", dynlib: SDL2_LIB.}
+  ##  Update a controller's LED color.
+  ##
+  ##  ``gamecontroller`` The controller to update
+  ##
+  ##  ``red`` The intensity of the red LED
+  ##
+  ##  ``green`` The intensity of the green LED
+  ##
+  ##  ``blue`` The intensity of the blue LED
+  ##
+  ##  ``Return`` `0`, or `-1` if this controller does not have a modifiable LED.
 
 proc gameControllerClose*(gamecontroller: GameController) {.
     cdecl, importc: "SDL_GameControllerClose", dynlib: SDL2_LIB.}
