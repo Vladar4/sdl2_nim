@@ -82,6 +82,12 @@ type
     JOYSTICK_POWER_WIRED,
     JOYSTICK_POWER_MAX
 
+const
+  IPHONE_MAX_GFORCE* = 5.0  ##  \
+    ##  Set max recognized G-force from accelerometer
+    ##  See src/joystick/uikit/SDL_sysjoystick.m for notes on why this is needed
+
+
 # Procedures
 
 proc lockJoysticks*() {.
@@ -173,6 +179,48 @@ proc joystickFromPlayerIndex*(player_index: cint): Joystick {.
     cdecl, importc: "SDL_JoystickFromPlayerIndex", dynlib: SDL2_LIB.}
   ##  ``Return`` the ``Joystick`` associated with a player index.
 
+
+proc joystickAttachVirtual*(
+    joystickType: JoystickType;
+    naxes, nbuttons, nhats: cint): cint {.
+      cdecl, importc: "SDL_JoystickAttachVirtual", dynlib: SDL2_LIB.}
+  ##  Attaches a new virtual joystick.
+  ##
+  ##  ``Return`` the joystick's device index, or `-1` if an error occurred.
+
+proc joystickDetachVirtual*(device_index: cint): cint {.
+    cdecl, importc: "SDL_JoystickDetachVirtual", dynlib: SDL2_LIB.}
+  ##  Detaches a virtual joystick.
+  ##
+  ##  ``Return`` `0` on success, or `-1` if an error occurred.
+
+proc joystickIsVirtual*(device_index: cint): bool {.
+    cdecl, importc: "SDL_JoystickIsVirtual", dynlib: SDL2_LIB.}
+  ##  Indicates whether or not a virtual-joystick is at a given device index.
+
+proc joystickSetVirtualAxis*(
+    joystick: Joystick; axis: cint; value: int16): cint {.
+      cdecl, importc: "SDL_JoystickSetVirtualAxis", dynlib: SDL2_LIB.}
+  ##  Set values on an opened, virtual-joystick's controls.
+  ##
+  ##  Please note that values set here will not be applied until the next
+  ##  call to ``sdl.joystickUpdate()``, which can either be called directly,
+  ##  or can be called indirectly through various other SDL APIS,
+  ##  including, but not limited to the following: ``sdl.pollEvent()``,
+  ##  ``sdl.pumpEvents()``, ``sdl.waitEventTimeout()``, ``sdl.waitEvent()``.
+  ##
+  ##  ``Return`` `0` on success, `-1` on error.
+
+proc joystickSetVirtualButton*(
+    joystick: Joystick; button: cint; value: uint8): cint {.
+      cdecl, importc: "SDL_JoystickSetVirtualButton", dynlib: SDL2_LIB.}
+  ##  See ``joystickSetVirtualAxis()``
+
+proc joystickSetVirtualHat*(
+    joystick: Joystick; hat: cint; value: uint8): cint {.
+      cdecl, importc: "SDL_JoystickSetVirtualHat", dynlib: SDL2_LIB.}
+  ##  See ``joystickSetVirtualAxis()``
+
 proc joystickName*(joystick: Joystick): cstring {.
     cdecl, importc: "SDL_JoystickName", dynlib: SDL2_LIB.}
   ##  ``Return`` the name for this currently opened joystick.
@@ -207,6 +255,13 @@ proc joystickGetProductVersion*(joystick: Joystick): uint16 {.
   ##  ``Return`` the product version of an opened joystick, if available.
   ##  If the product version isn't available this function returns `0`.
 
+proc joystickGetSerial*(joystick: Joystick): cstring {.
+    cdecl, importc: "SDL_JoystickGetSerial", dynlib: SDL2_LIB.}
+  ##  Get the serial number of an opened joystick, if available.
+  ##
+  ##  ``Return`` the serial number of the joystick,
+  ##  or `nil` if it is not available.
+
 proc joystickGetType*(joystick: Joystick): JoystickType {.
     cdecl, importc: "SDL_JoystickGetType", dynlib: SDL2_LIB.}
   ##  ``Return`` the type of an opened joystick.
@@ -225,7 +280,7 @@ proc joystickGetGUIDFromString*(pchGUID: cstring): JoystickGUID {.
 
 proc joystickGetAttached*(joystick: Joystick): bool {.
     cdecl, importc: "SDL_JoystickGetAttached", dynlib: SDL2_LIB.}
-  ##  ``Returns`` `true` if the joystick has been opened and currently
+  ##  ``Return`` `true` if the joystick has been opened and currently
   ##  connected, or `false` if it has not.
 
 proc joystickInstanceID*(joystick: Joystick): JoystickID {.
@@ -355,7 +410,7 @@ proc joystickRumble*(
   joystick: Joystick; low_frequency_rumble: uint16;
   high_frequency_rumble: uint16; duration_ms: uint32): cint {.
     cdecl, importc: "SDL_JoystickRumble", dynlib: SDL2_LIB.}
-  ##  Trigger a rumble effect.
+  ##  Start a rumble effect.
   ##
   ##  Each call to this function cancels any previous rumble effect,
   ##  and calling it with `0` intensity stops any rumbling.
@@ -371,6 +426,51 @@ proc joystickRumble*(
   ##  ``duration_ms`` The duration of the rumble effect, in milliseconds
   ##
   ##  ``Return`` `0`, or `-1` if rumble isn't supported on this joystick.
+
+
+proc joystickRumbleTriggers*(
+    joystick: Joystick;
+    left_rumble, right_rumble: uint16; duration_ms: uint32): cint {.
+      cdecl, importc: "SDL_JoystickRumbleTriggers", dynlib: SDL2_LIB.}
+  ##  Start a rumble effect in the joystick's triggers.
+  ##  Each call to this function cancels any previous trigger rumble effect,
+  ##  and calling it with 0 intensity stops any rumbling.
+  ##
+  ##  ``joystick`` The joystick to vibrate
+  ##
+  ##  ``left_rumble`` The intensity of the left trigger rumble motor,
+  ##  from `0` to `0xFFFF`
+  ##
+  ##  ``right_rumble`` The intensity of the right trigger rumble motor,
+  ##  from `0` to `0xFFFF`
+  ##
+  ##  ``duration_ms`` The duration of the rumble effect, in milliseconds
+  ##
+  ##  ``Return`` `0`,
+  ##  or `-1` if trigger rumble isn't supported on this joystick.
+
+proc joystickHasLED*(joystick: Joystick): bool {.
+    cdecl, importc: "SDL_JoystickHasLED", dynlib: SDL2_LIB.}
+  ##  Return whether a joystick has an LED.
+  ##
+  ##  ``joystick`` The joystick to query
+  ##
+  ##  ``Return`` `true`,
+  ##  or `false` if this joystick does not have a modifiable LED
+
+proc joystickSetLED*(joystick: Joystick; red, green, blue: uint8): cint {.
+    cdecl, importc: "SDL_JoystickSetLED", dynlib: SDL2_LIB.}
+  ##  Update a joystick's LED color.
+  ##
+  ##  ``joystick`` The joystick to update
+  ##
+  ##  ``red`` The intensity of the red LED
+  ##
+  ##  ``green`` The intensity of the green LED
+  ##
+  ##  ``blue`` The intensity of the blue LED
+  ##
+  ##  ``Return`` `0`, or `-1` if this joystick does not have a modifiable LED.
 
 proc joystickClose*(joystick: Joystick) {.
     cdecl, importc: "SDL_JoystickClose", dynlib: SDL2_LIB.}
