@@ -40,7 +40,7 @@ type
     ##  The value `-1` is an invalid ID.
 
 type
-  SensorType* {.size: sizeof(cint).} = enum ##  '
+  SensorType* {.size: sizeof(cint).} = enum ##  \
     ##  The different sensors defined by SDL
     ##
     ##  Additional sensors may be available, using platform dependent semantics.
@@ -59,8 +59,9 @@ const
 ##  ``Accelerometer sensor``
 ##
 ##  The accelerometer returns the current acceleration in SI meters per
-##  second squared. This includes gravity, so a device at rest will have
-##  an acceleration of `STANDARD_GRAVITY` straight down.
+##  second squared. This measurement includes the force of gravity, so
+##  a device at rest will have an value of `STANDARD_GRAVITY` away
+##  from the center of the earth.
 ##
 ##  values[0]: Acceleration on the x axis
 ##
@@ -68,7 +69,8 @@ const
 ##
 ##  values[2]: Acceleration on the z axis
 ##
-##  For phones held in portrait mode, the axes are defined as follows:
+##  For phones held in portrait mode and game controllers held in front of you,
+##  the axes are defined as follows:
 ##
 ##  -X ... +X : left ... right
 ##
@@ -92,13 +94,14 @@ const
 ##  see positive rotation on that axis when it appeared to be rotating
 ##  counter-clockwise.
 ##
-##  values[0]: Angular speed around the x axis
+##  values[0]: Angular speed around the x axis (pitch)
 ##
-##  values[1]: Angular speed around the y axis
+##  values[1]: Angular speed around the y axis (yaw)
 ##
-##  values[2]: Angular speed around the z axis
+##  values[2]: Angular speed around the z axis (roll)
 ##
-##  For phones held in portrait mode, the axes are defined as follows:
+##  For phones held in portrait mode and game controllers held in front of you,
+##  the axes are defined as follows:
 ##
 ##  -X ... +X : left ... right
 ##
@@ -106,12 +109,25 @@ const
 ##
 ##  -Z ... +Z : farther ... closer
 ##
-##  The axis data is not changed when the phone is rotated.
+##  The axis data is not changed when the phone or controller is rotated.
 ##
 ##  See also:
 ##
 ##  ``getDisplayOrientation()``
 ##
+
+proc lockSensors*() {.cdecl, importc: "SDL_LockSensors", dynlib: SDL2_LIB.}
+  ##  Locking for multi-threaded access to the sensor API.
+  ##
+  ##  If you are using the sensor API or handling events from multiple threads
+  ##  you should use these locking functions to protect access to the sensors.
+  ##
+  ##  In particular, you are guaranteed that the sensor list won't change, so
+  ##  the API functions that take a sensor index will be valid, and sensor
+  ##  events will not be delivered.
+
+proc unlockSensors*() {.cdecl, importc: "SDL_UnlockSensors", dynlib: SDL2_LIB.}
+  ##  See ``lockSensors()``
 
 proc numSensors*(): cint {.
     cdecl, importc: "SDL_NumSensors", dynlib: SDL2_LIB.}
