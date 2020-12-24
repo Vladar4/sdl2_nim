@@ -36,15 +36,18 @@ const
 
 type
   RWopsAndroidio* = object
-    fileNameRef*: pointer
-    inputStreamRef*: pointer
-    readableByteChannelRef*: pointer
-    readMethod*: pointer
-    assetFileDescriptorRef*: pointer
-    position*: clong
-    size*: clong
-    offset*: clong
-    fd*: cint
+    asset*: pointer
+    # # pre-2.0.14 # #
+    #
+    # fileNameRef*: pointer
+    # inputStreamRef*: pointer
+    # readableByteChannelRef*: pointer
+    # readMethod*: pointer
+    # assetFileDescriptorRef*: pointer
+    # position*: clong
+    # size*: clong
+    # offset*: clong
+    # fd*: cint
 
   RWopsWindowsioBuffer* = object
     data*: pointer
@@ -69,6 +72,7 @@ type
     data1*: pointer
     data2*: pointer
 
+  RWopsType* = RWopsKind
   RWopsKind* {.union.} = object
       androidio*: RWopsAndroidio
       windowsio*: RWopsWindowsio
@@ -217,14 +221,14 @@ proc loadFileRW*(src: ptr RWops, datasize: ptr csize_t, freesrc: cint): pointer 
   ##
   ##  The data is allocated with a zero byte at the end (null terminated).
   ##
-  ##  If ``datasize`` is not ``nil``,
+  ##  If ``datasize`` is not `nil`,
   ##  it is filled with the size of the data read.
   ##
   ##  If ``freesrc`` is non-zero, the stream will be closed after being read.
   ##
   ##  The data should be freed with ``free()``.
   ##
-  ##  ``Return`` the data, or ``nil`` if there was an error.
+  ##  ``Return`` the data, or `nil` if there was an error.
 
 template loadFileRW*(
     src: ptr RWops, datasize: ptr csize_t, freesrc: bool): pointer =
@@ -245,14 +249,14 @@ proc loadFile*(file: cstring, datasize: ptr csize_t): pointer {.
   ##
   ##  The data is allocated with a zero byte at the end (null terminated).
   ##
-  ##  If ``datasize`` is not ``nil``,
+  ##  If ``datasize`` is not `nil`,
   ##  it is filled with the size of the data read.
   ##
   ##  If ``freesrc`` is non-zero, the stream will be closed after being read.
   ##
   ##  The data should be freed with ``sdl.free()``.
   ##
-  ##  ``Return`` the data, or ``nil`` if there was an error.
+  ##  ``Return`` the data, or `nil` if there was an error.
 
 
 # Read/write macros
