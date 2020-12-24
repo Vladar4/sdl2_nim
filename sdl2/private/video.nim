@@ -156,6 +156,7 @@ const
   WINDOW_POPUP_MENU*    = 0x00080000  ##  window should be treated as \
     ##  a popup menu
   WINDOW_VULKAN*        = 0x10000000  ##  window usable for Vulkan surface
+  WINDOW_METAL*         = 0x20000000  ##  window usable for Metal view
 
 const
   WINDOWPOS_UNDEFINED_MASK* = 0x1FFF0000
@@ -216,7 +217,9 @@ type
   DisplayEventID* {.size: sizeof(uint8).} = enum  ##  \
     ##  Event subtype for display events
     DISPLAYEVENT_NONE,        ##  Never used
-    DISPLAYEVENT_ORIENTATION  ##  Display orientation has changed to data1
+    DISPLAYEVENT_ORIENTATION, ##  Display orientation has changed to data1
+    DISPLAYEVENT_CONNECTED,   ##  Display has been added to the system
+    DISPLAYEVENT_DISCONNECTED ##  Display has been removed from the system
 
 type
   DisplayOrientation* {.size: sizeof(uint8).} = enum
@@ -531,10 +534,11 @@ proc createWindow*(title: cstring;
   ##  `WINDOW_MINIMIZED`,
   ##  `WINDOW_INPUT_GRABBED`,
   ##  `WINDOW_ALLOW_HIGHDPI`,
-  ##  `WINDOW_VULKAN`.
+  ##  `WINDOW_VULKAN`,
+  ##  `WINDOW_METAL`.
   ##
   ##  ``Return`` the id of the window created,
-  ##  or ``nil`` if window creation failed.
+  ##  or `nil` if window creation failed.
   ##
   ##  If the window is created with the `WINDOW_ALLOW_HIGHDPI` flag, its size
   ##  in pixels may differ from its size in screen coordinates on platforms with
@@ -551,6 +555,9 @@ proc createWindow*(title: cstring;
   ##
   ##  If `WINDOW_VULKAN` is specified and there isn't a working Vulkan driver,
   ##  ``createWindow()`` will fail because ``vulkanLoadLibrary()`` will fail.
+  ##
+  ##  If `WINDOW_METAL` is specified on an OS that does not support Metal,
+  ##  ``createWindow()`` will fail.
   ##
   ##  ``Note:`` On non-Apple devices, SDL requires you to either not link to the
   ##  Vulkan loader or link to a dynamic library version. This limitation
@@ -571,7 +578,7 @@ proc createWindowFrom*(data: pointer): Window {.
   ##  ``data`` A pointer to driver-dependent window creation data.
   ##
   ##  ``Return`` the id of the window created,
-  ##  or ``nil`` if window creation failed.
+  ##  or `nil` if window creation failed.
   ##
   ##  See also:
   ##
@@ -733,16 +740,16 @@ proc getWindowBordersSize*(window: Window;
   ##  ``window`` The window to query.
   ##
   ##  ``top`` Pointer to variable for storing the size of the top border.
-  ##    ``nil`` is permitted.
+  ##    `nil` is permitted.
   ##
   ##  ``left`` Pointer to variable for storing the size of the left border.
-  ##    ``nil`` is permitted.
+  ##    `nil` is permitted.
   ##
   ##  ``bottom`` Pointer to variable for storing the size of the bottom border.
-  ##    ``nil`` is permitted.
+  ##    `nil` is permitted.
   ##
   ##  ``right`` Pointer to variable for storing the size of the right border.
-  ##    ``nil`` is permitted.
+  ##    `nil` is permitted.
   ##
   ##  ``Return`` `0` on success,
   ##  or `-1` if getting this information is not supported.
