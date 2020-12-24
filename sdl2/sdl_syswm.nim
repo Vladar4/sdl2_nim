@@ -147,6 +147,18 @@ else:
       SysWMMsgKindObj* = object
         vivante*: SysWMMsgVivanteObj
 
+  elif defined(SDL_VIDEO_DRIVER_OS2):
+    type
+      SysWMMsgOS2Obj * = object
+        fFrame*: bool ##  `true` if hwnd is a frame window
+        hwnd*: HWND   ##  The window receiving the message
+        msg*: ULONG   ##  The message identifier
+        mp1*: MPARAM  ##  The first first message parameter
+        mp2*: MPARAM  ##  The second first message parameter
+
+      SysWMMsgKindObj* = object
+        os2*: SysWMMsgOS2Obj
+
   else:
     type SysWMMsgKindObj* = object
       dummy*: cint
@@ -282,6 +294,15 @@ else:
 
       SysWMinfoKindObj* = object
         vivante*: SysWMinfoVivanteObj
+
+  elif defined(SDL_VIDEO_DRIVER_OS2):
+    type
+      SysWMinfoOS2Obj* = object
+        hwnd*: HWND       ##  The window handle
+        hwndFrame*: HWND  ##  The frame window handle
+
+      SysWMinfoKindObj* = object
+        os2*: SysWMinfoOS2Obj
 
   else:
     type
