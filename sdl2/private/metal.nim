@@ -41,21 +41,16 @@ proc metalCreateView*(window: Window): MetalView {.
   ##  On macOS, this does ``not`` associate a MTLDevice with the CAMetalLayer
   ##  on its own. It is up to user code to do that.
   ##
-  ##  The returned handle can be casted directly to a NSView or UIView, and the
-  ##  CAMetalLayer can be accessed from the view's ``layer`` property.
+  ##  The returned handle can be casted directly to a NSView or UIView.
+  ##  To access the backing CAMetalLayer, call ``sdl.metalGetLayer()``.
   ##
-  ##  .. code-block:: nim
-  ##    var
-  ##      metalview: MetalView = metalCreateView(window)
-  ##      uiview: UIView = UIView(metalview)
-  ##      metallayer: CAMetalLayer = CAMetalLayer(uiview.layer)
-  ##    # [...]
-  ##    metalDestroyView(metalview)
+  ##  ``Note:`` ``window`` must be created with the `sdl.WINDOW_METAL` flag.
   ##
   ##  See also:
   ##
   ##  ``metalDestroyView()``
   ##
+  ##  ``metalGetLayer()``
 
 proc metalDestroyView*(view: MetalView) {.
     cdecl, importc: "SDL_Metal_DestroyView", dynlib: SDL2_LIB.}
@@ -67,3 +62,38 @@ proc metalDestroyView*(view: MetalView) {.
   ##  See also:
   ##
   ##  ``metalCreateView()``
+
+proc metalGetLayer*(view: MetalView): pointer {.
+    cdecl, importc: "SDL_Metal_GetLayer", dynlib: SDL2_LIB.}
+  ##  Get a pointer to the backing CAMetalLayer for the given view.
+  ##
+  ##  See also:
+  ##
+  ##  ``metalCreateView()``
+
+proc metalGetDrawableSize*(window: Window; w, h: ptr cint) {.
+    cdecl, importc: "SDL_Metal_GetDrawableSize", dynlib: SDL2_LIB.}
+  ##  Get the size of a window's underlying drawable in pixels (for use
+  ##  with setting viewport, scissor & etc).
+  ##
+  ##  ``window``  ``sdl.Window`` from which the drawable size should be queried
+  ##
+  ##  ``w`` Pointer to variable for storing the width in pixels, may be `nil`
+  ##
+  ##  ``h`  Pointer to variable for storing the height in pixels, may be `nil`
+  ##
+  ##  This may differ from ``sdl.getWindowSize()`` if we're rendering
+  ##  to a high-DPI drawable, i.e. the window was created with
+  ##  `sdl.WINDOW_ALLOW_HIGHDPI` on a platform with high-DPI support
+  ##  (Apple calls this "Retina"), and not disabled by the
+  ##  `sdl.HINT_VIDEO_HIGHDPI_DISABLED` hint.
+  ##
+  ##  ``Note:`` On macOS high-DPI support must be enabled for an application by
+  ##  setting NSHighResolutionCapable to true in its Info.plist.
+  ##
+  ##  See also:
+  ##
+  ##  ``getWindowSize()``
+  ##
+  ##  ``createWindow()``
+
