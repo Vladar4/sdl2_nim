@@ -115,6 +115,7 @@ when false:
     proc getAndroidSDKVersion*(): cint {.
         cdecl, importc: "SDL_GetAndroidSDKVersion", dynlib: SDL2_LIB.}
       ##  Return API level of the current device:
+      ##  * API level 30: Android 11
       ##  * API level 29: Android 10
       ##  * API level 28: Android 9
       ##  * API level 27: Android 8.1
@@ -178,6 +179,13 @@ when false:
       ##  Get the path used for external storage for this application.
       ##  This path is unique to your application, but is public and can be
       ##  written to by other applications.
+
+    proc androidRequestPermission(permission: cstring): bool {.
+        cdecl, importc: "SDL_AndroidRequestPermission", dynlib: SDL2_LIB.}
+      ##  Request permissions at runtime.
+      ##
+      ##  This blocks the calling thread until the permission is granted or
+      ##  denied. Returns `true` if the permission was granted.
 
   # Platform specific procedures for WinRT
   when defined winrt:
