@@ -141,7 +141,7 @@ when not declared(atomicDecRef):
     ##  Decrement an atomic variable used as a reference count.
     ##
     ##  ``Return`` `true` if the variable reached zero after decrementing,
-    ##  ``false`` otherwise.
+    ##  `false` otherwise.
     (atomicAdd(a, - 1) == 1)
 
 proc atomicCASPtr*(a: ptr pointer; oldval: pointer; newval: pointer): bool {.

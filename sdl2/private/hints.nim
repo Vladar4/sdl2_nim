@@ -832,7 +832,7 @@ const
     ##  Support for this hint is currently available only in the pthread,
     ##  Windows, and PSP backend.
     ##
-    ##  ``NOTE:`` Instead of this hint, in 2.0.9 and later you can use
+    ##  ``Note:`` Instead of this hint, in 2.0.9 and later you can use
     ##  ``sdl.CreateThreadWithStackSize()``. This hint only works with
     ##  the classic ``sdl.CreateThread()``.
 
@@ -851,7 +851,7 @@ const
     ##  pthread hint values are "current", "other", "fifo" and "rr".
     ##  Currently no other platform hint values are defined but may be in the future.
     ##
-    ##  ``NOTE:`` On Linux, the kernel may send `SIGKILL` to realtime tasks
+    ##  ``Note:`` On Linux, the kernel may send `SIGKILL` to realtime tasks
     ##  which exceed the distro configured execution budget for rtkit.
     ##  This budget can be queried through `RLIMIT_RTTIME` after calling
     ##  ``sdl.setThreadPriority()``.

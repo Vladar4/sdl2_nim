@@ -151,8 +151,8 @@ type
 
     DROPFILE = 0x00001000,  ##  The system requests a file open
     DROPTEXT,       ##  Text/plain drag-and-drop event
-    DROPBEGIN,      ##  A new set of drops is beginning (``nil`` filename)
-    DROPCOMPLETE,   ##  Current set of drops is now complete (``nil`` filename)
+    DROPBEGIN,      ##  A new set of drops is beginning (`nil` filename)
+    DROPCOMPLETE,   ##  Current set of drops is now complete (`nil` filename)
 
     # Audio hotplug events
 
@@ -508,7 +508,7 @@ type
                       ##  or `DROPTEXT` or `DROPCOMPLETE`
     timestamp*: uint32##  In milliseconds, populated using ``getTicks()``
     file*: cstring    ##  The file name, which should be freed with ``free()``,
-                      ##  is ``nil`` on begin/complete
+                      ##  is `nil` on begin/complete
     windowID: uint32  ##  The window that was dropped on, if any
 
 type

@@ -175,7 +175,7 @@ const
   AudioCVTMaxFilters* = 9 ##  Upper limit of filters in ``AudioCVT``  \
     ##  The maximum number of ``AudioFilter`` functions in ``AudioCVT`` is
     ##  currently limited to `9`. The ``AudioCVT.filters`` array has
-    ##  10 pointers, one of which is the terminating ``nil`` pointer.
+    ##  10 pointers, one of which is the terminating `nil` pointer.
 
 type
   AudioFilter* = proc (cvt: ptr AudioCVT; format: AudioFormat) {.cdecl.}
@@ -204,7 +204,7 @@ type
     len_mult*: cint           ##  buffer must be `len*len_mult` big
     len_ratio*: cdouble       ##  Given len, final size is `len * len_ratio`
     filters*: array[AudioCVTMaxFilters + 1, AudioFilter]  ##  \
-      ##  ``nil``-terminated list of filter functions
+      ##  `nil`-terminated list of filter functions
     filter_index*: cint       ##  Current audio conversion procedure
 
 # Procedures
@@ -425,8 +425,8 @@ proc loadWAV_RW*(
   ##  Any file that is invalid (due to truncation, corruption, or wrong values
   ##  in the headers), too big, or unsupported causes an error. Additionally,
   ##  any critical I/O error from the data source will terminate the loading
-  ##  process with an error. The function returns ``nil`` on error and in all
-  ##  cases (with the exception of ``src`` being ``nil``), an appropriate error
+  ##  process with an error. The function returns `nil` on error and in all
+  ##  cases (with the exception of ``src`` being `nil`), an appropriate error
   ##  message will be set.
   ##
   ##  It is required that the data source supports seeking.
@@ -449,7 +449,7 @@ proc loadWAV_RW*(
   ##  ``audio_len`` A pointer filled with the length of the audio data buffer
   ##  in bytes
   ##
-  ##  ``Return`` ``nil`` on error, or non-``nil`` on success.
+  ##  ``Return`` `nil` on error, or non-`nil` on success.
 
 template loadWAV_RW*(
     src: ptr RWops; freesrc: bool; spec: ptr AudioSpec;
@@ -491,7 +491,7 @@ proc convertAudio*(cvt: ptr AudioCVT): cint {.
   ##  ``cvt.buf`` should be allocated after the ``cvt`` object is initialized
   ##  by ``buildAudioCVT()``, and should be `cvt.len*cvt.len_mult` bytes long.
   ##
-  ##  ``Return`` `0` on success or `-1` if ``cvt.buf`` is ``nil``.
+  ##  ``Return`` `0` on success or `-1` if ``cvt.buf`` is `nil`.
 
 type
   AudioStream* = pointer  ##  \

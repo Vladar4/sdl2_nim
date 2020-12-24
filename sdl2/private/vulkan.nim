@@ -59,7 +59,7 @@ proc vulkanLoadLibrary*(path: cstring): cint {.
     cdecl, importc: "SDL_Vulkan_LoadLibrary", dynlib: SDL2_LIB.}
   ##  Dynamically load a Vulkan loader library.
   ##
-  ##  ``path`` The platform dependent Vulkan loader library name, or ``nil``.
+  ##  ``path`` The platform dependent Vulkan loader library name, or `nil`.
   ##
   ##  ``Return`` `0` on success, or `-1` if the library couldn't be loaded.
   ##
@@ -134,12 +134,12 @@ proc vulkanGetInstanceExtensions*(
   ##  ``pCount`` Pointer to an ``cuint`` related to the number of
   ##  required Vulkan instance extensions.
   ##
-  ##  ``pNames`` ``nil`` or a pointer to an array to be filled with the
+  ##  ``pNames`` `nil` or a pointer to an array to be filled with the
   ##  required Vulkan instance extensions.
   ##
   ##  ``Return`` `true` on success, `false` on error.
   ##
-  ##  If ``pNames`` is ``nil``, then the number of required Vulkan instance
+  ##  If ``pNames`` is `nil`, then the number of required Vulkan instance
   ##  extensions is returned in ``pCount``. Otherwise, ``pCount`` must point
   ##  to a variable set to the number of elements in the ``pNames`` array,
   ##  and on return the variable is overwritten with the number of names
@@ -253,10 +253,10 @@ proc vulkanGetDrawableSize*(window: Window; w: ptr cint; h: ptr cint) {.
   ##  ``window``  ``Window`` from which the drawable size should be queried.
   ##
   ##  ``w``       Pointer to variable for storing the width in pixels,
-  ##  may be ``nil``.
+  ##  may be `nil`.
   ##
   ##  ``h``       Pointer to variable for storing the height in pixels,
-  ##  may be ``nil``.
+  ##  may be `nil`.
   ##
   ##  This may differ from ``getWindowSize()`` if we're rendering to a high-DPI
   ##  drawable, i.e. the window was created with `WINDOW_ALLOW_HIGHDPI` on a

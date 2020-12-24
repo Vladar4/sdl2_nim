@@ -142,7 +142,7 @@ proc gameControllerMappingForIndex*(mapping_index: cint): cstring {.
   ## Get the mapping at a particular index.
   ##
   ##  ``Return`` the mapping string. Must be freed with ``free()``.
-  ##  Returns ``nil`` if the index is out of range.
+  ##  Returns `nil` if the index is out of range.
 
 proc gameControllerMappingForGUID*(guid: JoystickGUID): cstring {.
     cdecl, importc: "SDL_GameControllerMappingForGUID", dynlib: SDL2_LIB.}
@@ -246,7 +246,7 @@ proc gameControllerGetSerial*(gamecontroller: GameController): cstring {.
   ##  Get the serial number of an opened controller, if available.
   ##
   ##  ``Return`` the serial number of the controller,
-  ##  or ``nil`` if it is not available.
+  ##  or `nil` if it is not available.
 
 proc gameControllerGetAttached*(gamecontroller: GameController): bool {.
     cdecl, importc: "SDL_GameControllerGetAttached", dynlib: SDL2_LIB.}
@@ -311,9 +311,10 @@ proc gameControllerHasAxis*(
       cdecl, importc: "SDL_GameControllerHasAxis", dynlib: SDL2_LIB.}
   ##  ``Return`` whether a game controller has a given axis.
 
-proc gameControllerGetAxis*(gamecontroller: GameController; 
-                            axis: GameControllerAxis): int16 {.cdecl, 
-    importc: "SDL_GameControllerGetAxis", dynlib: SDL2_LIB.}
+proc gameControllerGetAxis*(
+    gamecontroller: GameController;
+    axis: GameControllerAxis): int16 {.
+      cdecl, importc: "SDL_GameControllerGetAxis", dynlib: SDL2_LIB.}
   ##  Get the current state of an axis control on a game controller.
   ##
   ##  The state is a value ranging from `-32768` to `32767`

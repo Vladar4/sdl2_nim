@@ -1047,7 +1047,7 @@ proc renderDrawRectF*(renderer: Renderer; rect: ptr FRect): cint {.
   ##  ``renderer`` The renderer which should draw a rectangle.
   ##
   ##  ``rect`` A pointer to the destination rectangle,
-  ##  or ``nil`` to outline the entire rendering target.
+  ##  or `nil` to outline the entire rendering target.
   ##
   ##  ``Return`` `0` on success, or `-1` on error.
 
@@ -1071,7 +1071,7 @@ proc renderFillRectF*(renderer: Renderer; rect: ptr FRect): cint {.
   ##  ``renderer`` The renderer which should fill a rectangle.
   ##
   ##  ``rect`` A pointer to the destination rectangle,
-  ##  or ``nil`` for the entire rendering target.
+  ##  or `nil` for the entire rendering target.
   ##
   ##  ``Return`` `0` on success, or `-1` on error.
 
@@ -1100,10 +1100,10 @@ proc renderCopyF*(
   ##  ``texture`` The source texture.
   ##
   ##  ``srcrect`` A pointer to the source rectangle,
-  ##  or ``nil`` for the entire texture.
+  ##  or `nil` for the entire texture.
   ##
   ##  ``dstrect`` A pointer to the destination rectangle,
-  ##  or ``nil`` for the entire rendering target.
+  ##  or `nil` for the entire rendering target.
   ##
   ##  ``Return`` `0` on success, or `-1` on error.
 
@@ -1120,17 +1120,17 @@ proc renderCopyExF*(
   ##  ``texture`` The source texture.
   ##
   ##  ``srcrect`` A pointer to the source rectangle,
-  ##  or ``nil`` for the entire texture.
+  ##  or `nil` for the entire texture.
   ##
   ##  ``dstrect`` A pointer to the destination rectangle,
-  ##  or ``nil`` for the entire rendering target.
+  ##  or `nil` for the entire rendering target.
   ##
   ##  ``angle`` An angle in degrees that indicates the rotation
   ##  that will be applied to dstrect, rotating it in a clockwise direction.
   ##
   ##  ``center`` A pointer to a point indicating the point
   ##  around which dstrect will be rotated
-  ##  (if ``nil``, rotation will be done around `dstrect.w/2`, `dstrect.h/2`).
+  ##  (if `nil`, rotation will be done around `dstrect.w/2`, `dstrect.h/2`).
   ##
   ##  ``flip`` A ``RendererFlip`` value stating which flipping actions should
   ##  be performed on the texture.

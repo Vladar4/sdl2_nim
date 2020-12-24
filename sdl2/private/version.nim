@@ -47,7 +47,7 @@ type
 const
   MAJOR_VERSION* = 2
   MINOR_VERSION* = 0
-  PATCHLEVEL* = 12
+  PATCHLEVEL* = 14
 
 template version*(x: untyped) = ##  \
   ##  Template to determine SDL version program was compiled against.

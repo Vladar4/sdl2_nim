@@ -36,6 +36,12 @@ type
   ThreadPriority* {.size: sizeof(cint).} = enum ##  \
     ##  The SDL thread priority.
     ##
+    ##  SDL will make system changes as necessary in order to apply the thread
+    ##  priority. Code which attempts to control thread state related
+    ##  to priority should be aware that calling ``sdl.setThreadPriority()``
+    ##  may alter such state. `sdl.HINT_THREAD_PRIORITY_POLICY` can be used
+    ##  to control aspects of this behavior.
+    ##
     ##  ``Note`` On many systems you require special privileges
     ##  to set high or time critical priority.
     THREAD_PRIORITY_LOW,

@@ -139,13 +139,13 @@ proc simdAlloc*(len: csize_t): pointer {.
   ##  to use an instruction set with an ``sdl.has...()`` function, don't use
   ##  that instruction set with memory allocated through here.
   ##
-  ##  ``sdl.allocSIMD(0)`` will return a non-``nil`` pointer, assuming
+  ##  ``sdl.allocSIMD(0)`` will return a non-`nil` pointer, assuming
   ##  the system isn't out of memory.
   ##
   ##  ``len`` The length, in bytes, of the block to allocated.
   ##  The actual allocated block might be larger due to padding, etc.
   ##
-  ##  ``Return`` pointer to newly-allocated block, ``nil`` if out of memory.
+  ##  ``Return`` pointer to newly-allocated block, `nil` if out of memory.
   ##
   ##  See also:
   ##
@@ -164,14 +164,14 @@ proc simdRealloc*(mem: pointer, len: csize_t): pointer {.
   ##  ``realloc()``,  ``sdl.malloc()``, ``memalign()``, ``new``, etc.
   ##
   ##  ``mem`` The pointer obtained from ``sdl.simdAlloc()``. This function also
-  ##  accepts ``nil``, at which point this function is the same as
-  ##  calling ``sdl.realloc()`` with a ``nil`` pointer.
+  ##  accepts `nil`, at which point this function is the same as
+  ##  calling ``sdl.realloc()`` with a `nil` pointer.
   ##
   ##  ``len`` The length, in bytes, of the block to allocated. The actual
   ##  allocated block might be larger due to padding, etc. Passing `0` will
-  ##  return a non-``nil`` pointer, assuming the system isn't out of memory.
+  ##  return a non-`nil` pointer, assuming the system isn't out of memory.
   ##
-  ##  ``Return`` pointer to newly-reallocated block, ``nil`` if out of memory.
+  ##  ``Return`` pointer to newly-reallocated block, `nil` if out of memory.
   ##
   ##  See also:
   ##
