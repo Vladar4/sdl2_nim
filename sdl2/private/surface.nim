@@ -48,23 +48,25 @@ type
     ##  ``Note:`` This object should be treated as read-only, except for
     ##  ``pixels``, which, if not `nil`, contains the raw pixel data
     ##  for the surface.
-    flags*: uint32          ## Read-only 
-    format*: ptr PixelFormat ## Read-only 
-    w*: cint
+    flags*: uint32          ## Read-only
+    format*: ptr PixelFormat  ## Read-only
+    w*: cint                ## Read-only
     h*: cint                ## Read-only
     pitch*: cint            ## Read-only
     pixels*: pointer        ## Read-write
-                            ## Application data associated with the surface 
     userdata*: pointer      ## Read-write \
-                            ## information needed for surfaces requiring locks 
-    locked*: cint           ## Read-only
-    lock_data*: pointer     ## Read-only \
-                            ## clipping information
+                            ## Application data associated with the surface
+    locked*: cint           ## Read-only \
+                            ## information needed for surfaces requiring locks
+    list_bitmap*: pointer   ## Private \
+                            ## list of BlitMap that hold a reference \
+                            ## to this surface
     clip_rect*: Rect        ## Read-only \
-                            ## info for fast blit mapping to other surfaces
+                            ## clipping information
     map*: pointer           ## Private \
+                            ## info for fast blit mapping to other surfaces
+    refcount*: cint         ## Read-mostly \
                             ## Reference count -- used when freeing surface
-    refcount*: cint         ## Read-mostly
 
 type
   blit* = proc (
@@ -212,6 +214,13 @@ proc setSurfaceRLE*(surface: Surface; flag: cint): cint {.
   ##  ``Note:`` If RLE is enabled, colorkey and alpha blending blits are
   ##  much faster, but the surface must be locked before directly
   ##  accessing the pixels.
+
+proc hasSurfaceRLE*(surface: Surface): bool {.
+    cdecl, importc: "SDL_HasSurfaceRLE", dynlib: SDL2_LIB.}
+  ##  Returns whether the surface is RLE enabled.
+  ##
+  ##  ``Return`` `true` if the surface is RLE enabled,
+  ##  or `false` if the surface is `nil` or not RLE enabled
 
 proc setColorKey*(surface: Surface; flag: cint; key: uint32): cint {.
     cdecl, importc: "SDL_SetColorKey", dynlib: SDL2_LIB.}
