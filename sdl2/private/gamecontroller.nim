@@ -469,7 +469,7 @@ proc gameControllerRumble*(
   ##  ``Return`` `0`, or `-1` if rumble isn't supported on this controller.
 
 proc gameControllerRumbleTriggers*(
-    gamecontroller: GameController *gamecontroller;
+    gamecontroller: GameController;
     left_rumble, right_rumble: uint16; duration_ms: uint32): cint {.
       cdecl, importc: "SDL_GameControllerRumbleTriggers", dynlib: SDL2_LIB.}
   ##  Start a rumble effect in the game controller's triggers.
@@ -499,7 +499,7 @@ proc gameControllerHasLED*(gamecontroller: GameController): bool {.
 
 proc gameControllerSetLED*(
     gamecontroller: GameController; red, green, blue: uint8): cint {.
-      cint, importc: "SDL_GameControllerSetLED", dynlib: SDL2_LIB.}
+      cdecl, importc: "SDL_GameControllerSetLED", dynlib: SDL2_LIB.}
   ##  Update a controller's LED color.
   ##
   ##  ``gamecontroller`` The controller to update
