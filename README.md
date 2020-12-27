@@ -12,7 +12,7 @@ You need to have SDL 2 dynamic libraries installed on your system.
 
 Includes:
 ---------
-* SDL 2.0.12
+* SDL 2.0.14
 * SDL_gfx 1.0.1 (fully 1.0.4 compatible)
 * SDL_gpu 0.11.0
 * SDL_image 2.0.5
@@ -63,6 +63,11 @@ FAQ:
 
 CHANGELOG:
 ==========
+**v2.0.14.0**
+* updated to SDL-2.0.14 (see [changelog](https://github.com/Vladar4/sdl2_nim/blob/master/CHANGELOG-2.0.14.md))
+* updated documentation
+
+
 **v2.0.12.1**
 * fixed rect templates
 * fixed nimble warnings
