@@ -22,6 +22,7 @@
 ##  timer.nim
 ##  =========
 ##
+##  SDL time management routines.
 
 proc getTicks*(): uint32 {.
     cdecl, importc: "SDL_GetTicks", dynlib: SDL2_LIB.}
@@ -63,7 +64,7 @@ type
     ##  scheduled.  If the callback returns `0`, the periodic alarm is
     ##  cancelled.
 
-  TimerID* = cint ## Definition of the timer ID type.
+  TimerID* = cint ##  Definition of the timer ID type.
 
 proc addTimer*(
     interval: uint32; callback: TimerCallback; param: pointer): TimerID {.

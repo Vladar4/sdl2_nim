@@ -59,10 +59,8 @@ proc imageFilterMMXon*() {.
   ##  Turn possible use of MMX back on.
 
 ##  All routines return:
-##
-##  `0`   OK
-##
-##  `-1`  Error (internal error, parameter error)
+##  * `0`   OK
+##  * `-1`  Error (internal error, parameter error)
 
 proc imageFilterAdd*(
     src1: ptr cuchar; src2: ptr cuchar;

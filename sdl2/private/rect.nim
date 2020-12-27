@@ -37,7 +37,7 @@ type
     y*: cint
 
 type
-  FPoint* = object ## \
+  FPoint* = object ##  \
     ##  The structure that defines a point (floating point)
     ##
     ##  See also:

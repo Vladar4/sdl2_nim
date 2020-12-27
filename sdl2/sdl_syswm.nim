@@ -41,9 +41,9 @@ when defined(SDL_PROTOTYPES_ONLY):
 else:
 
   when defined(SDL_VIDEO_DRIVER_WINDOWS):
-    import windows  ## oldwinapi lib
+    import windows  ##  oldwinapi lib
   elif defined(SDL_VIDEO_DRIVER_X11):
-    import x11/x, x11/xlib  ## x11 lib
+    import x11/x, x11/xlib  ##  x11 lib
   elif defined(SDL_VIDEO_DRIVER_DIRECTFB):
     nil
   elif defined(SDL_VIDEO_DRIVER_COCOA):
@@ -93,20 +93,20 @@ else:
   when defined(SDL_VIDEO_DRIVER_WINDOWS):
     type
       SysWMMsgWinObj* = object  ##  when defined(SDL_VIDEO_DRIVER_WINDOWS)
-        hwnd*: HWND     ## The window for the message
-        msg*: WINUINT   ## The type of message
-        wParam*: WPARAM ## WORD message parameter
-        lParam*: LPARAM ## LONG message parameter
+        hwnd*: HWND     ##  The window for the message
+        msg*: WINUINT   ##  The type of message
+        wParam*: WPARAM ##  WORD message parameter
+        lParam*: LPARAM ##  LONG message parameter
 
       SysWMMsgKindObj* = object ##  when defined(SDL_VIDEO_DRIVER_WINDOWS)
         win*: SysWMMsgWinObj
 
   elif defined(SDL_VIDEO_DRIVER_X11):
     type
-      SysWMMsgX11Obj* = object  ## when defined(SDL_VIDEO_DRIVER_X11)
+      SysWMMsgX11Obj* = object  ##  when defined(SDL_VIDEO_DRIVER_X11)
         event*: TXEvent
 
-      SysWMMsgKindObj* = object ## when defined(SDL_VIDEO_DRIVER_X11)
+      SysWMMsgKindObj* = object ##  when defined(SDL_VIDEO_DRIVER_X11)
         x11*: SysWMMsgX11Obj
 
   elif defined(SDL_VIDEO_DRIVER_DIRECTFB):
@@ -120,7 +120,7 @@ else:
   elif defined(SDL_VIDEO_DRIVER_COCOA):
     type
       SysWMMsgCocoaObj* = object
-        dummy*: cint ## \
+        dummy*: cint
           ##  Latest version of Xcode clang
           ##  complains about empty structs in C v. C++:
           ##
@@ -175,16 +175,16 @@ else:
 
   #type
   #  SysWMinfoKindObj* = object {.union.}
-  #    win*: SysWMinfoWinObj ## when defined(SDL_VIDEO_DRIVER_WINDOWS)
-  #    winrt*: SysWMinfoWinRTObj ## when defined(SDL_VIDEO_DRIVER_WINRT)
-  #    x11*: SysWMinfoX11Obj ## when defined(SDL_VIDEO_DRIVER_X11)
-  #    dfb*: SysWMinfoDFBObj ## when defined(SDL_VIDEO_DRIVER_DIRECTFB)
-  #    cocoa*: SysWMinfoCocoaObj ## when defined(SDL_VIDEO_DRIVER_COCOA)
-  #    uikit*: SysWMinfoUIKitObj ## when defined(SDL_VIDEO_DRIVER_UIKIT)
-  #    wl*: SysWMinfoWLObj ## when defined(SDL_VIDEO_DRIVER_WAYLAND)
-  #    mir*: SysWMinfoMirObj ## when defined(SDL_VIDEO_DRIVER_MIR)
-  #    android*: SysWMinfoAndroidObj ## when defined(SDL_VIDEO_DRIVER_ANDROID)
-  #    dummy*: array[64, uint8]  ##  \
+  #    win*: SysWMinfoWinObj ##  when defined(SDL_VIDEO_DRIVER_WINDOWS)
+  #    winrt*: SysWMinfoWinRTObj ##  when defined(SDL_VIDEO_DRIVER_WINRT)
+  #    x11*: SysWMinfoX11Obj ##  when defined(SDL_VIDEO_DRIVER_X11)
+  #    dfb*: SysWMinfoDFBObj ##  when defined(SDL_VIDEO_DRIVER_DIRECTFB)
+  #    cocoa*: SysWMinfoCocoaObj ##  when defined(SDL_VIDEO_DRIVER_COCOA)
+  #    uikit*: SysWMinfoUIKitObj ##  when defined(SDL_VIDEO_DRIVER_UIKIT)
+  #    wl*: SysWMinfoWLObj ##  when defined(SDL_VIDEO_DRIVER_WAYLAND)
+  #    mir*: SysWMinfoMirObj ##  when defined(SDL_VIDEO_DRIVER_MIR)
+  #    android*: SysWMinfoAndroidObj ##  when defined(SDL_VIDEO_DRIVER_ANDROID)
+  #    dummy*: array[64, uint8]
   #      ##  Make sure this union is always 64 bytes (8 64-bit pointers).
   #      ##  Be careful not to overflow this if you add a new target!
 
@@ -196,7 +196,7 @@ else:
       else:
         type HINSTANCE = HANDLE
     type
-      SysWMinfoWinObj* = object  ## when defined(SDL_VIDEO_DRIVER_WINDOWS)
+      SysWMinfoWinObj* = object ##  when defined(SDL_VIDEO_DRIVER_WINDOWS)
         window*: HWND         ##  The window handle
         hdc*: HDC             ##  The window device context
         hinstance*: HINSTANCE ##  The instance handle
@@ -215,11 +215,11 @@ else:
 
   elif defined(SDL_VIDEO_DRIVER_X11):
     type
-      SysWMinfoX11Obj* = object  ## when defined(SDL_VIDEO_DRIVER_X11)
+      SysWMinfoX11Obj* = object   ##  when defined(SDL_VIDEO_DRIVER_X11)
         display*: ptr xlib.TXDisplay  ##  The X11 display
         window*: x.TWindow            ##  The X11 window
 
-      SysWMinfoKindObj* = object ## when defined(SDL_VIDEO_DRIVER_X11)
+      SysWMinfoKindObj* = object  ##  when defined(SDL_VIDEO_DRIVER_X11)
         x11*: SysWMinfoX11Obj
 
   elif defined(SDL_VIDEO_DRIVER_DIRECTFB):
@@ -235,7 +235,7 @@ else:
   elif defined(SDL_VIDEO_DRIVER_COCOA):
     type
       SysWMinfoCocoaObj* = object
-        window*: pointer ## The Cocoa window
+        window*: pointer  ##  The Cocoa window
 
       SysWMinfoKindObj* = object
         cocoa*: SysWMinfoCocoaObj
@@ -244,13 +244,13 @@ else:
     type
       SysWMinfoUIKitObj* = object
         window*: ptr UIWindow       ##  The UIKit window
-        framebuffer*: GLuint        ##  \
+        framebuffer*: GLuint
           ##  The GL view's Framebuffer Object.
           ##  It must be bound when rendering to the screen using GL.
-        colorbuffer*: GLuint        ##  \
+        colorbuffer*: GLuint
           ##  The GL view's color Renderbuffer Object.
           ##  It must be bound when SDL_GL_SwapWindow is called.
-        resolveFramebuffer*: GLuint ##  \
+        resolveFramebuffer*: GLuint
           ##  The Framebuffer Object which holds the resolve color Renderbuffer,
           ##  when MSAA is used.
 
@@ -262,7 +262,7 @@ else:
       SysWMinfoWLObj* = object
         display*: ptr WlDisplay ##  Wayland display
         surface*: ptr WlSurface ##  Wayland surface
-        shellSurface*: ptr WlShellSurface ##  \
+        shellSurface*: ptr WlShellSurface
           ##  Wayland shell_surface (window manager handle)
 
       SysWMinfoKindObj* = object
@@ -307,7 +307,7 @@ else:
   else:
     type
       SysWMinfoKindObj* = object
-        dummy*: array[64, uint8]  ##  \
+        dummy*: array[64, uint8]
           ##  Make sure this union is always 64 bytes (8 64-bit pointers).
           ##  Be careful not to overflow this if you add a new target!
 

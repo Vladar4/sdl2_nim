@@ -77,7 +77,7 @@ const
     ##  This is the version number const for the current SDL_mixer version.
 
 template versionAtLeast*(x, y, z: untyped): untyped =  ##  \
-  ##  This macro will evaluate to true if compiled
+  ##  This template will evaluate to true if compiled
   ##  with SDL_mixer at least X.Y.Z.
   (COMPILEDVERSION >= versionNum(x, y, z))
 
@@ -174,16 +174,16 @@ type
     ##
     ##  This stores the sample data, the length in bytes of that data,
     ##  and the volume to use when mixing the sample.
-    allocated*: cint  ##  \
+    allocated*: cint
       ##  a boolean indicating whether to free abuf when the chunk is freed.
       ##  `0` if the memory was not allocated and thus not owned by this chunk.
       ##  `1` if the memory was allocated and is thus owned by this chunk.
-    abuf*: ptr uint8  ##  \
+    abuf*: ptr uint8
       ##  Pointer to the sample data,
       ##  which is in the output format and sample rate.
-    alen*: uint32 ##  \
+    alen*: uint32
       ##  Length of abuf in bytes.
-    volume*: uint8  ##  \
+    volume*: uint8
       ##  Per-sample volume,
       ##  `0` = silent, `128` = max volume. This takes effect when mixing.
 
@@ -881,15 +881,11 @@ proc setPosition*(channel: cint; angle: int16; distance: uint8): cint {.
   ##  Use `sdl_mixer.CHANNEL_POST` to process the postmix stream.
   ##
   ##  ``angle`` Direction in relation to forward from `0` to `360` degrees.
-  ##  Larger angles will be reduced to this range using angles `% 360`.
-  ##
-  ##    `0` = directly in front.
-  ##
-  ##    `90` = directly to the right.
-  ##
-  ##    `180` = directly behind.
-  ##
-  ##    `270` = directly to the left.
+  ##  Larger angles will be reduced to this range using `angle mod 360`.
+  ##  * `0` = directly in front.
+  ##  * `90` = directly to the right.
+  ##  * `180` = directly behind.
+  ##  * `270` = directly to the left.
   ##
   ##  So you can see it goes clockwise starting at directly in front.
   ##  This ends up being similar in effect to ``sdl_mixer.setPanning()``
@@ -1418,8 +1414,8 @@ proc expireChannel*(channel: cint; ticks: cint): cint {.
   ##  Any callback set by ``sdl_mixer.channelFinished()`` will be called
   ##  when the channel expires.
   ##
-  ## ``Return`` number of channels set to expire.
-  ## Whether or not they are active.
+  ##  ``Return`` number of channels set to expire.
+  ##  Whether or not they are active.
 
 proc fadeOutChannel*(which: cint; ms: cint): cint {.
     cdecl, importc: "Mix_FadeOutChannel", dynlib: SDL2_MIX_LIB.}
@@ -1520,7 +1516,7 @@ proc paused*(channel: cint): cint {.
   ##  ``Note:`` Does not check if the channel has been halted
   ##  after it was paused, which may seem a little weird.
   ##
-  ## ``Return`` `0` if the channel is not paused.
+  ##  ``Return`` `0` if the channel is not paused.
   ##  Otherwise if you passed in `-1`,
   ##  the number of paused channels is returned.
   ##  If you passed in a specific channel,

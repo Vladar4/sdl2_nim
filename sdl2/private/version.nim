@@ -39,9 +39,9 @@ type
     ##  ``version``
     ##
     ##  ``getVersion``
-    major*: uint8           ## major version
-    minor*: uint8           ## minor version
-    patch*: uint8           ## update version
+    major*: uint8           ##  major version
+    minor*: uint8           ##  minor version
+    patch*: uint8           ##  update version
 
 # Printable format: "$1.$2.$3" % [MAJOR, MINOR, PATCHLEVEL]
 const
@@ -84,7 +84,7 @@ const
 
 template versionAtLeast*(x, y, z: untyped): bool = ##  \
   ##  This templaye will evaluate to true if compiled with SDL
-  ##  at least ``x``.``y``.``z``.
+  ##  at least ``x.y.z``.
   (COMPILEDVERSION >= versionNum(x, y, z))
 
 proc getVersion*(ver: ptr Version) {.

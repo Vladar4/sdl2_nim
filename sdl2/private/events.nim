@@ -43,42 +43,30 @@ type
     # These application events have special meaning on iOS,
     # see README-ios.md for details.
 
-    APP_TERMINATING,  ##  \
+    APP_TERMINATING,
       ##  The application is being terminated by the OS
-      ##
       ##  Called on iOS in ``applicationWillTerminate()``
-      ##
       ##  Called on Android in ``onDestroy()``
-    APP_LOWMEMORY,  ##  \
+    APP_LOWMEMORY,
       ##  The application is low on memory, free memory if possible.
-      ##
       ##  Called on iOS in ``applicationDidReceiveMemoryWarning()``
-      ##
       ##  Called on Android in ``onLowMemory()``
-    APP_WILLENTERBACKGROUND,  ##  \
+    APP_WILLENTERBACKGROUND,
       ##  The application is about to enter the background
-      ##
       ##  Called on iOS in ``applicationWillResignActive()``
-      ##
       ##  Called on Android in ``onPause()``
-    APP_DIDENTERBACKGROUND, ##  \
+    APP_DIDENTERBACKGROUND,
       ##  The application did enter the background
       ##  and may not get CPU for some time
-      ##
       ##  Called on iOS in ``applicationDidEnterBackground()``
-      ##
       ##  Called on Android in ``onPause()``
-    APP_WILLENTERFOREGROUND,  ##  \
+    APP_WILLENTERFOREGROUND,
       ##  The application is about to enter the foreground
-      ##
       ##  Called on iOS in ``applicationWillEnterForeground()``
-      ##
       ##  Called on Android in ``onResume()``
-    APP_DIDENTERFOREGROUND,   ##  \
+    APP_DIDENTERFOREGROUND,
       ##  The application is now interactive
-      ##
       ##  Called on iOS in ``applicationDidBecomeActive()``
-      ##
       ##  Called on Android ``in onResume()``
 
     LOCALECHANGED,  ##  The user's locale preferences have changed.
@@ -97,7 +85,7 @@ type
     KEYUP,                    ##  Key released
     TEXTEDITING,              ##  Keyboard text editing (composition)
     TEXTINPUT,                ##  Keyboard text input
-    KEYMAPCHANGED,            ##  Keymap changed due to a system event such as \
+    KEYMAPCHANGED,            ##  Keymap changed due to a system event such as
                               ##  an input language or keyboard layout change.
 
     # Mouse events
@@ -115,14 +103,14 @@ type
     JOYBUTTONDOWN,    ##  Joystick button pressed
     JOYBUTTONUP,      ##  Joystick button released
     JOYDEVICEADDED,   ##  A new joystick has been inserted into the system
-    JOYDEVICEREMOVED, ## An opened joystick has been removed
+    JOYDEVICEREMOVED, ##  An opened joystick has been removed
 
     # Game controller events
 
     CONTROLLERAXISMOTION = 0x00000650,  ##  Game controller axis motion
     CONTROLLERBUTTONDOWN,     ##  Game controller button pressed
     CONTROLLERBUTTONUP,       ##  Game controller button released
-    CONTROLLERDEVICEADDED,    ##  \
+    CONTROLLERDEVICEADDED,
       ##  A new Game controller has been inserted into the system
     CONTROLLERDEVICEREMOVED,  ##  An opened Game controller has been removed
     CONTROLLERDEVICEREMAPPED, ##  The controller mapping was updated
@@ -164,16 +152,16 @@ type
 
     # Render events
 
-    RENDER_TARGETS_RESET = 0x00002000,  ##  The render targets have been reset \
+    RENDER_TARGETS_RESET = 0x00002000,  ##  The render targets have been reset
       ##  and their contents need to be updated
-    RENDER_DEVICE_RESET,  ##  The device has beed reset and all textures need \
-      ## to be recreated
+    RENDER_DEVICE_RESET,  ##  The device has beed reset and all textures need
+      ##  to be recreated
 
-    USEREVENT = 0x00008000, ##  \
+    USEREVENT = 0x00008000,
       ##  Events `USEREVENT` through `LASTEVENT` are for your use,
       ##  and should be allocated with ``registerEvents()``
 
-    LASTEVENT = 0x0000FFFF  ##  \
+    LASTEVENT = 0x0000FFFF
       ##  This last event is only for bounding internal arrays
 
 type
@@ -298,13 +286,13 @@ type
     timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     windowID*: uint32       ##  The window with mouse focus, if any
     which*: uint32          ##  The mouse instance id, or `TOUCH_MOUSEID`
-    x*: int32               ##  \
+    x*: int32
       ##  The amount scrolled horizontally,
       ##  positive to the right and negative to the left
-    y*: int32               ##  \
+    y*: int32
       ##  The amount scrolled vertically,
       ##  positive away from the user and negative toward the user
-    direction*: MouseWheelDirection ##  \
+    direction*: MouseWheelDirection
       ##  Set to one of the `MOUSEWHEEL_*`.
       ##  When `MOUSEWHEEL_FLIPPED` the values in X and Y will be opposite.
       ##  Multiply by `-1` to change them back.
@@ -342,15 +330,13 @@ type
     timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     which*: JoystickID      ##  The joystick instance id
     hat*: uint8             ##  The joystick hat index
-    value*: HatPosition     ##  \
+    value*: HatPosition
       ##  The hat position value.
       ##
-      ##  See also:
-      ##
-      ##  ``HatPosition``:
-      ##
-      ##  `HAT_LEFTUP`, `HAT_UP`, `SDL_HAT_RIGHTUP`, `HAT_LEFT`, `HAT_CENTERED`,
-      ##  `HAT_RIGHT`, `HAT_LEFTDOWN`, `HAT_DOWN`, `HAT_RIGHTDOWN`
+      ##  See also ``HatPosition``:
+      ##    `HAT_LEFTUP`, `HAT_UP`, `SDL_HAT_RIGHTUP`,
+      ##    `HAT_LEFT`, `HAT_CENTERED`, `HAT_RIGHT`,
+      ##    `HAT_LEFTDOWN`, `HAT_DOWN`, `HAT_RIGHTDOWN`
       ##
       ##  Note that zero means the POV is centered.
     padding1*: uint8
@@ -372,7 +358,7 @@ type
     ##  Joystick device event structure (`event.jdevice.*`)
     kind*: EventKind        ##  `JOYDEVICEADDED` or `JOYDEVICEREMOVED`
     timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
-    which*: int32           ##  \
+    which*: int32
       ##  The joystick device index for the `ADDED` event,
       ##  instance id for the `REMOVED` event
 
@@ -403,19 +389,19 @@ type
 type
   ControllerDeviceEventObj* = object ##  \
     ##  Controller device event structure (`event.cdevice.*`)
-    kind*: EventKind        ##  \
+    kind*: EventKind
       ##  `CONTROLLERDEVICEADDED`,
       ##  `CONTROLLERDEVICEREMOVED, or
       ##  `CONTROLLERDEVICEREMAPPED`
     timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
-    which*: int32           ##  \
+    which*: int32
       ##  The joystick device index for the `ADDED` event,
       ##  instance id for the `REMOVED` or `REMAPPED` event
 
 type
-  ControllerTouchpadEventObj* = object ## \
+  ControllerTouchpadEventObj* = object ##  \
     ##  Game controller touchpad event structure (`event.ctouchpad.*`)
-    kind*: EventKind        ##  \
+    kind*: EventKind
       ##  `CONTROLLERTOUCHPADDOWN`,
       ##  `CONTROLLERTOUCHPADMOTION`, or
       ##  `CONTROLLERTOUCHPADUP`
@@ -423,21 +409,21 @@ type
     which*: JoystickID      ##  The joystick instance id
     touchpad*: int32        ##  The index of the touchpad
     finger*: int32          ##  The index of the finger on the touchpad
-    x*: cfloat              ##  \
+    x*: cfloat
       ##  Normalized in the range 0...1 with 0 being on the left
-    y*: cfloat              ##  \
+    y*: cfloat
       ##  Normalized in the range 0...1 with 0 being at the top
     pressure*: cfloat       ##  Normalized in the range 0...1
 
 type
-  ControllerSensorEventObj* = object ## \
+  ControllerSensorEventObj* = object ##  \
     ##  Game controller sensor event structure (`event.csensor.*`)
     kind*: EventKind        ##  `CONTROLLERSENSORUPDATE`
     timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     which*: JoystickID      ##  The joystick instance id
-    sensor*: int32          ##  \
+    sensor*: int32
       ##  The type of the sensor, one of the values of ``sdl.SensorType``
-    data*: array[3, cfloat] ##  \
+    data*: array[3, cfloat]
       ##  Up to `3` values from the sensor, as defined in ``sensor.nim``
 
 type
@@ -445,11 +431,11 @@ type
     ##  Audio device event structure (`event.adevice.*`)
     kind*: EventKind        ##  `AUDIODEVICEADDED`, or `AUDIODEVICEREMOVED`
     timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
-    which*: uint32          ##  \
+    which*: uint32
       ##  The audio device index for the `ADDED` event (valid until next
       ##  ``getNumAudioDevices()`` call),
       ##  ``AudioDeviceID`` for the `REMOVED` event.
-    iscapture*: uint8        ##  \
+    iscapture*: uint8
       ##  `0` if an output device,
       ##  non-zero if a capture device.
     padding1*: uint8
@@ -512,18 +498,18 @@ type
     windowID: uint32  ##  The window that was dropped on, if any
 
 type
-  SensorEventObj* = object ## \
+  SensorEventObj* = object ##  \
     ##  Sensor event structure (`event.sensor.*`)
     kind*: EventKind        ##  `SENSORUPDATE`
     timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
     which*: int32           ##  The instance ID of the sensor
-    data*: array[6, cfloat] ##  Up to 6 values from the sensor -  \
+    data*: array[6, cfloat] ##  Up to 6 values from the sensor -
       ##  additional values can be queried using ``sensorGetData()``
 
 type
   QuitEventObj* = object ##  \
     ##  The "quit requested" event
-    kind*: EventKind        ## `QUIT`
+    kind*: EventKind        ##  `QUIT`
     timestamp*: uint32      ##  In milliseconds, populated using ``getTicks()``
 
 type
@@ -561,7 +547,7 @@ type
 type
   Event* {.union.} = object ##  \
     ##  General event structure
-    kind*: EventKind                    ## Event type, shared with all events
+    kind*: EventKind                    ##  Event type, shared with all events
     common*: CommonEventObj             ##  Common event data
     display*: DisplayEventObj           ##  Display event data
     window*: WindowEventObj             ##  Window event data
@@ -579,7 +565,8 @@ type
     caxis*: ControllerAxisEventObj      ##  Game Controller axis event data
     cbutton*: ControllerButtonEventObj  ##  Game Controller button event data
     cdevice*: ControllerDeviceEventObj  ##  Game Controller device event data
-    ctouchpad*: ControllerTouchpadEventObj  ##  Game Controller touchpad event data
+    ctouchpad*: ControllerTouchpadEventObj
+      ##  Game Controller touchpad event data
     csensor*: ControllerSensorEventObj  ##  Game Controller sensor event data
     adevice*: AudioDeviceEventObj       ##  Audio device event data
     sensor*: SensorEventObj             ##  Sensor event data
@@ -590,7 +577,7 @@ type
     mgesture*: MultiGestureEventObj     ##  Gesture event data
     dgesture*: DollarGestureEventObj    ##  Gesture event data
     drop*: DropEventObj                 ##  Drag and drop event data
-    padding*: array[56, uint8]          ##  \
+    padding*: array[56, uint8]
       ##  This is necessary for ABI compatibility between Visual C++ and GCC.
       ##  Visual C++ will respect the push pack pragma and use 52 bytes for
       ##  this structure, and GCC will use the alignment of the largest
@@ -750,11 +737,11 @@ proc eventState*(kind: EventKind; state: cint): uint8 {.
     cdecl, importc: "SDL_EventState", dynlib: SDL2_LIB.}
   ##  This procedure allows you to set the state of processing certain events.
   ##
-  ##  * If ``state`` is set to `IGNORE`, that event will be automatically \
-  ##  dropped from the event queue and will not be filtered.
+  ##  * If ``state`` is set to `IGNORE`, that event will be automatically
+  ##    dropped from the event queue and will not be filtered.
   ##  * If ``state`` is set to `ENABLE`, that event will be processed normally.
-  ##  * If ``state`` is set to `QUERY`, ``eventState()`` will return the \
-  ##  current processing state of the specified event.
+  ##  * If ``state`` is set to `QUERY`, ``eventState()`` will return the
+  ##    current processing state of the specified event.
 
 template getEventState*(kind: untyped): untyped =
   eventState(kind, QUERY)
@@ -768,7 +755,7 @@ proc registerEvents*(numevents: cint): uint32 {.
   ##  returns `-1'u32`.
 
 iterator events*(): Event =
-  ## Iterate through and consume the event queue.
+  ##  Iterate through and consume the event queue.
   var event: Event
   while pollEvent(event.addr) != 0:
     yield event

@@ -63,7 +63,7 @@ type
     hat*: GameControllerButtonBindValueHat
 
   GameControllerButtonBind* = object ##  \
-    ##  Get the SDL joystick layer binding \
+    ##  Get the SDL joystick layer binding
     ##  for this controller button/axis mapping
     bindType*: GameControllerBindType
     value*: GameControllerButtonBindValue
@@ -93,21 +93,18 @@ type
 ##  any XInput devices.
 ##
 ##  The mapping format for joystick is:
-##
-##    `bX` - a joystick button, index X
-##
-##    `hX.Y` - hat X with value Y
-##
-##    `aX` - axis X of the joystick
+##  * `bX` - a joystick button, index X
+##  * `hX.Y` - hat X with value Y
+##  * `aX` - axis X of the joystick
 ##
 ##  Buttons can be used as a controller axis and vice versa.
 ##
 ##  This string shows an example of a valid mapping for a controller
 ##
-## "03000000341a00003608000000000000,PS3 Controller,a:b1,b:b2,y:b3,x:b0,
-## start:b9,guide:b12,back:b8,dpup:h0.1,dpleft:h0.8,dpdown:h0.4,dpright:h0.2,
-## leftshoulder:b4,rightshoulder:b5,leftstick:b10,rightstick:b11,leftx:a0,
-## lefty:a1,rightx:a2,righty:a3,lefttrigger:b6,righttrigger:b7"
+##  "03000000341a00003608000000000000,PS3 Controller,a:b1,b:b2,y:b3,x:b0,
+##  start:b9,guide:b12,back:b8,dpup:h0.1,dpleft:h0.8,dpdown:h0.4,dpright:h0.2,
+##  leftshoulder:b4,rightshoulder:b5,leftstick:b10,rightstick:b11,leftx:a0,
+##  lefty:a1,rightx:a2,righty:a3,lefttrigger:b6,righttrigger:b7"
 
 proc gameControllerAddMappingsFromRW*(rw: ptr RWops; freerw: cint): cint {.
     cdecl, importc: "SDL_GameControllerAddMappingsFromRW", dynlib: SDL2_LIB.}
@@ -121,7 +118,7 @@ proc gameControllerAddMappingsFromRW*(rw: ptr RWops; freerw: cint): cint {.
   ##  ``Return`` number of mappings added, `-1` on error
 
 template gameControllerAddMappingsFromFile*(file: untyped): untyped = ##  \
-  ##  Load a set of mappings from a file, \
+  ##  Load a set of mappings from a file,
   ##  filtered by the current ``getPlatform()``.
   gameControllerAddMappingsFromRW(rwFromFile(file, "rb"), 1)
 
@@ -139,7 +136,7 @@ proc gameControllerNumMappings*(): cint {.
 
 proc gameControllerMappingForIndex*(mapping_index: cint): cstring {.
     cdecl, importc: "SDL_GameControllerMappingForIndex", dynlib: SDL2_LIB.}
-  ## Get the mapping at a particular index.
+  ##  Get the mapping at a particular index.
   ##
   ##  ``Return`` the mapping string. Must be freed with ``free()``.
   ##  Returns `nil` if the index is out of range.
@@ -216,8 +213,8 @@ proc gameControllerGetType*(gamecontroller: GameController): GameControllerType 
 
 proc gameControllerGetPlayerIndex*(gamecontroller: GameController): cint {.
     cdecl, importc: "SDL_GameControllerGetPlayerIndex", dynlib: SDL2_LIB.}
-  ## Get the player index of an opened game controller,
-  ## or `-1` if it's not available.
+  ##  Get the player index of an opened game controller,
+  ##  or `-1` if it's not available.
   ##
   ##  For XInput controllers this returns the XInput user index.
 
@@ -229,17 +226,17 @@ proc gameControllerSetPlayerIndex*(
 proc gameControllerGetVendor*(gamecontroller: GameController): uint16 {.
     cdecl, importc: "SDL_GameControllerGetVendor", dynlib: SDL2_LIB.}
   ##  ``Return`` the USB vendor ID of an opened controller, if available.
-  ##  If the vendor ID isn't available this function returns `0`.
+  ##  If the vendor ID isn't available this procedure returns `0`.
 
 proc gameControllerGetProduct*(gamecontroller: GameController): uint16 {.
     cdecl, importc: "SDL_GameControllerGetProduct", dynlib: SDL2_LIB.}
   ##  ``Return`` the USB product ID of an opened controller, if available.
-  ##  If the product ID isn't available this function returns `0`.
+  ##  If the product ID isn't available this procedure returns `0`.
 
 proc gameControllerGetProductVersion*(gamecontroller: GameController): uint16 {.
     cdecl, importc: "SDL_GameControllerGetProductVersion", dynlib: SDL2_LIB.}
   ##  ``Return`` the product version of an opened controller, if available.
-  ##  If the product version isn't available this function returns `0`.
+  ##  If the product version isn't available this procedure returns `0`.
 
 proc gameControllerGetSerial*(gamecontroller: GameController): cstring {.
     cdecl, importc: "SDL_GameControllerGetSerial", dynlib: SDL2_LIB.}
@@ -334,7 +331,7 @@ type
     CONTROLLER_BUTTON_LEFTSHOULDER, CONTROLLER_BUTTON_RIGHTSHOULDER,
     CONTROLLER_BUTTON_DPAD_UP,      CONTROLLER_BUTTON_DPAD_DOWN,
     CONTROLLER_BUTTON_DPAD_LEFT,    CONTROLLER_BUTTON_DPAD_RIGHT,
-    CONTROLLER_BUTTON_MISC1,        ##  \
+    CONTROLLER_BUTTON_MISC1,
       ##  Xbox Series X share button,
       ##  PS5 microphone button,
       ##  Nintendo Switch Pro capture button
@@ -453,7 +450,7 @@ proc gameControllerRumble*(
     cdecl, importc: "SDL_GameControllerRumble", dynlib: SDL2_LIB.}
   ##  Start a rumble effect.
   ##
-  ##  Each call to this function cancels any previous rumble effect,
+  ##  Each call to this procedure cancels any previous rumble effect,
   ##  and calling it with `0` intensity stops any rumbling.
   ##
   ##  ``gamecontroller``  The controller to vibrate
@@ -473,7 +470,7 @@ proc gameControllerRumbleTriggers*(
     left_rumble, right_rumble: uint16; duration_ms: uint32): cint {.
       cdecl, importc: "SDL_GameControllerRumbleTriggers", dynlib: SDL2_LIB.}
   ##  Start a rumble effect in the game controller's triggers.
-  ##  Each call to this function cancels any previous trigger rumble effect,
+  ##  Each call to this procedure cancels any previous trigger rumble effect,
   ##  and calling it with `0` intensity stops any rumbling.
   ##
   ##  ``gamecontroller`` The controller to vibrate

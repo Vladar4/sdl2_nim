@@ -11,7 +11,7 @@
 const
   FONTDATAMAX* = (8 * 256)
 
-## Default 8x8 font
+##  Default 8x8 font
 
 var gfxPrimitivesFontdata*: array[FONTDATAMAX, cuchar] = [
 

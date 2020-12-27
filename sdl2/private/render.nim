@@ -47,13 +47,13 @@
 #type
 #  RendererFlags* {.size: sizeof(cint).} = enum ##  \
 #    ##  Flags used when creating a rendering context
-#    RENDERER_SOFTWARE = 0x00000001, ##  \
+#    RENDERER_SOFTWARE = 0x00000001,
 #      ##  The renderer is a software fallback
-#    RENDERER_ACCELERATED = 0x00000002, ##  \
+#    RENDERER_ACCELERATED = 0x00000002,
 #      ##  The renderer uses hardware acceleration
-#    RENDERER_PRESENTVSYNC = 0x00000004, ##  \
+#    RENDERER_PRESENTVSYNC = 0x00000004,
 #      ##  Present is synchronized with the refresh rate
-#    RENDERER_TARGETTEXTURE = 0x00000008 ##  \
+#    RENDERER_TARGETTEXTURE = 0x00000008
 #      ##  Ther render supports rendering to texture
 
 # RendererFlags
@@ -71,12 +71,12 @@ const
 type
   RendererInfo* = object ##  \
     ##  Information on the capabilities of a render driver or context
-    name*: cstring                ## The name of the renderer
-    flags*: uint32                ## Supported ``RendererFlags``
-    num_texture_formats*: uint32  ## The number of available texture formats
-    texture_formats*: array[16, uint32] ## The available texture formats
-    max_texture_width*: cint      ## The maximum texture width
-    max_texture_height*: cint     ## The maximum texture height
+    name*: cstring                ##  The name of the renderer
+    flags*: uint32                ##  Supported ``RendererFlags``
+    num_texture_formats*: uint32  ##  The number of available texture formats
+    texture_formats*: array[16, uint32] ##  The available texture formats
+    max_texture_width*: cint      ##  The maximum texture width
+    max_texture_height*: cint     ##  The maximum texture height
 
 type
   ScaleMode* {.size: sizeof(cint).} = enum  ##  \
@@ -88,24 +88,24 @@ type
 type
   TextureAccess* {.size: sizeof(cint).} = enum ##  \
     ##  The access pattern allowed for a texture
-    TEXTUREACCESS_STATIC = 0x00000000 ## Changes rarely, not lockable
-    TEXTUREACCESS_STREAMING = 0x00000001 ## Changes frequently, lockable
-    TEXTUREACCESS_TARGET = 0x00000002 ## Texture can be used as a render target
+    TEXTUREACCESS_STATIC = 0x00000000 ##  Changes rarely, not lockable
+    TEXTUREACCESS_STREAMING = 0x00000001  ##  Changes frequently, lockable
+    TEXTUREACCESS_TARGET = 0x00000002 ##  Texture can be used as a render target
 
 type
   TextureModulate* {.size: sizeof(cint).} = enum ##  \
     ##  The texture channel modulation used in ``renderCopy()``
-    TEXTUREMODULATE_NONE  = 0x00000000, ## No modulation
-    TEXTUREMODULATE_COLOR = 0x00000001, ## srcC = srcC * color
-    TEXTUREMODULATE_ALPHA = 0x00000002  ## srcA = srcA * alpha
+    TEXTUREMODULATE_NONE  = 0x00000000, ##  No modulation
+    TEXTUREMODULATE_COLOR = 0x00000001, ##  srcC = srcC * color
+    TEXTUREMODULATE_ALPHA = 0x00000002  ##  srcA = srcA * alpha
 
 type
   RendererFlip* {.size: sizeof(cint).} = enum ##  \
     ##  Flip constants for ``renderCopyEx()``
-    FLIP_NONE       = 0x00000000, ## Do not flip
-    FLIP_HORIZONTAL = 0x00000001, ## flip horizontally
-    FLIP_VERTICAL   = 0x00000002, ## flip vertically
-    FLIP_BOTH       = 0x00000003  ## flip horizontally and vertically
+    FLIP_NONE       = 0x00000000, ##  Do not flip
+    FLIP_HORIZONTAL = 0x00000001, ##  flip horizontally
+    FLIP_VERTICAL   = 0x00000002, ##  flip vertically
+    FLIP_BOTH       = 0x00000003  ##  flip horizontally and vertically
 
 type
   Renderer* = pointer ##  \
@@ -549,7 +549,7 @@ proc setRenderTarget*(renderer: Renderer; texture: Texture): cint {.
   ##  ``renderer`` The renderer.
   ##
   ##  ``texture`` The targeted texture, which must be created with the
-  ##  `TEXTUREACCESS_TARGET`` flag, or `nil` for the default render target
+  ##  `TEXTUREACCESS_TARGET` flag, or `nil` for the default render target
   ##
   ##  ``Return`` `0` on success, or `-1` on error.
   ##
@@ -620,7 +620,7 @@ proc renderSetIntegerScale*(renderer: Renderer; enable: bool): cint {.
   ##
   ##  ``enable`` Enable or disable integer scaling
   ##
-  ##  This function restricts the logical viewport to integer values -
+  ##  This procedure restricts the logical viewport to integer values -
   ##  that is, when a resolution is between two multiples of a logical size,
   ##  the viewport size is rounded down to the lower multiple.
   ##
@@ -1187,7 +1187,7 @@ proc renderFlush*(renderer: Renderer): cint {.
   ##  Force the rendering context to flush any pending commands to the
   ##  underlying rendering API.
   ##
-  ##  You do not need to (and in fact, shouldn't) call this function unless
+  ##  You do not need to (and in fact, shouldn't) call this procedure unless
   ##  you are planning to call into OpenGL/Direct3D/Metal/whatever directly
   ##  in addition to using an SDL_Renderer.
   ##
@@ -1198,11 +1198,11 @@ proc renderFlush*(renderer: Renderer): cint {.
   ##  this applies, you should call ``sdl.renderFlush()`` between calls to SDL's
   ##  render API and the low-level API you're using in cooperation.
   ##
-  ##  In all other cases, you can ignore this function. This is only here to
+  ##  In all other cases, you can ignore this procedure. This is only here to
   ##  get maximum performance out of a specific situation. In all other cases,
   ##  SDL will do the right thing, perhaps at a performance loss.
   ##
-  ##  This function is first available in SDL 2.0.10, and is not needed in
+  ##  This procedure is first available in SDL 2.0.10, and is not needed in
   ##  2.0.9 and earlier, as earlier versions did not queue rendering commands
   ##  at all, instead flushing them to the OS immediately.
 

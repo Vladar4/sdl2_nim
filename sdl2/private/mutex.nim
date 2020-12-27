@@ -22,6 +22,7 @@
 ##  mutex.nim
 ##  =========
 ##
+##  Procedures to provide thread synchronization primitives.
 
 const
   MUTEX_TIMEDOUT* = 1 ##  \
@@ -126,7 +127,7 @@ proc semValue*(sem: Sem): uint32 {.
 
 type
   Cond* = pointer ##  \
-    ## The SDL condition variable structure, defined in SDL_syscond.c
+    ##  The SDL condition variable structure, defined in SDL_syscond.c
 
 proc createCond*(): Cond {.
     cdecl, importc: "SDL_CreateCond", dynlib: SDL2_LIB.}

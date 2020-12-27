@@ -83,11 +83,11 @@ type
   RWops* = object ##  \
     ##  This is the read/write operation structure -- very basic.
 
-    size*: proc (context: ptr RWops): int64 {.cdecl.} ##  \
+    size*: proc (context: ptr RWops): int64 {.cdecl.}
       ##  ``Return`` the size of the file in this rwops, or `-1` if unknown
 
     seek*: proc (context: ptr RWops;
-        offset: int64; whence: cint): int64 {.cdecl.} ##  \
+        offset: int64; whence: cint): int64 {.cdecl.}
       ##  Seek to ``offset`` relative to ``whence``,
       ##  one of stdio's whence values:
       ##
@@ -96,21 +96,21 @@ type
       ##  ``Return`` the final offset in the data stream, or `-1` on error.
 
     read*: proc (context: ptr RWops;
-        p: pointer; size: csize_t; maxnum: csize_t): csize_t {.cdecl.} ##  \
+        p: pointer; size: csize_t; maxnum: csize_t): csize_t {.cdecl.}
       ##  Read up to ``maxnum`` objects each of size ``size`` from the data
       ##  stream to the area pointed at by ``p``.
       ##
       ##  ``Return`` the number of objects read, or `0` at error or end of file.
 
     write*: proc (context: ptr RWops;
-        p: pointer; size: csize_t; num: csize_t): csize_t {.cdecl.} ##  \
+        p: pointer; size: csize_t; num: csize_t): csize_t {.cdecl.}
       ##  Write exactly ``num`` objects each of size ``size`` from the area
       ##  pointed at by ``p`` to data stream.
       ##
       ##  ``Return`` the number of objects written,
       ##  or `0` at error or end of file.
 
-    close*: proc (context: ptr RWops): cint {.cdecl.} ##  \
+    close*: proc (context: ptr RWops): cint {.cdecl.}
       ##  Close and free an allocated RWops object.
       ##
       ##  ``Return`` `0` if successful,
@@ -151,13 +151,13 @@ proc freeRW*(area: ptr RWops) {.
 
 
 const
-  RW_SEEK_SET* = 0 ## Seek from the beginning of data
-  RW_SEEK_CUR* = 1 ## Seek relative to current read point
-  RW_SEEK_END* = 2 ## Seek relative to the end of data
+  RW_SEEK_SET* = 0  ##  Seek from the beginning of data
+  RW_SEEK_CUR* = 1  ##  Seek relative to current read point
+  RW_SEEK_END* = 2  ##  Seek relative to the end of data
 
-#   Read/write macros (deprecated since 2.0.10)
+#   Read/write templates (deprecated since 2.0.10)
 #
-#   Macros to easily read and write from an RWopsObj object.
+#   Templates to easily read and write from an RWopsObj object.
 #[
 template rwSize*(ctx: untyped): untyped =
   (ctx).size(ctx)

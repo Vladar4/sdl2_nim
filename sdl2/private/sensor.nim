@@ -24,9 +24,9 @@
 ##
 ##  Include file for SDL sensor event handling.
 ##
-##   In order to use these functions, ``sdl.init()`` must have been called
-##   with the `INIT_SENSOR` flag. This causes SDL to scan the system
-##   for sensors, and load appropriate drivers.
+##  In order to use these procedures, ``sdl.init()`` must have been called
+##  with the `INIT_SENSOR` flag. This causes SDL to scan the system
+##  for sensors, and load appropriate drivers.
 
 type
   Sensor* = pointer
@@ -55,28 +55,23 @@ type
 const
   STANDARD_GRAVITY* = 9.806649999999999
 
-##
-##  ``Accelerometer sensor``
+##  Accelerometer sensor
+##  --------------------
 ##
 ##  The accelerometer returns the current acceleration in SI meters per
 ##  second squared. This measurement includes the force of gravity, so
 ##  a device at rest will have an value of `STANDARD_GRAVITY` away
 ##  from the center of the earth.
 ##
-##  values[0]: Acceleration on the x axis
-##
-##  values[1]: Acceleration on the y axis
-##
-##  values[2]: Acceleration on the z axis
+##  * `values[0]`: Acceleration on the x axis
+##  * `values[1]`: Acceleration on the y axis
+##  * `values[2]`: Acceleration on the z axis
 ##
 ##  For phones held in portrait mode and game controllers held in front of you,
 ##  the axes are defined as follows:
-##
-##  -X ... +X : left ... right
-##
-##  -Y ... +Y : bottom ... top
-##
-##  -Z ... +Z : farther ... closer
+##  * `-X ... +X`: left ... right
+##  * `-Y ... +Y`: bottom ... top
+##  * `-Z ... +Z`: farther ... closer
 ##
 ##  The axis data is not changed when the phone is rotated.
 ##
@@ -85,8 +80,8 @@ const
 ##  ``getDisplayOrientation()``
 ##
 
-##
-##  ``Gyroscope sensor``
+##  Gyroscope sensor
+##  ----------------
 ##
 ##  The gyroscope returns the current rate of rotation in radians per second.
 ##  The rotation is positive in the counter-clockwise direction. That is,
@@ -94,20 +89,15 @@ const
 ##  see positive rotation on that axis when it appeared to be rotating
 ##  counter-clockwise.
 ##
-##  values[0]: Angular speed around the x axis (pitch)
-##
-##  values[1]: Angular speed around the y axis (yaw)
-##
-##  values[2]: Angular speed around the z axis (roll)
+##  * `values[0]`: Angular speed around the x axis (pitch)
+##  * `values[1]`: Angular speed around the y axis (yaw)
+##  * `values[2]`: Angular speed around the z axis (roll)
 ##
 ##  For phones held in portrait mode and game controllers held in front of you,
 ##  the axes are defined as follows:
-##
-##  -X ... +X : left ... right
-##
-##  -Y ... +Y : bottom ... top
-##
-##  -Z ... +Z : farther ... closer
+##  * `-X ... +X`: left ... right
+##  * `-Y ... +Y`: bottom ... top
+##  * `-Z ... +Z`: farther ... closer
 ##
 ##  The axis data is not changed when the phone or controller is rotated.
 ##
@@ -120,10 +110,10 @@ proc lockSensors*() {.cdecl, importc: "SDL_LockSensors", dynlib: SDL2_LIB.}
   ##  Locking for multi-threaded access to the sensor API.
   ##
   ##  If you are using the sensor API or handling events from multiple threads
-  ##  you should use these locking functions to protect access to the sensors.
+  ##  you should use these locking procedures to protect access to the sensors.
   ##
   ##  In particular, you are guaranteed that the sensor list won't change, so
-  ##  the API functions that take a sensor index will be valid, and sensor
+  ##  the API procedures that take a sensor index will be valid, and sensor
   ##  events will not be delivered.
 
 proc unlockSensors*() {.cdecl, importc: "SDL_UnlockSensors", dynlib: SDL2_LIB.}

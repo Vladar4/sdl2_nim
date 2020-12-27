@@ -100,7 +100,7 @@ const
     ##  ``Warning:`` this value was `HAPTIC_SQUARE` right before 2.0.0 shipped.
     ##  Sorry, we ran out of bits, and this is important for XInput devices.
 
-# !!! FIXME: put this back when we have more bits in 2.1 
+# !!! FIXME: put this back when we have more bits in 2.1
 # const
 #   HAPTIC_SQUARE* = (1<<2)
 
@@ -261,7 +261,7 @@ const
     ##  ``HapticDirection``
 
 const
-  HAPTIC_STEERING_AXIS* = 3 ## \
+  HAPTIC_STEERING_AXIS* = 3 ##  \
     ##  Use this value to play an effect on the steering wheel axis.
     ##  This provides better compatibility across platforms and devices
     ##  as SDL will guess the correct axis.
@@ -443,8 +443,8 @@ type
     ##  *  `9000`: Displaced 25% of its period.
     ##  * `18000`: Displaced 50% of its period.
     ##  * `27000`: Displaced 75% of its period.
-    ##  * `36000`: Displaced 100% of its period,
-    ##    same as `0`, but `0` is preferred.
+    ##  * `36000`: Displaced 100% of its period, \
+    ##  same as `0`, but `0` is preferred.
     ##
     ##  Examples:
     ##  ::
@@ -487,7 +487,7 @@ type
     ##
     ##  ``HapticEffect``
     # Header
-    kind*: uint16 ##  \
+    kind*: uint16
       ##  `HAPTIC_SINE`, `HAPTIC_LEFTRIGHT`, `HAPTIC_TRIANGLE,
       ##  `SDL_HAPTIC_SAWTOOTHUP` or `HAPTIC_SAWTOOTHDOWN`
     direction*: HapticDirection ##  Direction of the effect.
@@ -499,7 +499,7 @@ type
     interval*: uint16 ##  How soon it can be triggered again after button
     # Periodic
     period*: uint16   ##  Period of the wave.
-    magnitude*: int16 ##  Peak value; \
+    magnitude*: int16 ##  Peak value;
       ##  if negative, equivalent to `180` degrees extra phase shift.
     offset*: int16    ##  Mean value of the wave.
     phase*: uint16    ##  Positive phase shift given by hundredth of a degree.
@@ -544,7 +544,7 @@ type
     ##
     ##  ``HapticEffect``
     # Header
-    kind*: uint16 ##  \
+    kind*: uint16
       ##  `HAPTIC_SPRING`, `HAPTIC_DAMPER`,
       ##  `HAPTIC_INERTIA` or `HAPTIC_FRICTION`
     direction*: HapticDirection ##  Direction of the effect - Not used ATM.
@@ -555,13 +555,13 @@ type
     button*: uint16   ##  Button that triggers the effect.
     interval*: uint16 ##  How soon it can be triggered again after button.
     # Condition
-    right_sat*: array[3, uint16]  ##  \
+    right_sat*: array[3, uint16]
       ##  Level when joystick is to the positive side; max `0xFFFF`.
-    left_sat*: array[3, uint16]   ##  \
+    left_sat*: array[3, uint16]
       ##  Level when joystick is to the negative side; max `0xFFFF`.
-    right_coeff*: array[3, int16] ##  \
+    right_coeff*: array[3, int16]
       ##  How fast to increase the force towards the positive side.
-    left_coeff*: array[3, int16]  ##  \
+    left_coeff*: array[3, int16]
       ##  How fast to increase the force towards the negative side.
     deadband*: array[3, uint16]   ##  Size of the dead zone;
       ##  max ``0xFFFF`: whole axis-range when 0-centered.
@@ -591,7 +591,7 @@ type
     delay*: uint16              ##  Delay before starting the effect.
     # Trigger
     button*: uint16   ##  Button that triggers the effect.
-    interval*: uint16 ## How soon it can be triggered again after button.
+    interval*: uint16 ##  How soon it can be triggered again after button.
     # Ramp
     start*: int16     ##  Beginning strength level.
     ends*: int16      ##  Ending strength level.

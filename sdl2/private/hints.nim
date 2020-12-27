@@ -478,8 +478,8 @@ const
 const
   HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING* =
     "SDL_XINPUT_USE_OLD_JOYSTICK_MAPPING"  ##  \
-    ## A variable that causes SDL to use the old axis and button mapping for
-    ## XInput devices.
+    ##  A variable that causes SDL to use the old axis and button mapping for
+    ##  XInput devices.
     ##
     ##  This hint is for backwards compatibility only and will be removed in
     ##  SDL 2.1.
@@ -1615,7 +1615,7 @@ type
   HintCallback* = proc (
       userdata: pointer; name: cstring;
       oldValue: cstring; newValue: cstring) {.cdecl.} ##  \
-    ##  Type definition of the hint callback function.
+    ##  Type definition of the hint callback procedure.
 
 proc addHintCallback*(
     name: cstring; callback: HintCallback; userdata: pointer) {.

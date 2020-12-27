@@ -22,7 +22,7 @@
 ##  vulkan.nim
 ##  ==========
 ##
-##  Header file for functions to creating Vulkan surfaces on SDL windows.
+##  Header file for procedures to creating Vulkan surfaces on SDL windows.
 
 # #define VK_DEFINE_HANDLE(object) typedef struct object##_T* object;
 #
@@ -49,7 +49,7 @@ type
   VulkanSurface* = VkSurfaceKHR ##  for compatibility with Tizen
 
 
-##  Vulkan support functions
+##  Vulkan support procedures
 ##
 ##  ``Note:`` ``vulkanGetInstanceExtensions`` & ``vulkan_CreateSurface`` API
 ##  is compatable with Tizen's implementation of Vulkan in SDL.
@@ -77,7 +77,7 @@ proc vulkanLoadLibrary*(path: cstring): cint {.
   ##  both it and SDL use the same search path.
   ##
   ##  ``Note:`` If you specify a non-`nil` ``path``, an application should
-  ##  retrieve all of the Vulkan functions it uses from the dynamic library
+  ##  retrieve all of the Vulkan procedures it uses from the dynamic library
   ##  using ``vulkanGetVkGetInstanceProcAddr()`` unless you can guarantee
   ##  ``path`` points to the same vulkan loader library the application
   ##  linked to.
@@ -97,7 +97,7 @@ proc vulkanLoadLibrary*(path: cstring): cint {.
   ##  libvulkan is not supported. Either do not link to the Vulkan loader or
   ##  link to a dynamic library version.
   ##
-  ##  ``Note:`` This function will fail if there are no working Vulkan drivers
+  ##  ``Note:`` This procedures will fail if there are no working Vulkan drivers
   ##  installed.
   ##
   ##  See also:
@@ -108,7 +108,7 @@ proc vulkanLoadLibrary*(path: cstring): cint {.
 
 proc vulkanGetVkGetInstanceProcAddr*(): pointer {.
     cdecl, importc: "SDL_Vulkan_GetVkGetInstanceProcAddr", dynlib: SDL2_LIB.}
-  ##  Get the address of the ``vkGetInstanceProcAddr`` function.
+  ##  Get the address of the ``vkGetInstanceProcAddr`` procedure.
   ##
   ##  ``Note:`` This should be called after either calling ``vulkanLoadLibrary``
   ##  or creating an SDL_Window with the `WINDOW_VULKAN` flag.

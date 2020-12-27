@@ -51,11 +51,14 @@ proc createShapedWindow*(
   ##  ``flags``
   ##    The flags for the window, a mask of `WINDOW_BORDERLESS`
   ##    with any of the following:
-  ##    `WINDOW_OPENGL`,    `WINDOW_INPUT_GRABBED`,
-  ##    `WINDOW_HIDDEN`,    `WINDOW_RESIZABLE`,
-  ##    `WINDOW_MAXIMIZED`, `WINDOW_MINIMIZED`,
-  ##    `WINDOW_BORDERLESS` is always set,
-  ##    and `WINDOW_FULLSCREEN` is always unset.
+  ##    * `WINDOW_OPENGL`,
+  ##    * `WINDOW_INPUT_GRABBED`,
+  ##    * `WINDOW_HIDDEN`,
+  ##    * `WINDOW_RESIZABLE`,
+  ##    * `WINDOW_MAXIMIZED`,
+  ##    * `WINDOW_MINIMIZED`,
+  ##    * `WINDOW_BORDERLESS` is always set,
+  ##    * `WINDOW_FULLSCREEN` is always unset.
   ##
   ##  ``Return`` The window created, or `nil` if window creation failed.
   ##
@@ -80,15 +83,15 @@ type
   WindowShapeMode* {.size: sizeof(cint).} = enum ##  \
     ##  An enum denoting the specific type of contents
     ##  present in an ``WindowShapeParams`` union.
-    ShapeModeDefault, ##  \
+    ShapeModeDefault,
       ##  The default mode, a binarized alpha cutoff of 1.
-    ShapeModeBinarizeAlpha, ##  \
+    ShapeModeBinarizeAlpha,
       ##  A binarized alpha cutoff with a given integer value.
-    ShapeModeReverseBinarizeAlpha, ##  \
+    ShapeModeReverseBinarizeAlpha,
       ##  A binarized alpha cutoff with a given integer value,
       ##  but with the opposite comparison.
-    ShapeModeColorKey ##  \
-      ## A color key is applied.
+    ShapeModeColorKey
+      ##  A color key is applied.
 
 template shapeModeAlpha*(mode: untyped): untyped =
   ( mode == ShapeModeDefault or
@@ -98,7 +101,7 @@ template shapeModeAlpha*(mode: untyped): untyped =
 type
   WindowShapeParams* {.union.} = object ##  \
     ##  A union containing parameters for shaped windows.
-    binarizationCutoff*: uint8 ##  \
+    binarizationCutoff*: uint8
       ##  A cutoff alpha value for binarization
       ##  of the window shape's alpha channel.
     colorKey*: Color

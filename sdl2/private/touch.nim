@@ -31,11 +31,11 @@ type
 
   TouchDeviceType* {.size: sizeof(cint).} = enum
     TOUCH_DEVICE_INVALID = -1,
-    TOUCH_DEVICE_DIRECT,  ##  \
+    TOUCH_DEVICE_DIRECT,
       ##  touch screen with window-relative coordinates
-    TOUCH_DEVICE_INDIRECT_ABSOLUTE, ##  \
+    TOUCH_DEVICE_INDIRECT_ABSOLUTE,
       ##  trackpad with absolute device coordinates
-    TOUCH_DEVICE_INDIRECT_RELATIVE  ##  \
+    TOUCH_DEVICE_INDIRECT_RELATIVE
       ##  trackpad with screen cursor-relative coordinates
 
   Finger* = object

@@ -30,18 +30,15 @@
 ##    logSetAllPriority(LOG_PRIORITY_WARN)
 ##
 ##  Here's where the messages go on different platforms:
-##
-##    Windows: debug output stream
-##
-##    Android: log output
-##
-##    Others: standard error output (stderr)
+##  * Windows: debug output stream
+##  * Android: log output
+##  * Others: standard error output (stderr)
 
 const
   MAX_LOG_MESSAGE* = 4096 ##  \
-  ##  The maximum size of a log message
-  ##
-  ##  Messages longer than the maximum size will be truncated
+    ##  The maximum size of a log message
+    ##
+    ##  Messages longer than the maximum size will be truncated
 
 
 type
@@ -60,7 +57,7 @@ type
     LOG_CATEGORY_VIDEO = 5,
     LOG_CATEGORY_RENDER = 6,
     LOG_CATEGORY_INPUT = 7,
-    LOG_CATEGORY_TEST = 8, ## Reserved for future SDL library use
+    LOG_CATEGORY_TEST = 8,  ##  Reserved for future SDL library use
     LOG_CATEGORY_RESERVED1 = 9,
     LOG_CATEGORY_RESERVED2 = 10,
     LOG_CATEGORY_RESERVED3 = 11,
@@ -70,7 +67,7 @@ type
     LOG_CATEGORY_RESERVED7 = 15,
     LOG_CATEGORY_RESERVED8 = 16,
     LOG_CATEGORY_RESERVED9 = 17,
-    LOG_CATEGORY_RESERVED10 = 18, ##  \
+    LOG_CATEGORY_RESERVED10 = 18,
       ##  Beyond this point is reserved for application use, e.g.
       ##
       ##  .. code-block:: nim

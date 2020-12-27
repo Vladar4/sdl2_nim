@@ -43,11 +43,11 @@ type
     ##  ``getWindowDisplayMode()``
     ##
     ##  ``getWindowDisplayMode()``
-    format*: uint32         ## pixel format
-    w*: cint                ## width, in screen coordinates
-    h*: cint                ## height, in screen coordinates
-    refresh_rate*: cint     ## refresh rate (or zero for unspecified)
-    driverdata*: pointer    ## driver-specific data, initialize to 0
+    format*: uint32         ##  pixel format
+    w*: cint                ##  width, in screen coordinates
+    h*: cint                ##  height, in screen coordinates
+    refresh_rate*: cint     ##  refresh rate (or zero for unspecified)
+    driverdata*: pointer    ##  driver-specific data, initialize to 0
 
 type
   Window* = pointer ##  \
@@ -110,18 +110,18 @@ type
 #    ##  See also:
 #    ##
 #    ##  ``getWindowFlags()``
-#    WINDOW_FULLSCREEN     = 0x00000001, ## fullscreen window
-#    WINDOW_OPENGL         = 0x00000002, ## window usable with OpenGL context
-#    WINDOW_SHOWN          = 0x00000004, ## window is visible
-#    WINDOW_HIDDEN         = 0x00000008, ## window is not visible
-#    WINDOW_BORDERLESS     = 0x00000010, ## no window decoration
-#    WINDOW_RESIZABLE      = 0x00000020, ## window can be resized
-#    WINDOW_MINIMIZED      = 0x00000040, ## window is minimized
-#    WINDOW_MAXIMIZED      = 0x00000080, ## window is maximized
-#    WINDOW_INPUT_GRABBED  = 0x00000100, ## window has grabbed input focus
-#    WINDOW_INPUT_FOCUS    = 0x00000200, ## window has input focus
-#    WINDOW_MOUSE_FOCUS    = 0x00000400, ## window has mouse focus
-#    WINDOW_FOREIGN        = 0x00000800, ## window not created by SDL
+#    WINDOW_FULLSCREEN     = 0x00000001,  ##  fullscreen window
+#    WINDOW_OPENGL         = 0x00000002,  ##  window usable with OpenGL context
+#    WINDOW_SHOWN          = 0x00000004,  ##  window is visible
+#    WINDOW_HIDDEN         = 0x00000008,  ##  window is not visible
+#    WINDOW_BORDERLESS     = 0x00000010,  ##  no window decoration
+#    WINDOW_RESIZABLE      = 0x00000020,  ##  window can be resized
+#    WINDOW_MINIMIZED      = 0x00000040,  ##  window is minimized
+#    WINDOW_MAXIMIZED      = 0x00000080,  ##  window is maximized
+#    WINDOW_INPUT_GRABBED  = 0x00000100,  ##  window has grabbed input focus
+#    WINDOW_INPUT_FOCUS    = 0x00000200,  ##  window has input focus
+#    WINDOW_MOUSE_FOCUS    = 0x00000400,  ##  window has mouse focus
+#    WINDOW_FOREIGN        = 0x00000800,  ##  window not created by SDL
 #    WINDOW_FULLSCREEN_DESKTOP = (WINDOW_FULLSCREEN.int or 0x00001000),
 #    WINDOW_ALLOW_HIGHDPI  = 0x00002000
 
@@ -140,20 +140,20 @@ const
   WINDOW_MOUSE_FOCUS*   = 0x00000400  ##  window has mouse focus
   WINDOW_FULLSCREEN_DESKTOP* = (WINDOW_FULLSCREEN or 0x00001000)
   WINDOW_FOREIGN*       = 0x00000800  ##  window not created by SDL
-  WINDOW_ALLOW_HIGHDPI* = 0x00002000  ##  window should be created  \
+  WINDOW_ALLOW_HIGHDPI* = 0x00002000  ##  window should be created
     ##  in high-DPI mode if supported.
     ##  On macOS ``NSHighResolutionCapable`` must be set true
     ##  in the application's ``Info.plist`` for this to have any effect.
-  WINDOW_MOUSE_CAPTURE* = 0x00004000  ##  window has mouse captured \
+  WINDOW_MOUSE_CAPTURE* = 0x00004000  ##  window has mouse captured
     ##  (unrelated to `INPUT_GRABBED`)
   WINDOW_ALWAYS_ON_TOP* = 0x00008000  ##  window should always be above others
-  WINDOW_SKIP_TASKBAR*  = 0x00010000  ## window should not be added \
+  WINDOW_SKIP_TASKBAR*  = 0x00010000  ##  window should not be added
     ##  to the taskbar
-  WINDOW_UTILITY*       = 0x00020000  ## window should be treated as \
+  WINDOW_UTILITY*       = 0x00020000  ##  window should be treated as
     ##  a utility window
-  WINDOW_TOOLTIP*       = 0x00040000  ##  window should be treated as \
+  WINDOW_TOOLTIP*       = 0x00040000  ##  window should be treated as
     ##  a tooltip
-  WINDOW_POPUP_MENU*    = 0x00080000  ##  window should be treated as \
+  WINDOW_POPUP_MENU*    = 0x00080000  ##  window should be treated as
     ##  a popup menu
   WINDOW_VULKAN*        = 0x10000000  ##  window usable for Vulkan surface
   WINDOW_METAL*         = 0x20000000  ##  window usable for Metal view
@@ -189,28 +189,28 @@ template windowPosIsCentered*(x: untyped): untyped =
 type
   WindowEventID* {.size: sizeof(uint8).} = enum ##  \
     ##  Event subtype for window events
-    WINDOWEVENT_NONE,         ## Never used
-    WINDOWEVENT_SHOWN,        ## Window has been shown
-    WINDOWEVENT_HIDDEN,       ## Window has been hidden
-    WINDOWEVENT_EXPOSED,      ## Window has been exposed and should be redrawn
-    WINDOWEVENT_MOVED,        ## Window has been moved to data1, data2
-    WINDOWEVENT_RESIZED,      ## Window has been resized to data1*data2
-    WINDOWEVENT_SIZE_CHANGED, ##  \
+    WINDOWEVENT_NONE,         ##  Never used
+    WINDOWEVENT_SHOWN,        ##  Window has been shown
+    WINDOWEVENT_HIDDEN,       ##  Window has been hidden
+    WINDOWEVENT_EXPOSED,      ##  Window has been exposed and should be redrawn
+    WINDOWEVENT_MOVED,        ##  Window has been moved to data1, data2
+    WINDOWEVENT_RESIZED,      ##  Window has been resized to data1*data2
+    WINDOWEVENT_SIZE_CHANGED,
       ##  The window size has changed, either as a result of an API call or
       ##  through the system or user changing the window size.
-    WINDOWEVENT_MINIMIZED,    ## Window has been minimized
-    WINDOWEVENT_MAXIMIZED,    ## Window has been maximized
-    WINDOWEVENT_RESTORED,     ##  \
+    WINDOWEVENT_MINIMIZED,    ##  Window has been minimized
+    WINDOWEVENT_MAXIMIZED,    ##  Window has been maximized
+    WINDOWEVENT_RESTORED,
       ##  Window has been restored to normal size and position
-    WINDOWEVENT_ENTER,        ## Window has gained mouse focus
-    WINDOWEVENT_LEAVE,        ## Window has lost mouse focus
-    WINDOWEVENT_FOCUS_GAINED, ## Window has gained keyboard focus
-    WINDOWEVENT_FOCUS_LOST,   ## Window has lost keyboard focus
-    WINDOWEVENT_CLOSE,        ##  \
+    WINDOWEVENT_ENTER,        ##  Window has gained mouse focus
+    WINDOWEVENT_LEAVE,        ##  Window has lost mouse focus
+    WINDOWEVENT_FOCUS_GAINED, ##  Window has gained keyboard focus
+    WINDOWEVENT_FOCUS_LOST,   ##  Window has lost keyboard focus
+    WINDOWEVENT_CLOSE,
       ##  The window manager requests that the window be closed
-    WINDOWEVENT_TAKE_FOCUS,   ##  Window is being offered a focus \
+    WINDOWEVENT_TAKE_FOCUS,   ##  Window is being offered a focus
       ##  (should ``setWindowInputFocus()`` on itself or a subwindow, or ignore)
-    WINDOWEVENT_HIT_TEST      ##  Window had a hit test that wasn't \
+    WINDOWEVENT_HIT_TEST      ##  Window had a hit test that wasn't
       ##  `SDL_HITTEST_NORMAL`.
 
 type
@@ -224,13 +224,13 @@ type
 type
   DisplayOrientation* {.size: sizeof(uint8).} = enum
     ORIENTATION_UNKNOWN,      ##  The display orientation can't be determined
-    ORIENTATION_LANDSCAPE,    ##  The display is in landscape mode, \
+    ORIENTATION_LANDSCAPE,    ##  The display is in landscape mode,
       ##  with the right side up, relative to portrait mode
-    ORIENTATION_LANDSCAPE_FLIPPED,  ##  The display is in landscape mode, \
+    ORIENTATION_LANDSCAPE_FLIPPED,  ##  The display is in landscape mode,
       ##  with the left side up, relative to portrait mode
     ORIENTATION_PORTRAIT,     ##  The display is in portrait mode
-    ORIENTATION_PORTRAIT_FLIPPED  ##  \
-      ##  The display is in portrait mode, upside down
+    ORIENTATION_PORTRAIT_FLIPPED  ##  The display is in portrait mode,
+      ##  upside down
 
 type
   GLContext* = pointer ##  An opaque handle to an OpenGL context.
@@ -419,10 +419,10 @@ proc getDisplayMode*(
   ##  Fill in information about a specific display mode.
   ##
   ##  ``Note:`` The display modes are sorted in this priority:
-  ##  * bits per pixel -> more colors to fewer colors
-  ##  * width -> largest to smallest
-  ##  * height -> largest to smallest
-  ##  * refresh rate -> highest to lowest
+  ##  * `bits per pixel` -> more colors to fewer colors
+  ##  * `width` -> largest to smallest
+  ##  * `height` -> largest to smallest
+  ##  * `refresh rate` -> highest to lowest
   ##
   ##  See also:
   ##
@@ -754,7 +754,7 @@ proc getWindowBordersSize*(window: Window;
   ##  ``Return`` `0` on success,
   ##  or `-1` if getting this information is not supported.
   ##
-  ##  ``Note:`` If this function fails (returns `-1`), the size values will be
+  ##  ``Note:`` If this procedure fails (returns `-1`), the size values will be
   ##  initialized to `0`, `0`, `0`, `0` (if a non-nil pointer is provided), as
   ##  if the window in question was borderless.
 
@@ -1057,7 +1057,7 @@ proc getWindowOpacity*(window: Window; out_opacity: ptr cfloat): cint {.
 proc setWindowModalFor*(modal_window: Window; parent_window: Window): cint {.
     cdecl, importc: "SDL_SetWindowModalFor", dynlib: SDL2_LIB.}
   ##  Sets the window as a modal for another window.
-  ##  (TODO: reconsider this function and/or its name)
+  ##  (TODO: reconsider this procedure and/or its name)
   ##
   ##  ``modal_window`` The window that should be modal.
   ##
@@ -1069,7 +1069,8 @@ proc setWindowInputFocus*(window: Window): cint {.
     cdecl, importc: "SDL_SetWindowInputFocus", dynlib: SDL2_LIB.}
   ##  Explicitly sets input focus to the window.
   ##
-  ##  You almost certainly want ``sdl.raiseWindow()`` instead of this function.
+  ##  You almost certainly want ``sdl.raiseWindow()``
+  ##  instead of this procedure.
   ##  Use this with caution, as you might give focus to a window that's
   ##  completely obscured by other windows.
   ##
@@ -1366,7 +1367,7 @@ proc glGetSwapInterval*(): cint {.
 
 proc glSwapWindow*(window: Window) {.
     cdecl, importc: "SDL_GL_SwapWindow", dynlib: SDL2_LIB.}
-  ## Swap the OpenGL buffers for a window, if double-buffering is supported.
+  ##  Swap the OpenGL buffers for a window, if double-buffering is supported.
 
 proc glDeleteContext*(context: GLContext) {.
     cdecl, importc: "SDL_GL_DeleteContext", dynlib: SDL2_LIB.}

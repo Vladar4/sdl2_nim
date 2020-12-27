@@ -38,7 +38,7 @@ type
     SYSTEM_CURSOR_SIZENESW,   ##  Double arrow pointing northeast and southwest
     SYSTEM_CURSOR_SIZEWE,     ##  Double arrow pointing west and east
     SYSTEM_CURSOR_SIZENS,     ##  Double arrow pointing north and south
-    SYSTEM_CURSOR_SIZEALL,    ##  \
+    SYSTEM_CURSOR_SIZEALL,
       ##  Four pointed arrow pointing north, south, east, and west
     SYSTEM_CURSOR_NO,         ##  Slashed circle or crossbones
     SYSTEM_CURSOR_HAND,       ##  Hand
@@ -194,6 +194,7 @@ proc createCursor*(
   ##
   ##  The cursor is created in black and white according to the following:
   ##
+  ##  ::
   ##    ====  ====  ========================================
   ##    data  mask  resulting pixel on screen
   ##    ====  ====  ========================================
@@ -238,12 +239,14 @@ proc getDefaultCursor*(): Cursor {.
 
 proc freeCursor*(cursor: Cursor) {.
     cdecl, importc: "SDL_FreeCursor", dynlib: SDL2_LIB.}
-  ##  Frees a cursor created with ``sdl.createCursor()`` or similar functions.
+  ##  Frees a cursor created with ``sdl.createCursor()`` or similar procedures.
   ##
   ##  See also:
   ##
   ##  ``createCursor()``
+  ##
   ##  ``createColorCursor()``
+  ##
   ##  ``createSystemCursor()``
 
 proc showCursor*(toggle: cint): cint {.

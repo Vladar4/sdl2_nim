@@ -22,7 +22,8 @@
 ##  metal.nim
 ##  =========
 ##
-##  Header file for functions to creating Metal layers and views on SDL windows.
+##  Header file for procedures to creating Metal layers and views
+##  on SDL windows.
 
 type
   MetalView* = pointer  ##  \
@@ -30,8 +31,8 @@ type
     ##
     ##  ``Note:`` This can be cast directly to an NSView or UIView.
 
-# Metal support functions
 
+# Metal support procedures
 
 proc metalCreateView*(window: Window): MetalView {.
     cdecl, importc: "SDL_Metal_CreateView", dynlib: SDL2_LIB.}
@@ -80,7 +81,7 @@ proc metalGetDrawableSize*(window: Window; w, h: ptr cint) {.
   ##
   ##  ``w`` Pointer to variable for storing the width in pixels, may be `nil`
   ##
-  ##  ``h`  Pointer to variable for storing the height in pixels, may be `nil`
+  ##  ``h``  Pointer to variable for storing the height in pixels, may be `nil`
   ##
   ##  This may differ from ``sdl.getWindowSize()`` if we're rendering
   ##  to a high-DPI drawable, i.e. the window was created with

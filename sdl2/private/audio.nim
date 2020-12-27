@@ -162,18 +162,18 @@ type
     format*: AudioFormat      ##  Audio data format
     channels*: uint8          ##  Number of channels: `1` mono, `2` stereo
     silence*: uint8           ##  Audio buffer silence value (calculated)
-    samples*: uint16          ##  Audio buffer size in sample FRAMES \
+    samples*: uint16          ##  Audio buffer size in sample FRAMES
       ##  (total samples divided by channel count)
     padding*: uint16          ##  Necessary for some compile environments
     size*: uint32             ##  Audio buffer size in bytes (calculated)
-    callback*: AudioCallback  ##  Callback that feeds the audio device  \
+    callback*: AudioCallback  ##  Callback that feeds the audio device
       ##  (`nil` to use ``queueAudio()``).
-    userdata*: pointer        ##  Userdata passed to callback \
+    userdata*: pointer        ##  Userdata passed to callback
       ##  (ignored for `nil` callbacks).
 
 const
-  AudioCVTMaxFilters* = 9 ##  Upper limit of filters in ``AudioCVT``  \
-    ##  The maximum number of ``AudioFilter`` functions in ``AudioCVT`` is
+  AudioCVTMaxFilters* = 9 ##  Upper limit of filters in ``AudioCVT``.
+    ##  The maximum number of ``AudioFilter`` procedures in ``AudioCVT`` is
     ##  currently limited to `9`. The ``AudioCVT.filters`` array has
     ##  10 pointers, one of which is the terminating `nil` pointer.
 
@@ -203,8 +203,8 @@ type
     len_cvt*: cint            ##  Length of converted audio buffer
     len_mult*: cint           ##  buffer must be `len*len_mult` big
     len_ratio*: cdouble       ##  Given len, final size is `len * len_ratio`
-    filters*: array[AudioCVTMaxFilters + 1, AudioFilter]  ##  \
-      ##  `nil`-terminated list of filter functions
+    filters*: array[AudioCVTMaxFilters + 1, AudioFilter]
+      ##  `nil`-terminated list of filter procedures
     filter_index*: cint       ##  Current audio conversion procedure
 
 # Procedures
@@ -397,16 +397,16 @@ proc loadWAV_RW*(
   ##  is then loaded into memory and decoded if necessary.
   ##
   ##  If ``freesrc`` is non-zero, the data source gets automatically closed and
-  ##  freed before the function returns.
+  ##  freed before the procedure returns.
   ##
   ##  Supported are RIFF WAVE files with the formats PCM
   ##  (8, 16, 24, and 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA
   ##  ADPCM (4 bits), and A-law and µ-law (8 bits). Other formats are currently
   ##  unsupported and cause an error.
   ##
-  ##  If this function succeeds, the pointer returned by it is equal to ``spec``
-  ##  and the pointer to the audio data allocated by the function is written to
-  ##  ``audio_buf`` and its length in bytes to ``audio_len``.
+  ##  If this procedure succeeds, the pointer returned by it is equal to
+  ##  ``spec`` and the pointer to the audio data allocated by the procedure is
+  ##  written to ``audio_buf`` and its length in bytes to ``audio_len``.
   ##  The ``sdl.AudioSpec`` members ``freq``, ``channels``, and ``format`` are
   ##  set to the values of the audio data in the buffer. The ``samples`` member
   ##  is set to a sane default and all others are set to zero.
@@ -425,7 +425,7 @@ proc loadWAV_RW*(
   ##  Any file that is invalid (due to truncation, corruption, or wrong values
   ##  in the headers), too big, or unsupported causes an error. Additionally,
   ##  any critical I/O error from the data source will terminate the loading
-  ##  process with an error. The function returns `nil` on error and in all
+  ##  process with an error. The procedure returns `nil` on error and in all
   ##  cases (with the exception of ``src`` being `nil`), an appropriate error
   ##  message will be set.
   ##
@@ -438,13 +438,13 @@ proc loadWAV_RW*(
   ##
   ##  ``src`` The data source with the WAVE data
   ##
-  ##  ``freesrc`` A integer value that makes the function close the data source
+  ##  ``freesrc`` A integer value that makes the procedure close the data source
   ##  if non-zero
   ##
   ##  ``spec`` A pointer filled with the audio format of the audio data
   ##
   ##  ``audio_buf`` A pointer filled with the audio data allocated by the
-  ##  function
+  ##  procedure
   ##
   ##  ``audio_len`` A pointer filled with the length of the audio data buffer
   ##  in bytes
@@ -509,162 +509,162 @@ proc newAudioStream*(
   srcFormat: AudioFormat; srcChannels: uint8; srcRate: cint;
   dstFormat: AudioFormat; dstChannels: uint8; dstRate: cint): AudioStream {.
     cdecl, importc: "SDL_NewAudioStream", dynlib: SDL2_LIB.}
-##  Create a new audio stream
-##
-##  ``src_format`` The format of the source audio
-##
-##  ``src_channels`` The number of channels of the source audio
-##  ``src_rate``     The sampling rate of the source audio
-##  ``dst_format``   The format of the desired audio output
-##  ``dst_channels`` The number of channels of the desired audio output
-##  ``dst_rate``     The sampling rate of the desired audio output
-##
-##  ``Return`` `0` on success, or `-1` on error.
-##
-##  See also:
-##
-##  ``audioStreamPut()``
-##
-##  ``audioStreamGet()``
-##
-##  ``audioStreamAvailable()``
-##
-##  ``audioStreamFlush()``
-##
-##  ``audioStreamClear()``
-##
-##  ``freeAudioStream()``
+  ##  Create a new audio stream
+  ##
+  ##  ``src_format`` The format of the source audio
+  ##
+  ##  ``src_channels`` The number of channels of the source audio
+  ##  ``src_rate``     The sampling rate of the source audio
+  ##  ``dst_format``   The format of the desired audio output
+  ##  ``dst_channels`` The number of channels of the desired audio output
+  ##  ``dst_rate``     The sampling rate of the desired audio output
+  ##
+  ##  ``Return`` `0` on success, or `-1` on error.
+  ##
+  ##  See also:
+  ##
+  ##  ``audioStreamPut()``
+  ##
+  ##  ``audioStreamGet()``
+  ##
+  ##  ``audioStreamAvailable()``
+  ##
+  ##  ``audioStreamFlush()``
+  ##
+  ##  ``audioStreamClear()``
+  ##
+  ##  ``freeAudioStream()``
 
 proc audioStreamPut*(stream: AudioStream; buf: pointer; len: cint): cint {.
     cdecl, importc: "SDL_AudioStreamPut", dynlib: SDL2_LIB.}
-##  Add data to be converted/resampled to the stream
-##
-##  ``stream``  The stream the audio data is being added to
-##
-##  ``buf``     A pointer to the audio data to add
-##
-##  ``len``     The number of bytes to write to the stream
-##
-##  ``Return`` `0` on success, or `-1` on error.
-##
-##  See also:
-##
-##  ``newAudioStream()``
-##
-##  ``audioStreamGet()``
-##
-##  ``audioStreamAvailable()``
-##
-##  ``audioStreamFlush()``
-##
-##  ``audioStreamClear()``
-##
-##  ``freeAudioStream()``
+  ##  Add data to be converted/resampled to the stream
+  ##
+  ##  ``stream``  The stream the audio data is being added to
+  ##
+  ##  ``buf``     A pointer to the audio data to add
+  ##
+  ##  ``len``     The number of bytes to write to the stream
+  ##
+  ##  ``Return`` `0` on success, or `-1` on error.
+  ##
+  ##  See also:
+  ##
+  ##  ``newAudioStream()``
+  ##
+  ##  ``audioStreamGet()``
+  ##
+  ##  ``audioStreamAvailable()``
+  ##
+  ##  ``audioStreamFlush()``
+  ##
+  ##  ``audioStreamClear()``
+  ##
+  ##  ``freeAudioStream()``
 
 proc audioStreamGet*(stream: AudioStream; buf: pointer; len: cint): cint {.
     cdecl, importc: "SDL_AudioStreamGet", dynlib: SDL2_LIB.}
-##  Get converted/resampled data from the stream
-##
-##  ``stream``  The stream the audio is being requested from
-##
-##  ``buf``     A buffer to fill with audio data
-##
-##  ``len``     The maximum number of bytes to fill
-##
-##  ``Return`` the number of bytes read from the stream, or `-1` on error.
-##
-##  See also:
-##
-##  ``newAudioStream()``
-##
-##  ``audioStreamPut()``
-##
-##  ``audioStreamAvailable()``
-##
-##  ``audioStreamFlush()``
-##
-##  ``audioStreamClear()``
-##
-##  ``freeAudioStream()``
-##
+  ##  Get converted/resampled data from the stream
+  ##
+  ##  ``stream``  The stream the audio is being requested from
+  ##
+  ##  ``buf``     A buffer to fill with audio data
+  ##
+  ##  ``len``     The maximum number of bytes to fill
+  ##
+  ##  ``Return`` the number of bytes read from the stream, or `-1` on error.
+  ##
+  ##  See also:
+  ##
+  ##  ``newAudioStream()``
+  ##
+  ##  ``audioStreamPut()``
+  ##
+  ##  ``audioStreamAvailable()``
+  ##
+  ##  ``audioStreamFlush()``
+  ##
+  ##  ``audioStreamClear()``
+  ##
+  ##  ``freeAudioStream()``
+  ##
 
 proc audioStreamAvailable*(stream: AudioStream): cint {.
     cdecl, importc: "SDL_AudioStreamAvailable", dynlib: SDL2_LIB.}
-##  Get the number of converted/resampled bytes available. The stream may be
-##  buffering data behind the scenes until it has enough to resample
-##  correctly, so this number might be lower than what you expect, or even
-##  be zero. Add more data or flush the stream if you need the data now.
-##
-##  See also:
-##
-##  ``newAudioStream()``
-##
-##  ``audioStreamPut()``
-##
-##  ``audioStreamGet()``
-##
-##  ``audioStreamFlush()``
-##
-##  ``audioStreamClear()``
-##
-##  ``freeAudioStream()``
+  ##  Get the number of converted/resampled bytes available. The stream may be
+  ##  buffering data behind the scenes until it has enough to resample
+  ##  correctly, so this number might be lower than what you expect, or even
+  ##  be zero. Add more data or flush the stream if you need the data now.
+  ##
+  ##  See also:
+  ##
+  ##  ``newAudioStream()``
+  ##
+  ##  ``audioStreamPut()``
+  ##
+  ##  ``audioStreamGet()``
+  ##
+  ##  ``audioStreamFlush()``
+  ##
+  ##  ``audioStreamClear()``
+  ##
+  ##  ``freeAudioStream()``
 
 proc audioStreamFlush*(stream: AudioStream): cint {.
     cdecl, importc: "SDL_AudioStreamFlush", dynlib: SDL2_LIB.}
-##  Tell the stream that you're done sending data, and anything being buffered
-##  should be converted/resampled and made available immediately.
-##
-##  It is legal to add more data to a stream after flushing, but there will
-##  be audio gaps in the output. Generally this is intended to signal the
-##  end of input, so the complete output becomes available.
-##
-##  See also:
-##
-##  ``newAudioStream()``
-##
-##  ``audioStreamPut()``
-##
-##  ``audioStreamGet()``
-##
-##  ``audioStreamAvailable()``
-##
-##  ``audioStreamClear()``
+  ##  Tell the stream that you're done sending data, and anything being buffered
+  ##  should be converted/resampled and made available immediately.
+  ##
+  ##  It is legal to add more data to a stream after flushing, but there will
+  ##  be audio gaps in the output. Generally this is intended to signal the
+  ##  end of input, so the complete output becomes available.
+  ##
+  ##  See also:
+  ##
+  ##  ``newAudioStream()``
+  ##
+  ##  ``audioStreamPut()``
+  ##
+  ##  ``audioStreamGet()``
+  ##
+  ##  ``audioStreamAvailable()``
+  ##
+  ##  ``audioStreamClear()``
 
 proc audioStreamClear*(stream: AudioStream) {.
     cdecl, importc: "SDL_AudioStreamClear", dynlib: SDL2_LIB.}
-##  Clear any pending data in the stream without converting it.
-##
-##  See also:
-##
-##  ``newAudioStream()``
-##
-##  ``audioStreamPut()``
-##
-##  ``audioStreamGet()``
-##
-##  ``audioStreamAvailable()``
-##
-##  ``audioStreamFlush()``
-##
-##  ``freeAudioStream()``
+  ##  Clear any pending data in the stream without converting it.
+  ##
+  ##  See also:
+  ##
+  ##  ``newAudioStream()``
+  ##
+  ##  ``audioStreamPut()``
+  ##
+  ##  ``audioStreamGet()``
+  ##
+  ##  ``audioStreamAvailable()``
+  ##
+  ##  ``audioStreamFlush()``
+  ##
+  ##  ``freeAudioStream()``
 
 proc freeAudioStream*(stream: AudioStream) {.
     cdecl, importc: "SDL_FreeAudioStream", dynlib: SDL2_LIB.}
-##  Free an audio stream.
-##
-##  See also:
-##
-##  ``newAudioStream()``
-##
-##  ``audioStreamPut()``
-##
-##  ``audioStreamGet()``
-##
-##  ``audioStreamAvailable()``
-##
-##  ``audioStreamFlush()``
-##
-##  ``audioStreamClear()``
+  ##  Free an audio stream.
+  ##
+  ##  See also:
+  ##
+  ##  ``newAudioStream()``
+  ##
+  ##  ``audioStreamPut()``
+  ##
+  ##  ``audioStreamGet()``
+  ##
+  ##  ``audioStreamAvailable()``
+  ##
+  ##  ``audioStreamFlush()``
+  ##
+  ##  ``audioStreamClear()``
 
 
 const
@@ -767,7 +767,7 @@ proc dequeueAudio*(dev: AudioDeviceID; data: pointer; len: uint32): cint {.
   ##  the audio callback, or dequeue audio with this procedure, but not both.
   ##
   ##  You should not call ``sdl.lockAudio()`` on the device before queueing;
-  ##  SDL handles locking internally for this function.
+  ##  SDL handles locking internally for this procedure.
   ##
   ##  ``dev`` The device ID from which we will dequeue audio.
   ##  ``data`` A pointer into where audio data should be copied.
@@ -777,28 +777,27 @@ proc dequeueAudio*(dev: AudioDeviceID; data: pointer; len: uint32): cint {.
   ##  See also:
   ##
   ##  ``getQueuedAudioSize``
+  ##
   ##  ``clearQueuedAudio``
 
 proc getQueuedAudioSize*(dev: AudioDeviceID): uint32 {.
     cdecl, importc: "SDL_GetQueuedAudioSize", dynlib: SDL2_LIB.}
   ##  Get the number of bytes of still-queued audio.
   ##
-  ##  For playback device:
+  ##  ``For playback device:``
+  ##  This is the number of bytes that have been queued for playback with
+  ##  ``sdl.queueAudio()``, but have not yet been sent to the hardware. This
+  ##  number may shrink at any time, so this only informs of pending data.
   ##
-  ##    This is the number of bytes that have been queued for playback with
-  ##    ``sdl.queueAudio()``, but have not yet been sent to the hardware. This
-  ##    number may shrink at any time, so this only informs of pending data.
+  ##  Once we've sent it to the hardware, this procedure can not decide the
+  ##  exact byte boundary of what has been played. It's possible that we just
+  ##  gave the hardware several kilobytes right before you called this
+  ##  procedure, but it hasn't played any of it yet, or maybe half of it, etc.
   ##
-  ##    Once we've sent it to the hardware, this procedure can not decide the
-  ##    exact byte boundary of what has been played. It's possible that we just
-  ##    gave the hardware several kilobytes right before you called this
-  ##    procedure, but it hasn't played any of it yet, or maybe half of it, etc.
-  ##
-  ##  For capture device:
-  ##
-  ##    This is the number of bytes that have been captured by the device and
-  ##    are waiting for you to dequeue. This number may grow at any time, so
-  ##    this only informs of the lower-bound of available data.
+  ##  ``For capture device:``
+  ##  This is the number of bytes that have been captured by the device and
+  ##  are waiting for you to dequeue. This number may grow at any time, so
+  ##  this only informs of the lower-bound of available data.
   ##
   ##  You may not queue audio on a device that is using an application-supplied
   ##  callback; calling this procedure on such a device always returns `0`.
@@ -829,7 +828,7 @@ proc clearQueuedAudio*(dev: AudioDeviceID) {.
   ##  For playback devices, the hardware will start playing silence if more
   ##  audio isn't queued. Unpaused capture devices will start filling the queue
   ##  again as soon as they have more data available (which, depending on the
-  ##  state of the hardware and the thread, could be before this function call
+  ##  state of the hardware and the thread, could be before this procedure call
   ##  returns!).
   ##
   ##  This will not prevent playback of queued audio that's already been sent

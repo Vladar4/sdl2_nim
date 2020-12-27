@@ -36,8 +36,10 @@ const
   MESSAGEBOX_ERROR*       = 0x00000010 ##  error dialog
   MESSAGEBOX_WARNING*     = 0x00000020 ##  warning dialog
   MESSAGEBOX_INFORMATION* = 0x00000040 ##  informational dialog
-  MESSAGEBOX_BUTTONS_LEFT_TO_RIGHT* = 0x00000080 ## buttons placed left to right
-  MESSAGEBOX_BUTTONS_RIGHT_TO_LEFT* = 0x00000100 ## buttons placed right to left
+  MESSAGEBOX_BUTTONS_LEFT_TO_RIGHT* = 0x00000080
+    ##  buttons placed left to right
+  MESSAGEBOX_BUTTONS_RIGHT_TO_LEFT* = 0x00000100
+    ##  buttons placed right to left
 
 #type
 #  MessageBoxButtonFlags* {.size: sizeof(cint).} = enum ##  \
@@ -58,10 +60,10 @@ const
 type
   MessageBoxButtonData* = object ##  \
     ##  Individual button data
-    flags*: uint32          ##  ``MessageBoxButtonFlags``
-    buttonid*: cint         ##  \
-      ## User defined button id (value returned via ``showMessageBox()``)
-    text*: cstring          ## The UTF-8 button text
+    flags*: uint32  ##  ``MessageBoxButtonFlags``
+    buttonid*: cint
+      ##  User defined button id (value returned via ``showMessageBox()``)
+    text*: cstring  ##  The UTF-8 button text
 
 type
   MessageBoxColor* = object ##  \
@@ -92,7 +94,7 @@ type
     message*: cstring       ##  UTF-8 message text
     numbuttons*: cint
     buttons*: ptr MessageBoxButtonData
-    colorScheme*: ptr MessageBoxColorScheme ##  \
+    colorScheme*: ptr MessageBoxColorScheme
       ##  ``MessageBoxColorScheme``, can be `nil` to use system settings
 
 proc showMessageBox*(

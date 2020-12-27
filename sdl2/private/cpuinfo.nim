@@ -88,15 +88,15 @@ proc hasAVX2*(): bool {.
 
 proc hasAVX512F*(): bool {.
     cdecl, importc: "SDL_HasAVX512F", dynlib: SDL2_LIB.}
-  ##  This function returns true if the CPU has AVX-512F (foundation) features.
+  ##  This procedure returns true if the CPU has AVX-512F (foundation) features.
 
 proc hasARMSIMD*(): bool {.
     cdecl, importc: "SDL_HasARMSIMD", dynlib: SDL2_LIB.}
-  ##  This function returns true if the CPU has ARM SIMD (ARMv6) features.
+  ##  This procedure returns true if the CPU has ARM SIMD (ARMv6) features.
 
 proc hasNEON*(): bool {.
     cdecl, importc: "SDL_HasNEON", dynlib: SDL2_LIB.}
-  ##  This function returns true if the CPU has NEON (ARM SIMD) features.
+  ##  This procedure returns true if the CPU has NEON (ARM SIMD) features.
 
 proc getSystemRAM*(): cint {.
     cdecl, importc: "SDL_GetSystemRAM", dynlib: SDL2_LIB.}
@@ -136,7 +136,7 @@ proc simdAlloc*(len: csize_t): pointer {.
   ##  for example, SDL 2.0.8 knows that SSE wants 16-byte vectors
   ##  (``sdl.hasSSE()``), and AVX2 wants 32 bytes (``sdl.hasAVX2()``),
   ##  but doesn't know that AVX-512 wants 64. To be clear: if you can't decide
-  ##  to use an instruction set with an ``sdl.has...()`` function, don't use
+  ##  to use an instruction set with an ``sdl.has...()`` procedure, don't use
   ##  that instruction set with memory allocated through here.
   ##
   ##  ``sdl.allocSIMD(0)`` will return a non-`nil` pointer, assuming
@@ -159,12 +159,12 @@ proc simdRealloc*(mem: pointer, len: csize_t): pointer {.
     cdecl, importc: "SDL_SIMDRealloc", dynlib: SDL2_LIB.}
   ##  Reallocate memory obtained from ``sdl.simdAlloc()``
   ##
-  ##  It is not valid to use this function on a pointer from anything but
+  ##  It is not valid to use this procedure on a pointer from anything but
   ##  ``sdl.simdAlloc()``. It can't be used on pointers from ``malloc()``,
   ##  ``realloc()``,  ``sdl.malloc()``, ``memalign()``, ``new``, etc.
   ##
-  ##  ``mem`` The pointer obtained from ``sdl.simdAlloc()``. This function also
-  ##  accepts `nil`, at which point this function is the same as
+  ##  ``mem`` The pointer obtained from ``sdl.simdAlloc()``. This procedure also
+  ##  accepts `nil`, at which point this procedure is the same as
   ##  calling ``sdl.realloc()`` with a `nil` pointer.
   ##
   ##  ``len`` The length, in bytes, of the block to allocated. The actual
@@ -185,7 +185,7 @@ proc simdFree*(p: pointer) {.
     cdecl, importc: "SDL_SIMDFree", dynlib: SDL2_LIB.}
   ##  Deallocate memory obtained from ``sdl.simdAlloc()``.
   ##
-  ##  It is not valid to use this function on a pointer from anything but
+  ##  It is not valid to use this procedure on a pointer from anything but
   ##  ``sdl.simdAlloc()``. It can't be used on pointers from malloc, realloc,
   ##  ``sdl.malloc()``, memalign, new[], etc.
   ##

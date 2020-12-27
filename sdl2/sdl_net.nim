@@ -34,7 +34,7 @@
 ##  ``Little-Endian`` (LSB) is stored in the opposite order, with the least
 ##  significant byte first in memory. Intel and AMD are two LSB machines.
 ##
-##  For network addresses, 1.2.3.4 is always stored as {0x01 0x02 0x03 0x04}.
+##  For network addresses, 1.2.3.4 is always stored as `{0x01 0x02 0x03 0x04}`.
 
 {.deadCodeElim: on.}
 
@@ -76,10 +76,10 @@ proc quit*() {.
 
 type
   IPaddress* = object ##  \
-    ## This type contains the information used
-    ## to form network connections and sockets.
+    ##  This type contains the information used
+    ##  to form network connections and sockets.
     host*: uint32 ##  the IPv4 address of a host, encoded in Network Byte Order
-    port*: uint16 ##  the IPv4 port number of a socket, \
+    port*: uint16 ##  the IPv4 port number of a socket,
       ##  encoded in Network Byte Order.
 
 when not(declared(INADDR_ANY)):
@@ -434,7 +434,7 @@ type
     len*: cint          ##  The length of the packet data
     maxlen*: cint       ##  The size of the data buffer
     status*: cint       ##  Packet status after sending
-    address*: IPaddress ##  \
+    address*: IPaddress
       ##  The source/dest address of an incoming/outgoing packet
 
 proc allocPacket*(size: cint): ptr UDPpacket {.
@@ -1054,7 +1054,7 @@ proc delSocket*(set: SocketSet; sock: GenericSocket): cint {.
   ##  Use this before closing a socket that you are watching with a socket set.
   ##  This doesn't close the socket. Call the appropriate template for TCP or
   ##  UDP sockets. The generic socket procedure will be called by the TCP and
-  ##  UDP macros.
+  ##  UDP templates.
   ##
   ##  ``Return`` the number of sockets used in the set on success.
   ##  `-1` is returned on errors.

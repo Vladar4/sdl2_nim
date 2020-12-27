@@ -30,9 +30,9 @@ type
     ##
     ##  ``Note:`` If you are looking for translated character input,
     ##  see the TEXTINPUT event.
-    scancode*: Scancode ## SDL physical key code - see ``Scancode`` for details
-    sym*: Keycode       ## SDL virtual key code - see ``Keycode`` for details
-    mods*: uint16        ## current key modifiers
+    scancode*: Scancode ##  SDL physical key code - see ``Scancode`` for details
+    sym*: Keycode       ##  SDL virtual key code - see ``Keycode`` for details
+    mods*: uint16       ##  current key modifiers
     unused*: uint32
 
 # Procedures

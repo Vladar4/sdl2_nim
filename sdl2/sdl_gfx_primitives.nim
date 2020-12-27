@@ -44,7 +44,8 @@ const
 
 # Procedure prototypes
 
-## ``Note:`` all ___Color routines expect the color to be in format 0xRRGGBBAA.
+##  ``Note:``
+##  all ___Color routines expect the color to be in format `0xRRGGBBAA`.
 
 # Pixel
 
@@ -728,11 +729,14 @@ proc gfxPrimitivesSetFont*(fontdata: pointer; cw: uint32; ch: uint32) {.
   ##
   ##  The font data array is organized in follows:
   ##
-  ##  [fontdata] = [character 0][character 1]...[character 255] where
-  ##  [character n] = [byte 1 row 1][byte 2 row 1]...[byte {pitch} row 1]
-  ##  [byte 1 row 2] ...[byte {pitch} row height] where
-  ##  [byte n] = [bit 0]...[bit 7] where
-  ##  [bit n] = [0 for transparent pixel|1 for colored pixel]
+  ##  `[fontdata] = [character 0][character 1]...[character 255]`
+  ##  where
+  ##  `[character n] = [byte 1 row 1][byte 2 row 1]...[byte {pitch} row 1]
+  ##  [byte 1 row 2] ...[byte {pitch} row height]`
+  ##  where
+  ##  `[byte n] = [bit 0]...[bit 7]`
+  ##  where
+  ##  `[bit n] = [0 for transparent pixel|1 for colored pixel]`
   ##
   ##  ``fontdata``  Pointer to array of font data. Set to `nil`, to reset
   ##  global font to the default `8x8` font.

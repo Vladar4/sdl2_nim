@@ -24,11 +24,11 @@
 ##
 ##  Include file for SDL joystick event handling.
 
-##  The term "device_index" identifies currently plugged in joystick devices
+##  The term ``device_index`` identifies currently plugged in joystick devices
 ##  between `0` and ``numJoysticks()``, with the exact joystick behind a
 ##  device_index changing as joysticks are plugged and unplugged.
 ##
-##  The term "instance_id" is the current instantiation of a joystick device
+##  The term ``instance_id`` is the current instantiation of a joystick device
 ##  in the system, if the joystick is removed and then re-inserted then it will
 ##  get a new instance_id, instance_id's are monotonically increasing
 ##  identifiers of a joystick plugged in.
@@ -95,10 +95,11 @@ proc lockJoysticks*() {.
   ##  Locking for multi-threaded access to the joystick API.
   ##
   ##  If you are using the joystick API or handling events from multiple threads
-  ##  you should use these locking functions to protect access to the joysticks.
+  ##  you should use these locking procedures to protect access
+  ##  to the joysticks.
   ##
   ##  In particular, you are guaranteed that the joystick list won't change, so
-  ##  the API functions that take a joystick index will be valid, and joystick
+  ##  the API procedures that take a joystick index will be valid, and joystick
   ##  and game controller events will not be delivered.
 
 proc unlockJoysticks*() {.
@@ -131,21 +132,21 @@ proc joystickGetDeviceVendor*(device_index: cint): uint16 {.
   ##  Get the USB vendor ID of a joystick, if available.
   ##
   ##  This can be called before any joysticks are opened.
-  ##  If the vendor ID isn't available this function returns `0`.
+  ##  If the vendor ID isn't available this procedure returns `0`.
 
 proc joystickGetDeviceProduct*(device_index: cint): uint16 {.
     cdecl, importc: "SDL_JoystickGetDeviceProduct", dynlib: SDL2_LIB.}
   ##  Get the USB product ID of a joystick, if available.
   ##
   ##  This can be called before any joysticks are opened.
-  ##  If the product ID isn't available this function returns `0`.
+  ##  If the product ID isn't available this procedure returns `0`.
 
 proc joystickGetDeviceProductVersion*(device_index: cint): uint16 {.
     cdecl, importc: "SDL_JoystickGetDeviceProductVersion", dynlib: SDL2_LIB.}
   ##  Get the product version of a joystick, if available.
   ##
   ##  This can be called before any joysticks are opened.
-  ##  If the product version isn't available this function returns `0`.
+  ##  If the product version isn't available this procedure returns `0`.
 
 proc joystickGetDeviceType*(device_index: cint): JoystickType {.
     cdecl, importc: "SDL_JoystickGetDeviceType", dynlib: SDL2_LIB.}
@@ -158,7 +159,7 @@ proc joystickGetDeviceInstanceID*(device_index: cint): JoystickID {.
   ##  Get the instance ID of a joystick.
   ##
   ##  This can be called before any joysticks are opened.
-  ##  If the index is out of range, this function will return `-1`.
+  ##  If the index is out of range, this procedure will return `-1`.
 
 proc joystickOpen*(device_index: cint): Joystick {.
     cdecl, importc: "SDL_JoystickOpen", dynlib: SDL2_LIB.}
@@ -243,17 +244,17 @@ proc joystickGetGUID*(joystick: Joystick): JoystickGUID {.
 proc joystickGetVendor*(joystick: Joystick): uint16 {.
     cdecl, importc: "SDL_JoystickGetVendor", dynlib: SDL2_LIB.}
   ##  ``Return`` the USB vendor ID of an opened joystick, if available.
-  ##  If the vendor ID isn't available this function returns `0`.
+  ##  If the vendor ID isn't available this procedure returns `0`.
 
 proc joystickGetProduct*(joystick: Joystick): uint16 {.
     cdecl, importc: "SDL_JoystickGetProduct", dynlib: SDL2_LIB.}
   ##  ``Return`` the USB product ID of an opened joystick, if available.
-  ##  If the product ID isn't available this function returns `0`.
+  ##  If the product ID isn't available this procedure returns `0`.
 
 proc joystickGetProductVersion*(joystick: Joystick): uint16 {.
     cdecl, importc: "SDL_JoystickGetProductVersion", dynlib: SDL2_LIB.}
   ##  ``Return`` the product version of an opened joystick, if available.
-  ##  If the product version isn't available this function returns `0`.
+  ##  If the product version isn't available this procedure returns `0`.
 
 proc joystickGetSerial*(joystick: Joystick): cstring {.
     cdecl, importc: "SDL_JoystickGetSerial", dynlib: SDL2_LIB.}
@@ -412,7 +413,7 @@ proc joystickRumble*(
     cdecl, importc: "SDL_JoystickRumble", dynlib: SDL2_LIB.}
   ##  Start a rumble effect.
   ##
-  ##  Each call to this function cancels any previous rumble effect,
+  ##  Each call to this procedure cancels any previous rumble effect,
   ##  and calling it with `0` intensity stops any rumbling.
   ##
   ##  ``joystick`` The joystick to vibrate
@@ -433,7 +434,7 @@ proc joystickRumbleTriggers*(
     left_rumble, right_rumble: uint16; duration_ms: uint32): cint {.
       cdecl, importc: "SDL_JoystickRumbleTriggers", dynlib: SDL2_LIB.}
   ##  Start a rumble effect in the joystick's triggers.
-  ##  Each call to this function cancels any previous trigger rumble effect,
+  ##  Each call to this procedure cancels any previous trigger rumble effect,
   ##  and calling it with 0 intensity stops any rumbling.
   ##
   ##  ``joystick`` The joystick to vibrate

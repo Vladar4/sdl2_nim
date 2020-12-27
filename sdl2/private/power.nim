@@ -22,6 +22,7 @@
 ##  power.nim
 ##  =========
 ##
+##  SDL power management routines.
 
 type
   PowerState* {.size: sizeof(cint).} = enum ##  \

@@ -53,7 +53,7 @@ type
     SCANCODE_TAB = 43,    SCANCODE_SPACE = 44,
     SCANCODE_MINUS = 45,  SCANCODE_EQUALS = 46,
     SCANCODE_LEFTBRACKET = 47, SCANCODE_RIGHTBRACKET = 48,
-    SCANCODE_BACKSLASH = 49, ##  \
+    SCANCODE_BACKSLASH = 49,
       ##  Located at the lower left of the `return` key on ISO keyboards and
       ##  at the right end of the QWERTY row on ANSI keyboards.
       ##  Produces `REVERSE SOLIDUS` (backslash) and `VERTICAL LINE` in a US
@@ -63,7 +63,7 @@ type
       ##  `APOSTROPHE` in a German layout, `GRAVE ACCENT` and `POUND SIGN`
       ##  in a French Mac layout, and `ASTERISK` and `MICRO SIGN` in a
       ##  French Windows layout.
-    SCANCODE_NONUSHASH = 50, ##  \
+    SCANCODE_NONUSHASH = 50,
       ##  ISO USB keyboards actually use this code instead of `49` for the
       ##  same key, but all OSes I've seen treat the two codes identically.
       ##  So, as an implementor, unless your keyboard generates both of those
@@ -72,7 +72,7 @@ type
       ##  should not rely on this code because SDL will never generate it
       ##  with most (all?) keyboards.
     SCANCODE_SEMICOLON = 51, SCANCODE_APOSTROPHE = 52,
-    SCANCODE_GRAVE = 53, ##  \
+    SCANCODE_GRAVE = 53,
       ##  Located in the top left corner (on both ANSI and ISO keyboards).
       ##  Produces `GRAVE ACCENT` and `TILDE` in a US Windows layout and in US
       ##  and UK Mac layouts on ANSI keyboards, `GRAVE ACCENT` and `NOT SIGN`
@@ -90,13 +90,13 @@ type
     SCANCODE_F5 = 62,  SCANCODE_F6 = 63,  SCANCODE_F7 = 64, SCANCODE_F8 = 65,
     SCANCODE_F9 = 66,  SCANCODE_F10 = 67, SCANCODE_F11 = 68, SCANCODE_F12 = 69,
     SCANCODE_PRINTSCREEN = 70, SCANCODE_SCROLLLOCK = 71, SCANCODE_PAUSE = 72,
-    SCANCODE_INSERT = 73, ##  \
+    SCANCODE_INSERT = 73,
       ##  `insert` on PC, `help` on some Mac keyboards
       ##  (but does send code `73`, not `117`)
     SCANCODE_HOME = 74, SCANCODE_PAGEUP = 75,   SCANCODE_DELETE = 76,
     SCANCODE_END = 77,  SCANCODE_PAGEDOWN = 78, SCANCODE_RIGHT = 79,
     SCANCODE_LEFT = 80, SCANCODE_DOWN = 81,     SCANCODE_UP = 82,
-    SCANCODE_NUMLOCKCLEAR = 83, ##  \
+    SCANCODE_NUMLOCKCLEAR = 83,
       ##  `num lock` on PC, clear on Mac keyboards
     SCANCODE_KP_DIVIDE = 84, SCANCODE_KP_MULTIPLY = 85,
     SCANCODE_KP_MINUS = 86, SCANCODE_KP_PLUS = 87, SCANCODE_KP_ENTER = 88,
@@ -104,7 +104,7 @@ type
     SCANCODE_KP_4 = 92, SCANCODE_KP_5 = 93, SCANCODE_KP_6 = 94,
     SCANCODE_KP_7 = 95, SCANCODE_KP_8 = 96, SCANCODE_KP_9 = 97,
     SCANCODE_KP_0 = 98, SCANCODE_KP_PERIOD = 99,
-    SCANCODE_NONUSBACKSLASH = 100, ##  \
+    SCANCODE_NONUSBACKSLASH = 100,
       ##  This is the additional key that ISO keyboards have over ANSI ones,
       ##  located between `left shift` and `Y`.
       ##  Produces `GRAVE ACCENT` and `TILDE` in a US or UK Mac layout,
@@ -112,7 +112,7 @@ type
       ##  Windows layout, and `LESS-THAN SIGN` and `GREATER-THAN SIGN` in a
       ##  Swiss German, German, or French layout.
     SCANCODE_APPLICATION = 101, ##  `windows contextual menu`, `compose`
-    SCANCODE_POWER = 102, ##  \
+    SCANCODE_POWER = 102,
       ##  The USB document says this is a status flag,
       ##  not a physical key - but some Mac keyboards do have a power key.
     SCANCODE_KP_EQUALS = 103,
@@ -121,7 +121,7 @@ type
     SCANCODE_F19 = 110, SCANCODE_F20 = 111, SCANCODE_F21 = 112,
     SCANCODE_F22 = 113, SCANCODE_F23 = 114, SCANCODE_F24 = 115,
     SCANCODE_EXECUTE = 116,  SCANCODE_HELP = 117, SCANCODE_MENU = 118,
-    SCANCODE_SELECT = 119,   SCANCODE_STOP = 120, SCANCODE_AGAIN = 121, ## redo
+    SCANCODE_SELECT = 119,   SCANCODE_STOP = 120, SCANCODE_AGAIN = 121, ##  redo
     SCANCODE_UNDO = 122,     SCANCODE_CUT = 123,  SCANCODE_COPY = 124,
     SCANCODE_PASTE = 125,    SCANCODE_FIND = 126, SCANCODE_MUTE = 127,
     SCANCODE_VOLUMEUP = 128, SCANCODE_VOLUMEDOWN = 129,
@@ -130,9 +130,9 @@ type
     # SCANCODE_LOCKINGNUMLOCK = 131,
     # SCANCODE_LOCKINGSCROLLLOCK = 132,
     SCANCODE_KP_COMMA = 133, SCANCODE_KP_EQUALSAS400 = 134,
-    SCANCODE_INTERNATIONAL1 = 135, ##  \
+    SCANCODE_INTERNATIONAL1 = 135,
       ##  used on Asian keyboards, see footnotes in USB doc
-    SCANCODE_INTERNATIONAL2 = 136, SCANCODE_INTERNATIONAL3 = 137, ## Yen
+    SCANCODE_INTERNATIONAL2 = 136, SCANCODE_INTERNATIONAL3 = 137, ##  Yen
     SCANCODE_INTERNATIONAL4 = 138, SCANCODE_INTERNATIONAL5 = 139,
     SCANCODE_INTERNATIONAL6 = 140, SCANCODE_INTERNATIONAL7 = 141,
     SCANCODE_INTERNATIONAL8 = 142, SCANCODE_INTERNATIONAL9 = 143,
@@ -145,7 +145,7 @@ type
     SCANCODE_LANG7 = 150, ##  reserved
     SCANCODE_LANG8 = 151, ##  reserved
     SCANCODE_LANG9 = 152, ##  reserved
-    SCANCODE_ALTERASE = 153, ## Erase-Eaze
+    SCANCODE_ALTERASE = 153,  ##  Erase-Eaze
     SCANCODE_SYSREQ = 154, SCANCODE_CANCEL = 155,  SCANCODE_CLEAR = 156,
     SCANCODE_PRIOR = 157,  SCANCODE_RETURN2 = 158, SCANCODE_SEPARATOR = 159,
     SCANCODE_OUT = 160,    SCANCODE_OPER = 161,    SCANCODE_CLEARAGAIN = 162,
@@ -180,7 +180,7 @@ type
     SCANCODE_RSHIFT = 229,
     SCANCODE_RALT = 230, ##  `alt gr`, `option`
     SCANCODE_RGUI = 231, ##  `windows`, `command` (apple), `meta`
-    SCANCODE_MODE = 257, ##  \
+    SCANCODE_MODE = 257,
       ##  I'm not sure if this is really not covered by any of the above,
       ##  but since there's a special `KMOD_MODE` for it I'm adding it here
 
@@ -203,7 +203,7 @@ type
     # These are values that Christian Walther added (for mac keyboard?).
 
     SCANCODE_BRIGHTNESSDOWN = 275, SCANCODE_BRIGHTNESSUP = 276,
-    SCANCODE_DISPLAYSWITCH = 277, ##  \
+    SCANCODE_DISPLAYSWITCH = 277,
       ##  display mirroring/dual display switch, video mode switch 
     SCANCODE_KBDILLUMTOGGLE = 278,
     SCANCODE_KBDILLUMDOWN = 279,  SCANCODE_KBDILLUMUP = 280,
@@ -219,6 +219,6 @@ type
 
     # Add any other keys here.
 
-    NUM_SCANCODES = 512 ##  \
+    NUM_SCANCODES = 512
       ##  not a key, just marks the number of scancodes for array bounds
 

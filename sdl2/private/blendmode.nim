@@ -30,48 +30,39 @@ type
     ##
     ##  Additional custom blend modes
     ##  can be returned by ``composeCustomBlendMode()``.
-    BLENDMODE_NONE = 0x00000000, ##  \
+    BLENDMODE_NONE = 0x00000000,
       ##  no blending
-      ##
       ##  dstRGBA = srcRGBA
-    BLENDMODE_BLEND = 0x00000001, ##  \
+    BLENDMODE_BLEND = 0x00000001,
       ##  alpha blending
-      ##
       ##  dstRGB = (srcRGB * srcA) + (dstRGB * (1-srcA))
-      ##
       ##  dstA = srcA + (dstA * (1-srcA))
-    BLENDMODE_ADD = 0x00000002, ##  \
+    BLENDMODE_ADD = 0x00000002,
       ##  additive blending
-      ##
       ##  dstRGB = (srcRGB * srcA) + dstRGB
-      ##
       ##  dstA = dstA
-    BLENDMODE_MOD = 0x00000004, ##  \
+    BLENDMODE_MOD = 0x00000004,
       ##  color modulate
-      ##
       ##  dstRGB = srcRGB * dstRGB
-      ##
       ##  dstA = dstA
-    BLENDMODE_MUL = 0x00000008, ##  \
+    BLENDMODE_MUL = 0x00000008,
       ##  color multiply
-      ##
       ##  dstRGB = (srcRGB * dstRGB) + (dstRGB * (1-srcA))
-      ##
       ##  dstA = (srcA * dstA) + (dstA * (1-srcA))
     BLENDMODE_INVALID = 0x7FFFFFFF
 
   BlendOperation* {.size: sizeof(cint).} = enum ##  \
     ##  The blend operation used when combining
     ##  source and destination pixel components.
-    BLENDOPERATION_ADD          = 0x1,  ##  \
+    BLENDOPERATION_ADD          = 0x1,
       ##  dst + src : supported by all renderers
-    BLENDOPERATION_SUBTRACT     = 0x2,  ##  \
+    BLENDOPERATION_SUBTRACT     = 0x2,
       ##  dst - src : supported by D3D9, D3D11, OpenGL, OpenGLES
-    BLENDOPERATION_REV_SUBTRACT = 0x3,  ##  \
+    BLENDOPERATION_REV_SUBTRACT = 0x3,
       ##  src - dst : supported by D3D9, D3D11, OpenGL, OpenGLES
-    BLENDOPERATION_MINIMUM      = 0x4,  ##  \
+    BLENDOPERATION_MINIMUM      = 0x4,
       ##  min(dst, src) : supported by D3D11
-    BLENDOPERATION_MAXIMUM      = 0x5   ##  \
+    BLENDOPERATION_MAXIMUM      = 0x5
       ##  max(dst, src) : supported by D3D11
 
   BlendFactor* {.size: sizeof(cint).} = enum  ##  \

@@ -22,6 +22,7 @@
 ##  thread.nim
 ##  ==========
 ##
+##  SDL thread management routines.
 
 type
   Thread* = pointer ##  The SDL thread structure, defined in SDL_thread.c
@@ -164,7 +165,7 @@ else:
     ##  might be a few kilobytes instead).
     ##
     ##  In SDL 2.1, stacksize will be folded into the original
-    ##  ``sdl.createThread()`` function.
+    ##  ``sdl.createThread()`` procedure.
 
 proc getThreadName*(thread: Thread): cstring {.
     cdecl, importc: "SDL_GetThreadName", dynlib: SDL2_LIB.}

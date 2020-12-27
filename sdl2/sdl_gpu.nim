@@ -112,10 +112,16 @@ const # Feature options
 
   # Combined feature flags
   FEATURE_ALL_BASE*           = FEATURE_RENDER_TARGETS
-  FEATURE_ALL_BLEND_PRESETS*  = FEATURE_BLEND_EQUATIONS or FEATURE_BLEND_FUNC_SEPARATE
-  FEATURE_ALL_GL_FORMATS*     = FEATURE_GL_BGR or FEATURE_GL_BGRA or FEATURE_GL_ABGR
-  FEATURE_BASIC_SHADERS*      = FEATURE_FRAGMENT_SHADER or FEATURE_VERTEX_SHADER
-  FEATURE_ALL_SHADERS*        = FEATURE_FRAGMENT_SHADER or FEATURE_VERTEX_SHADER or FEATURE_GEOMETRY_SHADER
+  FEATURE_ALL_BLEND_PRESETS*  = FEATURE_BLEND_EQUATIONS or
+                                FEATURE_BLEND_FUNC_SEPARATE
+  FEATURE_ALL_GL_FORMATS*     = FEATURE_GL_BGR or
+                                FEATURE_GL_BGRA or
+                                FEATURE_GL_ABGR
+  FEATURE_BASIC_SHADERS*      = FEATURE_FRAGMENT_SHADER or
+                                FEATURE_VERTEX_SHADER
+  FEATURE_ALL_SHADERS*        = FEATURE_FRAGMENT_SHADER or
+                                FEATURE_VERTEX_SHADER or
+                                FEATURE_GEOMETRY_SHADER
 
 type
   Rect* = tuple[x, y: cfloat, w, h: cfloat] ##  \
@@ -151,15 +157,15 @@ type
     renderer*: RendererKind
     majorVersion*: cint
     minorVersion*: cint
-  
-  ComparisonEnum* {.size: sizeof(cint).} = enum ##\
-    ## Comparison operations (for depth testing)
+
+  ComparisonEnum* {.size: sizeof(cint).} = enum ##  \
+    ##  Comparison operations (for depth testing)
     ##
-    ## Values chosen for direct OpenGL compatibility.
+    ##  Values chosen for direct OpenGL compatibility.
     ##
-    ## See also:
+    ##  See also:
     ##
-    ## ``setDepthFunction()``
+    ##  ``setDepthFunction()``
     NEVER    = 0x0200
     LESS     = 0x0201
     EQUAL    = 0x0202
@@ -168,7 +174,7 @@ type
     NOTEQUAL = 0x0205
     GEQUAL   = 0x0206
     ALWAYS   = 0x0207
-  
+
   BlendFunc* {.size: sizeof(cint).} = enum  ##  \
     ##  Blend component functions.
     ##
@@ -343,12 +349,16 @@ type
     LANGUAGE_CG           = 5
 
   AttributeFormat* = object
-    isPerSprite*: bool      ##  Per-sprite values are expanded to 4 vertices
+    isPerSprite*: bool
+      ##  Per-sprite values are expanded to 4 vertices
     numElemsPerValue*: cint
-    `type`*: AttributeType  ##  TYPE_FLOAT, TYPE_INT, TYPE_UNSIGNED_INT, etc.
+    `type`*: AttributeType
+      ##  TYPE_FLOAT, TYPE_INT, TYPE_UNSIGNED_INT, etc.
     normalize*: bool
-    strideBytes*: cint ##  Number of bytes between two vertex specifications
-    offsetBytes*: cint ##  Number of bytes to skip at the beginning of 'values'
+    strideBytes*: cint
+      ##  Number of bytes between two vertex specifications
+    offsetBytes*: cint
+      ##  Number of bytes to skip at the beginning of ``values``
 
   Attribute* = object
     location*: cint
@@ -362,9 +372,10 @@ type
     ##  Automatic storage format
     perVertexStorageStrideBytes*: cint
     perVertexStorageOffsetBytes*: cint
-    perVertexStorageSize*: cint ##  \
-      ##  Over 0 means that the per-vertex storage has been automatically allocated
-    perVertexStorage*: pointer  ##  \
+    perVertexStorageSize*: cint
+      ##  Over 0 means that the per-vertex storage
+      ##  has been automatically allocated
+    perVertexStorage*: pointer
       ##  Could point to the attribute's values or to allocated storage
     attribute*: Attribute
 
@@ -382,7 +393,7 @@ const #  Flip options
   FLIP_NONE*        = 0x0
   FLIP_HORIZONTAL*  = 0x1
   FLIP_VERTICAL*    = 0x2
-  FLIP_BOTH*        = FLIP_HORIZONTAL or FLIP_VERTICAL ## Combined flip flags
+  FLIP_BOTH*        = FLIP_HORIZONTAL or FLIP_VERTICAL  ##  Combined flip flags
 
 type
   Image* = ptr object ##  \
@@ -417,13 +428,13 @@ type
     textureH*, textureW*: uint16  ##  Underlying texture dimensions
     hasMipMaps*: bool
 
-    anchorX*, anchorY*: cfloat ## \
+    anchorX*, anchorY*: cfloat
       ##  Normalized coords for the point at which the image is blitted.
       ##
-      ## Default is (0.5, 0.5), that is, the image is drawn centered.
+      ##  Default is (0.5, 0.5), that is, the image is drawn centered.
       ##
-      ## These are interpreted according to ``setCoordinateMode()``
-      ## and range from (0.0 - 1.0) normally.
+      ##  These are interpreted according to ``setCoordinateMode()``
+      ##  and range from (0.0 - 1.0) normally.
 
     color*: Color
     useBlending*: bool
@@ -436,7 +447,7 @@ type
     data*: pointer
     refcount*: cint
     isAlias*: bool
-  
+
   TextureHandle* {.importc: "uintptr_t", header: "<stdint.h>".} = distinct pointer  ##  \
     ##  A backend-neutral type that is intended to hold a backend-specific handle/pointer to a texture.
     ##
@@ -445,7 +456,7 @@ type
     ##  ``createImageUsingTexture()``
     ##
     ##  ``getTextureHandle()``
-  
+
   Camera* = object  ##  \
     ##  Camera object that determines viewing transform.
     ##
@@ -458,10 +469,11 @@ type
     ##  ``getCamera()``
     x*, y*, z*: cfloat
     angle*, zoom*: cfloat
-    zNear*, zFar*: cfloat ## z clipping planes
+    zNear*, zFar*: cfloat ##  z clipping planes
 
   ShaderBlock* = object ##  \
-    ##  Container for the built-in shader attribute and uniform locations (indices).
+    ##  Container for the built-in shader attribute and uniform locations
+    ##  (indices).
     ##
     ##  See also:
     ##
@@ -489,8 +501,7 @@ type
     windowID*: uint32             ##  SDL window ID
     windowW*, windowH*: cint      ##  Actual window dimensions
     drawableW*, drawableH*: cint  ##  Drawable region dimensions
-    storedWindowW*, storedWindowH*: cint ##  \
-      ##  Window dimensions
+    storedWindowW*, storedWindowH*: cint  ##  Window dimensions
       ##  for restoring windowed mode after setFullscreen(1,1).
 
     currentShaderProgram*: uint32
@@ -541,7 +552,7 @@ type
     data*: pointer
     w*, h*: uint16
     usingVirtualResolution*: bool
-    baseW*, baseH*: uint16 ## \
+    baseW*, baseH*: uint16
       ##  The true dimensions of the underlying image or window
     useClipRect*: bool
     clipRect*: Rect
@@ -556,7 +567,7 @@ type
     depthFunction*: ComparisonEnum
 
     context*: Context ##  Renderer context data.
-      ## ``nil`` if the target does not represent a window or rendering context.
+      ##  `nil` if the target does not represent a window or rendering context.
 
     refcount*: cint
     isAlias*: bool
@@ -679,7 +690,7 @@ proc getCompiledVersion*(): Version =
 
 proc setInitWindow*(windowID: uint32) {.
     cdecl, importc: "GPU_SetInitWindow", dynlib: SDL2_GPU_LIB.}
-  ##  The window corresponding to 'windowID' will be used to create
+  ##  The window corresponding to ``windowID`` will be used to create
   ##  the rendering context instead of creating a new window.
 
 proc getInitWindow*(): uint32 {.
@@ -715,21 +726,21 @@ proc getDefaultRendererOrder*(orderSize: ptr cint; order: ptr RendererID) {.
     cdecl, importc: "GPU_GetDefaultRendererOrder", dynlib: SDL2_GPU_LIB.}
   ##  Gets the default initialization renderer IDs for the current platform
   ##  copied into the ``order`` array and the number of renderer IDs into
-  ##  ``order_size``. Pass ``nil`` for ``order`` to just get the size of the
+  ##  ``order_size``. Pass `nil` for ``order`` to just get the size of the
   ##  renderer order array. Will return at most `RENDERER_ORDER_MAX` renderers.
 
 proc getRendererOrder*(orderSize: ptr cint; order: ptr RendererID) {.
     cdecl, importc: "GPU_GetRendererOrder", dynlib: SDL2_GPU_LIB.}
   ##  Gets the current renderer ID order for initialization
   ##  copied into the ``order`` array and the number of renderer IDs into
-  ##  ``order_size``. Pass ``nil`` for ``order`` to just get the size of the
+  ##  ``order_size``. Pass `nil` for ``order`` to just get the size of the
   ##  renderer order array.
 
 proc setRendererOrder*(orderSize: cint; order: ptr RendererID) {.
     cdecl, importc: "GPU_SetRendererOrder", dynlib: SDL2_GPU_LIB.}
   ##  Sets the renderer ID order to use for initialization.
   ##
-  ##  If ``order`` is ``nil``, it will restore the default order.
+  ##  If ``order`` is `nil`, it will restore the default order.
 
 proc init*(w, h: uint16; flags: WindowFlags): Target {.
     cdecl, importc: "GPU_Init", dynlib: SDL2_GPU_LIB.}
@@ -746,7 +757,7 @@ proc init*(w, h: uint16; flags: WindowFlags): Target {.
   ##  Use `GPU_DEFAULT_INIT_FLAGS` if you don't care.
   ##
   ##  ``Return`` On success, returns the new context target
-  ##  (i.e. render target backed by a window). On failure, returns ``nil``.
+  ##  (i.e. render target backed by a window). On failure, returns `nil`.
   ##
   ##  Initializes these systems:
   ##
@@ -852,7 +863,7 @@ proc setLogCallback*(callback: proc (logLevel: LogLevel; format: cstring;
   ##
   ##  Use stdio's ``vsnprintf()`` to process the ``va_list`` into a string.
   ##
-  ## Passing ``nil`` as the callback will reset to the default internal logging.
+  ##  Passing `nil` as the callback will reset to the default internal logging.
 
 proc pushErrorCode*(function: cstring; error: ErrorType; details: cstring) {.
     varargs, cdecl, importc: "GPU_PushErrorCode", dynlib: SDL2_GPU_LIB.}
@@ -863,14 +874,14 @@ proc pushErrorCode*(function: cstring; error: ErrorType; details: cstring) {.
   ##
   ##  ``error`` The error code to push on the error queue.
   ##
-  ##  ``details`` Additional information string, can be ``nil``.
+  ##  ``details`` Additional information string, can be `nil`.
 
 proc popErrorCode*(): ErrorObject {.
     cdecl, importc: "GPU_PopErrorCode", dynlib: SDL2_GPU_LIB.}
   ##  Pops an error object from the error queue and returns it.
   ##
-  ##  If the error queue is empty, it returns an error object with ``nil``
-  ##  function, `ERROR_NONE` error, and ``nil`` details.
+  ##  If the error queue is empty, it returns an error object with `nil`
+  ##  function, `ERROR_NONE` error, and `nil` details.
 
 proc getErrorString*(error: ErrorType): cstring {.
     cdecl, importc: "GPU_GetErrorString", dynlib: SDL2_GPU_LIB.}
@@ -1159,7 +1170,7 @@ proc getDefaultCamera*(): Camera {.
 proc getCamera*(target: Target): Camera {.
     cdecl, importc: "GPU_GetCamera", dynlib: SDL2_GPU_LIB.}
   ##  ``Return`` the camera of the given render target.
-  ##  If target is ``nil``, returns the default camera.
+  ##  If target is `nil`, returns the default camera.
 
 proc setCamera*(target: Target; cam: ptr Camera): Camera {.
     cdecl, importc: "GPU_SetCamera", dynlib: SDL2_GPU_LIB.}
@@ -1168,7 +1179,7 @@ proc setCamera*(target: Target; cam: ptr Camera): Camera {.
   ##  ``target`` A pointer to the target that will copy this camera.
   ##
   ##  ``cam`` A pointer to the camera data to use
-  ##  or ``nil`` to use the default camera.
+  ##  or `nil` to use the default camera.
   ##
   ##  ``Return`` the old camera.
 
@@ -1608,22 +1619,22 @@ proc getMatrixString*(a: ptr cfloat): cstring {.
 proc getCurrentMatrix*(): ptr cfloat {.
     cdecl, importc: "GPU_GetCurrentMatrix", dynlib: SDL2_GPU_LIB.}
   ##  ``Return`` the current matrix from the top of the matrix stack,
-  ##  or ``nil`` if stack is empty.
+  ##  or `nil` if stack is empty.
 
 proc getModelView*(): ptr cfloat {.
     cdecl, importc: "GPU_GetModelView", dynlib: SDL2_GPU_LIB.}
   ##  ``Returns`` the current modelview matrix from the top of the matrix stack,
-  ##  or ``nil`` if stack is empty.
+  ##  or `nil` if stack is empty.
 
 proc getProjection*(): ptr cfloat {.
     cdecl, importc: "GPU_GetProjection", dynlib: SDL2_GPU_LIB.}
   ##  ``Return`` the current projection matrix from the top of the matrix stack,
-  ##  or ``nil`` if stack is empty.
+  ##  or `nil` if stack is empty.
 
 proc getModelViewProjection*(result: ptr cfloat) {.
     cdecl, importc: "GPU_GetModelViewProjection", dynlib: SDL2_GPU_LIB.}
   ##  Copies the current modelview-projection matrix
-  ##  into the given 'result' matrix (result = P*M).
+  ##  into the given ``result`` matrix (result = P*M).
 
 # Matrix stack manipulators
 
@@ -1705,7 +1716,7 @@ proc blit*(image: Image; srcRect: ptr Rect; target: Target; x, y: cfloat) {.
   ##  Draws the given image to the given render target.
   ##
   ##  ``src_rect`` The region of the source image to use.
-  ##  Pass ``nil`` for the entire image.
+  ##  Pass `nil` for the entire image.
   ##
   ##  ``x`` Destination x-position.
   ##
@@ -1717,7 +1728,7 @@ proc blitRotate*(image: Image; srcRect: ptr Rect; target: Target;
   ##  Rotates and draws the given image to the given render target.
   ##
   ##  ``src_rect`` The region of the source image to use.
-  ##  Pass ``nil`` for the entire image.
+  ##  Pass `nil` for the entire image.
   ##
   ##  ``x`` Destination x-position.
   ##
@@ -1731,7 +1742,7 @@ proc blitScale*(image: Image; srcRect: ptr Rect; target: Target;
   ##  Scales and draws the given image to the given render target.
   ##
   ##  ``src_rect`` The region of the source image to use.
-  ##  Pass ``nil`` for the entire image.
+  ##  Pass `nil` for the entire image.
   ##
   ##  ``x`` Destination x-position.
   ##
@@ -1747,7 +1758,7 @@ proc blitTransform*(image: Image; srcRect: ptr Rect; target: Target;
   ##  Scales, rotates, and draws the given image to the given render target.
   ##
   ##  ``src_rect`` The region of the source image to use.
-  ##  Pass ``nil`` for the entire image.
+  ##  Pass `nil` for the entire image.
   ##
   ##  ``x`` Destination x-position.
   ##
@@ -1769,7 +1780,7 @@ proc blitTransformX*(image: Image; srcRect: ptr Rect; target: Target;
   ##  on the src image (pivot_x, pivot_y).
   ##
   ##  ``src_rect`` The region of the source image to use
-  ##  Pass ``nil`` for the entire image.
+  ##  Pass `nil` for the entire image.
   ##
   ##  ``x`` Destination x-position.
   ##
@@ -1792,10 +1803,10 @@ proc blitRect*(
   ##  scaling it to fit the destination region.
   ##
   ##  ``src_rect`` The region of the source image to use.
-  ##  Pass ``nil`` for the entire image.
+  ##  Pass `nil` for the entire image.
   ##
   ##  ``dest_rect`` The region of the destination target image to draw upon.
-  ##  Pass ``nil`` for the entire target.
+  ##  Pass `nil` for the entire target.
 
 proc blitRectX*(image: Image; srcRect: ptr Rect; target: Target;
                 destRect: ptr Rect; degrees: cfloat;
@@ -1805,10 +1816,10 @@ proc blitRectX*(image: Image; srcRect: ptr Rect; target: Target;
   ##  scaling it to fit the destination region.
   ##
   ##  ``src_rect`` The region of the source image to use.
-  ##  Pass ``nil`` for the entire image.
+  ##  Pass `nil` for the entire image.
   ##
   ##  ``dest_rect`` The region of the destination target image to draw upon.
-  ##  Pass ``nil`` for the entire target.
+  ##  Pass `nil` for the entire target.
   ##
   ##  ``degrees`` Rotation angle (in degrees).
   ##
@@ -1832,10 +1843,10 @@ proc triangleBatch*(image: Image; target: Target; numVertices: cushort;
   ##  texture coordinates (e.g. s,t), and color (e.g. r,g,b,a) values.
   ##  Texture coordinates and color values are expected to be already
   ##  normalized to 0.0 - 1.0.
-  ##  Pass ``nil`` to render with only custom shader attributes.
+  ##  Pass `nil` to render with only custom shader attributes.
   ##
-  ##  ``indices`` If not ``nil``, this is used to specify which vertices to use
-  ##  and in what order (i.e. it indexes the vertices in the 'values' array).
+  ##  ``indices`` If not `nil`, this is used to specify which vertices to use
+  ##  and in what order (i.e. it indexes the vertices in the ``values`` array).
   ##
   ##  ``flags`` Bit flags to control the interpretation
   ##  of the ``values`` array parameters.
@@ -1853,9 +1864,9 @@ proc triangleBatchX*(image: Image; target: Target; numVertices: cushort;
   ##  texture coordinates (e.g. s,t), and color (e.g. r,g,b,a) values.
   ##  Texture coordinates and color values are expected to be already
   ##  normalized to 0.0 - 1.0 (or 0 - 255 for 8-bit color components).
-  ##  Pass ``nil`` to render with only custom shader attributes.
+  ##  Pass `nil` to render with only custom shader attributes.
   ##
-  ##  ``indices`` If not ``nil``, this is used to specify which vertices
+  ##  ``indices`` If not `nil`, this is used to specify which vertices
   ##  to use and in what order
   ##  (i.e. it indexes the vertices in the ``values`` array).
   ##
@@ -2243,19 +2254,19 @@ proc polygon*(
 proc polyline*(target: Target; numVertices: cuint; vertices: ptr cfloat;
                color: Color; closeLoop: bool) {.
     cdecl, importc: "GPU_Polyline", dynlib: SDL2_GPU_LIB.}
-##  Renders a colored sequence of line segments.
-##
-##  ``target`` The destination render target
-##
-##  ``num_vertices`` Number of vertices (x and y pairs)
-##
-##  ``vertices`` An array of vertex positions stored
-##  as interlaced x and y coords, e.g. [x1, y1, x2, y2, ...]
-##
-##  ``color`` The color of the shape to render
-##
-##  ``close_loop`` Make a closed polygon by drawing a
-##   line at the end back to the start point
+  ##  Renders a colored sequence of line segments.
+  ##
+  ##  ``target`` The destination render target
+  ##
+  ##  ``num_vertices`` Number of vertices (x and y pairs)
+  ##
+  ##  ``vertices`` An array of vertex positions stored
+  ##  as interlaced x and y coords, e.g. [x1, y1, x2, y2, ...]
+  ##
+  ##  ``color`` The color of the shape to render
+  ##
+  ##  ``close_loop`` Make a closed polygon by drawing a
+  ##   line at the end back to the start point
 
 proc polygonFilled*(target: Target; numVertices: cuint; vertices: ptr cfloat;
                    color: Color) {.
@@ -2344,7 +2355,7 @@ proc isDefaultShaderProgram*(programObject: uint32): bool {.
 proc activateShaderProgram*(programObject: uint32; `block`: ptr ShaderBlock) {.
     cdecl, importc: "GPU_ActivateShaderProgram", dynlib: SDL2_GPU_LIB.}
   ##  Activates the given shader program.
-  ##  Passing ``nil`` for ``block`` will disable the built-in shader variables
+  ##  Passing `nil` for ``block`` will disable the built-in shader variables
   ##  for custom shaders until a shaderBlock is set again.
 
 proc deactivateShaderProgram*() {.
@@ -2396,7 +2407,7 @@ proc setShaderImage*(image: Image; location: cint; imageUnit: cint) {.
   ##  can sample multiple textures.
   ##
   ##  ``image`` The source image/texture.
-  ##  Pass ``nil`` to disable the image unit.
+  ##  Pass `nil` to disable the image unit.
   ##
   ##  ``location`` The uniform location of a texture sampler.
   ##

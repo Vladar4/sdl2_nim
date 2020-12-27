@@ -47,7 +47,7 @@ const
     ##  This is the version number const for the current SDL_ttf version.
 
 template versionAtLeast*(x, y, z: untyped): untyped =  ##  \
-  ##  This macro will evaluate to `true` if compiled
+  ##  This template will evaluate to `true` if compiled
   ##  with SDL_ttf at least X.Y.Z.
   (COMPILEDVERSION >= versionNum(x, y, z))
 

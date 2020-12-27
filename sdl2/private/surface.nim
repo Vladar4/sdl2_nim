@@ -48,25 +48,24 @@ type
     ##  ``Note:`` This object should be treated as read-only, except for
     ##  ``pixels``, which, if not `nil`, contains the raw pixel data
     ##  for the surface.
-    flags*: uint32          ## Read-only
-    format*: ptr PixelFormat  ## Read-only
-    w*: cint                ## Read-only
-    h*: cint                ## Read-only
-    pitch*: cint            ## Read-only
-    pixels*: pointer        ## Read-write
-    userdata*: pointer      ## Read-write \
-                            ## Application data associated with the surface
-    locked*: cint           ## Read-only \
-                            ## information needed for surfaces requiring locks
-    list_bitmap*: pointer   ## Private \
-                            ## list of BlitMap that hold a reference \
-                            ## to this surface
-    clip_rect*: Rect        ## Read-only \
-                            ## clipping information
-    map*: pointer           ## Private \
-                            ## info for fast blit mapping to other surfaces
-    refcount*: cint         ## Read-mostly \
-                            ## Reference count -- used when freeing surface
+    flags*: uint32          ##  Read-only
+    format*: ptr PixelFormat  ##  Read-only
+    w*: cint                ##  Read-only
+    h*: cint                ##  Read-only
+    pitch*: cint            ##  Read-only
+    pixels*: pointer        ##  Read-write
+    userdata*: pointer      ##  Read-write:
+      ##  Application data associated with the surface
+    locked*: cint           ##  Read-only:
+      ##  information needed for surfaces requiring locks
+    list_bitmap*: pointer   ##  Private:
+      ##  list of BlitMap that hold a reference to this surface
+    clip_rect*: Rect        ##  Read-only:
+      ##  clipping information
+    map*: pointer           ##  Private:
+      ##  info for fast blit mapping to other surfaces
+    refcount*: cint         ##  Read-mostly:
+      ##  Reference count -- used when freeing surface
 
 type
   blit* = proc (
@@ -143,8 +142,8 @@ proc lockSurface*(surface: Surface): cint {.
   ##  Sets up a surface for directly accessing the pixels.
   ##
   ##  Between calls to ``lockSurface()`` / ``unlockSurface()``, you can write
-  ##  to and read from ``surface->pixels``, using the pixel format stored in
-  ##  ``surface->format``.  Once you are done accessing the surface, you should
+  ##  to and read from ``surface.pixels``, using the pixel format stored in
+  ##  ``surface.format``.  Once you are done accessing the surface, you should
   ##  use ``unlockSurface()`` to release it.
   ##
   ##  Not all surfaces require locking.  If ``mustLock(surface)`` evaluates
@@ -162,9 +161,9 @@ proc lockSurface*(surface: Surface): cint {.
 
 proc unlockSurface*(surface: Surface) {.
     cdecl, importc: "SDL_UnlockSurface", dynlib: SDL2_LIB.}
-  ## See also:
+  ##  See also:
   ##
-  ## ``lockSurface()``
+  ##  ``lockSurface()``
 
 proc loadBMP_RW*(src: ptr RWops; freesrc: cint): Surface {.
     cdecl, importc: "SDL_LoadBMP_RW", dynlib: SDL2_LIB.}
@@ -182,7 +181,7 @@ template loadBMP_RW*(src: ptr RWops; freesrc: bool): Surface =
 template loadBMP*(file: untyped): untyped = ##  \
   ##  Load a surface from a file.
   ##
-  ##  Convenience macro.
+  ##  Convenience template.
   loadBMP_RW(rwFromFile(file, "rb"), 1)
 
 proc saveBMP_RW*(surface: Surface; dst: ptr RWops; freedst: cint): cint {.
@@ -202,7 +201,7 @@ proc saveBMP_RW*(surface: Surface; dst: ptr RWops; freedst: cint): cint {.
 template saveBMP*(surface, file: untyped): untyped = ##  \
   ##  Save a surface to a file.
   ##
-  ##  Convenience macro.
+  ##  Convenience template.
   saveBMP_RW(surface, rwFromFile(file, "wb"), 1)
 
 proc setSurfaceRLE*(surface: Surface; flag: cint): cint {.

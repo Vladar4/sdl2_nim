@@ -28,14 +28,14 @@ proc setError*(fmt: cstring): cint {.
     varargs, cdecl, importc: "SDL_SetError", dynlib: SDL2_LIB.}
   ##  Set the error message for the current thread.
   ##
-  ##  ``Return`` `-1`, there is no error handling for this function.
+  ##  ``Return`` `-1`, there is no error handling for this procedure.
 
 proc getError*(): cstring {.
     cdecl, importc: "SDL_GetError", dynlib: SDL2_LIB.}
   ##  Get the last error message that was set.
   ##
-  ##  SDL API functions may set error messages and then succeed, so you should
-  ##  only use the error value if a function fails.
+  ##  SDL API procedures may set error messages and then succeed, so you should
+  ##  only use the error value if a procedure fails.
   ##
   ##  This returns a pointer to a static buffer for convenience and should not
   ##  be called by multiple threads simultaneously.
@@ -46,8 +46,8 @@ proc getErrorMsg*(errstr: cstring; maxlen: cint): cstring {.
     cdecl, importc: "SDL_GetErrorMsg", dynlib: SDL2_LIB.}
   ##  Get the last error message that was set for the current thread.
   ##
-  ##  SDL API functions may set error messages and then succeed, so you should
-  ##  only use the error value if a function fails.
+  ##  SDL API procedures may set error messages and then succeed, so you should
+  ##  only use the error value if a procedure fails.
   ##
   ##  ``errstr`` A buffer to fill with the last error message that was set
   ##  for the current thread
