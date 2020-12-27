@@ -1,4 +1,4 @@
-sdl2_nim 2.0.12.0
+sdl2_nim 2.0.14.0
 =================
 
 sdl2_nim is a wrapper of the SDL 2 library for the Nim language.
