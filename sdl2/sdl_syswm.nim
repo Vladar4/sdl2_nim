@@ -41,7 +41,7 @@ when defined(SDL_PROTOTYPES_ONLY):
 else:
 
   when defined(SDL_VIDEO_DRIVER_WINDOWS):
-    import winim/lean  ##  oldwinapi lib
+    import winim/lean  ##  winim lib
   elif defined(SDL_VIDEO_DRIVER_X11):
     import x11/[x, xlib]  ##  x11 lib
   elif defined(SDL_VIDEO_DRIVER_DIRECTFB):
