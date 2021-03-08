@@ -41,9 +41,9 @@ when defined(SDL_PROTOTYPES_ONLY):
 else:
 
   when defined(SDL_VIDEO_DRIVER_WINDOWS):
-    import windows  ##  oldwinapi lib
+    import winim/lean  ##  oldwinapi lib
   elif defined(SDL_VIDEO_DRIVER_X11):
-    import x11/x, x11/xlib  ##  x11 lib
+    import x11/[x, xlib]  ##  x11 lib
   elif defined(SDL_VIDEO_DRIVER_DIRECTFB):
     nil
   elif defined(SDL_VIDEO_DRIVER_COCOA):
@@ -94,7 +94,7 @@ else:
     type
       SysWMMsgWinObj* = object  ##  when defined(SDL_VIDEO_DRIVER_WINDOWS)
         hwnd*: HWND     ##  The window for the message
-        msg*: WINUINT   ##  The type of message
+        msg*: UINT   ##  The type of message
         wParam*: WPARAM ##  WORD message parameter
         lParam*: LPARAM ##  LONG message parameter
 
@@ -104,7 +104,7 @@ else:
   elif defined(SDL_VIDEO_DRIVER_X11):
     type
       SysWMMsgX11Obj* = object  ##  when defined(SDL_VIDEO_DRIVER_X11)
-        event*: TXEvent
+        event*: XEvent
 
       SysWMMsgKindObj* = object ##  when defined(SDL_VIDEO_DRIVER_X11)
         x11*: SysWMMsgX11Obj
@@ -216,8 +216,8 @@ else:
   elif defined(SDL_VIDEO_DRIVER_X11):
     type
       SysWMinfoX11Obj* = object   ##  when defined(SDL_VIDEO_DRIVER_X11)
-        display*: ptr xlib.TXDisplay  ##  The X11 display
-        window*: x.TWindow            ##  The X11 window
+        display*: ptr xlib.XDisplay  ##  The X11 display
+        window*: x.Window            ##  The X11 window
 
       SysWMinfoKindObj* = object  ##  when defined(SDL_VIDEO_DRIVER_X11)
         x11*: SysWMinfoX11Obj
@@ -325,7 +325,7 @@ else:
 # Procedure prototypes
 
 
-proc getWindowWMInfo*(window: Window; info: ptr SysWMinfo): bool {.
+proc getWindowWMInfo*(window: sdl.Window; info: ptr SysWMinfo): bool {.
     cdecl, importc: "SDL_GetWindowWMInfo", dynlib: SDL2_LIB.}
   ##  This procedure allows access to driver-dependent window information.
   ##
