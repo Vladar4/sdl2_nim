@@ -1,5 +1,17 @@
-sdl2_nim 2.0.14.0
+sdl2_nim 2.0.14.1
 =================
+
+***
+
+ATTENTION!
+==========
+> Due to a name conflict with the `nim-lang/sdl2` wrapper, sdl2_nim will transition from `sdl2` to `sdl2nim` directory. See [issue #35](https://github.com/Vladar4/sdl2_nim/issues/35).
+>
+> In the meantime, both directories will be present.
+>
+> To update your projects you'll just need to replace `import sdl2/...` statements with `import sdl2nim/...`.
+
+***
 
 sdl2_nim is a wrapper of the SDL 2 library for the Nim language.
 
@@ -63,6 +75,10 @@ FAQ:
 
 CHANGELOG:
 ==========
+**v2.0.14.1**
+* transition version from `sdl2` to `sdl2nim`. See [issue #35](https://github.com/Vladar4/sdl2_nim/issues/35).
+
+
 **v2.0.14.0**
 * updated to SDL-2.0.14 (see [changelog](https://github.com/Vladar4/sdl2_nim/blob/master/CHANGELOG-2.0.14.md))
 * updated documentation
