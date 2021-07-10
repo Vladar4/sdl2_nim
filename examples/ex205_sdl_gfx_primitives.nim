@@ -6,8 +6,8 @@
 
 import
     random,
-    sdl2/sdl, sdl2/sdl_image as img,
-    sdl2/sdl_gfx_primitives as gfx, sdl2/sdl_gfx_primitives_font as font
+    sdl2nim/sdl, sdl2nim/sdl_image as img,
+    sdl2nim/sdl_gfx_primitives as gfx, sdl2nim/sdl_gfx_primitives_font as font
 
 
 const

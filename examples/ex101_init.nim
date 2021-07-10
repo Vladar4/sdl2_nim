@@ -4,7 +4,7 @@
 # ------------------------------------
 
 
-import sdl2/sdl
+import sdl2nim/sdl
 
 
 const

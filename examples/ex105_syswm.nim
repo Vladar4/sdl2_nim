@@ -4,7 +4,7 @@
 # -----------------------------------
 
 
-import sdl2/sdl, sdl2/sdl_syswm
+import sdl2nim/sdl, sdl2nim/sdl_syswm
 
 
 proc subsys(kind: SysWMKind): string =

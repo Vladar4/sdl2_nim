@@ -8,7 +8,7 @@
 # (nimble install opengl)
 #
 
-import sdl2/sdl, sdl2/sdl_image as img, opengl, opengl/glu
+import sdl2nim/sdl, sdl2nim/sdl_image as img, opengl, opengl/glu
 
 
 const

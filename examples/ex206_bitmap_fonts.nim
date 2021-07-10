@@ -6,7 +6,7 @@
 
 import
     random,
-    sdl2/sdl, sdl2/sdl_image as img
+    sdl2nim/sdl, sdl2nim/sdl_image as img
 
 
 const

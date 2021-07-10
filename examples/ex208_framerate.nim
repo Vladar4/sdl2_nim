@@ -6,8 +6,8 @@
 
 import
     random,
-    sdl2/sdl, sdl2/sdl_image as img,
-    sdl2/sdl_ttf as ttf
+    sdl2nim/sdl, sdl2nim/sdl_image as img,
+    sdl2nim/sdl_ttf as ttf
 
 
 const
