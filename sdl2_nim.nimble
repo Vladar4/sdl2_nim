@@ -11,5 +11,5 @@ requires "nim >= 0.12.0"
 requires "winim >= 3.6.0"
 requires "x11 >= 1.1"
 
-skipDirs = @["docs", "examples"]
+installDirs = @["sdl2"]
 
