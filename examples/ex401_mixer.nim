@@ -6,10 +6,10 @@
 
 import
     random,
-    sdl2nim/sdl,
-    sdl2nim/sdl_image as img,
-    sdl2nim/sdl_ttf as ttf,
-    sdl2nim/sdl_mixer as mix
+    sdl2_nim/sdl,
+    sdl2_nim/sdl_image as img,
+    sdl2_nim/sdl_ttf as ttf,
+    sdl2_nim/sdl_mixer as mix
 
 
 const
