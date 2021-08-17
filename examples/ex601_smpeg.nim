@@ -5,8 +5,8 @@
 
 
 import
-    sdl2nim/sdl,
-    sdl2nim/smpeg
+    sdl2_nim/sdl,
+    sdl2_nim/smpeg
 
 
 const

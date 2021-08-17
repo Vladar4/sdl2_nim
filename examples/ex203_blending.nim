@@ -4,7 +4,7 @@
 # ----------------------
 
 
-import sdl2nim/sdl, sdl2nim/sdl_image as img
+import sdl2_nim/sdl, sdl2_nim/sdl_image as img
 
 
 const
