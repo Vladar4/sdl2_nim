@@ -42,7 +42,7 @@ import
 
 const # Compile-time versions
   MAJOR_VERSION*  = 0
-  MINOR_VERSION*  = 11
+  MINOR_VERSION*  = 12
   PATCHLEVEL*     = 0
 
 const
@@ -73,13 +73,13 @@ type
     ##  ``see getPreInitFlags()``
 
 const # Init options
-  INIT_ENABLE_VSYNC*                            = 0x1
-  INIT_DISABLE_VSYNC*                           = 0x2
-  INIT_DISABLE_DOUBLE_BUFFER*                   = 0x4
-  INIT_DISABLE_AUTO_VIRTUAL_RESOLUTION*         = 0x8
-  INIT_REQUEST_COMPATIBILITY_PROFILE*           = 0x10
-  INIT_USE_ROW_BY_ROW_TEXTURE_UPLOAD_FALLBACK*  = 0x20
-  INIT_USE_COPY_TEXTURE_UPLOAD_FALLBACK*        = 0x40
+  INIT_ENABLE_VSYNC*: InitFlags = 0x1
+  INIT_DISABLE_VSYNC*: InitFlags = 0x2
+  INIT_DISABLE_DOUBLE_BUFFER*: InitFlags = 0x4
+  INIT_DISABLE_AUTO_VIRTUAL_RESOLUTION*: InitFlags = 0x8
+  INIT_REQUEST_COMPATIBILITY_PROFILE*: InitFlags = 0x10
+  INIT_USE_ROW_BY_ROW_TEXTURE_UPLOAD_FALLBACK*: InitFlags = 0x20
+  INIT_USE_COPY_TEXTURE_UPLOAD_FALLBACK*: InitFlags = 0x40
 
 type
   FeatureFlags* = uint32  ##  \
@@ -95,33 +95,41 @@ type
     ##  ``setRequiredFeatures()``
 
 const # Feature options
-  FEATURE_NON_POWER_OF_TWO*         = 0x1
-  FEATURE_RENDER_TARGETS*           = 0x2
-  FEATURE_BLEND_EQUATIONS*          = 0x4
-  FEATURE_BLEND_FUNC_SEPARATE*      = 0x8
-  FEATURE_BLEND_EQUATIONS_SEPARATE* = 0x10
-  FEATURE_GL_BGR*                   = 0x20
-  FEATURE_GL_BGRA*                  = 0x40
-  FEATURE_GL_ABGR*                  = 0x80
-  FEATURE_VERTEX_SHADER*            = 0x100
-  FEATURE_FRAGMENT_SHADER*          = 0x200
-  FEATURE_PIXEL_SHADER*             = 0x200
-  FEATURE_GEOMETRY_SHADER*          = 0x400
-  FEATURE_WRAP_REPEAT_MIRRORED*     = 0x800
-  FEATURE_CORE_FRAMEBUFFER_OBJECTS* = 0x1000
+  FEATURE_NON_POWER_OF_TWO*: FeatureFlags = 0x1
+  FEATURE_RENDER_TARGETS*: FeatureFlags = 0x2
+  FEATURE_BLEND_EQUATIONS*: FeatureFlags = 0x4
+  FEATURE_BLEND_FUNC_SEPARATE*: FeatureFlags = 0x8
+  FEATURE_BLEND_EQUATIONS_SEPARATE*: FeatureFlags = 0x10
+  FEATURE_GL_BGR*: FeatureFlags = 0x20
+  FEATURE_GL_BGRA*: FeatureFlags = 0x40
+  FEATURE_GL_ABGR*: FeatureFlags = 0x80
+  FEATURE_VERTEX_SHADER*: FeatureFlags = 0x100
+  FEATURE_FRAGMENT_SHADER*: FeatureFlags = 0x200
+  FEATURE_PIXEL_SHADER*: FeatureFlags = 0x200
+  FEATURE_GEOMETRY_SHADER*: FeatureFlags = 0x400
+  FEATURE_WRAP_REPEAT_MIRRORED*: FeatureFlags = 0x800
+  FEATURE_CORE_FRAMEBUFFER_OBJECTS*: FeatureFlags = 0x1000
 
   # Combined feature flags
-  FEATURE_ALL_BASE*           = FEATURE_RENDER_TARGETS
-  FEATURE_ALL_BLEND_PRESETS*  = FEATURE_BLEND_EQUATIONS or
-                                FEATURE_BLEND_FUNC_SEPARATE
-  FEATURE_ALL_GL_FORMATS*     = FEATURE_GL_BGR or
-                                FEATURE_GL_BGRA or
-                                FEATURE_GL_ABGR
-  FEATURE_BASIC_SHADERS*      = FEATURE_FRAGMENT_SHADER or
-                                FEATURE_VERTEX_SHADER
-  FEATURE_ALL_SHADERS*        = FEATURE_FRAGMENT_SHADER or
-                                FEATURE_VERTEX_SHADER or
-                                FEATURE_GEOMETRY_SHADER
+  FEATURE_ALL_BASE* = FEATURE_RENDER_TARGETS
+
+  FEATURE_ALL_BLEND_PRESETS* =
+    FEATURE_BLEND_EQUATIONS or
+    FEATURE_BLEND_FUNC_SEPARATE
+
+  FEATURE_ALL_GL_FORMATS* =
+    FEATURE_GL_BGR or
+    FEATURE_GL_BGRA or
+    FEATURE_GL_ABGR
+
+  FEATURE_BASIC_SHADERS* =
+    FEATURE_FRAGMENT_SHADER or
+    FEATURE_VERTEX_SHADER
+
+  FEATURE_ALL_SHADERS* =
+    FEATURE_FRAGMENT_SHADER or
+    FEATURE_VERTEX_SHADER or
+    FEATURE_GEOMETRY_SHADER
 
 type
   Rect* = tuple[x, y: cfloat, w, h: cfloat] ##  \
@@ -131,7 +139,7 @@ type
     ##
     ##  ``makeRect()``
 
-  RendererKind* {.size: sizeof(cint).} = enum
+  RendererKind* {.size: sizeof(uint32).} = enum
     RENDERER_UNKNOWN        = 0  ##  invalid value
     RENDERER_OPENGL_1_BASE  = 1
     RENDERER_OPENGL_1       = 2
@@ -153,7 +161,7 @@ type
     ##  ``makeRendererID()``
     ##
     ##  ``initRendererByID()``
-    name*: ptr char
+    name*: cstring
     renderer*: RendererKind
     majorVersion*: cint
     minorVersion*: cint
@@ -207,8 +215,11 @@ type
     EQ_REVERSE_SUBTRACT = 0x800B
 
   BlendMode* = object ##  Blend mode storage struct
-    sourceColor*, destColor*: BlendFunc
-    sourceAlpha*, destAlpha*: BlendFunc
+    sourceColor*: BlendFunc
+    destColor*: BlendFunc
+    sourceAlpha*: BlendFunc
+    destAlpha*: BlendFunc
+
     colorEquation*: BlendEq
     alphaEquation*: BlendEq
 
@@ -419,33 +430,35 @@ type
     renderer*: Renderer
     contextTarget*: Target
     target*: Target
+    data*: pointer
+
     w*, h*: uint16
-    usingVirtualResolution*: bool
     format*: Format
     numLayers*: cint
     bytesPerPixel*: int
     baseW*, baseH*: uint16        ##  Original image dimensions
     textureH*, textureW*: uint16  ##  Underlying texture dimensions
-    hasMipMaps*: bool
 
     anchorX*, anchorY*: cfloat
-      ##  Normalized coords for the point at which the image is blitted.
-      ##
-      ##  Default is (0.5, 0.5), that is, the image is drawn centered.
-      ##
-      ##  These are interpreted according to ``setCoordinateMode()``
-      ##  and range from (0.0 - 1.0) normally.
+    ##  Normalized coords for the point at which the image is blitted.
+    ##
+    ##  Default is (0.5, 0.5), that is, the image is drawn centered.
+    ##
+    ##  These are interpreted according to ``setCoordinateMode()``
+    ##  and range from (0.0 - 1.0) normally.
 
     color*: Color
-    useBlending*: bool
     blendMode*: BlendMode
     filterMode*: Filter
     snapMode*: Snap
     wrapModeX*: Wrap
     wrapModeY*: Wrap
 
-    data*: pointer
     refcount*: cint
+
+    usingVirtualResolution*: bool
+    hasMipMaps*: bool
+    useBlending*: bool
     isAlias*: bool
 
   TextureHandle* {.importc: "uintptr_t", header: "<stdint.h>".} = distinct pointer  ##  \
@@ -496,33 +509,40 @@ type
     ##
     ##  Only targets which represent windows will store this.
     context*: pointer ##  SDL's GLContext
-    failed*: bool
 
-    windowID*: uint32             ##  SDL window ID
-    windowW*, windowH*: cint      ##  Actual window dimensions
-    drawableW*, drawableH*: cint  ##  Drawable region dimensions
-    storedWindowW*, storedWindowH*: cint  ##  Window dimensions
-      ##  for restoring windowed mode after setFullscreen(1,1).
-
-    currentShaderProgram*: uint32
-    defaultTexturedShaderProgram*: uint32
-    defaultUntexturedShaderProgram*: uint32
+    activeTarget*: ptr Target
 
     currentShaderBlock*: ShaderBlock
     defaultTexturedShaderBlock*: ShaderBlock
     defaultUntexturedShaderBlock*: ShaderBlock
 
-    shapesUseBlending*: bool
+    windowID*: uint32             ##  SDL window ID
+
+    windowW*, windowH*: cint      ##  Actual window dimensions
+
+    drawableW*, drawableH*: cint  ##  Drawable region dimensions
+
+    storedWindowW*, storedWindowH*: cint  ##  Window dimensions
+    ##  for restoring windowed mode after setFullscreen(1,1).
+
+    defaultTexturedVertexShaderID*: uint32 ## Shader handles used in the default shader programs
+    defaultTexturedFragmentShaderID*: uint32
+    defaultUntexturedVertexShaderID*: uint32
+    defaultUntexturedFragmentShaderID*: uint32
+
+    currentShaderProgram*: uint32 ## Internal state
+    defaultTexturedShaderProgram*: uint32
+    defaultUntexturedShaderProgram*: uint32
+
     shapesBlendMode*: BlendMode
     lineThickness*: cfloat
-    useTexturing*: bool
-
-    matrixMode*: cint
-    projectionMatrix*: MatrixStack
-    modelviewMatrix*: MatrixStack
 
     refcount*: cint
     data*: pointer
+
+    failed*: bool
+    useTexturing*: bool
+    shapesUseBlending*: bool
 
   Target* = ptr object  ##  \
     ##  Render target object for use as a blitting destination.
@@ -551,26 +571,34 @@ type
     image*: Image
     data*: pointer
     w*, h*: uint16
-    usingVirtualResolution*: bool
-    baseW*, baseH*: uint16
-      ##  The true dimensions of the underlying image or window
-    useClipRect*: bool
+    baseW*, baseH*: uint16 ##  The true dimensions of the underlying image or window
     clipRect*: Rect
-    useColor*: bool
     color*: Color
 
     viewport*: Rect
+
+    matrixMode*: cint
+    projectionMatrix*: MatrixStack
+    modelviewMatrix*: MatrixStack
+
     camera*: Camera ##  Perspective and object viewing transforms.
+
+    usingVirtualResolution*: bool
+    useClipRect*: bool
+    useColor*: bool
     useCamera*: bool
-    useDepthTest*: bool
-    useDepthWrite*: bool
+
     depthFunction*: ComparisonEnum
 
     context*: Context ##  Renderer context data.
-      ##  `nil` if the target does not represent a window or rendering context.
-
+    ##  `nil` if the target does not represent a window or rendering context.
     refcount*: cint
+
+    useDepthTest*: bool
+    useDepthWrite*: bool
     isAlias*: bool
+
+  RendererImpl = object
 
   Renderer* = ptr object  ##  \
     ##  Renderer object which specializes the API to a particular backend.
@@ -585,13 +613,13 @@ type
     enabledFeatures*: FeatureFlags
 
     currentContextTarget*: Target ##  Current display target
-    coordinateMode*: bool         ##  0 for inverted, 1 for mathematical
 
     defaultImageAnchorX*: cfloat ##  Default is (0.5, 0.5)
     defaultImageAnchorY*: cfloat ##  images draw centered.
 
-    # impl*: ptr RendererImpl ##  Private implementation of renderer members
+    impl*: ptr RendererImpl ##  Private implementation of renderer members
 
+    coordinateMode*: bool ##  0 for inverted, 1 for mathematical
 
 type
   BatchFlags* = uint32  ##  \
@@ -604,29 +632,29 @@ type
   ##  ``triangleBatchX()``
 
 const #  Batch options
-  BATCH_XY*     = 0x1
-  BATCH_XYZ*    = 0x2
-  BATCH_ST*     = 0x4
-  BATCH_RGB*    = 0x8
-  BATCH_RGBA*   = 0x10
-  BATCH_RGB8*   = 0x20
-  BATCH_RGBA8*  = 0x40
+  BATCH_XY*: BatchFlags = 0x1
+  BATCH_XYZ*: BatchFlags = 0x2
+  BATCH_ST*: BatchFlags = 0x4
+  BATCH_RGB*: BatchFlags = 0x8
+  BATCH_RGBA*: BatchFlags = 0x10
+  BATCH_RGB8*: BatchFlags = 0x20
+  BATCH_RGBA8*: BatchFlags = 0x40
 
   # Combined batch flags
-  BATCH_XY_ST*        = (BATCH_XY or BATCH_ST)
-  BATCH_XYZ_ST*       = (BATCH_XYZ or BATCH_ST)
-  BATCH_XY_RGB*       = (BATCH_XY or BATCH_RGB)
-  BATCH_XYZ_RGB*      = (BATCH_XYZ or BATCH_RGB)
-  BATCH_XY_RGBA*      = (BATCH_XY or BATCH_RGBA)
-  BATCH_XYZ_RGBA*     = (BATCH_XYZ or BATCH_RGBA)
-  BATCH_XY_ST_RGBA*   = (BATCH_XY or BATCH_ST or BATCH_RGBA)
-  BATCH_XYZ_ST_RGBA*  = (BATCH_XYZ or BATCH_ST or BATCH_RGBA)
-  BATCH_XY_RGB8*      = (BATCH_XY or BATCH_RGB8)
-  BATCH_XYZ_RGB8*     = (BATCH_XYZ or BATCH_RGB8)
-  BATCH_XY_RGBA8*     = (BATCH_XY or BATCH_RGBA8)
-  BATCH_XYZ_RGBA8*    = (BATCH_XYZ or BATCH_RGBA8)
-  BATCH_XY_ST_RGBA8*  = (BATCH_XY or BATCH_ST or BATCH_RGBA8)
-  BATCH_XYZ_ST_RGBA8* = (BATCH_XYZ or BATCH_ST or BATCH_RGBA8)
+  BATCH_XY_ST*: BatchFlags = (BATCH_XY or BATCH_ST)
+  BATCH_XYZ_ST*: BatchFlags = (BATCH_XYZ or BATCH_ST)
+  BATCH_XY_RGB*: BatchFlags = (BATCH_XY or BATCH_RGB)
+  BATCH_XYZ_RGB*: BatchFlags = (BATCH_XYZ or BATCH_RGB)
+  BATCH_XY_RGBA*: BatchFlags = (BATCH_XY or BATCH_RGBA)
+  BATCH_XYZ_RGBA*: BatchFlags = (BATCH_XYZ or BATCH_RGBA)
+  BATCH_XY_ST_RGBA*: BatchFlags = (BATCH_XY or BATCH_ST or BATCH_RGBA)
+  BATCH_XYZ_ST_RGBA*: BatchFlags = (BATCH_XYZ or BATCH_ST or BATCH_RGBA)
+  BATCH_XY_RGB8*: BatchFlags = (BATCH_XY or BATCH_RGB8)
+  BATCH_XYZ_RGB8*: BatchFlags = (BATCH_XYZ or BATCH_RGB8)
+  BATCH_XY_RGBA8*: BatchFlags = (BATCH_XY or BATCH_RGBA8)
+  BATCH_XYZ_RGBA8*: BatchFlags = (BATCH_XYZ or BATCH_RGBA8)
+  BATCH_XY_ST_RGBA8*: BatchFlags = (BATCH_XY or BATCH_ST or BATCH_RGBA8)
+  BATCH_XYZ_ST_RGBA8*: BatchFlags = (BATCH_XYZ or BATCH_ST or BATCH_RGBA8)
 
 type
   ErrorType* {.size: sizeof(cint).} = enum  ##  \
@@ -637,13 +665,13 @@ type
     ##  ``pushErrorCode()``
     ##
     ##  ``popErrorCode()``
-    ERROR_NONE                  = 0
-    ERROR_BACKEND_ERROR         = 1
-    ERROR_DATA_ERROR            = 2
-    ERROR_USER_ERROR            = 3
-    ERROR_UNSUPPORTED_FUNCTION  = 4
-    ERROR_NULL_ARGUMENT         = 5
-    ERROR_FILE_NOT_FOUND        = 6
+    ERROR_NONE = 0
+    ERROR_BACKEND_ERROR = 1
+    ERROR_DATA_ERROR = 2
+    ERROR_USER_ERROR = 3
+    ERROR_UNSUPPORTED_FUNCTION = 4
+    ERROR_NULL_ARGUMENT = 5
+    ERROR_FILE_NOT_FOUND = 6
 
   ErrorObject* = object
     function*: cstring
@@ -676,7 +704,6 @@ type
     LOG_INFO = 0
     LOG_WARNING
     LOG_ERROR
-
 
 # Initialization
 
