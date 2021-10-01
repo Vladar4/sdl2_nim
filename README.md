@@ -26,7 +26,7 @@ Includes:
 ---------
 * SDL 2.0.14
 * SDL_gfx 1.0.1 (fully 1.0.4 compatible)
-* SDL_gpu 0.11.0
+* SDL_gpu 0.12.0
 * SDL_image 2.0.5
 * SDL_mixer 2.0.4
 * SDL_net 2.0.1
@@ -75,6 +75,9 @@ FAQ:
 
 CHANGELOG:
 ==========
+**v2.0.14.3**
+* sdl_gpu update. (kudos to [Avahe Kellenberger](https://github.com/avahe-kellenberger))
+
 **v2.0.14.2**
 * `sdl2nim` is renamed to `sdl2_nim`. See [Nim issue #18476](https://github.com/nim-lang/Nim/issues/18476).
 
