@@ -1,3 +1,8 @@
+# ex701_sdl_gpu.nim
+# =================
+# SDL_GPU usage
+# -----------------
+
 import
   sdl2_nim/sdl,
   sdl2_nim/sdl_gpu
@@ -9,7 +14,7 @@ when isMainModule:
   if screen == nil:
     quit(1)
 
-  let image = loadImage("./examples/img/img1.png")
+  let image = loadImage("img/img1.png")
   if image == nil:
     quit(1)
 

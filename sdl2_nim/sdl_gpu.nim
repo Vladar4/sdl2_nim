@@ -1403,7 +1403,7 @@ proc updateImage*(image: Image; imageRect: ptr Rect; surface: Surface;
   ##  needed from the surface is known.
 
 proc updateImageBytes*(
-  image: Image; imageRect: ptr Rect; bytes: ptr cuchar; bytesPerRow: cint) {.
+  image: Image; imageRect: ptr Rect; bytes: ptr char; bytesPerRow: cint) {.
     cdecl, importc: "GPU_UpdateImageBytes", dynlib: SDL2_GPU_LIB.}
   ##  Update an image from an array of pixel data.
   ##
