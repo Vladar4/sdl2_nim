@@ -86,3 +86,6 @@ converter toCint*(x: int): cint = cint(x)
 
 converter toInt*(x: uint8): int = int(x)
 
+proc `$`*(x: uint8): string {.raises: [].} =
+  result.addInt(int(x))
+
