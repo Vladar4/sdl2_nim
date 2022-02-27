@@ -43,3 +43,6 @@ SDL2 examples
 6. **SMPEG**
     * ex601_smpeg       -   Using SMPEG2 library
 
+7. SDL_GPU
+    * ex701_sdl_gpu     -   Using SDL_GPU library
+
