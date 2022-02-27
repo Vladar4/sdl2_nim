@@ -470,7 +470,7 @@ type
     ##
     ##  ``getTextureHandle()``
 
-  Camera* = object  ##  \
+  Camera* = object ##  \
     ##  Camera object that determines viewing transform.
     ##
     ##  See also:
@@ -481,8 +481,13 @@ type
     ##
     ##  ``getCamera()``
     x*, y*, z*: cfloat
-    angle*, zoom*: cfloat
-    zNear*, zFar*: cfloat ##  z clipping planes
+    angle*: cfloat
+    zoomX*, zoomY*: cfloat
+    ##  z clipping planes
+    zNear*, zFar*: cfloat 
+    # Move rotation/scaling origin to the center of the camera's view
+    useCenteredOrigin*: bool
+    GPU_PAD_7_TO_64: cchar
 
   ShaderBlock* = object ##  \
     ##  Container for the built-in shader attribute and uniform locations
@@ -579,6 +584,7 @@ type
 
     matrixMode*: cint
     projectionMatrix*: MatrixStack
+    viewMatrix*: MatrixStack
     modelviewMatrix*: MatrixStack
 
     camera*: Camera ##  Perspective and object viewing transforms.
