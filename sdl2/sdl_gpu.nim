@@ -551,32 +551,25 @@ type
     image*: Image
     data*: pointer
     w*, h*: uint16
+    usingVirtualResolution*: bool
     baseW*, baseH*: uint16
-
-    clipRect: Rect
-    color*: Color
-    viewport*: Rect
-
-    matrixMode*: cint
-    projectionMatrix: MatrixStack
-    viewMatrix: MatrixStack
-    modelMatrix: MatrixStack
-
-    camera*: Camera ##  Perspective and object viewing transforms.
-    
-    usingVirtualResolution*: bool ##  The true dimensions of the underlying image or window
+      ##  The true dimensions of the underlying image or window
     useClipRect*: bool
+    clipRect*: Rect
     useColor*: bool
-    useCamera*: bool
+    color*: Color
 
+    viewport*: Rect
+    camera*: Camera ##  Perspective and object viewing transforms.
+    useCamera*: bool
+    useDepthTest*: bool
+    useDepthWrite*: bool
     depthFunction*: ComparisonEnum
 
     context*: Context ##  Renderer context data.
-    ##  `nil` if the target does not represent a window or rendering context.
-    refcount*: cint
+      ##  `nil` if the target does not represent a window or rendering context.
 
-    useDepthTest*: bool
-    useDepthWrite*: bool
+    refcount*: cint
     isAlias*: bool
 
   Renderer* = ptr object  ##  \
