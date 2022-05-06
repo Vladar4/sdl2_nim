@@ -35,7 +35,14 @@
 # VK_DEFINE_HANDLE(VkInstance)
 # VK_DEFINE_NON_DISPATCHABLE_HANDLE(VkSurfaceKHR)
 
-# Avoid including vulkan.h, don't define VkInstance if it's already included
+when defined(vulkanim) or defined(vkDynlib): # import vulkanim/vulkan expecting availability of something like https://github.com/Clyybber/vulkanim
+  from vulkanim/vulkan import VkInstance, VkSurfaceKHR
+elif defined(vulkan): # import just vulkan expecting availability of something like https://github.com/nimgl/vulkan
+  from vulkan import VkInstance, VkSurfaceKHR
+elif defined(nimglvulkan): #import nimgl/vulkan expecting availability of something like https://github.com/nimgl/nimgl vulkan subpackage
+  from nimgl/vulkan import VkInstance, VkSurfaceKHR
+
+# Avoid including vulkan.h, don't define VkInstance if it's already included and we do not know if any available module will provide it
 when not declared(VkInstance):
   type
     VkInstance* = pointer
